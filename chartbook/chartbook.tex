@@ -1,0 +1,243 @@
+% % % % % % % % % % % % % % 
+%
+%	U.S. Chartbook
+%	Brian W. Dew (brianwdew@gmail.com)
+%	Created: August 23, 2019
+%	GitHub repo contains to do list (issues)
+%
+% % % % % % % % % % % % % %
+
+\documentclass{report}
+
+%
+% % % % % % Packages % % % % % % % % % 
+%
+	
+	\usepackage[letterpaper, margin=1.2in]{geometry}
+	\usepackage[default]{lato}
+	\usepackage{pgfplots}
+	\usetikzlibrary{pgfplots.dateplot}
+
+%
+% % % % % Document Settings % % % % % % % 
+%
+
+	% Paragraph spacing
+		\setlength{\parskip}{8pt}
+		\setlength{\parindent}{0pt}
+		
+
+%
+% % % % % Graph Settings % % % % % % % 
+%
+	
+	% Color square
+	\newcommand{\cbox}[1]{
+		\begin{tikzpicture} \draw [#1, line width=6](0,0) -- (.2,0);  
+		\end{tikzpicture}}
+	
+	% Style for date plots
+	\pgfplotsset{compat=newest, 
+		scaled y ticks=false,
+		axis line style={black!20}, 
+		xtick style={black!20}, ytick style={draw=none},
+		every tick label/.style={black!50, font=\scriptsize,
+			/pgf/number format/assume math mode=true},
+		width=13.0cm, height=4.6cm, 
+		xticklabel style={align=left}, 
+		yticklabel style={text width=0.85em, align=right},       
+		axis x line*=bottom, x axis line style={black!50},
+	    axis y line=left, y axis line style={opacity=0},
+	    ymajorgrids, grid style={very thin, black!10},	        
+	    every node near coord/.style={black!70},
+	    legend style={legend columns=-1, draw=none, fill=none,
+	    	/tikz/every even column/.append style={column sep=0.3cm}}}
+	
+
+	% stacked diverging bar
+	\newcommand{\sbar}[4]{
+		\addplot[ybar stacked, bar width=2.7pt, draw opacity=0, fill=#1] 
+			table [x=#2, y=#3, col sep=comma]{#4};}
+					
+	% text node
+	\newcommand{\stdnode}[3]{\node[below, align=left, shift=({#1,#2})]{#3};}	        
+		        
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\dateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		max space between ticks=40,	    
+		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
+			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
+			{2002-01-01}, {2004-01-01}, {2006-01-01},
+			{2008-01-01}, {2010-01-01}, {2012-01-01}, {2014-01-01},
+		    {2016-01-01}, {2018-01-01}},
+		minor xtick={{1989-01-01}, {1991-01-01}, {1993-01-01},
+			{1995-01-01}, {1997-01-01}, {1999-01-01}, 
+			{2001-01-01}, {2003-01-01}, {2005-01-01}, {2007-01-01},
+		    {2009-01-01}, {2011-01-01}, {2013-01-01}, {2015-01-01},
+		    {2017-01-01}, {2019-01-01}},
+		enlarge y limits={0.04}, enlarge x limits={0.01},
+		}
+	
+	% Solid bars at significant  x or y values
+	\newcommand{\bbar}[2]{extra #1 ticks = {{#2}}, extra #1 tick labels = ,
+		extra #1 tick style = {grid=major, grid style={thick, black!25}},}
+		
+	% Standard line
+	\newcommand{\stdline}[4]{\addplot[very thick, no markers, color=#1] 
+		table [x=#2, y=#3, col sep=comma] {#4};	}
+		
+	% Recession bars		
+	\newcommand{\rbars}{
+		\fill[color=black!10] (axis cs:{1990-07-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{1991-03-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+		
+			    		    
+% % % % % % % %
+%
+%  Begin Document
+%
+% % % % % % % %		
+\begin{document}
+
+\chapter*{
+		\textcolor{blue!70}{\rule[-1pt]{6pt}{20pt}}
+		\textcolor{yellow!80!orange}{\rule[-1pt]{6pt}{12pt}}
+		\textcolor{cyan!50}{\rule[-1pt]{6pt}{16pt}}
+		\textcolor{green!70!blue}{\rule[-1pt]{6pt}{32pt}} \ \color{darkgray}US Chartbook 2.0}
+\vspace{4mm}
+
+
+\subsection*{\color{black!70}Notes:}
+
+Brian Dew, brian.w.dew@gmail.com
+
+\newpage
+
+
+\section*{\color{darkgray} \LARGE \fontseries{eb}\selectfont Overall Economic Activity}
+\input{text/gdp.txt}
+
+\begin{minipage}{0.76\textwidth}
+\subsection*{\color{black!70}Economic Growth}
+
+\small GDP (see\cbox{red!95!black}) \input{text/gdp_gr.txt}
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Real Gross Domestic Product Growth}\\
+\footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
+\noindent \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, 
+		xticklabel={\year}, clip=false, height=4.0cm]
+	\rbars
+	\sbar{red!95!black}{date}{A191RL}{data/gdp.csv}
+	\input{data/gdp.txt} % label for last value
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} 
+
+\subsection*{\color{black!70}Components of Growth}
+
+\small The \textbf{expenditure approach} compiles GDP from the sum of spending on domestic goods and services. Major spending categories are consumer spending (see\cbox{yellow!80!orange}), private investment (gross spending on capital goods) and changes in private inventories (see\cbox{blue!70!black}), government spending and investment (see\cbox{cyan!50!white}), and net exports (see\cbox{green!60!black}) which is measured as foreign spending on US goods and services less US spending on goods and services produced by the rest of the world. 
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Real GDP Growth by Expenditure Type}\\
+\footnotesize{\textit{percentage point contribution to GDP growth}}\\
+\noindent \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+		xticklabel={\year}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
+	\sbar{blue!70!black}{date}{A006RY}{data/comp.csv}
+	\sbar{cyan!50!white}{date}{A822RY}{data/comp.csv}
+	\sbar{green!60!black}{date}{A019RY}{data/comp.csv}
+	\stdnode{2.2cm}{0.4cm}{\footnotesize $^*$ Includes change in private inventories}
+	\legend{Consumer Spending, Investment$^*$, Government, Net Exports};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+\end{minipage}
+
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small The \textbf{production approach} calculates GDP as the sum of gross value added--output minus inputs--in each sector. This identifies contributions from: goods-producing sectors combined with trade, transportation, and utilities (see\cbox{purple!70!blue}), finance, insurance, and real estate (see\cbox{red!90!white}), other service-providing sectors (see\cbox{blue!90!white}), and government (see\cbox{orange!80!white}).
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Real GDP Growth by Industry Group}\\
+\footnotesize{\textit{percentage point contribution to GDP growth}}\\
+\noindent \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+		xticklabel={\year}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01}, 			\pgfkeysvalueof{/pgfplots/ymax});
+	\draw [dashed] (axis cs:{1998-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{1998-01-01}, 			\pgfkeysvalueof{/pgfplots/ymax});
+	\sbar{orange!80!white}{date}{Government}{data/gdpva.csv}
+	\sbar{blue!90!white}{date}{Oth_Serv}{data/gdpva.csv}
+	\sbar{red!90!white}{date}{FIRE}{data/gdpva.csv}
+	\sbar{purple!70!blue}{date}{GoodsTTU}{data/gdpva.csv}
+	\stdnode{0.65cm}{0.4cm}{\scriptsize historical data}
+	\stdnode{4.1cm}{0.4cm}{\scriptsize annual data}
+	\legend{Government, Other Services, FIRE, Goods and TTU};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+\vspace{6mm}
+
+\small The \textbf{income approach} calculates GDP as the sum of market income to persons (in exchange for labor (see\cbox{magenta!90!blue}) or from returns on capital (see\cbox{yellow!60!orange}), indirect taxes such as sales taxes or tariffs (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). 
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Real Gross Domestic Income Growth}\\
+\footnotesize{\textit{percentage point contribution to GDI growth}}\\
+\noindent \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+		xticklabel={\year}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{magenta!90!blue}{date}{A4002C}{data/gdi.csv}
+	\sbar{yellow!60!orange}{date}{W271RC}{data/gdi.csv}
+	\sbar{teal!60!white}{date}{A262RC}{data/gdi.csv}
+	\sbar{violet}{date}{indirect}{data/gdi.csv}	
+	\legend{Labor, Profit, Depreciation, Indirect Taxes};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+\vspace{6mm}
+
+\small Changes to GDP can be assigned to various \textbf{household inputs}: population (see\cbox{lime}), employment rates (see\cbox{green!30!teal!90!black}), average hours worked (see\cbox{blue}), and total economy productivity (see\cbox{cyan!50!white}). 
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Real GDP Growth by Inputs}\\
+\footnotesize{\textit{percentage point contribution to GDP growth}}\\
+\noindent \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+		xticklabel={\year}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{lime}{date}{pop_contr}{data/gdpjobs.csv}
+	\sbar{green!30!teal!90!black}{date}{epop_contr}{data/gdpjobs.csv}
+	\sbar{cyan!50!white}{date}{prod}{data/gdpjobs.csv}
+	\sbar{blue}{date}{hours_contr}{data/gdpjobs.csv}	
+	\legend{Population, Employment Rate, Productivity, Average Hours};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations}
+\end{minipage}
+
+\newpage
+
+\section*{\color{darkgray}\LARGE \fontseries{eb}\selectfont Poverty}
+
+\noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2017}\\
+\footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,060}}
+
+\vspace{-3mm}
+\hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
+
+\newpage
+
+
+\end{document}
