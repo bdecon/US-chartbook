@@ -2,7 +2,9 @@
 
 ### US economic data, well-summarized
 
-----
+
+[View the chartbook](https://github.com/bdecon/US-chartbook/blob/master/chartbook/chartbook.pdf)
+
 
 Brian Dew, @bd_econ
 
