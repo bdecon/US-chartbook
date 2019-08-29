@@ -6,7 +6,7 @@
 %	GitHub repo contains to do list (issues)
 %
 % % % % % % % % % % % % % %
-
+\PassOptionsToPackage{table}{xcolor}
 \documentclass{report}
 
 %
@@ -14,8 +14,11 @@
 %
 	
 	\usepackage[letterpaper, margin=1.2in]{geometry}
+	\usepackage{microtype}
 	\usepackage[default]{lato}
 	\usepackage{pgfplots}
+	\usepackage{xcolor}
+	\usepackage{array}
 	\usetikzlibrary{pgfplots.dateplot}
 
 %
@@ -35,6 +38,9 @@
 	\newcommand{\cbox}[1]{
 		\begin{tikzpicture} \draw [#1, line width=6](0,0) -- (.2,0);  
 		\end{tikzpicture}}
+	
+	% Column width and alignment
+	\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}	
 	
 	% Style for date plots
 	\pgfplotsset{compat=newest, 
@@ -187,7 +193,7 @@ Brian Dew, brian.w.dew@gmail.com
 \footnotesize{Source: Bureau of Economic Analysis}
 \vspace{6mm}
 
-\small The \textbf{income approach} calculates GDP as the sum of market income to persons (in exchange for labor (see\cbox{magenta!90!blue}) or from returns on capital (see\cbox{yellow!60!orange}), indirect taxes such as sales taxes or tariffs (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). 
+\small The \textbf{income approach} calculates GDP as the sum of market income to persons (in exchange for labor (see\cbox{magenta!90!blue}) or from returns on capital (see\cbox{yellow!60!orange})), indirect taxes such as sales taxes or tariffs (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). 
 \vspace{5mm}
 
 \noindent \normalsize \textbf{Real Gross Domestic Income Growth}\\
@@ -227,6 +233,54 @@ Brian Dew, brian.w.dew@gmail.com
 \footnotesize{Source: Author's Calculations}
 \end{minipage}
 
+\newpage
+
+\noindent \normalsize \textbf{Components of Economic Growth}\\
+\footnotesize{\textit{percentage point contribution to real GDP/GDI growth \hspace{35mm} moving averages}\\ \vspace{4mm}
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.8pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{2mm} p{36mm} R{7mm} R{7mm} R{7mm} R{7mm} R{7mm} p{0mm} R{7mm} R{7mm} R{7mm} }
+		 	& & 2019 Q2 & '19 Q1 & '18 Q4 & '18 Q3 & '18 Q2 & & 3-year & 10-year & 30-year \\ 
+			\cbox{red!95!black}	 &	\textbf{Gross Domestic Product} & 2.1 & 3.1 & 0.6 & 1.3 & 2.9 & & 2.6 & 2.3 & 2.5 \\
+			\cbox{yellow!80!orange}	 &	\hspace{2mm} Consumer Spending & 1.13 & 1.41 & 2.16 & 0.83 & 1.15 & & 2.13 & 1.28 & 1.38 \\
+			& \hspace{4mm} Durable Goods & & & & & & & & & \\
+			& \hspace{4mm} Non-durable Goods & & & & & & & & & \\
+			\cbox{blue!70!black}	&	\hspace{2mm} Gross Investment & -0.91 & 0.34 & 0.69 & 1.03 & 0.14 & & 0.92 & 1.01 & 1.30 \\
+			& \hspace{4mm} Residential & & & & & & & & & \\
+			& \hspace{4mm} Non-residential & & & & & & & & & \\
+			& \hspace{4mm} Change in inventories & & & & & & & & & \\
+			\cbox{cyan!50!white}	&	\hspace{2mm} Government & 0.11 & -0.18 & 0.87 & 0.13 & 0.16 & & 0.03 & 0.34 & 0.29 \\
+			& \hspace{4mm} Federal & & & & & & & & & \\
+			& \hspace{4mm} State and Local & & & & & & & & & \\
+			\cbox{green!60!black}	&	\hspace{2mm} Net Exports & -0.87 & -0.21 & -0.87 & 0.13 & 0.17 & & -0.48 & -0.48 & -0.56 \\ 
+			& \hspace{4mm} Goods & & & & & & & & & \\
+			& \hspace{4mm} Services & & & & & & & & & \\ 
+			& & & & & & & & & & \\
+			\cbox{purple!70!blue}	 &	\hspace{2mm} Goods and TTU & 1.13 & 1.41 & 2.16 & 0.83 & 1.15 & & 2.13 & 1.28 & 1.38 \\
+			& \hspace{4mm} Manufacturing & & & & & & & & & \\			
+			& \hspace{4mm} Construction & & & & & & & & & \\	
+			& \hspace{4mm} Retail Trade & & & & & & & & & \\	
+			\cbox{red!90!white}	&	\hspace{2mm} FIRE & -0.91 & 0.34 & 0.69 & 1.03 & 0.14 & & 0.92 & 1.01 & 1.30 \\
+			\cbox{blue!90!white}	&	\hspace{2mm} Other Services & 0.11 & -0.18 & 0.87 & 0.13 & 0.16 & & 0.03 & 0.34 & 0.29 \\
+			& \hspace{4mm} Education \& Healthcare & & & & & & & & & \\
+			\cbox{orange!80!white}	&	\hspace{2mm} Government & 0.11 & -0.18 & 0.87 & 0.13 & 0.16 & & 0.03 & 0.34 & 0.29 \\
+			& & & & & & & & & & \\
+			\cbox{lime}	 &	\hspace{2mm} Population & 1.13 & 1.41 & 2.16 & 0.83 & 1.15 & & 2.13 & 1.28 & 1.38 \\
+			\cbox{green!30!teal!90!black}	&	\hspace{2mm} Employment Rate & -0.91 & 0.34 & 0.69 & 1.03 & 0.14 & & 0.92 & 1.01 & 1.30 \\
+			\cbox{cyan!50!white}	&	\hspace{2mm} Productivity & 0.11 & -0.18 & 0.87 & 0.13 & 0.16 & & 0.03 & 0.34 & 0.29 \\
+			\cbox{blue}	&	\hspace{2mm} Average Hours & -0.87 & -0.21 & -0.87 & 0.13 & 0.17 & & -0.48 & -0.48 & -0.56 \\ 
+			& & & & & & & & & & \\ 
+			&	\textbf{Gross Domestic Income} & 1.13 & 1.41 & 2.16 & 0.83 & 1.15 & & 2.13 & 1.28 & 1.38 \\
+			\cbox{magenta!90!blue}	 &	\hspace{2mm} Labor & 1.13 & 1.41 & 2.16 & 0.83 & 1.15 & & 2.13 & 1.28 & 1.38 \\
+			& \hspace{4mm} Rate of Pay & & & & & & & & & \\			
+			& \hspace{4mm} Hours of Work & & & & & & & & & \\				
+			\cbox{yellow!60!orange}	&	\hspace{2mm} Profit & -0.91 & 0.34 & 0.69 & 1.03 & 0.14 & & 0.92 & 1.01 & 1.30 \\
+			\cbox{teal!60!white}	&	\hspace{2mm} Depreciation & 0.11 & -0.18 & 0.87 & 0.13 & 0.16 & & 0.03 & 0.34 & 0.29 \\
+			\cbox{violet}	&	\hspace{2mm} Indirect Taxes & -0.87 & -0.21 & -0.87 & 0.13 & 0.17 & & -0.48 & -0.48 & -0.56 \\ 
+		\end{tabular}
+		}	\\
+\footnotesize{Source: Bureau of Economic Analysis and Author's Calculations}
+		
 \newpage
 
 \section*{\color{darkgray}\LARGE \fontseries{eb}\selectfont Poverty}
