@@ -22,6 +22,35 @@ def bea_api_nipa(table_list, bea_key):
         api_results.append((table, name, r.text, date))
 
     return api_results
+    
+
+def bea_api_gdpstate(bea_key):
+    ''' Return tables in table list for years in range'''
+    import requests
+    from datetime import datetime
+
+    years = ','.join(map(str, range(2008, 2020)))
+
+    api_results = []
+
+    table = 'RGDP_SQN'
+    url = f'https://www.bea.gov/api/data/?&UserID={bea_key}'\
+          f'&method=GetData&datasetname=RegionalProduct'\
+          f'&IndustryId=1&Component={table}&GeoFIPS=STATE'\
+          f'&Year={years}&ResultFormat=json'
+
+    r = requests.get(url)
+    
+    name = 'GDP by State'
+    
+    date = (r.json()['BEAAPI']['Results']['Notes'][0]['NoteText']
+             .split('--')[0].split(': ')[1])
+
+    date = datetime.strptime(date, '%B %d, %Y').strftime('%Y-%m-%d')
+
+    api_results.append((table, name, r.text, date))
+
+    return api_results
 
     
 def bea_to_db(api_results):
@@ -39,16 +68,18 @@ def bea_to_db(api_results):
 	conn.commit()
 	conn.close()
 	
+	
 
 def retrieve_table(table_id):
     '''Returns table from local database'''
     import json
     import sqlite3
-    table_id = (table_id,)
+    table_id = (table_id, table_id)
     conn = sqlite3.connect('../data/chartbook.db')
     c = conn.cursor()
     c.execute('''SELECT data FROM bea_nipa_raw WHERE id=? AND 
-                 date=(SELECT MAX(date) FROM bea_nipa_raw)''', table_id)
+                 date=(SELECT MAX(date) FROM bea_nipa_raw
+                 WHERE id=?)''', table_id)
     data = json.loads(c.fetchone()[0])['BEAAPI']['Results']
     conn.close()
     return data
@@ -68,6 +99,23 @@ def nipa_df(nipa_table, series_list):
         
     return pd.DataFrame(data)
     
+def gdpstate_df(table):
+    '''Returns dataframe from table and series list'''
+    import pandas as pd
+    data = {}
+    
+    series_list = list(set([i['GeoName'] 
+                            for i in retrieve_table('RGDP_SQN')['Data']]))
+    for code in series_list:
+        obs = [i['DataValue'] for i in table
+               if i['GeoName'] == code]
+        index = [pd.to_datetime(i['TimePeriod']) for i in table 
+                 if i['GeoName'] == code]
+        data[code] = (pd.Series(data=obs, index=index)
+                        .str.replace(',', '').astype(float))
+        
+    return pd.DataFrame(data)
+        
     
 def nipa_series_codes(nipa_table):
     '''
@@ -85,3 +133,9 @@ def nipa_series_codes(nipa_table):
 def growth_rate(series):
 	''' Return the annualized quarterly growth rate in percent'''
 	return ((((series.pct_change() + 1) ** 4) - 1) * 100)
+	
+	
+def write_txt(filename, filetext):
+    ''' Write label to txt file '''
+    with open(filename, 'w') as text_file:
+        text_file.write(filetext)

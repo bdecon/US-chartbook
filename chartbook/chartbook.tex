@@ -49,7 +49,7 @@
 		xtick style={black!20}, ytick style={draw=none},
 		every tick label/.style={black!50, font=\scriptsize,
 			/pgf/number format/assume math mode=true},
-		width=13.0cm, height=4.6cm, 
+		width=12.9cm, height=4.6cm, 
 		xticklabel style={align=left}, 
 		yticklabel style={text width=0.85em, align=right},       
 		axis x line*=bottom, x axis line style={black!50},
@@ -112,15 +112,18 @@
 
 \chapter*{
 		\textcolor{blue!70}{\rule[-1pt]{6pt}{20pt}}
-		\textcolor{yellow!80!orange}{\rule[-1pt]{6pt}{12pt}}
-		\textcolor{cyan!50}{\rule[-1pt]{6pt}{16pt}}
 		\textcolor{green!70!blue}{\rule[-1pt]{6pt}{32pt}} \ \color{darkgray}US Chartbook v0.0}
 \vspace{4mm}
 
-
+\begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70}Notes:}
 
-Brian Dew, brian.w.dew@gmail.com
+Author: Brian Dew, brian.w.dew@gmail.com \\
+
+
+Unless otherwise noted: charts and data are adjusted for inflation and seasonality; growth and interest rates are presented on an annualized basis; and average growth rates are simple averages and do not reflect compounding. 
+\end{minipage}
+\thispagestyle{empty}
 
 \newpage
 
@@ -141,7 +144,7 @@ Brian Dew, brian.w.dew@gmail.com
 		xticklabel={\year}, clip=false, height=4.0cm]
 	\rbars
 	\sbar{red!95!black}{date}{A191RL}{data/gdp.csv}
-	\input{data/gdp.txt} % label for last value
+	\node[above, align=left] at (axis cs:2017-01-01,-8.5) {\scriptsize \input{data/gdp.txt}};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} 
@@ -240,46 +243,23 @@ Brian Dew, brian.w.dew@gmail.com
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.8pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{2mm} p{36mm} R{7mm} R{7mm} R{7mm} R{7mm} R{7mm} p{0mm} R{7mm} R{7mm} R{7mm} }
-& & 2019 Q2 & '19 Q1 & '18 Q4 & '18 Q3 & '18 Q2 & & 3-year & 10-year & 30-year \\
-\cbox{red!95!black} & \textbf{Gross Domestic Product} & 2.0 & 3.1 & 1.1 & 2.9 & 3.5 & & 2.5 &  2.2 & 2.5 \\
-\cbox{yellow!80!orange} & \hspace{2mm} Consumer Spending & 3.10 & 0.78 & 0.97 & 2.34 & 2.70 & & 1.88 &  1.58 & 1.81 \\
-& \hspace{4mm} Durable Goods & 0.87 & 0.02 & 0.09 & 0.25 & 0.56 & & 0.44 &  0.42 & 0.42 \\
-& \hspace{4mm} Non-durable Goods  & 0.91 & 0.30 & 0.24 & 0.50 & 0.57 & & 0.40 &  0.30 & 0.33 \\
-& \hspace{4mm} Services  & 1.32 & 0.46 & 0.65 & 1.59 & 1.57 & & 1.03 &  0.85 & 1.06 \\
-\cbox{blue!70!black} & \hspace{2mm} Gross Investment & -1.11 & 1.09 & 0.53 & 2.27 & -0.30 & & 0.62 &  0.87 & 0.59 \\
-& \hspace{4mm} Residential  & -0.09 & 0.60 & 0.64 & 0.29 & 1.04 & & 0.60 &  0.58 & 0.54 \\
-& \hspace{4mm} Non-residential  & -0.11 & -0.04 & -0.18 & -0.16 & -0.15 & & -0.01 &  0.11 & 0.03 \\
-& \hspace{4mm} Change in inventories  & -0.91 & 0.53 & 0.07 & 2.14 & -1.20 & & 0.04 &  0.17 & 0.03 \\
-\cbox{cyan!50!white} & \hspace{2mm} Government  & 0.77 & 0.50 & -0.07 & 0.36 & 0.44 & & 0.25 &  0.00 & 0.24 \\
-& \hspace{4mm} Federal  & 0.52 & 0.14 & 0.07 & 0.19 & 0.25 & & 0.14 &  0.01 & 0.07 \\
-& \hspace{4mm} State and Local  & 0.25 & 0.36 & -0.14 & 0.17 & 0.19 & & 0.12 &  -0.00 & 0.17 \\
-\cbox{green!60!black} & \hspace{2mm} Net Exports  & -0.72 & 0.73 & -0.35 & -2.05 & 0.67 & & -0.25 &  -0.20 & -0.15 \\
-& \hspace{4mm} Exports  & -0.71 & 0.49 & 0.18 & -0.78 & 0.71 & & 0.27 &  0.48 & 0.51 \\
-& \hspace{4mm} Imports  & -0.01 & 0.23 & -0.53 & -1.27 & -0.04 & & -0.52 &  -0.67 & -0.66 \\
-& & & & & & & & & & \\
-\cbox{purple!70!blue} & \hspace{2mm} Goods and TTU  & -- & 1.39 & 1.13 & 1.13 & 0.99 & & 0.89 &  0.57 & 0.91 \\
-& \hspace{4mm} Manufacturing  & -- & 0.51 & 0.32 & 0.31 & 0.26 & & 0.32 &  0.15 & 0.33 \\
-& \hspace{4mm} Construction  & -- & 0.00 & -0.09 & 0.12 & 0.11 & & 0.07 &  -0.00 & -0.01 \\
-& \hspace{4mm} Retail Trade  & -- & 0.63 & -0.14 & 0.34 & -0.06 & & 0.24 &  0.13 & 0.20 \\
-\cbox{red!90!white} & \hspace{2mm} FIRE  & -- & 0.80 & -0.07 & 0.59 & 0.55 & & 0.21 &  0.48 & 0.47 \\
-\cbox{blue!90!white} & \hspace{2mm} Other Services  & -- & 1.03 & 1.16 & 1.33 & 2.35 & & 1.19 &  0.86 & 0.89 \\
-& \hspace{4mm} Education \& Healthcare  & -- & 0.51 & 0.16 & 0.24 & 0.34 & & 0.24 &  0.18 & 0.19 \\
-\cbox{orange!80!white} & \hspace{2mm} Government  & -- & -0.14 & -0.02 & 0.12 & 0.07 & & 0.06 &  0.00 & 0.10 \\
-& & & & & & & & & & \\
-\cbox{lime} & \hspace{2mm} Population  & 0.57 & 0.55 & 0.66 & 0.70 & 0.59 & & 0.64 &  0.72 & 0.98 \\
-\cbox{green!30!teal!90!black} & \hspace{2mm} Employment Rate  & -0.75 & -0.05 & 1.36 & 0.74 & 1.88 & & 0.61 &  0.30 & 0.02 \\
-\cbox{blue} & \hspace{2mm} Average Hours & -0.02 & -0.15 & -0.04 & 0.20 & 0.40 & & 0.09 &  0.14 & 0.02 \\
-\cbox{cyan!50!white} & \hspace{2mm} Productivity  & 2.24 & 2.75 & -0.90 & 1.29 & 0.64 & & 1.16 &  1.10 & 1.48 \\
-& & & & & & & & & & \\
-& \textbf{Gross Domestic Income}  & 2.11 & 3.24 & 0.78 & 3.28 & 0.71 & & 2.03 &  2.43 & 2.51 \\
-\cbox{magenta!90!blue} & \hspace{2mm} Labor  & 1.11 & 4.41 & 0.28 & 1.39 & -0.03 & & 1.38 &  1.18 & 1.29 \\
-\cbox{yellow!60!orange} & \hspace{2mm} Profit  & 0.38 & -1.95 & -0.11 & 1.26 & 0.12 & & 0.06 &  0.79 & 0.63 \\
-\cbox{teal!60!white} & \hspace{2mm} Depreciation  & 0.43 & 0.73 & 0.53 & 0.59 & 0.47 & & 0.44 &  0.31 & 0.42 \\
-\cbox{violet} & \hspace{2mm} Indirect Taxes  & 0.19 & 0.06 & 0.07 & 0.05 & 0.15 & & 0.15 &  0.15 & 0.17 \\
+\input{data/gdptable.tex}
 		\end{tabular}
 		}	\\
 \footnotesize{Source: Bureau of Economic Analysis and Author's Calculations}
 		
+\newpage
+\begin{minipage}{0.76\textwidth}
+\subsection*{\color{black!70}GDP Growth by State}
+
+\small Start with map of 3-year moving average GDP growth by state\\
+
+Then do a regional breakdown with four columns (full width) and the various state IDs and the latest, 1-year and 3-year moving averages. Then do a stacked bar chart that assigns GDP growth to the various regions. \\
+
+Also want to have some text that describes the contributions to total GDP growth, some of the top and bottom states, and some overall trends. For example, how many states have averaged GDP growth of 2 percent or more over the past three years? Which states have averaged GDP growth of 4 percent or more the past year? If len(states) < 4 print out the state names. 
+
+\end{minipage}
+
 \newpage
 
 \section*{\color{darkgray}\LARGE \fontseries{eb}\selectfont Poverty}
