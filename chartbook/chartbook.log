@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.10.0 (TeX Live 2019/Arch Linux)  (format=lualatex 2019.8.2)  2 SEP 2019 08:18
+This is LuaTeX, Version 1.10.0 (TeX Live 2019/Arch Linux)  (format=lualatex 2019.8.2)  2 SEP 2019 22:19
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -48,7 +48,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.045 seconds
+luaotfload | main : initialization completed in 0.050 seconds
 (/usr/share/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size10.clo
@@ -2257,23 +2257,57 @@ ode.tex (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty
 File: pgfcalendar.code.tex 2019/02/02 v3.1.1 (3.1.1)
 \pgfcalendarcurrentjulian=\count289
 )))
+luaotfload | aux : font no 59 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 59
+luaotfload | aux : font no 60 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 60
+
+Package fontspec Info: Font family 'SourceSerifPro(0)' created for font
+(fontspec)             'SourceSerifPro' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SourceSerifPro:mode=node;script=latn;language=DFLT;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"SourceSerifPro:mode=node;script=latn;language=DFLT;+s
+mcp;"
+(fontspec)             - 'bold' (bx/n) with NFSS spec.:
+(fontspec)             <->"SourceSerifPro/B:mode=node;script=latn;language=DFLT;
+"
+(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.:
+(fontspec)             <->"SourceSerifPro/B:mode=node;script=latn;language=DFLT;
++smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"SourceSerifPro/I:mode=node;script=latn;language=DFLT;
+"
+(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
+(fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
+(fontspec)             <->"SourceSerifPro/BI:mode=node;script=latn;language=DFLT
+;"
+(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
+
+
 (./chartbook.aux)
 \openout1 = chartbook.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
-LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -2309,7 +2343,7 @@ LaTeX Font Info:    ... okay on input line 111.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 111.
+LaTeX Info: Redefining \microtypecontext on input line 110.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -2529,68 +2563,68 @@ Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 111.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 111.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 111.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 111.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 111.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 111.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 111.
-LaTeX Font Info:    Redeclaring math accent \check on input line 111.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 111.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 111.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \colon on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 111.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 111.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 111.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 110.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 110.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 110.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 110.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 110.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 110.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 110.
+LaTeX Font Info:    Redeclaring math accent \check on input line 110.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 110.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 110.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 110.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 110.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 110.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 111.
+(Font)              `operators' in the math version `normal' on input line 110.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/Lato(0)/m/n on input line 111.
+(Font)                  OT1/cmr/m/n --> TU/Lato(0)/m/n on input line 110.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 111.
+(Font)              `operators' in the math version `bold' on input line 110.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/Lato(0)/m/n on input line 111.
+(Font)                  OT1/cmr/bx/n --> TU/Lato(0)/m/n on input line 110.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `tabular' on input line 111.
+(Font)              `operators' in the math version `tabular' on input line 110.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `tabular'
-(Font)                  OT1/cmr/m/n --> TU/Lato(0)/m/n on input line 111.
+(Font)                  OT1/cmr/m/n --> TU/Lato(0)/m/n on input line 110.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
 (Font)              `operators' in the math version `boldtabular' on input line 
-111.
+110.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `boldtabular'
 
-(Font)                  OT1/cmr/bx/n --> TU/Lato(0)/m/n on input line 111.
+(Font)                  OT1/cmr/bx/n --> TU/Lato(0)/m/n on input line 110.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/Lato(0)/m/n --> TU/Lato(0)/m/n on input line 111.
+(Font)                  TU/Lato(0)/m/n --> TU/Lato(0)/m/n on input line 110.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/Lato(0)/m/it on input line 111.
+(Font)                  OT1/cmr/m/it --> TU/Lato(0)/m/it on input line 110.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/Lato(0)/bx/n on input line 111.
+(Font)                  OT1/cmr/bx/n --> TU/Lato(0)/bx/n on input line 110.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 111.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 110.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 111.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 110.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/Lato(0)/m/n --> TU/Lato(0)/bx/n on input line 111.
+(Font)                  TU/Lato(0)/m/n --> TU/Lato(0)/bx/n on input line 110.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/Lato(0)/bx/it on input line 111.
+(Font)                  OT1/cmr/bx/it --> TU/Lato(0)/bx/it on input line 110.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 111.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 110.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 111.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 110.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count292
@@ -2652,15 +2686,24 @@ Package pgfplots notification 'compat/show suggested version=true': document has
  been generated with the most recent feature set (\pgfplotsset{compat=1.16}).
 
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 24.88pt on input line 115.
+(Font)              scaled to size 24.88pt on input line 114.
 LaTeX Font Info:    Font shape `TU/Lato(0)/bx/n' will be
-(Font)              scaled to size 24.88pt on input line 115.
+(Font)              scaled to size 24.88pt on input line 114.
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 119.
+(Font)              scaled to size 12.0pt on input line 118.
 LaTeX Font Info:    Font shape `TU/Lato(0)/bx/n' will be
-(Font)              scaled to size 12.0pt on input line 119.
+(Font)              scaled to size 12.0pt on input line 118.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `SourceSerifPro' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
@@ -2680,13 +2723,11 @@ RS)
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 131.
+(Font)              scaled to size 14.4pt on input line 130.
 LaTeX Font Info:    Font shape `TU/Lato(0)/bx/n' will be
-(Font)              scaled to size 14.4pt on input line 131.
+(Font)              scaled to size 14.4pt on input line 130.
 LaTeX Font Info:    Font shape `TU/Lato(0)/bx/n' will be
-(Font)              scaled to size 17.28pt on input line 131.
-LaTeX Font Info:    Font shape `TU/Lato(0)/eb/n' will be
-(Font)              scaled to size 17.28pt on input line 131.
+(Font)              scaled to size 17.28pt on input line 130.
  (./text/gdp.txt
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
 (Font)              scaled to size 9.0pt on input line 2.
@@ -2734,54 +2775,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--22
  []
 
 ) (./text/gdp_gr.txt)
-Package pgfplots info on input line 144: dateplot: setting 'date ZERO={1990-01-0
+Package pgfplots info on input line 143: dateplot: setting 'date ZERO={1990-01-0
 1}' for this axis.
-Package pgfplots info on input line 144: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 143: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/gdp.csv}
  (./data/gdp.txt)
-Overfull \hbox (1.86441pt too wide) in paragraph at lines 140--151
+Overfull \hbox (1.86441pt too wide) in paragraph at lines 139--150
 [] 
  []
 
-Package pgfplots info on input line 161: dateplot: setting 'date ZERO={1990-01-0
+Package pgfplots info on input line 160: dateplot: setting 'date ZERO={1990-01-0
 1}' for this axis.
-Package pgfplots info on input line 161: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 160: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 169.
+(Font)              scaled to size 6.0pt on input line 168.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 169.
+(Font)              <8> on input line 168.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 169.
+(Font)              <6> on input line 168.
 
-Overfull \hbox (1.86441pt too wide) in paragraph at lines 157--172
+Overfull \hbox (1.86441pt too wide) in paragraph at lines 156--171
 [] 
  []
 
 [2
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
-Package pgfplots info on input line 183: dateplot: setting 'date ZERO={1990-01-0
+Package pgfplots info on input line 182: dateplot: setting 'date ZERO={1990-01-0
 1}' for this axis.
-Package pgfplots info on input line 183: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 182: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/gdpva.csv}
 PGFPlots: reading {data/gdpva.csv}
 PGFPlots: reading {data/gdpva.csv}
 PGFPlots: reading {data/gdpva.csv}
 
-Overfull \hbox (1.8656pt too wide) in paragraph at lines 179--198
+Overfull \hbox (1.8656pt too wide) in paragraph at lines 178--197
 [] 
  []
 
-Package pgfplots info on input line 207: dateplot: setting 'date ZERO={1990-01-0
+Package pgfplots info on input line 206: dateplot: setting 'date ZERO={1990-01-0
 1}' for this axis.
-Package pgfplots info on input line 207: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 206: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/gdi.csv}
 NOTE: coordinate (1989-01-01,) has been dropped because of a coordinate filter. 
@@ -2796,13 +2837,13 @@ PGFPlots: reading {data/gdi.csv}
 NOTE: coordinate (1989-01-01,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 
-Overfull \hbox (1.86565pt too wide) in paragraph at lines 202--218
+Overfull \hbox (1.86565pt too wide) in paragraph at lines 201--217
 [] 
  []
 
-Package pgfplots info on input line 227: dateplot: setting 'date ZERO={1990-01-0
+Package pgfplots info on input line 226: dateplot: setting 'date ZERO={1990-01-0
 1}' for this axis.
-Package pgfplots info on input line 227: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 226: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/gdpjobs.csv}
 NOTE: coordinate (1989-01-01,) has been dropped because of a coordinate filter. 
@@ -2817,7 +2858,7 @@ PGFPlots: reading {data/gdpjobs.csv}
 NOTE: coordinate (1989-01-01,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 
-Overfull \hbox (1.86655pt too wide) in paragraph at lines 222--237
+Overfull \hbox (1.86655pt too wide) in paragraph at lines 221--236
 [] 
  []
 
@@ -2913,28 +2954,31 @@ Overfull \hbox (5.99992pt too wide) in paragraph at lines 37--37
  []
 
 ) [4]
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
 
  []
 
-[5] (/home/brian/Documents/ACS/acs_map.pgf
-luaotfload | aux : font no 86 (nil) does not define feature smcp for script latn
+[5]
+LaTeX Font Info:    Font shape `TU/Lato(0)/eb/n' will be
+(Font)              scaled to size 17.28pt on input line 264.
+ (/home/brian/Documents/ACS/acs_map.pgf
+luaotfload | aux : font no 96 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 86
-luaotfload | aux : font no 91 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 91
-luaotfload | aux : font no 92 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 92
-luaotfload | aux : font no 93 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 93
+luaotfload | aux : no font with id 96
+luaotfload | aux : font no 101 (nil) does not define feature smcp for script lat
+n with language dflt
+luaotfload | aux : no font with id 101
+luaotfload | aux : font no 102 (nil) does not define feature smcp for script lat
+n with language dflt
+luaotfload | aux : no font with id 102
+luaotfload | aux : font no 103 (nil) does not define feature smcp for script lat
+n with language dflt
+luaotfload | aux : no font with id 103
 
 Package fontspec Info: Font family 'Lato(1)' created for font 'Lato' with
 (fontspec)             options [Ligatures=TeX].
@@ -2961,28 +3005,29 @@ LaTeX Info: Redefining \rmfamily on input line 44048.
 ) [6] (./chartbook.aux))
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 242 ({)
+### simple group (level 1) entered at line 241 ({)
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 37975 strings out of 494300
+ 38065 strings out of 494300
  381542,1977958 words of node,token memory allocated
  477 words of node memory still in use:
    4 hlist, 1 vlist, 2 rule, 2 glue, 3 kern, 1 glyph, 6 attribute, 57 glue_spec,
  6 attribute_list, 1 write nodes
    avail lists: 1:11,2:86323,3:43131,4:460,5:476,6:420,7:5688,8:2,9:3283,10:22,1
 1:147,12:1
- 40250 multiletter control sequences out of 65536+600000
- 93 fonts using 14393655 bytes
+ 40275 multiletter control sequences out of 65536+600000
+ 103 fonts using 16122959 bytes
  79i,20n,136p,724b,2634s stack positions out of 5000i,500n,10000p,200000b,100000s
-</usr/share/fonts/TTF/Lato-RegularItalic.ttf></usr/share/texmf-dist/fonts/truety
-pe/typoland/lato/Lato-Heavy.ttf></usr/share/fonts/TTF/Lato-Regular.ttf></usr/sha
-re/fonts/TTF/Lato-Bold.ttf></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy6.pfb>
-Output written on chartbook.pdf (6 pages, 322169 bytes).
+</usr/share/texmf-dist/fonts/truetype/typoland/lato/Lato-Heavy.ttf></usr/share/f
+onts/TTF/Lato-RegularItalic.ttf></usr/share/fonts/TTF/Lato-Regular.ttf></usr/sha
+re/texmf-dist/fonts/opentype/adobe/sourceserifpro/SourceSerifPro-Bold.otf></usr/
+share/fonts/TTF/Lato-Bold.ttf></usr/share/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy6.pfb>
+Output written on chartbook.pdf (6 pages, 322601 bytes).
 
-PDF statistics: 58 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+PDF statistics: 65 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
