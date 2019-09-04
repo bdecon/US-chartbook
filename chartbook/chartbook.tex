@@ -248,17 +248,33 @@ Unless otherwise noted: data are seasonally adjusted and adjusted for inflation 
 \footnotesize{Source: Bureau of Economic Analysis and Author's Calculations}
 		
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsection*{\color{black!70}GDP Growth by State}
 
-\small Start with map of 3-year moving average GDP growth by state\\
+\noindent \normalsize \textbf{Real GDP Growth by State}\\
+\footnotesize{\textit{percentage point change in real GDP}}\\
+\vspace{-2mm}
+\hspace{-8mm} \input{data/gdp_map.pgf} \\
+\footnotesize{Source: Bureau of Economic Analysis}\\
+
+
+\begin{minipage}{0.76\textwidth}
+
+\small Over the year ending YYYY QQ, real GDP growth in n states was five percent or more, n2 states had real GDP growth between 2.1 and 5 percent, n3 states had less than two percent GDP growth, while n4 states had no or negative GDP growth. xstate (rate\%) had the highest GDP growth rate over the one year period. \\
+
+Table will go here. \\
 
 Then do a regional breakdown with four columns (full width) and the various state IDs and the latest, 1-year and 3-year moving averages. Then do a stacked bar chart that assigns GDP growth to the various regions. \\
 
-Also want to have some text that describes the contributions to total GDP growth, some of the top and bottom states, and some overall trends. For example, how many states have averaged GDP growth of 2 percent or more over the past three years? Which states have averaged GDP growth of 4 percent or more the past year? If len(states) < 4 print out the state names. 
-
 \end{minipage}
 
+\newpage 
+
+\begin{minipage}{0.76\textwidth}
+
+\small May also want to have some text that describes the contributions to total GDP growth, some of the top and bottom states, and some overall trends. For example, how many states have averaged GDP growth of 2 percent or more over the past three years? Which states have averaged GDP growth of 4 percent or more the past year? If len(states) < 4 print out the state names. \\
+
+How many states does it take to make up half of US GDP growth?
+
+\end{minipage}
 \newpage
 
 \section*{\color{darkgray}\LARGE \fontseries{eb}\selectfont Poverty}
