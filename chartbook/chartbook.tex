@@ -122,7 +122,28 @@ Author: Brian Dew, brian.w.dew@gmail.com \\
 
 Updated: \today \\
 
-Unless otherwise noted: data are seasonally adjusted and adjusted for inflation where necessary; growth and interest rates are presented on an annualized basis; and average growth rates are simple averages of individual period growth rates, rather than annualized cumulative growth. 
+\subsection*{\color{black!70} {\seriffont \textbf{Proposed Contents:}}}
+
+\begin{itemize}
+
+\item Overall Economic Activity
+
+\item Households
+
+\item Businesses
+
+\item Government
+
+\item External Sector
+
+\item Labor Markets
+
+\item Capital Markets
+
+\item Prices
+
+\end{itemize}
+
 \end{minipage}
 \thispagestyle{empty}
 
@@ -342,6 +363,29 @@ Unless otherwise noted: data are seasonally adjusted and adjusted for inflation 
 \newpage
 \section*{\color{darkgray}\LARGE Households}
 
+\begin{minipage}{0.76\textwidth}
+
+\small Households are housing units occupied by people. This section covers the household sector of the economy loosely defined, and touches on demographics, personal income and outlays, residential fixed investment, household balance sheets, home ownership, housing prices, and housing construction and permitting.\\
+
+\vspace{2mm}
+
+
+\noindent \normalsize \textbf{Household Formation by Type and Population Growth}\\
+\footnotesize{\textit{one-year moving average of annual growth rates}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2},
+		xticklabel={\year}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
+	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
+	\stdline{black}{date}{pop}{data/hhform.csv}
+	\legend{Rented, Owned, Population Growth};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau}
+\vspace{6mm}
+
 \normalsize
 
 Overview\\
@@ -359,7 +403,7 @@ Housing prices \\
 Housing permits \\
 
 
-
+\end{minipage}
 
 \newpage
 
