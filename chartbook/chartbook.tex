@@ -69,6 +69,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
+		xmax={2019-07-01},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -138,7 +139,7 @@ Unless otherwise noted: data are seasonally adjusted and adjusted for inflation 
 
 \noindent \normalsize \textbf{Real Gross Domestic Product Growth}\\
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
-\noindent \begin{tikzpicture}
+\noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, 
 		xticklabel={\year}, clip=false, height=4.0cm]
 	\rbars
@@ -155,7 +156,7 @@ Unless otherwise noted: data are seasonally adjusted and adjusted for inflation 
 
 \noindent \normalsize \textbf{Real GDP Growth by Expenditure Type}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
-\noindent \begin{tikzpicture}
+\noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
 		xticklabel={\year}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
@@ -177,7 +178,7 @@ Unless otherwise noted: data are seasonally adjusted and adjusted for inflation 
 
 \noindent \normalsize \textbf{Real GDP Growth by Industry Group}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
-\noindent \begin{tikzpicture}
+\noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
 		xticklabel={\year}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
@@ -200,7 +201,7 @@ Unless otherwise noted: data are seasonally adjusted and adjusted for inflation 
 
 \noindent \normalsize \textbf{Real Gross Domestic Income Growth}\\
 \footnotesize{\textit{percentage point contribution to GDI growth}}\\
-\noindent \begin{tikzpicture}
+\noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
 		xticklabel={\year}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
@@ -220,7 +221,7 @@ Unless otherwise noted: data are seasonally adjusted and adjusted for inflation 
 
 \noindent \normalsize \textbf{Real GDP Growth by Inputs}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
-\noindent \begin{tikzpicture}
+\noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
 		xticklabel={\year}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
@@ -266,36 +267,112 @@ Unless otherwise noted: data are seasonally adjusted and adjusted for inflation 
 \vspace{2mm}
 
 \noindent \normalsize \textbf{Real GDP Growth by State}\\
-\footnotesize{\textit{quarterly growth at seasonally adjusted annualized rate \hspace{20mm} total growth}\\ 
+\footnotesize{\textit{quarterly growth at seasonally adjusted annualized rate \hspace{20mm} total growth, \input{text/gdp_state_date.txt}}\\ 
 
-\vspace{-4mm}
+\vspace{-4.5mm}
 \hspace{-2mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.8pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.45}
+		{\renewcommand{\arraystretch}{1.44}
 		 \begin{tabular}{p{30mm} R{7mm} R{7mm} R{7mm} R{7mm} R{7mm} p{0mm} R{8mm} R{9mm} R{10mm} }
-\input{data/gdp_state_table.tex}
+\input{data/gdp_state_table.tex} \hline
 		\end{tabular}
 		}	\\
 
-\newpage 
+\vspace{-3mm}	
+\footnotesize{Source: Bureau of Economic Analysis}
+
 
 \begin{minipage}{0.76\textwidth}
 
-\small Regional breakdown with four columns (full width) and the various state IDs and the latest, 1-year and 3-year moving averages. Then do a stacked bar chart that assigns GDP growth to the various regions. \\
+\section*{\color{darkgray}\LARGE Financial Accounts}
 
-May also want to have some text that describes the contributions to total GDP growth, some of the top and bottom states, and some overall trends. For example, how many states have averaged GDP growth of 2 percent or more over the past three years? Which states have averaged GDP growth of 4 percent or more the past year? If len(states) < 4 print out the state names. \\
+\small A sectoral overview of US financial activities can be provided by dividing the world economy into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examining the net lending and borrowing between the groups, which must sum to zero at an aggregate level. That is, if one sector is running a deficit, another sector must be running a surplus.\\
 
-How many states does it take to make up half of US GDP growth?
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Sectoral Financial Balance}\\
+\footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10},
+		xticklabel={\year}, yticklabel style={text width=1.5em}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{green!70!black}{date}{PRIV}{data/sectbal.csv}
+	\sbar{yellow!70!orange}{date}{GOV}{data/sectbal.csv}
+	\sbar{blue!90!black}{date}{ROW}{data/sectbal.csv}
+    \node[align=left] (source) at (axis cs:2017-06-15,10.5) {%
+      	\tiny TCJA repatriation};
+    \node (destination) at (axis cs:2017-11-01,3.1) {};
+    \draw[-] (source)--(destination);
+	\legend{Private, Government, Rest of World};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\vspace{4mm}
+
+\small \input{text/sectbal.txt}. 
+
+\vspace{2mm}
+
+\subsection*{\color{black!70}Wealth}
+
+\small \textbf{Total US wealth} is the tangible assets of all non-corporate sectors of the US, plus the market value of domestic corporate equities, less US financial obligations to the rest of the world. \input{text/wealthgdp.txt}\\
+
+\vspace{2mm}
+
+
+\noindent \normalsize \textbf{Total US Wealth to GDP Ratio}\\
+\footnotesize{\textit{total US wealth divided by GDP}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=-0.2,
+		xticklabel={\year}, yticklabel style={text width=1.5em}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{cyan!35!white}{date}{OTHER}{data/wealthgdp.csv}
+	\sbar{green!80!blue}{date}{HNOREMV}{data/wealthgdp.csv}
+	\sbar{magenta!50!violet}{date}{CORP}{data/wealthgdp.csv}
+	\legend{Other, Residential Real Estate, Corporate Equities};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve}
+
 
 \end{minipage}
+
+\newpage
+\section*{\color{darkgray}\LARGE Households}
+
+\normalsize
+
+Overview\\
+
+Demographics (population, ages, marriage, children, etc.)\\
+
+Personal Income \\
+
+PCE \\
+
+Residential fixed investment \\
+
+Housing prices \\
+
+Housing permits \\
+
+
+
+
 \newpage
 
-\section*{\color{darkgray}\LARGE \fontseries{eb}\selectfont Poverty}
+\section*{\color{darkgray}\LARGE Poverty}
 
 \noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2017}\\
 \footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,060}}
 
 \vspace{-3mm}
 \hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
+
+\vspace{-5mm}
+\footnotesize{Source: American Community Survey}
 
 \newpage
 
