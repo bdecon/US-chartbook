@@ -8,7 +8,7 @@
 
 Brian Dew, @bd_econ
 
-August 23, 2019
+September 19, 2019
 
 
 ----
@@ -23,8 +23,8 @@ See GitHub for list of open issues.
 
 ## Sections
 
-- [ ] Overall Economic Activity
-- [ ] Households
+- [x] Overall Economic Activity
+- [ ] Households (in progress)
 - [ ] Businesses
 - [ ] Government
 - [ ] International Trade
@@ -32,3 +32,10 @@ See GitHub for list of open issues.
 - [ ] Capital Markets
 - [ ] Prices
 
+## Back-end
+
+- [ ] Master file to run updates
+- [ ] Capture date of latest data
+- [ ] Database system of keeping previous data
+- [ ] Documentation
+- [ ] Efficient/improved BLS API function
