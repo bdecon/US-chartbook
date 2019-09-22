@@ -39,6 +39,11 @@
 		\begin{tikzpicture} \draw [#1, line width=6](0,0) -- (.2,0);  
 		\end{tikzpicture}}
 	
+	% Last two digits of year
+	\makeatletter
+	\newcommand*\short[1]{\expandafter\@gobbletwo\number\numexpr#1\relax}
+	\makeatother	
+	
 	% Column width and alignment
 	\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}	
 	
@@ -163,7 +168,7 @@ Updated: \today \\
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, 
-		xticklabel={\year}, clip=false, height=4.0cm]
+		xticklabel={'\short{\year}}, clip=false, height=4.0cm]
 	\rbars
 	\sbar{red!95!black}{date}{A191RL}{data/gdp.csv}
 	\node[above, align=left] at (axis cs:2017-01-01,-8.5) {\scriptsize \input{data/gdp.txt}};
@@ -180,7 +185,7 @@ Updated: \today \\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={\year}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={'\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
 	\sbar{blue!70!black}{date}{A006RY}{data/comp.csv}
@@ -202,7 +207,7 @@ Updated: \today \\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={\year}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={'\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01}, 			\pgfkeysvalueof{/pgfplots/ymax});
 	\draw [dashed] (axis cs:{1998-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{1998-01-01}, 			\pgfkeysvalueof{/pgfplots/ymax});
@@ -225,7 +230,7 @@ Updated: \today \\
 \footnotesize{\textit{percentage point contribution to GDI growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={\year}, clip=false, 
+		xticklabel={'\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{magenta!90!blue}{date}{A4002C}{data/gdi.csv}
@@ -245,7 +250,7 @@ Updated: \today \\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={\year}, clip=false, 
+		xticklabel={'\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{lime}{date}{pop_contr}{data/gdpjobs.csv}
@@ -315,7 +320,7 @@ Updated: \today \\
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10},
-		xticklabel={\year}, yticklabel style={text width=1.5em}, clip=false, 
+		xticklabel={'\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{green!70!black}{date}{PRIV}{data/sectbal.csv}
@@ -347,7 +352,7 @@ Updated: \today \\
 \footnotesize{\textit{total US wealth divided by GDP}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=-0.2,
-		xticklabel={\year}, yticklabel style={text width=1.5em}, clip=false, 
+		xticklabel={'\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{cyan!35!white}{date}{Other}{data/wealthgdp.csv}
@@ -372,7 +377,7 @@ Updated: \today \\
 
 \subsection*{\color{black!70}Household formation}
 
-\small The rate of household formation since 1989 can offer a high-level overview of some major demographic and economic developments. From 1989 to 1994, 
+\small The rate of household formation since 1989 can offer a high-level overview of some major demographic and economic developments. From 1989 to 1994, \\
 
 \vspace{2mm}
 
@@ -381,7 +386,7 @@ Updated: \today \\
 \footnotesize{\textit{one-year moving average of annual growth rates}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2},
-		xticklabel={\year}, clip=false, 
+		xticklabel={'\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
@@ -415,6 +420,30 @@ Housing permits \\
 \end{minipage}
 
 \newpage
+\begin{minipage}{0.76\textwidth}
+\subsection*{\color{black!70}Consumer Spending}
+
+\small Changes in consumer spending can be categorized by major type of product: goods (see\cbox{red}), housing and utilities (see\cbox{green!80!black}), and household spending on all other services (see\cbox{blue!80!white}). 
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Real PCE Growth by Major Type}\\
+\footnotesize{\textit{percentage point contribution to personal consumption expenditure growth}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+		xticklabel={'\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{red}{date}{DGDSRZ}{data/pce.csv}
+	\sbar{blue!80!white}{date}{OTHSER}{data/pce.csv}
+	\sbar{green!80!black}{date}{DHUTRZ}{data/pce.csv}
+	\legend{Goods, Other Services, Housing and Utilities};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+\end{minipage}
+
+\newpage
+
 
 \section*{\color{darkgray}\LARGE Poverty}
 
