@@ -8,7 +8,7 @@
 
 Brian Dew, @bd_econ
 
-September 19, 2019
+September 22, 2019
 
 
 ----
@@ -39,3 +39,4 @@ See GitHub for list of open issues.
 - [ ] Database system of keeping previous data
 - [ ] Documentation
 - [ ] Efficient/improved BLS API function
+- [ ] Links to data sources

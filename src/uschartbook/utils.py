@@ -135,6 +135,15 @@ def growth_rate(series):
 	return ((((series.pct_change() + 1) ** 4) - 1) * 100)
 	
 	
+    
+def growth_contrib(df, srs):
+    '''Calculate df column contribution to srs growth'''
+    dft = df.diff()
+    dft = dft.div(dft[srs], axis=0)
+    c = dft.multiply((((df[srs].pct_change() + 1) ** 4) - 1) * 100, axis=0)
+    return c.round(2)
+
+    
 def write_txt(filename, filetext):
     ''' Write label to txt file '''
     with open(filename, 'w') as text_file:

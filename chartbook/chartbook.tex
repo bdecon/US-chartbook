@@ -148,6 +148,8 @@ Updated: \today \\
 
 \item Prices
 
+\item References
+
 \end{itemize}
 
 \end{minipage}
@@ -337,7 +339,7 @@ Updated: \today \\
 
 \vspace{4mm}
 
-\small \input{text/sectbal.txt}. 
+\small \input{text/sectbal.txt}
 
 \vspace{2mm}
 
@@ -404,7 +406,35 @@ Overview\\
 
 Demographics (population, ages, marriage, children, etc.)\\
 
-Personal Income \\
+\subsection*{\color{black!70}Income to Persons}
+\small This section looks at income received by people, by type of income. Values are adjusted for inflation using the PCE implicit price deflator. 
+\vspace{4mm}
+
+\noindent \normalsize \textbf{Personal Income}\\
+\footnotesize{\textit{percentage point contribution to real personal income growth}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
+		xticklabel={\year}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{green!80!black}{date}{A033RC}{data/pi.csv}
+	\sbar{orange!50!yellow}{date}{CAPITAL}{data/pi.csv}
+	\sbar{blue!80!white}{date}{TRANSFER}{data/pi.csv}
+	\legend{Labor, Capital$^1$, Net Transfers$^2$};
+	\stdnode{3.4cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\\scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\end{minipage}
+
+\newpage 
+
+\normalsize
+Labor Income \\
+
+Capital Income \\
+
+Welfare Income \\
 
 PCE \\
 
@@ -417,26 +447,27 @@ Housing prices \\
 Housing permits \\
 
 
-\end{minipage}
+
 
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70}Consumer Spending}
 
-\small Changes in consumer spending can be categorized by major type of product: goods (see\cbox{red}), housing and utilities (see\cbox{green!80!black}), and household spending on all other services (see\cbox{blue!80!white}). 
+\small Consumer spending drives the US economy. The category includes spending on goods (see\cbox{red}) and services (see\cbox{blue!75!white}). Shelter (see\cbox{green!85!blue}) is a major component of household spending and is calculated below as household spending on housing services and utilities combined with private residential fixed investment. 
 \vspace{5mm}
 
-\noindent \normalsize \textbf{Real PCE Growth by Major Type}\\
-\footnotesize{\textit{percentage point contribution to personal consumption expenditure growth}}\\
+\noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
+\footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
 		xticklabel={'\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{red}{date}{DGDSRZ}{data/pce.csv}
-	\sbar{blue!80!white}{date}{OTHSER}{data/pce.csv}
-	\sbar{green!80!black}{date}{DHUTRZ}{data/pce.csv}
-	\legend{Goods, Other Services, Housing and Utilities};
+	\sbar{red}{date}{DGDSRY}{data/pce.csv}
+	\sbar{blue!75!white}{date}{OTHSER}{data/pce.csv}
+	\sbar{green!85!blue}{date}{HOUSING}{data/pce.csv}
+	\legend{Goods, Services, Shelter$^1$};
+	\stdnode{2.2cm}{0.3cm}{\footnotesize $^1$ Includes residential fixed investment}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
@@ -445,7 +476,7 @@ Housing permits \\
 \newpage
 
 
-\section*{\color{darkgray}\LARGE Poverty}
+\subsection*{\color{black!70}Poverty}
 
 \noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2017}\\
 \footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,060}}
@@ -458,5 +489,172 @@ Housing permits \\
 
 \newpage
 
+\section*{\color{darkgray}\LARGE Businesses}
+
+\normalsize
+
+Overview\\
+
+\vspace{2mm}
+
+\subsection*{\color{black!70}Business Fixed Investment}
+
+\noindent \normalsize \textbf{Private Non-Residential Fixed Investment}\\
+\footnotesize{\textit{percentage point contribution to GDP growth}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
+		xticklabel={\year}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{yellow!50!orange}{date}{A009RY}{data/businv.csv}
+	\sbar{cyan!60!white}{date}{Y033RY}{data/businv.csv}
+	\sbar{violet!80!black}{date}{Y001RY}{data/businv.csv}
+	\legend{Structures, Equipment, Intellectual Property Products};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\vspace{2mm}
+
+Durable goods new orders\\
+
+Corporate profits\\
+
+Industrial production\\
+
+Retail sales\\
+
+Free cash flow \\
+
+Balance sheets \\
+
+\newpage
+
+\section*{\color{darkgray}\LARGE Government}
+
+\normalsize
+
+Overview\\
+
+Consumption and investment\\
+
+Federal\\
+
+State \\
+
+Local \\
+
+Balance sheets \\
+
+\newpage
+
+\section*{\color{darkgray}\LARGE External Sector}
+
+\normalsize
+
+Overview Text goes here. \\
+
+\vspace{2mm}
+
+
+\noindent \normalsize \textbf{International Trade}\\
+\footnotesize{\textit{percentage point contribution to GDP growth}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 5},
+		xticklabel={'\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{green!70!white}{date}{A253RY}{data/nx.csv}
+	\sbar{green!50!black}{date}{A646RY}{data/nx.csv}
+	\sbar{cyan!70!white}{date}{A255RY}{data/nx.csv}
+	\sbar{blue!70!black}{date}{A656RY}{data/nx.csv}	
+	\legend{Goods Exports, Services Exports, Goods Imports, Services Imports};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\vspace{5mm}
+
+
+Current account balance \\
+
+Trade in Goods \\
+
+Trade in Services \\
+
+Trade balance \\
+
+Exchange rates \\
+
+Direct and Portfolio Investment \\
+
+International Investment Position \\
+
+\newpage
+
+\section*{\color{darkgray}\LARGE Labor Markets}
+
+\normalsize
+
+\textbf{This will be the largest section} \\
+
+Overview \\
+
+Employment Rate \\
+
+Unemployment Rate \\
+
+Job growth \\
+
+Wage growth \\
+
+Quits \\ 
+
+Openings \\
+
+Jobless claims \\
+
+Reasons for non-participation \\
+
+\newpage
+
+\section*{\color{darkgray}\LARGE Capital Markets}
+
+\normalsize
+
+Overview \\
+
+Equity markets \\
+
+Interest rates \\
+
+Yield curve \\
+
+Valuations \\
+
+\newpage
+
+\section*{\color{darkgray}\LARGE Prices}
+
+\normalsize
+
+CPI \\
+
+PPI \\
+
+XMPI \\
+
+PCE \\
+
+Expectations \\
+
+
+\newpage
+
+\section*{\color{darkgray}\LARGE References}
+
+\normalsize
+
+List of tables and sources along with some notes...
 
 \end{document}
