@@ -2,7 +2,7 @@
 %
 %	U.S. Chartbook
 %	Brian W. Dew (brianwdew@gmail.com)
-%	Updated: September 19, 2019
+%	Updated: September 23, 2019
 %	GitHub repo contains to do list (issues)
 %   https://github.com/bdecon/US-chartbook
 %
@@ -20,6 +20,7 @@
 	\usepackage{pgfplots}
 	\usepackage{xcolor}
 	\usepackage{array}
+	\usepackage{fontawesome}
 	\usetikzlibrary{pgfplots.dateplot}
 
 %
@@ -118,37 +119,48 @@
 
 \chapter*{
 		\textcolor{blue!70}{\rule[-1pt]{6pt}{20pt}}
-		\textcolor{green!70!blue}{\rule[-1pt]{6pt}{32pt}} \ \color{darkgray}US Chartbook v0.0}
-\vspace{4mm}
+		\textcolor{green!70!blue}{\rule[-1pt]{6pt}{32pt}} \ \color{darkgray} \seriffont US Chartbook}
+\vspace*{-16mm}
+\footnotesize \hspace{11mm} v0.0, \today \normalsize \\
+
+\vspace{12mm}
 
 \begin{minipage}{0.76\textwidth}
-\subsection*{\color{black!70} {\seriffont \textbf{Notes:}}}
+\subsection*{\color{black!70} {\seriffont Notes:}}
 
-Author: Brian Dew, brian.w.dew@gmail.com \\
+Contact: \textbf{Brian Dew} \ {\color{gray} \faEnvelope} brian.w.dew@gmail.com \ 
+{\color{gray} \faTwitter} @bd\_econ \
+{\color{gray} \faGithub} bdecon\\
 
-Updated: \today \\
+{\color{red} \textbf{Very early stage draft}}\\
 
-\subsection*{\color{black!70} {\seriffont \textbf{Proposed Contents:}}}
+Contents not considered reliable until version 1.0 is released.\\
+
+\subsection*{\color{black!70} {\seriffont Proposed Contents:}}
 
 \begin{itemize}
 
-\item Overall Economic Activity
+\item {\seriffont Overall Economic Activity}
 
-\item Households
+\item {\seriffont Overall Financial Activity}
 
-\item Businesses
+\item {\seriffont Households}
 
-\item Government
+\item {\seriffont Businesses}
 
-\item External Sector
+\item {\seriffont Government}
 
-\item Labor Markets
+\item {\seriffont External Sector}
 
-\item Capital Markets
+\item {\seriffont Labor Markets}
 
-\item Prices
+\item {\seriffont Capital Markets}
 
-\item References
+\item {\seriffont Prices}
+
+\item {\seriffont International Comparisons}
+
+\item {\seriffont References}
 
 \end{itemize}
 
@@ -157,11 +169,11 @@ Updated: \today \\
 
 \newpage
 
-\section*{\color{darkgray} \LARGE Overall Economic Activity}
+\section*{\color{darkgray} \LARGE  \seriffont Overall Economic Activity}
 \input{text/gdp.txt}
 
 \begin{minipage}{0.76\textwidth}
-\subsection*{\color{black!70}Economic Growth}
+\subsection*{\color{black!70}\seriffont Economic Growth}
 
 \small GDP (see\cbox{red!95!black}) \input{text/gdp_gr.txt}
 \vspace{5mm}
@@ -170,7 +182,7 @@ Updated: \today \\
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, 
-		xticklabel={'\short{\year}}, clip=false, height=4.0cm]
+		xticklabel={`\short{\year}}, clip=false, height=4.0cm]
 	\rbars
 	\sbar{red!95!black}{date}{A191RL}{data/gdp.csv}
 	\node[above, align=left] at (axis cs:2017-01-01,-8.5) {\scriptsize \input{data/gdp.txt}};
@@ -178,7 +190,7 @@ Updated: \today \\
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} 
 
-\subsection*{\color{black!70}Components of Growth}
+\subsection*{\color{black!70} \seriffont Components of Growth}
 
 \small The \textbf{expenditure approach} compiles GDP from the sum of spending on domestic goods and services. Major spending categories are consumer spending (see\cbox{yellow!80!orange}), private investment (gross spending on capital goods) and changes in private inventories (see\cbox{blue!70!black}), government spending and investment (see\cbox{cyan!50!white}), and net exports (see\cbox{green!60!black}) which is measured as foreign spending on US goods and services less US spending on goods and services produced by the rest of the world. 
 \vspace{5mm}
@@ -187,7 +199,7 @@ Updated: \today \\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={'\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
 	\sbar{blue!70!black}{date}{A006RY}{data/comp.csv}
@@ -209,7 +221,7 @@ Updated: \today \\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={'\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01}, 			\pgfkeysvalueof{/pgfplots/ymax});
 	\draw [dashed] (axis cs:{1998-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{1998-01-01}, 			\pgfkeysvalueof{/pgfplots/ymax});
@@ -232,7 +244,7 @@ Updated: \today \\
 \footnotesize{\textit{percentage point contribution to GDI growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={'\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{magenta!90!blue}{date}{A4002C}{data/gdi.csv}
@@ -252,7 +264,7 @@ Updated: \today \\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={'\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{lime}{date}{pop_contr}{data/gdpjobs.csv}
@@ -312,7 +324,7 @@ Updated: \today \\
 
 \begin{minipage}{0.76\textwidth}
 
-\section*{\color{darkgray}\LARGE Financial Accounts}
+\section*{\color{darkgray}\LARGE \seriffont Financial Accounts}
 
 \small A high-level overview of US financial activities can be provided by dividing the world economy into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examining the net lending and borrowing between the groups, which must sum to zero at an aggregate level. That is, if one sector is running a deficit, another sector must be running a surplus.\\
 
@@ -322,7 +334,7 @@ Updated: \today \\
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10},
-		xticklabel={'\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{green!70!black}{date}{PRIV}{data/sectbal.csv}
@@ -343,7 +355,7 @@ Updated: \today \\
 
 \vspace{2mm}
 
-\subsection*{\color{black!70}Wealth}
+\subsection*{\color{black!70} \seriffont Wealth}
 
 \small \textbf{Total US wealth} is the tangible assets of all non-corporate sectors of the US, plus the market value of domestic corporate equities, less US financial obligations to the rest of the world. \input{text/wealthgdp.txt}\\
 
@@ -354,7 +366,7 @@ Updated: \today \\
 \footnotesize{\textit{total US wealth divided by GDP}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=-0.2,
-		xticklabel={'\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{cyan!35!white}{date}{Other}{data/wealthgdp.csv}
@@ -369,7 +381,7 @@ Updated: \today \\
 \end{minipage}
 
 \newpage
-\section*{\color{darkgray}\LARGE Households}
+\section*{\color{darkgray}\LARGE \seriffont Households}
 
 \begin{minipage}{0.76\textwidth}
 
@@ -377,12 +389,14 @@ Updated: \today \\
 
 \vspace{2mm}
 
-\subsection*{\color{black!70}Demographics and Household Formation}
+\subsection*{\color{black!70} \seriffont Demographics and Household Formation}
 
 
 
 
 \small The rate of household formation since 1989 can offer a high-level overview of some major demographic and economic developments. From 1989 to 1994, \\
+
+This section should capture 1) population, 2) population growth, 3) aging, 4) increased education.\\
 
 \vspace{2mm}
 
@@ -391,7 +405,7 @@ Updated: \today \\
 \footnotesize{\textit{one-year moving average of annual growth rates}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2},
-		xticklabel={'\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
@@ -403,27 +417,23 @@ Updated: \today \\
 \footnotesize{Source: Census Bureau}
 \vspace{6mm}
 
-\normalsize
 
-Overview\\
-
-Demographics (population, ages, marriage, children, etc.)\\
-
-\subsection*{\color{black!70}Income to Persons}
-\small This section looks at income received by people, by type of income. Values are adjusted for inflation using the PCE implicit price deflator. 
+\subsection*{\color{black!70} \seriffont Income to Persons}
+\small This section looks at income received by people, by type of income, adjusted for inflation using the PCE implicit price deflator. Income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons less contributions to social insurance. 
 \vspace{4mm}
 
 \noindent \normalsize \textbf{Personal Income}\\
 \footnotesize{\textit{percentage point contribution to real personal income growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
-		xticklabel={\year}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em}, 
+		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{green!80!black}{date}{A033RC}{data/pi.csv}
 	\sbar{orange!50!yellow}{date}{CAPITAL}{data/pi.csv}
 	\sbar{blue!80!white}{date}{TRANSFER}{data/pi.csv}
-	\legend{Labor, Capital$^1$, Net Transfers$^2$};
-	\stdnode{3.4cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\\scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
+	\legend{Labor, Capital$^1$, Welfare$^2$};
+	\stdnode{3.4cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\ \scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
@@ -439,22 +449,8 @@ Capital Income \\
 
 Welfare Income \\
 
-PCE \\
-
-Residential fixed investment \\
-
-Household balance sheets \\
-
-Housing prices \\
-
-Housing permits \\
-
-
-
-
-\newpage
 \begin{minipage}{0.76\textwidth}
-\subsection*{\color{black!70}Consumer Spending}
+\subsection*{\color{black!70} \seriffont Consumer Spending}
 
 \small Consumer spending drives the US economy. The category includes spending on goods (see\cbox{red}) and services (see\cbox{blue!75!white}). Shelter (see\cbox{green!85!blue}) is a major component of household spending and is calculated below as household spending on housing services and utilities combined with private residential fixed investment. 
 \vspace{5mm}
@@ -463,7 +459,7 @@ Housing permits \\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={'\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{red}{date}{DGDSRY}{data/pce.csv}
@@ -473,13 +469,28 @@ Housing permits \\
 	\stdnode{2.2cm}{0.3cm}{\footnotesize $^1$ Includes residential fixed investment}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis}\\
+
+\vspace{5mm}
+
+\normalsize
+
+[Detailed PCE table to go here ] \\
+
+
+\vspace{5mm}
+
+Household balance sheets \\
+
+Housing prices \\
+
+Housing permits \\
+
 \end{minipage}
 
 \newpage
 
-
-\subsection*{\color{black!70}Poverty}
+\subsection*{\color{black!70} \seriffont Poverty}
 
 \noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2017}\\
 \footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,060}}
@@ -490,23 +501,32 @@ Housing permits \\
 \vspace{-5mm}
 \footnotesize{Source: American Community Survey}
 
+\begin{minipage}{0.76\textwidth}
+
+\end{minipage}
+
 \newpage
 
-\section*{\color{darkgray}\LARGE Businesses}
+\begin{minipage}{0.76\textwidth}
+
+\section*{\color{darkgray}\LARGE \seriffont Businesses}
 
 \normalsize
 
-Overview\\
+Overview text goes here and perhaps a chart. \\
 
 \vspace{2mm}
 
-\subsection*{\color{black!70}Business Fixed Investment}
+\subsection*{\color{black!70} \seriffont Business Fixed Investment}
+
+When businesses invest in ways that make workers more productive, the economy is able to meet more material needs with the same inputs. Business investment is grouped by structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
+\vspace{5mm}
 
 \noindent \normalsize \textbf{Private Non-Residential Fixed Investment}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
-		xticklabel={\year}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{yellow!50!orange}{date}{A009RY}{data/businv.csv}
@@ -518,6 +538,8 @@ Overview\\
 \footnotesize{Source: Bureau of Economic Analysis}
 
 \vspace{2mm}
+
+\normalsize
 
 Durable goods new orders\\
 
@@ -531,15 +553,41 @@ Free cash flow \\
 
 Balance sheets \\
 
+\end{minipage}
+
 \newpage
 
-\section*{\color{darkgray}\LARGE Government}
+\begin{minipage}{0.76\textwidth}
+
+\section*{\color{darkgray}\LARGE \seriffont Government}
 
 \normalsize
 
 Overview\\
 
-Consumption and investment\\
+\vspace{2mm}
+
+\subsection*{\color{black!70} \seriffont Government Consumption and Investment}
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Government Consumption and Investment}\\
+\footnotesize{\textit{percentage point contribution to GDP growth}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-1, 0, 1},
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{blue!60!black}{date}{A824RY}{data/gov.csv}
+	\sbar{green!85!black}{date}{A825RY}{data/gov.csv}
+	\sbar{purple!70!magenta}{date}{A829RY}{data/gov.csv}
+	\legend{Defense, Federal Non-Defense, State and Local};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+\vspace{10mm}
+
+\normalsize
 
 Federal\\
 
@@ -549,22 +597,28 @@ Local \\
 
 Balance sheets \\
 
-\newpage
+\end{minipage}
 
-\section*{\color{darkgray}\LARGE External Sector}
+
+\newpage
+\begin{minipage}{0.76\textwidth}
+\section*{\color{darkgray}\LARGE \seriffont External Sector}
 
 \normalsize
 
 Overview Text goes here. \\
 
 \vspace{2mm}
+\subsection*{\color{black!70} \seriffont Trade}
 
+The US runs a persistent trade deficit, which often shows up as a negative contributor to GDP growth. The trade balance is the exports of goods (see\cbox{green!70!white}) and the exports of services (see\cbox{green!50!black}) minus imports of goods (see\cbox{cyan!70!white}) and imports of services (see\cbox{blue!70!black}). 
+\vspace{5mm}
 
 \noindent \normalsize \textbf{International Trade}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 5},
-		xticklabel={'\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{green!70!white}{date}{A253RY}{data/nx.csv}
@@ -578,6 +632,7 @@ Overview Text goes here. \\
 
 \vspace{5mm}
 
+\normalsize
 
 Current account balance \\
 
@@ -593,9 +648,11 @@ Direct and Portfolio Investment \\
 
 International Investment Position \\
 
+\end{minipage}
+
 \newpage
 
-\section*{\color{darkgray}\LARGE Labor Markets}
+\section*{\color{darkgray}\LARGE \seriffont Labor Markets}
 
 \normalsize
 
@@ -621,7 +678,7 @@ Reasons for non-participation \\
 
 \newpage
 
-\section*{\color{darkgray}\LARGE Capital Markets}
+\section*{\color{darkgray}\LARGE \seriffont Capital Markets}
 
 \normalsize
 
@@ -637,7 +694,7 @@ Valuations \\
 
 \newpage
 
-\section*{\color{darkgray}\LARGE Prices}
+\section*{\color{darkgray}\LARGE \seriffont Prices}
 
 \normalsize
 
@@ -651,10 +708,24 @@ PCE \\
 
 Expectations \\
 
+\newpage
+
+\section*{\color{darkgray}\LARGE \seriffont International Comparisons}
+
+\normalsize
+
+Demographics \\
+
+Economic Activity \\
+
+Labor Markets \\
+
+Poverty \\
+
 
 \newpage
 
-\section*{\color{darkgray}\LARGE References}
+\section*{\color{darkgray}\LARGE \seriffont References}
 
 \normalsize
 
