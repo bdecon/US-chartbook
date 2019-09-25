@@ -189,6 +189,9 @@ It will be nice to have a section showing the top five indicators: GDP growth, w
 
 It will also be nice to have a section in that puts some context on numbers generally. The key example that I've tried to do before is to put a threshold on GDP growth that marks how much is needed for population growth and depreciation and then calculate how much one extra pp of growth (beyond the previous amount) is worth, per person. For example, if population growth is 0.6pp and depreciation is 0.8pp, then it would take 1.4pp to keep the same level of real per capita production. Beyond that, an extra percentage point of GDP might mean something like \$900 per person in additional goods and services. \\
 
+Section listing recent updates and upcoming releases would be nice. \\
+
+Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, and much much more. 
 \end{minipage}
 
 
@@ -491,7 +494,7 @@ Welfare Income \\
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Household Expenditures}
 
-\small This section covers household spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing services and utilities combined with residential fixed investment). These categories contribute 3.11 percentage points to GDP in 2019 Q2 compared to an average of 1.84 percent over the past three years. 
+\small This section covers household spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing services and utilities combined with residential fixed investment). \input{text/pce1.txt}
 \vspace{3mm}
 
 \noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
@@ -514,7 +517,7 @@ Welfare Income \\
 
 \small
 
-In the second quarter of 2019, household on spending on goods contributed 1.78 percentage points to GDP growth, household spending on services other than housing and utilities contributed 1.16 percentage points, and shelter spending and investment contributed 0.06 percentage points. Health care services contributed 0.36 percentage points in 2019 Q2 and have contributed 0.33 percentage points to GDP, on average, over the past three years. \\
+\input{text/pce2.txt} \\
 
 \end{minipage}
 
@@ -534,9 +537,25 @@ In the second quarter of 2019, household on spending on goods contributed 1.78 p
 \newpage 
 
 \begin{minipage}{0.76\textwidth}
-\normalsize
 
-[Consumer spending per capita monthly growth rate] \\
+\small Consumer spending is also reported on a monthly basis. Inflation- and population-adjusted consumer spending increased by 2.1 percent in July 2019 over July 2018. \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Consumer Spending Growth}\\
+\footnotesize{\textit{annual growth, per capita real personal consumption expenditures, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4}, 
+		xticklabel={`\short{\year}}, clip=false, height=4.0cm]
+	\rbars
+	\stdline{green!80!black}{date}{value2}{data/pcegrowth.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \\
+
+\vspace{2mm}
+
+\normalsize
 
 [Top quintile consumer spending share of gross pre-tax income and bottom 80 percent share] \\
 
@@ -743,6 +762,10 @@ Employment Rate \\
 
 Unemployment Rate \\
 
+Unemployment by reason \\
+
+Unemployment by duration \\
+
 Job growth \\
 
 Wage growth \\
@@ -752,6 +775,8 @@ Quits \\
 Openings \\
 
 Jobless claims \\
+
+Flows \\
 
 Reasons for non-participation \\
 
