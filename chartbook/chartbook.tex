@@ -55,7 +55,7 @@
 		xtick style={black!20}, ytick style={draw=none},
 		every tick label/.style={black!50, font=\scriptsize,
 			/pgf/number format/assume math mode=true},
-		width=12.9cm, height=4.6cm, 
+		width=13.0cm, height=4.6cm, 
 		xticklabel style={align=left}, 
 		yticklabel style={text width=0.85em, align=right},       
 		axis x line*=bottom, x axis line style={black!50},
@@ -76,7 +76,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2019-07-01},
+		xmax={2019-10-01},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -126,19 +126,31 @@
 \vspace{12mm}
 
 \begin{minipage}{0.76\textwidth}
-\subsection*{\color{black!70} {\seriffont Notes:}}
-
-Contact: \textbf{Brian Dew} \ {\color{gray} \faEnvelope} brian.w.dew@gmail.com \ 
-{\color{gray} \faTwitter} @bd\_econ \
-{\color{gray} \faGithub} bdecon\\
+\subsection*{\color{black!70} {\seriffont Notes}}
 
 {\color{red} \textbf{Very early stage draft}}\\
 
 Contents not considered reliable until version 1.0 is released.\\
 
-\subsection*{\color{black!70} {\seriffont Proposed Contents:}}
 
-\begin{itemize}
+\subsection*{\color{black!70} {\seriffont Contact}}
+
+\textbf{Brian Wilson Dew} \ 
+
+{\color{gray} \faEnvelope} \ brian.w.dew@gmail.com \ 
+
+{\color{gray} \faTwitter} \ @bd\_econ \
+
+{\color{gray} \faGithub} \ \ bdecon\\
+
+\end{minipage}
+\thispagestyle{empty}
+
+\newpage
+
+\subsection*{\color{black!70} {\seriffont Contents}}
+
+\begin{description}
 
 \item {\seriffont Overall Economic Activity}
 
@@ -162,10 +174,23 @@ Contents not considered reliable until version 1.0 is released.\\
 
 \item {\seriffont References}
 
-\end{itemize}
+\end{description}
+
+\vspace{6mm}
+
+
+\subsection*{\color{black!70} {\seriffont Ideas/Suggestions/To Do}}
+
+\begin{minipage}{0.76\textwidth}
+
+\small For now, focus on filling out the content. Once around 1/3 of the content is in place (~35 pages) start to look into ways to more efficiently create the document. \\
+
+It will be nice to have a section showing the top five indicators: GDP growth, wages, epop, cpi inflation, 10-year treasury yields. \\
+
+It will also be nice to have a section in that puts some context on numbers generally. The key example that I've tried to do before is to put a threshold on GDP growth that marks how much is needed for population growth and depreciation and then calculate how much one extra pp of growth (beyond the previous amount) is worth, per person. For example, if population growth is 0.6pp and depreciation is 0.8pp, then it would take 1.4pp to keep the same level of real per capita production. Beyond that, an extra percentage point of GDP might mean something like \$900 per person in additional goods and services. \\
 
 \end{minipage}
-\thispagestyle{empty}
+
 
 \newpage
 
@@ -223,8 +248,10 @@ Contents not considered reliable until version 1.0 is released.\\
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01}, 			\pgfkeysvalueof{/pgfplots/ymax});
-	\draw [dashed] (axis cs:{1998-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{1998-01-01}, 			\pgfkeysvalueof{/pgfplots/ymax});
+	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01},
+		\pgfkeysvalueof{/pgfplots/ymax});
+	\draw [dashed] (axis cs:{1998-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{1998-01-01},
+		\pgfkeysvalueof{/pgfplots/ymax});
 	\sbar{orange!80!white}{date}{Government}{data/gdpva.csv}
 	\sbar{blue!90!white}{date}{Oth_Serv}{data/gdpva.csv}
 	\sbar{red!90!white}{date}{FIRE}{data/gdpva.csv}
@@ -280,10 +307,10 @@ Contents not considered reliable until version 1.0 is released.\\
 \newpage
 
 \noindent \normalsize \textbf{Components of Economic Growth}\\
-\footnotesize{\textit{percentage point contribution to real GDP/GDI growth \hspace{35mm} moving averages}\\ \vspace{4mm}
-\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.8pt} \color{black!90}
+\footnotesize{\textit{percentage point contribution to real GDP/GDI growth \hspace{30mm} moving averages}\\ \vspace{4mm}
+\hspace*{-2mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.5pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{2mm} p{36mm} R{7mm} R{7mm} R{7mm} R{7mm} R{7mm} p{0mm} R{7mm} R{7mm} R{7mm} }
+		 \begin{tabular}{p{2mm} p{35.2mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} p{0mm} R{6.8mm} R{6.8mm} R{6.8mm} }
 \input{data/gdptable.tex}
 		\end{tabular}
 		}	\\
@@ -353,7 +380,11 @@ Contents not considered reliable until version 1.0 is released.\\
 
 \small \input{text/sectbal.txt}
 
-\vspace{2mm}
+
+\vspace{5mm}
+
+New borrowing by sector\\
+
 
 \subsection*{\color{black!70} \seriffont Wealth}
 
@@ -385,9 +416,11 @@ Contents not considered reliable until version 1.0 is released.\\
 
 \begin{minipage}{0.76\textwidth}
 
-\small This section covers the household sector of the economy loosely defined, and touches on demographics, personal income and outlays, residential fixed investment, household balance sheets, home ownership, housing prices, and housing construction and permitting.\\
+\small This section covers the household sector of the economy loosely defined, and touches on demographics, personal income and outlays, residential fixed investment, household balance sheets, home ownership, housing prices, and housing construction and permitting.
 
 \vspace{2mm}
+
+[Table or chart on population]
 
 \subsection*{\color{black!70} \seriffont Demographics and Household Formation}
 
@@ -442,18 +475,24 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 
 \newpage 
 
+\begin{minipage}{0.76\textwidth}
+
 \normalsize
-Labor Income \\
+[Gross Labor Income text and chart] \\
 
 Capital Income \\
 
 Welfare Income \\
 
-\begin{minipage}{0.76\textwidth}
-\subsection*{\color{black!70} \seriffont Consumer Spending}
+\end{minipage}
 
-\small Consumer spending drives the US economy. The category includes spending on goods (see\cbox{red}) and services (see\cbox{blue!75!white}). Shelter (see\cbox{green!85!blue}) is a major component of household spending and is calculated below as household spending on housing services and utilities combined with private residential fixed investment. 
-\vspace{5mm}
+\newpage 
+
+\begin{minipage}{0.76\textwidth}
+\subsection*{\color{black!70} \seriffont Household Expenditures}
+
+\small This section covers household spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing services and utilities combined with residential fixed investment). These categories contribute 3.11 percentage points to GDP in 2019 Q2 compared to an average of 1.84 percent over the past three years. 
+\vspace{3mm}
 
 \noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
@@ -471,26 +510,58 @@ Welfare Income \\
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}\\
 
-\vspace{5mm}
+\vspace{2mm}
 
+\small
+
+In the second quarter of 2019, household on spending on goods contributed 1.78 percentage points to GDP growth, household spending on services other than housing and utilities contributed 1.16 percentage points, and shelter spending and investment contributed 0.06 percentage points. Health care services contributed 0.36 percentage points in 2019 Q2 and have contributed 0.33 percentage points to GDP, on average, over the past three years. \\
+
+\end{minipage}
+
+\noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
+\footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}\\ \vspace{4mm}
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{2.0mm} p{38mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		   R{7.8mm} R{6.7mm} R{6.7mm} }
+			 \input{data/pce.tex}
+		\end{tabular}
+		}	\\
+		
+\vspace{-6mm}
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\newpage 
+
+\begin{minipage}{0.76\textwidth}
 \normalsize
 
-[Detailed PCE table to go here ] \\
+[Consumer spending per capita monthly growth rate] \\
+
+[Top quintile consumer spending share of gross pre-tax income and bottom 80 percent share] \\
 
 
-\vspace{5mm}
+\subsection*{\color{black!70} \seriffont Household Balance Sheets}
 
-Household balance sheets \\
+[Consumer Credit and Mortgages as share of DPI] \\
 
 Housing prices \\
 
-Housing permits \\
+Housing permits/starts \\
+
+Geographic location of housing permits \\
 
 \end{minipage}
 
 \newpage
 
 \subsection*{\color{black!70} \seriffont Poverty}
+
+\begin{minipage}{0.76\textwidth}
+\small
+Include data on number of people in poverty and the official poverty rate. Perhaps include a chart showing the official poverty rate over time. Perhaps also try to capture some concepts around methodology (SPM for example) and about relative poverty.\\
+
+\end{minipage}
 
 \noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2017}\\
 \footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,060}}
@@ -519,7 +590,7 @@ Overview text goes here and perhaps a chart. \\
 
 \subsection*{\color{black!70} \seriffont Business Fixed Investment}
 
-When businesses invest in ways that make workers more productive, the economy is able to meet more material needs with the same inputs. Business investment is grouped by structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
+\small When businesses invest in ways that make workers more productive, the economy is able to meet more material needs with the same inputs. Business investment is grouped by structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
 \vspace{5mm}
 
 \noindent \normalsize \textbf{Private Non-Residential Fixed Investment}\\
@@ -537,9 +608,13 @@ When businesses invest in ways that make workers more productive, the economy is
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
 
-\vspace{2mm}
-
 \normalsize
+
+\vspace{8mm}
+
+[Table showing detailed non-residential fixed investment]\\
+
+\vspace{10mm}
 
 Durable goods new orders\\
 
@@ -568,8 +643,8 @@ Overview\\
 \vspace{2mm}
 
 \subsection*{\color{black!70} \seriffont Government Consumption and Investment}
-
-\vspace{2mm}
+\small Government consumption and fixed investment provide one way to measure how much public sector activities are influencing the economy. The contribution to real GDP growth from the public sector can be broken down by federal defense (see\cbox{blue!60!black}), federal non-defense (see\cbox{green!85!black}), and state and local (see\cbox{purple!70!magenta}).  
+\vspace{5mm}
 
 \noindent \normalsize \textbf{Government Consumption and Investment}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
@@ -591,11 +666,15 @@ Overview\\
 
 Federal\\
 
+\hspace{5mm} Outlays on interest as share of GDP \\
+
 State \\
 
 Local \\
 
 Balance sheets \\
+
+Does this section include the Federal Reserve?\\
 
 \end{minipage}
 
@@ -604,13 +683,13 @@ Balance sheets \\
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE \seriffont External Sector}
 
-\normalsize
+\small
 
-Overview Text goes here. \\
+Overview text goes here. Perhaps mention the size of total trade, imports, exports, and the trade balance, as a share of GDP. Perhaps include the trade balance/ GDP chart here. Eventually, section should capture changes in trade by goods and by partner. Section also needs to capture cross border flows of investment, though much of FDI seems to be tax avoidance. Try to tease out meaningful series, like remittances. \\
 
 \vspace{2mm}
 \subsection*{\color{black!70} \seriffont Trade}
-
+\small
 The US runs a persistent trade deficit, which often shows up as a negative contributor to GDP growth. The trade balance is the exports of goods (see\cbox{green!70!white}) and the exports of services (see\cbox{green!50!black}) minus imports of goods (see\cbox{cyan!70!white}) and imports of services (see\cbox{blue!70!black}). 
 \vspace{5mm}
 
@@ -630,9 +709,9 @@ The US runs a persistent trade deficit, which often shows up as a negative contr
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
 
-\vspace{5mm}
-
 \normalsize
+
+\vspace{8mm}
 
 Current account balance \\
 
@@ -675,6 +754,10 @@ Openings \\
 Jobless claims \\
 
 Reasons for non-participation \\
+
+State- and sub-state-level analysis \\
+
+
 
 \newpage
 
@@ -725,10 +808,19 @@ Poverty \\
 
 \newpage
 
+\begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE \seriffont References}
 
-\normalsize
+\small
 
-List of tables and sources along with some notes...
+List of tables and sources along with some notes... \\
+
+One option for this section is to have some json data that captures what original data goes into each series and also what types of calculations are done on the original data.
+
+\subsection*{\color{black!70} {\seriffont Acknowledgments}}
+
+Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Rainer K\"ohler, Gersenda Verasco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, and Ernie Tedeschi.
+
+\end{minipage}
 
 \end{document}
