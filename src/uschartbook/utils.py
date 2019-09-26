@@ -148,3 +148,44 @@ def write_txt(filename, filetext):
     ''' Write label to txt file '''
     with open(filename, 'w') as text_file:
         text_file.write(filetext)
+
+
+def cont_subt(value, style='main'):
+    '''
+    Return text for value
+    
+    -------
+    
+    Styles:
+    
+    main: "contributed x.xx percentage points to"
+    
+    of: "contribution of x.xx percentage points"
+    
+    end: "contributed x.xx percentage points"
+    
+    '''
+    abs_val = abs(value)
+    if value > 0:
+        if style == 'main':
+            text = f'contributed {abs_val:.2f} percentage points to'
+        elif style == 'of':
+            text = f'contribution of {abs_val:.2f} percentage points'
+        elif style == 'end':
+            text = f'contributed {abs_val:.2f} percentage points'
+    if value < 0:
+        if style == 'main':
+            text = f'subtracted {abs_val:.2f} percentage points from'
+        elif style == 'of':    
+            text = f'subtraction of {abs_val:.2f} percentage points'
+        elif style == 'end':
+            text = f'subtracted {abs_val:.2f} percentage points'
+    if value == 0:
+        if style == 'main':
+            text = 'did not contribute to'
+        elif style == 'of':
+            text = 'no contribition to'
+        elif style == 'end':
+            text = 'did not contribute'
+
+    return text 
