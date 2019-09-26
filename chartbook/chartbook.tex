@@ -487,6 +487,8 @@ Capital Income \\
 
 Welfare Income \\
 
+[Income to persons detailed table]\\
+
 \end{minipage}
 
 \newpage 
@@ -600,19 +602,13 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \begin{minipage}{0.76\textwidth}
 
 \section*{\color{darkgray}\LARGE \seriffont Businesses}
+\small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the loosely defined business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses.
 
-\normalsize
-
-Overview text goes here and perhaps a chart. \\
-
-\vspace{2mm}
-
-\subsection*{\color{black!70} \seriffont Business Fixed Investment}
-
-\small When businesses invest in ways that make workers more productive, the economy is able to meet more material needs with the same inputs. Business investment is grouped by structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
+\subsection*{\color{black!70} \seriffont Capital Investment}
+\small Investments that make workers more productive, by definition, allow businesses to produce goods and services using less effort from people. Business gross investments are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
 \vspace{5mm}
 
-\noindent \normalsize \textbf{Private Non-Residential Fixed Investment}\\
+\noindent \normalsize \textbf{Business Investment}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
@@ -627,13 +623,35 @@ Overview text goes here and perhaps a chart. \\
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
 
+\vspace{5mm}
+
+\small
+
+\input{text/businv.txt} \\
+
+\end{minipage}
+
+\noindent \normalsize \textbf{Business Investment}\\
+\footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}\\ \vspace{4mm}
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		   R{7.8mm} R{6.7mm} R{6.7mm} }
+			 \input{data/businv.tex}
+		\end{tabular}
+		}	\\
+		
+\vspace{-6mm}
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+
 \normalsize
 
 \vspace{8mm}
-
-[Table showing detailed non-residential fixed investment]\\
-
-\vspace{10mm}
 
 Durable goods new orders\\
 
@@ -704,7 +722,7 @@ Does this section include the Federal Reserve?\\
 
 \small
 
-Overview text goes here. Perhaps mention the size of total trade, imports, exports, and the trade balance, as a share of GDP. Perhaps include the trade balance/ GDP chart here. Eventually, section should capture changes in trade by goods and by partner. Section also needs to capture cross border flows of investment, though much of FDI seems to be tax avoidance. Try to tease out meaningful series, like remittances. \\
+Overview text goes here. Perhaps mention the size of total trade, imports, exports, and the trade balance, as a share of GDP. Perhaps include the trade balance/ GDP chart here. Eventually, section should capture changes in trade by goods and by partner. Section also needs to capture cross border flows of investment, though much of FDI seems to be tax avoidance. Focus on the more meaningful series, like remittances. \\
 
 \vspace{2mm}
 \subsection*{\color{black!70} \seriffont Trade}
