@@ -174,7 +174,7 @@
 
 \end{description}
 
-\vspace{6mm}
+\vspace{2mm}
 
 
 \subsection*{\color{black!70} {\seriffont Ideas/Suggestions/To Do}}
@@ -189,7 +189,10 @@ It will also be nice to have a section in that puts some context on numbers gene
 
 Section listing recent updates and upcoming releases would be nice. \\
 
-Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, and much much more. 
+Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, and much much more. \\
+
+Major LT developments: rise in trade, computers in the late 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
+
 \end{minipage}
 
 
@@ -384,7 +387,7 @@ Beyond content, I still need to do/add: links to subsection, links to sources, l
 
 \vspace{5mm}
 
-New borrowing by sector\\
+New borrowing by sector
 
 
 \subsection*{\color{black!70} \seriffont Wealth}
@@ -540,7 +543,7 @@ Welfare Income \\
 
 \begin{minipage}{0.76\textwidth}
 
-\small Consumer spending is also reported on a monthly basis. Inflation- and population-adjusted consumer spending increased by 2.1 percent in July 2019 over July 2018. \\
+\small Consumer spending is also reported on a monthly basis. Inflation- and population-adjusted consumer spending increased by 1.7 percent in August 2019 over August 2018. \\
 
 \vspace{2mm}
 
@@ -720,16 +723,47 @@ Balance sheets \\
 
 \newpage
 \begin{minipage}{0.76\textwidth}
-\section*{\color{darkgray}\LARGE \seriffont External Sector}
+\section*{\color{darkgray}\LARGE \seriffont International Transactions}
+\small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). This section details imbalances in international transactions, changes in trade by goods and by partner, international investment positions, and exchange rates. 
 
-\small
+\subsection*{\color{black!70} \seriffont Balance of Payments}
+\small The current account balance can be decomposed based on the balance on individual categories. Four major categories are the balance on trade in goods (see\cbox{yellow!80!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets, referred to here as income [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes, referred to here as transfers [see\cbox{green!80!lime!75!black}]). \input{text/cab.txt} 
 
-Overview text goes here. Perhaps mention the size of total trade, imports, exports, and the trade balance, as a share of GDP. Perhaps include the trade balance/ GDP chart here. Eventually, section should capture changes in trade by goods and by partner. Section also needs to capture cross border flows of investment, though much of FDI seems to be tax avoidance. Focus on the more meaningful series, like remittances. \\
+\vspace{5mm}
 
-\vspace{2mm}
+\noindent \normalsize \textbf{Current Account Balance}\\
+\footnotesize{\textit{balance on individual current account component, as percent of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, -2, 0, 2},
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{yellow!80!white}{date}{GOODS}{data/cab.csv}
+	\sbar{cyan!50!white}{date}{SERVICES}{data/cab.csv}
+	\sbar{blue!80!cyan}{date}{INCOME}{data/cab.csv}
+	\sbar{green!80!lime!75!black}{date}{TRANSFERS}{data/cab.csv}
+	\stdline{black}{date}{A124RC}{data/cab.csv}
+	\legend{Goods, Services, Income, Transfers, Total};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\vspace{8mm}
+
+
+\normalsize [Capital account balance]
+
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
 \subsection*{\color{black!70} \seriffont Trade}
-\small
-The US runs a persistent trade deficit, which often shows up as a negative contributor to GDP growth. The trade balance is the exports of goods (see\cbox{green!70!white}) and the exports of services (see\cbox{green!50!black}) minus imports of goods (see\cbox{cyan!70!white}) and imports of services (see\cbox{blue!70!black}). 
+\small The trade balance (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment in GDP calculations. As the US runs a persistent trade deficit, trade will generally subtract from GDP growth.\\
+
+ \input{text/trade.txt} 
 \vspace{5mm}
 
 \noindent \normalsize \textbf{International Trade}\\
@@ -746,13 +780,11 @@ The US runs a persistent trade deficit, which often shows up as a negative contr
 	\legend{Goods Exports, Services Exports, Goods Imports, Services Imports};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \\
 
-\normalsize
+\vspace{2mm}
 
-\vspace{8mm}
-
-Current account balance \\
+\normalsize [Import and Exports share of GDP dual line plot]\\
 
 Trade in Goods \\
 

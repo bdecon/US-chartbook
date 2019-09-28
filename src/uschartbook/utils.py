@@ -68,7 +68,6 @@ def bea_to_db(api_results):
 	conn.commit()
 	conn.close()
 	
-	
 
 def retrieve_table(table_id):
     '''Returns table from local database'''
@@ -94,7 +93,7 @@ def nipa_df(nipa_table, series_list):
                if i['SeriesCode'] == code]
         index = [pd.to_datetime(i['TimePeriod']) for i in nipa_table 
                  if i['SeriesCode'] == code]
-        data[code] = (pd.Series(data=obs, index=index)
+        data[code] = (pd.Series(data=obs, index=index).sort_index()
                         .str.replace(',', '').astype(float))
         
     return pd.DataFrame(data)
@@ -118,11 +117,7 @@ def gdpstate_df(table):
         
     
 def nipa_series_codes(nipa_table):
-    '''
-    
-    Return series codes and names from table code, e.g. 'T20100'
-    
-    '''
+    '''Return series codes and names from table code, e.g. T20100'''
     r = nipa_table['Data']
 
     series_dict = {item['SeriesCode']: item['LineDescription'] for item in r}
@@ -133,7 +128,6 @@ def nipa_series_codes(nipa_table):
 def growth_rate(series):
 	''' Return the annualized quarterly growth rate in percent'''
 	return ((((series.pct_change() + 1) ** 4) - 1) * 100)
-	
 	
     
 def growth_contrib(df, srs):
