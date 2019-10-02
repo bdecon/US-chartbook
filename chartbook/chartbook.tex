@@ -55,7 +55,7 @@
 		xtick style={black!20}, ytick style={draw=none},
 		every tick label/.style={black!50, font=\scriptsize,
 			/pgf/number format/assume math mode=true},
-		width=13.0cm, height=4.6cm, 
+		width=13.0cm, height=4.8cm, 
 		xticklabel style={align=left}, 
 		yticklabel style={text width=0.85em, align=right},       
 		axis x line*=bottom, x axis line style={black!50},
@@ -88,7 +88,7 @@
 			{2001-01-01}, {2003-01-01}, {2005-01-01}, {2007-01-01},
 		    {2009-01-01}, {2011-01-01}, {2013-01-01}, {2015-01-01},
 		    {2017-01-01}, {2019-01-01}},
-		enlarge y limits={0.04}, enlarge x limits={0.01},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
 	
 	% Solid bars at significant  x or y values
@@ -352,6 +352,7 @@ Major LT developments: rise in trade, computers in the late 1990s, welfare refor
 \vspace{-3mm}	
 \footnotesize{Source: Bureau of Economic Analysis}
 
+\newpage
 
 \begin{minipage}{0.76\textwidth}
 
@@ -359,7 +360,7 @@ Major LT developments: rise in trade, computers in the late 1990s, welfare refor
 
 \small A high-level overview of US financial activities can be provided by dividing the world economy into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examining the net lending and borrowing between the groups, which must sum to zero at an aggregate level. That is, if one sector is running a deficit, another sector must be running a surplus.\\
 
-\vspace{2mm}
+\vspace{0mm}
 
 \noindent \normalsize \textbf{Sectoral Financial Balance}\\
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
@@ -384,18 +385,17 @@ Major LT developments: rise in trade, computers in the late 1990s, welfare refor
 
 \small \input{text/sectbal.txt}
 
+\vspace{3mm}
 
-\vspace{5mm}
+[New borrowing by sector]
 
-New borrowing by sector
-
+\vspace{-1mm}
 
 \subsection*{\color{black!70} \seriffont Wealth}
 
 \small \textbf{Total US wealth} is the tangible assets of all non-corporate sectors of the US, plus the market value of domestic corporate equities, less US financial obligations to the rest of the world. \input{text/wealthgdp.txt}\\
 
-\vspace{2mm}
-
+\vspace{1mm}
 
 \noindent \normalsize \textbf{Total US Wealth to GDP Ratio}\\
 \footnotesize{\textit{total US wealth divided by GDP}}\\
@@ -411,8 +411,6 @@ New borrowing by sector
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve}
-
-
 \end{minipage}
 
 \newpage
@@ -517,8 +515,6 @@ Welfare Income \\
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}\\
-
-\vspace{2mm}
 
 \small
 
@@ -659,6 +655,8 @@ Include data on number of people in poverty and the official poverty rate. Perha
 Durable goods new orders\\
 
 Corporate profits\\
+
+[Destination of Corporate Profits (share of GDP)] \\
 
 Industrial production\\
 
@@ -810,7 +808,18 @@ International Investment Position \\
 
 Overview \\
 
-Employment Rate \\
+\noindent \normalsize \textbf{Employment Rate}\\
+\footnotesize{\textit{employed share of age 25-54 population}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={75, 80}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+	\rbars
+	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \\
+
+\normalsize
 
 Unemployment Rate \\
 
@@ -827,6 +836,10 @@ Wage growth: \\
 \hspace{4mm} [AHE and UWE both in various forms] \\
 
 \hspace{4mm} [Either FRB Atlanta Wage Tracker or replication]\\
+
+\newpage
+
+\normalsize
 
 Quits \\ 
 
