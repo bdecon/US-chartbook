@@ -414,10 +414,36 @@ Major LT developments: rise in trade, computers in the late 1990s, welfare refor
 \end{minipage}
 
 \newpage
-\section*{\color{darkgray}\LARGE \seriffont Households}
+\subsection*{\color{black!70} \seriffont Investment}
 
 \begin{minipage}{0.76\textwidth}
 
+\small Private fixed investment, as measured in the national accounts, includes construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but not automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment and intellectual property products. The change in private inventories (see\cbox{red}) at the end of the accounting period is also, at times, grouped with investment.\\
+
+\vspace{4mm} 
+
+\noindent \normalsize \textbf{Private Fixed Investment}\\
+\footnotesize{\textit{percentage point contribution to GDP growth}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, -2, 0, 2, 5},
+		xticklabel={\year}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{yellow!50!orange}{date}{A008RY}{data/inv.csv}
+	\sbar{blue!90!black}{date}{A011RY}{data/inv.csv}
+	\sbar{red}{date}{A014RY}{data/inv.csv}
+	\legend{Non-Residential, Residential, Change in Private Inventories};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+
+
+\end{minipage}
+
+\newpage
+\section*{\color{darkgray}\LARGE \seriffont Households}
+
+\begin{minipage}{0.76\textwidth}
 \small This section covers the household sector of the economy loosely defined, and touches on demographics, personal income and outlays, residential fixed investment, household balance sheets, home ownership, housing prices, and housing construction and permitting.
 
 \vspace{2mm}
@@ -539,7 +565,7 @@ Welfare Income \\
 
 \begin{minipage}{0.76\textwidth}
 
-\small Consumer spending is also reported on a monthly basis. Inflation- and population-adjusted consumer spending increased by 1.7 percent in August 2019 over August 2018. \\
+\small \input{text/pcegrowth.txt}\\
 
 \vspace{2mm}
 
@@ -647,16 +673,35 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \begin{minipage}{0.76\textwidth}
 
-
 \normalsize
-
-\vspace{8mm}
 
 Durable goods new orders\\
 
-Corporate profits\\
+\vspace{10mm}
 
-[Destination of Corporate Profits (share of GDP)] \\
+\subsection*{\color{black!70} \seriffont Corporate Profits}
+
+Text here... \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Destination of Corporate Profits}\\
+\footnotesize{\textit{share of net national income}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, ymin=0.2,
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{blue!70!purple}{date}{DIV}{data/cprof.csv}
+	\sbar{cyan!50!white}{date}{RE}{data/cprof.csv}
+	\sbar{red!80!orange}{date}{TAX}{data/cprof.csv}	
+	\legend{Net Dividends, Retained Earnings, Corporate Taxes};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}\\
+
+\vspace{5mm}
+
+\normalsize
 
 Industrial production\\
 
@@ -780,9 +825,35 @@ Balance sheets \\
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \\
 
+\vspace{8mm}
+
+\small Goods and services imports (see {\color{green!60!teal!80!black}\textbf{---}}) were equivalent to 14.8 percent of GDP in the second quarter of 2019, while exports of goods and services (see {\color{blue!90!cyan}\textbf{---}}) were equivalent to 11.7 percent of GDP.\\
+
 \vspace{2mm}
 
-\normalsize [Import and Exports share of GDP dual line plot]\\
+
+\noindent \normalsize \textbf{Imports and Exports}\\
+\footnotesize{\textit{includes goods and services, share of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 15},
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\stdline{blue!90!cyan}{date}{B020RC}{data/eximgdp.csv}
+	\stdline{green!60!teal!80!black}{date}{B021RC}{data/eximgdp.csv}
+	\legend{Exports, Imports};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \\
+
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\normalsize 
 
 Trade in Goods \\
 
@@ -802,11 +873,40 @@ International Investment Position \\
 
 \newpage
 
+\begin{minipage}{0.76\textwidth}
+
 \section*{\color{darkgray}\LARGE \seriffont Labor Markets}
 
-\normalsize
+\small Labor is the primary source of income for US households and essential to the production of goods and services. In labor markets, unlike other markets, wages (the price of labor) tend not to be cut in response to a decrease in demand; businesses instead employ fewer workers and/or cut hours. \\
 
-Overview \\
+\noindent \normalsize \textbf{Gross Labor Income Growth}\\
+\footnotesize{\textit{percentage point contribution to gross labor income growth}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10},
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{green!80!lime!90!white}{date}{wage}{data/gli.csv}
+	\sbar{teal!80!blue!85!white}{date}{work}{data/gli.csv}
+	\legend{Rate of Compensation, Hours of Work};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations} \\
+
+
+
+\small Gross labor income (compensation of employees in the national accounts) which captures both employment and wages, has ...
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Employment}
+
+
+\small \input{text/epop_text.txt} \\
 
 \noindent \normalsize \textbf{Employment Rate}\\
 \footnotesize{\textit{employed share of age 25-54 population}}\\
@@ -819,6 +919,14 @@ Overview \\
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \\
+
+\vspace{4mm}
+
+\small The monthly establishment survey enables tracking of non-farm payrolls. In September 2019, the US economy added 136,000 jobs. In 2019 Q2, the US added an average of 146,000 jobs per month, compared to 205,000 in 2019 Q1 and an annual average of 205,000 in 2018. \\
+
+
+\normalsize [Quarterly employment growth with dot for latest monthly value]\\
+
 
 \normalsize
 
@@ -837,6 +945,9 @@ Wage growth: \\
 \hspace{4mm} [AHE and UWE both in various forms] \\
 
 \hspace{4mm} [Either FRB Atlanta Wage Tracker or replication]\\
+
+\end{minipage}
+
 
 \newpage
 
@@ -888,7 +999,34 @@ Valuations \\
 
 \newpage
 
+\begin{minipage}{0.76\textwidth}
+
 \section*{\color{darkgray}\LARGE \seriffont Prices}
+
+\small \input{text/cpi_main.txt} \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Consumer Price Index}\\
+\footnotesize{\textit{annual growth, percent}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6}, 
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.98, 1.13)}},
+		height=4.4cm, enlarge y limits={0.11}]
+	\rbars
+	\stdline{blue!60!cyan}{date}{value}{data/cpi.csv}
+	\stdline{gray}{date}{value2}{data/cpi.csv}
+	%\stdnode{2.4cm}{0.35cm}{\scriptsize \input{text/cpi.txt}}
+	\legend{All-items, Core};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \\
+
+\vspace{2mm}
+
+\end{minipage}
+
 
 \normalsize
 

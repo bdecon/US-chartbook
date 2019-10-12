@@ -183,3 +183,91 @@ def cont_subt(value, style='main'):
             text = 'did not contribute'
 
     return text 
+
+
+def series_info(s):
+    '''Returb info about a pandas series'''
+    d = {}
+    d['date_max'] = s.idxmax()
+    d['date_min'] = s.idxmin()
+    d['val_max'] = s.max()
+    d['val_min'] = s.min()
+    d['date_latest'] = s.index[-1]
+    d['date_prev'] = s.index[-2]
+    d['date_year_ago'] = s.index[-13]
+    d['val_latest'] = s.iloc[-1]
+    d['val_prev'] = s.iloc[-2]
+    d['val_year_ago'] = s.iloc[-13]
+    if d['date_latest'] > d['date_prev']:
+        dlm = s[s >= d['val_latest']].sort_index().index[-2]
+        d['last_matched'] = f'the highest level since {dlm.strftime("%B %Y")}'
+        d['days_since_match'] = (d['date_latest'] - dlm).days
+    elif d['date_latest'] < d['date_prev']:
+        dlm = s[s <= d['val_latest']].sort_index().index[-2]
+        d['last_matched'] = f'the lowest level since {dlm.strftime("%B %Y")}'
+        d['days_since_match'] = (d['date_latest'] - dlm).days
+    else:
+        d['last matched'] = 'the same level as the previous month'
+        d['days_since_match'] = 0
+    d['late90s'] = s.loc['1998': '1999'].mean()
+    d['last_3m'] = s.iloc[-3:].mean()
+    d['prev_3m'] = s.iloc[-6:-3].mean()
+    d['last_12m'] = s.iloc[-12:].mean()
+    d['prev_12m'] = s.iloc[-24:-12].mean()
+    d['change_1m'] = d['val_latest'] - d['val_prev']
+    d['change_12m'] = d['val_latest'] - d['val_year_ago']
+    
+    return d
+
+
+def bls_api(series, date_range, bls_key):
+    """Collect list of series from BLS API for given dates"""
+        
+    # Import preliminaries
+    import requests
+    import pandas as pd
+    import json
+    
+    # The url for BLS API v2
+    url = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
+
+    # API key in config.py which contains: bls_key = 'key'
+    key = f'?registrationkey={bls_key}'
+
+    # Handle dates
+    dates = [(str(date_range[0]), str(date_range[1]))]
+    while int(dates[-1][1]) - int(dates[-1][0]) >= 10:
+        dates = [(str(date_range[0]), str(date_range[0] + 9))]
+        d1 = int(dates[-1][0])
+        while int(dates[-1][1]) < date_range[1]:
+            d1 = d1 + 10
+            d2 = min([date_range[1], d1 + 9])
+            dates.append((str(d1), (d2)))
+
+    df = pd.DataFrame()
+
+    for start, end in dates:
+        # Submit the list of series as data
+        data = json.dumps({
+            "seriesid": list(series.keys()),
+            "startyear": start, "endyear": end})
+
+        # Post request for the data
+        p = requests.post(
+            f'{url}{key}',
+            headers={'Content-type': 'application/json'},
+            data=data).json()
+
+        for s in p['Results']['series']:
+            col = series[s['seriesID']]
+            for r in s['data']:
+                date = pd.to_datetime(
+                    (f"{r['year']}Q{r['period'][-1]}"
+                     if r['period'][0] == 'Q'
+                     else f"{r['periodName']} {r['year']}"))
+                df.at[date, col] = float(r['value'])
+    df = df.sort_index()
+    # Output results
+    print('Post Request Status: {}'.format(p['status']))
+
+    return df
