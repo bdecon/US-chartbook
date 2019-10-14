@@ -191,7 +191,7 @@ Section listing recent updates and upcoming releases would be nice. \\
 
 Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, and much much more. \\
 
-Major LT developments: rise in trade, computers in the late 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
+Major LT developments: rise of imports, computers in the late 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
 
 \end{minipage}
 
@@ -448,7 +448,25 @@ Major LT developments: rise in trade, computers in the late 1990s, welfare refor
 
 \vspace{2mm}
 
-[Table or chart on population]
+[Table or chart on population] \\
+
+\end{minipage}
+
+\vspace{8mm}
+
+\noindent \normalsize \textbf{Age Group Share of Commuter Zone Population, 2018}
+
+\hspace{2mm} Age 0 to 17 \hspace{62mm} Age 65+
+
+\vspace{-3mm}
+\hspace{-9mm} \input{data/under18pop.pgf} \hspace{-3mm} \input{data/over64pop.pgf}
+
+\vspace{-3mm}
+\footnotesize{Source: American Community Survey, Dorn}
+
+
+\newpage
+\begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Demographics and Household Formation}
 
@@ -476,8 +494,12 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau}
-\vspace{6mm}
 
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Income to Persons}
 \small This section looks at income received by people, by type of income, adjusted for inflation using the PCE implicit price deflator. Income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons less contributions to social insurance. 
@@ -499,9 +521,28 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
 
+
+\vspace{4mm}
+
+\small Some descriptive text here. Perhaps mention the total amount for real personal income and the share from labor, capital, and welfare in 1989, 2000, and 2019. Otherwise, at least mention the main three sources and how they contribute to change in personal income in the latest data.\\
+
 \end{minipage}
 
-\newpage 
+\noindent \normalsize \textbf{Personal Income by Source}\\
+\footnotesize{\textit{percentage point contribution to real personal income growth \hspace{22mm} moving averages}\\ \vspace{4mm}
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		   R{7.8mm} R{6.7mm} R{6.7mm} }
+			 \input{data/pi.tex}
+		\end{tabular}
+		}	\\
+		
+\vspace{-6mm}
+\footnotesize{Source: Bureau of Economic Analysis}
+
+
+\newpage
 
 \begin{minipage}{0.76\textwidth}
 
