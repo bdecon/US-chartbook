@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.10.0 (TeX Live 2019/Arch Linux)  (format=lualatex 2019.9.17)  11 OCT 2019 20:32
+This is LuaTeX, Version 1.10.0 (TeX Live 2019/Arch Linux)  (format=lualatex 2019.9.17)  13 OCT 2019 20:53
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -48,7 +48,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.051 seconds
+luaotfload | main : initialization completed in 0.042 seconds
 (/usr/share/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size10.clo
@@ -3275,18 +3275,34 @@ PGFPlots: reading {data/inv.csv}
 [9
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 458--459
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+(./data/under18pop.pgf
+LaTeX Info: Redefining \rmfamily on input line 32092.
+LaTeX Info: Redefining \rmfamily on input line 32098.
+) (./data/over64pop.pgf
+LaTeX Info: Redefining \rmfamily on input line 32092.
+LaTeX Info: Redefining \rmfamily on input line 32098.
+)
+Overfull \hbox (3.3352pt too wide) in paragraph at lines 462--463
+[]  []   [] 
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 476--477
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 460--461
+Underfull \hbox (badness 10000) in paragraph at lines 478--479
 
  []
 
-Package pgfplots info on input line 470: dateplot: setting 'date ZERO={2019-10-0
+Package pgfplots info on input line 488: dateplot: setting 'date ZERO={2019-10-0
 1}' for this axis.
-Package pgfplots info on input line 470: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 488: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/hhform.csv}
 PGFPlots: reading {data/hhform.csv}
@@ -3299,11 +3315,15 @@ NOTE: coordinate (1989-07-01,) has been dropped because of a coordinate filter.
 (see also unbounded coords=jump). 
 NOTE: coordinate (1989-10-01,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
-Package pgfplots info on input line 491: dateplot: setting 'date ZERO={2019-10-0
+[11
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+Package pgfplots info on input line 513: dateplot: setting 'date ZERO={2019-10-0
 1}' for this axis.
-Package pgfplots info on input line 491: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 513: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/pi.csv}
+
 NOTE: coordinate (1989-01-01,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 PGFPlots: reading {data/pi.csv}
@@ -3313,53 +3333,62 @@ PGFPlots: reading {data/pi.csv}
 NOTE: coordinate (1989-01-01,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 
-Overfull \hbox (5.24806pt too wide) in paragraph at lines 486--501
+Overfull \hbox (5.24806pt too wide) in paragraph at lines 508--523
 |  [] 
  []
 
-[10
-Missing character: There is no ; (U+003B) in font nullfont!
+
+Underfull \hbox (badness 10000) in paragraph at lines 527--528
+
+ []
+
+(./data/pi.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 531--540
+
+ []
+
+[12
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 509--510
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 511--512
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 554--555
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
+Underfull \hbox (badness 10000) in paragraph at lines 558--559
 
  []
 
-[11] (./text/pce1.txt)
-Package pgfplots info on input line 534: dateplot: setting 'date ZERO={2019-10-0
+[13] (./text/pce1.txt)
+Package pgfplots info on input line 575: dateplot: setting 'date ZERO={2019-10-0
 1}' for this axis.
-Package pgfplots info on input line 534: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 575: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/pce.csv}
 PGFPlots: reading {data/pce.csv}
 PGFPlots: reading {data/pce.csv}
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--544
+Underfull \hbox (badness 10000) in paragraph at lines 570--585
 
  []
 
 (./text/pce2.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--548
+Underfull \hbox (badness 10000) in paragraph at lines 1--589
 
  []
 
@@ -3379,54 +3408,54 @@ Overfull \hbox (5.99992pt too wide) in paragraph at lines 1--1
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 551--560
+Underfull \hbox (badness 10000) in paragraph at lines 592--601
 
  []
 
-[12
+[14
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/pcegrowth.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--569
+Underfull \hbox (badness 10000) in paragraph at lines 1--610
 
  []
 
-Package pgfplots info on input line 576: dateplot: setting 'date ZERO={2019-10-0
+Package pgfplots info on input line 617: dateplot: setting 'date ZERO={2019-10-0
 1}' for this axis.
-Package pgfplots info on input line 576: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 617: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/pcegrowth.csv}
 
-Underfull \hbox (badness 10000) in paragraph at lines 572--582
+Underfull \hbox (badness 10000) in paragraph at lines 613--623
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 587--588
+Underfull \hbox (badness 10000) in paragraph at lines 628--629
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 592--593
+Underfull \hbox (badness 10000) in paragraph at lines 633--634
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 594--595
+Underfull \hbox (badness 10000) in paragraph at lines 635--636
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--597
+Underfull \hbox (badness 10000) in paragraph at lines 637--638
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--599
+Underfull \hbox (badness 10000) in paragraph at lines 639--640
 
  []
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 608--609
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 649--650
 
  []
 
@@ -3434,344 +3463,269 @@ Underfull \hbox (badness 10000) in paragraph at lines 608--609
 LaTeX Info: Redefining \rmfamily on input line 44036.
 LaTeX Info: Redefining \rmfamily on input line 44042.
 LaTeX Info: Redefining \rmfamily on input line 44048.
-) [14]
-Package pgfplots info on input line 641: dateplot: setting 'date ZERO={2019-10-0
+) [16]
+Package pgfplots info on input line 682: dateplot: setting 'date ZERO={2019-10-0
 1}' for this axis.
-Package pgfplots info on input line 641: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 682: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/businv.csv}
 PGFPlots: reading {data/businv.csv}
 PGFPlots: reading {data/businv.csv}
  (./text/businv.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--656
+Underfull \hbox (badness 10000) in paragraph at lines 1--697
 
  []
 
 (./data/businv.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 659--668
-
- []
-
-[15
-Missing character: There is no ; (U+003B) in font nullfont!
-]
-Underfull \hbox (badness 10000) in paragraph at lines 678--679
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 684--685
-
- []
-
-Package pgfplots info on input line 692: dateplot: setting 'date ZERO={2019-10-0
-1}' for this axis.
-Package pgfplots info on input line 692: Using 'lua backend=false' for axis: x c
-oord trafo unsupported.
-PGFPlots: reading {data/cprof.csv}
-PGFPlots: reading {data/cprof.csv}
-PGFPlots: reading {data/cprof.csv}
-
-Overfull \hbox (1.11694pt too wide) in paragraph at lines 698--698
- [][]\TU/Lato(1)/m/n/7 10
- []
-
-
-Overfull \hbox (1.11694pt too wide) in paragraph at lines 698--698
- [][]\TU/Lato(1)/m/n/7 15
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 688--701
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 706--707
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 708--709
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 710--711
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 712--713
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 714--715
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 716--717
-
- []
-
-[16
-Missing character: There is no ; (U+003B) in font nullfont!
-]
-Underfull \hbox (badness 10000) in paragraph at lines 728--729
-
- []
-
-Package pgfplots info on input line 741: dateplot: setting 'date ZERO={2019-10-0
-1}' for this axis.
-Package pgfplots info on input line 741: Using 'lua backend=false' for axis: x c
-oord trafo unsupported.
-PGFPlots: reading {data/gov.csv}
-PGFPlots: reading {data/gov.csv}
-PGFPlots: reading {data/gov.csv}
-
-Underfull \hbox (badness 10000) in paragraph at lines 754--755
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 756--757
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 758--759
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 760--761
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 762--763
+Underfull \hbox (badness 10000) in paragraph at lines 700--709
 
  []
 
 [17
 Missing character: There is no ; (U+003B) in font nullfont!
-] (./text/cab.txt)
-Package pgfplots info on input line 782: dateplot: setting 'date ZERO={2019-10-0
-1}' for this axis.
-Package pgfplots info on input line 782: Using 'lua backend=false' for axis: x c
-oord trafo unsupported.
-PGFPlots: reading {data/cab.csv}
-PGFPlots: reading {data/cab.csv}
-PGFPlots: reading {data/cab.csv}
-PGFPlots: reading {data/cab.csv}
-PGFPlots: reading {data/cab.csv}
- [18
-Missing character: There is no ; (U+003B) in font nullfont!
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 807--808
+Underfull \hbox (badness 10000) in paragraph at lines 719--720
 
  []
 
-(./text/trade.txt)
-Package pgfplots info on input line 817: dateplot: setting 'date ZERO={2019-10-0
+
+Underfull \hbox (badness 10000) in paragraph at lines 725--726
+
+ []
+
+Package pgfplots info on input line 733: dateplot: setting 'date ZERO={2019-10-0
 1}' for this axis.
-Package pgfplots info on input line 817: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 733: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
-PGFPlots: reading {data/nx.csv}
-PGFPlots: reading {data/nx.csv}
-PGFPlots: reading {data/nx.csv}
-PGFPlots: reading {data/nx.csv}
+PGFPlots: reading {data/cprof.csv}
+PGFPlots: reading {data/cprof.csv}
+PGFPlots: reading {data/cprof.csv}
 
-Underfull \hbox (badness 10000) in paragraph at lines 812--827
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 830--831
-
- []
-
-Package pgfplots info on input line 840: dateplot: setting 'date ZERO={2019-10-0
-1}' for this axis.
-Package pgfplots info on input line 840: Using 'lua backend=false' for axis: x c
-oord trafo unsupported.
-PGFPlots: reading {data/eximgdp.csv}
-PGFPlots: reading {data/eximgdp.csv}
-
-Overfull \hbox (1.11694pt too wide) in paragraph at lines 845--845
+Overfull \hbox (1.11694pt too wide) in paragraph at lines 739--739
  [][]\TU/Lato(1)/m/n/7 10
  []
 
 
-Overfull \hbox (1.11694pt too wide) in paragraph at lines 845--845
+Overfull \hbox (1.11694pt too wide) in paragraph at lines 739--739
  [][]\TU/Lato(1)/m/n/7 15
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 835--848
+Underfull \hbox (badness 10000) in paragraph at lines 729--742
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 747--748
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 749--750
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 751--752
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 755--756
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 757--758
+
+ []
+
+[18
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+Underfull \hbox (badness 10000) in paragraph at lines 769--770
+
+ []
+
+Package pgfplots info on input line 782: dateplot: setting 'date ZERO={2019-10-0
+1}' for this axis.
+Package pgfplots info on input line 782: Using 'lua backend=false' for axis: x c
+oord trafo unsupported.
+PGFPlots: reading {data/gov.csv}
+PGFPlots: reading {data/gov.csv}
+PGFPlots: reading {data/gov.csv}
+
+Underfull \hbox (badness 10000) in paragraph at lines 795--796
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 797--798
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 799--800
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 801--802
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 803--804
 
  []
 
 [19
 Missing character: There is no ; (U+003B) in font nullfont!
+] (./text/cab.txt)
+Package pgfplots info on input line 823: dateplot: setting 'date ZERO={2019-10-0
+1}' for this axis.
+Package pgfplots info on input line 823: Using 'lua backend=false' for axis: x c
+oord trafo unsupported.
+PGFPlots: reading {data/cab.csv}
+PGFPlots: reading {data/cab.csv}
+PGFPlots: reading {data/cab.csv}
+PGFPlots: reading {data/cab.csv}
+PGFPlots: reading {data/cab.csv}
+ [20
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 858--859
+Underfull \hbox (badness 10000) in paragraph at lines 848--849
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 860--861
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 862--863
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 864--865
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 866--867
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 868--869
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 870--871
-
- []
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 880--881
-
- []
-
-Package pgfplots info on input line 887: dateplot: setting 'date ZERO={2019-10-0
+(./text/trade.txt)
+Package pgfplots info on input line 858: dateplot: setting 'date ZERO={2019-10-0
 1}' for this axis.
-Package pgfplots info on input line 887: Using 'lua backend=false' for axis: x c
+Package pgfplots info on input line 858: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
-PGFPlots: reading {data/gli.csv}
-PGFPlots: reading {data/gli.csv}
+PGFPlots: reading {data/nx.csv}
+PGFPlots: reading {data/nx.csv}
+PGFPlots: reading {data/nx.csv}
+PGFPlots: reading {data/nx.csv}
 
-Overfull \hbox (1.11694pt too wide) in paragraph at lines 892--892
+Underfull \hbox (badness 10000) in paragraph at lines 853--868
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 871--872
+
+ []
+
+Package pgfplots info on input line 881: dateplot: setting 'date ZERO={2019-10-0
+1}' for this axis.
+Package pgfplots info on input line 881: Using 'lua backend=false' for axis: x c
+oord trafo unsupported.
+PGFPlots: reading {data/eximgdp.csv}
+PGFPlots: reading {data/eximgdp.csv}
+
+Overfull \hbox (1.11694pt too wide) in paragraph at lines 886--886
  [][]\TU/Lato(1)/m/n/7 10
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 882--895
+Overfull \hbox (1.11694pt too wide) in paragraph at lines 886--886
+ [][]\TU/Lato(1)/m/n/7 15
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 876--889
 
  []
 
 [21
 Missing character: There is no ; (U+003B) in font nullfont!
-] (./text/epop_text.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--910
-
- []
-
-Package pgfplots info on input line 915: dateplot: setting 'date ZERO={2019-10-0
-1}' for this axis.
-Package pgfplots info on input line 915: Using 'lua backend=false' for axis: x c
-oord trafo unsupported.
-PGFPlots: reading {data/epop.csv}
-
-Overfull \hbox (1.11694pt too wide) in paragraph at lines 919--919
- [][]\TU/Lato(1)/m/n/7 75
- []
-
-
-Overfull \hbox (1.31995pt too wide) in paragraph at lines 919--919
- [][]\TU/Lato(1)/m/n/7 80
- []
-
-(./text/epop.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 911--922
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+Underfull \hbox (badness 10000) in paragraph at lines 899--900
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 925--926
+Underfull \hbox (badness 10000) in paragraph at lines 901--902
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 928--929
+Underfull \hbox (badness 10000) in paragraph at lines 903--904
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 933--934
+Underfull \hbox (badness 10000) in paragraph at lines 905--906
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 935--936
+Underfull \hbox (badness 10000) in paragraph at lines 907--908
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 937--938
+Underfull \hbox (badness 10000) in paragraph at lines 909--910
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 939--940
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 941--942
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 943--944
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 945--946
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 947--948
+Underfull \hbox (badness 10000) in paragraph at lines 911--912
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 956--957
+Underfull \hbox (badness 10000) in paragraph at lines 921--922
 
  []
 
+Package pgfplots info on input line 928: dateplot: setting 'date ZERO={2019-10-0
+1}' for this axis.
+Package pgfplots info on input line 928: Using 'lua backend=false' for axis: x c
+oord trafo unsupported.
+PGFPlots: reading {data/gli.csv}
+PGFPlots: reading {data/gli.csv}
 
-Underfull \hbox (badness 10000) in paragraph at lines 958--959
-
+Overfull \hbox (1.11694pt too wide) in paragraph at lines 933--933
+ [][]\TU/Lato(1)/m/n/7 10
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 960--961
+Underfull \hbox (badness 10000) in paragraph at lines 923--936
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 962--963
+[23
+Missing character: There is no ; (U+003B) in font nullfont!
+] (./text/epop_text.txt)
+Underfull \hbox (badness 10000) in paragraph at lines 1--951
 
  []
 
+Package pgfplots info on input line 956: dateplot: setting 'date ZERO={2019-10-0
+1}' for this axis.
+Package pgfplots info on input line 956: Using 'lua backend=false' for axis: x c
+oord trafo unsupported.
+PGFPlots: reading {data/epop.csv}
 
-Underfull \hbox (badness 10000) in paragraph at lines 964--965
+Overfull \hbox (1.11694pt too wide) in paragraph at lines 960--960
+ [][]\TU/Lato(1)/m/n/7 75
+ []
+
+
+Overfull \hbox (1.31995pt too wide) in paragraph at lines 960--960
+ [][]\TU/Lato(1)/m/n/7 80
+ []
+
+(./text/epop.txt)
+Underfull \hbox (badness 10000) in paragraph at lines 952--963
 
  []
 
@@ -3780,7 +3734,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 966--967
 
  []
 
-[23]
+
+Underfull \hbox (badness 10000) in paragraph at lines 969--970
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 974--975
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 976--977
 
  []
@@ -3815,44 +3779,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 988--989
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 990--991
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 992--993
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 997--998
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 994--995
+Underfull \hbox (badness 10000) in paragraph at lines 999--1000
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 996--997
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1002
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 998--999
+Underfull \hbox (badness 10000) in paragraph at lines 1003--1004
 
  []
 
-[24] (./text/cpi_main.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--1007
+
+Underfull \hbox (badness 10000) in paragraph at lines 1005--1006
 
  []
 
-Package pgfplots info on input line 1016: dateplot: setting 'date ZERO={2019-10-
-01}' for this axis.
-Package pgfplots info on input line 1016: Using 'lua backend=false' for axis: x 
-coord trafo unsupported.
-PGFPlots: reading {data/cpi.csv}
-PGFPlots: reading {data/cpi.csv}
 
-Underfull \hbox (badness 10000) in paragraph at lines 1010--1025
+Underfull \hbox (badness 10000) in paragraph at lines 1007--1008
+
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 1017--1018
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1019--1020
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1021--1022
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1023--1024
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1026
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1027--1028
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1029--1030
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1031--1032
 
  []
 
@@ -3876,68 +3869,105 @@ Underfull \hbox (badness 10000) in paragraph at lines 1039--1040
 
  []
 
+[26] (./text/cpi_main.txt)
+Underfull \hbox (badness 10000) in paragraph at lines 1--1048
 
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1042
+ []
+
+Package pgfplots info on input line 1057: dateplot: setting 'date ZERO={2019-10-
+01}' for this axis.
+Package pgfplots info on input line 1057: Using 'lua backend=false' for axis: x 
+coord trafo unsupported.
+PGFPlots: reading {data/cpi.csv}
+PGFPlots: reading {data/cpi.csv}
+
+Underfull \hbox (badness 10000) in paragraph at lines 1051--1066
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1043--1044
+Underfull \hbox (badness 10000) in paragraph at lines 1074--1075
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1045--1046
+Underfull \hbox (badness 10000) in paragraph at lines 1076--1077
 
  []
 
-[25
+
+Underfull \hbox (badness 10000) in paragraph at lines 1078--1079
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1080--1081
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1082--1083
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1085
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1086--1087
+
+ []
+
+[27
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1053--1054
+Underfull \hbox (badness 10000) in paragraph at lines 1094--1095
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1055--1056
+Underfull \hbox (badness 10000) in paragraph at lines 1096--1097
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1057--1058
+Underfull \hbox (badness 10000) in paragraph at lines 1098--1099
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1059--1060
+Underfull \hbox (badness 10000) in paragraph at lines 1100--1101
 
  []
 
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1070
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 1110--1111
 
  []
 
-[27] (./chartbook.aux))
-(\end occurred inside a group at level 4)
+[29] (./chartbook.aux))
+(\end occurred inside a group at level 5)
 
-### simple group (level 4) entered at line 660 ({)
-### simple group (level 3) entered at line 552 ({)
+### simple group (level 5) entered at line 701 ({)
+### simple group (level 4) entered at line 593 ({)
+### simple group (level 3) entered at line 532 ({)
 ### simple group (level 2) entered at line 342 ({)
 ### simple group (level 1) entered at line 314 ({)
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 40474 strings out of 494300
- 381535,2373549 words of node,token memory allocated
- 653 words of node memory still in use:
-   7 hlist, 1 vlist, 5 rule, 2 glue, 3 kern, 1 glyph, 9 attribute, 79 glue_spec,
- 9 attribute_list, 1 write nodes
-   avail lists: 1:4,2:86337,3:43138,4:460,5:454,6:429,7:5683,8:2,9:3304,10:26,11
-:177,12:1
- 42184 multiletter control sequences out of 65536+600000
- 108 fonts using 16648343 bytes
- 79i,20n,136p,1480b,3400s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 40520 strings out of 494300
+ 596158,2373549 words of node,token memory allocated
+ 710 words of node memory still in use:
+   8 hlist, 1 vlist, 6 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 86 glue_spec
+, 10 attribute_list, 1 write nodes
+   avail lists: 1:9,2:124805,3:62371,4:460,5:447,6:429,7:5683,8:2,9:3302,10:26,1
+1:177,12:1
+ 42186 multiletter control sequences out of 65536+600000
+ 108 fonts using 16651295 bytes
+ 79i,20n,136p,1480b,3469s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/TTF/Lato-RegularItalic.ttf></usr/share/texmf-dist/fonts/openty
 pe/adobe/sourceserifpro/SourceSerifPro-Regular.otf></usr/share/texmf-dist/fonts/
 opentype/public/fontawesome/FontAwesome.otf></usr/share/fonts/TTF/Lato-Bold.ttf>
@@ -3945,10 +3975,10 @@ opentype/public/fontawesome/FontAwesome.otf></usr/share/fonts/TTF/Lato-Bold.ttf>
 be/sourceserifpro/SourceSerifPro-Bold.otf></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on chartbook.pdf (27 pages, 513840 bytes).
+Output written on chartbook.pdf (29 pages, 855217 bytes).
 
-PDF statistics: 146 PDF objects out of 1000 (max. 8388607)
- 95 compressed objects within 1 object stream
+PDF statistics: 152 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
