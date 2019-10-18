@@ -742,7 +742,21 @@ Text here... \\
 
 \vspace{5mm}
 
-\normalsize
+\small \input{text/busdebtgdp.txt}\\
+
+\noindent \normalsize \textbf{Business Debt}\\
+\footnotesize{\textit{nonfinancial business debt security and loan liabilities as share of GDP, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={55, 60, 65, 70, 75}, enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, clip=false, height=4.4cm]
+	\rbars
+	\stdline{orange}{date}{Nonfinancial Business}{data/busdebtgdp.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
+
+\vspace{5mm}
+
 
 Industrial production\\
 
