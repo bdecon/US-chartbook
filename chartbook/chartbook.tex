@@ -716,13 +716,11 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \normalsize
 
-Durable goods new orders\\
-
-\vspace{10mm}
+Durable goods new orders
 
 \subsection*{\color{black!70} \seriffont Corporate Profits}
 
-Text here... \\
+\small The national accounts include detailed information on corporate profits, which are an important determinant in the business cycle.  \\
 
 \vspace{2mm}
 
@@ -740,23 +738,67 @@ Text here... \\
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}\\
 
-\vspace{5mm}
+\vspace{4mm}
 
-\small \input{text/busdebtgdp.txt}\\
+\small Aggregate corporate savings (corporate profits less dividends and corporate profit tax) are the result of net investment and nonbusiness saving. Investment is a source of aggregate profit because it is revenue for one party but not an expense for the other. Nonbusiness saving, which includes household, government, and rest of world saving, necessarily reduces aggregate corporate profits because it is money that did not return to businesses as revenue. \\
 
-\noindent \normalsize \textbf{Business Debt}\\
-\footnotesize{\textit{nonfinancial business debt security and loan liabilities as share of GDP, percent}}\\
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Sources of Corporate Saving}\\
+\footnotesize{\textit{contribution to corporate saving, as share of gross national income}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={55, 60, 65, 70, 75}, enlarge y limits={0.1}, 
-		xticklabel={`\short{\year}}, clip=false, height=4.4cm]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\stdline{orange}{date}{Nonfinancial Business}{data/busdebtgdp.csv}
+	\sbar{blue!70!green}{date}{HH Saving}{data/cprof2.csv}
+	\sbar{yellow}{date}{Gov Saving}{data/cprof2.csv}
+	\sbar{orange}{date}{ROW Saving}{data/cprof2.csv}
+	\sbar{green!90!blue}{date}{Investment}{data/cprof2.csv}	
+	\legend{Household Saving, Government Saving, ROW Saving, Investment};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Bureau of Economic Analysis}\\
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Business Debt}
+
+\small \input{text/busdebtgdp.txt} \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Business Debt}\\
+\footnotesize{\textit{by type, as share of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75}, ymin=2,
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{violet}{date}{Bank Loans and Mortgages}{data/busdebtgdp2.csv}	
+	\sbar{magenta!70!purple}{date}{Debt Securities}{data/busdebtgdp2.csv}
+	%\sbar{orange!80!yellow}{date}{Bank Loans}{data/busdebtgdp2.csv}	
+	\sbar{blue}{date}{Nonbank Loans}{data/busdebtgdp2.csv}	
+	\legend{Mortgages and Bank Loans, Corporate Debt Securities, Nonbank Loans};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis}\\
+
+\vspace{4mm}
+
+
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \vspace{5mm}
 
+\normalsize
 
 Industrial production\\
 
