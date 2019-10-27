@@ -186,39 +186,65 @@ def cont_subt(value, style='main'):
 
 
 def series_info(s):
-    '''Returb info about a pandas series'''
+    '''Return info about a pandas series'''
+    
+    import pandas as pd
+    
+    obs_per_year = len(s.loc['2017'])
     d = {}
-    d['date_max'] = s.idxmax()
-    d['date_min'] = s.idxmin()
-    d['val_max'] = s.max()
-    d['val_min'] = s.min()
-    d['date_latest'] = s.index[-1]
-    d['date_prev'] = s.index[-2]
-    d['date_year_ago'] = s.index[-13]
+    d['obs'] = len(s)
+    d['start'] = s.index[0]
     d['val_latest'] = s.iloc[-1]
+    d['date_latest'] = s.index[-1]
+    d['mean'] = s.mean()
+    d['std'] = s.std()
+    d['val_latest_z'] = (s.iloc[-1] - s.mean()) / s.std()
+    d['val_max'] = s.max()
+    d['date_max'] = s.idxmax()
+    d['val_min'] = s.min()
+    d['date_min'] = s.idxmin()
     d['val_prev'] = s.iloc[-2]
-    d['val_year_ago'] = s.iloc[-13]
+    d['val_prev_z'] = (s.iloc[-2] - s.mean()) / s.std()
+    d['date_prev'] = s.index[-2]
+    d['val_year_ago'] = s.iloc[-obs_per_year -1]
+    d['date_year_ago'] = s.index[-obs_per_year -1]
     if d['date_latest'] > d['date_prev']:
         dlm = s[s >= d['val_latest']].sort_index().index[-2]
-        d['last_matched'] = f'the highest level since {dlm.strftime("%B %Y")}'
-        d['days_since_match'] = (d['date_latest'] - dlm).days
+        dl_txt = 'the highest level since'
     elif d['date_latest'] < d['date_prev']:
         dlm = s[s <= d['val_latest']].sort_index().index[-2]
-        d['last_matched'] = f'the lowest level since {dlm.strftime("%B %Y")}'
-        d['days_since_match'] = (d['date_latest'] - dlm).days
+        dl_txt = 'the lowest level since'
     else:
-        d['last matched'] = 'the same level as the previous month'
-        d['days_since_match'] = 0
+        dlm = d['date_prev']
+        dl_txt = 'the same level as'
+    if obs_per_year == 4:
+        dlm_txt = dlm.to_period("Q").strftime("%Y Q%q")
+        for key in list(d.keys()):
+            if type(d[key]) == pd._libs.tslibs.timestamps.Timestamp:
+                d[key + '_ft'] = d[key].to_period("Q").strftime("%Y Q%q")
+    elif obs_per_year == 12:
+        dlm_txt = dlm.strftime("%B %Y")
+        for key in list(d.keys()):
+            if type(d[key]) == pd._libs.tslibs.timestamps.Timestamp:
+                d[key + '_ft'] = d[key].strftime("%B %Y")
+        d['last_3m'] = s.iloc[-3:].mean()
+        d['prev_3m'] = s.iloc[-6:-3].mean()
+    elif obs_per_year == 1:
+        dlm_txt = dlm.strftime("%Y")
+    else:
+        print("Observations per year error")
+        
+    d['last_matched'] = f'{dl_txt} {dlm_txt}'
+    d['days_since_match'] = (d['date_latest'] - dlm).days
     d['late90s'] = s.loc['1998': '1999'].mean()
-    d['last_3m'] = s.iloc[-3:].mean()
-    d['prev_3m'] = s.iloc[-6:-3].mean()
-    d['last_12m'] = s.iloc[-12:].mean()
-    d['prev_12m'] = s.iloc[-24:-12].mean()
-    d['change_1m'] = d['val_latest'] - d['val_prev']
-    d['change_12m'] = d['val_latest'] - d['val_year_ago']
+    d['one_year_mean'] = s.iloc[-obs_per_year:].mean()
+    d['five_year_mean'] = s.iloc[-obs_per_year*5:].mean()
+    d['three_year_mean'] = s.iloc[-obs_per_year*3:].mean()
+    d['prev_year_mean'] = s.iloc[-obs_per_year*2:-obs_per_year].mean()
+    d['change_prev'] = d['val_latest'] - d['val_prev']
+    d['change_year_ago'] = d['val_latest'] - d['val_year_ago']
     
     return d
-
 
 def bls_api(series, date_range, bls_key):
     """Collect list of series from BLS API for given dates"""

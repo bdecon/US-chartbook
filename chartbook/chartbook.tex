@@ -389,7 +389,27 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 
 [New borrowing by sector]
 
-\vspace{-1mm}
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Domestic Private Sector Financial Balance}\\
+\footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10},
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{purple!50!red}{date}{W995RC}{data/sectbal2.csv}
+	\sbar{orange!90!yellow}{date}{W996RC}{data/sectbal2.csv}
+	\legend{Private Businesses, Households, State and Local Government};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Wealth}
 
@@ -473,7 +493,11 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 
 
 
-\small The rate of household formation since 1989 can offer a high-level overview of some major demographic and economic developments. From 1989 to 1994, \\
+\small The Census Bureau estimates that the US population is 327.2 million in 2018 and reports population growth of 0.6 percent over the past year. By age, 22.9 percent are under the age of 18 and 16.1 percent age 65 or older. In 1989, the US population was 246.8 million, with 25.7 percent under 18 and 12.4 percent 65 or older.\\
+
+
+
+The rate of household formation since 1989 can offer a high-level overview of some major demographic and economic developments. From 1989 to 1994, \\
 
 This section should capture 1) population, 2) population growth, 3) aging, 4) increased education.\\
 
@@ -630,7 +654,35 @@ Welfare Income \\
 
 \subsection*{\color{black!70} \seriffont Household Balance Sheets}
 
-[Consumer Credit and Mortgages as share of DPI] \\
+\vspace{2mm}
+
+\small \input{text/hhdebt1.txt} \\
+
+\input{text/hhdebt2.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Household and Nonprofit Debt}\\
+\footnotesize{\textit{by type, as share of disposable personal income}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50, 100}, ymin=2,
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{blue!80!black}{date}{Mortgages}{data/hhdebt.csv}	
+	\sbar{magenta}{date}{Consumer Credit}{data/hhdebt.csv}
+	\sbar{orange!80!yellow}{date}{Other}{data/hhdebt.csv}	
+	\legend{Home Mortgages, Consumer Credit, Other};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis}\\
+
+\end{minipage}
+
+\newpage
+
+\normalsize
+
+[Consumer Credit as share of DPI by type] \\
 
 Housing prices \\
 
@@ -638,7 +690,7 @@ Housing permits/starts \\
 
 Geographic location of housing permits \\
 
-\end{minipage}
+
 
 \newpage
 
@@ -714,9 +766,30 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \begin{minipage}{0.76\textwidth}
 
-\normalsize
+\small Investment can also be measured from the new orders for core capital goods. The category excludes the more volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau survey of manufacturers.  \\
 
-Durable goods new orders
+\vspace{2mm}
+
+
+\noindent \normalsize \textbf{New Orders for Core Capital Goods}\\
+\footnotesize{\textit{non-defense capital goods, excluding aircraft, seasonally adjusted, monthly, in billions of USD}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={40, 50, 60, 70}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm, xmin = 1989-01-01]
+	\rbars
+	\stdline{purple!50!violet}{date}{value}{data/dgno.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \\
+
+
+\end{minipage}
+
+\newpage 
+
+\begin{minipage}{0.76\textwidth}
+
+
 
 \subsection*{\color{black!70} \seriffont Corporate Profits}
 
@@ -771,15 +844,14 @@ Durable goods new orders
 
 \vspace{2mm}
 
-\noindent \normalsize \textbf{Business Debt}\\
+\noindent \normalsize \textbf{Nonfinancial Business Debt}\\
 \footnotesize{\textit{by type, as share of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75}, ymin=2,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{violet}{date}{Bank Loans and Mortgages}{data/busdebtgdp2.csv}	
-	\sbar{magenta!70!purple}{date}{Debt Securities}{data/busdebtgdp2.csv}
-	%\sbar{orange!80!yellow}{date}{Bank Loans}{data/busdebtgdp2.csv}	
+	\sbar{magenta!70!purple}{date}{Debt Securities}{data/busdebtgdp2.csv}	
 	\sbar{blue}{date}{Nonbank Loans}{data/busdebtgdp2.csv}	
 	\legend{Mortgages and Bank Loans, Corporate Debt Securities, Nonbank Loans};
 	\end{axis}
@@ -788,7 +860,25 @@ Durable goods new orders
 
 \vspace{4mm}
 
+\small The debt of the domestic financial sector includes agency and government-sponsored enterprise (GSE) backed securities, corporate and foreign bonds, loans, and open market paper. The long-term increase in financial sector debt reflects the emergence and growth of various asset-backed securities. In addition to home mortgage-backed securities, the domestic financial sector issues debt securities based on commercial mortgages, auto loans, credit card, student debt, and even restaurant revenue. \\
 
+\input{text/findebtgdp.txt} \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Financial Sector Debt}\\
+\footnotesize{\textit{by type, as share of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50,  100, 150}, ymin=2,
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{orange!70!yellow}{date}{Financial Loans}{data/busdebtgdp2.csv}	
+	\sbar{red!60!purple}{date}{Agency MBS}{data/busdebtgdp2.csv}
+	\sbar{blue!40!violet}{date}{Other}{data/busdebtgdp2.csv}
+	\legend{Loans, Agency- and GSE-backed Securities, Other Debt Securities};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis}\\
 
 \end{minipage}
 
@@ -1062,7 +1152,23 @@ Reasons for non-participation \\
 
 Union membership \\
 
-State- and sub-state-level analysis 
+State- and sub-state-level analysis \\
+
+\subsection*{\color{black!70} \seriffont Labor Productivity}
+
+\small \input{text/lprod.txt}
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Labor Productivity Growth}\\
+\footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, 
+		xticklabel={`\short{\year}}, clip=false, height=4.0cm]
+	\rbars
+	\sbar{teal}{date}{value}{data/lprod.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} 
 
 \newpage
 
