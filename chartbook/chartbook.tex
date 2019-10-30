@@ -942,6 +942,48 @@ Federal\\
 
 \hspace{5mm} Outlays on interest as share of GDP \\
 
+\vspace{2mm}
+
+\textbf{Receipts and Expenditures}
+\vspace{1mm}
+
+\noindent \small Federal \hspace{50mm} State and Local \\
+\footnotesize{\textit{share of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={15, 20, 25}, 
+		xticklabel={`\short{\year}}, clip=false, width=6.7cm, 
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
+        minor xtick={}, enlarge y limits={lower, 0.2}, 
+        enlarge x limits={0.04},
+        xticklabels={`89, `00, `10, `19 Q2}, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\stdline{blue!90!cyan}{date}{W005RC}{data/fedgdp.csv}
+	\stdline{red}{date}{W013RC}{data/fedgdp.csv}
+	\legend{Receipts, Expenditures};
+	\end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16}, 
+		xticklabel={`\short{\year}}, clip=false, width=6.7cm, 
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
+        minor xtick={}, 
+        xticklabels={`89, `00, `10, `19 Q2}, enlarge y limits={lower, 0.2}, 
+        enlarge x limits={0.04}]
+	\rbars
+	\stdline{blue!90!cyan}{date}{W023RC}{data/slggdp.csv}
+	\stdline{red}{date}{W024RC}{data/slggdp.csv}
+	\end{axis}
+\end{tikzpicture}
+\\
+\footnotesize{Source: Bureau of Economic Analysis} \\
+
+\vspace{4mm}
+
+\normalsize
+
+
 State \\
 
 Local \\
