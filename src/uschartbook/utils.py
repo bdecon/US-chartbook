@@ -94,7 +94,8 @@ def nipa_df(nipa_table, series_list):
         index = [pd.to_datetime(i['TimePeriod']) for i in nipa_table 
                  if i['SeriesCode'] == code]
         data[code] = (pd.Series(data=obs, index=index).sort_index()
-                        .str.replace(',', '').astype(float))
+                        .str.replace(',', '').astype(float)
+                    	.drop_duplicates())
         
     return pd.DataFrame(data)
     
@@ -159,6 +160,7 @@ def cont_subt(value, style='main'):
     end: "contributed x.xx percentage points"
     
     '''
+    text = 'ERROR'
     abs_val = abs(value)
     if value > 0:
         if style == 'main':
