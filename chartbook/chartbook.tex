@@ -690,6 +690,20 @@ Housing permits/starts \\
 
 Geographic location of housing permits \\
 
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Personal Saving Rate}\\
+\footnotesize{\textit{personal saving as a share of disposable personal income}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 8, 12}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=4.4cm]
+	\rbars
+	\stdline{blue}{date}{VALUE}{data/psavert.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \\
+
+\vspace{2mm}
 
 
 \newpage
@@ -917,8 +931,8 @@ Overview\\
 \vspace{2mm}
 
 \subsection*{\color{black!70} \seriffont Government Consumption and Investment}
-\small Government consumption and fixed investment provide one way to measure how much public sector activities are influencing the economy. The contribution to real GDP growth from the public sector can be broken down by federal defense (see\cbox{blue!60!black}), federal non-defense (see\cbox{green!85!black}), and state and local (see\cbox{purple!70!magenta}).  
-\vspace{5mm}
+\small \input{text/gov.txt}  \\
+\vspace{2mm}
 
 \noindent \normalsize \textbf{Government Consumption and Investment}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
@@ -936,19 +950,25 @@ Overview\\
 \footnotesize{Source: Bureau of Economic Analysis}
 \vspace{10mm}
 
-\normalsize
 
-Federal\\
+\normalsize Table here.
 
-\hspace{5mm} Outlays on interest as share of GDP \\
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small Text here. \\
 
 \vspace{2mm}
 
-\textbf{Receipts and Expenditures}
-\vspace{1mm}
+\textbf{Receipts and Expenditures as Share of GDP}
+\vspace{3mm}
 
-\noindent \small Federal \hspace{50mm} State and Local \\
-\footnotesize{\textit{share of GDP}}\\
+\noindent \normalsize \hspace{20mm} Federal \hspace{44mm} State and Local \footnotesize 
+\vspace{2mm}
+
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={15, 20, 25}, 
 		xticklabel={`\short{\year}}, clip=false, width=6.7cm, 
@@ -982,7 +1002,9 @@ Federal\\
 \vspace{4mm}
 
 \normalsize
+Outlays on interest as share of GDP \\
 
+Federal\\
 
 State \\
 
@@ -1189,7 +1211,23 @@ Quits \\
 
 Openings \\
 
-Jobless claims \\
+\vspace{2mm}
+
+\noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
+\footnotesize{\textit{initial claims, seasonally adjusted, three-month moving average highlighted}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 400, 600}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+	\rbars
+	\stdline{cyan!30}{date}{weekly}{data/icsa.csv}
+	\stdline{blue!60!black}{date}{3M}{data/icsa.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \\
+
+\vspace{2mm}
+
+\normalsize
 
 Flows \\
 

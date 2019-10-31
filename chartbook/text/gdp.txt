@@ -1,11 +1,11 @@
 \begin{minipage}{0.61\textwidth}
-\small This analysis of the United States economy begins with the most popular measure of economic activity, Gross Domestic Product (GDP). According to the Bureau of Economic Analysis, GDP--the seasonally-adjusted annualized value of goods and services produced in the US--was \$21,340 billion in the second quarter of 2019, compared to an inflation-adjusted equivalent of \$10,210 billion in the first quarter of 1989.\\
+\small This analysis of the United States economy begins with the most popular measure of economic activity, Gross Domestic Product (GDP). According to the Bureau of Economic Analysis, GDP--the seasonally-adjusted annualized value of goods and services produced in the US--was \$21,525 billion in the third quarter of 2019, compared to an inflation-adjusted equivalent of \$10,250 billion in the first quarter of 1989.\\
 
-The US population is growing by about sixth-tenths of a percent per year. GDP per capita (see {\color{blue}\textbf{---}} ), adjusted for inflation to 2019 Q2 dollars, has increased to \$64,837 in 2019 Q2 from \$41,429 in 1989 Q1. \\
+The US population is growing by about sixth-tenths of a percent per year. GDP per capita (see {\color{blue}\textbf{---}} ), adjusted for inflation to 2019 Q3 dollars, has increased to \$65,291 in 2019 Q3 from \$41,591 in 1989 Q1. \\
 \end{minipage}\hfill
 \begin{minipage}{0.34\textwidth}
 \noindent \normalsize \textbf{GDP per capita}\\
-\footnotesize{\textit{in 2019 Q2 dollars}}\\ 
+\footnotesize{\textit{in 2019 Q3 dollars}}\\ 
 \noindent \begin{tikzpicture}
     \begin{axis}[\dateaxisticks clip=false, height=4.2cm, width=5.8cm,
             ytick={40000,50000,60000}, yticklabels={40, 50, \$60k},
@@ -14,8 +14,8 @@ The US population is growing by about sixth-tenths of a percent per year. GDP pe
         xticklabels={`89, `00, `10, `19 Q2}, enlarge y limits={lower, 0.3}, 
         enlarge x limits={0.05}]
     \stdline{blue}{date}{value}{data/gdppc.csv}
-    \node[label={90:{\$64,837}}, circle, blue, fill, inner sep=1.5pt] at 
-        (axis cs:2019-04-01,64837) {};
+    \node[label={90:{\$65,291}}, circle, blue, fill, inner sep=1.5pt] at 
+        (axis cs:2019-07-01,65291) {};
     \end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \\
