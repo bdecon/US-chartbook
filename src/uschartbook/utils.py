@@ -89,13 +89,10 @@ def nipa_df(nipa_table, series_list):
     import pandas as pd
     data = {}
     for code in series_list:
-        obs = [i['DataValue'] for i in nipa_table
-               if i['SeriesCode'] == code]
-        index = [pd.to_datetime(i['TimePeriod']) for i in nipa_table 
-                 if i['SeriesCode'] == code]
-        data[code] = (pd.Series(data=obs, index=index).sort_index()
-                        .str.replace(',', '').astype(float)
-                    	.drop_duplicates())
+    	lineno = [i['LineNumber'] for i in nipa_table if (i['SeriesCode'] == code) & (i['TimePeriod'] == '2016Q4')]
+    	obs = [i['DataValue'] for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
+    	index = [pd.to_datetime(i['TimePeriod']) for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
+    	data[code] = (pd.Series(data=obs, index=index).sort_index().str.replace(',', '').astype(float))
         
     return pd.DataFrame(data)
     
