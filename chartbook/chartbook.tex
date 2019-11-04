@@ -446,7 +446,7 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, -2, 0, 2, 5},
-		xticklabel={\year}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{yellow!50!orange}{date}{A008RY}{data/inv.csv}
@@ -651,6 +651,37 @@ Welfare Income \\
 
 [Top quintile consumer spending share of gross pre-tax income and bottom 80 percent share] \\
 
+\vspace{4mm}
+
+\small Changes to consumer spending (see {\color{black}\textbf{---}}) are largely the result of changes to income (see\cbox{yellow!50!orange}) and changes to the rate at which income is saved (see\cbox{magenta!90!white}). Changes to other outlays (see\cbox{blue!60!white}) reflect changes in interest payments, fines and fees, and charitable giving. \\
+
+\input{text/pcedecomp.txt}\\
+
+
+\vspace{4mm} 
+
+\noindent \normalsize \textbf{Contributions to Consumer Spending}\\
+\footnotesize{\textit{percentage point contribution to real per capita PCE growth, one-year moving average}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6},
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{yellow!50!orange}{date}{A067RC}{data/pcedecomp.csv}
+	\sbar{magenta!90!white}{date}{SAVING}{data/pcedecomp.csv}
+	\sbar{blue!60!white}{date}{OTHER}{data/pcedecomp.csv}
+	\stdline{black}{date}{DPCERC}{data/pcedecomp.csv}
+	\legend{Income, Saving, Other Outlays, Total};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}
+
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Household Balance Sheets}
 
@@ -680,6 +711,8 @@ Welfare Income \\
 
 \newpage
 
+\begin{minipage}{0.76\textwidth}
+
 \normalsize
 
 [Consumer Credit as share of DPI by type] \\
@@ -703,8 +736,8 @@ Geographic location of housing permits \\
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \\
 
-\vspace{2mm}
 
+\end{minipage}
 
 \newpage
 
@@ -736,11 +769,11 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \section*{\color{darkgray}\LARGE \seriffont Businesses}
 \small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the loosely defined business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses.
 
-\subsection*{\color{black!70} \seriffont Capital Investment}
-\small Investments that make workers more productive, by definition, allow businesses to produce goods and services using less effort from people. Business gross investments are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
+\subsection*{\color{black!70} \seriffont Fixed Investment}
+\small When businesses purchase items with a useful life of more than one year it is considered and investment in fixed assets, which is an exchange of assets rather than an expense. Investments in fixed assets that make workers more productive, by definition, allow businesses to produce goods and services using less effort from people. Business gross investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
 \vspace{5mm}
 
-\noindent \normalsize \textbf{Business Investment}\\
+\noindent \normalsize \textbf{Business Fixed Investment}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
@@ -1055,7 +1088,7 @@ Balance sheets \\
 \begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Trade}
-\small The trade balance (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment in GDP calculations. As the US runs a persistent trade deficit, trade will generally subtract from GDP growth.\\
+\small The trade balance (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment in GDP calculations. As the US runs a persistent trade deficit, trade will generally subtract from GDP growth. In the income approach, the expanded trade deficit reduced nominal compensation of employees (extensive margin through outsourcing, intensive margin through increased foreign competition for labor) and reduced prices. \\
 
  \input{text/trade.txt} 
 \vspace{5mm}
@@ -1078,7 +1111,7 @@ Balance sheets \\
 
 \vspace{8mm}
 
-\small Goods and services imports (see {\color{green!60!teal!80!black}\textbf{---}}) were equivalent to 14.8 percent of GDP in the second quarter of 2019, while exports of goods and services (see {\color{blue!90!cyan}\textbf{---}}) were equivalent to 11.7 percent of GDP.\\
+\small \input{text/exim.txt}\\
 
 \vspace{2mm}
 
@@ -1130,11 +1163,13 @@ International Investment Position \\
 
 \small Labor is the primary source of income for US households and essential to the production of goods and services. In labor markets, unlike other markets, wages (the price of labor) tend not to be cut in response to a decrease in demand; businesses instead employ fewer workers and/or cut hours. \\
 
+Gross labor income (compensation of employees in the national accounts), which captures both employment and wages, \input{text/gli.txt} \\
+
 \noindent \normalsize \textbf{Gross Labor Income Growth}\\
 \footnotesize{\textit{percentage point contribution to gross labor income growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10},
-		xticklabel={`\short{\year}}, clip=false, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
+		xticklabel={`\short{\year}}, clip=false,  yticklabel style={text width=1.5em},
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{green!80!lime!90!white}{date}{wage}{data/gli.csv}
@@ -1146,7 +1181,7 @@ International Investment Position \\
 
 
 
-\small Gross labor income (compensation of employees in the national accounts) which captures both employment and wages, has ...
+\small ...
 
 \end{minipage}
 
