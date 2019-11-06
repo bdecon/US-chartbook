@@ -707,6 +707,24 @@ Welfare Income \\
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve and Bureau of Economic Analysis}\\
 
+\vspace{8mm}
+
+\small The return on total household assets has fallen, as measured by disposable income as a share of household assets.  \\ 
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Return on Household Assets}\\
+\footnotesize{\textit{disposable personal income as share of household and nonprofit total assets, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=4.4cm]
+	\rbars
+	\stdline{red}{date}{DPIsh}{data/dpish.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \\
+
+
 \end{minipage}
 
 \newpage
@@ -1088,7 +1106,7 @@ Balance sheets \\
 \begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Trade}
-\small The trade balance (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment in GDP calculations. As the US runs a persistent trade deficit, trade will generally subtract from GDP growth. In the income approach, the expanded trade deficit reduced nominal compensation of employees (extensive margin through outsourcing, intensive margin through increased foreign competition for labor) and reduced prices. \\
+\small The trade balance (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment in GDP calculations. As the US runs a persistent trade deficit, trade will generally subtract from GDP growth. In the income approach, the expanded trade deficit reduced nominal compensation of employees (extensive margin through outsourcing, intensive margin through lower wages from labor market slack) and reduced prices. \\
 
  \input{text/trade.txt} 
 \vspace{5mm}
@@ -1116,15 +1134,15 @@ Balance sheets \\
 \vspace{2mm}
 
 
-\noindent \normalsize \textbf{Imports and Exports}\\
-\footnotesize{\textit{includes goods and services, share of GDP}}\\
+\noindent \normalsize \textbf{Imports and Exports, Nonpetroleum}\\
+\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 15},
-		xticklabel={`\short{\year}}, clip=false, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 12, 14}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\stdline{blue!90!cyan}{date}{B020RC}{data/eximgdp.csv}
-	\stdline{green!60!teal!80!black}{date}{B021RC}{data/eximgdp.csv}
+	\stdline{blue!90!cyan}{date}{EX}{data/eximgdp.csv}
+	\stdline{green!60!teal!80!black}{date}{IM}{data/eximgdp.csv}
 	\legend{Exports, Imports};
 	\end{axis}
 \end{tikzpicture}\\
