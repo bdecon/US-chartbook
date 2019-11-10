@@ -1,0 +1,39 @@
+\noindent \normalsize \hspace{5mm} Total Change, \small 2014 Q2--`19 Q2 \normalsize \hspace{18mm} Consumer Debt Trends \footnotesize 
+\vspace{1mm}
+
+\hspace{2.1cm} \begin{tikzpicture}[trim axis left]
+	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.7cm}{1.5ex}
+		width=4.6cm, bar width=2.2ex, y=4.0ex, 
+		enlarge y limits={abs=0.35cm}, 
+		enlarge x limits=0.33, \bbar{x}{0},
+        x tick style={draw=none},
+        ytick={1,2,3,4,5,6},
+		yticklabels={Mortgage,Total,HE Revolving,Credit Card,Student Loan,Auto Loan},
+		yticklabel style={font=\small, xshift=-4pt},
+		every axis plot/.append style={bar shift=0pt, fill},
+		nodes near coords style={/pgf/number format/assume math mode}]
+		\addplot[gray] coordinates {(-4.27, 1)};
+		\addplot[gray] coordinates {(-4.0, 2)};
+		\addplot[gray] coordinates {(-1.52, 3)};
+		\addplot[red] coordinates {(0.21, 4)};
+		\addplot[green!80!blue] coordinates {(0.5, 5)};
+		\addplot[blue!70!cyan] coordinates {(1.0, 6)};
+	\end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={2, 4, 6, 8, 10}, 
+		clip=false, width=6.7cm, 
+		xtick={{1999-01-01}, {2005-01-01}, {2010-01-01}, {2015-01-01}, {2019-04-01}},
+        minor xtick={}, 
+        xticklabels={`99, `05, `10, `15, `19 Q2}, enlarge y limits={lower, 0.2}, 
+        enlarge x limits={0.04}]
+	\rebars
+	\stdline{blue!70!cyan}{date}{Auto Loan}{data/hhcdebt.csv}
+	\stdline{green!80!blue}{date}{Student Loan}{data/hhcdebt.csv}
+	\stdline{red}{date}{Credit Card}{data/hhcdebt.csv}
+	\stdnode{4.2cm}{1.85cm}{\scriptsize \color{blue!70!cyan}{auto}}
+	\stdnode{1.2cm}{0.9cm}{\scriptsize \color{green!80!blue}{student}}
+	\stdnode{3.9cm}{0.82cm}{\scriptsize \color{red}{credit card}}
+	\end{axis}
+\end{tikzpicture}
