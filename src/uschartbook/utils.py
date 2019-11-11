@@ -134,6 +134,14 @@ def growth_contrib(df, srs):
     dft = dft.div(dft[srs], axis=0)
     c = dft.multiply((((df[srs].pct_change() + 1) ** 4) - 1) * 100, axis=0)
     return c.round(2)
+    
+    
+def growth_contrib_ann(df, srs):
+    '''Calculate df column contribution to srs growth'''
+    dft = df.diff(4)
+    dft = dft.div(dft[srs], axis=0)
+    c = dft.multiply(df[srs].pct_change(4) * 100, axis=0)
+    return c.round(2)
 
     
 def write_txt(filename, filetext):

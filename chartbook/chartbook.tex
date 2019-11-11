@@ -62,7 +62,7 @@
 	    axis y line=left, y axis line style={opacity=0},
 	    ymajorgrids, grid style={very thin, black!10},	        
 	    every node near coord/.style={/pgf/number format/fixed,
-				font=\scriptsize, style={black!70}},
+	    	font=\scriptsize, style={black!70}},
 	    legend style={legend columns=-1, draw=none, fill=none,
 	    	/tikz/every even column/.append style={column sep=0.3cm}}}
 	
@@ -314,7 +314,7 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 \noindent \normalsize \textbf{Real GDP Growth by Inputs}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
@@ -399,17 +399,14 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 	\legend{Private, Government, Rest of World};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \\
 
-\vspace{4mm}
+\vspace{2mm}
 
-\small \input{text/sectbal.txt}
+\small \input{text/sectbal.txt} \\
 
-\vspace{3mm}
 
-[New borrowing by sector]
-
-\vspace{5mm}
+\vspace{2mm}
 
 \noindent \normalsize \textbf{Domestic Private Sector Financial Balance}\\
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
@@ -425,6 +422,31 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
 
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Real Debt Growth}\\
+\footnotesize{\textit{contribution to one-year percent change in liabilities, adjusted by PCE price deflator}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6, 8}, xmin = 1989-01-01,
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{blue!70}{date}{Federal Government}{data/liabgr.csv}
+	\sbar{cyan!70}{date}{State and Local Government}{data/liabgr.csv}
+	\sbar{orange!70}{date}{Household and Nonprofit}{data/liabgr.csv}
+	\sbar{lime!70}{date}{Corporate Business}{data/liabgr.csv}
+	\sbar{green!80!black}{date}{Non-corporate Business}{data/liabgr.csv}
+	\legend{Fed. Gov.,State/Loc. Gov., Households, Corp bus., Non-corp. bus.};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}
+			
 \end{minipage}
 
 \newpage
@@ -527,7 +549,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \noindent \normalsize \textbf{Household Formation by Type}\\
 \footnotesize{\textit{one-year moving average of annual growth rates}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
@@ -705,13 +727,15 @@ Welfare Income \\
 
 \subsection*{\color{black!70} \seriffont Household Balance Sheets}
 
-\vspace{2mm}
+\subsubsection*{\color{black!70} \seriffont Liabilities}
+
+\vspace{1mm}
 
 \small \input{text/hhdebt1.txt} \\
 
 \input{text/hhdebt2.txt}\\
 
-\vspace{2mm}
+\vspace{1mm}
 
 \noindent \normalsize \textbf{Household and Nonprofit Debt}\\
 \footnotesize{\textit{by type, as share of disposable personal income}}\\
@@ -719,7 +743,7 @@ Welfare Income \\
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50, 100}, ymin=2,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{blue!80!black}{date}{Mortgages}{data/hhdebt.csv}	
+	\sbar{blue!60!violet}{date}{Mortgages}{data/hhdebt.csv}	
 	\sbar{magenta}{date}{Consumer Credit}{data/hhdebt.csv}
 	\sbar{orange!80!yellow}{date}{Other}{data/hhdebt.csv}	
 	\legend{Home Mortgages, Consumer Credit, Other};
@@ -727,7 +751,52 @@ Welfare Income \\
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve and Bureau of Economic Analysis}\\
 
-\vspace{8mm}
+\vspace{5mm}
+
+\small \input{text/hhcdebt3.txt} \\
+
+\vspace{1mm}
+
+
+\normalsize \textbf{Mortgages and Consumer Credit}
+
+\footnotesize{\textit{share of disposable personal income}} \\
+
+\input{text/hhcdebt2.txt}
+
+\vspace{1mm}
+
+\footnotesize{Source: Federal Reserve Bank of New York and Bureau of Economic Analysis}
+
+
+\end{minipage}
+
+\newpage
+
+
+\begin{minipage}{0.76\textwidth}
+
+\small Trends in household debt over the past three years, measured in both the US Financial Accounts and the New York Fed Consumer Credit Panel, show consumer credit growing in line with income while mortgage debt falls relative to income. \\
+
+\vspace{4mm}
+
+\noindent \normalsize \textbf{Household Debt Outstanding}\\
+\footnotesize{\textit{trillions of US Dollars \hspace{46mm} share of disposable personal income}\\ \vspace{4mm}
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{36mm} R{11.8mm} R{11.8mm}  R{8.0mm} R{7.4mm} R{7.4mm} 
+		   R{7.4mm} R{7.4mm}}
+			 \input{data/hhcdebt.tex}
+		\end{tabular}
+		}	\\}
+		
+\vspace{-2mm}
+\footnotesize{Source: Federal Reserve, Federal Reserve Bank of New York, Bureau of Economic Analysis}\\
+
+\vspace{6mm}
+
+
+\subsubsection*{\color{black!70} \seriffont Assets}
 
 \small The return on total household assets has fallen, as measured by disposable income as a share of household assets.  \\ 
 
@@ -744,33 +813,6 @@ Welfare Income \\
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \\
 
-
-\end{minipage}
-
-\newpage
-
-
-\begin{minipage}{0.76\textwidth}
-
-\vspace{2mm}
-
-\small Text here....\\
-
-\vspace{4mm}
-
-
-\normalsize \textbf{Mortgages and Consumer Credit}
-
-\small \hspace{2mm} \textit{share of disposable personal income} \\
-
-\input{text/hhcdebt2.txt}
-
-\vspace{2mm}
-
-\footnotesize{Source: Federal Reserve Bank of New York} \\
-
-\vspace{4mm}
-
 \end{minipage}
 
 \newpage
@@ -779,9 +821,65 @@ Welfare Income \\
 
 \normalsize
 
-[Consumer Credit as share of DPI by type] \\
-
 Housing prices \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Owner-Occupied Housing Wealth} \hspace{10mm} \small \cbox{lime!70!green!80!white} Unit Price \hspace{3mm} \cbox{blue!50!violet} Inventory\\
+\footnotesize{\textit{contributions to one-year percent change in regional owner-occupied housing wealth}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
+		ymin = -15, ymax=25,
+		xmin=2001-07-01, width=6.7cm, yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}]
+	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+	\sbar{blue!50!violet}{date}{Midwest_Q}{data/val_ooh.csv}	
+	\sbar{lime!70!green!80!white}{date}{Midwest_P}{data/val_ooh.csv}
+	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Midwest};
+	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
+		ymin = -15, ymax=25,
+		xmin=2001-07-01, width=6.7cm, yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}]
+	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+	\sbar{blue!50!violet}{date}{Northeast_Q}{data/val_ooh.csv}	
+	\sbar{lime!70!green!80!white}{date}{Northeast_P}{data/val_ooh.csv}	
+	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Northeast};
+	\end{axis}
+\end{tikzpicture}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
+		ymin = -15, ymax=25,
+		xmin=2001-07-01, width=6.7cm, yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}]
+	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+	\sbar{blue!50!violet}{date}{West_Q}{data/val_ooh.csv}	
+	\sbar{lime!70!green!80!white}{date}{West_P}{data/val_ooh.csv}
+	\node[right] at (axis cs:2001-05-01,23) {\footnotesize West};
+	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
+		ymin = -15, ymax=25,
+		xmin=2001-07-01, width=6.7cm, yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}]
+	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+	\sbar{blue!50!violet}{date}{South_Q}{data/val_ooh.csv}	
+	\sbar{lime!70!green!80!white}{date}{South_P}{data/val_ooh.csv}	
+	\node[right] at (axis cs:2001-05-01,23) {\footnotesize South};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve and Census Bureau}\\
+
+\vspace{6mm}
+
+\normalsize
 
 Housing permits/starts \\
 
@@ -1407,7 +1505,7 @@ Equity markets \\
 	\stdline{green!80!blue}{date}{Return}{data/sp500rr.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Shiller} \\
+\footnotesize{Source: Shiller, Author's Calculations} \\
 
 \vspace{2mm}
 
