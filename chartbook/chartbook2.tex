@@ -39,6 +39,11 @@
 	\newcommand{\cbox}[1]{
 		\begin{tikzpicture} \draw [#1, line width=6](0,0) -- (.2,0);  
 		\end{tikzpicture}}
+		
+		
+	\newcommand{\colorline}[1]{
+	\begin{tikzpicture} \draw [#1, line width=1](0,0) -- (.6,0);  
+		\end{tikzpicture}}
 	
 	% Last two digits of year
 	\makeatletter
@@ -148,6 +153,13 @@
 \vspace{2mm}
 
 \small Text here....\\
+
+
+The text goes here and somewhere in the center I will add a line for the legend. \\
+
+
+\begin{tikzpicture} \draw [blue, line width=1](0,0) -- (.6,0);  
+		\end{tikzpicture}
 
 \vspace{4mm}
 

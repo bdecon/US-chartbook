@@ -39,6 +39,9 @@
 	\newcommand{\cbox}[1]{
 		\begin{tikzpicture} \draw [#1, line width=6](0,0) -- (.2,0);  
 		\end{tikzpicture}}
+	\newcommand{\colorline}[2]{
+		\begin{tikzpicture} \draw [#1, line width=1.8](0,0.2) -- +(0.6,0) node[right, black!80] {#2}; 
+		\end{tikzpicture}}
 	
 	% Last two digits of year
 	\makeatletter
@@ -776,7 +779,9 @@ Welfare Income \\
 
 \begin{minipage}{0.76\textwidth}
 
-\small Trends in household debt over the past three years, measured in both the US Financial Accounts and the New York Fed Consumer Credit Panel, show consumer credit growing in line with income while mortgage debt falls relative to income. \\
+\small Trends in household debt over the past three years, measured in both the US Financial Accounts and the New York Fed Consumer Credit Panel, show consumer credit growing in line with income while mortgage debt falls relative to income. The two series below, Mortgage Debt Total and Consumer Credit, are comparable between both data sources. Discrepancies arise because the Financial Accounts include debt of nonprofit institutions and the Consumer Credit Panel does not include persons without a social security number.\\
+
+Paragraph here about trends in auto loans, credit card debt, and student loans.
 
 \vspace{4mm}
 
@@ -822,6 +827,10 @@ Welfare Income \\
 \normalsize
 
 Housing prices \\
+
+\vspace{2mm}
+
+\small Some data here on the US total and regional change in the value of residential homes during and since the housing bubble. \\
 
 \vspace{2mm}
 
@@ -1166,7 +1175,7 @@ Overview\\
 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={15, 20, 25}, 
-		xticklabel={`\short{\year}}, clip=false, width=6.7cm, 
+		clip=false, width=6.7cm, 
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
         minor xtick={}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04},
@@ -1181,7 +1190,7 @@ Overview\\
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16}, 
-		xticklabel={`\short{\year}}, clip=false, width=6.7cm, 
+		clip=false, width=6.7cm, 
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
         minor xtick={}, 
         xticklabels={`89, `00, `10, `19 Q2}, enlarge y limits={lower, 0.2}, 
@@ -1426,6 +1435,52 @@ Wage growth: \\
 
 \begin{minipage}{0.76\textwidth}
 
+\subsection*{\color{black!70} \seriffont Wage Growth}
+
+\small Wage text goes here. Explain two sources and provide some basic numbers. \\
+
+Wage data for low-wage earners is useful for understanding the extent to which the labor market is able to cover living expenses. \\
+
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Weekly Earnings, First Decile} 
+
+\vspace{-2mm}
+\footnotesize{\textit{full-time, wage and salary earners, age 16+}} \hspace{10mm} \small 	
+	\colorline{lime!65!green}{ \ bd CPS} \hspace{3mm} \colorline{blue!65!black}{ \ BLS}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 300, 400, 500}, enlarge y limits={0.15},
+		clip=false, width=6.5cm,
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
+        minor xtick={}, xticklabels={`89, `00, `10, `19 Q3}]
+	\rbars
+	\stdline{lime!65!green}{date}{All}{data/uwe_bd.csv}
+	\stdline{blue!65!black}{date}{value}{data/uwe_bls.csv}
+	\node[right] at (axis cs:1989-07-01,485) {\footnotesize Levels, USD};
+	\end{axis}
+\end{tikzpicture} \hfill \hspace{3mm}
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, enlarge y limits={0.15},
+		clip=false, width=6.5cm, xmin=1989-12-15,
+		xtick={{1990-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
+        minor xtick={}, xticklabels={`90, `00, `10, `19 Q3}]
+	\rbars
+	\stdline{lime!65!green}{date}{All}{data/uwe_bd_gr.csv}
+	\stdline{blue!65!black}{date}{value}{data/uwe_bls_gr.csv}
+	\node[right] at (axis cs:1990-01-01,9.0) {\footnotesize One-year growth, percent};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics and Author's Calculations} \\
+
+\vspace{2mm}
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
 \normalsize
 
 Quits \\ 
@@ -1435,7 +1490,7 @@ Openings \\
 \vspace{2mm}
 
 \noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
-\footnotesize{\textit{initial claims, seasonally adjusted, three-month moving average highlighted}}\\
+\footnotesize{\textit{initial claims, in thousands, seasonally adjusted, three-month moving average highlighted}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 400, 600}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
