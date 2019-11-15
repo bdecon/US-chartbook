@@ -1,42 +1,46 @@
-This is LuaTeX, Version 1.10.0 (TeX Live 2019/Arch Linux)  (format=lualatex 2019.9.17)  12 NOV 2019 09:12
+This is LuaTeX, Version 1.10.0 (TeX Live 2019/Arch Linux)  (format=lualatex 2019.11.14)  14 NOV 2019 21:51
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
-LaTeX2e <2018-12-01>
-Lua module: luaotfload-main 2019-02-14 2.96 luaotfload entry point
-Lua module: luaotfload-init 2019-02-14 2.96 luaotfload submodule / initializatio
+LaTeX2e <2019-10-01> patch level 1
+Lua module: luaotfload-main 2019-09-13 3.00 luaotfload entry point
+Lua module: luaotfload-init 2019-09-13 3.00 luaotfload submodule / initializatio
 n
-Lua module: lualibs 2019-02-14 2.64 ConTeXt Lua standard libraries.
-Lua module: lualibs-extended 2019-02-14 2.64 ConTeXt Lua libraries -- extended c
+Lua module: lualibs 2019-08-11 2.67 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2019-08-11 2.67 ConTeXt Lua libraries -- extended c
 ollection.
-Lua module: luaotfload-log 2019-02-14 2.96 luaotfload submodule / logging
-Lua module: luaotfload-parsers 2019-02-14 2.96 luaotfload submodule / filelist
-Lua module: luaotfload-configuration 2019-02-14 2.96 luaotfload submodule / conf
+Lua module: luaotfload-log 2019-09-13 3.00 luaotfload submodule / logging
+Lua module: luaotfload-parsers 2019-09-13 3.00 luaotfload submodule / filelist
+Lua module: luaotfload-configuration 2019-09-13 3.00 luaotfload submodule / conf
 ig file reader
 luaotfload | conf : Root cache directory is /home/brian/.texlive/texmf-var/luate
 x-cache/generic/names.
-luaotfload | init : Loading fontloader “fontloader-2019-02-14.lua” from kpse
--resolved path “/usr/share/texmf-dist/tex/luatex/luaotfload/fontloader-2019-02
--14.lua”.
-Lua-only attribute luaotfload@state = 1
-Lua-only attribute luaotfload@noligature = 2
-Lua-only attribute luaotfload@syllabe = 3
-luaotfload | init : Context OpenType loader version “3.107”
+luaotfload | init : Loading fontloader “fontloader-2019-08-11.lua” from kpse
+-resolved path “/usr/share/texmf-dist/tex/luatex/luaotfload/fontloader-2019-08
+-11.lua”.
+Lua-only attribute luaotfload@state = 2
+Lua-only attribute luaotfload@noligature = 3
+Lua-only attribute luaotfload@syllabe = 4
+luaotfload | init : Context OpenType loader version “3.109”
 Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
-Lua module: luaotfload-loaders 2019-02-14 2.96 luaotfload submodule / callback h
+Lua module: luaotfload-loaders 2019-09-13 3.00 luaotfload submodule / callback h
 andling
 Inserting `luaotfload.define_font' at position 1 in `define_font'.
-Lua module: luaotfload-database 2019-02-14 2.96 luaotfload submodule / database
-Lua module: luaotfload-colors 2019-02-14 2.96 luaotfload submodule / color
-Lua-only attribute luaotfload_color_attribute = 4
-Lua module: luaotfload-resolvers 2019-02-14 2.96 luaotfload submodule / resolver
+Lua module: luaotfload-database 2019-09-13 3.00 luaotfload submodule / database
+Lua module: luaotfload-unicode 2019-09-13 3.00 luaotfload submodule / Unicode he
+lpers
+Lua module: luaotfload-colors 2019-09-13 3.00 luaotfload submodule / color
+Lua-only attribute luaotfload_color_attribute = 5
+Lua module: luaotfload-resolvers 2019-09-13 3.00 luaotfload submodule / resolver
 s
 luaotfload | conf : Root cache directory is /home/brian/.texlive/texmf-var/luate
 x-cache/generic/names.
-Lua module: luaotfload-features 2019-02-14 2.96 luaotfload submodule / features
-Lua module: luaotfload-letterspace 2019-02-14 2.96 luaotfload submodule / color
-Lua module: luaotfload-auxiliary 2019-02-14 2.96 luaotfload submodule / auxiliar
+Lua module: luaotfload-features 2019-09-13 3.00 luaotfload submodule / features
+Lua module: luaotfload-letterspace 2019-09-13 3.00 luaotfload submodule / color
+Lua module: luaotfload-embolden 2019-09-13 3.00 luaotfload submodule / color
+Lua module: luaotfload-notdef 2019-09-13 3.00 luaotfload submodule / color
+Lua module: luaotfload-auxiliary 2019-09-13 3.00 luaotfload submodule / auxiliar
 y functions
 Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
 font'.
@@ -46,13 +50,16 @@ Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
 t_unsafe'.
 Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
-Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
+Inserting `luaotfload.aux.set_xheight' at position 4 in `luaotfload.patch_font'.
+Lua module: luaotfload-multiscript 2019-09-13 3.00 luaotfload submodule / multis
+cript
+Inserting `luaotfload.rewrite_fontname' at position 5 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.038 seconds
+luaotfload | main : initialization completed in 0.077 seconds
 (/usr/share/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
+Document Class: report 2019/08/27 v1.4j Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+File: size10.clo 2019/08/27 v1.4j Standard LaTeX file (size option)
 luaotfload | db : Font names database loaded from /home/brian/.texlive/texmf-var
 /luatex-cache/generic/names/luaotfload-names.luc)
 \c@part=\count80
@@ -99,28 +106,28 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@dimlist=\toks15
 )
 (/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
-Package: microtype 2019/02/28 v2.7b Micro-typographical refinements (RS)
+Package: microtype 2019/10/10 v2.7c Micro-typographical refinements (RS)
 \MT@toks=\toks16
 \MT@count=\count92
 LaTeX Info: Redefining \textls on input line 790.
 \MT@outer@kern=\dimen111
-LaTeX Info: Redefining \textmicrotypecontext on input line 1336.
+LaTeX Info: Redefining \textmicrotypecontext on input line 1347.
 \MT@listname@count=\count93
 
 (/usr/share/texmf-dist/tex/latex/microtype/microtype-luatex.def
-File: microtype-luatex.def 2019/02/28 v2.7b Definitions specific to luatex (RS)
-
-Module microtype Warning: overwriting function `keepligature' on input line 59
+File: microtype-luatex.def 2019/10/10 v2.7c Definitions specific to luatex (RS)
+Module microtype Info: overwriting function `keepligature' on input line 59
 LaTeX Info: Redefining \lsstyle on input line 681.
 LaTeX Info: Redefining \lslig on input line 681.
 \MT@outer@space=\skip43
 )
 Package microtype Info: Loading configuration file microtype.cfg.
- (/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
-File: microtype.cfg 2019/02/28 v2.7b microtype main configuration file (RS)
+
+(/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2019/10/10 v2.7c microtype main configuration file (RS)
 ))
 (/usr/share/texmf-dist/tex/latex/lato/lato.sty
-Package: lato 2017/10/22 Style file for Lato.
+Package: lato 2019/06/20 Style file for Lato.
 
 (/usr/share/texmf-dist/tex/latex/fontaxes/fontaxes.sty
 Package: fontaxes 2014/03/23 v1.0d Font selection axes
@@ -147,23 +154,24 @@ File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2019-04-06 L3 programming layer (loader) 
+Package: expl3 2019-10-28 L3 programming layer (loader) 
 
 (/usr/share/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-Package: expl3 2019-04-06 L3 programming layer (code)
-\ucharcat@table=\catcodetable5
+Package: expl3 2019-10-28 L3 programming layer (code)
 \c_max_int=\count95
 \l_tmpa_int=\count96
 \l_tmpb_int=\count97
 \g_tmpa_int=\count98
 \g_tmpb_int=\count99
-\g__kernel_prg_map_int=\count100
-\c__ior_term_ior=\count101
-\c_log_iow=\count102
-\l_iow_line_count_int=\count103
-\l__iow_line_target_int=\count104
-\l__iow_one_indent_int=\count105
-\l__iow_indent_int=\count106
+\l__seq_internal_a_int=\count100
+\l__seq_internal_b_int=\count101
+\g__kernel_prg_map_int=\count102
+\c__ior_term_noprompt_ior=\count103
+\c_log_iow=\count104
+\l_iow_line_count_int=\count105
+\l__iow_line_target_int=\count106
+\l__iow_one_indent_int=\count107
+\l__iow_indent_int=\count108
 \c_zero_dim=\dimen112
 \c_max_dim=\dimen113
 \l_tmpa_dim=\dimen114
@@ -182,75 +190,76 @@ Package: expl3 2019-04-06 L3 programming layer (code)
 \l_tmpb_muskip=\muskip13
 \g_tmpa_muskip=\muskip14
 \g_tmpb_muskip=\muskip15
-\l_keys_choice_int=\count107
-\l__intarray_loop_int=\count108
+\l_keys_choice_int=\count109
+\l__intarray_loop_int=\count110
 \c__intarray_sp_dim=\dimen118
-\g__intarray_font_int=\count109
-\c__fp_leading_shift_int=\count110
-\c__fp_middle_shift_int=\count111
-\c__fp_trailing_shift_int=\count112
-\c__fp_big_leading_shift_int=\count113
-\c__fp_big_middle_shift_int=\count114
-\c__fp_big_trailing_shift_int=\count115
-\c__fp_Bigg_leading_shift_int=\count116
-\c__fp_Bigg_middle_shift_int=\count117
-\c__fp_Bigg_trailing_shift_int=\count118
-\g__fp_array_int=\count119
-\l__fp_array_loop_int=\count120
-\l__sort_length_int=\count121
-\l__sort_min_int=\count122
-\l__sort_top_int=\count123
-\l__sort_max_int=\count124
-\l__sort_true_max_int=\count125
-\l__sort_block_int=\count126
-\l__sort_begin_int=\count127
-\l__sort_end_int=\count128
-\l__sort_A_int=\count129
-\l__sort_B_int=\count130
-\l__sort_C_int=\count131
-\l__tl_analysis_normal_int=\count132
-\l__tl_analysis_index_int=\count133
-\l__tl_analysis_nesting_int=\count134
-\l__tl_analysis_type_int=\count135
-\l__regex_internal_a_int=\count136
-\l__regex_internal_b_int=\count137
-\l__regex_internal_c_int=\count138
-\l__regex_balance_int=\count139
-\l__regex_group_level_int=\count140
-\l__regex_mode_int=\count141
-\c__regex_cs_in_class_mode_int=\count142
-\c__regex_cs_mode_int=\count143
-\l__regex_catcodes_int=\count144
-\l__regex_default_catcodes_int=\count145
-\c__regex_catcode_L_int=\count146
-\c__regex_catcode_O_int=\count147
-\c__regex_catcode_A_int=\count148
-\c__regex_all_catcodes_int=\count149
-\l__regex_show_lines_int=\count150
-\l__regex_min_state_int=\count151
-\l__regex_max_state_int=\count152
-\l__regex_left_state_int=\count153
-\l__regex_right_state_int=\count154
-\l__regex_capturing_group_int=\count155
-\l__regex_min_pos_int=\count156
-\l__regex_max_pos_int=\count157
-\l__regex_curr_pos_int=\count158
-\l__regex_start_pos_int=\count159
-\l__regex_success_pos_int=\count160
-\l__regex_curr_char_int=\count161
-\l__regex_curr_catcode_int=\count162
-\l__regex_last_char_int=\count163
-\l__regex_case_changed_char_int=\count164
-\l__regex_curr_state_int=\count165
-\l__regex_step_int=\count166
-\l__regex_min_active_int=\count167
-\l__regex_max_active_int=\count168
-\l__regex_replacement_csnames_int=\count169
-\l__regex_match_count_int=\count170
-\l__regex_min_submatch_int=\count171
-\l__regex_submatch_int=\count172
-\l__regex_zeroth_submatch_int=\count173
-\g__regex_trace_regex_int=\count174
+\g__intarray_font_int=\count111
+\c__fp_leading_shift_int=\count112
+\c__fp_middle_shift_int=\count113
+\c__fp_trailing_shift_int=\count114
+\c__fp_big_leading_shift_int=\count115
+\c__fp_big_middle_shift_int=\count116
+\c__fp_big_trailing_shift_int=\count117
+\c__fp_Bigg_leading_shift_int=\count118
+\c__fp_Bigg_middle_shift_int=\count119
+\c__fp_Bigg_trailing_shift_int=\count120
+\g__fp_array_int=\count121
+\l__fp_array_loop_int=\count122
+\l__sort_length_int=\count123
+\l__sort_min_int=\count124
+\l__sort_top_int=\count125
+\l__sort_max_int=\count126
+\l__sort_true_max_int=\count127
+\l__sort_block_int=\count128
+\l__sort_begin_int=\count129
+\l__sort_end_int=\count130
+\l__sort_A_int=\count131
+\l__sort_B_int=\count132
+\l__sort_C_int=\count133
+\l__str_internal_int=\count134
+\l__tl_analysis_normal_int=\count135
+\l__tl_analysis_index_int=\count136
+\l__tl_analysis_nesting_int=\count137
+\l__tl_analysis_type_int=\count138
+\l__regex_internal_a_int=\count139
+\l__regex_internal_b_int=\count140
+\l__regex_internal_c_int=\count141
+\l__regex_balance_int=\count142
+\l__regex_group_level_int=\count143
+\l__regex_mode_int=\count144
+\c__regex_cs_in_class_mode_int=\count145
+\c__regex_cs_mode_int=\count146
+\l__regex_catcodes_int=\count147
+\l__regex_default_catcodes_int=\count148
+\c__regex_catcode_L_int=\count149
+\c__regex_catcode_O_int=\count150
+\c__regex_catcode_A_int=\count151
+\c__regex_all_catcodes_int=\count152
+\l__regex_show_lines_int=\count153
+\l__regex_min_state_int=\count154
+\l__regex_max_state_int=\count155
+\l__regex_left_state_int=\count156
+\l__regex_right_state_int=\count157
+\l__regex_capturing_group_int=\count158
+\l__regex_min_pos_int=\count159
+\l__regex_max_pos_int=\count160
+\l__regex_curr_pos_int=\count161
+\l__regex_start_pos_int=\count162
+\l__regex_success_pos_int=\count163
+\l__regex_curr_char_int=\count164
+\l__regex_curr_catcode_int=\count165
+\l__regex_last_char_int=\count166
+\l__regex_case_changed_char_int=\count167
+\l__regex_curr_state_int=\count168
+\l__regex_step_int=\count169
+\l__regex_min_active_int=\count170
+\l__regex_max_active_int=\count171
+\l__regex_replacement_csnames_int=\count172
+\l__regex_match_count_int=\count173
+\l__regex_min_submatch_int=\count174
+\l__regex_submatch_int=\count175
+\l__regex_zeroth_submatch_int=\count176
+\g__regex_trace_regex_int=\count177
 \c_empty_box=\box27
 \l_tmpa_box=\box28
 \l_tmpb_box=\box29
@@ -294,25 +303,26 @@ Package: expl3 2019-04-06 L3 programming layer (code)
 \l__coffin_display_offset_dim=\dimen141
 \l__coffin_display_x_dim=\dimen142
 \l__coffin_display_y_dim=\dimen143
-\g__file_internal_ior=\read1
-\l__seq_internal_a_int=\count175
-\l__seq_internal_b_int=\count176
-\c__deprecation_minus_one=\count177
-)
-(/usr/share/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
-File: l3pdfmode.def 2019-04-06 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count178
+\g__char_data_ior=\read1
+
+(/usr/share/texmf-dist/tex/latex/l3kernel/l3deprecation.def
+File: l3deprecation.def 2019-04-06 v L3 Deprecated functions
 ))
-Package: xparse 2019-03-05 L3 Experimental document command parser
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2019-04-06 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count178
+\l__pdf_internal_box=\box45
+))
+Package: xparse 2019-10-11 L3 Experimental document command parser
 \l__xparse_current_arg_int=\count179
 \g__xparse_grabber_int=\count180
 \l__xparse_m_args_int=\count181
 \l__xparse_v_nesting_int=\count182
 )
-Package: fontspec 2019/03/15 v2.7c Font selection for XeLaTeX and LuaLaTeX
-Lua module: fontspec 2019/03/15 2.7c Font selection for XeLaTeX and LuaLaTeX
+Package: fontspec 2019/10/19 v2.7d Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2019/10/19 2.7d Font selection for XeLaTeX and LuaLaTeX
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
-Package: fontspec-luatex 2019/03/15 v2.7c Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-luatex 2019/10/19 v2.7d Font selection for XeLaTeX and LuaLaTe
 X
 \l__fontspec_script_int=\count183
 \l__fontspec_language_int=\count184
@@ -337,21 +347,19 @@ File: tuenc.def 2018/08/11 v2.0j Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TU on input line 82.
 ))
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec.cfg)
-LaTeX Info: Redefining \itshape on input line 3783.
-LaTeX Info: Redefining \slshape on input line 3788.
-LaTeX Info: Redefining \scshape on input line 3793.
-LaTeX Info: Redefining \upshape on input line 3798.
-LaTeX Info: Redefining \em on input line 3828.
-LaTeX Info: Redefining \emph on input line 3853.
+LaTeX Info: Redefining \itshape on input line 3785.
+LaTeX Info: Redefining \slshape on input line 3790.
+LaTeX Info: Redefining \scshape on input line 3795.
+LaTeX Info: Redefining \upshape on input line 3800.
+LaTeX Info: Redefining \em on input line 3830.
+LaTeX Info: Redefining \emph on input line 3855.
 ))
-luaotfload | cache : Lookup cache loaded from /home/brian/.texlive/texmf-var/lua
-tex-cache/generic/names/luaotfload-lookup-cache.luc.
 luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato' with script
+(fontspec)                not available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
@@ -359,15 +367,59 @@ luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
+luaotfload | aux : font no 30 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 30
+luaotfload | aux : font no 31 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 31
+luaotfload | aux : font no 32 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Thin' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Thin' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+luaotfload | aux : font no 33 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-ThinItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-ThinItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
 luaotfload | aux : font no 34 (nil) does not define feature tnum for script latn
  with language dflt
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'LatoHairline' with script
+(fontspec)                not available for font 'Lato-Light' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature lnum for script latn
@@ -375,12 +427,28 @@ luaotfload | aux : font no 34 (nil) does not define feature lnum for script latn
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoHairline' with script
+(fontspec)                available for font 'Lato-Light' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 34
+luaotfload | aux : font no 35 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-LightItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 35 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-LightItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 35 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 35
@@ -390,31 +458,47 @@ luaotfload | aux : no font with id 36
 luaotfload | aux : font no 37 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 37
-luaotfload | aux : font no 38 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'LatoLight' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 38 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoLight' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
 luaotfload | aux : font no 38 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 38
 luaotfload | aux : font no 39 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 39
+luaotfload | aux : font no 40 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 40
+luaotfload | aux : font no 41 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 41
@@ -424,40 +508,50 @@ luaotfload | aux : no font with id 42
 luaotfload | aux : font no 43 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 43
+luaotfload | aux : font no 44 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 44 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 44 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 44
+luaotfload | aux : font no 45 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-BlackItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 45 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BlackItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 45 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 45
-luaotfload | aux : font no 46 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'LatoBlack' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoBlack' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-luaotfload | aux : font no 47 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 47
 luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato' with script
+(fontspec)                not available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
@@ -465,162 +559,148 @@ luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 29
-luaotfload | aux : font no 48 (nil) does not define feature tnum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature tnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/B' with script
+(fontspec)                not available for font 'Lato-Bold' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/B' with script
+(fontspec)                available for font 'Lato-Bold' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 48
-luaotfload | aux : font no 49 (nil) does not define feature tnum for script latn
+luaotfload | aux : no font with id 40
+luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 46
+luaotfload | aux : font no 41 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/I' with script
+(fontspec)                not available for font 'Lato-BoldItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 41 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/I' with script
+(fontspec)                available for font 'Lato-BoldItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
-luaotfload | aux : font no 50 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 50
+luaotfload | aux : no font with id 41
 
 Package fontspec Info: Font family 'lato-TLF' created for font 'Lato' with
-(fontspec)             options [Ligatures=Common,Scale=1,FontFace={ul}{n}{Lato
-(fontspec)             Hairline},FontFace={ul}{it}{Lato Hairline
-(fontspec)             Italic},FontFace={el}{n}{Lato
-(fontspec)             Thin},FontFace={el}{it}{Lato Thin
-(fontspec)             Italic},FontFace={l}{n}{Lato
-(fontspec)             Light},FontFace={l}{it}{Lato Light
-(fontspec)             Italic},FontFace={mb}{n}{Lato
-(fontspec)             Medium},FontFace={mb}{it}{Lato Medium
-(fontspec)             Italic},FontFace={sb}{n}{Lato
-(fontspec)             Semibold},FontFace={sb}{it}{Lato Semibold
-(fontspec)             Italic},FontFace={eb}{n}{Lato
-(fontspec)             Heavy},FontFace={eb}{it}{Lato Heavy
-(fontspec)             Italic},FontFace={ub}{n}{Lato
-(fontspec)             Black},FontFace={ub}{it}{Lato Black
-(fontspec)             Italic},Numbers={Monospaced,Lining},NFSSFamily=lato-TLF].
-
+(fontspec)             options
+(fontspec)             [Extension=.ttf,Ligatures={TeX,Common},Scale=1,FontFace={
+ul}{n}{*-Hairline},FontFace={ul}{it}{*-HairlineItalic},FontFace={el}{n}{*-Thin},
+FontFace={el}{it}{*-ThinItalic},FontFace={l}{n}{*-Light},FontFace={l}{it}{*-Ligh
+tItalic},UprightFont={*-Regular},ItalicFont={*-Italic},FontFace={mb}{n}{*-Medium
+},FontFace={mb}{it}{*-MediumItalic},FontFace={sb}{n}{*-Semibold},FontFace={sb}{i
+t}{*-SemiboldItalic},FontFace={b}{n}{*-Bold},FontFace={b}{it}{*-BoldItalic},Bold
+Font={*-Bold},BoldItalicFont={*-BoldItalic},FontFace={eb}{n}{*-Heavy},FontFace={
+eb}{it}{*-HeavyItalic},FontFace={ub}{n}{*-Black},FontFace={ub}{it}{*-BlackItalic
+},Numbers={Monospaced,Lining},NFSSFamily=lato-TLF].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - (ul/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairline:mode=node;script=latn;language=DFLT
-;+liga;"
+(fontspec)             <->s*[1]"[Lato-Hairline.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (ul/sc) with NFSS spec.: 
 (fontspec)             - (ul/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairlineItalic:mode=node;script=latn;languag
-e=DFLT;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-HairlineItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (ul/itsc) with NFSS spec.: 
 (fontspec)             - (el/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThin:mode=node;script=latn;language=DFLT;+li
-ga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Thin.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             -  (el/sc) with NFSS spec.: 
 (fontspec)             - (el/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThinItalic:mode=node;script=latn;language=DF
-LT;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-ThinItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             -  (el/itsc) with NFSS spec.: 
 (fontspec)             - (l/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLight:mode=node;script=latn;language=DFLT;+l
-iga;"
+(fontspec)             <->s*[1]"[Lato-Light.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (l/sc) with NFSS spec.: 
 (fontspec)             - (l/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLightItalic:mode=node;script=latn;language=D
-FLT;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-LightItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (l/itsc) with NFSS spec.: 
 (fontspec)             - (mb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMedium:mode=node;script=latn;language=DFLT;+
-liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Medium.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (mb/sc) with NFSS spec.: 
 (fontspec)             - (mb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMediumItalic:mode=node;script=latn;language=
-DFLT;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-MediumItalic.ttf]:mode=node;script=latn;la
+nguage=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (mb/itsc) with NFSS spec.: 
 (fontspec)             - (sb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemibold:mode=node;script=latn;language=DFLT
-;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Semibold.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (sb/sc) with NFSS spec.: 
 (fontspec)             - (sb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemiboldItalic:mode=node;script=latn;languag
-e=DFLT;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-SemiboldItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (sb/itsc) with NFSS spec.: 
+(fontspec)             - (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
+(fontspec)             -  (b/sc) with NFSS spec.: 
+(fontspec)             - (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
+(fontspec)             -  (b/itsc) with NFSS spec.: 
 (fontspec)             - (eb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavy:mode=node;script=latn;language=DFLT;+l
-iga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Heavy.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (eb/sc) with NFSS spec.: 
 (fontspec)             - (eb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavyItalic:mode=node;script=latn;language=D
-FLT;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-HeavyItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (eb/itsc) with NFSS spec.: 
 (fontspec)             - (ub/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlack:mode=node;script=latn;language=DFLT;+l
-iga;"
+(fontspec)             <->s*[1]"[Lato-Black.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/sc) with NFSS spec.: 
 (fontspec)             - (ub/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlackItalic:mode=node;script=latn;language=D
-FLT;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-BlackItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/itsc) with NFSS spec.: 
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato:mode=node;script=latn;language=DFLT;+liga;"
-
+(fontspec)             <->s*[1]"[Lato-Regular.ttf]:mode=node;script=latn;languag
+e=DFLT;+tlig;+liga;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/B:mode=node;script=latn;language=DFLT;+liga
-;"
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/I:mode=node;script=latn;language=DFLT;+liga
-;"
+(fontspec)             <->s*[1]"[Lato-Italic.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
 (fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/BI:mode=node;script=latn;language=DFLT;+lig
-a;"
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 luaotfload | aux : font no 29 (nil) does not define feature pnum for script latn
@@ -628,23 +708,67 @@ luaotfload | aux : font no 29 (nil) does not define feature pnum for script latn
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
-(fontspec)                (pnum) not available for font 'Lato' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (pnum) not available for font 'Lato-Regular' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
+luaotfload | aux : font no 30 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 30
+luaotfload | aux : font no 31 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 31
+luaotfload | aux : font no 32 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
+(fontspec)                (pnum) not available for font 'Lato-Thin' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Thin' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+luaotfload | aux : font no 33 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
+(fontspec)                (pnum) not available for font 'Lato-ThinItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-ThinItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
 luaotfload | aux : font no 34 (nil) does not define feature pnum for script latn
  with language dflt
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
-(fontspec)                (pnum) not available for font 'LatoHairline' with
+(fontspec)                (pnum) not available for font 'Lato-Light' with
 (fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature lnum for script latn
@@ -652,12 +776,28 @@ luaotfload | aux : font no 34 (nil) does not define feature lnum for script latn
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoHairline' with script
+(fontspec)                available for font 'Lato-Light' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 34
+luaotfload | aux : font no 35 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
+(fontspec)                (pnum) not available for font 'Lato-LightItalic'
+(fontspec)                with script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 35 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-LightItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 35 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 35
@@ -667,31 +807,47 @@ luaotfload | aux : no font with id 36
 luaotfload | aux : font no 37 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 37
-luaotfload | aux : font no 38 (nil) does not define feature pnum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
-(fontspec)                (pnum) not available for font 'LatoLight' with
-(fontspec)                script 'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 38 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoLight' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
 luaotfload | aux : font no 38 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 38
 luaotfload | aux : font no 39 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 39
+luaotfload | aux : font no 40 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
+(fontspec)                (pnum) not available for font 'Lato-Bold' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 40
+luaotfload | aux : font no 41 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
+(fontspec)                (pnum) not available for font 'Lato-BoldItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 41
@@ -701,203 +857,199 @@ luaotfload | aux : no font with id 42
 luaotfload | aux : font no 43 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 43
+luaotfload | aux : font no 44 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
+(fontspec)                (pnum) not available for font 'Lato-Black' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 44 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 44 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 44
+luaotfload | aux : font no 45 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
+(fontspec)                (pnum) not available for font 'Lato-BlackItalic'
+(fontspec)                with script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 45 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BlackItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 45 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 45
-luaotfload | aux : font no 46 (nil) does not define feature pnum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
-(fontspec)                (pnum) not available for font 'LatoBlack' with
-(fontspec)                script 'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoBlack' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-luaotfload | aux : font no 47 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 47
 luaotfload | aux : font no 29 (nil) does not define feature pnum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
-(fontspec)                (pnum) not available for font 'Lato' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (pnum) not available for font 'Lato-Regular' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 29
-luaotfload | aux : font no 48 (nil) does not define feature pnum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature pnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
-(fontspec)                (pnum) not available for font 'Lato/B' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (pnum) not available for font 'Lato-Bold' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/B' with script
+(fontspec)                available for font 'Lato-Bold' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 48
-luaotfload | aux : font no 49 (nil) does not define feature pnum for script latn
+luaotfload | aux : no font with id 40
+luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 46
+luaotfload | aux : font no 41 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
-(fontspec)                (pnum) not available for font 'Lato/I' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (pnum) not available for font 'Lato-BoldItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 41 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/I' with script
+(fontspec)                available for font 'Lato-BoldItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
-luaotfload | aux : font no 50 (nil) does not define feature pnum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Proportional,Lining'
-(fontspec)                (pnum) not available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 50
+luaotfload | aux : no font with id 41
 
 Package fontspec Info: Font family 'lato-LF' created for font 'Lato' with
-(fontspec)             options [Ligatures=Common,Scale=1,FontFace={ul}{n}{Lato
-(fontspec)             Hairline},FontFace={ul}{it}{Lato Hairline
-(fontspec)             Italic},FontFace={el}{n}{Lato
-(fontspec)             Thin},FontFace={el}{it}{Lato Thin
-(fontspec)             Italic},FontFace={l}{n}{Lato
-(fontspec)             Light},FontFace={l}{it}{Lato Light
-(fontspec)             Italic},FontFace={mb}{n}{Lato
-(fontspec)             Medium},FontFace={mb}{it}{Lato Medium
-(fontspec)             Italic},FontFace={sb}{n}{Lato
-(fontspec)             Semibold},FontFace={sb}{it}{Lato Semibold
-(fontspec)             Italic},FontFace={eb}{n}{Lato
-(fontspec)             Heavy},FontFace={eb}{it}{Lato Heavy
-(fontspec)             Italic},FontFace={ub}{n}{Lato
-(fontspec)             Black},FontFace={ub}{it}{Lato Black
-(fontspec)             Italic},Numbers={Proportional,Lining},NFSSFamily=lato-LF]
-.
+(fontspec)             options
+(fontspec)             [Extension=.ttf,Ligatures={TeX,Common},Scale=1,FontFace={
+ul}{n}{*-Hairline},FontFace={ul}{it}{*-HairlineItalic},FontFace={el}{n}{*-Thin},
+FontFace={el}{it}{*-ThinItalic},FontFace={l}{n}{*-Light},FontFace={l}{it}{*-Ligh
+tItalic},UprightFont={*-Regular},ItalicFont={*-Italic},FontFace={mb}{n}{*-Medium
+},FontFace={mb}{it}{*-MediumItalic},FontFace={sb}{n}{*-Semibold},FontFace={sb}{i
+t}{*-SemiboldItalic},FontFace={b}{n}{*-Bold},FontFace={b}{it}{*-BoldItalic},Bold
+Font={*-Bold},BoldItalicFont={*-BoldItalic},FontFace={eb}{n}{*-Heavy},FontFace={
+eb}{it}{*-HeavyItalic},FontFace={ub}{n}{*-Black},FontFace={ub}{it}{*-BlackItalic
+},Numbers={Proportional,Lining},NFSSFamily=lato-LF].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - (ul/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairline:mode=node;script=latn;language=DFLT
-;+liga;"
+(fontspec)             <->s*[1]"[Lato-Hairline.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             -  (ul/sc) with NFSS spec.: 
 (fontspec)             - (ul/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairlineItalic:mode=node;script=latn;languag
-e=DFLT;+liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-HairlineItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             -  (ul/itsc) with NFSS spec.: 
 (fontspec)             - (el/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThin:mode=node;script=latn;language=DFLT;+li
-ga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Thin.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             -  (el/sc) with NFSS spec.: 
 (fontspec)             - (el/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThinItalic:mode=node;script=latn;language=DF
-LT;+liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-ThinItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             -  (el/itsc) with NFSS spec.: 
 (fontspec)             - (l/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLight:mode=node;script=latn;language=DFLT;+l
-iga;"
+(fontspec)             <->s*[1]"[Lato-Light.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (l/sc) with NFSS spec.: 
 (fontspec)             - (l/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLightItalic:mode=node;script=latn;language=D
-FLT;+liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-LightItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (l/itsc) with NFSS spec.: 
 (fontspec)             - (mb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMedium:mode=node;script=latn;language=DFLT;+
-liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Medium.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             -  (mb/sc) with NFSS spec.: 
 (fontspec)             - (mb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMediumItalic:mode=node;script=latn;language=
-DFLT;+liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-MediumItalic.ttf]:mode=node;script=latn;la
+nguage=DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             -  (mb/itsc) with NFSS spec.: 
 (fontspec)             - (sb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemibold:mode=node;script=latn;language=DFLT
-;+liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Semibold.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             -  (sb/sc) with NFSS spec.: 
 (fontspec)             - (sb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemiboldItalic:mode=node;script=latn;languag
-e=DFLT;+liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-SemiboldItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             -  (sb/itsc) with NFSS spec.: 
+(fontspec)             - (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
+(fontspec)             -  (b/sc) with NFSS spec.: 
+(fontspec)             - (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
+(fontspec)             -  (b/itsc) with NFSS spec.: 
 (fontspec)             - (eb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavy:mode=node;script=latn;language=DFLT;+l
-iga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Heavy.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             -  (eb/sc) with NFSS spec.: 
 (fontspec)             - (eb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavyItalic:mode=node;script=latn;language=D
-FLT;+liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-HeavyItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             -  (eb/itsc) with NFSS spec.: 
 (fontspec)             - (ub/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlack:mode=node;script=latn;language=DFLT;+l
-iga;"
+(fontspec)             <->s*[1]"[Lato-Black.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/sc) with NFSS spec.: 
 (fontspec)             - (ub/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlackItalic:mode=node;script=latn;language=D
-FLT;+liga;+pnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-BlackItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/itsc) with NFSS spec.: 
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato:mode=node;script=latn;language=DFLT;+liga;"
-
+(fontspec)             <->s*[1]"[Lato-Regular.ttf]:mode=node;script=latn;languag
+e=DFLT;+tlig;+liga;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/B:mode=node;script=latn;language=DFLT;+liga
-;"
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/I:mode=node;script=latn;language=DFLT;+liga
-;"
+(fontspec)             <->s*[1]"[Lato-Italic.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+pnum;+lnum;"
 (fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
 (fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/BI:mode=node;script=latn;language=DFLT;+lig
-a;"
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
@@ -905,23 +1057,67 @@ luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
-(fontspec)                (tnum) not available for font 'Lato' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (tnum) not available for font 'Lato-Regular' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature onum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
+luaotfload | aux : font no 30 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 30
+luaotfload | aux : font no 31 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 31
+luaotfload | aux : font no 32 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
+(fontspec)                (tnum) not available for font 'Lato-Thin' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-Thin' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+luaotfload | aux : font no 33 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
+(fontspec)                (tnum) not available for font 'Lato-ThinItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-ThinItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
 luaotfload | aux : font no 34 (nil) does not define feature tnum for script latn
  with language dflt
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
-(fontspec)                (tnum) not available for font 'LatoHairline' with
+(fontspec)                (tnum) not available for font 'Lato-Light' with
 (fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature onum for script latn
@@ -929,12 +1125,28 @@ luaotfload | aux : font no 34 (nil) does not define feature onum for script latn
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'LatoHairline' with script
+(fontspec)                available for font 'Lato-Light' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 34
+luaotfload | aux : font no 35 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
+(fontspec)                (tnum) not available for font 'Lato-LightItalic'
+(fontspec)                with script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 35 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-LightItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 35 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 35
@@ -944,31 +1156,47 @@ luaotfload | aux : no font with id 36
 luaotfload | aux : font no 37 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 37
-luaotfload | aux : font no 38 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
-(fontspec)                (tnum) not available for font 'LatoLight' with
-(fontspec)                script 'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 38 (nil) does not define feature onum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'LatoLight' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
 luaotfload | aux : font no 38 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 38
 luaotfload | aux : font no 39 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 39
+luaotfload | aux : font no 40 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
+(fontspec)                (tnum) not available for font 'Lato-Bold' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 40
+luaotfload | aux : font no 41 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
+(fontspec)                (tnum) not available for font 'Lato-BoldItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 41
@@ -978,203 +1206,199 @@ luaotfload | aux : no font with id 42
 luaotfload | aux : font no 43 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 43
+luaotfload | aux : font no 44 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
+(fontspec)                (tnum) not available for font 'Lato-Black' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 44 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 44 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 44
+luaotfload | aux : font no 45 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
+(fontspec)                (tnum) not available for font 'Lato-BlackItalic'
+(fontspec)                with script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 45 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-BlackItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 45 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 45
-luaotfload | aux : font no 46 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
-(fontspec)                (tnum) not available for font 'LatoBlack' with
-(fontspec)                script 'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature onum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'LatoBlack' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-luaotfload | aux : font no 47 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 47
 luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
-(fontspec)                (tnum) not available for font 'Lato' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (tnum) not available for font 'Lato-Regular' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature onum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 29
-luaotfload | aux : font no 48 (nil) does not define feature tnum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature tnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
-(fontspec)                (tnum) not available for font 'Lato/B' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (tnum) not available for font 'Lato-Bold' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature onum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature onum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato/B' with script
+(fontspec)                available for font 'Lato-Bold' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 48
-luaotfload | aux : font no 49 (nil) does not define feature tnum for script latn
+luaotfload | aux : no font with id 40
+luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 46
+luaotfload | aux : font no 41 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
-(fontspec)                (tnum) not available for font 'Lato/I' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (tnum) not available for font 'Lato-BoldItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature onum for script latn
+luaotfload | aux : font no 41 (nil) does not define feature onum for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato/I' with script
+(fontspec)                available for font 'Lato-BoldItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
-luaotfload | aux : font no 50 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,OldStyle'
-(fontspec)                (tnum) not available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature onum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 50
+luaotfload | aux : no font with id 41
 
 Package fontspec Info: Font family 'lato-TOsF' created for font 'Lato' with
-(fontspec)             options [Ligatures=Common,Scale=1,FontFace={ul}{n}{Lato
-(fontspec)             Hairline},FontFace={ul}{it}{Lato Hairline
-(fontspec)             Italic},FontFace={el}{n}{Lato
-(fontspec)             Thin},FontFace={el}{it}{Lato Thin
-(fontspec)             Italic},FontFace={l}{n}{Lato
-(fontspec)             Light},FontFace={l}{it}{Lato Light
-(fontspec)             Italic},FontFace={mb}{n}{Lato
-(fontspec)             Medium},FontFace={mb}{it}{Lato Medium
-(fontspec)             Italic},FontFace={sb}{n}{Lato
-(fontspec)             Semibold},FontFace={sb}{it}{Lato Semibold
-(fontspec)             Italic},FontFace={eb}{n}{Lato
-(fontspec)             Heavy},FontFace={eb}{it}{Lato Heavy
-(fontspec)             Italic},FontFace={ub}{n}{Lato
-(fontspec)             Black},FontFace={ub}{it}{Lato Black
-(fontspec)             Italic},Numbers={Monospaced,OldStyle},NFSSFamily=lato-TOs
-F].
+(fontspec)             options
+(fontspec)             [Extension=.ttf,Ligatures={TeX,Common},Scale=1,FontFace={
+ul}{n}{*-Hairline},FontFace={ul}{it}{*-HairlineItalic},FontFace={el}{n}{*-Thin},
+FontFace={el}{it}{*-ThinItalic},FontFace={l}{n}{*-Light},FontFace={l}{it}{*-Ligh
+tItalic},UprightFont={*-Regular},ItalicFont={*-Italic},FontFace={mb}{n}{*-Medium
+},FontFace={mb}{it}{*-MediumItalic},FontFace={sb}{n}{*-Semibold},FontFace={sb}{i
+t}{*-SemiboldItalic},FontFace={b}{n}{*-Bold},FontFace={b}{it}{*-BoldItalic},Bold
+Font={*-Bold},BoldItalicFont={*-BoldItalic},FontFace={eb}{n}{*-Heavy},FontFace={
+eb}{it}{*-HeavyItalic},FontFace={ub}{n}{*-Black},FontFace={ub}{it}{*-BlackItalic
+},Numbers={Monospaced,OldStyle},NFSSFamily=lato-TOsF].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - (ul/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairline:mode=node;script=latn;language=DFLT
-;+liga;"
+(fontspec)             <->s*[1]"[Lato-Hairline.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             -  (ul/sc) with NFSS spec.: 
 (fontspec)             - (ul/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairlineItalic:mode=node;script=latn;languag
-e=DFLT;+liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-HairlineItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             -  (ul/itsc) with NFSS spec.: 
 (fontspec)             - (el/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThin:mode=node;script=latn;language=DFLT;+li
-ga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-Thin.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             -  (el/sc) with NFSS spec.: 
 (fontspec)             - (el/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThinItalic:mode=node;script=latn;language=DF
-LT;+liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-ThinItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             -  (el/itsc) with NFSS spec.: 
 (fontspec)             - (l/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLight:mode=node;script=latn;language=DFLT;+l
-iga;"
+(fontspec)             <->s*[1]"[Lato-Light.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (l/sc) with NFSS spec.: 
 (fontspec)             - (l/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLightItalic:mode=node;script=latn;language=D
-FLT;+liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-LightItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (l/itsc) with NFSS spec.: 
 (fontspec)             - (mb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMedium:mode=node;script=latn;language=DFLT;+
-liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-Medium.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             -  (mb/sc) with NFSS spec.: 
 (fontspec)             - (mb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMediumItalic:mode=node;script=latn;language=
-DFLT;+liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-MediumItalic.ttf]:mode=node;script=latn;la
+nguage=DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             -  (mb/itsc) with NFSS spec.: 
 (fontspec)             - (sb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemibold:mode=node;script=latn;language=DFLT
-;+liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-Semibold.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             -  (sb/sc) with NFSS spec.: 
 (fontspec)             - (sb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemiboldItalic:mode=node;script=latn;languag
-e=DFLT;+liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-SemiboldItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             -  (sb/itsc) with NFSS spec.: 
+(fontspec)             - (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
+(fontspec)             -  (b/sc) with NFSS spec.: 
+(fontspec)             - (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
+(fontspec)             -  (b/itsc) with NFSS spec.: 
 (fontspec)             - (eb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavy:mode=node;script=latn;language=DFLT;+l
-iga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-Heavy.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             -  (eb/sc) with NFSS spec.: 
 (fontspec)             - (eb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavyItalic:mode=node;script=latn;language=D
-FLT;+liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-HeavyItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             -  (eb/itsc) with NFSS spec.: 
 (fontspec)             - (ub/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlack:mode=node;script=latn;language=DFLT;+l
-iga;"
+(fontspec)             <->s*[1]"[Lato-Black.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/sc) with NFSS spec.: 
 (fontspec)             - (ub/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlackItalic:mode=node;script=latn;language=D
-FLT;+liga;+tnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-BlackItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/itsc) with NFSS spec.: 
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato:mode=node;script=latn;language=DFLT;+liga;"
-
+(fontspec)             <->s*[1]"[Lato-Regular.ttf]:mode=node;script=latn;languag
+e=DFLT;+tlig;+liga;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/B:mode=node;script=latn;language=DFLT;+liga
-;"
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/I:mode=node;script=latn;language=DFLT;+liga
-;"
+(fontspec)             <->s*[1]"[Lato-Italic.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+tnum;+onum;"
 (fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
 (fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/BI:mode=node;script=latn;language=DFLT;+lig
-a;"
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 luaotfload | aux : font no 29 (nil) does not define feature pnum for script latn
@@ -1182,23 +1406,67 @@ luaotfload | aux : font no 29 (nil) does not define feature pnum for script latn
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
-(fontspec)                (pnum) not available for font 'Lato' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (pnum) not available for font 'Lato-Regular' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature onum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
+luaotfload | aux : font no 30 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 30
+luaotfload | aux : font no 31 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 31
+luaotfload | aux : font no 32 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
+(fontspec)                (pnum) not available for font 'Lato-Thin' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-Thin' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+luaotfload | aux : font no 33 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
+(fontspec)                (pnum) not available for font 'Lato-ThinItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-ThinItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
 luaotfload | aux : font no 34 (nil) does not define feature pnum for script latn
  with language dflt
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
-(fontspec)                (pnum) not available for font 'LatoHairline' with
+(fontspec)                (pnum) not available for font 'Lato-Light' with
 (fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature onum for script latn
@@ -1206,12 +1474,28 @@ luaotfload | aux : font no 34 (nil) does not define feature onum for script latn
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'LatoHairline' with script
+(fontspec)                available for font 'Lato-Light' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 34
+luaotfload | aux : font no 35 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
+(fontspec)                (pnum) not available for font 'Lato-LightItalic'
+(fontspec)                with script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 35 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-LightItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 35 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 35
@@ -1221,31 +1505,47 @@ luaotfload | aux : no font with id 36
 luaotfload | aux : font no 37 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 37
-luaotfload | aux : font no 38 (nil) does not define feature pnum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
-(fontspec)                (pnum) not available for font 'LatoLight' with
-(fontspec)                script 'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 38 (nil) does not define feature onum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'LatoLight' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
 luaotfload | aux : font no 38 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 38
 luaotfload | aux : font no 39 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 39
+luaotfload | aux : font no 40 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
+(fontspec)                (pnum) not available for font 'Lato-Bold' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 40
+luaotfload | aux : font no 41 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
+(fontspec)                (pnum) not available for font 'Lato-BoldItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 41
@@ -1255,203 +1555,199 @@ luaotfload | aux : no font with id 42
 luaotfload | aux : font no 43 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 43
+luaotfload | aux : font no 44 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
+(fontspec)                (pnum) not available for font 'Lato-Black' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 44 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 44 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 44
+luaotfload | aux : font no 45 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
+(fontspec)                (pnum) not available for font 'Lato-BlackItalic'
+(fontspec)                with script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 45 (nil) does not define feature onum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
+(fontspec)                available for font 'Lato-BlackItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 45 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 45
-luaotfload | aux : font no 46 (nil) does not define feature pnum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
-(fontspec)                (pnum) not available for font 'LatoBlack' with
-(fontspec)                script 'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature onum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'LatoBlack' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-luaotfload | aux : font no 47 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 47
 luaotfload | aux : font no 29 (nil) does not define feature pnum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
-(fontspec)                (pnum) not available for font 'Lato' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (pnum) not available for font 'Lato-Regular' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature onum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 29
-luaotfload | aux : font no 48 (nil) does not define feature pnum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature pnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
-(fontspec)                (pnum) not available for font 'Lato/B' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (pnum) not available for font 'Lato-Bold' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature onum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature onum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato/B' with script
+(fontspec)                available for font 'Lato-Bold' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 48
-luaotfload | aux : font no 49 (nil) does not define feature pnum for script latn
+luaotfload | aux : no font with id 40
+luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 46
+luaotfload | aux : font no 41 (nil) does not define feature pnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
-(fontspec)                (pnum) not available for font 'Lato/I' with script
-(fontspec)                'CustomDefault' and language 'Default'.
+(fontspec)                (pnum) not available for font 'Lato-BoldItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature onum for script latn
+luaotfload | aux : font no 41 (nil) does not define feature onum for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato/I' with script
+(fontspec)                available for font 'Lato-BoldItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
-luaotfload | aux : font no 50 (nil) does not define feature pnum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Proportional,OldStyle'
-(fontspec)                (pnum) not available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature onum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Lowercase' (onum) not
-(fontspec)                available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 50
+luaotfload | aux : no font with id 41
 
 Package fontspec Info: Font family 'lato-OsF' created for font 'Lato' with
-(fontspec)             options [Ligatures=Common,Scale=1,FontFace={ul}{n}{Lato
-(fontspec)             Hairline},FontFace={ul}{it}{Lato Hairline
-(fontspec)             Italic},FontFace={el}{n}{Lato
-(fontspec)             Thin},FontFace={el}{it}{Lato Thin
-(fontspec)             Italic},FontFace={l}{n}{Lato
-(fontspec)             Light},FontFace={l}{it}{Lato Light
-(fontspec)             Italic},FontFace={mb}{n}{Lato
-(fontspec)             Medium},FontFace={mb}{it}{Lato Medium
-(fontspec)             Italic},FontFace={sb}{n}{Lato
-(fontspec)             Semibold},FontFace={sb}{it}{Lato Semibold
-(fontspec)             Italic},FontFace={eb}{n}{Lato
-(fontspec)             Heavy},FontFace={eb}{it}{Lato Heavy
-(fontspec)             Italic},FontFace={ub}{n}{Lato
-(fontspec)             Black},FontFace={ub}{it}{Lato Black
-(fontspec)             Italic},Numbers={Proportional,OldStyle},NFSSFamily=lato-O
-sF].
+(fontspec)             options
+(fontspec)             [Extension=.ttf,Ligatures={TeX,Common},Scale=1,FontFace={
+ul}{n}{*-Hairline},FontFace={ul}{it}{*-HairlineItalic},FontFace={el}{n}{*-Thin},
+FontFace={el}{it}{*-ThinItalic},FontFace={l}{n}{*-Light},FontFace={l}{it}{*-Ligh
+tItalic},UprightFont={*-Regular},ItalicFont={*-Italic},FontFace={mb}{n}{*-Medium
+},FontFace={mb}{it}{*-MediumItalic},FontFace={sb}{n}{*-Semibold},FontFace={sb}{i
+t}{*-SemiboldItalic},FontFace={b}{n}{*-Bold},FontFace={b}{it}{*-BoldItalic},Bold
+Font={*-Bold},BoldItalicFont={*-BoldItalic},FontFace={eb}{n}{*-Heavy},FontFace={
+eb}{it}{*-HeavyItalic},FontFace={ub}{n}{*-Black},FontFace={ub}{it}{*-BlackItalic
+},Numbers={Proportional,OldStyle},NFSSFamily=lato-OsF].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - (ul/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairline:mode=node;script=latn;language=DFLT
-;+liga;"
+(fontspec)             <->s*[1]"[Lato-Hairline.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             -  (ul/sc) with NFSS spec.: 
 (fontspec)             - (ul/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairlineItalic:mode=node;script=latn;languag
-e=DFLT;+liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-HairlineItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             -  (ul/itsc) with NFSS spec.: 
 (fontspec)             - (el/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThin:mode=node;script=latn;language=DFLT;+li
-ga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-Thin.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             -  (el/sc) with NFSS spec.: 
 (fontspec)             - (el/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThinItalic:mode=node;script=latn;language=DF
-LT;+liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-ThinItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             -  (el/itsc) with NFSS spec.: 
 (fontspec)             - (l/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLight:mode=node;script=latn;language=DFLT;+l
-iga;"
+(fontspec)             <->s*[1]"[Lato-Light.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (l/sc) with NFSS spec.: 
 (fontspec)             - (l/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLightItalic:mode=node;script=latn;language=D
-FLT;+liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-LightItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (l/itsc) with NFSS spec.: 
 (fontspec)             - (mb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMedium:mode=node;script=latn;language=DFLT;+
-liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-Medium.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             -  (mb/sc) with NFSS spec.: 
 (fontspec)             - (mb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMediumItalic:mode=node;script=latn;language=
-DFLT;+liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-MediumItalic.ttf]:mode=node;script=latn;la
+nguage=DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             -  (mb/itsc) with NFSS spec.: 
 (fontspec)             - (sb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemibold:mode=node;script=latn;language=DFLT
-;+liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-Semibold.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             -  (sb/sc) with NFSS spec.: 
 (fontspec)             - (sb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemiboldItalic:mode=node;script=latn;languag
-e=DFLT;+liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-SemiboldItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             -  (sb/itsc) with NFSS spec.: 
+(fontspec)             - (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
+(fontspec)             -  (b/sc) with NFSS spec.: 
+(fontspec)             - (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
+(fontspec)             -  (b/itsc) with NFSS spec.: 
 (fontspec)             - (eb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavy:mode=node;script=latn;language=DFLT;+l
-iga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-Heavy.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             -  (eb/sc) with NFSS spec.: 
 (fontspec)             - (eb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavyItalic:mode=node;script=latn;language=D
-FLT;+liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-HeavyItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             -  (eb/itsc) with NFSS spec.: 
 (fontspec)             - (ub/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlack:mode=node;script=latn;language=DFLT;+l
-iga;"
+(fontspec)             <->s*[1]"[Lato-Black.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/sc) with NFSS spec.: 
 (fontspec)             - (ub/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlackItalic:mode=node;script=latn;language=D
-FLT;+liga;+pnum;+onum;"
+(fontspec)             <->s*[1]"[Lato-BlackItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/itsc) with NFSS spec.: 
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato:mode=node;script=latn;language=DFLT;+liga;"
-
+(fontspec)             <->s*[1]"[Lato-Regular.ttf]:mode=node;script=latn;languag
+e=DFLT;+tlig;+liga;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/B:mode=node;script=latn;language=DFLT;+liga
-;"
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/I:mode=node;script=latn;language=DFLT;+liga
-;"
+(fontspec)             <->s*[1]"[Lato-Italic.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+pnum;+onum;"
 (fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
 (fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/BI:mode=node;script=latn;language=DFLT;+lig
-a;"
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
@@ -1459,7 +1755,7 @@ luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato' with script
+(fontspec)                not available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
@@ -1467,127 +1763,59 @@ luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
+luaotfload | aux : font no 30 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 29
+luaotfload | aux : no font with id 30
+luaotfload | aux : font no 31 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 31
+luaotfload | aux : font no 32 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato' with script
+(fontspec)                not available for font 'Lato-Thin' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 32 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 29
+luaotfload | aux : no font with id 32
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Thin' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 29 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 32 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 29
-luaotfload | aux : font no 48 (nil) does not define feature tnum for script latn
+luaotfload | aux : no font with id 32
+luaotfload | aux : font no 33 (nil) does not define feature tnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 33
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/B' with script
+(fontspec)                not available for font 'Lato-ThinItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 33 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 33
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/B' with script
+(fontspec)                available for font 'Lato-ThinItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 33 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 48
-luaotfload | aux : font no 49 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 49
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/I' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 49 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 49
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/I' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 49 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 49
-luaotfload | aux : font no 50 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 50 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 50
-
-Package fontspec Info: Font family 'fla' created for font 'Lato' with options
-(fontspec)             [Numbers={Monospaced,Lining},NFSSFamily=fla].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"Lato:mode=node;script=latn;language=DFLT;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->"Lato/B:mode=node;script=latn;language=DFLT;"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
-(fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->"Lato/I:mode=node;script=latn;language=DFLT;"
-(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
-(fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->"Lato/BI:mode=node;script=latn;language=DFLT;"
-(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
-
-luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 29
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 29
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
+luaotfload | aux : no font with id 33
 luaotfload | aux : font no 34 (nil) does not define feature tnum for script latn
  with language dflt
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'LatoHairline' with script
+(fontspec)                not available for font 'Lato-Light' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature lnum for script latn
@@ -1595,12 +1823,28 @@ luaotfload | aux : font no 34 (nil) does not define feature lnum for script latn
 luaotfload | aux : no font with id 34
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoHairline' with script
+(fontspec)                available for font 'Lato-Light' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 34 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 34
+luaotfload | aux : font no 35 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-LightItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 35 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-LightItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 35 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 35
@@ -1610,31 +1854,47 @@ luaotfload | aux : no font with id 36
 luaotfload | aux : font no 37 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 37
-luaotfload | aux : font no 38 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'LatoLight' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 38 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 38
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoLight' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
 luaotfload | aux : font no 38 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 38
 luaotfload | aux : font no 39 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 39
+luaotfload | aux : font no 40 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 40
+luaotfload | aux : font no 41 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 41
@@ -1644,40 +1904,50 @@ luaotfload | aux : no font with id 42
 luaotfload | aux : font no 43 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 43
+luaotfload | aux : font no 44 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 44 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 44 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 44
+luaotfload | aux : font no 45 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-BlackItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 45 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BlackItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
 luaotfload | aux : font no 45 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 45
-luaotfload | aux : font no 46 (nil) does not define feature tnum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'LatoBlack' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature lnum for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-
-Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'LatoBlack' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 46
-luaotfload | aux : font no 47 (nil) does not define feature smcp for script latn
- with language dflt
-luaotfload | aux : no font with id 47
 luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
  with language dflt
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato' with script
+(fontspec)                not available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
@@ -1685,168 +1955,501 @@ luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
 luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
 luaotfload | aux : font no 29 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 29
-luaotfload | aux : font no 48 (nil) does not define feature tnum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature tnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/B' with script
+(fontspec)                not available for font 'Lato-Bold' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 40 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 48
+luaotfload | aux : no font with id 40
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/B' with script
+(fontspec)                available for font 'Lato-Bold' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 48 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 48
-luaotfload | aux : font no 49 (nil) does not define feature tnum for script latn
+luaotfload | aux : no font with id 40
+luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 46
+luaotfload | aux : font no 41 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/I' with script
+(fontspec)                not available for font 'Lato-BoldItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 41 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 49
+luaotfload | aux : no font with id 41
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/I' with script
+(fontspec)                available for font 'Lato-BoldItalic' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 49 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 49
-luaotfload | aux : font no 50 (nil) does not define feature tnum for script latn
+luaotfload | aux : no font with id 41
+
+Package fontspec Info: Font family 'fla' created for font 'Lato' with options
+(fontspec)             [Extension=.ttf,Ligatures={TeX,Common},Scale=1,FontFace={
+ul}{n}{*-Hairline},FontFace={ul}{it}{*-HairlineItalic},FontFace={el}{n}{*-Thin},
+FontFace={el}{it}{*-ThinItalic},FontFace={l}{n}{*-Light},FontFace={l}{it}{*-Ligh
+tItalic},UprightFont={*-Regular},ItalicFont={*-Italic},FontFace={mb}{n}{*-Medium
+},FontFace={mb}{it}{*-MediumItalic},FontFace={sb}{n}{*-Semibold},FontFace={sb}{i
+t}{*-SemiboldItalic},FontFace={b}{n}{*-Bold},FontFace={b}{it}{*-BoldItalic},Bold
+Font={*-Bold},BoldItalicFont={*-BoldItalic},FontFace={eb}{n}{*-Heavy},FontFace={
+eb}{it}{*-HeavyItalic},FontFace={ub}{n}{*-Black},FontFace={ub}{it}{*-BlackItalic
+},Numbers={Monospaced,Lining},NFSSFamily=fla].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - (ul/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Hairline.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             -  (ul/sc) with NFSS spec.: 
+(fontspec)             - (ul/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-HairlineItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             -  (ul/itsc) with NFSS spec.: 
+(fontspec)             - (el/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Thin.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
+(fontspec)             -  (el/sc) with NFSS spec.: 
+(fontspec)             - (el/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-ThinItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
+(fontspec)             -  (el/itsc) with NFSS spec.: 
+(fontspec)             - (l/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Light.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
+(fontspec)             -  (l/sc) with NFSS spec.: 
+(fontspec)             - (l/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-LightItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
+(fontspec)             -  (l/itsc) with NFSS spec.: 
+(fontspec)             - (mb/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Medium.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             -  (mb/sc) with NFSS spec.: 
+(fontspec)             - (mb/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-MediumItalic.ttf]:mode=node;script=latn;la
+nguage=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             -  (mb/itsc) with NFSS spec.: 
+(fontspec)             - (sb/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Semibold.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             -  (sb/sc) with NFSS spec.: 
+(fontspec)             - (sb/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-SemiboldItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             -  (sb/itsc) with NFSS spec.: 
+(fontspec)             - (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
+(fontspec)             -  (b/sc) with NFSS spec.: 
+(fontspec)             - (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
+(fontspec)             -  (b/itsc) with NFSS spec.: 
+(fontspec)             - (eb/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Heavy.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             -  (eb/sc) with NFSS spec.: 
+(fontspec)             - (eb/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-HeavyItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             -  (eb/itsc) with NFSS spec.: 
+(fontspec)             - (ub/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Black.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
+(fontspec)             -  (ub/sc) with NFSS spec.: 
+(fontspec)             - (ub/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-BlackItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
+(fontspec)             -  (ub/itsc) with NFSS spec.: 
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Regular.ttf]:mode=node;script=latn;languag
+e=DFLT;+tlig;+liga;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (bx/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
+(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Italic.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
+(fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
+(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
+
+luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
  with language dflt
-luaotfload | aux : no font with id 50
+luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
-(fontspec)                not available for font 'Lato/BI' with script
+(fontspec)                not available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 50 (nil) does not define feature lnum for script latn
+luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
  with language dflt
-luaotfload | aux : no font with id 50
+luaotfload | aux : no font with id 29
 
 Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
-(fontspec)                available for font 'Lato/BI' with script
+(fontspec)                available for font 'Lato-Regular' with script
 (fontspec)                'CustomDefault' and language 'Default'.
 
-luaotfload | aux : font no 50 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 30 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 50
+luaotfload | aux : no font with id 30
+luaotfload | aux : font no 31 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 31
+luaotfload | aux : font no 32 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Thin' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Thin' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 32 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 32
+luaotfload | aux : font no 33 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-ThinItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-ThinItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 33 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 33
+luaotfload | aux : font no 34 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 34
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Light' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 34 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 34
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Light' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 34 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 34
+luaotfload | aux : font no 35 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-LightItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 35 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-LightItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 35 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 35
+luaotfload | aux : font no 36 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 36
+luaotfload | aux : font no 37 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 37
+luaotfload | aux : font no 38 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 38
+luaotfload | aux : font no 39 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 39
+luaotfload | aux : font no 40 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+luaotfload | aux : font no 41 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+luaotfload | aux : font no 42 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 42
+luaotfload | aux : font no 43 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 43
+luaotfload | aux : font no 44 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 44 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Black' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 44 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 44
+luaotfload | aux : font no 45 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-BlackItalic' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 45 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BlackItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 45 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 45
+luaotfload | aux : font no 29 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 29
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Regular' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 29 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 29
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Regular' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 29 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 29
+luaotfload | aux : font no 40 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-Bold' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 40
+luaotfload | aux : font no 46 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 46
+luaotfload | aux : font no 41 (nil) does not define feature tnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Monospaced,Lining' (tnum)
+(fontspec)                not available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature lnum for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
+
+Package fontspec Warning: OpenType feature 'Numbers=Uppercase' (lnum) not
+(fontspec)                available for font 'Lato-BoldItalic' with script
+(fontspec)                'CustomDefault' and language 'Default'.
+
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 41
 
 Package fontspec Info: Font family 'Lato(0)' created for font 'Lato' with
 (fontspec)             options
-(fontspec)             [Ligatures=TeX,Ligatures=Common,Scale=1,FontFace={ul}{n}{
-Lato
-(fontspec)             Hairline},FontFace={ul}{it}{Lato Hairline
-(fontspec)             Italic},FontFace={el}{n}{Lato
-(fontspec)             Thin},FontFace={el}{it}{Lato Thin
-(fontspec)             Italic},FontFace={l}{n}{Lato
-(fontspec)             Light},FontFace={l}{it}{Lato Light
-(fontspec)             Italic},FontFace={mb}{n}{Lato
-(fontspec)             Medium},FontFace={mb}{it}{Lato Medium
-(fontspec)             Italic},FontFace={sb}{n}{Lato
-(fontspec)             Semibold},FontFace={sb}{it}{Lato Semibold
-(fontspec)             Italic},FontFace={eb}{n}{Lato
-(fontspec)             Heavy},FontFace={eb}{it}{Lato Heavy
-(fontspec)             Italic},FontFace={ub}{n}{Lato
-(fontspec)             Black},FontFace={ub}{it}{Lato Black
-(fontspec)             Italic},Numbers={Monospaced,Lining}].
+(fontspec)             [Ligatures=TeX,Extension=.ttf,Ligatures={TeX,Common},Scal
+e=1,FontFace={ul}{n}{*-Hairline},FontFace={ul}{it}{*-HairlineItalic},FontFace={e
+l}{n}{*-Thin},FontFace={el}{it}{*-ThinItalic},FontFace={l}{n}{*-Light},FontFace=
+{l}{it}{*-LightItalic},UprightFont={*-Regular},ItalicFont={*-Italic},FontFace={m
+b}{n}{*-Medium},FontFace={mb}{it}{*-MediumItalic},FontFace={sb}{n}{*-Semibold},F
+ontFace={sb}{it}{*-SemiboldItalic},FontFace={b}{n}{*-Bold},FontFace={b}{it}{*-Bo
+ldItalic},BoldFont={*-Bold},BoldItalicFont={*-BoldItalic},FontFace={eb}{n}{*-Hea
+vy},FontFace={eb}{it}{*-HeavyItalic},FontFace={ub}{n}{*-Black},FontFace={ub}{it}
+{*-BlackItalic},Numbers={Monospaced,Lining}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - (ul/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairline:mode=node;script=latn;language=DFLT
-;+tlig;+liga;"
+(fontspec)             <->s*[1]"[Lato-Hairline.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (ul/sc) with NFSS spec.: 
 (fontspec)             - (ul/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHairlineItalic:mode=node;script=latn;languag
-e=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-HairlineItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (ul/itsc) with NFSS spec.: 
 (fontspec)             - (el/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThin:mode=node;script=latn;language=DFLT;+tl
-ig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Thin.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             -  (el/sc) with NFSS spec.: 
 (fontspec)             - (el/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoThinItalic:mode=node;script=latn;language=DF
-LT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-ThinItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             -  (el/itsc) with NFSS spec.: 
 (fontspec)             - (l/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLight:mode=node;script=latn;language=DFLT;+t
-lig;+liga;"
+(fontspec)             <->s*[1]"[Lato-Light.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (l/sc) with NFSS spec.: 
 (fontspec)             - (l/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoLightItalic:mode=node;script=latn;language=D
-FLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-LightItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (l/itsc) with NFSS spec.: 
 (fontspec)             - (mb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMedium:mode=node;script=latn;language=DFLT;+
-tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Medium.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (mb/sc) with NFSS spec.: 
 (fontspec)             - (mb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoMediumItalic:mode=node;script=latn;language=
-DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-MediumItalic.ttf]:mode=node;script=latn;la
+nguage=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (mb/itsc) with NFSS spec.: 
 (fontspec)             - (sb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemibold:mode=node;script=latn;language=DFLT
-;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Semibold.ttf]:mode=node;script=latn;langua
+ge=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (sb/sc) with NFSS spec.: 
 (fontspec)             - (sb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoSemiboldItalic:mode=node;script=latn;languag
-e=DFLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-SemiboldItalic.ttf]:mode=node;script=latn;
+language=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (sb/itsc) with NFSS spec.: 
+(fontspec)             - (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
+(fontspec)             -  (b/sc) with NFSS spec.: 
+(fontspec)             - (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
+(fontspec)             -  (b/itsc) with NFSS spec.: 
 (fontspec)             - (eb/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavy:mode=node;script=latn;language=DFLT;+t
-lig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-Heavy.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (eb/sc) with NFSS spec.: 
 (fontspec)             - (eb/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoHeavyItalic:mode=node;script=latn;language=D
-FLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-HeavyItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             -  (eb/itsc) with NFSS spec.: 
 (fontspec)             - (ub/n) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlack:mode=node;script=latn;language=DFLT;+t
-lig;+liga;"
+(fontspec)             <->s*[1]"[Lato-Black.ttf]:mode=node;script=latn;language=
+DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/sc) with NFSS spec.: 
 (fontspec)             - (ub/it) with NFSS spec.:
-(fontspec)             <->s*[1]"LatoBlackItalic:mode=node;script=latn;language=D
-FLT;+tlig;+liga;+tnum;+lnum;"
+(fontspec)             <->s*[1]"[Lato-BlackItalic.ttf]:mode=node;script=latn;lan
+guage=DFLT;+tlig;+liga;"
 (fontspec)             -  (ub/itsc) with NFSS spec.: 
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato:mode=node;script=latn;language=DFLT;+tlig;+
-liga;"
+(fontspec)             <->s*[1]"[Lato-Regular.ttf]:mode=node;script=latn;languag
+e=DFLT;+tlig;+liga;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/B:mode=node;script=latn;language=DFLT;+tlig
-;+liga;"
+(fontspec)             <->s*[1]"[Lato-Bold.ttf]:mode=node;script=latn;language=D
+FLT;+tlig;+liga;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/I:mode=node;script=latn;language=DFLT;+tlig
-;+liga;"
+(fontspec)             <->s*[1]"[Lato-Italic.ttf]:mode=node;script=latn;language
+=DFLT;+tlig;+liga;+tnum;+lnum;"
 (fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
 (fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
-(fontspec)             <->s*[1]"Lato/BI:mode=node;script=latn;language=DFLT;+tli
-g;+liga;"
+(fontspec)             <->s*[1]"[Lato-BoldItalic.ttf]:mode=node;script=latn;lang
+uage=DFLT;+tlig;+liga;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
-LaTeX Info: Redefining \rmfamily on input line 149.
+LaTeX Info: Redefining \rmfamily on input line 156.
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 149.
+(Font)              scaled to size 10.0pt on input line 156.
 ) (/usr/share/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2018/03/28 v1.16 Data Visualization (1.16)
@@ -1855,7 +2458,7 @@ Package: pgfplots 2018/03/28 v1.16 Data Visualization (1.16)
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2019/10/08 v1.3c Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -1863,7 +2466,7 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: luatex.def on input line 99.
+Package graphics Info: Driver file: luatex.def on input line 105.
 
 (/usr/share/texmf-dist/tex/latex/graphics-def/luatex.def
 File: luatex.def 2018/01/08 v1.0l Graphics/color driver for luatex
@@ -1881,21 +2484,21 @@ File: luatex.def 2018/01/08 v1.0l Graphics/color driver for luatex
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box45
+\pgfutil@abb=\box46
 
 (/usr/share/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfrcs 2019/08/03 v3.1.4b (3.1.4b)
 ))
-Package: pgf 2019/02/02 v3.1.1 (3.1.1)
+Package: pgf 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfsys 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks20
@@ -1912,6 +2515,8 @@ Package: pgfsys 2019/02/02 v3.1.1 (3.1.1)
 \pgf@yb=\dimen156
 \pgf@xc=\dimen157
 \pgf@yc=\dimen158
+\pgf@xd=\dimen159
+\pgf@yd=\dimen160
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
 \c@pgf@counta=\count194
@@ -1924,23 +2529,23 @@ Package: pgfsys 2019/02/02 v3.1.1 (3.1.1)
 \pgf@sys@id@count=\count198
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2019/02/02 v3.1.1 (3.1.1)
+File: pgf.cfg 2019/08/03 v3.1.4b (3.1.4b)
 )
 Driver file for pgf: pgfsys-luatex.def
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.def
-File: pgfsys-luatex.def 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsys-luatex.def 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsys-common-pdf.def 2019/08/03 v3.1.4b (3.1.4b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsyssoftpath.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 \pgfsyssoftpath@smallbuffer@items=\count199
 \pgfsyssoftpath@bigbuffer@items=\count266
 )
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfsysprotocol.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 ))
 (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -1954,14 +2559,14 @@ Package xcolor Info: Driver file: luatex.def on input line 225.
 Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
 
 (/usr/share/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
-\col@sep=\dimen159
-\ar@mcellbox=\box46
-\extrarowheight=\dimen160
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen161
+\ar@mcellbox=\box47
+\extrarowheight=\dimen162
 \NC@list=\toks26
 \extratabsurround=\skip50
 \backup@length=\skip51
-\ar@cellbox=\box47
+\ar@cellbox=\box48
 )
 \everycr=\toks27
 \minrowclearance=\skip52
@@ -1978,15 +2583,15 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfcore 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen161
+\pgfmath@dimen=\dimen163
 \pgfmath@count=\count268
-\pgfmath@box=\box48
+\pgfmath@box=\box49
 \pgfmath@toks=\toks28
 \pgfmath@stack@operand=\toks29
 \pgfmath@stack@operation=\toks30
@@ -2003,99 +2608,101 @@ x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
 .code.tex))) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count269
-)) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@picminx=\dimen162
-\pgf@picmaxx=\dimen163
-\pgf@picminy=\dimen164
-\pgf@picmaxy=\dimen165
-\pgf@pathminx=\dimen166
-\pgf@pathmaxx=\dimen167
-\pgf@pathminy=\dimen168
-\pgf@pathmaxy=\dimen169
-\pgf@xx=\dimen170
-\pgf@xy=\dimen171
-\pgf@yx=\dimen172
-\pgf@yy=\dimen173
-\pgf@zx=\dimen174
-\pgf@zy=\dimen175
+)) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@picminx=\dimen164
+\pgf@picmaxx=\dimen165
+\pgf@picminy=\dimen166
+\pgf@picmaxy=\dimen167
+\pgf@pathminx=\dimen168
+\pgf@pathmaxx=\dimen169
+\pgf@pathminy=\dimen170
+\pgf@pathmaxy=\dimen171
+\pgf@xx=\dimen172
+\pgf@xy=\dimen173
+\pgf@yx=\dimen174
+\pgf@yy=\dimen175
+\pgf@zx=\dimen176
+\pgf@zy=\dimen177
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@path@lastx=\dimen176
-\pgf@path@lasty=\dimen177
+File: pgfcorepathconstruct.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@path@lastx=\dimen178
+\pgf@path@lasty=\dimen179
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@shorten@end@additional=\dimen178
-\pgf@shorten@start@additional=\dimen179
+File: pgfcorepathusage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@shorten@end@additional=\dimen180
+\pgf@shorten@start@additional=\dimen181
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfpic=\box49
-\pgf@hbox=\box50
-\pgf@layerbox@main=\box51
+File: pgfcorescopes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfpic=\box50
+\pgf@hbox=\box51
+\pgf@layerbox@main=\box52
 \pgf@picture@serial@count=\count270
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgflinewidth=\dimen180
+File: pgfcoregraphicstate.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgflinewidth=\dimen182
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
 ex
-File: pgfcoretransformations.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@pt@x=\dimen181
-\pgf@pt@y=\dimen182
-\pgf@pt@temp=\dimen183
+File: pgfcoretransformations.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@pt@x=\dimen183
+\pgf@pt@y=\dimen184
+\pgf@pt@temp=\dimen185
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorequick.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoreobjects.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.te
 x
-File: pgfcorepathprocessing.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorepathprocessing.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfarrowsep=\dimen184
+File: pgfcorearrows.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfarrowsep=\dimen186
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@max=\dimen185
+File: pgfcoreshade.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@max=\dimen187
 \pgf@sys@shading@range@num=\count271
+\pgf@shadingcount=\count272
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoreimage.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfexternal@startupbox=\box52
+File: pgfcoreexternal.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfexternal@startupbox=\box53
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorelayers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcoretransparency.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorepatterns.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcorerdf.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfnodeparttextbox=\box53
+File: pgfmoduleshapes.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfnodeparttextbox=\box54
 )
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfmoduleplot.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2019/02/02 v3.1.1 (3.1.1)
-\pgf@nodesepstart=\dimen186
-\pgf@nodesepend=\dimen187
+Package: pgfcomp-version-0-65 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@nodesepstart=\dimen188
+\pgf@nodesepend=\dimen189
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2019/02/02 v3.1.1 (3.1.1)
+Package: pgfcomp-version-1-18 2019/08/03 v3.1.4b (3.1.4b)
 ))
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
@@ -2103,77 +2710,71 @@ Package: pgfcomp-version-1-18 2019/02/02 v3.1.1 (3.1.1)
 (/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2019/02/02 v3.1.1 (3.1.1)
+Package: pgffor 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen188
-\pgffor@skip=\dimen189
+\pgffor@iter=\dimen190
+\pgffor@skip=\dimen191
 \pgffor@stack=\toks31
 \pgffor@toks=\toks32
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2019/02/02 v3.1.1 (3.1.1)
+Package: tikz 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
 x
-File: pgflibraryplothandlers.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgf@plot@mark@count=\count272
-\pgfplotmarksize=\dimen190
+File: pgflibraryplothandlers.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgf@plot@mark@count=\count273
+\pgfplotmarksize=\dimen192
 )
-\tikz@lastx=\dimen191
-\tikz@lasty=\dimen192
-\tikz@lastxsaved=\dimen193
-\tikz@lastysaved=\dimen194
-\tikzleveldistance=\dimen195
-\tikzsiblingdistance=\dimen196
-\tikz@figbox=\box54
-\tikz@figbox@bg=\box55
-\tikz@tempbox=\box56
-\tikz@tempbox@bg=\box57
-\tikztreelevel=\count273
-\tikznumberofchildren=\count274
-\tikznumberofcurrentchild=\count275
-\tikz@fig@count=\count276
+\tikz@lastx=\dimen193
+\tikz@lasty=\dimen194
+\tikz@lastxsaved=\dimen195
+\tikz@lastysaved=\dimen196
+\tikz@lastmovetox=\dimen197
+\tikz@lastmovetoy=\dimen198
+\tikzleveldistance=\dimen199
+\tikzsiblingdistance=\dimen256
+\tikz@figbox=\box55
+\tikz@figbox@bg=\box56
+\tikz@tempbox=\box57
+\tikz@tempbox@bg=\box58
+\tikztreelevel=\count274
+\tikznumberofchildren=\count275
+\tikznumberofcurrentchild=\count276
+\tikz@fig@count=\count277
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\pgfmatrixcurrentrow=\count277
-\pgfmatrixcurrentcolumn=\count278
-\pgf@matrix@numberofcolumns=\count279
+File: pgfmodulematrix.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+\pgfmatrixcurrentrow=\count278
+\pgfmatrixcurrentcolumn=\count279
+\pgf@matrix@numberofcolumns=\count280
 )
-\tikz@expandcount=\count280
+\tikz@expandcount=\count281
 
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 topaths.code.tex
-File: tikzlibrarytopaths.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibrarytopaths.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )))
 (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
 (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
 Package pgfplots info on input line 124: Initializing with LUA version Lua 5.3
-\pgfplots@luabackend@table=\catcodetable6
+\pgfplots@luabackend@table=\catcodetable5
 \t@pgfplots@toka=\toks33
 \t@pgfplots@tokb=\toks34
 \t@pgfplots@tokc=\toks35
-\pgfplots@tmpa=\dimen197
-\c@pgfplots@coordindex=\count281
-\c@pgfplots@scanlineindex=\count282
+\pgfplots@tmpa=\dimen257
+\c@pgfplots@coordindex=\count282
+\c@pgfplots@scanlineindex=\count283
 
 (/usr/share/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex))
 (/usr/share/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_l
 oader.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
-Package pgfplots: loading complementary arithmetics for your pgf version...
-
-(/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_p
-gflibraryfpu.code.tex)
-(/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_p
-gfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count283
-)
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/luamath/pgflibraryluamath.code
 .tex)
-Package pgfplots info on input line 275: luamath library shipped with pgf 3.1.1 
-is up-to-date
+Package pgfplots info on input line 275: luamath library shipped with pgf 3.1.4b
+ is up-to-date
 ) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
 Package pgfplots info on input line 82: Found new luatex: initializing lua comma
 nds instead of write18 (shell-escape)
@@ -2217,16 +2818,16 @@ pgfsys-luatex.def)))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 decorations.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen198
-\pgfdecoratedremainingdistance=\dimen199
-\pgfdecoratedinputsegmentcompleteddistance=\dimen256
-\pgfdecoratedinputsegmentremainingdistance=\dimen257
-\pgf@decorate@distancetomove=\dimen258
+\pgfdecoratedcompleteddistance=\dimen258
+\pgfdecoratedremainingdistance=\dimen259
+\pgfdecoratedinputsegmentcompleteddistance=\dimen260
+\pgfdecoratedinputsegmentremainingdistance=\dimen261
+\pgf@decorate@distancetomove=\dimen262
 \pgf@decorate@repeatstate=\count287
-\pgfdecorationsegmentamplitude=\dimen259
-\pgfdecorationsegmentlength=\dimen260
+\pgfdecorationsegmentamplitude=\dimen263
+\pgfdecorationsegmentlength=\dimen264
 )
-\tikz@lib@dec@box=\box58
+\tikz@lib@dec@box=\box59
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 decorations.pathmorphing.code.tex
@@ -2237,27 +2838,29 @@ decorations.pathreplacing.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
 ons.pathreplacing.code.tex))
 \pgfplots@numplots=\count288
-\pgfplots@xmin@reg=\dimen261
-\pgfplots@xmax@reg=\dimen262
-\pgfplots@ymin@reg=\dimen263
-\pgfplots@ymax@reg=\dimen264
-\pgfplots@zmin@reg=\dimen265
-\pgfplots@zmax@reg=\dimen266
+\pgfplots@xmin@reg=\dimen265
+\pgfplots@xmax@reg=\dimen266
+\pgfplots@ymin@reg=\dimen267
+\pgfplots@ymax@reg=\dimen268
+\pgfplots@zmin@reg=\dimen269
+\pgfplots@zmax@reg=\dimen270
 )
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 plotmarks.code.tex
-File: tikzlibraryplotmarks.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: tikzlibraryplotmarks.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
-File: pgflibraryplotmarks.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgflibraryplotmarks.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 ))) (/usr/share/texmf/tex/latex/fontawesome/fontawesome.sty
 Package: fontawesome 2016/05/15 v4.6.3.1 font awesome icons
 
 (/usr/share/texmf/tex/latex/fontawesome/fontawesomesymbols-generic.tex)
-luaotfload | aux : font no 53 (nil) defines no feature for script latn
-luaotfload | aux : no font with id 53
-luaotfload | aux : font no 53 (nil) defines no feature for script dflt
-luaotfload | aux : no font with id 53
+luaotfload | cache : Lookup cache loaded from /home/brian/.texlive/texmf-var/lua
+tex-cache/generic/names/luaotfload-lookup-cache.luc.
+luaotfload | aux : font no 49 (nil) defines no feature for script latn
+luaotfload | aux : no font with id 49
+luaotfload | aux : font no 49 (nil) defines no feature for script dflt
+luaotfload | aux : no font with id 49
 
 Package fontspec Info: Could not resolve font "FontAwesome/BI" (it probably
 (fontspec)             doesn't exist).
@@ -2286,15 +2889,27 @@ Package fontspec Info: Font family 'FontAwesome(0)' created for font
 (/usr/share/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.dateplot.c
 ode.tex (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
-File: pgfcalendar.code.tex 2019/02/02 v3.1.1 (3.1.1)
+File: pgfcalendar.code.tex 2019/08/03 v3.1.4b (3.1.4b)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 \pgfcalendarcurrentjulian=\count289
+\pgf@cal@easter@Y=\count290
+\pgf@cal@easter@G=\count291
+\pgf@cal@easter@C=\count292
+\pgf@cal@easter@X=\count293
+\pgf@cal@easter@Z=\count294
+\pgf@cal@easter@D=\count295
+\pgf@cal@easter@E=\count296
+\pgf@cal@easter@N=\count297
+\pgf@cal@easter@M=\count298
+\pgf@cal@easter@julianday=\count299
 )))
-luaotfload | aux : font no 62 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 58 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 62
-luaotfload | aux : font no 63 (nil) does not define feature smcp for script latn
+luaotfload | aux : no font with id 58
+luaotfload | aux : font no 59 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 63
+luaotfload | aux : no font with id 59
 
 Package fontspec Info: Font family 'SourceSerifPro(0)' created for font
 (fontspec)             'SourceSerifPro' with options [].
@@ -2382,6 +2997,7 @@ Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
+LaTeX Info: Redefining \showhyphens on input line 141.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
@@ -2587,8 +3203,8 @@ Package microtype Warning: Unknown slot number of character
 (microtype)                in font encoding `TU' in inheritance list
 (microtype)                `microtype.cfg/376(protrusion)'.
 
-\c@mv@tabular=\count290
-\c@mv@boldtabular=\count291
+\c@mv@tabular=\count300
+\c@mv@boldtabular=\count301
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
@@ -2659,16 +3275,16 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 141.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count292
-\scratchdimen=\dimen267
-\scratchbox=\box59
-\nofMPsegments=\count293
-\nofMParguments=\count294
+\scratchcounter=\count302
+\scratchdimen=\dimen271
+\scratchbox=\box60
+\nofMPsegments=\count303
+\nofMParguments=\count304
 \everyMPshowfont=\toks37
-\MPscratchCnt=\count295
-\MPscratchDim=\dimen268
-\MPnumerator=\count296
-\makeMPintoPDFobject=\count297
+\MPscratchCnt=\count305
+\MPscratchDim=\dimen272
+\MPnumerator=\count306
+\makeMPintoPDFobject=\count307
 \everyMPtoPDFconversion=\toks38
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -2695,7 +3311,7 @@ Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 )))
 (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
+Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO)
 
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
@@ -3169,18 +3785,18 @@ Overfull \hbox (5.99992pt too wide) in paragraph at lines 37--37
  []
 
 ) [5] (./data/gdp_map.pgf
-luaotfload | aux : font no 101 (nil) does not define feature smcp for script lat
+luaotfload | aux : font no 97 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : no font with id 97
+luaotfload | aux : font no 102 (nil) does not define feature smcp for script lat
 n with language dflt
-luaotfload | aux : no font with id 101
-luaotfload | aux : font no 106 (nil) does not define feature smcp for script lat
+luaotfload | aux : no font with id 102
+luaotfload | aux : font no 103 (nil) does not define feature smcp for script lat
 n with language dflt
-luaotfload | aux : no font with id 106
-luaotfload | aux : font no 107 (nil) does not define feature smcp for script lat
+luaotfload | aux : no font with id 103
+luaotfload | aux : font no 104 (nil) does not define feature smcp for script lat
 n with language dflt
-luaotfload | aux : no font with id 107
-luaotfload | aux : font no 108 (nil) does not define feature smcp for script lat
-n with language dflt
-luaotfload | aux : no font with id 108
+luaotfload | aux : no font with id 104
 
 Package fontspec Info: Font family 'Lato(1)' created for font 'Lato' with
 (fontspec)             options [Ligatures=TeX].
@@ -3607,13 +4223,13 @@ Underfull \hbox (badness 2205) in paragraph at lines 21--21
  []
 
 
-Underfull \hbox (badness 2269) in paragraph at lines 21--21
- [][]\TU/Lato(1)/m/n/9 Stu-dent Loan
+Underfull \hbox (badness 4341) in paragraph at lines 21--21
+ [][]\TU/Lato(1)/m/n/9 Auto Loan
  []
 
 
-Underfull \hbox (badness 4341) in paragraph at lines 21--21
- [][]\TU/Lato(1)/m/n/9 Auto Loan
+Underfull \hbox (badness 2269) in paragraph at lines 21--21
+ [][]\TU/Lato(1)/m/n/9 Stu-dent Loan
  []
 
 
@@ -4383,19 +4999,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 1450--1475
 
  []
 
-[35]
-Underfull \hbox (badness 10000) in paragraph at lines 1486--1487
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1488--1489
-
- []
-
-Package pgfplots info on input line 1496: dateplot: setting 'date ZERO={2019-10-
+Package pgfplots info on input line 1484: dateplot: setting 'date ZERO={2019-10-
 01}' for this axis.
-Package pgfplots info on input line 1496: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 1484: Using 'lua backend=false' for axis: x 
+coord trafo unsupported.
+PGFPlots: reading {data/p10med.csv}
+PGFPlots: reading {data/p10med.csv}
+
+Underfull \hbox (badness 10000) in paragraph at lines 1479--1492
+
+ []
+
+[35
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1502--1503
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1504--1505
+
+ []
+
+Package pgfplots info on input line 1512: dateplot: setting 'date ZERO={2019-10-
+01}' for this axis.
+Package pgfplots info on input line 1512: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/icsa.csv}
 PGFPlots: reading {data/icsa.csv}
@@ -4422,123 +5051,83 @@ NOTE: coordinate (1988-03-05,) has been dropped because of a coordinate filter.
 NOTE: coordinate (1988-03-12,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 
-Overfull \hbox (5.37994pt too wide) in paragraph at lines 1500--1500
+Overfull \hbox (5.37994pt too wide) in paragraph at lines 1516--1516
  [][]\TU/Lato(1)/m/n/7 200
  []
 
 
-Overfull \hbox (5.17694pt too wide) in paragraph at lines 1500--1500
+Overfull \hbox (5.17694pt too wide) in paragraph at lines 1516--1516
  [][]\TU/Lato(1)/m/n/7 400
  []
 
 
-Overfull \hbox (5.37994pt too wide) in paragraph at lines 1500--1500
+Overfull \hbox (5.37994pt too wide) in paragraph at lines 1516--1516
  [][]\TU/Lato(1)/m/n/7 600
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1492--1503
+Underfull \hbox (badness 10000) in paragraph at lines 1508--1519
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1508--1509
+Underfull \hbox (badness 10000) in paragraph at lines 1524--1525
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1510--1511
+Underfull \hbox (badness 10000) in paragraph at lines 1526--1527
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1512--1513
+Underfull \hbox (badness 10000) in paragraph at lines 1528--1529
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1514--1515
+Underfull \hbox (badness 10000) in paragraph at lines 1530--1531
 
  []
 
 (./text/lprod.txt)
-Package pgfplots info on input line 1525: dateplot: setting 'date ZERO={2019-10-
+Package pgfplots info on input line 1541: dateplot: setting 'date ZERO={2019-10-
 01}' for this axis.
-Package pgfplots info on input line 1525: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 1541: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/lprod.csv}
  [36]
-Underfull \hbox (badness 10000) in paragraph at lines 1540--1541
+Underfull \hbox (badness 10000) in paragraph at lines 1556--1557
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1542--1543
+Underfull \hbox (badness 10000) in paragraph at lines 1558--1559
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1544--1545
+Underfull \hbox (badness 10000) in paragraph at lines 1560--1561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1549--1550
+Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
 
  []
 
-Package pgfplots info on input line 1558: dateplot: setting 'date ZERO={2019-10-
+Package pgfplots info on input line 1574: dateplot: setting 'date ZERO={2019-10-
 01}' for this axis.
-Package pgfplots info on input line 1558: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 1574: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/sp500rr.csv}
 
-Overfull \hbox (1.11694pt too wide) in paragraph at lines 1561--1561
+Overfull \hbox (1.11694pt too wide) in paragraph at lines 1577--1577
  [][]\TU/Lato(1)/m/n/7 12
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1553--1564
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1570--1571
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1572--1573
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1574--1575
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1576--1577
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1578--1579
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1580--1581
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1582--1583
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1584--1585
+Underfull \hbox (badness 10000) in paragraph at lines 1569--1580
 
  []
 
@@ -4547,60 +5136,73 @@ Underfull \hbox (badness 10000) in paragraph at lines 1586--1587
 
  []
 
-[37] (./text/cpi_main.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--1595
+
+Underfull \hbox (badness 10000) in paragraph at lines 1588--1589
 
  []
 
-Package pgfplots info on input line 1604: dateplot: setting 'date ZERO={2019-10-
+
+Underfull \hbox (badness 10000) in paragraph at lines 1590--1591
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1592--1593
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1594--1595
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1596--1597
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1598--1599
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1600--1601
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1602--1603
+
+ []
+
+[37] (./text/cpi_main.txt)
+Underfull \hbox (badness 10000) in paragraph at lines 1--1611
+
+ []
+
+Package pgfplots info on input line 1620: dateplot: setting 'date ZERO={2019-10-
 01}' for this axis.
-Package pgfplots info on input line 1604: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 1620: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/cpi.csv}
 PGFPlots: reading {data/cpi.csv}
 
-Underfull \hbox (badness 10000) in paragraph at lines 1598--1613
+Underfull \hbox (badness 10000) in paragraph at lines 1614--1629
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1621--1622
+Underfull \hbox (badness 10000) in paragraph at lines 1637--1638
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1623--1624
+Underfull \hbox (badness 10000) in paragraph at lines 1639--1640
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1625--1626
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1627--1628
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1629--1630
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1631--1632
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1633--1634
-
- []
-
-[38
-Missing character: There is no ; (U+003B) in font nullfont!
-]
 Underfull \hbox (badness 10000) in paragraph at lines 1641--1642
 
  []
@@ -4620,8 +5222,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 1647--1648
 
  []
 
-[39]
+
+Underfull \hbox (badness 10000) in paragraph at lines 1649--1650
+
+ []
+
+[38
+Missing character: There is no ; (U+003B) in font nullfont!
+]
 Underfull \hbox (badness 10000) in paragraph at lines 1657--1658
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1659--1660
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1661--1662
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1663--1664
+
+ []
+
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 1673--1674
 
  []
 
@@ -4636,24 +5265,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 1657--1658
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 41420 strings out of 494300
- 596157,2373549 words of node,token memory allocated
- 710 words of node memory still in use:
-   8 hlist, 1 vlist, 6 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 86 glue_spec
-, 10 attribute_list, 1 write nodes
-   avail lists: 1:8,2:124805,3:62371,4:460,5:447,6:429,7:5685,8:2,9:3302,10:26,1
-1:192,12:1
- 42666 multiletter control sequences out of 65536+600000
- 109 fonts using 16879791 bytes
- 79i,20n,136p,2521b,3033s stack positions out of 5000i,500n,10000p,200000b,100000s
-</usr/share/fonts/TTF/Lato-RegularItalic.ttf></usr/share/texmf-dist/fonts/openty
-pe/adobe/sourceserifpro/SourceSerifPro-Regular.otf></usr/share/texmf-dist/fonts/
-opentype/public/fontawesome/FontAwesome.otf></usr/share/fonts/TTF/Lato-Bold.ttf>
-</usr/share/fonts/TTF/Lato-Regular.ttf></usr/share/texmf-dist/fonts/opentype/ado
-be/sourceserifpro/SourceSerifPro-Bold.otf></usr/share/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on chartbook.pdf (40 pages, 989690 bytes).
+ 42249 strings out of 493864
+ 596158,2373549 words of node,token memory allocated
+ 717 words of node memory still in use:
+   8 hlist, 1 vlist, 6 rule, 2 glue, 3 kern, 1 glyph, 11 attribute, 86 glue_spec
+, 11 attribute_list, 2 write nodes
+   avail lists: 1:10,2:124807,3:62370,4:460,5:458,6:429,7:5686,8:2,9:3302,10:26,
+11:192,12:1
+ 43996 multiletter control sequences out of 65536+600000
+ 105 fonts using 16267887 bytes
+ 79i,20n,136p,2521b,3038s stack positions out of 5000i,500n,10000p,200000b,100000s
+</usr/share/texmf-dist/fonts/truetype/typoland/lato/Lato-Italic.ttf></usr/share/
+texmf-dist/fonts/opentype/adobe/sourceserifpro/SourceSerifPro-Regular.otf></usr/
+share/texmf-dist/fonts/opentype/public/fontawesome/FontAwesome.otf></usr/share/f
+onts/TTF/Lato-Bold.ttf></usr/share/fonts/TTF/Lato-Regular.ttf></usr/share/texmf-
+dist/fonts/opentype/adobe/sourceserifpro/SourceSerifPro-Bold.otf></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy6.pfb>
+Output written on chartbook.pdf (40 pages, 1005035 bytes).
 
 PDF statistics: 187 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams

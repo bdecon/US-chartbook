@@ -920,8 +920,8 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \end{minipage}
 
-\noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2017}\\
-\footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,060}}
+\noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2018}\\
+\footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,573}}
 
 \vspace{-3mm}
 \hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
@@ -1473,7 +1473,23 @@ Wage data for low-wage earners is useful for understanding the extent to which t
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics and Author's Calculations} \\
 
-\vspace{2mm}
+\vspace{12mm}
+
+
+\noindent \normalsize \textbf{Weekly Earnings Growth, First Decile and Median}\\
+\footnotesize{\textit{full-time, wage and salary earners, age 16+, one-year growth, percent}} \\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6, 8}, 
+		enlarge y limits={0.1}, legend style={at={(0.98, 1.13)}},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+	\rbars
+	\stdline{cyan!70!blue}{date}{p10_sa}{data/p10med.csv}
+	\stdline{violet}{date}{p50_sa}{data/p10med.csv}
+	\legend{First Decile, Median};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations} \\
+
 
 \end{minipage}
 
