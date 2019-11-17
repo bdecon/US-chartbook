@@ -1104,6 +1104,32 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \begin{minipage}{0.76\textwidth}
 
+\subsection*{\color{black!70} \seriffont Industrial Production}
+
+\vspace{4mm}
+
+\small \input{text/indpro.txt} \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Industrial Production}\\
+\footnotesize{\textit{index, 2012=100}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 70, 80, 90, 100, 110}, 
+		enlarge y limits={0.08},
+		xticklabel={`\short{\year}}, clip=false, height=5.5cm,
+		legend style={at={(0.95, 0.18)}}]
+	\rbars
+	\stdline{blue!90!black}{date}{Total Index}{data/indpro.csv}
+	\stdline{green!70!lime!80!black}{date}{Manufacturing}{data/indpro.csv}
+	\legend{Total Index, Manufacturing};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
+
+
+
+
 \vspace{5mm}
 
 \normalsize
