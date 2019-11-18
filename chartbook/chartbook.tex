@@ -14,7 +14,7 @@
 % % % % % % Packages % % % % % % % % % 
 %
 	
-	\usepackage[letterpaper, margin=1.2in]{geometry}
+	\usepackage[letterpaper, margin=1.18in]{geometry}
 	\usepackage{microtype}
 	\usepackage[default]{lato}
 	\usepackage{pgfplots}
@@ -105,7 +105,11 @@
 		
 	% Standard line
 	\newcommand{\stdline}[4]{\addplot[very thick, no markers, color=#1] 
-		table [x=#2, y=#3, col sep=comma] {#4};	}	
+		table [x=#2, y=#3, col sep=comma] {#4};	}
+		
+	% Thicker line
+	\newcommand{\thickline}[4]{\addplot[ultra thick, no markers, color=#1] 
+		table [x=#2, y=#3, col sep=comma] {#4};	}
 		
 	% Additional bar plot settings
 	\newcommand{\barplotnogrid}{xbar=0pt,
@@ -931,6 +935,15 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \begin{minipage}{0.76\textwidth}
 
+\normalsize
+
+Income and Expenses by Age and Number of Children\\
+
+Poverty rates and amount of poverty in millions of people\\
+
+
+
+
 \end{minipage}
 
 \newpage
@@ -1102,33 +1115,150 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \newpage
 
-\begin{minipage}{0.76\textwidth}
-
 \subsection*{\color{black!70} \seriffont Industrial Production}
 
-\vspace{4mm}
+\begin{minipage}{0.42\textwidth}
+
 
 \small \input{text/indpro.txt} \\
 
-\vspace{2mm}
+More text here about contributions to industrial production growth from broad categories. Include more than just the three in the chart, by including manufacturing, utilities, and mining. Focus on three year change and one year change. Probably best to let the program decide which series to highlight, since space is limited.\\
+
+\vspace{1mm}
+
+
+\end{minipage}\hspace{10mm}
+\begin{minipage}{0.42\textwidth}
+
 
 \noindent \normalsize \textbf{Industrial Production}\\
 \footnotesize{\textit{index, 2012=100}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 70, 80, 90, 100, 110}, 
-		enlarge y limits={0.08},
-		xticklabel={`\short{\year}}, clip=false, height=5.5cm,
-		legend style={at={(0.95, 0.18)}}]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 80, 100}, 
+		enlarge y limits={0.05}, legend cell align={left},
+		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, {2005-01-01}, 
+				{2010-01-01}, {2015-01-01}, {2019-10-01}},
+		minor xtick={}, 
+        xticklabels={`89, `95, `00, `05, `10, `15, `19 Oct},
+		clip=false, height=5.8cm, width=7.4cm,
+		legend style={fill=white, legend columns=1, at={(1.02, 0.32)}}]
 	\rbars
-	\stdline{blue!90!black}{date}{Total Index}{data/indpro.csv}
-	\stdline{green!70!lime!80!black}{date}{Manufacturing}{data/indpro.csv}
-	\legend{Total Index, Manufacturing};
+	\thickline{cyan!50!white}{date}{Manufacturing}{data/indpro.csv}
+	\stdline{blue!90!violet}{date}{Total index}{data/indpro.csv}
+	\legend{Manufacturing, Total Index};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \\
 
+\end{minipage}\\
 
+\begin{minipage}{0.76\textwidth}
 
+\small 
+
+\normalsize
+
+Table here \\
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\vspace{3mm}
+
+\small Industrial activity is measured both by market group and by industry group.\\
+
+\vspace{1mm}
+
+\noindent \normalsize \textbf{Industrial Production Growth, Market Group}\\
+\footnotesize{\textit{percentage point contribution to quarterly growth at seasonally adjust annual rate}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
+		yticklabel style={text width=1.5em}, legend cell align={left},
+		legend style={legend columns=1, at={(0.53, 0.4)}}]
+	\rbars
+	\sbar{violet!60!black}{date}{Consumer goods}{data/indprogr.csv}
+	\sbar{magenta}{date}{ENS}{data/indprogr.csv}
+	\sbar{orange!70!yellow}{date}{Materials}{data/indprogr.csv}
+	\legend{Consumer Goods, Equipment \& Nonindustrial Supplies, Materials};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve}\\
+
+\vspace{3mm}
+
+\small Market group data show a long-term slowdown, while industry group data show a change in the composition of industrial activity.\\
+
+\vspace{1mm}
+
+\noindent \normalsize \textbf{Industrial Production Growth, Industry Group}\\
+\footnotesize{\textit{percentage point contribution to quarterly growth at seasonally adjust annual rate}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
+		yticklabel style={text width=1.5em}, legend cell align={left},
+		legend style={legend columns=1, at={(0.43, 0.48)}}]
+	\rbars
+	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr2.csv}
+	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr2.csv}
+	\sbar{orange!20!yellow}{date}{Mining}{data/indprogr2.csv}
+	\sbar{green!80!blue}{date}{Utilities}{data/indprogr2.csv}
+	\legend{Durable Manufacturing, Nondurable Manufacturing, Mining, Utilities};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve}\\
+
+\vspace{3mm}
+
+\small Recent data show that the slowdown has been concentrated in X industry and X market group. The monthly data are shown in detail below.\\
+
+\vspace{1mm}
+
+\noindent \normalsize \textbf{Recent data in detail}\\
+
+\vspace{-1mm}
+
+\noindent \normalsize \hspace{14mm} Market Group \hspace{38mm} Industry Group \footnotesize 
+
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6}, 
+		clip=false, width=6.5cm, height=4.6cm,
+		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, 
+				{2018-01-01}, {2019-01-01}, {2019-10-01}},
+        minor xtick={}, enlarge y limits=0.06, 
+        enlarge x limits={0.04}, 
+        xticklabels={`15, `16, `17, `18, `19, Oct}]
+	\sbar{violet!60!black}{date}{Consumer goods}{data/indprogr_rec.csv}
+	\sbar{magenta}{date}{ENS}{data/indprogr_rec.csv}
+	\sbar{orange!70!yellow}{date}{Materials}{data/indprogr_rec.csv}
+	\end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6}, 
+		clip=false, width=6.5cm, height=4.6cm,
+		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, 
+				{2018-01-01}, {2019-01-01}, {2019-10-01}},
+        minor xtick={}, enlarge y limits=0.06, 
+        enlarge x limits={0.04},
+        xticklabels={`15, `16, `17, `18, `19, Oct}]
+	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr_rec2.csv}
+	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr_rec2.csv}
+	\sbar{orange!20!yellow}{date}{Mining}{data/indprogr_rec2.csv}
+	\sbar{green!80!blue}{date}{Utilities}{data/indprogr_rec2.csv}
+	\end{axis}
+\end{tikzpicture}
+\\
+\footnotesize{Source: Federal Reserve} \\
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \vspace{5mm}
 
@@ -1340,15 +1470,15 @@ Balance sheets \\
 \end{minipage}
 
 \noindent \normalsize \textbf{Exports and Imports by Type}\\
-\footnotesize{\textit{percentage point share of GDP \hspace{40mm} period averages}\\ \vspace{4mm}
+\footnotesize{\textit{percentage point share of GDP \hspace{40mm} period averages}\\ 
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{42mm} R{7.0mm} R{7.0mm} R{7.0mm} R{7.0mm} R{7.0mm} 
-		   R{7.0mm} R{7.0mm} R{7.0mm} }
+		 \begin{tabular}{p{42mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} 
+		   R{7.1mm} R{7.1mm} R{7.1mm} }
 			 \input{data/exim.tex}\hline
 		\end{tabular}}	\\
 		
-\vspace{-6mm}
+\vspace{-2mm}
 \footnotesize{Source: Bureau of Economic Analysis}}
 
 
