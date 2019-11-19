@@ -435,12 +435,17 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 
 \begin{minipage}{0.76\textwidth}
 
+\subsection*{\color{black!70} \seriffont Liabilities}
+
+\small Domestic liabilities increased by X.X percent in 2019 Q3, after adjusting for inflation. Over the past three years, domestic liabilities have increased at an average annual rate of X.X percent. Federal government liabilities contributed X.X percentage points per year on average, while state and local contributed X.X percent per year on average. Households contributed X.X percent per year on average over this three year period, corporate businesses contributed X.X percent and non corporate businesses contributed X.X percent.\\
+
 \vspace{2mm}
 
 \noindent \normalsize \textbf{Real Debt Growth}\\
 \footnotesize{\textit{contribution to one-year percent change in liabilities, adjusted by PCE price deflator}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6, 8}, xmin = 1989-01-01,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6, 8}, 
+		xmin = 1989-01-01, height=5.0cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
@@ -452,7 +457,12 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 	\legend{Fed. Gov.,State/Loc. Gov., Households, Corp bus., Non-corp. bus.};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+
+\vspace{4mm}
+
+\normalsize  [TABLE HERE]
+			
 			
 \end{minipage}
 
@@ -608,6 +618,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 		   R{7.8mm} R{6.7mm} R{6.7mm} }
 			 \input{data/pi.tex}
+			 \hline
 		\end{tabular}
 		}	\\
 		
@@ -669,6 +680,7 @@ Welfare Income \\
 		 \begin{tabular}{p{2.0mm} p{38mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 		   R{7.8mm} R{6.7mm} R{6.7mm} }
 			 \input{data/pce.tex}
+			 \hline
 		\end{tabular}
 		}	\\
 		
@@ -796,6 +808,7 @@ Paragraph here about trends in auto loans, credit card debt, and student loans.
 		 \begin{tabular}{p{36mm} R{11.8mm} R{11.8mm}  R{8.0mm} R{7.4mm} R{7.4mm} 
 		   R{7.4mm} R{7.4mm}}
 			 \input{data/hhcdebt.tex}
+			 \hline
 		\end{tabular}
 		}	\\}
 		
@@ -986,7 +999,7 @@ Poverty rates and amount of poverty in millions of people\\
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 		   R{7.8mm} R{6.7mm} R{6.7mm} }
-			 \input{data/businv.tex}
+			 \input{data/businv.tex}\hline
 		\end{tabular}
 		}	\\
 		
@@ -1564,8 +1577,44 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \normalsize [Quarterly employment growth with dot for latest monthly value]\\
 
+\end{minipage}
+
+
+\newpage
+
+
+\begin{minipage}{0.76\textwidth} 
+
+\subsection*{\color{black!70} \seriffont Unemployment}
+
+\vspace{2mm}
+
+\small The conventional ``unemployment rate'' is measured as the number of people who do not have a job and looked for one during a reference week, divided by the labor force, which includes the unemployed and those with jobs.\\
+
+\input{text/unemp.txt}\\
+
+\vspace{3mm}
+
+\noindent \normalsize \textbf{Unemployment Rate}\\
+\footnotesize{\textit{unemployed share of labor force}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
+		legend style={fill=white, at={(0.5, 1.0)}}]
+	\rbars
+	\stdline{blue!90!cyan}{date}{White}{data/unemp.csv}
+	\stdline{green!90!blue}{date}{Hispanic}{data/unemp.csv}
+	\stdline{red}{date}{Black}{data/unemp.csv}
+	\legend{White, Hispanic, Black};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \\
+
+\vspace{5mm}
 
 \normalsize
+
+
 
 Unemployment Rate \\
 
