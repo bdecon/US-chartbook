@@ -217,12 +217,22 @@ def series_info(s):
     d['date_prev'] = s.index[-2]
     d['val_year_ago'] = s.iloc[-obs_per_year -1]
     d['date_year_ago'] = s.index[-obs_per_year -1]
-    if d['date_latest'] > d['date_prev']:
-        dlm = s[s >= d['val_latest']].sort_index().index[-2]
-        dl_txt = 'the highest level since'
-    elif d['date_latest'] < d['date_prev']:
-        dlm = s[s <= d['val_latest']].sort_index().index[-2]
-        dl_txt = 'the lowest level since'
+    if d['val_latest'] > d['val_prev']:
+        dlm = s[s >= d['val_latest']].sort_index()
+        if len(dlm) > 1:
+        	dlm = dlm.index[-2]
+        	dl_txt = 'the highest level since'
+        elif len(dlm) == 1:
+        	dlm = dlm.index[-1]
+        	dl_txt = 'the highest level in the data'
+    elif d['val_latest'] < d['val_prev']:
+        dlm = s[s <= d['val_latest']].sort_index()
+        if len(dlm) > 1:
+        	dlm = dlm.index[-2]
+        	dl_txt = 'the lowest level since'
+        elif len(dlm) == 1:
+        	dlm = dlm.index[-1]
+        	dl_txt = 'the lowest level in the data'
     else:
         dlm = d['date_prev']
         dl_txt = 'the same level as'
