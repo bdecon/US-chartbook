@@ -1117,18 +1117,18 @@ Poverty rates and amount of poverty in millions of people\\
 
 \subsection*{\color{black!70} \seriffont Industrial Production}
 
-\begin{minipage}{0.42\textwidth}
+\begin{minipage}{0.56\textwidth}
 
 
 \small \input{text/indpro.txt} \\
 
-More text here about contributions to industrial production growth from broad categories. Include more than just the three in the chart, by including manufacturing, utilities, and mining. Focus on three year change and one year change. Probably best to let the program decide which series to highlight, since space is limited.\\
+\input{text/indpro2.txt}\\
 
 \vspace{1mm}
 
 
-\end{minipage}\hspace{10mm}
-\begin{minipage}{0.42\textwidth}
+\end{minipage}\hspace{8mm}
+\begin{minipage}{0.38\textwidth}
 
 
 \noindent \normalsize \textbf{Industrial Production}\\
@@ -1139,12 +1139,12 @@ More text here about contributions to industrial production growth from broad ca
 		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, {2005-01-01}, 
 				{2010-01-01}, {2015-01-01}, {2019-10-01}},
 		minor xtick={}, 
-        xticklabels={`89, `95, `00, `05, `10, `15, `19 Oct},
-		clip=false, height=5.8cm, width=7.4cm,
-		legend style={fill=white, legend columns=1, at={(1.02, 0.32)}}]
+        xticklabels={`89, `95, `00, `05, `10, `15, Oct},
+		clip=false, height=4.8cm, width=6.8cm,
+		legend style={fill=white, legend columns=1, at={(1.02, 0.33)}}]
 	\rbars
-	\thickline{cyan!50!white}{date}{Manufacturing}{data/indpro.csv}
-	\stdline{blue!90!violet}{date}{Total index}{data/indpro.csv}
+	\thickline{orange!80!red}{date}{Manufacturing}{data/indpro.csv}
+	\stdline{blue!90!black}{date}{Total index}{data/indpro.csv}
 	\legend{Manufacturing, Total Index};
 	\end{axis}
 \end{tikzpicture}\\
@@ -1154,11 +1154,16 @@ More text here about contributions to industrial production growth from broad ca
 
 \begin{minipage}{0.76\textwidth}
 
-\small 
-
-\normalsize
-
-Table here \\
+\noindent \normalsize \textbf{Industrial Production Growth}\\
+\footnotesize{\textit{percentage point contribution to total \hspace{39mm} moving averages}\\ 
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{2mm} p{47mm} R{7.3mm} R{7.3mm} R{7.3mm} R{7.6mm} R{7.3mm} 
+		   R{7.3mm} R{7.3mm} }
+			 \input{data/indpro.tex}\hline
+		\end{tabular}}	\\
+		
+\footnotesize{Source: Federal Reserve}}\\
 
 \end{minipage}
 
@@ -1205,7 +1210,7 @@ Table here \\
 	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr2.csv}
 	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr2.csv}
 	\sbar{orange!20!yellow}{date}{Mining}{data/indprogr2.csv}
-	\sbar{green!80!blue}{date}{Utilities}{data/indprogr2.csv}
+	\sbar{green!80!blue}{date}{Electric and gas utilities}{data/indprogr2.csv}
 	\legend{Durable Manufacturing, Nondurable Manufacturing, Mining, Utilities};
 	\end{axis}
 \end{tikzpicture}\\
@@ -1246,9 +1251,9 @@ Table here \\
         enlarge x limits={0.04},
         xticklabels={`15, `16, `17, `18, `19, Oct}]
 	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr_rec2.csv}
-	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr_rec2.csv}
+	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr2_rec.csv}
 	\sbar{orange!20!yellow}{date}{Mining}{data/indprogr_rec2.csv}
-	\sbar{green!80!blue}{date}{Utilities}{data/indprogr_rec2.csv}
+	\sbar{green!80!blue}{date}{Electric and gas utilities}{data/indprogr2_rec.csv}
 	\end{axis}
 \end{tikzpicture}
 \\
@@ -1263,8 +1268,6 @@ Table here \\
 \vspace{5mm}
 
 \normalsize
-
-Industrial production\\
 
 Retail sales\\
 
