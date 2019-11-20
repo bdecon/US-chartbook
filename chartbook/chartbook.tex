@@ -779,7 +779,7 @@ Welfare Income \\
 
 \normalsize \textbf{Mortgages and Consumer Credit}
 
-\footnotesize{\textit{share of disposable personal income}} \\
+\footnotesize{\textit{share of disposable personal income, percent}} \\
 
 \input{text/hhcdebt2.txt}
 
@@ -903,7 +903,29 @@ Housing prices \\
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve and Census Bureau}\\
 
-\vspace{6mm}
+\vspace{8mm}
+
+\small \input{text/permits.txt}\\
+
+\vspace{2mm}
+
+
+\noindent \normalsize \textbf{Residential Construction}\\
+\footnotesize{\textit{building permits issued, in thousands}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={500, 1000, 1500, 2000, 2500}, 
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\stdline{blue}{date}{APERMITS}{data/permits.csv}	
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \\
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \normalsize
 
@@ -919,7 +941,7 @@ Geographic location of housing permits \\
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 8, 12}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=4.4cm]
 	\rbars
-	\stdline{blue}{date}{VALUE}{data/psavert.csv}
+	\stdline{red}{date}{VALUE}{data/psavert.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \\
@@ -944,7 +966,9 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
 
 \vspace{-5mm}
-\footnotesize{Source: American Community Survey}
+\footnotesize{Source: American Community Survey}\\
+
+\vspace{6mm}
 
 \begin{minipage}{0.76\textwidth}
 
@@ -1279,7 +1303,31 @@ Poverty rates and amount of poverty in millions of people\\
 
 \normalsize
 
-Retail sales\\
+\subsection*{\color{darkgray} \seriffont Retail Sales}
+
+\small retail sales text here... \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Retail Sales and Food Services}\\
+\footnotesize{\textit{annual growth, percent}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, 
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
+		width=11.0cm, height=5.0cm]
+	\rbars
+	\thickline{blue!70!black}{date}{44W72}{data/marts.csv}
+	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
+	\stdnode{6.2cm}{0.65cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
+	\stdnode{7.8cm}{2.95cm}{\scriptsize \color{blue!70!black}\textbf{ex-auto \& ex-gas}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \\
+
+\vspace{6mm}
+
+\normalsize
+
 
 Free cash flow \\
 
@@ -1461,10 +1509,10 @@ Balance sheets \\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 12, 14}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
-		legend style={at={(0.95, 1.13)}}]
+		legend style={legend columns=1, at={(0.28, 0.84)}}]
 	\rbars
-	\stdline{blue!90!cyan}{date}{EX}{data/eximgdp.csv}
-	\stdline{green!60!teal!80!black}{date}{IM}{data/eximgdp.csv}
+	\thickline{blue!90!cyan}{date}{EX}{data/eximgdp.csv}
+	\thickline{green!60!teal!80!black}{date}{IM}{data/eximgdp.csv}
 	\legend{Exports, Imports};
 	\end{axis}
 \end{tikzpicture}\\
@@ -1614,13 +1662,45 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \normalsize
 
-
-
 Unemployment Rate \\
 
 Unemployment by reason \\
 
 Unemployment by duration \\
+
+\end{minipage}
+
+
+\newpage
+
+
+\begin{minipage}{0.76\textwidth}
+
+\small Summary text about local area estimates of unemployment. Will need to think about tables that show highlights, because there are too many MSAs to list all data. Something that captures diffusion would be nice. Perhaps I can list how many metro areas had the unemployment rate fall over the past year, and then talk about how many unemployed people that actually means--so that population is taken into consideration in some meaningful way.\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Change in Unemployment Rate by Metro Area}\\
+\footnotesize{\textit{one-year change, in percentage points, \input{text/unemp_map_date.txt}}}\\
+
+\vspace{-2mm}
+
+\hspace*{-15mm} \input{data/unemp_msa.pgf}
+
+\vspace{-2mm}
+
+\footnotesize{Source: Bureau of Labor Statistics}\\
+
+
+\end{minipage}
+
+
+\newpage
+
+
+\begin{minipage}{0.76\textwidth}
+
+\normalsize
 
 Part-time and full-time and hours worked \\
 
