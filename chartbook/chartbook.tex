@@ -216,7 +216,7 @@ It will also be nice to have a section in that puts some context on numbers gene
 
 Section listing recent updates and upcoming releases would be nice. \\
 
-Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, and much much more. \\
+Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, explicitly note seasonal adjustment, and much much more. \\
 
 Major LT developments: rise of imports, computers in the late 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
 
@@ -933,6 +933,12 @@ Housing permits/starts \\
 
 Geographic location of housing permits \\
 
+\vspace{8mm}
+
+\small The portion of after-tax income that is not spent by households is considered personal saving, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the personal saving rate. Households use savings to handle unexpected expenses or cover expenses when income falls. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
+
+Over the past X.X. etc. text here on recent data with focus on annual average since there seems to be some seasonality in the data. \\
+
 \vspace{2mm}
 
 \noindent \normalsize \textbf{Personal Saving Rate}\\
@@ -1292,6 +1298,31 @@ Poverty rates and amount of poverty in millions of people\\
 \end{tikzpicture}
 \\
 \footnotesize{Source: Federal Reserve} \\
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small The Federal Reserve's monthly industrial production report also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called capacity utilization, and calculated as industrial production as a share of total industrial capacity. \input{text/tcu.txt}\\
+
+\noindent \normalsize \textbf{Capacity Utilization}\\
+\footnotesize{\textit{industrial production as a share of total capacity, percent}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 80}, 
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
+	\rbars
+	\thickline{red!80!orange}{date}{Total index}{data/tcu.csv}
+	\stdline{violet!80!purple}{date}{Manufacturing}{data/tcu.csv}
+	\stdnode{9.0cm}{1.3cm}{\scriptsize \color{violet}\textbf{Manufacturing}}
+	\stdnode{8.4cm}{2.2cm}{\scriptsize \color{red}\textbf{Total index}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \\
+
+
+\vspace{3mm}
 
 \end{minipage}
 
@@ -1865,26 +1896,73 @@ Equity markets \\
 
 \vspace{2mm}
 
-\end{minipage}
-
+\normalsize
 
 \hspace{4mm} [VIX] \\
 
-Interest rates \\
+Valuations \\
 
-\hspace{4mm} [Fed funds rate] \\
+\hspace{4mm} [PE Ratio] \\
 
-\hspace{4mm} [Fed balance sheet or excess reserve or both] \\
+\end{minipage}
 
-\hspace{4mm} [10year and 2year] \\
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Interest Rates}
+
+\vspace{4mm}
+
+\small Text here on the fed funds rate.\\
+
+\vspace{1mm}
+
+\noindent \normalsize \textbf{Effective Fed Funds Rate}\\
+\footnotesize{\textit{percent, monthly average except for latest value }}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, 
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\stdline{blue!60!black}{date}{Fed Funds}{data/rates.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
+
+\vspace{4mm}
+
+\small Text here about Treasury yields. \\
+
+\vspace{1mm}
+
+\noindent \normalsize \textbf{Treasury Constant Maturity Yields}\\
+\footnotesize{\textit{percent, monthly average except for latest value }}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, ymin=0.05,
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\stdline{red!80!purple}{date}{Ten-year}{data/rates.csv}
+	\stdline{orange!70!yellow}{date}{Two-year}{data/rates.csv}
+	\stdnode{6.2cm}{0.65cm}{\scriptsize \color{orange!70!yellow}\textbf{Twp-year}}
+	\stdnode{8.7cm}{1.28cm}{\scriptsize \color{red!80!purple}\textbf{Ten-year}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
+
+\vspace{4mm}
+
+\normalsize
+
+\hspace{4mm} [Fed liabilities] \\
+
+\hspace{4mm} [Fed assets] \\
 
 \hspace{4mm} [AAA and high-yield] \\
 
 Yield curve \\
 
-Valuations \\
 
-\hspace{4mm} [PE Ratio] \\
+\end{minipage}
 
 \newpage
 
