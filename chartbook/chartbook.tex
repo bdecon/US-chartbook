@@ -216,7 +216,7 @@ It will also be nice to have a section in that puts some context on numbers gene
 
 Section listing recent updates and upcoming releases would be nice. \\
 
-Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, explicitly note seasonal adjustment, and much much more. \\
+Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, explicitly note seasonal adjustment, adjusting to make text associated with values of less than one singular instead of plural (e.g. "0.1 percentage point"), and much much more. \\
 
 Major LT developments: rise of imports, computers in the late 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
 
@@ -797,7 +797,9 @@ Welfare Income \\
 
 \small Trends in household debt over the past three years, measured in both the US Financial Accounts and the New York Fed Consumer Credit Panel, show consumer credit growing in line with income while mortgage debt falls relative to income. The two series below, Mortgage Debt Total and Consumer Credit, are comparable between both data sources. Discrepancies arise because the Financial Accounts include debt of nonprofit institutions and the Consumer Credit Panel does not include persons without a social security number.\\
 
-Paragraph here about trends in auto loans, credit card debt, and student loans.
+\input{text/hhcdebt4.txt} \\
+
+\input{text/hhcdebt5.txt} \\
 
 \vspace{4mm}
 
@@ -816,6 +818,12 @@ Paragraph here about trends in auto loans, credit card debt, and student loans.
 \footnotesize{Source: Federal Reserve, Federal Reserve Bank of New York, Bureau of Economic Analysis}\\
 
 \vspace{6mm}
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 
 \subsubsection*{\color{black!70} \seriffont Assets}
@@ -937,7 +945,7 @@ Geographic location of housing permits \\
 
 \small The portion of after-tax income that is not spent by households is considered personal saving, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the personal saving rate. Households use savings to handle unexpected expenses or cover expenses when income falls. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
 
-Over the past X.X. etc. text here on recent data with focus on annual average since there seems to be some seasonality in the data. \\
+\input{text/psavert.txt}\\
 
 \vspace{2mm}
 
@@ -1038,20 +1046,24 @@ Poverty rates and amount of poverty in millions of people\\
 
 \newpage
 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.35\textwidth}
 
-\small Investment can also be measured from the new orders for core capital goods. The category excludes the more volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau survey of manufacturers.  \\
+\small The productive investments of businesses are also measured by the new orders for core capital goods. The category excludes the more volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau survey of manufacturers.  \\
 
-\vspace{2mm}
-
+\input{text/dgno.txt}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.44\textwidth}
 
 \noindent \normalsize \textbf{New Orders for Core Capital Goods}\\
-\footnotesize{\textit{non-defense capital goods, excluding aircraft, seasonally adjusted, monthly, in billions of USD}}\\
+\footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={40, 50, 60, 70}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm, xmin = 1989-01-01]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 6, 8}, width=7.0cm, height=5.0cm,
+		ymin=2.9, xtick={{1992-01-01}, {1995-01-01}, {2000-01-01}, {2005-01-01}, 
+				{2010-01-01}, {2015-01-01}, {2019-10-01}},
+		minor xtick={}, 
+        xticklabels={`92, `95, `00, `05, `10, `15, Q3},]
 	\rbars
-	\stdline{purple!50!violet}{date}{value}{data/dgno.csv}
+	\thickline{purple!50!violet}{date}{value}{data/dgno.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \\
@@ -1336,21 +1348,21 @@ Poverty rates and amount of poverty in millions of people\\
 
 \subsection*{\color{darkgray} \seriffont Retail Sales}
 
-\small retail sales text here... \\
+\small \input{text/marts.txt} \\
 
 \vspace{2mm}
 
 \noindent \normalsize \textbf{Retail Sales and Food Services}\\
-\footnotesize{\textit{annual growth, percent}}\\ 
+\footnotesize{\textit{annual growth, percent; nonstore is 3-month moving average}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
 		width=11.0cm, height=5.0cm]
 	\rbars
-	\thickline{blue!70!black}{date}{44W72}{data/marts.csv}
+	\stdline{blue!70!black}{date}{NS_3M}{data/marts.csv}
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
-	\stdnode{6.2cm}{0.65cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
-	\stdnode{7.8cm}{2.95cm}{\scriptsize \color{blue!70!black}\textbf{ex-auto \& ex-gas}}
+	\stdnode{6.1cm}{0.45cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
+	\stdnode{7.8cm}{2.65cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \\
@@ -1818,6 +1830,10 @@ Wage data for low-wage earners is useful for understanding the extent to which t
 Quits \\ 
 
 Openings \\
+
+\vspace{6mm}
+
+\small \input{text/icsa.txt}\\
 
 \vspace{2mm}
 
