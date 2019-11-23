@@ -145,6 +145,10 @@ def growth_contrib_ann(df, srs):
     c = dft.multiply(df[srs].pct_change(4) * 100, axis=0)
     return c.round(2)
 
+
+def weighted_average(df, variable):
+    return np.average(df[variable], weights=df['BASICWGT'])
+
     
 def write_txt(filename, filetext):
     ''' Write label to txt file '''
@@ -264,6 +268,12 @@ def series_info(s):
     d['change_year_ago'] = d['val_latest'] - d['val_year_ago']
     
     return d
+
+
+def three_year_growth(data, series):
+    '''Annualized growth rate over past three years'''
+    return ((data[series].pct_change(36).iloc[-1] + 1)**(1/3)-1) * 100
+
 
 def bls_api(series, date_range, bls_key):
     """Collect list of series from BLS API for given dates"""

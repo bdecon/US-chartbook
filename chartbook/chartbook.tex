@@ -1743,6 +1743,53 @@ Unemployment by duration \\
 
 \begin{minipage}{0.76\textwidth}
 
+\subsection*{\color{black!70} \seriffont Labor Force Flows}
+
+\vspace{2mm}
+
+\small Among newly employed workers, the vast majority were considered to be out of the labor force in the prior month, as opposed unemployed. \input{text/lf_flow.txt} \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Newly Employed, Not Previously Looking For Work}\\
+\footnotesize{\textit{share of newly employed that were not looking for work in the prior month}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 70}, 
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+	\rbars
+	\stdline{lime!50!green!60!white}{date}{total}{data/lf_flow.csv}
+	\stdline{green!60!teal!90!black}{date}{quarterly}{data/lf_flow_q.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \\
+
+\end{minipage}
+
+\vspace{6mm}
+
+\begin{minipage}{0.30\textwidth}
+
+\small The one-year rate of job-finding for those not in the labor force (NILF) due to disability or illness fell following the recession of 2001 and following the great recession. \input{text/disflow.txt} \\
+
+\end{minipage} \hspace{8mm} \begin{minipage}{0.38\textwidth}
+\noindent \normalsize \textbf{Flow, Disability to Work}\\
+\footnotesize{\textit{NILF disability/illness, share employed one year later}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={6, 8}, 
+		xticklabel={`\short{\year}}, height=5.2cm, width=7.4cm]
+	\rbars
+	\stdline{blue}{date}{Share}{data/disflow.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations} \\
+
+\end{minipage}
+
+\vspace{8mm}
+
+\begin{minipage}{0.76\textwidth}
+
+
 \normalsize
 
 Part-time and full-time and hours worked \\
