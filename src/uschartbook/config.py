@@ -1,9 +1,13 @@
 from pathlib import Path
 
-import os
 import pandas as pd
 import numpy as np
 from uschartbook.api_key import *
+import statsmodels.api as sm
+import os
+os.environ['X13PATH'] = '/home/brian/Documents/econ_data/micro/x13as/'
+
+from statsmodels.tsa.x13 import x13_arima_analysis
 
 data_dir = Path('../chartbook/data/')
 text_dir = Path('../chartbook/text/')
