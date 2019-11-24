@@ -17,7 +17,7 @@
 	\usepackage[letterpaper, margin=1.18in]{geometry}
 	\usepackage{microtype}
 	\usepackage[default]{lato}
-	\usepackage{pgfplots}
+	\usepackage{pgfplots, pgfplotstable}
 	\usepackage{xcolor}
 	\usepackage{array}
 	\usepackage{fontawesome}
@@ -111,6 +111,10 @@
 	\newcommand{\thickline}[4]{\addplot[ultra thick, no markers, color=#1] 
 		table [x=#2, y=#3, col sep=comma] {#4};	}
 		
+	% Style for bar plots legend symbol		
+		\pgfplotsset{/pgfplots/area legend/.style={/pgfplots/legend image code/.code={
+            \fill[##1] (0cm,-0.1cm) rectangle (0.6cm,0.1cm);}},}		
+		
 	% Additional bar plot settings
 	\newcommand{\barplotnogrid}{xbar=0pt,
 	    y axis line style={opacity=0},   
@@ -136,6 +140,8 @@
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 	
 	\newfontfamily\seriffont{SourceSerifPro}	
+	
+	\pgfplotstableread[header=true, col sep=comma]{data/cpi_comp.csv}\cpi	
 			    		    
 % % % % % % % %
 %
@@ -437,7 +443,9 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 
 \subsection*{\color{black!70} \seriffont Liabilities}
 
-\small Domestic liabilities increased by X.X percent in 2019 Q3, after adjusting for inflation. Over the past three years, domestic liabilities have increased at an average annual rate of X.X percent. Federal government liabilities contributed X.X percentage points per year on average, while state and local contributed X.X percent per year on average. Households contributed X.X percent per year on average over this three year period, corporate businesses contributed X.X percent and non corporate businesses contributed X.X percent.\\
+\small The contribution of different sectors to the total change in borrowing can identify potential risks in the domestic economy. For example, the tech bubble of the late 1990s and early 2000s shows up as a large increase in corporate borrowing. The housing bubble from the 1990s to 2007 shows up as an increase in household borrowing. Government borrowing increased following the collapse of the housing bubble, in an effort to compensate for the massive fall in wage income. Keep in mind, however, that the vast majority of liabilities in the domestic economy are to other domestic parties.\\
+
+\input{text/liabgr.txt} \\
 
 \vspace{2mm}
 
@@ -1193,7 +1201,7 @@ Poverty rates and amount of poverty in millions of people\\
 		clip=false, height=4.7cm, width=6.4cm,
 		legend style={fill=white, legend columns=1, at={(1.02, 0.33)}}]
 	\rbars
-	\thickline{orange!80!red}{date}{Manufacturing}{data/indpro.csv}
+	\thickline{red}{date}{Manufacturing}{data/indpro.csv}
 	\stdline{blue!90!black}{date}{Total index}{data/indpro.csv}
 	\legend{Manufacturing, Total Index};
 	\end{axis}
@@ -1684,7 +1692,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \input{text/unemp.txt}\\
 
-\vspace{3mm}
+\vspace{2mm}
 
 \noindent \normalsize \textbf{Unemployment Rate}\\
 \footnotesize{\textit{unemployed share of labor force}}\\
@@ -1701,21 +1709,45 @@ Gross labor income (compensation of employees in the national accounts), which c
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \\
 
-\vspace{5mm}
+\vspace{3mm}
 
-\normalsize
+\subsubsection*{\color{black!70} \seriffont Reasons for unemployment}
 
-Unemployment Rate \\
+\small There are multiple reasons for unemployment. During the trough of a business cycle, most unemployed are those who lost a job, for example from layoffs, or had a temporary job end (see\cbox{blue!30!cyan}). In general, many of the unemployed are re-entrants to the labor market, meaning they were out of the labor force prior but are looking for a job again (see\cbox{orange!80!yellow}). Some are new-entrants who are looking for their first job (see\cbox{red}). A small portion are also those who left a job voluntarily and are looking for a new one (see\cbox{yellow}). \\
 
-Unemployment by reason \\
+\input{text/unemp_reason.txt} \\
 
-Unemployment by duration \\
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Unemployment by Reason}\\
+\footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
+		height=5.8cm, ymin=0,
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={fill=white, legend columns=2, at={(0.53, 1.0)}}]
+	\rbars
+	\sbar{blue!30!cyan}{date}{Job Loser}{data/unemp_reason.csv}
+	\sbar{yellow}{date}{Job Leaver}{data/unemp_reason.csv}
+	\sbar{orange!80!yellow}{date}{Re-entrant}{data/unemp_reason.csv}
+	\sbar{red}{date}{New entrant}{data/unemp_reason.csv}
+	\legend{Job Loser, Job Leaver, Re-entrant, New Entrant};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics}\\
 
 \end{minipage}
 
 
 \newpage
 
+\vspace{4mm}
+
+\normalsize
+
+Unemployment by duration \\
+
+\vspace{4mm}
 
 \begin{minipage}{0.76\textwidth}
 
@@ -1747,7 +1779,7 @@ Unemployment by duration \\
 
 \vspace{2mm}
 
-\small Among newly employed workers, the vast majority were considered to be out of the labor force in the prior month, as opposed unemployed. \input{text/lf_flow.txt} \\
+\small Among newly employed workers, the vast majority were considered to be out of the labor force the prior month, as opposed unemployed. \input{text/lf_flow.txt} \\
 
 \vspace{2mm}
 
@@ -1765,12 +1797,10 @@ Unemployment by duration \\
 
 \end{minipage}
 
-\vspace{6mm}
+\vspace{5mm}
 
 \begin{minipage}{0.30\textwidth}
-
-\small The one-year rate of job-finding for those not in the labor force (NILF) due to disability or illness fell following the recession of 2001 and following the great recession. \input{text/disflow.txt} \\
-
+\small The great recession worsened job-finding prospects for those not in the labor force (NILF) due to disability or illness. Only over the past few years have these prospects recovered. \input{text/disflow.txt}
 \end{minipage} \hspace{8mm} \begin{minipage}{0.38\textwidth}
 \noindent \normalsize \textbf{Flow, Disability to Work}\\
 \footnotesize{\textit{NILF disability/illness, share employed one year later}}\\
@@ -1781,8 +1811,7 @@ Unemployment by duration \\
 	\stdline{blue}{date}{Share}{data/disflow.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations} \\
-
+\footnotesize{Source: Author's Calculations}
 \end{minipage}
 
 \vspace{8mm}
@@ -1872,6 +1901,31 @@ Wage data for low-wage earners is useful for understanding the extent to which t
 
 \begin{minipage}{0.76\textwidth}
 
+
+\small Text here about JOLTS survey. \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Job Turnover}\\
+\footnotesize{\textit{job openings, hires, and quits, in millions}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={2, 4, 6, 8}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=5.6cm, width=8.0cm]
+	\rbars
+	\stdline{cyan}{date}{Hires}{data/jolts.csv}
+	\stdline{red}{date}{Quits}{data/jolts.csv}
+	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
+	\stdnode{3.3cm}{2.0cm}{\scriptsize \color{cyan}\textbf{Hires}}
+	\stdnode{5.2cm}{3.38cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{3.7cm}{0.2cm}{\scriptsize \color{red}\textbf{Quits}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \\
+
+
+\vspace{6mm}
+
 \normalsize
 
 Quits \\ 
@@ -1900,13 +1954,20 @@ Openings \\
 
 \normalsize
 
-Flows \\
-
 Reasons for non-participation \\
 
 Union membership \\
 
 State- and sub-state-level analysis \\
+
+
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
 
 \subsection*{\color{black!70} \seriffont Labor Productivity}
 
@@ -2006,7 +2067,7 @@ Valuations \\
 	\rbars
 	\stdline{red!80!purple}{date}{Ten-year}{data/rates.csv}
 	\stdline{orange!70!yellow}{date}{Two-year}{data/rates.csv}
-	\stdnode{6.2cm}{0.65cm}{\scriptsize \color{orange!70!yellow}\textbf{Twp-year}}
+	\stdnode{6.2cm}{0.65cm}{\scriptsize \color{orange!70!yellow}\textbf{Two-year}}
 	\stdnode{8.7cm}{1.28cm}{\scriptsize \color{red!80!purple}\textbf{Ten-year}}
 	\end{axis}
 \end{tikzpicture}\\
@@ -2053,10 +2114,40 @@ Yield curve \\
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \\
 
-\vspace{2mm}
-
 \end{minipage}
 
+\vspace{2mm}
+
+\begin{minipage}{0.3\textwidth}
+\small Text here about components. This section will need to be quite long to take up the right amount of space. Perhaps mention all items or give a breakdown of relative importance and recent growth data. Also try to capture the importance on some items, such as housing and medical care. Most of the inflation is coming from housing. More text here.\\
+
+More text here. Possibly mention process for identifying contributions to the all items total. Another option is to discuss why housing inflation isn't eased through higher interest rates. Probably could mention volatility of food and energy or overall story related to inflation. 
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.36\textwidth}
+\noindent \normalsize \textbf{Consumer Price Index}\\
+\footnotesize{\textit{contribution to annual growth, percentage points}}\\ 
+\noindent \hspace*{-7mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
+    	width=5.0cm, bar width=1.6ex, height=7.8cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.3, \bbar{x}{0},
+		yticklabels from table={\cpi}{name}, 
+		yticklabel style={font=\footnotesize, xshift=-4pt},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=2, assume math mode},
+		legend style={text=black!70, at={(-0.18,1.08)}, anchor=north, legend columns=-1, 
+				fill=none, draw=none,
+		        /tikz/every even column/.append style={column sep=0.4cm}}]
+  	\addplot[fill=cyan!40, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\cpi};
+  	\addplot[fill=blue!70, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\cpi};
+ 	\legend{\input{text/cpi_mo2.txt}, \input{text/cpi_mo1.txt}}
+  	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \\
+\end{minipage}
+
+\newpage
 
 \normalsize
 
