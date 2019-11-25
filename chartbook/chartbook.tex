@@ -218,7 +218,7 @@
 
 \begin{minipage}{0.76\textwidth}
 
-\small For now, focus on filling out the content. Once around 1/3 of the content is in place (~35 pages) start to look into ways to more efficiently create the document. \\
+\small Continue to fill out the content of the document. Additionally, refactor some of the older code and clean up some of the issues with older charts and text. \\
 
 It will be nice to have a section showing the top five indicators: GDP growth, wages, epop, cpi inflation, 10-year treasury yields. \\
 
@@ -1402,9 +1402,9 @@ Inventories \\
 
 \normalsize
 
-Overview\\
+\small Public institutions are collectively referred to as the public-sector or the government. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining the production and distribution in the economy.\\
 
-\vspace{2mm}
+
 
 \subsection*{\color{black!70} \seriffont Government Consumption and Investment}
 \small \input{text/gov.txt}  \\
@@ -1435,7 +1435,9 @@ Overview\\
 
 \begin{minipage}{0.76\textwidth}
 
-\small Text here. \\
+\small Government expenditures provide services and income to people. Government receipts remove demand from the economy. When government expenditures exceed receipts, it is referred to as a government deficit, and corresponds to a private sector surplus. The size of the government deficit relative to GDP gives insight into the extent to which the government is stimulating the economy by increasing household income and corporate profits.\\
+
+Individual text here on the size of deficits at a federal and state and local level, as well as recent changes. \\
 
 \vspace{2mm}
 
@@ -1604,6 +1606,27 @@ Balance sheets \\
 
 \begin{minipage}{0.76\textwidth}
 
+\small Goods can be produced domestically or imported or some combination of the two. The import share of the total US demand for goods, measured as US produced goods and imported goods less exported goods, is also referred to as ``import penetration''. This measure has risen considerably over the past thirty years. The majority of the long-term increase has been concentrated in consumer goods, while the decrease since 2011 has come primarily from petroleum and products. \\
+
+\input{text/goodsimpsh.txt} \\
+
+\noindent \normalsize \textbf{Import Share of Goods}\\
+\footnotesize{\textit{import share of domestic-produced and imported goods less exports, by category}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30, 40}, ymin=2,
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{cyan!50!white}{date}{Consumer}{data/goodsimpsh.csv}	
+	\sbar{blue!80!purple}{date}{Capital}{data/goodsimpsh.csv}	
+	\sbar{red!80!purple}{date}{B648RC}{data/goodsimpsh.csv}	
+	\legend{Consumer, Capital/Supplies/Other, Petroleum and Products};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}\\
+
+
+\vspace{5mm}
+
 \normalsize 
 
 Trade in Goods \\
@@ -1646,9 +1669,9 @@ Gross labor income (compensation of employees in the national accounts), which c
 \end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations} \\
 
+\vspace{6mm}
 
-
-\small ...
+\small More text here.
 
 \end{minipage}
 
@@ -1906,7 +1929,7 @@ Wage data for low-wage earners is useful for understanding the extent to which t
 \begin{minipage}{0.76\textwidth}
 
 
-\small Text here about JOLTS survey. \\
+\small Some types of turnover in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics reports the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving of a job as ``quits''. \\
 
 \vspace{2mm}
 
@@ -2168,6 +2191,25 @@ XMPI \\
 PCE \\
 
 Expectations \\
+
+
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\noindent \normalsize \textbf{Oil Price}\\
+\footnotesize{\textit{USD, west Texas intermediate crude, monthly average}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50, 100}, 
+		xticklabel={`\short{\year}}, ymin=0]
+	\rbars
+	\thickline{red!80!purple}{date}{VALUE}{data/wti.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: FRED} \\
+
+\end{minipage}
 
 \newpage
 
