@@ -433,7 +433,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\rbars
 	\sbar{purple!50!red}{date}{W995RC}{data/sectbal2.csv}
 	\sbar{orange!90!yellow}{date}{W996RC}{data/sectbal2.csv}
-	\legend{Private Businesses, Households, State and Local Government};
+	\legend{Private Businesses, Households};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
@@ -998,6 +998,26 @@ Housing permits/starts \\
 Geographic location of housing permits \\
 
 Households; owners' equity in real estate as a percentage of household real estate, Level (HOEREPHRE)\\
+
+\vspace{4mm}
+
+\small The Federal Housing Finance Agency (FHFA) housing price index \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{data} look useful primarily because they offer geographic specificity. Look into ways to use these. Ideally, I want to know about the ratio of housing prices to rental equivalent. For now, the chart below is more or less a placeholder, though I may keep it or some variation.\\
+
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{House Price Index}\\
+\footnotesize{\textit{one-year percent change}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, 
+		yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}, width=11.8cm]
+	\rbars
+	\thickline{blue!70!cyan}{date}{index_sa}{data/hpi.csv}	
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Housing Finance Agency} \\
+
 
 \vspace{8mm}
 
@@ -2171,7 +2191,7 @@ State- and sub-state-level analysis \\
 
 \vspace{3mm}
 
-\small There are two areas to investigate in understanding trends in productivity growth rates. The first is that the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, determines productivity growth. Such investment allows more goods and services to be produced by the same number amount of work. The second is that overall economic growth and capacity utilization determines productivity growth. In this scenario an economy facing real resource constraints is more likely to find ways to produce goods and services more efficiently.\\
+\small There are two areas to investigate in understanding trends in productivity growth rates. The first is the theory that the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, determines productivity growth. Such investment allows more goods and services to be produced by the same number amount of work. The second theory, sometimes called the Kaldor-Verdoorn Law, is that overall economic growth and capacity utilization determine productivity growth. In this scenario an economy facing real resource constraints is more likely to find ways to produce goods and services more efficiently.\\
 
 
 
@@ -2211,11 +2231,27 @@ State- and sub-state-level analysis \\
 \end{tikzpicture}\\
 \footnotesize{Source: Shiller, Author's Calculations} \\
 
+\vspace{4mm}
+
+\small The Chicago Board Options Exchange measures S\&P 500 options data to identify expectations of future volatility. 
+
 \vspace{2mm}
 
-\normalsize
+\noindent \normalsize \textbf{S\&P 500 Volatility Index}\\
+\footnotesize{\textit{index, monthly average shown}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 20, 40, 60}, 
+		xticklabel={`\short{\year}}, clip=false, 
+		height=4.6cm, enlarge y limits={0.11}]
+	\rbars
+	\stdline{magenta}{date}{value}{data/vix.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Chicago Board Options Exchange} \\
 
-\hspace{4mm} [VIX] \\
+\vspace{4mm}
+
+\normalsize
 
 Valuations \\
 
@@ -2294,13 +2330,13 @@ Yield curve \\
 
 \vspace{2mm}
 
-\noindent \normalsize \textbf{Money Growth}\\
-\footnotesize{\textit{M2 and institutional money funds, one year percent change, monthly average}}\\ 
+\noindent \normalsize \textbf{M2 and Institutional Money Funds}\\
+\footnotesize{\textit{one-year percent change, monthly average}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
-	\stdline{green!80!blue}{date}{value}{data/M2imf.csv}
+	\thickline{green!80!blue}{date}{value}{data/M2imf.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \\
@@ -2338,9 +2374,9 @@ Yield curve \\
 \vspace{2mm}
 
 \begin{minipage}{0.3\textwidth}
-\small Text here about components. This section will need to be quite long to take up the right amount of space. Perhaps mention all items or give a breakdown of relative importance and recent growth data. Also try to capture the importance on some items, such as housing and medical care. Most of the inflation is coming from housing. More text here.\\
+\small Housing has been the largest contributor to inflation since XXXXXX, XXXX. In October 2019, housing contributed X.X percentage points to overall CPI inflation, compared to a contribution of X.X percentage points in October 2018. Medical care added X.X percentage points to overall inflation in October 2019, compared to a contribution of X.X percent in October 2018. \\
 
-More text here. Possibly mention process for identifying contributions to the all items total. Another option is to discuss why housing inflation isn't eased through higher interest rates. Probably could mention volatility of food and energy or overall story related to inflation. 
+In October 2019, Energy subtracted X.X percentage points from overall CPI inflation, compared to a contribution of X.X percent in October 2019. In total, six of the ten selected CPI components contributed positively to overall CPI inflation, while four subtracted from inflation and none were unchanged. 
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.36\textwidth}
 \noindent \normalsize \textbf{Consumer Price Index}\\
