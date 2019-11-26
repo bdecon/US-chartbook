@@ -852,6 +852,53 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \\
 
+\vspace{6mm}
+
+\small Text about growth in various types of household assets. I divided the Fed Z.1 household and nonprofit balance sheet data into: business equity--directly and indirectly held corporate equities + proprietor equity in noncorporate businesses; nonfinancial assets, which are primarily composed of real estate; deposits--which include cash as well as checking and saving accounts and money market funds; and other financial assets, which are primarily debt securities and loans and claims on insurance companies. \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Contributions to Real Growth in Assets}\\
+\footnotesize{\textit{contribution to one-year percent change in assets, adjusted by PCE price deflator}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{blue!70!violet}{date}{FL152010005.Q}{data/hh_asset_growth.csv}
+	\sbar{cyan}{date}{CASHDEP}{data/hh_asset_growth.csv}
+	\sbar{orange!70!white}{date}{EQ}{data/hh_asset_growth.csv}
+	\sbar{magenta!80!purple}{date}{OTHFA}{data/hh_asset_growth.csv}
+	\legend{Nonfinancial, Cash \& Deposits, Business Equity, Other Financial};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small Rate of growth for both real net worth and real after tax income. \\
+
+\vspace{3mm}
+
+\noindent \normalsize \textbf{Net Worth and After-Tax Income Growth}\\
+\footnotesize{\textit{one-year percent change in net worth and after-tax income, adjusted by PCE price deflator}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{cyan!40!white}{date}{FL152090005.Q}{data/rdpi_nw.csv}
+	\stdline{blue!50!violet}{date}{RDPI}{data/rdpi_nw.csv}
+	\legend{Net Worth, After-Tax Income};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+
+
 \end{minipage}
 
 \newpage
@@ -949,6 +996,8 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 Housing permits/starts \\
 
 Geographic location of housing permits \\
+
+Households; owners' equity in real estate as a percentage of household real estate, Level (HOEREPHRE)\\
 
 \vspace{8mm}
 
@@ -2118,7 +2167,13 @@ State- and sub-state-level analysis \\
 	\sbar{teal}{date}{value}{data/lprod.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} 
+\footnotesize{Source: Bureau of Labor Statistics} \\
+
+\vspace{3mm}
+
+\small There are two areas to investigate in understanding trends in productivity growth rates. The first is that the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, determines productivity growth. Such investment allows more goods and services to be produced by the same number amount of work. The second is that overall economic growth and capacity utilization determines productivity growth. In this scenario an economy facing real resource constraints is more likely to find ways to produce goods and services more efficiently.\\
+
+
 
 \end{minipage}
 
@@ -2176,7 +2231,7 @@ Valuations \\
 
 \vspace{4mm}
 
-\small The US Federal Reserve System (Fed) has a congressional mandate to promote price stability and maximum employment. In practice, a Fed committee determines the federal funds rate, which aims to influence interest rates in the broader economy. Fed monetary policy can be neutral or be used to stimulate or slow the economy.\\
+\small The US Federal Reserve System (Fed) has a congressional \href{https://www.federalreserve.gov/faqs/money_12848.htm}{mandate} to promote price stability and maximum employment. In practice, a Fed committee determines the federal funds rate, which aims to influence interest rates in the broader economy. Fed monetary policy can be neutral or be used to stimulate or slow the economy.\\
 
 Actual data here on recent moves by the Fed and the Fed funds rate. \\
 
@@ -2225,6 +2280,30 @@ Actual data here on recent moves by the Fed and the Fed funds rate. \\
 
 Yield curve \\
 
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Money and Monetary Policy}
+
+\vspace{4mm}
+
+\small Text here on the money supply. \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Money Growth}\\
+\footnotesize{\textit{M2 and institutional money funds, one year percent change, monthly average}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\stdline{green!80!blue}{date}{value}{data/M2imf.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
 
 \end{minipage}
 
