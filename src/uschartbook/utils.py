@@ -1,5 +1,8 @@
 import numpy as np
 
+qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
+
+
 def bea_api_nipa(table_list, bea_key):
     ''' Return tables in table list for years in range'''
     import requests
