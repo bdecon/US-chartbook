@@ -21,6 +21,8 @@
 	\usepackage{xcolor}
 	\usepackage{array}
 	\usepackage{fontawesome}
+	\usepackage{hyperref}
+	\hypersetup{colorlinks=true, linkcolor=blue}
 	\usetikzlibrary{pgfplots.dateplot}
 
 %
@@ -141,7 +143,8 @@
 	
 	\newfontfamily\seriffont{SourceSerifPro}	
 	
-	\pgfplotstableread[header=true, col sep=comma]{data/cpi_comp.csv}\cpi	
+	\pgfplotstableread[header=true, col sep=comma]{data/cpi_comp.csv}\cpi
+	\pgfplotstableread[header=true, col sep=semicolon]{data/ip_comp.csv}\ip
 			    		    
 % % % % % % % %
 %
@@ -179,10 +182,6 @@
 
 \newpage
 
-%\tableofcontents
-
-%\newpage
-
 \subsection*{\color{black!70} {\seriffont Contents}}
 
 \begin{description}
@@ -213,6 +212,7 @@
 
 \vspace{2mm}
 
+\newpage
 
 \subsection*{\color{black!70} {\seriffont Ideas/Suggestions/To Do}}
 
@@ -224,11 +224,13 @@ It will be nice to have a section showing the top five indicators: GDP growth, w
 
 It will also be nice to have a section in that puts some context on numbers generally. The key example that I've tried to do before is to put a threshold on GDP growth that marks how much is needed for population growth and depreciation and then calculate how much one extra pp of growth (beyond the previous amount) is worth, per person. For example, if population growth is 0.6pp and depreciation is 0.8pp, then it would take 1.4pp to keep the same level of real per capita production. Beyond that, an extra percentage point of GDP might mean something like \$900 per person in additional goods and services. \\
 
-Section listing recent updates and upcoming releases would be nice. \\
+Section listing recent updates and upcoming releases would be nice. This would require some thinking in terms of implementation. \\
+
+Get the table of contents up and running soon. Also look into options for links to footnotes at the end of the document. \\
 
 Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, explicitly note seasonal adjustment, adjusting to make text associated with values of less than one singular instead of plural (e.g. "0.1 percentage point"), and much much more. \\
 
-Major LT developments: rise of imports, computers in the late 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
+Major LT developments: rise of imports, computers in the 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
 
 \end{minipage}
 
@@ -353,8 +355,7 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{2mm} p{35.2mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} p{0mm} R{6.8mm} R{6.8mm} R{6.8mm} }
 \input{data/gdptable.tex}
-		\end{tabular}
-		}	\\
+		\end{tabular}}	\\
 \footnotesize{Source: Bureau of Economic Analysis and Author's Calculations}
 		
 \newpage
@@ -383,8 +384,7 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 		{\renewcommand{\arraystretch}{1.44}
 		 \begin{tabular}{p{30mm} R{7mm} R{7mm} R{7mm} R{7mm} R{7mm} p{0mm} R{9mm} R{9mm} R{10mm} }
 \input{data/gdp_state_table.tex} \hline
-		\end{tabular}
-		}	\\
+		\end{tabular}}	\\
 
 \vspace{-3mm}	
 \footnotesize{Source: Bureau of Economic Analysis}
@@ -421,7 +421,6 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 \vspace{2mm}
 
 \small \input{text/sectbal.txt} \\
-
 
 \vspace{2mm}
 
@@ -474,7 +473,7 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 \vspace{4mm}
 
 \normalsize  [TABLE HERE]
-			
+		
 			
 \end{minipage}
 
@@ -528,7 +527,6 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
 
-
 \end{minipage}
 
 \newpage
@@ -561,19 +559,13 @@ Major LT developments: rise of imports, computers in the late 1990s, welfare ref
 
 \subsection*{\color{black!70} \seriffont Demographics and Household Formation}
 
-
-
-
 \small The Census Bureau estimates that the US population is 327.2 million in 2018 and reports population growth of 0.6 percent over the past year. By age, 22.9 percent are under the age of 18 and 16.1 percent age 65 or older. In 1989, the US population was 246.8 million, with 25.7 percent under 18 and 12.4 percent 65 or older.\\
-
-
 
 The rate of household formation since 1989 can offer a high-level overview of some major demographic and economic developments. From 1989 to 1994, \\
 
 This section should capture 1) population, 2) population growth, 3) aging, 4) increased education.\\
 
 \vspace{2mm}
-
 
 \noindent \normalsize \textbf{Household Formation by Type}\\
 \footnotesize{\textit{one-year moving average of annual growth rates}}\\
@@ -643,15 +635,20 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \begin{minipage}{0.76\textwidth}
 
 \normalsize
-[Gross Labor Income text and chart] \\
 
 Capital Income \\
 
 Welfare Income \\
 
-[Breakout section on income of the aged] \\
+\vspace{4mm}
 
-[Income to persons detailed table]\\
+[\textbf{Breakout section on income of the aged}] \\
+
+\small Income of the aged is looking like a very important section. I hadn't realized the extent to which demographics are rapidly putting downward pressure on the employment rate. Something like four percent of the population is shifting from work age to retirement age.\\
+
+It's important here to point out that social security retirement income is the solution, not the problem. There has been a reduction in private retirement benefits in the form of defined benefit pension plans and a shift towards reliance on 401k and IRA plans. But social security has never missed a payment. In contrast, hundreds of thousands of people are pushed in bankruptcy each year by medical bills. By not extending social insurance to younger people, a larger portion of pre-retirement-age people have their savings wiped out by common life events like having children or a period of illness. As a result, more pressure is put on social insurance for retirement. \\
+
+Ideally I would like to look at the demographics (employment adjustment for age), and then replicate the income of the aged calculation on an annual basis to show how many households are kept out of poverty by social security retirement income. \\
 
 \end{minipage}
 
@@ -863,7 +860,7 @@ Welfare Income \\
 
 \normalsize
 
-Housing prices \\
+\subsubsection*{\color{black!70} \seriffont Housing}
 
 \vspace{2mm}
 
@@ -955,6 +952,8 @@ Geographic location of housing permits \\
 
 \vspace{8mm}
 
+\subsubsection*{\color{black!70} \seriffont Saving}
+
 \small The portion of after-tax income that is not spent by households is considered personal saving, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the personal saving rate. Households use savings to handle unexpected expenses or cover expenses when income falls. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
 
 \input{text/psavert.txt}\\
@@ -965,9 +964,10 @@ Geographic location of housing permits \\
 \footnotesize{\textit{personal saving as a share of disposable personal income}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 8, 12}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=4.4cm]
+		xticklabel={`\short{\year}}, height=4.4cm, width=12.6cm, clip=false]
 	\rbars
 	\stdline{red}{date}{VALUE}{data/psavert.csv}
+	\input{text/psavert_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \\
@@ -1060,7 +1060,7 @@ Poverty rates and amount of poverty in millions of people\\
 
 \begin{minipage}{0.35\textwidth}
 
-\small The productive investments of businesses are also measured by the new orders for core capital goods. The category excludes the more volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau survey of manufacturers.  \\
+\small The productive investments of businesses are also measured by the new orders for core capital goods. The category excludes the more volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  \\
 
 \input{text/dgno.txt}
 \end{minipage} \hspace{6mm}
@@ -1327,9 +1327,41 @@ Poverty rates and amount of poverty in millions of people\\
 
 \newpage
 
+\begin{minipage}{0.31\textwidth}
+\small \input{text/ip_comp1.txt}\\
+
+\input{text/ip_comp2.txt}
+
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.37\textwidth}
+\noindent \normalsize \textbf{Industrial Production and Capacity}\\
+\footnotesize{\textit{total three-year growth, percent}}\\ 
+\noindent \hspace*{-5mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
+    	width=5.5cm, bar width=1.7ex, height=10.0cm,
+    	enlarge y limits={abs=0.32cm}, enlarge x limits=0.15, \bbar{x}{0},
+		yticklabels from table={\ip}{name}, 
+		yticklabel style={font=\scriptsize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode},
+		legend style={text=black!70, at={(0,1.06)}, anchor=north, legend columns=-1, 
+				fill=none, draw=none,
+		        /tikz/every even column/.append style={column sep=0.4cm}}]
+  	\addplot[fill=cyan!90!blue, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\ip};
+  	\addplot[fill=green!60!lime, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\ip};
+ 	\legend{Capacity, Production}
+  	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
+\end{minipage}
+
+\vspace{5mm}
+
 \begin{minipage}{0.76\textwidth}
 
-\small The Federal Reserve's monthly industrial production report also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called capacity utilization, and calculated as industrial production as a share of total industrial capacity. \input{text/tcu.txt}\\
+\small The Federal Reserve's monthly industrial production \href{https://www.federalreserve.gov/releases/g17/}{report} also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called capacity utilization, and calculated as industrial production as a share of total industrial capacity. \input{text/tcu.txt}\\
 
 \noindent \normalsize \textbf{Capacity Utilization}\\
 \footnotesize{\textit{industrial production as a share of total capacity, percent}}\\ 
@@ -1337,16 +1369,13 @@ Poverty rates and amount of poverty in millions of people\\
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 80}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
 	\rbars
-	\thickline{red!80!orange}{date}{Total index}{data/tcu.csv}
-	\stdline{violet!80!purple}{date}{Manufacturing}{data/tcu.csv}
-	\stdnode{9.0cm}{1.3cm}{\scriptsize \color{violet}\textbf{Manufacturing}}
-	\stdnode{8.4cm}{2.2cm}{\scriptsize \color{red}\textbf{Total index}}
+	\thickline{blue!80!black}{date}{Total index}{data/tcu.csv}
+	\stdline{blue!40!cyan}{date}{Manufacturing}{data/tcu.csv}
+	\stdnode{9.0cm}{1.3cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
+	\stdnode{8.4cm}{2.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \\
-
-
-\vspace{3mm}
+\footnotesize{Source: Census Bureau} 
 
 \end{minipage}
 
@@ -1616,9 +1645,9 @@ Balance sheets \\
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30, 40}, ymin=2,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{cyan!50!white}{date}{Consumer}{data/goodsimpsh.csv}	
-	\sbar{blue!80!purple}{date}{Capital}{data/goodsimpsh.csv}	
-	\sbar{red!80!purple}{date}{B648RC}{data/goodsimpsh.csv}	
+	\sbar{cyan!40!white}{date}{Consumer}{data/goodsimpsh.csv}	
+	\sbar{blue!50!cyan}{date}{Capital}{data/goodsimpsh.csv}	
+	\sbar{purple}{date}{B648RC}{data/goodsimpsh.csv}	
 	\legend{Consumer, Capital/Supplies/Other, Petroleum and Products};
 	\end{axis}
 \end{tikzpicture}\\
@@ -1637,11 +1666,85 @@ Trade balance \\
 
 [One page table to capture lots of external sector items as contribution to GDP growth (where possible) or otherwise as a share of GDP]\\
 
-Exchange rates \\
-
 Direct and Portfolio Investment -- related here and to IIP below: the total value of domestic holdings of foreign assets is much smaller than the total value of foreign holdings of domestic assets, but, the return on foreign assets is so much higher than the return on domestic assets that the the US has positive net income from abroad.\\
 
 International Investment Position \\
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Exchange Rates}
+
+\small Text here about exchange rates with selected other major currencies. The first chart shows the amount of Japanese Yen (JPY), British Pounds (GBP), Euros (EUR), and Canadian Dollars (CAD) required to buy one US Dollar (USD).\\ 
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Selected Exchange Rates}\\
+\footnotesize{\textit{units of foreign currency required to purchase one US dollar}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={0.5, 1, 1.5}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+	\rbars
+	\stdline{blue!90!cyan}{date}{RXI_N.B.UK}{data/fx1.csv}
+	\stdline{green!90!blue}{date}{RXI_N.B.CA}{data/fx1.csv}
+	\stdline{red}{date}{RXI_N.B.JA}{data/fx1.csv}
+	\stdline{cyan!90!white}{date}{RXI_N.B.EU}{data/fx1.csv}
+	\stdnode{10.8cm}{0.6cm}{\footnotesize \color{blue!90!cyan}GBP}
+	\stdnode{5.5cm}{3.0cm}{\footnotesize \color{green!90!blue}CAD}
+	\stdnode{4.1cm}{1.1cm}{\footnotesize \color{cyan!90!white}EUR}
+	\stdnode{1.5cm}{1.24cm}{\footnotesize \color{red}JPY (100)}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
+
+\vspace{4mm}
+
+\small Text here about other exchange rates. This next chart covers the Mexican Peso (MXN), the Brazilian Real (BRL), the Chinese Yuan (CNY), and the Singapore Dollar (SGP).\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Selected Exchange Rates, Continued}\\
+\footnotesize{\textit{units of foreign currency required to purchase one US dollar}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={1, 10, 20, 30}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+	\rbars
+	\stdline{blue!40!cyan}{date}{RXI_N.B.MX}{data/fx2.csv}
+	\stdline{green!70!lime}{date}{RXI_N.B.BZ}{data/fx2.csv}
+	\stdline{orange!80!red}{date}{RXI_N.B.SD}{data/fx2.csv}
+	\stdline{blue!60!black}{date}{RXI_N.B.CH}{data/fx2.csv}
+	\stdnode{9.0cm}{2.1cm}{\footnotesize \color{blue!40!cyan}MXN}
+	\stdnode{4.1cm}{0.6cm}{\footnotesize \color{green!70!lime}BRL}
+	\stdnode{11.0cm}{1.7cm}{\footnotesize \color{orange}SGP}
+	\stdnode{0.1cm}{0.4cm}{\footnotesize \color{blue!60!black}CNY}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
+
+\vspace{4mm}
+
+\small Trade-weighted dollar indices discussed here. Major currencies index goes back further, while the broad index starts in 1994.\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Trade-Weighted USD Indices}\\
+\footnotesize{\textit{index, 1973=100}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={60, 80, 100, 120}, 
+		enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
+		legend style={fill=white, at={(0.5, 1.0)}}]
+	\rbars
+	\stdline{blue!60!black}{date}{V0.JRXWTFN_N.B}{data/fx_idx.csv}
+	\stdline{magenta}{date}{V0.JRXWTFB_N.B}{data/fx_idx.csv}
+	\stdnode{8.9cm}{2.1cm}{\footnotesize \color{magenta}Broad}
+	\stdnode{4.0cm}{1.1cm}{\footnotesize \color{blue!60!black}Major}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \\
 
 \end{minipage}
 
@@ -1868,9 +1971,7 @@ Wage growth: \\
 
 \subsection*{\color{black!70} \seriffont Wage Growth}
 
-\small Wage text goes here. Explain two sources and provide some basic numbers. \\
-
-Wage data for low-wage earners is useful for understanding the extent to which the labor market is able to cover living expenses. \\
+\small The usual wages of full-time workers can be measured at various points in the income distribution using the Current Population Survey. BLS reports these data by decile and quartile, with the most commonly used measure being the median usual weekly earnings. The first decile usual weekly earnings of full-time workers have increased rapidly over the past year, suggesting fewer people are working full-time for less than \$10 per hour.\\
 
 
 \vspace{2mm}
@@ -1929,10 +2030,13 @@ Wage data for low-wage earners is useful for understanding the extent to which t
 \begin{minipage}{0.76\textwidth}
 
 
-\small Some types of turnover in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics reports the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving of a job as ``quits''. \\
+\small Some types of turnover in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving of a job as ``quits''. 
+\end{minipage}\\
 
-\vspace{2mm}
-
+\begin{minipage}{0.26\textwidth}
+\small \input{text/jolts2.txt}
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.4\textwidth}
 \noindent \normalsize \textbf{Job Turnover}\\
 \footnotesize{\textit{job openings, hires, and quits, in millions}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -1948,10 +2052,12 @@ Wage data for low-wage earners is useful for understanding the extent to which t
 	\stdnode{3.7cm}{0.2cm}{\scriptsize \color{red}\textbf{Quits}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \\
-
+\footnotesize{Source: Bureau of Labor Statistics}
+\end{minipage}
 
 \vspace{6mm}
+
+\begin{minipage}{0.76\textwidth}
 
 \normalsize
 
@@ -1998,7 +2104,9 @@ State- and sub-state-level analysis \\
 
 \subsection*{\color{black!70} \seriffont Labor Productivity}
 
-\small \input{text/lprod.txt}
+\small Labor productivity is \href{https://www.bls.gov/news.release/prod2.nr0.htm}{reported} by the Bureau of Labor Statistics and measured as real output per hour of work in the nonfarm business sector. Economic theory suggests that labor productivity is particularly important for long-term real economic growth. The measure captures the rate at which people, with all of the resources and equipment and infrastructure available to them, are able to produce goods and services with their work. An increase in labor productivity means real wages can increase without putting upward pressure on inflation. Alternatively, an increase in productivity means a society can meet its material needs with less work.\\
+
+\input{text/lprod.txt}
 \vspace{5mm}
 
 \noindent \normalsize \textbf{Labor Productivity Growth}\\
@@ -2016,20 +2124,23 @@ State- and sub-state-level analysis \\
 
 \newpage
 
-\section*{\color{darkgray}\LARGE \seriffont Capital Markets}
+\begin{minipage}{0.76\textwidth}
 
-\normalsize
+\section*{\color{darkgray}\LARGE \seriffont Financial Markets}
 
-Overview \\
+\small The US equity markets and capital markets provide businesses and governments with funding for activities and fixed investments. \\
 
-Equity markets \\
+\vspace{2mm}
+
+
+
+\subsection*{\color{black!70} \seriffont Equity Markets}
 
 \hspace{4mm} [SP500] \\
 
+\vspace{5mm}
 
-\begin{minipage}{0.76\textwidth}
-
-\small text.... \\
+\small \input{text/sp500rr.txt}  \\
 
 \vspace{2mm}
 
@@ -2065,7 +2176,9 @@ Valuations \\
 
 \vspace{4mm}
 
-\small Text here on the fed funds rate.\\
+\small The US Federal Reserve System (Fed) has a congressional mandate to promote price stability and maximum employment. In practice, a Fed committee determines the federal funds rate, which aims to influence interest rates in the broader economy. Fed monetary policy can be neutral or be used to stimulate or slow the economy.\\
+
+Actual data here on recent moves by the Fed and the Fed funds rate. \\
 
 \vspace{1mm}
 
@@ -2198,13 +2311,17 @@ Expectations \\
 
 \begin{minipage}{0.76\textwidth}
 
+\small \input{text/wti.txt}\\
+
+\vspace{2mm}
+
 \noindent \normalsize \textbf{Oil Price}\\
 \footnotesize{\textit{USD, west Texas intermediate crude, monthly average}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50, 100}, 
 		xticklabel={`\short{\year}}, ymin=0]
 	\rbars
-	\thickline{red!80!purple}{date}{VALUE}{data/wti.csv}
+	\stdline{red!80!purple}{date}{VALUE}{data/wti.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: FRED} \\
