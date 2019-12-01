@@ -1965,9 +1965,94 @@ Unemployment by duration \\
 
 \footnotesize{Source: Bureau of Labor Statistics}\\
 
+\end{minipage}
+
+
+\newpage
+
+
+\begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Non-participation}
+
+\small Start with chart of labor force participation rate, including age-adjusted version. Alternatively, tie the size of unemployment to the size of non-participation. The things I want to capture in this section:\\
+
+1) Definitions \\
+
+2) Long-term trend--increase in female participation \\
+
+3) Aging population puts downward pressure \\
+
+4) Reasons for non-participation \\
+
+5) Disability as a reason \\
+
+6) School as a reason \\
+
+7) Retirement as a reason \\
+
+8) Care for family -- elder care \\
+
+9) Care for family -- child care \\
+
+10) Recent trends \\
+
+11) At least one good crosstab \\
+
+12) Geographic specificity if possible \\
+
+
+\vspace{4mm}
 
 \end{minipage}
 
+
+\newpage
+
+
+\begin{minipage}{0.76\textwidth}
+
+\small The Current Population Survey asks people who are not employed or looking for work about their major activities and reasons for not participating in the labor market. The answers show a tendency to vary by age, in intuitive ways, but also a strong relationship to the business cycle. By age, those age 16--24 who are not in the labor force disproportionately cite school as the reason for non-participation, while those 55+ disproportionately cite retirement. \\
+
+\vspace{2mm}
+
+\normalsize
+
+[CHART HERE -- bar chart ]\\
+
+\vspace{2mm}
+
+\small An important contribution to .. \\
+
+Within those, age 18--64, the ... \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Contributions to Labor Force Participation Since March 2001}\\
+\footnotesize{\textit{cumulative percentage point contribution to age 18-64 labor force participation,\\data have been adjusted to remove the effect of trends in age and sex}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={}, width=10.0cm,
+		xticklabel={`\short{\year}}, 
+		extra x ticks={2019-10-01},
+		extra x tick labels={0ct}, clip=false, 
+		yticklabel style={text width=1.8em}, height=8.5cm]
+	\rebars
+	\thickline{green!80!blue}{date}{Disabled/Ill}{data/nilf.csv}
+	\thickline{blue}{date}{Discouraged}{data/nilf.csv}
+	\thickline{red}{date}{Family}{data/nilf.csv}
+	\thickline{orange}{date}{Retired}{data/nilf.csv}
+	\thickline{cyan}{date}{School}{data/nilf.csv}
+	\input{text/nilf_nodes.txt}
+	\stdnode{6.3cm}{1.9cm}{\scriptsize \color{green!80!blue}\textbf{Disabled/Ill}}
+	\stdnode{5.2cm}{3.4cm}{\scriptsize \color{blue}\textbf{Discouraged}}
+	\stdnode{5.7cm}{5.2cm}{\scriptsize \color{red}\textbf{Family/Care}}
+	\stdnode{5.2cm}{6.5cm}{\scriptsize \color{orange}\textbf{Retired}}
+	\stdnode{6.2cm}{0.7cm}{\scriptsize \color{cyan}\textbf{School}}	
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations from Current Population Survey} \\
+
+\end{minipage}
 
 \newpage
 
@@ -2471,7 +2556,7 @@ One option for this section is to have some json data that captures what origina
 
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
 
-Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Yevgeniya Korniyenko, Magali Pinat, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, and Ernie Tedeschi.
+Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Yevgeniya Korniyenko, Magali Pinat, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, and Ernie Tedeschi, Ryan Bonkosky, Vikas Sharma.
 
 \end{minipage}
 
