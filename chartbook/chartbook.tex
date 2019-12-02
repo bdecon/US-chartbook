@@ -82,7 +82,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2019-10-01},
+		xmax={2019-12-01},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -218,11 +218,11 @@
 
 \begin{minipage}{0.76\textwidth}
 
-\small Continue to fill out the content of the document. Additionally, refactor some of the older code and clean up some of the issues with older charts and text. \\
+\small Continue to fill out the content of the document. Additionally, refactor some of the older code and clean up some of the issues with older charts and text. Data retrieved from Census, BLS, the Fed and others needs to be stored in the SQL database, the way BEA data is stored. Individual notebooks or python files should be created for each source.\\
 
 It will be nice to have a section showing the top five indicators: GDP growth, wages, epop, cpi inflation, 10-year treasury yields. \\
 
-It will also be nice to have a section in that puts some context on numbers generally. The key example that I've tried to do before is to put a threshold on GDP growth that marks how much is needed for population growth and depreciation and then calculate how much one extra pp of growth (beyond the previous amount) is worth, per person. For example, if population growth is 0.6pp and depreciation is 0.8pp, then it would take 1.4pp to keep the same level of real per capita production. Beyond that, an extra percentage point of GDP might mean something like \$900 per person in additional goods and services. \\
+It will also be nice to have a section in that puts some context on numbers generally. For example, put a threshold on GDP growth that marks how much is needed for population growth and depreciation and then calculate how much one extra pp of growth (beyond the previous amount) is worth, per person. Essentially try to get a big number like GDP into a small number. Also, try to emphasize the importance of multiple approaches to GDP compilation. Many people in the US think about GDP only from the expenditure approach, but the income approach is equally important, and arguably more intuitive. \\
 
 Section listing recent updates and upcoming releases would be nice. This would require some thinking in terms of implementation. \\
 
@@ -500,7 +500,16 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Other, Residential Real Estate, Corporate Equities};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve}
+\footnotesize{Source: Federal Reserve}\\
+
+\vspace{4mm}
+
+\small Additional text here. Within categories of wealth, the ratio of corporate equities to other categories of wealth has increased considerably... \\
+
+\vspace{2mm}
+
+[BAR CHART - WEALTH / GDP BY TYPE]
+
 \end{minipage}
 
 \newpage
@@ -589,8 +598,9 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Income to Persons}
-\small This section looks at income received by people, by type of income, adjusted for inflation using the PCE implicit price deflator. Income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons less contributions to social insurance. 
-\vspace{4mm}
+\small This section looks at income received by people, by type of income, adjusted for inflation using the PCE implicit price deflator. Income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons less contributions to social insurance. \\
+
+\vspace{2mm}
 
 \noindent \normalsize \textbf{Personal Income}\\
 \footnotesize{\textit{percentage point contribution to real personal income growth}}\\
@@ -606,17 +616,17 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 	\stdnode{3.4cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\ \scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis}\\
 
 
-\vspace{4mm}
+\vspace{2mm}
 
-\small Some descriptive text here. Perhaps mention the total amount for real personal income and the share from labor, capital, and welfare in 1989, 2000, and 2019. Otherwise, at least mention the main three sources and how they contribute to change in personal income in the latest data.\\
+\small \input{text/pi.txt} \\
 
-\end{minipage}
+\vspace{2mm}
 
 \noindent \normalsize \textbf{Personal Income by Source}\\
-\footnotesize{\textit{percentage point contribution to real personal income growth \hspace{22mm} moving averages}\\ \vspace{4mm}
+\footnotesize{\textit{percentage point contribution to real personal income growth \hspace{22mm} moving averages}}\\ \vspace{4mm}
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
@@ -626,13 +636,18 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 		\end{tabular}
 		}	\\
 		
-\vspace{-6mm}
+\vspace{-4mm}
 \footnotesize{Source: Bureau of Economic Analysis}
 
+\end{minipage}
 
 \newpage
 
 \begin{minipage}{0.76\textwidth}
+
+\small Some more personal income descriptive text here. Perhaps mention the total amount for real personal income and the share from labor, capital, and welfare in 1989, 2000, and 2019. Otherwise, at least mention the main three sources and how they contribute to change in personal income in the latest data.\\
+
+\vspace{4mm}
 
 \normalsize
 
@@ -865,9 +880,9 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{blue!70!violet}{date}{FL152010005.Q}{data/hh_asset_growth.csv}
-	\sbar{cyan}{date}{CASHDEP}{data/hh_asset_growth.csv}
-	\sbar{orange!70!white}{date}{EQ}{data/hh_asset_growth.csv}
+	\sbar{green!85!blue}{date}{FL152010005.Q}{data/hh_asset_growth.csv}
+	\sbar{yellow!85!orange}{date}{CASHDEP}{data/hh_asset_growth.csv}
+	\sbar{blue!70!violet}{date}{EQ}{data/hh_asset_growth.csv}
 	\sbar{magenta!80!purple}{date}{OTHFA}{data/hh_asset_growth.csv}
 	\legend{Nonfinancial, Cash \& Deposits, Business Equity, Other Financial};
 	\end{axis}
@@ -880,7 +895,12 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 \begin{minipage}{0.76\textwidth}
 
-\small Rate of growth for both real net worth and real after tax income. \\
+\subsubsection*{\color{black!70} \seriffont Net Worth}
+
+\small The total assets of households have risen much faster than their total liabilities. Net worth is an aggregate measure of the financial position of households, measured as total assets minus total liabilities. \input{text/nw1.txt} \\
+
+
+\input{text/nw2.txt}\\
 
 \vspace{3mm}
 
@@ -891,12 +911,16 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{cyan!40!white}{date}{FL152090005.Q}{data/rdpi_nw.csv}
-	\stdline{blue!50!violet}{date}{RDPI}{data/rdpi_nw.csv}
+	\sbar{cyan!40!white}{date}{NW}{data/rdpi_nw.csv}
+	\stdline{blue!50!violet}{date}{DPI}{data/rdpi_nw.csv}
 	\legend{Net Worth, After-Tax Income};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+
+\vspace{4mm}
+
+\small Ideally, try to capture the contributions to the change in net worth. This might not be possible, but would be interesting. Net worth can change from changes to income, changes to the rate at which income is saved, changes to borrowing and changes in interest rates (changes in the value of liabilities), and changes to the value of assets. This is complicated, so just start with assets and liabilities. \\
 
 
 \end{minipage}
@@ -980,7 +1004,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={500, 1000, 1500, 2000, 2500}, 
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
-	\stdline{blue}{date}{APERMITS}{data/permits.csv}	
+	\stdline{blue!70!green}{date}{APERMITS}{data/permits.csv}	
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \\
@@ -1013,13 +1037,13 @@ Households; owners' equity in real estate as a percentage of household real esta
 		yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}, width=11.8cm]
 	\rbars
-	\thickline{blue!70!cyan}{date}{index_sa}{data/hpi.csv}	
+	\thickline{blue!40!cyan}{date}{index_sa}{data/hpi.csv}	
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Housing Finance Agency} \\
 
 
-\vspace{8mm}
+\vspace{6mm}
 
 \subsubsection*{\color{black!70} \seriffont Saving}
 
@@ -1823,15 +1847,37 @@ International Investment Position \\
 
 \section*{\color{darkgray}\LARGE \seriffont Labor Markets}
 
-\small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is called employment. As of XXXXXX 2019, XXX.X million people are employed (including self-employment). Labor provided within a household is not captured by GDP compilation methods (expenditures, output, or income), though household surveys offer some insight into this important category of labor. The number of people who are considered employed divided by the total population is the employment rate or employment-to-population ratio, which is XX.X percent as of XXXXX 2019.\\
+\small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is called employment. \input{text/cps_lfs.txt}\\
 
-When a member of a household is not employed but looked for a job during the past four weeks and is available to work, they are considered \href{https://www.bls.gov/cps/cps_htgm.htm}{unemployed}. As of XXXXX 2019, there are X.XX million unemployed people. The combined group of employed and unemployed people is the labor force. The number of unemployed people divided by the number of people in the labor force is the unemployment rate, currently X.X percent. The number of people in the labor force divided by the total population is the labor force participation rate, currently XX.X percent.\\
+When a member of a household is not employed but looked for a job during the past four weeks and is available to work, they are considered \href{https://www.bls.gov/cps/cps_htgm.htm}{unemployed}. \input{text/cps_lfs2.txt}\\
 
-People who are not employed and not unemployed are considered to be outside of the labor force. This category is about half of the population, on average, and totals XXX.X million in XXXXXX 2019. The category is comprised of children (XXX.X million), students (XX.X million), unpaid caregivers (XX.X million), those unable to work due to disability or illness (XX.X million), those who want a job but have given up looking (X.X million), and retirees and the elderly (XXX.X million). \\
+People who are not employed and not unemployed are considered to be outside of the labor force. \input{text/cps_lfs3.txt} \\
 
 \vspace{4mm}
 
-\normalsize [TABLE HERE]
+\noindent \normalsize \textbf{Labor Force Status of Population}\\
+\footnotesize{\textit{millions}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300}, 
+		height=9.6cm, ymin=10, width=7.8cm,
+		clip=false, enlarge x limits={0.04}, 
+		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, 
+				{2005-01-01}, {2010-01-01}, {2015-01-01}, {2019-10-01}},
+        minor xtick={},
+        xticklabels={`89, `95, `00, `05, `10, `15, Oct},
+		legend style={fill=white, legend columns=2, at={(0.82, 1.04)}}]
+	\rbars
+	\sbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}
+	\sbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}
+	\sbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}
+	\sbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}
+	\legend{Employed, Unemployed, Non-Participant, Under 15};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations from CPS}\\
+
+
+
 
 \end{minipage}
 
@@ -1842,7 +1888,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \subsection*{\color{black!70} \seriffont Gross Labor Income}
 
-\small In labor markets, unlike other markets, wages (the price of labor) tend not to be cut in response to a decrease in demand; businesses instead employ fewer workers and/or cut hours. \\
+\small In labor markets, unlike other markets, wages (the price of labor) tend not to be cut in response to a decrease in demand; businesses instead employ fewer workers and/or cut hours. As a result, wage data give only a partial picture of the labor income received by households.\\
 
 Gross labor income (compensation of employees in the national accounts), which captures both employment and wages, \input{text/gli.txt} \\
 
@@ -2039,7 +2085,9 @@ Unemployment by duration \\
 
 \small An important contribution to .. \\
 
-Within those, age 18--64, the ... \\
+Of those age 18--64, the majority are employed (XX.X percent), as of October 2019, and very few are unemployed (X.X percent of the age group). An additional XX.X percent are not in the labor force. \\
+
+While the recession of 2001 appears mild in measures of expenditure, it marked the start of a long reduction in the share of the population earning labor income. The economy was still losing jobs at an alarming rate long after the 2001 recession had officially ended. The great recession followed seven years after pushing many more people out of the labor force. From March 2001 to the latest available month, October 2019, an additional X.X percent of the age 18--64 population left the labor force. The larger-than-normal population cohort born after World War II reached retirement age in this period, such age and sex-related effects explains X.X percent of the cumulative decrease. Additionally, young people are staying in school longer, on average, reducing the age 18--64 labor force by X.X percent. Disability or illness reduced the labor force by another X.X percent. Less retirement among those age 18--64 increased the labor force by X.X percent.. \\
 
 \vspace{2mm}
 
@@ -2256,10 +2304,6 @@ Openings \\
 
 \normalsize
 
-Reasons for non-participation \\
-
-Union membership \\
-
 State- and sub-state-level analysis \\
 
 
@@ -2294,6 +2338,33 @@ State- and sub-state-level analysis \\
 \small There are two areas to investigate in understanding trends in productivity growth rates. The first is the theory that the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, determines productivity growth. Such investment allows more goods and services to be produced by the same number amount of work. The second theory, sometimes called the Kaldor-Verdoorn Law, is that overall economic growth and capacity utilization determine productivity growth. In this scenario, an economy facing real resource constraints is more likely to find ways to produce goods and services more efficiently.\\
 
 
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Union Membership}
+
+\small Membership in unions and employee associations has diminished in the United States over the past fifty years. Unionized jobs typically offer higher wages and better benefits and union membership tends to increase wages and benefits even in nonunion jobs. Therefore, some research argues, less union membership increases income inequality. \\
+
+\input{text/union.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Union Membership and Coverage}\\
+\footnotesize{\textit{union or employee association share of jobs, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15, 20}, ymin=1,
+		height=6.0cm, width=12.6cm, enlarge y limits={0.11},
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{violet}{date}{Membership}{data/union.csv}	
+	\sbar{magenta!70!purple}{date}{Diff}{data/union.csv}	
+	\legend{Member, Covered Non-member};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations from Current Population Survey}\\
 
 \end{minipage}
 
@@ -2424,9 +2495,9 @@ Yield curve \\
 
 \subsection*{\color{black!70} \seriffont Money and Monetary Policy}
 
-\vspace{4mm}
+\small The Federal Reserve reports the weekly average money stock, broadly, as M2, which includes cash and deposits such as savings accounts and checking accounts. \input{text/m2imf2.txt}\\
 
-\small Text here on the money supply. \\
+A large increase in the amount of money held by individuals and institutions can be the result of a higher rate of saving, a larger government sector financial deficit, an increase in the money supply, a change in preferences for liquidity, or something else. \input{text/m2imf.txt}\\
 
 \vspace{2mm}
 
@@ -2440,6 +2511,15 @@ Yield curve \\
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \\
+
+\vspace{4mm}
+
+\small The breakdown of money stocks suggests... \\
+
+\vspace{2mm}
+
+\normalsize [BAR CHART HERE] \\
+
 
 \end{minipage}
 
@@ -2474,9 +2554,9 @@ Yield curve \\
 \vspace{2mm}
 
 \begin{minipage}{0.3\textwidth}
-\small Housing has been the largest contributor to inflation since XXXXXX, XXXX. In October 2019, housing contributed X.X percentage points to overall CPI inflation, compared to a contribution of X.X percentage points in October 2018. Medical care added X.X percentage points to overall inflation in October 2019, compared to a contribution of X.X percent in October 2018. \\
+\small \input{text/cpicomp.txt} \\
 
-In October 2019, Energy subtracted X.X percentage points from overall CPI inflation, compared to a contribution of X.X percent in October 2019. In total, six of the ten selected CPI components contributed positively to overall CPI inflation, while four subtracted from inflation and none were unchanged. 
+\input{text/cpicomp2.txt} 
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.36\textwidth}
 \noindent \normalsize \textbf{Consumer Price Index}\\
@@ -2506,11 +2586,7 @@ In October 2019, Energy subtracted X.X percentage points from overall CPI inflat
 
 \normalsize
 
-CPI: \\
-
-\hspace{4mm} [CPI-U growth - core, all-items, CPI-U-RS]\\
-
-\hspace{4mm} [CPI-U components contribution - horizontal range chart] \\ 
+Discussion of CPI-U-RS \\ 
 
 PPI \\
 
@@ -2571,7 +2647,7 @@ One option for this section is to have some json data that captures what origina
 
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
 
-Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Yevgeniya Korniyenko, Magali Pinat, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, and Ernie Tedeschi, Ryan Bonkosky, Vikas Sharma.
+Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Yevgeniya Korniyenko, Magali Pinat, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Ernie Tedeschi, Ryan Bonkosky, and Vikas Sharma.
 
 \end{minipage}
 
