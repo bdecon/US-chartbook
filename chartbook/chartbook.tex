@@ -570,9 +570,15 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 
 \small The Census Bureau estimates that the US population is 327.2 million in 2018 and reports population growth of 0.6 percent over the past year. By age, 22.9 percent are under the age of 18 and 16.1 percent age 65 or older. In 1989, the US population was 246.8 million, with 25.7 percent under 18 and 12.4 percent 65 or older.\\
 
-The rate of household formation since 1989 can offer a high-level overview of some major demographic and economic developments. From 1989 to 1994, \\
-
 This section should capture 1) population, 2) population growth, 3) aging, 4) increased education.\\
+
+\vspace{2mm}
+
+\subsubsection*{\color{black!70} \seriffont Household Formation}
+
+Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the homeownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. \\
+
+\input{text/hhform1.txt}\\
 
 \vspace{2mm}
 
@@ -581,15 +587,19 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.95, 1.11)}}]
 	\rbars
+	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
+		\pgfkeysvalueof{/pgfplots/ymax});
+	\stdnode{4.1cm}{3.04cm}{\scriptsize historical}
+	\stdnode{5.2cm}{3.04cm}{\scriptsize revised}
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
 	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
 	\stdline{black}{date}{pop}{data/hhform.csv}
 	\legend{Rented, Owned, Population Growth};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau}
+\footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}
 
 \end{minipage}
 
@@ -924,7 +934,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 \begin{minipage}{0.76\textwidth}
 
-\small Net worth changes come from the revaluation of assets and from net investment of income. Changes to the value of assets, for example capital gains from an increase in the market value of corporate equities, explain most of the changes in net worth (see\cbox{blue}). Each period households also receive income and decide investment, saving, and borrowing. Net investment equals capital expenditures less depreciation plus net lending/borrowing; positive net investment results in an increase in net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. Income that goes to net investment at this historical-average rate (see\cbox{magenta}) can be separated from periods where the rate of net investment is above or below this historical average (see\cbox{violet!80!black}). This distinction can identify how changes in disposable personal income, and changes in decisions about how to use that income, combine to affect net worth. Changes in data sources or from natural disasters are also identified as other volume changes (see\cbox{cyan!80!white}).\\
+\small Net worth changes come from the revaluation of assets and from net investment of income. Changes to the value of assets, for example capital gains from an increase in the market value of corporate equities, explain most of the changes in net worth (see\cbox{blue!60!white}). Each period households also receive income and decide investment, saving, and borrowing. Net investment equals capital expenditures less depreciation plus net lending/borrowing; positive net investment results in an increase in net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. Income that goes to net investment at this historical-average rate (see\cbox{magenta!85!white}) can be separated from periods where the rate of net investment is above or below this historical average (see\cbox{violet}). This distinction can identify how changes in disposable personal income, and changes in decisions about how to use that income, combine to affect net worth. Changes in data sources or from natural disasters are also identified as other volume changes (see\cbox{cyan!70!white}).\\
 
 \vspace{2mm}
 
@@ -935,10 +945,10 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(1.0, 1.13)}}]
 	\rbars
-	\sbar{violet!80!black}{date}{Investment}{data/nw_gr.csv}
-	\sbar{magenta}{date}{Income}{data/nw_gr.csv}
-	\sbar{cyan!80!white}{date}{Other}{data/nw_gr.csv}		
-	\sbar{blue}{date}{Capital_Gains}{data/nw_gr.csv}
+	\sbar{violet}{date}{Investment}{data/nw_gr.csv}
+	\sbar{magenta!85!white}{date}{Income}{data/nw_gr.csv}
+	\sbar{cyan!70!white}{date}{Other}{data/nw_gr.csv}		
+	\sbar{blue!60!white}{date}{Capital_Gains}{data/nw_gr.csv}
 	\legend{Rate of Net Investment, Income, Other Volume Changes, Holding Gains};
 	\end{axis}
 \end{tikzpicture}\\
@@ -1582,7 +1592,9 @@ Inventories \\
 
 \small Government expenditures provide services and income to people. Government receipts remove demand from the economy. When government expenditures exceed receipts, it is referred to as a government deficit, and corresponds to a private sector surplus. The size of the government deficit relative to GDP gives insight into the extent to which the government is stimulating the economy by increasing household income and corporate profits.\\
 
-Individual text here on the size of deficits at a federal and state and local level, as well as recent changes. \\
+\input{text/govexprec2.txt} \\
+
+\input{text/govexprec1.txt} \\
 
 \vspace{2mm}
 
@@ -1595,10 +1607,10 @@ Individual text here on the size of deficits at a federal and state and local le
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={15, 20, 25}, 
 		clip=false, width=6.7cm, 
-		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-07-01}},
         minor xtick={}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04},
-        xticklabels={`89, `00, `10, `19 Q2}, 
+        xticklabels={`89, `00, `10, `19 Q3}, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\stdline{blue!90!cyan}{date}{W005RC}{data/fedgdp.csv}
@@ -1610,9 +1622,9 @@ Individual text here on the size of deficits at a federal and state and local le
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16}, 
 		clip=false, width=6.7cm, 
-		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-07-01}},
         minor xtick={}, 
-        xticklabels={`89, `00, `10, `19 Q2}, enlarge y limits={lower, 0.2}, 
+        xticklabels={`89, `00, `10, `19 Q3}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04}]
 	\rbars
 	\stdline{blue!90!cyan}{date}{W023RC}{data/slggdp.csv}
