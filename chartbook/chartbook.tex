@@ -748,7 +748,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 \vspace{4mm}
 
-\small Changes to consumer spending (see {\color{black}\textbf{---}}) are largely the result of changes to income (see\cbox{yellow!50!orange}) and changes to the rate at which income is saved (see\cbox{magenta!90!white}). Changes to other outlays (see\cbox{blue!60!white}) reflect changes in interest payments, fines and fees, and charitable giving. \\
+\small Changes to consumer spending (see {\color{black}\textbf{---}}) are largely the result of changes to income (see\cbox{cyan!50!white}) and changes to the rate at which income is saved (see\cbox{magenta!78!purple!80!white}). Changes to other outlays (see\cbox{blue!60!violet}) reflect changes in interest payments, fines and fees, and charitable giving. \\
 
 \input{text/pcedecomp.txt}\\
 
@@ -762,9 +762,9 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{yellow!50!orange}{date}{A067RC}{data/pcedecomp.csv}
-	\sbar{magenta!90!white}{date}{SAVING}{data/pcedecomp.csv}
-	\sbar{blue!60!white}{date}{OTHER}{data/pcedecomp.csv}
+	\sbar{cyan!50!white}{date}{A067RC}{data/pcedecomp.csv}
+	\sbar{magenta!78!purple!80!white}{date}{SAVING}{data/pcedecomp.csv}
+	\sbar{blue!60!violet}{date}{OTHER}{data/pcedecomp.csv}
 	\stdline{black}{date}{DPCERC}{data/pcedecomp.csv}
 	\legend{Income, Saving, Other Outlays, Total};
 	\end{axis}
@@ -1878,29 +1878,27 @@ International Investment Position \\
 
 \newpage
 
-\begin{minipage}{0.76\textwidth}
 
 \section*{\color{darkgray}\LARGE \seriffont Labor Markets}
 
-\small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is called employment. \input{text/cps_lfs.txt}\\
+\begin{minipage}{0.34\textwidth}
+\small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is called employment. \input{text/cps_lfs0.txt}\\
 
-When a member of a household is not employed but looked for a job during the past four weeks and is available to work, they are considered \href{https://www.bls.gov/cps/cps_htgm.htm}{unemployed}. \input{text/cps_lfs2.txt}\\
-
-People who are not employed and not unemployed are considered to be outside of the labor force. \input{text/cps_lfs3.txt} \\
-
-\vspace{4mm}
-
+\input{text/cps_lfs.txt}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.4\textwidth}
 \noindent \normalsize \textbf{Labor Force Status of Population}\\
 \footnotesize{\textit{millions}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300}, 
-		height=9.6cm, ymin=10, width=7.8cm,
+		height=7.2cm, ymin=10, width=7.0cm,
 		clip=false, enlarge x limits={0.04}, 
 		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, 
 				{2005-01-01}, {2010-01-01}, {2015-01-01}, {2019-10-01}},
         minor xtick={},
         xticklabels={`89, `95, `00, `05, `10, `15, Oct},
-		legend style={fill=white, legend columns=2, at={(0.82, 1.04)}}]
+        legend cell align={left},
+		legend style={fill=white, legend columns=2, at={(0.82, 1.09)}}]
 	\rbars
 	\sbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}
 	\sbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}
@@ -1909,9 +1907,83 @@ People who are not employed and not unemployed are considered to be outside of t
 	\legend{Employed, Unemployed, Non-Participant, Under 15};
 	\end{axis}
 \end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations from CPS}
+\end{minipage}\\
+
+\vspace{2mm}
+
+\begin{minipage}{0.76\textwidth}
+\small When a member of a household is not employed but looked for a job during the past four weeks and is available to work, they are considered \href{https://www.bls.gov/cps/cps_htgm.htm}{unemployed}. \input{text/cps_lfs2.txt}\\
+
+People who are not employed and not unemployed are considered to be outside of the labor force. \input{text/cps_lfs3.txt} \\
+
+\vspace{3mm}
+
+\noindent \normalsize \textbf{Labor Force Status Change}\\
+\footnotesize{\textit{percentage point contribution to one-year growth}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
+		xticklabel={`\short{\year}}, clip=false, height=5.9cm,
+		legend cell align={left},
+		legend style={legend columns=1, at={(0.29, 0.35)}}]
+	\rbars
+	\sbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs2.csv}
+	\sbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs2.csv}
+	\sbar{blue!80!cyan}{date}{NILF}{data/cps_lfs2.csv}
+	\legend{Employed, Unemployed, Non-Participant};
+	\end{axis}
+\end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations from CPS}\\
 
+\end{minipage}
 
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small The labor force status of the US population varies by age, sex, and over time. Because very few people have capital income, the share of the population with labor income is particularly important to overall levels of economic activity. \\
+
+\vspace{1mm}
+
+
+\noindent \normalsize \textbf{Labor Force Status}\\
+\footnotesize{\textit{October 2019, thousands of people, not seasonally adjusted}}\\
+
+\vspace{-3mm}
+
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.52}
+		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} R{10.6mm} R{10.4mm} R{10.4mm}}
+			 \input{data/lfs_table1.tex}\hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-3mm}		
+		
+\footnotesize{Source: Author's Calculations from CPS}\\
+
+\vspace{3mm}
+
+\small Additionally, changes over time in labor force status are particularly important to understanding both secular and cyclical trends in the economy. For example, the US population is growing but it is also aging. Over the past year, there was a substantial shift towards full-time work. \\
+
+\vspace{2mm}
+
+
+\noindent \normalsize \textbf{Labor Force Changes}\\
+\footnotesize{\textit{Change from October 2019 to October 2018, thousands of people, not seasonally adjusted}}\\
+
+\vspace{-3mm}
+
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.52}
+		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} R{10.6mm} R{10.4mm} R{10.4mm}}
+			 \input{data/lfs_table2.tex}\hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-3mm}	
+	
+\footnotesize{Source: Author's Calculations from CPS}
 
 
 \end{minipage}
