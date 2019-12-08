@@ -859,8 +859,62 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 \begin{minipage}{0.76\textwidth}
 
-
 \subsubsection*{\color{black!70} \seriffont Assets}
+
+\small \input{text/hhasset1.txt} \\
+
+\input{text/hhasset2.txt} \\
+
+\input{text/hhasset3.txt} \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Selected Household and Nonprofit Assets}\\
+\footnotesize{\textit{share of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300, 400, 500},
+		 ymin=2, height=5.7cm, xmin=1988-07-01, reverse legend,
+		xticklabel={`\short{\year}}, clip=false, legend cell align={left},
+		legend style={legend columns=1, at={(0.33, 1.1)}}]
+	\rbars
+	\sbar{green!60!teal}{date}{HRE}{data/hhassetsgdp.csv}
+	\sbar{cyan!40!white}{date}{DEP}{data/hhassetsgdp.csv}	
+	\sbar{blue!55!cyan}{date}{DSL}{data/hhassetsgdp.csv}
+	\sbar{blue!65!black}{date}{TEQ}{data/hhassetsgdp.csv}
+	\legend{Real Estate, Deposits, Debt Securities \& Loans, Business Equity};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+
+\vspace{3mm}
+
+\small \input{text/hhasset4.txt} \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Contributions to Real Growth in Household and Nonprofit Assets}\\
+\footnotesize{\textit{contribution to one-year percent change in assets, adjusted by PCE price deflator}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, height=6.1cm, 
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
+			clip=false, legend cell align={left},
+		legend style={legend columns=2, at={(0.55, 0.24)}}]
+	\rbars
+	\sbar{cyan!40!white}{date}{DEP}{data/hh_asset_growth.csv}	
+	\sbar{blue!55!cyan}{date}{DSL}{data/hh_asset_growth.csv}
+	\sbar{green!60!teal}{date}{HRE}{data/hh_asset_growth.csv}
+	\sbar{blue!65!black}{date}{TEQ}{data/hh_asset_growth.csv}
+	\legend{Deposits, Debt Securities \& Loans, Real Estate, Business Equity};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \small The return on total household assets has fallen, as measured by disposable income as a share of household assets.  \\ 
 
@@ -879,25 +933,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 \vspace{6mm}
 
-\small Text about growth in various types of household assets. I divided the Fed Z.1 household and nonprofit balance sheet data into: business equity--directly and indirectly held corporate equities + proprietor equity in noncorporate businesses; nonfinancial assets, which are primarily composed of real estate; deposits--which include cash as well as checking and saving accounts and money market funds; and other financial assets, which are primarily debt securities and loans and claims on insurance companies. \\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{Contributions to Real Growth in Assets}\\
-\footnotesize{\textit{contribution to one-year percent change in assets, adjusted by PCE price deflator}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
-		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
-	\rbars
-	\sbar{green!85!blue}{date}{FL152010005.Q}{data/hh_asset_growth.csv}
-	\sbar{yellow!85!orange}{date}{CASHDEP}{data/hh_asset_growth.csv}
-	\sbar{blue!70!violet}{date}{EQ}{data/hh_asset_growth.csv}
-	\sbar{magenta!80!purple}{date}{OTHFA}{data/hh_asset_growth.csv}
-	\legend{Nonfinancial, Cash \& Deposits, Business Equity, Other Financial};
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+\small Household and non-profit assets are grouped into two categories--financial and non-financial. Nonfinancial assets include residential real estate and consumer durable goods like cars and furniture. Financial assets include cash and bank deposits, directly and indirectly held equity in businesses, debt securities, loans, and claims on the insurance sector. Text about growth in various types of household assets. I divided the Fed Z.1 household and nonprofit balance sheet data into: business equity--directly and indirectly held corporate equities + proprietor equity in noncorporate businesses; nonfinancial assets, which are primarily composed of real estate; deposits--which include cash as well as checking and saving accounts and money market funds; and other financial assets, which are primarily debt securities and loans and claims on insurance companies. \\
 
 \end{minipage}
 
@@ -934,26 +970,31 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 \begin{minipage}{0.76\textwidth}
 
-\small Net worth changes come from the revaluation of assets and from net investment of income. Changes to the value of assets, for example capital gains from an increase in the market value of corporate equities, explain most of the changes in net worth (see\cbox{blue!60!white}). Each period households also receive income and decide investment, saving, and borrowing. Net investment equals capital expenditures less depreciation plus net lending/borrowing; positive net investment results in an increase in net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. Income that goes to net investment at this historical-average rate (see\cbox{magenta!85!white}) can be separated from periods where the rate of net investment is above or below this historical average (see\cbox{violet}). This distinction can identify how changes in disposable personal income, and changes in decisions about how to use that income, combine to affect net worth. Changes in data sources or from natural disasters are also identified as other volume changes (see\cbox{cyan!70!white}).\\
+\small Net worth changes come from the revaluation of assets and from net investment of income. Changes to the value of assets, for example capital gains from an increase in the market value of corporate equities, explain most of the changes in net worth (see\cbox{cyan!40!white}). Each period households also receive income and decide investment, saving, and borrowing. Net investment equals capital expenditures less depreciation plus net lending/borrowing; positive net investment results in an increase in net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. Income that goes to net investment at this historical-average rate (see\cbox{magenta!85!white}) can be separated from periods where the rate of net investment is above or below this historical average (see\cbox{violet}). This distinction can identify how changes in disposable personal income, and changes in decisions about how to use that income, combine to affect net worth. Changes in data sources or from natural disasters are also identified as other volume changes (see\cbox{cyan!70!blue}).\\
+
+Data are used in the following chart are not adjusted for changes in prices because it's not clear how to attribute changes in prices to holding gains, which \textit{are} changes in prices.\\
 
 \vspace{2mm}
 
 \noindent \normalsize \textbf{Net Worth Growth}\\
-\footnotesize{\textit{contribution to one-year percent change in net worth, adjusted by PCE price deflator}}\\
+\footnotesize{\textit{contribution to one-year percent change in net worth, nominal}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(1.0, 1.13)}}]
 	\rbars
-	\sbar{violet}{date}{Investment}{data/nw_gr.csv}
-	\sbar{magenta!85!white}{date}{Income}{data/nw_gr.csv}
-	\sbar{cyan!70!white}{date}{Other}{data/nw_gr.csv}		
-	\sbar{blue!60!white}{date}{Capital_Gains}{data/nw_gr.csv}
+	\sbar{violet}{date}{INV}{data/nw_gr.csv}
+	\sbar{magenta!85!white}{date}{INC}{data/nw_gr.csv}
+	\sbar{cyan!70!blue}{date}{OVC}{data/nw_gr.csv}		
+	\sbar{cyan!40!white}{date}{RV}{data/nw_gr.csv}
 	\legend{Rate of Net Investment, Income, Other Volume Changes, Holding Gains};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
 
+\vspace{3mm}
+
+\small \input{text/nwcontrib.txt}\\
 
 
 \end{minipage}
@@ -1545,6 +1586,8 @@ Balance sheets \\
 
 Inventories \\
 
+Estimate of markup(s)?\\
+
 [Box on tech industry]\\
 
 \end{minipage}
@@ -1920,7 +1963,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \vspace{3mm}
 
 \noindent \normalsize \textbf{Labor Force Status Change}\\
-\footnotesize{\textit{percentage point contribution to one-year growth}}\\
+\footnotesize{\textit{percentage point contribution to one-year growth, age 15+ population}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
 		xticklabel={`\short{\year}}, clip=false, height=5.9cm,
