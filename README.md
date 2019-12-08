@@ -1,14 +1,14 @@
 # US-chartbook :bar_chart:
 
-### US economic data, well-summarized
+### A comprehensive picture of US economic data
 
 
-[View the chartbook](https://github.com/bdecon/US-chartbook/blob/master/chartbook/chartbook.pdf)
+[View the chartbook](https://bd-econ.com/chartbook.pdf)
 
 
 Brian Dew, @bd_econ
 
-September 22, 2019
+December 8, 2019
 
 
 ----
@@ -24,19 +24,14 @@ See GitHub for list of open issues.
 ## Sections
 
 - [x] Overall Economic Activity
+- [ ] Overall Financial Activity (in progress)
 - [ ] Households (in progress)
-- [ ] Businesses
-- [ ] Government
-- [ ] International Trade
-- [ ] Labor Markets
-- [ ] Capital Markets
-- [ ] Prices
-
-## Back-end
-
-- [ ] Master file to run updates
-- [ ] Capture date of latest data
-- [ ] Database system of keeping previous data
-- [ ] Documentation
-- [ ] Efficient/improved BLS API function
-- [ ] Links to data sources
+- [ ] Businesses (in progress)
+- [ ] Government (in progress)
+- [ ] International Trade (in progress)
+- [ ] Labor Markets (in progress)
+- [ ] Capital Markets (in progress)
+- [ ] Prices (in progress)
+- [ ] International Comparisons 
+- [ ] Technical notes
+- [ ] Sources / References
