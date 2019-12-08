@@ -21,6 +21,7 @@
 	\usepackage{xcolor}
 	\usepackage{array}
 	\usepackage{fontawesome}
+	\usepackage{fancyhdr}
 	\usepackage{hyperref}
 	\hypersetup{colorlinks=true, linkcolor=blue}
 	\usetikzlibrary{pgfplots.dateplot}
@@ -37,6 +38,15 @@
 % % % % % Graph Settings % % % % % % % 
 %
 	
+	% Header and footer
+	
+	\pagestyle{fancy}
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\rfoot{\hyperlink{toc}{\faList}}
+	\cfoot{\thepage}	
+	
+	
 	% Color square
 	\newcommand{\cbox}[1]{
 		\begin{tikzpicture} \draw [#1, line width=6](0,0) -- (.2,0);  
@@ -44,6 +54,9 @@
 	\newcommand{\colorline}[2]{
 		\begin{tikzpicture} \draw [#1, line width=1.8](0,0.2) -- +(0.6,0) node[right, black!80] {#2}; 
 		\end{tikzpicture}}
+		
+	% Table link
+	\newcommand{\tbllink}[1]{\href{https://raw.githubusercontent.com/bdecon/US-chartbook/master/chartbook/data/#1}{\faTable}}
 	
 	% Last two digits of year
 	\makeatletter
@@ -157,14 +170,15 @@
 		\textcolor{blue!70}{\rule[-1pt]{6pt}{20pt}}
 		\textcolor{green!70!blue}{\rule[-1pt]{6pt}{32pt}} \ \color{darkgray} \seriffont US Chartbook}
 \vspace*{-16mm}
-\footnotesize \hspace{11mm} v0.0, \today \normalsize \\
+
+\footnotesize \hspace{11mm} v0.0, \today \normalsize 
 
 \vspace{12mm}
 
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} {\seriffont Notes}}
 
-{\color{red} \textbf{Very early stage draft}} -- Contents not considered reliable.\\
+{\color{red} \textbf{Very early stage draft}} -- Contents not considered reliable. \\
 
 
 \subsection*{\color{black!70} {\seriffont Contact}}
@@ -175,38 +189,37 @@
 
 {\color{gray} \faTwitter} \ @bd\_econ \
 
-{\color{gray} \faGithub} \ \ bdecon\\
-
+{\color{gray} \faGithub} \ \ bdecon
 \end{minipage}
 \thispagestyle{empty}
 
 \newpage
 
-\subsection*{\color{black!70} {\seriffont Contents}}
-
+\subsection*{\hyperlink{toc}{\faList}\color{black!70} {\seriffont Contents}}
+\hypertarget{toc}{}
 \begin{description}
 
-\item {\seriffont Overall Economic Activity}
+\item {\seriffont \hyperref[sec:oea]{Overall Economic Activity}}
 
-\item {\seriffont Overall Financial Activity}
+\item {\seriffont \hyperref[sec:ofa]{Overall Financial Activity}}
 
-\item {\seriffont Households}
+\item {\seriffont \hyperref[sec:hh]{Households}}
 
-\item {\seriffont Businesses}
+\item {\seriffont \hyperref[sec:bus]{Businesses}}
 
-\item {\seriffont Government}
+\item {\seriffont \hyperref[sec:gov]{Government}}
 
-\item {\seriffont External Sector}
+\item {\seriffont \hyperref[sec:ext]{External Sector}}
 
-\item {\seriffont Labor Markets}
+\item {\seriffont \hyperref[sec:lab]{Labor Markets}}
 
-\item {\seriffont Capital Markets}
+\item {\seriffont \hyperref[sec:cap]{Capital Markets}}
 
-\item {\seriffont Prices}
+\item {\seriffont \hyperref[sec:pr]{Prices}}
 
-\item {\seriffont International Comparisons}
+\item {\seriffont \hyperref[sec:int]{International Comparisons}}
 
-\item {\seriffont References}
+\item {\seriffont \hyperref[sec:ref]{References}}
 
 \end{description}
 
@@ -218,6 +231,8 @@
 
 \begin{minipage}{0.76\textwidth}
 
+See \href{https://github.com/bdecon/US-chartbook}{US-chartbook project on GitHub} for source code and list of issues.\\
+
 \small Continue to fill out the content of the document. Additionally, refactor some of the older code and clean up some of the issues with older charts and text. Data retrieved from Census, BLS, the Fed and others needs to be stored in the SQL database, the way BEA data is stored. Individual notebooks or python files should be created for each source.\\
 
 It will be nice to have a section showing the top five indicators: GDP growth, wages, epop, cpi inflation, 10-year treasury yields. \\
@@ -228,16 +243,17 @@ Section listing recent updates and upcoming releases would be nice. This would r
 
 Get the table of contents up and running soon. Also look into options for links to footnotes at the end of the document. Add in some table and release numbers/data where available.\\
 
-Beyond content, I still need to do/add: links to subsection, links to sources, links to data, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, explicitly note seasonal adjustment, adjusting to make text associated with values of less than one singular instead of plural (e.g. "0.1 percentage point"), and much much more. \\
+Beyond content, I still need to do/add: links to sources, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, explicitly note seasonal adjustment, adjusting to make text associated with values of less than one singular instead of plural (e.g. "0.1 percentage point"), and much much more. \\
+
+In many cases, a link to a .csv file contained the data used in the chart \color{magenta}{\faTable}\color{black} \ is available in the bottom right corner of the chart. Each page also has a link to the table of contents \color{blue}{\faList}\color{black} \ in the bottom right corner of the page, to the right of the page number.\\
 
 Major LT developments: rise of imports, computers in the 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
-
 \end{minipage}
 
 
 \newpage
-
 \section*{\color{darkgray} \LARGE  \seriffont Overall Economic Activity}
+\label{sec:oea}
 \input{text/gdp.txt}
 
 \begin{minipage}{0.76\textwidth}
@@ -256,7 +272,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\node[above, align=left] at (axis cs:2017-01-01,-8.5) {\scriptsize \input{data/gdp.txt}};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} 
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdp.csv}
 
 \subsection*{\color{black!70} \seriffont Components of Growth}
 
@@ -277,7 +293,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Consumer Spending, Investment$^*$, Government, Net Exports};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{comp.csv}
 \end{minipage}
 
 \newpage
@@ -304,7 +320,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Government, Other Services, FIRE, Goods and TTU};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva.csv}
 \vspace{6mm}
 
 \small The \textbf{income approach} calculates GDP as the sum of market income to persons (in exchange for labor (see\cbox{magenta!90!blue}) or from returns on capital (see\cbox{yellow!60!orange})), indirect taxes such as sales taxes or tariffs (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). 
@@ -324,7 +340,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Labor, Profit, Depreciation, Indirect Taxes};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdi.csv}
 \vspace{6mm}
 
 \small Changes to GDP can be assigned to changes in \textbf{household inputs}: population (see\cbox{lime}), employment rates (see\cbox{green!30!teal!90!black}), average hours worked (see\cbox{blue}), and total economy productivity (see\cbox{cyan!50!white}). 
@@ -344,7 +360,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Population, Employment Rate, Productivity, Average Hours};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations}
+\footnotesize{Source: Author's Calculations} \hfill \tbllink{gdpjobs.csv}
 \end{minipage}
 
 \newpage
@@ -370,7 +386,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/gdp_state.txt} \\
+\small \input{text/gdp_state.txt} 
 
 \end{minipage}
 
@@ -392,8 +408,12 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-
 \section*{\color{darkgray}\LARGE \seriffont Financial Accounts}
+\label{sec:ofa}
+
+\small The Federal Reserve \href{https://www.federalreserve.gov/releases/z1/}{reports} the balances and transactions in the US financial accounts. This includes the flow of funds between sectors in the economy and the various components of balance sheets by sector, such as for households, businesses, and government. The sector-specific data are covered in the section of the chartbook that corresponds to the sector, however, the overall financial activities of the US are discussed in this section.\\
+
+\subsection*{\color{black!70} \seriffont Sectoral Balances}
 
 \small A high-level overview of US financial activities can be provided by dividing the world economy into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examining the net lending and borrowing between the groups, which must sum to zero at an aggregate level. That is, if one sector is running a deficit, another sector must be running a surplus.\\
 
@@ -416,7 +436,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Private, Government, Rest of World};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{sectbal.csv} \\
 
 \vspace{2mm}
 
@@ -436,7 +456,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Private Businesses, Households};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{sectbal2.csv}
 
 \end{minipage}
 
@@ -468,7 +488,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Fed. Gov.,State/Loc. Gov., Households, Corp bus., Non-corp. bus.};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabgr.csv}\\
 
 \vspace{4mm}
 
@@ -500,11 +520,13 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Other, Residential Real Estate, Corporate Equities};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{wealthgdp.csv}\\
 
 \vspace{4mm}
 
-\small Additional text here. Within categories of wealth, the ratio of corporate equities to other categories of wealth has increased considerably... \\
+\small Additional text here. Also need more explanation above for other category because it is so large. Could also consider showing obligations to ROW as a category, but that only makes "other" larger, which means even more need for explanation. A table or bar chart that provides more detail could also do the trick. \\
+
+Within categories of wealth, the ratio of corporate equities to other categories of wealth has increased considerably... \\
 
 \vspace{2mm}
 
@@ -534,12 +556,13 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 	\legend{Non-Residential, Residential, Change in Private Inventories};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inv.csv}
 
 \end{minipage}
 
 \newpage
 \section*{\color{darkgray}\LARGE \seriffont Households}
+\label{sec:hh}
 
 \begin{minipage}{0.76\textwidth}
 \small This section covers the household sector of the economy loosely defined, and touches on demographics, personal income and outlays, residential fixed investment, household balance sheets, home ownership, housing prices, and housing construction and permitting.
@@ -599,7 +622,7 @@ Household formation, measured here as the one-year change in total occupied hous
 	\legend{Rented, Owned, Population Growth};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}
+\footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
 
 \end{minipage}
 
@@ -626,7 +649,7 @@ Household formation, measured here as the one-year change in total occupied hous
 	\stdnode{3.4cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\ \scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pi.csv}\\
 
 
 \vspace{2mm}
@@ -673,7 +696,7 @@ Welfare Income \\
 
 It's important here to point out that social security retirement income is the solution, not the problem. There has been a reduction in private retirement benefits in the form of defined benefit pension plans and a shift towards reliance on 401k and IRA plans. But social security has never missed a payment. In contrast, hundreds of thousands of people are pushed in bankruptcy each year by medical bills. By not extending social insurance to younger people, a larger portion of pre-retirement-age people have their savings wiped out by common life events like having children or a period of illness. As a result, more pressure is put on social insurance for retirement. \\
 
-Ideally I would like to look at the demographics (employment adjustment for age), and then replicate the income of the aged calculation on an annual basis to show how many households are kept out of poverty by social security retirement income. \\
+Ideally I would like to look at the demographics (employment adjustment for age), and then replicate the income of the aged calculation on an annual basis to show how many households are kept out of poverty by social security retirement income. 
 
 \end{minipage}
 
@@ -699,11 +722,11 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\stdnode{2.2cm}{0.3cm}{\footnotesize $^1$ Includes residential fixed investment}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pce.csv}\\
 
 \small
 
-\input{text/pce2.txt} \\
+\input{text/pce2.txt} 
 
 \end{minipage}
 
@@ -738,7 +761,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\stdline{green!80!black}{date}{value2}{data/pcegrowth.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \\
+\footnotesize{Source: Bureau of Economic Analysis}  \hfill \tbllink{pcegrowth.csv}\\
 
 \vspace{2mm}
 
@@ -769,7 +792,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\legend{Income, Saving, Other Outlays, Total};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pcedecomp.csv}
 
 
 \end{minipage}
@@ -802,7 +825,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\legend{Home Mortgages, Consumer Credit, Other};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis} \hfill \tbllink{hhdebt.csv}\\
 
 \vspace{5mm}
 
@@ -849,9 +872,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 		}	\\}
 		
 \vspace{-2mm}
-\footnotesize{Source: Federal Reserve, Federal Reserve Bank of New York, Bureau of Economic Analysis}\\
-
-\vspace{6mm}
+\footnotesize{Source: Federal Reserve, Federal Reserve Bank of New York, Bureau of Economic Analysis}
 
 \end{minipage}
 
@@ -884,7 +905,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\legend{Real Estate, Deposits, Debt Securities \& Loans, Business Equity};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hhassetsgdp.csv}\\
 
 \vspace{3mm}
 
@@ -907,7 +928,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\legend{Deposits, Debt Securities \& Loans, Real Estate, Business Equity};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hh_asset_growth.csv}
 
 
 \end{minipage}
@@ -946,7 +967,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\stdline{red}{date}{DPIsh}{data/dpish.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{dpish.csv}
 
 
 \end{minipage}
@@ -976,7 +997,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 	\legend{Net Worth, After-Tax Income};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{rdpi_nw.csv}
 
 \end{minipage}
 
@@ -1004,11 +1025,11 @@ Data are used in the following chart are not adjusted for changes in prices beca
 	\legend{Rate of Net Investment, Income, Other Volume Changes, Holding Gains};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{nw_gr.csv}\\
 
 \vspace{3mm}
 
-\small \input{text/nwcontrib.txt}\\
+\small \input{text/nwcontrib.txt}
 
 
 \end{minipage}
@@ -1095,7 +1116,7 @@ Data are used in the following chart are not adjusted for changes in prices beca
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits.csv}	
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \\
+\footnotesize{Source: Census Bureau} \hfill \tbllink{permits.csv}
 
 \end{minipage}
 
@@ -1128,7 +1149,7 @@ Households; owners' equity in real estate as a percentage of household real esta
 	\thickline{blue!40!cyan}{date}{index_sa}{data/hpi.csv}	
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Housing Finance Agency} \\
+\footnotesize{Source: Federal Housing Finance Agency} \hspace{54mm} \tbllink{hpi.csv}\\
 
 
 \vspace{6mm}
@@ -1151,7 +1172,7 @@ Households; owners' equity in real estate as a percentage of household real esta
 	\input{text/psavert_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \\
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{66mm} \tbllink{psavert.csv}
 
 
 \end{minipage}
@@ -1162,7 +1183,7 @@ Households; owners' equity in real estate as a percentage of household real esta
 
 \begin{minipage}{0.76\textwidth}
 \small
-Include data on number of people in poverty and the official poverty rate. Perhaps include a chart showing the official poverty rate over time. Perhaps also try to capture some concepts around methodology (SPM for example) and about relative poverty.\\
+Include data on number of people in poverty and the official poverty rate. Perhaps include a chart showing the official poverty rate over time. Perhaps also try to capture some concepts around methodology (SPM for example) and about relative poverty.
 
 \end{minipage}
 
@@ -1183,7 +1204,7 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 Income and Expenses by Age and Number of Children\\
 
-Poverty rates and amount of poverty in millions of people\\
+Poverty rates and amount of poverty in millions of people
 
 
 
@@ -1193,8 +1214,8 @@ Poverty rates and amount of poverty in millions of people\\
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-
 \section*{\color{darkgray}\LARGE \seriffont Businesses}
+\label{sec:bus}
 \small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the loosely defined business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses.
 
 \subsection*{\color{black!70} \seriffont Fixed Investment}
@@ -1214,13 +1235,13 @@ Poverty rates and amount of poverty in millions of people\\
 	\legend{Structures, Equipment, Intellectual Property Products};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businv.csv} \hspace{12mm}\\
 
-\vspace{5mm}
+\vspace{3mm}
 
 \small
 
-\input{text/businv.txt} \\
+\input{text/businv.txt} 
 
 \end{minipage}
 
@@ -1239,13 +1260,13 @@ Poverty rates and amount of poverty in millions of people\\
 
 \newpage
 
-\begin{minipage}{0.35\textwidth}
+\begin{minipage}{0.38\textwidth}
 
 \small The productive investments of businesses are also measured by the new orders for core capital goods. The category excludes the more volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  \\
 
 \input{text/dgno.txt}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.44\textwidth}
+\begin{minipage}{0.39\textwidth}
 
 \noindent \normalsize \textbf{New Orders for Core Capital Goods}\\
 \footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}\\
@@ -1259,7 +1280,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\thickline{purple!50!violet}{date}{value}{data/dgno.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \\
+\footnotesize{Source: Census Bureau} \hfill \tbllink{dgno.csv}
 
 
 \end{minipage}
@@ -1288,11 +1309,11 @@ Poverty rates and amount of poverty in millions of people\\
 	\legend{Net Dividends, Retained Earnings, Corporate Taxes};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cprof.csv}\\
 
 \vspace{4mm}
 
-\small Aggregate corporate savings (corporate profits less dividends and corporate profit tax) are the result of net investment and nonbusiness saving. Investment is a source of aggregate profit because it is revenue for one party but not an expense for the other. Nonbusiness saving, which includes household, government, and rest of world saving, necessarily reduces aggregate corporate profits because it is money that did not return to businesses as revenue. \\
+\small Aggregate corporate savings (corporate profits less dividends and corporate profit tax) are the result of net investment and non-business saving. Investment is a source of aggregate profit because it is revenue for one party but not an expense for the other. Non-business saving, which includes household, government, and rest of world saving, necessarily reduces aggregate corporate profits because it is money that did not return to businesses as revenue. \\
 
 \vspace{2mm}
 
@@ -1302,14 +1323,14 @@ Poverty rates and amount of poverty in millions of people\\
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{blue!70!green}{date}{HH Saving}{data/cprof2.csv}
-	\sbar{yellow}{date}{Gov Saving}{data/cprof2.csv}
-	\sbar{orange}{date}{ROW Saving}{data/cprof2.csv}
-	\sbar{green!90!blue}{date}{Investment}{data/cprof2.csv}	
-	\legend{Household Saving, Government Saving, ROW Saving, Investment};
+	\sbar{cyan}{date}{Gov Saving}{data/cprof2.csv}
+	\sbar{yellow!70!lime!80!white}{date}{ROW Saving}{data/cprof2.csv}
+	\sbar{green!70!black}{date}{Investment}{data/cprof2.csv}
+	\sbar{blue!80!green}{date}{HH Saving}{data/cprof2.csv}	
+	\legend{Government Saving, ROW Saving, Investment, Household Saving};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cprof2.csv}
 
 \end{minipage}
 
@@ -1335,7 +1356,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\legend{Mortgages and Bank Loans, Corporate Debt Securities, Nonbank Loans};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis} \hfill \tbllink{busdebtgdp2.csv}\\
 
 \vspace{4mm}
 
@@ -1357,7 +1378,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\legend{Loans, Agency- and GSE-backed Securities, Other Debt Securities};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis} \hfill \tbllink{busdebtgdp2.csv}
 
 \end{minipage}
 
@@ -1391,7 +1412,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\legend{Manufacturing, Total Index};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro.csv}
 
 \end{minipage}\\
 
@@ -1436,7 +1457,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\legend{Consumer Goods, Equipment \& Nonindustrial Supplies, Materials};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}\\
 
 \vspace{3mm}
 
@@ -1459,7 +1480,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\legend{Durable Manufacturing, Nondurable Manufacturing, Mining, Utilities};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr2.csv}\\
 
 \vspace{3mm}
 
@@ -1502,7 +1523,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\end{axis}
 \end{tikzpicture}
 \\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}*
 
 \end{minipage}
 
@@ -1514,7 +1535,7 @@ Poverty rates and amount of poverty in millions of people\\
 \input{text/ip_comp2.txt}
 
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.37\textwidth}
+\begin{minipage}{0.4\textwidth}
 \noindent \normalsize \textbf{Industrial Production and Capacity}\\
 \footnotesize{\textit{total three-year growth, percent}}\\ 
 \noindent \hspace*{-5mm} \begin{tikzpicture}
@@ -1535,7 +1556,7 @@ Poverty rates and amount of poverty in millions of people\\
  	\legend{Capacity, Production}
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{ip_comp.csv}\\
 \end{minipage}
 
 \vspace{5mm}
@@ -1556,7 +1577,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\stdnode{8.4cm}{2.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} 
+\footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
 
 \end{minipage}
 
@@ -1587,7 +1608,7 @@ Poverty rates and amount of poverty in millions of people\\
 	\stdnode{7.8cm}{2.65cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \\
+\footnotesize{Source: Census Bureau} \hspace{66mm} \tbllink{marts.csv}\\
 
 \vspace{6mm}
 
@@ -1609,9 +1630,8 @@ Estimate of markup(s)?\\
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-
 \section*{\color{darkgray}\LARGE \seriffont Government}
-
+\label{sec:gov}
 \normalsize
 
 \small Public institutions are collectively referred to as the public-sector or the government. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining the production and distribution in the economy.\\
@@ -1635,7 +1655,7 @@ Estimate of markup(s)?\\
 	\legend{Defense, Federal Non-Defense, State and Local};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gov.csv}
 \vspace{10mm}
 
 
@@ -1689,7 +1709,7 @@ Estimate of markup(s)?\\
 	\end{axis}
 \end{tikzpicture}
 \\
-\footnotesize{Source: Bureau of Economic Analysis} \\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv}*\\
 
 \vspace{4mm}
 
@@ -1702,7 +1722,7 @@ State \\
 
 Local \\
 
-Balance sheets \\
+Balance sheets 
 
 \end{minipage}
 
@@ -1710,6 +1730,7 @@ Balance sheets \\
 \newpage
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE \seriffont International Transactions}
+\label{sec:ext}
 \small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). This section details imbalances in international transactions, changes in trade by goods and by partner, international investment positions, and exchange rates. 
 
 \subsection*{\color{black!70} \seriffont Balance of Payments}
@@ -1732,7 +1753,7 @@ Balance sheets \\
 	\legend{Goods, Services, Income, Transfers, Total};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}
 
 \vspace{8mm}
 
@@ -1766,7 +1787,7 @@ Balance sheets \\
 	\legend{Goods Exports, Services Exports, Goods Imports, Services Imports};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{nx.csv}\\
 
 \vspace{8mm}
 
@@ -1787,7 +1808,7 @@ Balance sheets \\
 	\legend{Exports, Imports};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{eximgdp.csv}
 
 
 \end{minipage}
@@ -1836,7 +1857,7 @@ Balance sheets \\
 	\legend{Consumer, Capital/Supplies/Other, Petroleum and Products};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{goodsimpsh.csv}\\
 
 
 \vspace{5mm}
@@ -1853,7 +1874,7 @@ Trade balance \\
 
 Direct and Portfolio Investment -- related here and to IIP below: the total value of domestic holdings of foreign assets is much smaller than the total value of foreign holdings of domestic assets, but, the return on foreign assets is so much higher than the return on domestic assets that the the US has positive net income from abroad.\\
 
-International Investment Position \\
+International Investment Position 
 
 \end{minipage}
 
@@ -1883,7 +1904,7 @@ International Investment Position \\
 	\stdnode{1.5cm}{1.24cm}{\footnotesize \color{red}JPY (100)}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{fx1.csv}\\
 
 \vspace{4mm}
 
@@ -1907,7 +1928,7 @@ International Investment Position \\
 	\stdnode{0.1cm}{0.4cm}{\footnotesize \color{blue!60!black}CNY}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{fx2.csv}\\
 
 \vspace{4mm}
 
@@ -1929,21 +1950,20 @@ International Investment Position \\
 	\stdnode{4.0cm}{1.1cm}{\footnotesize \color{blue!60!black}Major}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{fx_idx.csv}
 
 \end{minipage}
 
 \newpage
-
-
 \section*{\color{darkgray}\LARGE \seriffont Labor Markets}
+\label{sec:lab}
 
 \begin{minipage}{0.34\textwidth}
 \small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is called employment. \input{text/cps_lfs0.txt}\\
 
 \input{text/cps_lfs.txt}
-\end{minipage} \hspace{6mm}
-\begin{minipage}{0.4\textwidth}
+\end{minipage} \hspace{5.5mm}
+\begin{minipage}{0.375\textwidth}
 \noindent \normalsize \textbf{Labor Force Status of Population}\\
 \footnotesize{\textit{millions}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
@@ -1964,7 +1984,7 @@ International Investment Position \\
 	\legend{Employed, Unemployed, Non-Participant, Under 15};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations from CPS}
+\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_lfs.csv}
 \end{minipage}\\
 
 \vspace{2mm}
@@ -1990,7 +2010,7 @@ People who are not employed and not unemployed are considered to be outside of t
 	\legend{Employed, Unemployed, Non-Participant};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations from CPS}\\
+\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_lfs2.csv}
 
 \end{minipage}
 
@@ -2068,7 +2088,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 	\legend{Rate of Compensation, Hours of Work};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations} \\
+\footnotesize{Source: Author's Calculations} \hfill \tbllink{gli.csv}
 
 \end{minipage}
 
@@ -2091,14 +2111,14 @@ Gross labor income (compensation of employees in the national accounts), which c
 	\node[above, align=right] at (axis cs:2018-06-01,80.9) {\scriptsize \input{text/epop.txt}};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}\\
 
 \vspace{4mm}
 
 \small The monthly establishment survey enables tracking of non-farm payrolls. In September 2019, the US economy added 136,000 jobs. In 2019 Q2, the US added an average of 146,000 jobs per month, compared to 205,000 in 2019 Q1 and an annual average of 205,000 in 2018. \\
 
 
-\normalsize [Quarterly employment growth with dot for latest monthly value]\\
+\normalsize [Quarterly employment growth with dot for latest monthly value]
 
 \end{minipage}
 
@@ -2125,19 +2145,19 @@ Gross labor income (compensation of employees in the national accounts), which c
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
 		legend style={fill=white, at={(0.5, 1.0)}}]
 	\rbars
-	\stdline{blue!90!cyan}{date}{White}{data/unemp.csv}
-	\stdline{green!90!blue}{date}{Hispanic}{data/unemp.csv}
-	\stdline{red}{date}{Black}{data/unemp.csv}
+	\stdline{blue!90!black}{date}{White}{data/unemp.csv}
+	\stdline{cyan!80!white}{date}{Hispanic}{data/unemp.csv}
+	\stdline{green!50!teal}{date}{Black}{data/unemp.csv}
 	\legend{White, Hispanic, Black};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp.csv}\\
 
 \vspace{3mm}
 
 \subsubsection*{\color{black!70} \seriffont Reasons for unemployment}
 
-\small There are multiple reasons for unemployment. During the trough of a business cycle, most unemployed are those who lost a job, for example from layoffs, or had a temporary job end (see\cbox{blue!30!cyan}). In general, many of the unemployed are re-entrants to the labor market, meaning they were out of the labor force prior but are looking for a job again (see\cbox{orange!80!yellow}). Some are new-entrants who are looking for their first job (see\cbox{red}). A small portion are also those who left a job voluntarily and are looking for a new one (see\cbox{yellow}). \\
+\small There are multiple reasons for unemployment. During the trough of a business cycle, most unemployed are those who lost a job, for example from layoffs, or had a temporary job end (see\cbox{blue!60!purple}). In general, many of the unemployed are re-entrants to the labor market, meaning they were out of the labor force prior but are looking for a job again (see\cbox{orange!80!yellow}). Some are new-entrants who are looking for their first job (see\cbox{red}). A small portion are also those who left a job voluntarily and are looking for a new one (see\cbox{yellow}). \\
 
 \input{text/unemp_reason.txt} \\
 
@@ -2147,18 +2167,18 @@ Gross labor income (compensation of employees in the national accounts), which c
 \footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
-		height=5.8cm, ymin=0,
+		height=5.8cm, ymin=0, legend cell align={left},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={fill=white, legend columns=2, at={(0.53, 1.0)}}]
+		legend style={fill=white, legend columns=2, at={(0.48, 1.0)}}]
 	\rbars
-	\sbar{blue!30!cyan}{date}{Job Loser}{data/unemp_reason.csv}
+	\sbar{blue!60!purple}{date}{Job Loser}{data/unemp_reason.csv}
 	\sbar{yellow}{date}{Job Leaver}{data/unemp_reason.csv}
 	\sbar{orange!80!yellow}{date}{Re-entrant}{data/unemp_reason.csv}
 	\sbar{red}{date}{New entrant}{data/unemp_reason.csv}
 	\legend{Job Loser, Job Leaver, Re-entrant, New Entrant};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp_reason.csv}
 
 \end{minipage}
 
@@ -2188,7 +2208,7 @@ Unemployment by duration \\
 
 \vspace{-2mm}
 
-\footnotesize{Source: Bureau of Labor Statistics}\\
+\footnotesize{Source: Bureau of Labor Statistics}
 
 \end{minipage}
 
@@ -2224,10 +2244,8 @@ Unemployment by duration \\
 
 11) At least one good crosstab \\
 
-12) Geographic specificity if possible \\
+12) Geographic specificity if possible
 
-
-\vspace{4mm}
 
 \end{minipage}
 
@@ -2277,7 +2295,7 @@ While the recession of 2001 appears mild in measures of expenditure, it marked t
 	\stdnode{6.2cm}{0.7cm}{\scriptsize \color{cyan}\textbf{School}}	
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations from Current Population Survey} \\
+\footnotesize{Source: Author's Calculations from Current Population Survey} \hspace{16mm} \tbllink{nilf.csv}
 
 \end{minipage}
 
@@ -2304,7 +2322,7 @@ While the recession of 2001 appears mild in measures of expenditure, it marked t
 	\stdline{green!60!teal!90!black}{date}{quarterly}{data/lf_flow_q.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lf_flow.csv}*
 
 \end{minipage}
 
@@ -2322,7 +2340,7 @@ While the recession of 2001 appears mild in measures of expenditure, it marked t
 	\stdline{blue}{date}{Share}{data/disflow.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations}
+\footnotesize{Source: Author's Calculations} \hfill \tbllink{disflow.csv}
 \end{minipage}
 
 \vspace{8mm}
@@ -2340,7 +2358,7 @@ Wage growth: \\
 
 \hspace{4mm} [AHE and UWE both in various forms] \\
 
-\hspace{4mm} [Either FRB Atlanta Wage Tracker or replication]\\
+\hspace{4mm} [Either FRB Atlanta Wage Tracker or replication]
 
 \end{minipage}
 
@@ -2384,7 +2402,7 @@ Wage growth: \\
 	\node[right] at (axis cs:1990-01-01,9.0) {\footnotesize One-year growth, percent};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics and Author's Calculations} \\
+\footnotesize{Source: Bureau of Labor Statistics and Author's Calculations} \hfill \tbllink{uwe_bd.csv}*\\
 
 \vspace{12mm}
 
@@ -2401,7 +2419,7 @@ Wage growth: \\
 	\legend{First Decile, Median};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations} \\
+\footnotesize{Source: Author's Calculations} \hfill \tbllink{p10med.csv}
 
 
 \end{minipage}
@@ -2417,7 +2435,7 @@ Wage growth: \\
 \begin{minipage}{0.26\textwidth}
 \small \input{text/jolts2.txt}
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.4\textwidth}
+\begin{minipage}{0.42\textwidth}
 \noindent \normalsize \textbf{Job Turnover}\\
 \footnotesize{\textit{job openings, hires, and quits, in millions}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -2433,7 +2451,7 @@ Wage growth: \\
 	\stdnode{3.7cm}{0.2cm}{\scriptsize \color{red}\textbf{Quits}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics}
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv}
 \end{minipage}
 
 \vspace{6mm}
@@ -2462,13 +2480,13 @@ Openings \\
 	\stdline{blue!60!black}{date}{3M}{data/icsa.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Department of Labor} \\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}\\
 
 \vspace{2mm}
 
 \normalsize
 
-State- and sub-state-level analysis \\
+State- and sub-state-level analysis 
 
 
 
@@ -2495,7 +2513,7 @@ State- and sub-state-level analysis \\
 	\sbar{teal}{date}{value}{data/lprod.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lprod.csv}\\
 
 \vspace{3mm}
 
@@ -2528,16 +2546,15 @@ State- and sub-state-level analysis \\
 	\legend{Member, Covered Non-member};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations from Current Population Survey}\\
+\footnotesize{Source: Author's Calculations from Current Population Survey} \hfill \tbllink{union.csv}\\
 
 \end{minipage}
 
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-
 \section*{\color{darkgray}\LARGE \seriffont Financial Markets}
-
+\label{sec:cap}
 \small The US equity markets and capital markets provide businesses and governments with funding for activities and fixed investments. \\
 
 \vspace{2mm}
@@ -2564,7 +2581,7 @@ State- and sub-state-level analysis \\
 	\stdline{green!80!blue}{date}{Return}{data/sp500rr.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Shiller, Author's Calculations} \\
+\footnotesize{Source: Shiller, Author's Calculations} \hfill \tbllink{sp500rr.csv}\\
 
 \vspace{4mm}
 
@@ -2582,7 +2599,7 @@ State- and sub-state-level analysis \\
 	\stdline{magenta}{date}{value}{data/vix.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Chicago Board Options Exchange} \\
+\footnotesize{Source: Chicago Board Options Exchange} \hfill \tbllink{vix.csv}\\
 
 \vspace{4mm}
 
@@ -2590,7 +2607,7 @@ State- and sub-state-level analysis \\
 
 Valuations \\
 
-\hspace{4mm} [PE Ratio] \\
+\hspace{4mm} [PE Ratio]
 
 \end{minipage}
 
@@ -2617,7 +2634,7 @@ Actual data here on recent moves by the Fed and the Fed funds rate. \\
 	\stdline{blue!60!black}{date}{Fed Funds}{data/rates.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}\\
 
 \vspace{4mm}
 
@@ -2637,7 +2654,7 @@ Actual data here on recent moves by the Fed and the Fed funds rate. \\
 	\stdnode{8.7cm}{1.28cm}{\scriptsize \color{red!80!purple}\textbf{Ten-year}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}\\
 
 \vspace{4mm}
 
@@ -2649,7 +2666,7 @@ Actual data here on recent moves by the Fed and the Fed funds rate. \\
 
 \hspace{4mm} [AAA and high-yield] \\
 
-Yield curve \\
+Yield curve 
 
 \end{minipage}
 
@@ -2659,7 +2676,7 @@ Yield curve \\
 
 \subsection*{\color{black!70} \seriffont Money and Monetary Policy}
 
-\small The Federal Reserve reports the weekly average money stock, broadly, as M2, which includes cash and deposits such as savings accounts and checking accounts. \input{text/m2imf2.txt}\\
+\small The Federal Reserve \href{https://www.federalreserve.gov/releases/h6/current/default.htm}{reports} the weekly average money stock, broadly, as M2, which includes cash and deposits such as savings accounts and checking accounts. \input{text/m2imf2.txt}\\
 
 A large increase in the amount of money held by individuals and institutions can be the result of a higher rate of saving, a larger government sector financial deficit, an increase in the money supply, a change in preferences for liquidity, or something else. \input{text/m2imf.txt}\\
 
@@ -2674,7 +2691,7 @@ A large increase in the amount of money held by individuals and institutions can
 	\thickline{green!80!blue}{date}{value}{data/M2imf.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{M2imf.csv}\\
 
 \vspace{4mm}
 
@@ -2682,7 +2699,7 @@ A large increase in the amount of money held by individuals and institutions can
 
 \vspace{2mm}
 
-\normalsize [BAR CHART HERE] \\
+\normalsize [BAR CHART HERE] 
 
 
 \end{minipage}
@@ -2690,8 +2707,8 @@ A large increase in the amount of money held by individuals and institutions can
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-
 \section*{\color{darkgray}\LARGE \seriffont Prices}
+\label{sec:pr}
 
 \small \input{text/cpi_main.txt} \\
 
@@ -2711,7 +2728,7 @@ A large increase in the amount of money held by individuals and institutions can
 	\legend{All-items, Core};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi.csv}\\
 
 \end{minipage}
 
@@ -2722,7 +2739,7 @@ A large increase in the amount of money held by individuals and institutions can
 
 \input{text/cpicomp2.txt} 
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.36\textwidth}
+\begin{minipage}{0.4\textwidth}
 \noindent \normalsize \textbf{Consumer Price Index}\\
 \footnotesize{\textit{contribution to annual growth, percentage points}}\\ 
 \noindent \hspace*{-7mm} \begin{tikzpicture}
@@ -2743,7 +2760,7 @@ A large increase in the amount of money held by individuals and institutions can
  	\legend{\input{text/cpi_mo2.txt}, \input{text/cpi_mo1.txt}}
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi_comp.csv}\\
 \end{minipage}
 
 \newpage
@@ -2758,7 +2775,7 @@ XMPI \\
 
 PCE \\
 
-Expectations \\
+Expectations 
 
 
 
@@ -2779,14 +2796,13 @@ Expectations \\
 	\stdline{red!80!purple}{date}{VALUE}{data/wti.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: FRED} \\
+\footnotesize{Source: FRED} \hfill \tbllink{wti.csv}\\
 
 \end{minipage}
 
 \newpage
-
 \section*{\color{darkgray}\LARGE \seriffont International Comparisons}
-
+\label{sec:int}
 \normalsize
 
 Demographics \\
@@ -2802,7 +2818,7 @@ Poverty \\
 
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE \seriffont References}
-
+\label{sec:ref}
 \small
 
 List of tables and sources along with some notes... \\
