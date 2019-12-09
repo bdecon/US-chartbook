@@ -158,6 +158,7 @@
 	
 	\pgfplotstableread[header=true, col sep=comma]{data/cpi_comp.csv}\cpi
 	\pgfplotstableread[header=true, col sep=semicolon]{data/ip_comp.csv}\ip
+	\pgfplotstableread[header=true, col sep=comma]{data/rs_comp.csv}\rs
 			    		    
 % % % % % % % %
 %
@@ -195,7 +196,7 @@
 
 \newpage
 
-\subsection*{\hyperlink{toc}{\faList}\color{black!70} {\seriffont Contents}}
+\subsection*{\hyperlink{toc}{\faList}\color{black!70} \ {\seriffont Contents}}
 \hypertarget{toc}{}
 \begin{description}
 
@@ -1608,12 +1609,43 @@ Poverty rates and amount of poverty in millions of people
 	\stdnode{7.8cm}{2.65cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hspace{66mm} \tbllink{marts.csv}\\
+\footnotesize{Source: Census Bureau} \hspace{67mm} \tbllink{marts.csv}\\
 
-\vspace{6mm}
+\vspace{4mm}
+\small More text here that mentions the most significant changes in retail sales. Part of the story is the overall decline, which continues in recent data. Part of the ``shift to services'' is just paying more of health care and education and having a larger financial system relative to other activities.\\
+
+\vspace{1mm}
+
+\noindent \normalsize \textbf{Retail sales}\\
+\footnotesize{\textit{share of disposable personal income}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.7cm}{1.5ex}
+    	width=5.9cm, bar width=1.7ex, height=9.8cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.3, \bbar{x}{0},
+		yticklabels from table={\rs}{name}, 
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=2, assume math mode},
+		legend style={text=black!70, at={(-0.18,1.08)}, anchor=north, legend columns=-1, 
+				fill=none, draw=none,
+		        /tikz/every even column/.append style={column sep=0.4cm}}]
+	\addplot[fill=lime!90!green, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\rs};
+  	\addplot[fill=green!90!blue, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\rs};
+ 	\legend{2015 Q1, 2019 Q2}
+  	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau, Bureau of Economic Analysis} \hspace{12mm} \tbllink{rs_comp.csv}
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
 
 \normalsize
-
 
 Free cash flow \\
 
@@ -1634,7 +1666,7 @@ Estimate of markup(s)?\\
 \label{sec:gov}
 \normalsize
 
-\small Public institutions are collectively referred to as the public-sector or the government. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining the production and distribution in the economy.\\
+\small Public institutions are collectively referred to as the public-sector or the government. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining production and distribution in the economy.\\
 
 
 
@@ -1659,7 +1691,7 @@ Estimate of markup(s)?\\
 \vspace{10mm}
 
 
-\normalsize Table here.
+\normalsize [Table here.]
 
 \end{minipage}
 
@@ -1709,7 +1741,34 @@ Estimate of markup(s)?\\
 	\end{axis}
 \end{tikzpicture}
 \\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv}*\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv}*
+
+\end{minipage}
+
+
+\newpage
+\begin{minipage}{0.76\textwidth}
+
+\small \input{text/pubdebt.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Total Public Debt By Holder}\\
+\footnotesize{\textit{percent of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100},
+		xticklabel={`\short{\year}}, clip=false, ymin=2, height=5.6cm,
+		legend cell align={left},
+		legend style={legend columns=2, at={(0.58, 1.0)}}]
+	\rbars
+	\sbar{orange!70}{date}{FDHBFIN}{data/pubdebt.csv}
+	\sbar{green!60!black}{date}{PD}{data/pubdebt.csv}
+	\sbar{cyan!50}{date}{IG}{data/pubdebt.csv}
+	\sbar{blue}{date}{FDHBFRBN}{data/pubdebt.csv}
+	\legend{Foreign, Private Domestic, Intragovernmental, Federal Reserve};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Treasury} \hfill \tbllink{pubdebt.csv}\\
 
 \vspace{4mm}
 
@@ -1724,6 +1783,8 @@ Local \\
 
 Balance sheets 
 
+
+
 \end{minipage}
 
 
@@ -1734,31 +1795,64 @@ Balance sheets
 \small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). This section details imbalances in international transactions, changes in trade by goods and by partner, international investment positions, and exchange rates. 
 
 \subsection*{\color{black!70} \seriffont Balance of Payments}
-\small The current account balance can be decomposed based on the balance on individual categories. Four major categories are the balance on trade in goods (see\cbox{yellow!80!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets, referred to here as income [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes, referred to here as transfers [see\cbox{green!80!lime!75!black}]). \input{text/cab.txt} 
+\small The current account balance can be decomposed into the balance on trade in goods (see\cbox{yellow!60!lime!85!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets, referred to here as income [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes, referred to here as transfers [see\cbox{green!80!blue}]). \input{text/cab.txt} 
 
 \vspace{5mm}
 
 \noindent \normalsize \textbf{Current Account Balance}\\
 \footnotesize{\textit{balance on individual current account component, as percent of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, -2, 0, 2},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{yellow!80!white}{date}{GOODS}{data/cab.csv}
+	\sbar{yellow!60!lime!85!white}{date}{GOODS}{data/cab.csv}
 	\sbar{cyan!50!white}{date}{SERVICES}{data/cab.csv}
 	\sbar{blue!80!cyan}{date}{INCOME}{data/cab.csv}
-	\sbar{green!80!lime!75!black}{date}{TRANSFERS}{data/cab.csv}
+	\sbar{green!80!blue}{date}{TRANSFERS}{data/cab.csv}
 	\stdline{black}{date}{A124RC}{data/cab.csv}
 	\legend{Goods, Services, Income, Transfers, Total};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}\\
 
-\vspace{8mm}
+\vspace{3mm}
 
 
-\normalsize [Capital account balance]
+\small Financial account transactions include the net domestic acquisition of foreign assets and the net domestic incurrence of foreign liabilities. The US financial account balance (see\cbox{yellow!80!orange}) is the net lending or borrowing of the combined domestic sectors with the rest of the world. The timing of payments lead to a statistical discrepancy (see\cbox{red}), but the financial and capital account balance and current account balance otherwise sum to zero. \\
+
+\input{text/fab.txt}\\
+
+\vspace{1mm}
+
+
+\noindent \normalsize \textbf{Financial Account Balance}\\
+\footnotesize{\textit{percent of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5},
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.13)}}]
+	\rbars
+	\sbar{yellow!80!orange}{date}{FAB}{data/fab.csv}
+	\sbar{violet}{date}{FinDeriv}{data/fab.csv}
+	\sbar{red}{date}{StatDisc}{data/fab.csv}
+	\stdline{black}{date}{TOT}{data/fab.csv}
+	\legend{Balance excl. Derivatives, Derivatives, Statistical Discrepancy, Total};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fab.csv}
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+
+\normalsize [Capital account balance chart]\\
+
+
+\normalsize [TABLE similar to ITA table 1.1]
 
 
 \end{minipage}
@@ -1874,7 +1968,9 @@ Trade balance \\
 
 Direct and Portfolio Investment -- related here and to IIP below: the total value of domestic holdings of foreign assets is much smaller than the total value of foreign holdings of domestic assets, but, the return on foreign assets is so much higher than the return on domestic assets that the the US has positive net income from abroad.\\
 
-International Investment Position 
+International Investment Position \\
+
+Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencies, Corporate
 
 \end{minipage}
 
@@ -2760,7 +2856,7 @@ A large increase in the amount of money held by individuals and institutions can
  	\legend{\input{text/cpi_mo2.txt}, \input{text/cpi_mo1.txt}}
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi_comp.csv}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi_comp.csv}
 \end{minipage}
 
 \newpage
