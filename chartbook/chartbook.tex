@@ -118,6 +118,10 @@
 	\newcommand{\bbar}[2]{extra #1 ticks = {{#2}}, extra #1 tick labels = ,
 		extra #1 tick style = {grid=major, grid style={thick, black!25}},}
 		
+			% Solid bars at significant  x or y values
+	\newcommand{\dbar}[2]{extra #1 ticks = {{#2}}, extra #1 tick labels = ,
+		extra #1 tick style = {grid=major, grid style={dashed, thick, black!50}},}
+		
 	% Standard line
 	\newcommand{\stdline}[4]{\addplot[very thick, no markers, color=#1] 
 		table [x=#2, y=#3, col sep=comma] {#4};	}
@@ -131,9 +135,7 @@
             \fill[##1] (0cm,-0.1cm) rectangle (0.6cm,0.1cm);}},}		
 		
 	% Additional bar plot settings
-	\newcommand{\barplotnogrid}{xbar=0pt,
-	    y axis line style={opacity=0},   
-	    x axis line style={opacity=0}, 
+	\newcommand{\barplotnogrid}{xbar=0pt, axis line style={draw=none},
 	    yticklabel style={align=left, anchor=east},
       		xmajorticks=false, ymajorgrids=false,   
 	    ytick=data, tickwidth=0pt, area legend, reverse legend,
@@ -159,6 +161,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/cpi_comp.csv}\cpi
 	\pgfplotstableread[header=true, col sep=semicolon]{data/ip_comp.csv}\ip
 	\pgfplotstableread[header=true, col sep=comma]{data/rs_comp.csv}\rs
+	\pgfplotstableread[header=true, col sep=comma]{data/ahe_ind.csv}\ahe
 			    		    
 % % % % % % % %
 %
@@ -190,7 +193,7 @@
 
 {\color{gray} \faTwitter} \ @bd\_econ \
 
-{\color{gray} \faGithub} \ \ \color{black}\href{https://github.com/bdecon/US-chartbook}{bdecon/US-chartbook}
+{\color{gray} \faGithub} \ \ \href{https://github.com/bdecon/US-chartbook}{bdecon/US-chartbook}
 \end{minipage}
 \thispagestyle{empty}
 
@@ -2530,7 +2533,7 @@ Wage growth: \\
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics and Author's Calculations} \hfill \tbllink{uwe_bd.csv}*\\
 
-\vspace{12mm}
+\vspace{6mm}
 
 
 \noindent \normalsize \textbf{Weekly Earnings Growth, First Decile and Median}\\
@@ -2545,7 +2548,42 @@ Wage growth: \\
 	\legend{First Decile, Median};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations} \hfill \tbllink{p10med.csv}
+\footnotesize{Source: Author's Calculations} \hfill \tbllink{p10med.csv} 
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small Text here...\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Average Hourly Earnings}\\
+\footnotesize{\textit{nominal one-year growth, percent}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4}, 
+		xticklabel={`\short{\year}}, clip=false, ymin=0,
+		legend columns=1, legend cell align={left},
+		legend style={at={(0.52, 0.35)}}]
+	\rbars
+	\thickline{blue!80!black}{date}{PNS}{data/ahe.csv}
+	\stdline{magenta}{date}{ALL}{data/ahe.csv}
+	\legend{Production and Non-supervisory, All Employees};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{ahe.csv}\\
+
+\vspace{3mm}
+
+\small More text here... \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Average Hourly Earnings Growth by Industry}\\
+\footnotesize{\textit{one-year growth, production and non-supervisory, \input{text/ahe_bar_date.txt}}}\\ 
+\input{text/ahe_chart.txt}
 
 
 \end{minipage}
@@ -2872,13 +2910,12 @@ A large increase in the amount of money held by individuals and institutions can
 		legend style={at={(0.98, 1.13)}},
 		height=4.4cm, enlarge y limits={0.11}]
 	\rbars
-	\stdline{blue!60!cyan}{date}{value}{data/cpi.csv}
-	\stdline{gray}{date}{value2}{data/cpi.csv}
-	%\stdnode{2.4cm}{0.35cm}{\scriptsize \input{text/cpi.txt}}
+	\stdline{blue!60!cyan}{date}{ALL}{data/cpi.csv}
+	\stdline{gray}{date}{CORE}{data/cpi.csv}
 	\legend{All-items, Core};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi.csv}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi.csv}
 
 \end{minipage}
 
