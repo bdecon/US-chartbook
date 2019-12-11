@@ -190,7 +190,7 @@
 
 {\color{gray} \faTwitter} \ @bd\_econ \
 
-{\color{gray} \faGithub} \ \ bdecon
+{\color{gray} \faGithub} \ \ \color{black}\href{https://github.com/bdecon/US-chartbook}{bdecon/US-chartbook}
 \end{minipage}
 \thispagestyle{empty}
 
@@ -199,6 +199,8 @@
 \subsection*{\hyperlink{toc}{\faList}\color{black!70} \ {\seriffont Contents}}
 \hypertarget{toc}{}
 \begin{description}
+
+\item {\seriffont \hyperref[sec:ov]{Overview}}
 
 \item {\seriffont \hyperref[sec:oea]{Overall Economic Activity}}
 
@@ -236,9 +238,9 @@ See \href{https://github.com/bdecon/US-chartbook}{US-chartbook project on GitHub
 
 \small Continue to fill out the content of the document. Additionally, refactor some of the older code and clean up some of the issues with older charts and text. Data retrieved from Census, BLS, the Fed and others needs to be stored in the SQL database, the way BEA data is stored. Individual notebooks or python files should be created for each source.\\
 
-It will be nice to have a section showing the top five indicators: GDP growth, wages, epop, cpi inflation, 10-year treasury yields. \\
+A lot of editing is needed, as the current text is full or errors and often not ideal. Some of the text is already good, but much of it is still in early drafts or not available at all. Part of speeding up the text generation, and cleaning up the existing code, will be writing a module that generates several options for a text value. I also plan to write a simple module that produces all the different formats for a date.\\
 
-It will also be nice to have a section in that puts some context on numbers generally. For example, put a threshold on GDP growth that marks how much is needed for population growth and depreciation and then calculate how much one extra pp of growth (beyond the previous amount) is worth, per person. Essentially try to get a big number like GDP into a small number. Also, try to emphasize the importance of multiple approaches to GDP compilation. Many people in the US think about GDP only from the expenditure approach, but the income approach is equally important, and arguably more intuitive. \\
+Try to emphasize the importance of multiple approaches to GDP compilation. Many people in the US think about GDP only from the expenditure approach, but the income approach is equally important, and arguably more intuitive. \\
 
 Section listing recent updates and upcoming releases would be nice. This would require some thinking in terms of implementation. \\
 
@@ -249,6 +251,23 @@ Beyond content, I still need to do/add: links to sources, links to code, date of
 In many cases, a link to a .csv file contained the data used in the chart \color{magenta}{\faTable}\color{black} \ is available in the bottom right corner of the chart. Each page also has a link to the table of contents \color{blue}{\faList}\color{black} \ in the bottom right corner of the page, to the right of the page number.\\
 
 Major LT developments: rise of imports, computers in the 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
+
+\end{minipage}
+
+
+\newpage
+\section*{\color{darkgray} \LARGE  \seriffont Overview}
+\label{sec:ov}
+\begin{minipage}{0.76\textwidth}
+
+\small The US Chartbook aims to be comprehensive, but not arbitrary, in presenting charts, tables, and analysis. The results are fairly detailed, but hopefully well-curated and well-organized. \\
+
+This first section discusses high-level indicators of the health of the US economy. Subsequent sections offer more detail on types of activity, sectors, and markets. Finally, some international comparisons are presented.\\
+
+This first page should show the horizontal range chart for the top five indicators: GDP growth, wages, epop, cpi inflation, and 10 year treasury yields. Additional information on each one should be pretty brief, but the section should be heavy on links to other, more detailed, sections.\\
+
+Perhaps also provide some high level context in this section, by converting large numbers into small ones. 
+
 \end{minipage}
 
 
@@ -542,6 +561,8 @@ Within categories of wealth, the ratio of corporate equities to other categories
 
 \small Private fixed investment, as measured in the national accounts, includes construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but not automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment and intellectual property products. The change in private inventories (see\cbox{red}) at the end of the accounting period is also, at times, grouped with investment.\\
 
+[PARA HERE ON LATEST DATA]\\
+
 \vspace{4mm} 
 
 \noindent \normalsize \textbf{Private Fixed Investment}\\
@@ -557,7 +578,11 @@ Within categories of wealth, the ratio of corporate equities to other categories
 	\legend{Non-Residential, Residential, Change in Private Inventories};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inv.csv}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inv.csv} \\
+
+\vspace{3mm}
+
+[TABLE HERE WITH SECTOR INVESTMENT OVERVIEW]
 
 \end{minipage}
 
@@ -615,8 +640,8 @@ Household formation, measured here as the one-year change in total occupied hous
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
-	\stdnode{4.1cm}{3.04cm}{\scriptsize historical}
-	\stdnode{5.2cm}{3.04cm}{\scriptsize revised}
+	\stdnode{4.1cm}{3.0cm}{\scriptsize historical}
+	\stdnode{5.2cm}{3.0cm}{\scriptsize revised}
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
 	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
 	\stdline{black}{date}{pop}{data/hhform.csv}
@@ -684,6 +709,8 @@ Household formation, measured here as the one-year change in total occupied hous
 \vspace{4mm}
 
 \normalsize
+
+Much more depth needed on income of households! This is probably the most important section in the document.\\
 
 Capital Income \\
 
@@ -772,7 +799,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 \vspace{4mm}
 
-\small Changes to consumer spending (see {\color{black}\textbf{---}}) are largely the result of changes to income (see\cbox{cyan!50!white}) and changes to the rate at which income is saved (see\cbox{magenta!78!purple!80!white}). Changes to other outlays (see\cbox{blue!60!violet}) reflect changes in interest payments, fines and fees, and charitable giving. \\
+\small Changes to consumer spending (see {\color{black}\textbf{---}}) are largely the result of changes to income (see\cbox{cyan!50!white}) and changes to the rate at which income is saved (see\cbox{green!60!blue}). Changes to other outlays (see\cbox{blue!60!violet}) reflect changes in interest payments, fines and fees, and charitable giving. \\
 
 \input{text/pcedecomp.txt}\\
 
@@ -787,7 +814,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{cyan!50!white}{date}{A067RC}{data/pcedecomp.csv}
-	\sbar{magenta!78!purple!80!white}{date}{SAVING}{data/pcedecomp.csv}
+	\sbar{green!60!blue}{date}{SAVING}{data/pcedecomp.csv}
 	\sbar{blue!60!violet}{date}{OTHER}{data/pcedecomp.csv}
 	\stdline{black}{date}{DPCERC}{data/pcedecomp.csv}
 	\legend{Income, Saving, Other Outlays, Total};
@@ -1099,7 +1126,7 @@ Data are used in the following chart are not adjusted for changes in prices beca
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize South};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve and Census Bureau}\\
+\footnotesize{Source: Federal Reserve and Census Bureau} \hfill \tbllink{val_ooh.csv}\\
 
 \vspace{8mm}
 
@@ -1620,8 +1647,8 @@ Poverty rates and amount of poverty in millions of people
 \footnotesize{\textit{share of disposable personal income}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.7cm}{1.5ex}
-    	width=5.9cm, bar width=1.7ex, height=9.8cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.3, \bbar{x}{0},
+    	width=5.5cm, bar width=1.7ex, height=9.8cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.15, \bbar{x}{0},
 		yticklabels from table={\rs}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
@@ -1629,9 +1656,9 @@ Poverty rates and amount of poverty in millions of people
 		legend style={text=black!70, at={(-0.18,1.08)}, anchor=north, legend columns=-1, 
 				fill=none, draw=none,
 		        /tikz/every even column/.append style={column sep=0.4cm}}]
-	\addplot[fill=lime!90!green, draw=none] 
+	\addplot[fill=teal!50!green, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\rs};
-  	\addplot[fill=green!90!blue, draw=none] 
+  	\addplot[fill=blue!80!cyan, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\rs};
  	\legend{2015 Q1, 2019 Q2}
   	\end{axis}
@@ -1666,11 +1693,10 @@ Estimate of markup(s)?\\
 \label{sec:gov}
 \normalsize
 
-\small Public institutions are collectively referred to as the public-sector or the government. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining production and distribution in the economy.\\
+\small Public institutions are collectively referred to as the public-sector or the government. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining production and distribution in the economy.
 
 
-
-\subsection*{\color{black!70} \seriffont Government Consumption and Investment}
+\subsection*{\color{black!70} \seriffont Government Spending and Investment}
 \small \input{text/gov.txt}  \\
 \vspace{2mm}
 
@@ -1769,6 +1795,10 @@ Estimate of markup(s)?\\
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Treasury} \hfill \tbllink{pubdebt.csv}\\
+
+\vspace{2mm}
+
+\small While the ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates, Treasuries and other government debt securities provide a stable asset for the balance sheets domestic households and businesses, and for foreign investors. \\
 
 \vspace{4mm}
 
@@ -2635,7 +2665,7 @@ State- and sub-state-level analysis
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15, 20}, ymin=1,
 		height=6.0cm, width=12.6cm, enlarge y limits={0.11},
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.0)}}]
 	\rbars
 	\sbar{violet}{date}{Membership}{data/union.csv}	
 	\sbar{magenta!70!purple}{date}{Diff}{data/union.csv}	
@@ -2674,12 +2704,36 @@ State- and sub-state-level analysis
 		xticklabel={`\short{\year}}, clip=false, 
 		height=4.4cm, enlarge y limits={0.11}]
 	\rbars
-	\stdline{green!80!blue}{date}{Return}{data/sp500rr.csv}
+	\thickline{green!80!blue}{date}{Return}{data/sp500rr.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Shiller, Author's Calculations} \hfill \tbllink{sp500rr.csv}\\
 
-\vspace{4mm}
+\vspace{3mm}
+
+\small Text here on payout of nonfinancial corporate equities, both through dividends and through buybacks. Recent numbers as well as some discussion of size of market capitalization relative to GDP. Mention also the two periods were net dividends appear to be zero or negative due to repatriation from abroad. \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Corporate Equity Payout}\\
+\footnotesize{\textit{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, 
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.45, 1.0)}}]
+	\rbars
+	\sbar{blue!90!purple}{date}{Dividends}{data/eq_payout.csv}	
+	\sbar{magenta}{date}{Buybacks}{data/eq_payout.csv}	
+	\legend{Net Dividends, Net Issuance};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{eq_payout.csv}\\
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
 
 \small The Chicago Board Options Exchange uses S\&P 500 options data to identify expectations of future volatility. \\
 

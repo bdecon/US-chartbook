@@ -8,7 +8,7 @@
 
 Brian Dew, @bd_econ
 
-December 8, 2019
+December 10, 2019
 
 
 ----
@@ -19,7 +19,7 @@ Work in progress--still not at version 0.1.
 
 ## To Do
 
-See GitHub for list of open issues.
+See [list](https://github.com/bdecon/US-chartbook/issues) of open issues.
 
 ## Sections
 
