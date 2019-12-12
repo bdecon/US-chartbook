@@ -2,7 +2,7 @@
 %
 %	U.S. Chartbook
 %	Brian W. Dew (brianwdew@gmail.com)
-%	Updated: September 23, 2019
+%	Updated: December 11, 2019
 %	GitHub repo contains to do list (issues)
 %   https://github.com/bdecon/US-chartbook
 %
@@ -22,8 +22,9 @@
 	\usepackage{array}
 	\usepackage{fontawesome}
 	\usepackage{fancyhdr}
-	\usepackage{hyperref}
-	\hypersetup{colorlinks=true, linkcolor=blue}
+	\usepackage[colorlinks, linkcolor=blue, filecolor=blue, 
+		citecolor=blue, urlcolor=blue, linktoc=all, 
+		pdfencoding=auto]{hyperref}
 	\usetikzlibrary{pgfplots.dateplot}
 
 %
@@ -83,6 +84,7 @@
 	    	font=\scriptsize, style={black!70}},
 	    legend style={legend columns=-1, draw=none, fill=none,
 	    	/tikz/every even column/.append style={column sep=0.3cm}}}
+	    	
 	
 	% stacked diverging bar
 	\newcommand{\sbar}[4]{
@@ -162,6 +164,9 @@
 	\pgfplotstableread[header=true, col sep=semicolon]{data/ip_comp.csv}\ip
 	\pgfplotstableread[header=true, col sep=comma]{data/rs_comp.csv}\rs
 	\pgfplotstableread[header=true, col sep=comma]{data/ahe_ind.csv}\ahe
+	\pgfplotstableread[header=true, col sep=comma]{data/poor.csv}\poor
+	\pgfplotstableread[header=true, col sep=comma]{data/poor2.csv}\pvrt
+	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
 			    		    
 % % % % % % % %
 %
@@ -203,29 +208,29 @@
 \hypertarget{toc}{}
 \begin{description}
 
-\item {\seriffont \hyperref[sec:ov]{Overview}}
+\item {\hyperref[sec:ov]{Overview}}
 
-\item {\seriffont \hyperref[sec:oea]{Overall Economic Activity}}
+\item {\hyperref[sec:oea]{Overall Economic Activity}}
 
-\item {\seriffont \hyperref[sec:ofa]{Overall Financial Activity}}
+\item {\hyperref[sec:ofa]{Overall Financial Activity}}
 
-\item {\seriffont \hyperref[sec:hh]{Households}}
+\item {\hyperref[sec:hh]{Households}}
 
-\item {\seriffont \hyperref[sec:bus]{Businesses}}
+\item {\hyperref[sec:bus]{Businesses}}
 
-\item {\seriffont \hyperref[sec:gov]{Government}}
+\item {\hyperref[sec:gov]{Government}}
 
-\item {\seriffont \hyperref[sec:ext]{External Sector}}
+\item {\hyperref[sec:ext]{External Sector}}
 
-\item {\seriffont \hyperref[sec:lab]{Labor Markets}}
+\item {\hyperref[sec:lab]{Labor Markets}}
 
-\item {\seriffont \hyperref[sec:cap]{Capital Markets}}
+\item {\hyperref[sec:cap]{Capital Markets}}
 
-\item {\seriffont \hyperref[sec:pr]{Prices}}
+\item {\hyperref[sec:pr]{Prices}}
 
-\item {\seriffont \hyperref[sec:int]{International Comparisons}}
+\item {\hyperref[sec:int]{International Comparisons}}
 
-\item {\seriffont \hyperref[sec:ref]{References}}
+\item {\hyperref[sec:ref]{References}}
 
 \end{description}
 
@@ -251,7 +256,7 @@ Get the table of contents up and running soon. Also look into options for links 
 
 Beyond content, I still need to do/add: links to sources, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, explicitly note seasonal adjustment, adjusting to make text associated with values of less than one singular instead of plural (e.g. "0.1 percentage point"), and much much more. \\
 
-In many cases, a link to a .csv file contained the data used in the chart \color{magenta}{\faTable}\color{black} \ is available in the bottom right corner of the chart. Each page also has a link to the table of contents \color{blue}{\faList}\color{black} \ in the bottom right corner of the page, to the right of the page number.\\
+In many cases, a link to a .csv file contained the data used in the chart \color{blue}{\faTable}\color{black} \ is available in the bottom right corner of the chart. Each page also has a link to the table of contents \color{blue}{\faList}\color{black} \ in the bottom right corner of the page, to the right of the page number.\\
 
 Major LT developments: rise of imports, computers in the 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
 
@@ -1225,11 +1230,51 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
 
 \vspace{-5mm}
-\footnotesize{Source: American Community Survey}\\
+\footnotesize{Source: American Community Survey}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small Text here to describe the charts below. Probably will move this to a new page, because need to describe these charts with some background.\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{In Poverty Population by Category}\\
+\footnotesize{\textit{share of total, 2018}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
+    	width=5.0cm, bar width=2.0ex, height=6.2cm, xmin=0.5,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.1, \bbar{x}{0},
+		yticklabels from table={\poor}{name}, 
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=red, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\poor};
+  	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: CPS ASEC} \hspace{28mm} \tbllink{poor.csv}\\
 
 \vspace{6mm}
 
-\begin{minipage}{0.76\textwidth}
+\noindent \normalsize \textbf{Poverty Rate by Category}\\
+\footnotesize{\textit{share of group below poverty line, 2018}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
+    	width=5.0cm, bar width=2.0ex, height=6.2cm, xmin=0.5,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.1, \bbar{x}{0},
+		yticklabels from table={\pvrt}{name}, 
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=red, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\pvrt};
+  	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: CPS ASEC} \hspace{28mm} \tbllink{poor2.csv}\\
+
+\vspace{6mm}
 
 \normalsize
 
@@ -2153,7 +2198,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 
 \noindent \normalsize \textbf{Labor Force Status}\\
-\footnotesize{\textit{October 2019, thousands of people, not seasonally adjusted}}\\
+\footnotesize{\textit{November 2019, thousands of people, not seasonally adjusted}}\\
 
 \vspace{-3mm}
 
@@ -2176,7 +2221,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 
 \noindent \normalsize \textbf{Labor Force Changes}\\
-\footnotesize{\textit{Change from October 2019 to October 2018, thousands of people, not seasonally adjusted}}\\
+\footnotesize{\textit{Change from November 2019 to November 2018, thousands of people, not seasonally adjusted}}\\
 
 \vspace{-3mm}
 
@@ -2249,11 +2294,69 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \normalsize [Quarterly employment growth with dot for latest monthly value]
 
-\end{minipage}
 
+\end{minipage}
 
 \newpage
 
+\begin{minipage}{0.76\textwidth} 
+
+\noindent \normalsize \textbf{Occupational Employment, November 2019}\\
+\footnotesize{\textit{share of population employed, 12-month average, percent}}\\ 
+\noindent \hspace*{-9mm}  \begin{tikzpicture}
+        \begin{axis}[clip=false,
+            xbar stacked,
+            \bbar{x}{0},
+            % is default anyway:
+            stack negative=separate,
+            ymajorgrids=false,
+            %
+            yticklabels from table={\occ}{name},
+			y axis line style = { opacity = 0 },   
+		    x axis line style = { opacity = 0 }, 
+			yticklabel style={black, align=left, anchor=east},            
+            ytick=data,
+            tickwidth = 0pt,
+            legend style={
+                at={(-0.2, 1.05)},
+                anchor=north,legend
+                columns=-1, draw=none, 
+            },
+            legend cell align=left,
+            extra x ticks={0},
+            extra x tick style={
+                grid style={black},
+                xticklabel=\empty,
+            },
+            enlarge y limits={0.02},
+			enlarge x limits={0.03},
+            width=8.8cm, height=12cm,
+            \barylab{5.0cm}{1.5ex}
+        ]
+            \addplot[fill=green, draw opacity=0] table 
+            	[y expr=\coordindex, x=PT, col sep=semicolon] {\occ};
+            \addplot[fill=blue, draw opacity=0] table 
+            	[y expr=\coordindex, x=FT, col sep=semicolon] {\occ};
+            \addplot[fill=orange, draw opacity=0, 
+            	point meta=x, nodes near coords, nodes near coords align={anchor=west},
+    			every node near coord/.append style={
+        			black,
+        			fill=white,
+        			fill opacity=0.75,
+        			text opacity=1,
+        			outer sep=\pgflinewidth}, 
+        			nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+					precision=1, assume math mode},] table 
+            	[y expr=\coordindex, x=Second, col sep=semicolon] {\occ};
+            \legend{Part-time, Full-time, Second Job}
+        \end{axis}
+    \end{tikzpicture}\\
+\footnotesize{Source: Author's Calculation from CPS} \hfill \tbllink{occs.csv}\\
+
+
+\end{minipage}
+
+\newpage
 
 \begin{minipage}{0.76\textwidth} 
 
