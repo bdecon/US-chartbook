@@ -248,7 +248,7 @@ See \href{https://github.com/bdecon/US-chartbook}{US-chartbook project on GitHub
 
 A lot of editing is needed, as the current text is full or errors and often not ideal. Some of the text is already good, but much of it is still in early drafts or not available at all. Part of speeding up the text generation, and cleaning up the existing code, will be writing a module that generates several options for a text value. I also plan to write a simple module that produces all the different formats for a date.\\
 
-Try to emphasize the importance of multiple approaches to GDP compilation. Many people in the US think about GDP only from the expenditure approach, but the income approach is equally important, and arguably more intuitive. \\
+Critical to emphasize the importance of multiple approaches to GDP compilation. Many people in the US think about GDP only from the expenditure approach, but the income approach is equally important, and arguably more intuitive. \\
 
 Section listing recent updates and upcoming releases would be nice. This would require some thinking in terms of implementation. \\
 
@@ -378,7 +378,7 @@ Perhaps also provide some high level context in this section, by converting larg
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
-		xticklabel={`\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\sbar{lime}{date}{pop_contr}{data/gdpjobs.csv}
@@ -2221,7 +2221,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 
 \noindent \normalsize \textbf{Labor Force Changes}\\
-\footnotesize{\textit{Change from November 2019 to November 2018, thousands of people, not seasonally adjusted}}\\
+\footnotesize{\textit{Change from November 2018 to November 2019, thousands of people, not seasonally adjusted}}\\
 
 \vspace{-3mm}
 
