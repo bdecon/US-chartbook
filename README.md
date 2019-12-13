@@ -3,12 +3,12 @@
 ### A comprehensive picture of US economic data
 
 
-[View the chartbook](https://bd-econ.com/chartbook.pdf)
+[View the chartbook](https://www.bd-econ.com/chartbook.pdf)
 
 
 Brian Dew, @bd_econ
 
-December 10, 2019
+December 13, 2019
 
 
 ----
