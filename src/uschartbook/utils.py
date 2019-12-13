@@ -157,7 +157,26 @@ def write_txt(filename, filetext):
     ''' Write label to txt file '''
     with open(filename, 'w') as text_file:
         text_file.write(filetext)
-
+        
+      
+def dtxt(date):
+	'''
+	Return strings for given datetime date
+	'''
+	d = {'qtr1': f'{date.year} Q{date.quarter}', 
+	     'qtr2': f'the {qtrs[date.quarter]} quarter of {date.year}',
+	     'qtr3': f'Q{date.quarter}',
+	     'qtr4': f'`{date.strftime("%y")} Q{date.quarter}',
+	     'year': f'{date.year}',
+	     'mon1': date.strftime('%B %Y'),
+	     'mon2': date.strftime('%b %Y'),
+	     'mon3': date.strftime('%B'),
+	     'mon4': date.strftime(f'`{date.strftime("%y")} {date.strftime("%b")}'),
+	     'day1': date.strftime('%B %-d, %Y'),
+	     'day2': date.strftime('%b %-d, %Y'),
+	     'day3': date.strftime('%d')}	
+	return d
+	
 
 def cont_subt(value, style='main'):
     '''
