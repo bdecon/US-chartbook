@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 
@@ -163,6 +164,7 @@ def dtxt(date):
 	'''
 	Return strings for given datetime date
 	'''
+	date = pd.to_datetime(date)
 	d = {'qtr1': f'{date.year} Q{date.quarter}', 
 	     'qtr2': f'the {qtrs[date.quarter]} quarter of {date.year}',
 	     'qtr3': f'Q{date.quarter}',
@@ -174,7 +176,8 @@ def dtxt(date):
 	     'mon4': date.strftime(f'`{date.strftime("%y")} {date.strftime("%b")}'),
 	     'day1': date.strftime('%B %-d, %Y'),
 	     'day2': date.strftime('%b %-d, %Y'),
-	     'day3': date.strftime('%d')}	
+	     'day3': date.strftime('%d'),
+	     'datetime': date.strftime('%Y-%d-%m')}	
 	return d
 	
 
