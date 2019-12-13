@@ -1219,9 +1219,13 @@ Households; owners' equity in real estate as a percentage of household real esta
 
 \begin{minipage}{0.76\textwidth}
 \small
+The Census Bureau reports 40 million people in poverty in the US, which is about the population of California and a bit more than the population of Canada. \\
+
 Include data on number of people in poverty and the official poverty rate. Perhaps include a chart showing the official poverty rate over time. Perhaps also try to capture some concepts around methodology (SPM for example) and about relative poverty.
 
 \end{minipage}
+
+\vspace{1mm}
 
 \noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2018}\\
 \footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,573}}
@@ -1236,7 +1240,7 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \begin{minipage}{0.76\textwidth}
 
-\small Text here to describe the charts below. Probably will move this to a new page, because need to describe these charts with some background.\\
+\small While some fully-employed people are in poverty, the vast majority of poor people are children, elderly, disabled, caregivers, and students. That is, there is often a good reason why poor people are not working. Put another way, if the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poor.\\
 
 \vspace{2mm}
 
@@ -1256,7 +1260,9 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \end{tikzpicture}\\
 \footnotesize{Source: CPS ASEC} \hspace{28mm} \tbllink{poor.csv}\\
 
-\vspace{6mm}
+\vspace{4mm} 
+
+\small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In 2018, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a very low rate of poverty. The elderly also have a much lower poverty rate as the result of Social Security.\\
 
 \noindent \normalsize \textbf{Poverty Rate by Category}\\
 \footnotesize{\textit{share of group below poverty line, 2018}}\\ 
@@ -1635,7 +1641,7 @@ Poverty rates and amount of poverty in millions of people
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{ip_comp.csv}\\
 \end{minipage}
 
-\vspace{5mm}
+\vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
 
@@ -1708,7 +1714,7 @@ Poverty rates and amount of poverty in millions of people
   		table [y expr=-\coordindex, x index=1] {\rs};
   	\addplot[fill=blue!80!cyan, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\rs};
- 	\legend{2015 Q1, 2019 Q2}
+ 	\legend{2015 Q1, 2019 Q3}
   	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau, Bureau of Economic Analysis} \hspace{12mm} \tbllink{rs_comp.csv}
