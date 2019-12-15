@@ -167,7 +167,9 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/poor.csv}\poor
 	\pgfplotstableread[header=true, col sep=comma]{data/poor2.csv}\pvrt
 	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
-			    		    
+	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
+	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
+
 % % % % % % % %
 %
 %  Begin Document
@@ -246,7 +248,9 @@ See \href{https://github.com/bdecon/US-chartbook}{US-chartbook project on GitHub
 
 \small Continue to fill out the content of the document. Additionally, refactor some of the older code and clean up some of the issues with older charts and text. Data retrieved from Census, BLS, the Fed and others needs to be stored in the SQL database, the way BEA data is stored. Individual notebooks or python files should be created for each source.\\
 
-A lot of editing is needed, as the current text is full or errors and often not ideal. Some of the text is already good, but much of it is still in early drafts or not available at all. Part of speeding up the text generation, and cleaning up the existing code, will be writing a module that generates several options for a text value. I also plan to write a simple module that produces all the different formats for a date.\\
+A lot of editing is needed, as the current text is full or errors and often not ideal. Some of the text is already good, but much of it is still in early drafts or not available at all. Part of speeding up the text generation, and cleaning up the existing code, will be writing a module that generates several options for a text value.\\
+
+Shift approach slightly towards making document more accessible to audience without econ background. The primary way to do this is to offer three types of intuition: mathematical, graphical, and logical. In addition to this, try to present data in text, charts, and tables. \\
 
 Critical to emphasize the importance of multiple approaches to GDP compilation. Many people in the US think about GDP only from the expenditure approach, but the income approach is equally important, and arguably more intuitive. \\
 
@@ -439,13 +443,11 @@ Perhaps also provide some high level context in this section, by converting larg
 \section*{\color{darkgray}\LARGE \seriffont Financial Accounts}
 \label{sec:ofa}
 
-\small The Federal Reserve \href{https://www.federalreserve.gov/releases/z1/}{reports} the balances and transactions in the US financial accounts. This includes the flow of funds between sectors in the economy and the various components of balance sheets by sector, such as for households, businesses, and government. The sector-specific data are covered in the section of the chartbook that corresponds to the sector, however, the overall financial activities of the US are discussed in this section.\\
+\small The Federal Reserve \href{https://www.federalreserve.gov/releases/z1/}{reports} the balances and transactions in the US financial accounts. This includes the flow of funds between sectors in the economy and the various components of balance sheets by sector, such as for households, businesses, and government. The sector-specific data are covered in the section of the chartbook that corresponds to the sector, however, the overall financial activities of the US are discussed in this section.
 
 \subsection*{\color{black!70} \seriffont Sectoral Balances}
 
 \small A high-level overview of US financial activities can be provided by dividing the world economy into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examining the net lending and borrowing between the groups, which must sum to zero at an aggregate level. That is, if one sector is running a deficit, another sector must be running a surplus.\\
-
-\vspace{0mm}
 
 \noindent \normalsize \textbf{Sectoral Financial Balance}\\
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
@@ -469,6 +471,8 @@ Perhaps also provide some high level context in this section, by converting larg
 \vspace{2mm}
 
 \small \input{text/sectbal.txt} \\
+
+With the private sector, households were net lenders of the equivalent of X.X percent of GDP in 2019 QX, while the net financial balance of private businesses--corporate and noncorporate--was virtually unchanged.\\
 
 \vspace{2mm}
 
@@ -633,7 +637,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 
 \subsubsection*{\color{black!70} \seriffont Household Formation}
 
-Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the homeownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. \\
+Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the home-ownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. \\
 
 \input{text/hhform1.txt}\\
 
@@ -741,8 +745,8 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Household Expenditures}
 
-\small This section covers household spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing services and utilities combined with residential fixed investment). \input{text/pce1.txt}
-\vspace{3mm}
+\small This section covers household spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing services and utilities combined with residential fixed investment). \input{text/pce1.txt}\\
+\vspace{1mm}
 
 \noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
@@ -764,7 +768,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 \input{text/pce2.txt} 
 
-\end{minipage}
+\end{minipage}\\
 
 \noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}\\ \vspace{4mm}
@@ -805,6 +809,8 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 
 [Top quintile consumer spending share of gross pre-tax income and bottom 80 percent share] \\
 
+Income and Expenses by Age and Number of Children\\
+
 \vspace{4mm}
 
 \small Changes to consumer spending (see {\color{black}\textbf{---}}) are largely the result of changes to income (see\cbox{cyan!50!white}) and changes to the rate at which income is saved (see\cbox{green!60!blue}). Changes to other outlays (see\cbox{blue!60!violet}) reflect changes in interest payments, fines and fees, and charitable giving. \\
@@ -812,7 +818,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 \input{text/pcedecomp.txt}\\
 
 
-\vspace{4mm} 
+\vspace{1mm} 
 
 \noindent \normalsize \textbf{Contributions to Consumer Spending}\\
 \footnotesize{\textit{percentage point contribution to real per capita PCE growth, one-year moving average}}\\
@@ -1219,9 +1225,9 @@ Households; owners' equity in real estate as a percentage of household real esta
 
 \begin{minipage}{0.76\textwidth}
 \small
-The Census Bureau reports 40 million people in poverty in the US, which is about the population of California and a bit more than the population of Canada. \\
+The Census Bureau reports 41.2 million people in poverty in the US in 2018, more than the total population of Canada. For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating the threshold vary, with the official measure being based on roughly three times a typical food budget, and the supplemental measure additionally capturing program benefits and taxes.\\
 
-Include data on number of people in poverty and the official poverty rate. Perhaps include a chart showing the official poverty rate over time. Perhaps also try to capture some concepts around methodology (SPM for example) and about relative poverty.
+Include data on number of people in poverty and the official poverty rate. Perhaps include a chart showing the official poverty rate over time. Perhaps also try to capture some concepts around methodology (SPM for example) and about relative poverty. What is the official poverty line and the line from the SPM?
 
 \end{minipage}
 
@@ -1234,7 +1240,18 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
 
 \vspace{-5mm}
-\footnotesize{Source: American Community Survey}
+\footnotesize{Source: American Community Survey}\\
+
+\vspace{4mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\small Because the poverty line is less than a full-year of minimum wage work, a single person who works a full year at minimum wage will not officially be in poverty. If anything prevents them from working a full year, they will officially be in poverty. If they manage to work full-year but face a large expense, or live in a place with a high cost of living, they will be in poverty, but unofficially. The income from selling labor or from owning things is called market income. Because the US has a much smaller welfare system than any comparable country, market income is critical to avoiding poverty.\\
+
+\small Market income without various government programs would have resulted in an additional 42.8 million people in poverty in 2018. Social security alone reduced poverty by 27.2 million people. 
+
+
+\end{minipage}
 
 \newpage
 
@@ -1248,14 +1265,18 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \footnotesize{\textit{share of total, 2018}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
-    	width=5.0cm, bar width=2.0ex, height=6.2cm, xmin=0.5,
+    	width=5.0cm, bar width=1.7ex, height=7.8cm, xmin=0.5,
     	enlarge y limits={abs=0.3cm}, enlarge x limits=0.1, \bbar{x}{0},
 		yticklabels from table={\poor}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=red, draw=none] 
+			precision=1, assume math mode},
+		legend style={at={(0.5, 1.1)}}]
+  	\addplot[fill=red!60!magenta, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\poor};
+  	\addplot[fill=violet, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\poor};
+  	\legend{SPM, OPM};
   	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: CPS ASEC} \hspace{28mm} \tbllink{poor.csv}\\
@@ -1264,33 +1285,27 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In 2018, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a very low rate of poverty. The elderly also have a much lower poverty rate as the result of Social Security.\\
 
+\vspace{2mm}
+
 \noindent \normalsize \textbf{Poverty Rate by Category}\\
 \footnotesize{\textit{share of group below poverty line, 2018}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
-    	width=5.0cm, bar width=2.0ex, height=6.2cm, xmin=0.5,
+    	width=5.0cm, bar width=1.7ex, height=7.8cm, xmin=0.5,
     	enlarge y limits={abs=0.3cm}, enlarge x limits=0.1, \bbar{x}{0},
 		yticklabels from table={\pvrt}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=red, draw=none] 
+			precision=1, assume math mode},
+		legend style={at={(0.5, 1.1)}}]
+  	\addplot[fill=red!60!magenta, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\pvrt};
+   	\addplot[fill=violet, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\pvrt};
+  	\legend{SPM, OPM};
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{28mm} \tbllink{poor2.csv}\\
-
-\vspace{6mm}
-
-\normalsize
-
-Income and Expenses by Age and Number of Children\\
-
-Poverty rates and amount of poverty in millions of people
-
-
-
-
+\footnotesize{Source: CPS ASEC} \hspace{28mm} \tbllink{poor2.csv}
 \end{minipage}
 
 \newpage
@@ -1442,7 +1457,7 @@ Poverty rates and amount of poverty in millions of people
 
 \vspace{4mm}
 
-\small The debt of the domestic financial sector includes agency and government-sponsored enterprise (GSE) backed securities, corporate and foreign bonds, loans, and open market paper. The long-term increase in financial sector debt reflects the emergence and growth of various asset-backed securities. In addition to home mortgage-backed securities, the domestic financial sector issues debt securities based on commercial mortgages, auto loans, credit card, student debt, and even restaurant revenue. \\
+\small The debt of the domestic financial sector includes agency and government-sponsored enterprise (GSE) backed securities (see\cbox{red!60!purple}), corporate and foreign bonds, loans (see\cbox{orange!70!yellow}), and open market paper. The long-term increase in financial sector debt reflects the emergence and growth of various asset-backed securities. In addition to home mortgage-backed securities, the domestic financial sector issues debt securities based on commercial mortgages, auto loans, credit card, student debt, and even restaurant revenue. \\
 
 \input{text/findebtgdp.txt} \\
 
@@ -1841,9 +1856,9 @@ Estimate of markup(s)?\\
 		legend cell align={left},
 		legend style={legend columns=2, at={(0.58, 1.0)}}]
 	\rbars
-	\sbar{orange!70}{date}{FDHBFIN}{data/pubdebt.csv}
+	\sbar{orange!70!white}{date}{FDHBFIN}{data/pubdebt.csv}
 	\sbar{green!60!black}{date}{PD}{data/pubdebt.csv}
-	\sbar{cyan!50}{date}{IG}{data/pubdebt.csv}
+	\sbar{cyan!50!white}{date}{IG}{data/pubdebt.csv}
 	\sbar{blue}{date}{FDHBFRBN}{data/pubdebt.csv}
 	\legend{Foreign, Private Domestic, Intragovernmental, Federal Reserve};
 	\end{axis}
@@ -1852,7 +1867,7 @@ Estimate of markup(s)?\\
 
 \vspace{2mm}
 
-\small While the ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates, Treasuries and other government debt securities provide a stable asset for the balance sheets domestic households and businesses, and for foreign investors. \\
+\small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a stable asset for the balance sheets domestic households and businesses, and for foreign investors. \\
 
 \vspace{4mm}
 
@@ -2064,7 +2079,7 @@ Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencie
 
 \subsection*{\color{black!70} \seriffont Exchange Rates}
 
-\small Text here about exchange rates with selected other major currencies. The first chart shows the amount of Japanese Yen (JPY), British Pounds (GBP), Euros (EUR), and Canadian Dollars (CAD) required to buy one US Dollar (USD).\\ 
+\small The strength or weakness of the dollar in an important determinant of trade and financial flows. When more Japanese Yen (JPY), British Pounds (GBP), Euros (EUR), or Canadian Dollars (CAD) are required to buy one US Dollar (USD), the dollar is said to be ``strong''. Over the past three years... More text.\\ 
 
 \vspace{2mm}
 
@@ -2112,7 +2127,7 @@ Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencie
 
 \vspace{4mm}
 
-\small Trade-weighted dollar indices discussed here. Major currencies index goes back further, while the broad index starts in 1994.\\
+\small The trade-weighted dollar indices show the overall effect of individual exchange rates. The broad index, which starts in 1994, covers the exchange rate between the US and most other significant currencies, weighted by the amount of trade done in those currencies. Over the past three years... More text here.\\
 
 \vspace{2mm}
 
@@ -2293,12 +2308,199 @@ Gross labor income (compensation of employees in the national accounts), which c
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}\\
 
-\vspace{4mm}
+\vspace{8mm}
+
+\small In 2018, X.X percent of commuter zones have at least a third of their population working full-time and full-year. A total of X commuter zones, covering X million people in total, have a quarter of the population or less fully employed. Of commuter zones with 100,000 people or more, the top and bottom ten by fully-employed share of population are listed below.
+\end{minipage}
+
+\vspace{3mm}
+
+\begin{minipage}{0.52\textwidth}
+
+
+\noindent \normalsize \textbf{Commuter Zone Employment Rate}\\
+\footnotesize{\textit{full-time, full-year worker share of population, 2018}}\\
+
+\vspace{-3mm}
+
+\hspace{-11mm} \input{data/acs_emp_map.pgf}
+
+\vspace{-1mm}
+\footnotesize{Source: American Community Survey}
+\end{minipage} \hspace{3mm}
+\begin{minipage}{0.24\textwidth}
+
+\vspace{1mm}
+
+\footnotesize \input{text/acs_ftfy.txt}
+
+\end{minipage}
+
+
+
+\newpage
+
+\begin{minipage}{0.76\textwidth} 
 
 \small The monthly establishment survey enables tracking of non-farm payrolls. In September 2019, the US economy added 136,000 jobs. In 2019 Q2, the US added an average of 146,000 jobs per month, compared to 205,000 in 2019 Q1 and an annual average of 205,000 in 2018. \\
 
 
-\normalsize [Quarterly employment growth with dot for latest monthly value]
+\normalsize [Quarterly employment growth with dot for latest monthly value] 
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth} 
+
+\small Employment rates vary over time, but also by age, gender, and education. Over the 12 months ending November 2019, the employment rate for most education groups is lower than it was on average in the year 2000. Only older workers and women with advanced education have higher rates of employment than in 2000. Fix text... \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Employment Rates} \small \hspace{10mm} \cbox{blue} November 2019 \hspace{4mm} \cbox{cyan!50} 2000\\
+\footnotesize{\textit{employed share of age group population, percent}}\\
+
+\centerline{\small Total, Any Education}
+\hspace{22mm} Men \hspace{54mm} Women\\ 
+
+\vspace{-2mm}
+\noindent \hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=6.1cm, bar width=1.6ex, height=5.2cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\empt}{name}, xmin=2, xmax=100,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\empt};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\empt};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=6.1cm, bar width=1.6ex, height=5.2cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\empt}{name}, xmin=2, xmax=100,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\empt};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=4] {\empt};
+  	\end{axis}
+\end{tikzpicture}\\
+
+\vspace{1mm}
+
+\centerline{\small High School Degree or Less}
+\hspace{22mm} Men \hspace{54mm} Women\\ 
+
+\vspace{-2mm}
+\noindent \hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=6.1cm, bar width=1.6ex, height=4.6cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\emp};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\emp};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=6.1cm, bar width=1.6ex, height=4.6cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\emp};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=4] {\emp};
+  	\end{axis}
+\end{tikzpicture}\\
+
+\vspace{1mm}
+
+\centerline{\small Some College}
+\hspace{22mm} Men \hspace{54mm} Women\\  
+
+\vspace{-2mm}
+\noindent \hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=6.1cm, bar width=1.6ex, height=4.6cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=5] {\emp};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=6] {\emp};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=6.1cm, bar width=1.6ex, height=4.6cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=7] {\emp};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=8] {\emp};
+  	\end{axis}
+\end{tikzpicture}\\
+
+\vspace{1mm}
+
+\centerline{\small Bachelor or Advanced Degree}
+\hspace{22mm} Men \hspace{54mm} Women\\ 
+
+\vspace{-2mm}
+\noindent \hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=6.1cm, bar width=1.6ex, height=4.6cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=9] {\emp};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=10] {\emp};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=6.1cm, bar width=1.6ex, height=4.6cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=11] {\emp};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=12] {\emp};
+  	\end{axis}
+\end{tikzpicture}\\
+
+\vspace{-1mm}
+
+\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{empgroups.csv}
 
 
 \end{minipage}
@@ -2306,6 +2508,11 @@ Gross labor income (compensation of employees in the national accounts), which c
 \newpage
 
 \begin{minipage}{0.76\textwidth} 
+
+\small Text here on occupational employment. Try to add in some data on actual number of employees, along with the share of population data from the chart. Also try to cover some groupings of categories, like total healthcare. \\
+
+\vspace{2mm}
+
 
 \noindent \normalsize \textbf{Occupational Employment, November 2019}\\
 \footnotesize{\textit{share of population employed, 12-month average, percent}}\\ 
@@ -2507,7 +2714,7 @@ Unemployment by duration \\
 
 Of those age 18--64, the majority are employed (XX.X percent), as of October 2019, and very few are unemployed (X.X percent of the age group). An additional XX.X percent are not in the labor force. \\
 
-While the recession of 2001 appears mild in measures of expenditure, it marked the start of a long reduction in the share of the population earning labor income. The economy was still losing jobs at an alarming rate long after the 2001 recession had officially ended. The great recession followed seven years after pushing many more people out of the labor force. From March 2001 to the latest available month, October 2019, an additional X.X percent of the age 18--64 population left the labor force. The larger-than-normal population cohort born after World War II reached retirement age in this period, such age and sex-related effects explains X.X percent of the cumulative decrease. Additionally, young people are staying in school longer, on average, reducing the age 18--64 labor force by X.X percent. Disability or illness reduced the labor force by another X.X percent. Less retirement among those age 18--64 increased the labor force by X.X percent.. \\
+While the recession of 2001 appears mild in measures of expenditure, it was followed by a substantial reduction in the share of the population earning labor income. The economy was still losing jobs at an alarming rate long after the 2001 recession had officially ended, with some overall weakness masked by a major housing bubble. The burst of the housing bubble caused the great recession seven years after, pushing many more people out of the labor force. From March 2001 to the latest available month, October 2019, an additional X.X percent of the age 18--64 population left the labor force. The larger-than-normal population cohort born after World War II reached retirement age in this period, such age and sex-related effects explains X.X percent of the cumulative decrease. Additionally, young people are staying in school longer, on average, reducing the age 18--64 labor force by X.X percent. Disability or illness reduced the labor force by another X.X percent. Less retirement among those age 18--64 increased the labor force by X.X percent.. \\
 
 \vspace{2mm}
 
@@ -2665,7 +2872,7 @@ Wage growth: \\
 
 \begin{minipage}{0.76\textwidth}
 
-\small Text here...\\
+\small Over the year ending November 2019, nominal wages increased by X.X percent for all employees and X.X for production and non-supervisory workers. The average wage over the past three months is X.X higher than over the previous three months for all employees and X.X percent for production and non-supervisory.\\
 
 \vspace{2mm}
 
@@ -2686,7 +2893,7 @@ Wage growth: \\
 
 \vspace{3mm}
 
-\small More text here... \\
+\small By industry, X of X groups experienced real wage growth (wage growth above the increase in prices indicated by the consumer price index). The mining \& logging industry had the fastest growth rate, at X.X percent, followed by X.X percent in information and X.X percent in professional and business services.  \\
 
 \vspace{2mm}
 
