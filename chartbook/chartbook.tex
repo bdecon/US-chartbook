@@ -2,7 +2,7 @@
 %
 %	U.S. Chartbook
 %	Brian W. Dew (brianwdew@gmail.com)
-%	Updated: December 11, 2019
+%	Updated: December 15, 2019
 %	GitHub repo contains to do list (issues)
 %   https://github.com/bdecon/US-chartbook
 %
@@ -169,7 +169,10 @@
 	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
-
+	\pgfplotstableread[header=true, col sep=semicolon]{data/cps_educ.csv}\edsh
+	\pgfplotstableread[header=true, col sep=comma]{data/cps_educ_tot.csv}\edtot
+	
+	
 % % % % % % % %
 %
 %  Begin Document
@@ -661,6 +664,96 @@ Household formation, measured here as the one-year change in total occupied hous
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
+
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsubsection*{\color{black!70} \seriffont Education}
+
+\small Education is central in many discussions of the future of the US economy. Though very expensive in forgone years of earnings and often also expensive in tuition and textbooks costs, education typically results in higher earnings. In response to changing job opportunities from globalization and other policy decisions, household spending on education has increased considerably, resulting in a much more educated population.
+
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.33\textwidth}
+\small \input{text/cps_educ.txt} 
+\end{minipage}\hspace{5mm}
+\begin{minipage}{0.4\textwidth}
+\noindent \normalsize \textbf{Highest Level of Education}\\
+\footnotesize{\textit{age 25+ population, in millions, November 2019}}\\
+
+\vspace{-1mm}
+\noindent \hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.5cm}{1.5ex}
+    	width=5.3cm, bar width=3.0ex, height=5.6cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\edtot}{name}, xmin=0, 
+		yticklabel style={font=\footnotesize},
+		every node near coord/.style={/pgf/number format/fixed,
+	    	font=\bfseries\scriptsize, style={white}},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}, nodes near coords align={left}]
+  	\addplot[fill=red!70!purple, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\edtot};
+  	\end{axis}
+\end{tikzpicture}\\
+
+\vspace{-3mm}
+
+\footnotesize{Source: Author's Calculations from CPS} \hspace{8mm} \tbllink{cps_educ_tot.csv}
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\small \input{text/cps_educ2.txt} One argument is that households were compensating for a weak labor market and lack of bargaining power by borrowing large sums of money for education. However, given the extent of the increase in education, and the typical wage premium of education, labor income should have increased much more than it actually did. \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Education Distribution} \small \hspace{10mm} \cbox{red!70!purple} November 2019 \hspace{4mm} \cbox{orange!80} 2000\\
+\footnotesize{\textit{share of age 25+ population, percent}}\\
+
+\small \hspace{22mm} Total \hspace{54mm} Employed\\  
+
+\vspace{-2mm}
+\noindent \hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.7ex, height=6.9cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\edsh}{name}, xmin=0, xmax=33,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=orange!80, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\edsh};
+  	\addplot[fill=red!70!purple, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\edsh};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.7ex, height=6.9cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\edsh}{name}, xmin=0, xmax=33,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=orange!80, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\edsh};
+  	\addplot[fill=red!70!purple, draw=none] 
+  		table [y expr=-\coordindex, x index=4] {\edsh};
+  	\end{axis}
+\end{tikzpicture}\\
+
+\vspace{-2mm}
+
+\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_educ.csv}
 
 \end{minipage}
 
@@ -1390,7 +1483,7 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \subsection*{\color{black!70} \seriffont Corporate Profits}
 
-\small The national accounts include detailed information on corporate profits, which are an important determinant in the business cycle.  \\
+\small The national accounts include detailed information on aggregate corporate profits, which are an important determinant in the business cycle. In 2019 QX, aggregate corporate profits were XXXX billion, or X.X percent of net national income. Of this, XX billion, equivalent to X.X percent of net national product, were paid out as dividends (see\cbox{blue!70!purple}), XX billion were retained (see\cbox{cyan!50!white}), and XX billion went to corporate income tax (see\cbox{red!80!orange}).  \\
 
 \vspace{2mm}
 
@@ -1880,9 +1973,9 @@ State \\
 
 Local \\
 
-Balance sheets 
+Balance sheets \\
 
-
+[BREAKOUT SECTION ON STATE AND LOCAL PENSIONS]
 
 \end{minipage}
 
@@ -3111,7 +3204,9 @@ State- and sub-state-level analysis
 
 Valuations \\
 
-\hspace{4mm} [PE Ratio]
+\hspace{4mm} [PE Ratio]\\
+
+\hspace{4mm} [Tobin's Q]
 
 \end{minipage}
 
