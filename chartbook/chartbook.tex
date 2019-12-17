@@ -475,7 +475,7 @@ Perhaps also provide some high level context in this section, by converting larg
 
 \small \input{text/sectbal.txt} \\
 
-With the private sector, households were net lenders of the equivalent of X.X percent of GDP in 2019 QX, while the net financial balance of private businesses--corporate and noncorporate--was virtually unchanged.\\
+\input{text/sectbal2.txt}\\
 
 \vspace{2mm}
 
@@ -690,7 +690,7 @@ Household formation, measured here as the one-year change in total occupied hous
 \vspace{-1mm}
 \noindent \hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.5cm}{1.5ex}
-    	width=5.3cm, bar width=3.0ex, height=5.6cm,
+    	width=5.3cm, bar width=3.4ex, height=5.6cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\edtot}{name}, xmin=0, 
 		yticklabel style={font=\footnotesize},
@@ -1089,7 +1089,7 @@ Income and Expenses by Age and Number of Children\\
 \vspace{8mm}
 
 
-\small The increase in assets as a share of GDP also means that the return on total household assets has fallen, as measured by disposable income as a share of household assets. As of 2019 Q2, disposable income was equivalent to X.X percent of total assets. \\ 
+\small The increase in assets as a share of GDP also means that the return on total household assets has fallen, as measured by disposable income as a share of household assets. \input{text/dpishta.txt} \\ 
 
 \vspace{2mm}
 
@@ -1318,7 +1318,7 @@ Households; owners' equity in real estate as a percentage of household real esta
 
 \begin{minipage}{0.76\textwidth}
 \small
-The Census Bureau reports 41.2 million people in poverty in the US in 2018, more than the total population of Canada. For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating the threshold vary, with the official measure being based on roughly three times a typical food budget, and the supplemental measure additionally capturing program benefits and taxes.\\
+The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{reports} 41.2 million people in poverty in the US in 2018, more than the total population of Canada. For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating the threshold vary, with the official measure being based on roughly three times a typical food budget, and the supplemental measure additionally capturing program benefits and taxes.\\
 
 Include data on number of people in poverty and the official poverty rate. Perhaps include a chart showing the official poverty rate over time. Perhaps also try to capture some concepts around methodology (SPM for example) and about relative poverty. What is the official poverty line and the line from the SPM?
 
@@ -1483,7 +1483,7 @@ Include data on number of people in poverty and the official poverty rate. Perha
 
 \subsection*{\color{black!70} \seriffont Corporate Profits}
 
-\small The national accounts include detailed information on aggregate corporate profits, which are an important determinant in the business cycle. In 2019 QX, aggregate corporate profits were XXXX billion, or X.X percent of net national income. Of this, XX billion, equivalent to X.X percent of net national product, were paid out as dividends (see\cbox{blue!70!purple}), XX billion were retained (see\cbox{cyan!50!white}), and XX billion went to corporate income tax (see\cbox{red!80!orange}).  \\
+\small The national accounts include detailed information on aggregate corporate profits, which are an important determinant in the business cycle. \input{text/cprof.txt} \\
 
 \vspace{2mm}
 
@@ -2668,19 +2668,17 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \subsection*{\color{black!70} \seriffont Unemployment}
 
-\vspace{2mm}
-
 \small The conventional ``unemployment rate'' is measured as the number of people who do not have a job and looked for one during a reference week, divided by the labor force, which includes the unemployed and those with jobs.\\
 
 \input{text/unemp.txt}\\
 
-\vspace{2mm}
+\vspace{1mm}
 
 \noindent \normalsize \textbf{Unemployment Rate}\\
 \footnotesize{\textit{unemployed share of labor force}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm, ymin=1,
 		legend style={fill=white, at={(0.5, 1.0)}}]
 	\rbars
 	\stdline{blue!90!black}{date}{White}{data/unemp.csv}
@@ -2691,7 +2689,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp.csv}\\
 
-\vspace{3mm}
+\vspace{1mm}
 
 \subsubsection*{\color{black!70} \seriffont Reasons for unemployment}
 
@@ -2699,7 +2697,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \input{text/unemp_reason.txt} \\
 
-\vspace{2mm}
+\vspace{1mm}
 
 \noindent \normalsize \textbf{Unemployment by Reason}\\
 \footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}\\
