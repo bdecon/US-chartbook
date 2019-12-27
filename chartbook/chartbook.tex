@@ -1316,41 +1316,42 @@ Households; owners' equity in real estate as a percentage of household real esta
 
 \subsection*{\color{black!70} \seriffont Poverty}
 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.43\textwidth}
 \small
-The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{reports} 41.2 million people in poverty in the US in 2018, more than the total population of Canada. For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating the threshold vary, with the official measure being based on roughly three times a typical food budget, and the supplemental measure additionally capturing program benefits and taxes.\\
+In 2018, income from labor and capital ownership, called market income, was below the Census Bureau threshold for poverty for 77.9 million people in the US. After-tax income, or disposable income, includes income from various government programs and tax credits, such as social security and the child tax credit, and subtracts taxes paid. By disposable income, 41.3 million people are in poverty. In other words, government programs and tax credits moved the income of 36.6 million people above the poverty threshold. \\
 
-Include data on number of people in poverty and the official poverty rate. Perhaps include a chart showing the official poverty rate over time. Perhaps also try to capture some concepts around methodology (SPM for example) and about relative poverty. What is the official poverty line and the line from the SPM?
-
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.22\textwidth}
+\noindent \normalsize \textbf{In Poverty, 2018}\\
+\footnotesize{\textit{millions of people}}\\ 
+  \noindent \hspace*{-4mm} \begin{tikzpicture}
+    \begin{axis}[
+    	\barplotnogrid axis y line=left, \barylab{1.5cm}{1.5ex} \bbar{x}{0},
+		yticklabel style={font=\footnotesize},
+        width=4.5cm, 
+        height=4.1cm,
+        ytick={0,1},
+        yticklabels={Disposable Income\\*(SPM), Market Income},
+        xmin=0, enlarge x limits={0.02}, enlarge y limits={abs=0.55}, 
+		every node near coord/.style={/pgf/number format/fixed,
+	    	font=\bfseries\scriptsize, style={white}},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode},
+        every axis plot/.append style={
+          xbar, bar width=5.0ex, bar shift=0pt, fill}, 
+          nodes near coords align={left}]
+      \addplot[green!85!blue] coordinates {(41.3, 0)};
+      \addplot[blue] coordinates {(77.9, 1)};
+    \end{axis}
+  \end{tikzpicture}\\
+\footnotesize{Source: CPS ASEC}
 \end{minipage}
-
-\vspace{1mm}
-
-\noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2018}\\
-\footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,573}}
-
-\vspace{-3mm}
-\hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
-
-\vspace{-5mm}
-\footnotesize{Source: American Community Survey}\\
-
-\vspace{4mm}
 
 \begin{minipage}{0.76\textwidth}
 
-\small Because the poverty line is less than a full-year of minimum wage work, a single person who works a full year at minimum wage will not officially be in poverty. If anything prevents them from working a full year, they will officially be in poverty. If they manage to work full-year but face a large expense, or live in a place with a high cost of living, they will be in poverty, but unofficially. The income from selling labor or from owning things is called market income. Because the US has a much smaller welfare system than any comparable country, market income is critical to avoiding poverty.\\
+\small The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{reports} 41.2 million people in poverty in the US in 2018, equivalent to more than the total population of Canada. For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the official measure being based on three times a price-adjusted 1963 minimal food budget, and the supplemental measure based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.\\
 
-\small Market income without various government programs would have resulted in an additional 42.8 million people in poverty in 2018. Social security alone reduced poverty by 27.2 million people. 
-
-
-\end{minipage}
-
-\newpage
-
-\begin{minipage}{0.76\textwidth}
-
-\small While some fully-employed people are in poverty, the vast majority of poor people are children, elderly, disabled, caregivers, and students. That is, there is often a good reason why poor people are not working. Put another way, if the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poor.\\
+While some fully-employed people are in poverty, the vast majority of poor people are children, elderly, disabled, caregivers, and students. That is, there is often a good reason why poor people are not working. Put another way, if the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poor.\\
 
 \vspace{2mm}
 
@@ -1358,23 +1359,29 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \footnotesize{\textit{share of total, 2018}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
-    	width=5.0cm, bar width=1.7ex, height=7.8cm, xmin=0.5,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.1, \bbar{x}{0},
+    	width=6.0cm, bar width=1.8ex, height=9.8cm, xmin=0,
+    	enlarge y limits={abs=0.5cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\poor}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode},
-		legend style={at={(0.5, 1.1)}}]
-  	\addplot[fill=red!60!magenta, draw=none] 
-  		table [y expr=-\coordindex, x index=1] {\poor};
-  	\addplot[fill=violet, draw=none] 
+		legend style={at={(0.92, 1.06)}}]
+  	\addplot[fill=green!60!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\poor};
-  	\legend{SPM, OPM};
+  	\addplot[fill=lime!70!green!90!blue, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\poor};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\poor};
+  	\legend{OPM, SPM, Market Income};
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{28mm} \tbllink{poor.csv}\\
+\footnotesize{Source: CPS ASEC} \hspace{40mm} \tbllink{poor.csv}
 
-\vspace{4mm} 
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In 2018, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a very low rate of poverty. The elderly also have a much lower poverty rate as the result of Social Security.\\
 
@@ -1384,22 +1391,84 @@ Include data on number of people in poverty and the official poverty rate. Perha
 \footnotesize{\textit{share of group below poverty line, 2018}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
-    	width=5.0cm, bar width=1.7ex, height=7.8cm, xmin=0.5,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.1, \bbar{x}{0},
+    	width=6.0cm, bar width=1.8ex, height=9.8cm, xmin=0,
+    	enlarge y limits={abs=0.5cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\pvrt}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode},
-		legend style={at={(0.5, 1.1)}}]
-  	\addplot[fill=red!60!magenta, draw=none] 
-  		table [y expr=-\coordindex, x index=1] {\pvrt};
-   	\addplot[fill=violet, draw=none] 
+		legend style={at={(0.92, 1.06)}}]
+   	\addplot[fill=green!60!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\pvrt};
-  	\legend{SPM, OPM};
+  	\addplot[fill=lime!70!green!90!blue, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\pvrt};
+  	\addplot[fill=blue, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\pvrt};
+  	\legend{OPM, SPM, Market Income};
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{28mm} \tbllink{poor2.csv}
+\footnotesize{Source: CPS ASEC} \hspace{40mm} \tbllink{poor2.csv}\\
+
+\vspace{2mm}
+
+\small By age, market income leaves the elderly particularly vulnerable, given higher average expenditure on healthcare. After welfare income and taxes, the elderly have much lower rates of poverty. After-tax income leaves students and below social security and medicare age vulnerable.\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Amount of Poverty by Age} \small \hspace{8mm} \cbox{blue} Market Income \ \hspace{2mm} \cbox{green!85!blue} Disposable Income\\
+\footnotesize{\textit{in billions of 2018 US Dollars}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[ymin=0, ymax=13, enlarge x limits={0.01},
+		width=6.7cm, height=6cm, ytick={0, 5, 10}, xtick={0, 10, 20, 30, 40, 50, 60, 70},
+		xlabel={age}]
+	\addplot[stack plots=y, area style, draw=none, fill=green!85!blue] 
+		table [x=age, y=disposable, 
+		col sep=comma]{data/poor_age_latest.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=blue] 
+		table [x=age, y=market, 
+		col sep=comma]{data/poor_age_latest.csv}\closedcycle;	
+	\stdnode{0.5cm}{4.1cm}{\large 2018}
+	\end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+	\begin{axis}[ymin=0, ymax=13, enlarge x limits={0.01},
+		width=6.7cm, height=6cm, ytick={0, 5, 10}, xtick={0, 10, 20, 30, 40, 50, 60, 70},
+		xlabel={age}]
+	\addplot[stack plots=y, area style, draw=none, fill=green!85!blue] 
+		table [x=age, y=disposable, 
+		col sep=comma]{data/poor_age_prev.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=blue] 
+		table [x=age, y=market, 
+		col sep=comma]{data/poor_age_prev.csv}\closedcycle;	
+	\stdnode{0.5cm}{4.1cm}{\large 2014}
+	\end{axis}
+\end{tikzpicture}\\
+\vspace{-2mm}
+
+\footnotesize{Source: CPS ASEC, 2014 adjusted for inflation with CPI-U-RS} \hfill \tbllink{poor_age_latest.csv}
+
 \end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small More text here. Geographic specificity and reasoning for making the calculations related to houses.
+
+\end{minipage}\\
+
+\vspace{4mm}
+
+\noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2018}\\
+\footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,573}}
+
+\vspace{-3mm}
+\hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
+
+\vspace{-5mm}
+\footnotesize{Source: American Community Survey}
+
 
 \newpage
 
