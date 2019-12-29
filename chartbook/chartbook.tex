@@ -809,19 +809,39 @@ Household formation, measured here as the one-year change in total occupied hous
 
 \begin{minipage}{0.76\textwidth}
 
-\small Some more personal income descriptive text here. Perhaps mention the total amount for real personal income and the share from labor, capital, and welfare in 1989, 2000, and 2019. Otherwise, at least mention the main three sources and how they contribute to change in personal income in the latest data.\\
+\small Earnings, which include wages and salaries as well as self-employment income, comprise the majority of personal income. Yet only 52 percent of people have any earnings in 2018. Only 43 percent of people have earnings above the single-person poverty threshold.\\
+
+Total income, which includes taxes and transfers as well as income from capital, reaches 72 percent of people. The remainder live with people with income or receive private transfers, such as from family.\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Distribution of Personal Income, 2018}\\
+\footnotesize{\textit{thousands of US Dollars, by percentile}}\\
+\noindent \begin{tikzpicture}
+	\begin{axis}[ymin=0, ymax=100, enlarge x limits={0.02},
+		width=11.6cm, height=6.2cm, ytick={0, 12.8, 50, 100},
+		legend cell align={left},
+		legend style={legend columns=1, at={(0.26, 1)}}]
+	\addplot[stack plots=y, area style, draw=none, fill=red!70!yellow] 
+		table [x=percentile, y=Earnings, 
+		col sep=comma]{data/pearn_dist.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=violet!90!blue] 
+		table [x=percentile, y=Other Income, 
+		col sep=comma]{data/pearn_dist.csv}\closedcycle;
+	\legend{Earnings, Total Income};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: CPS ASEC} \hspace{80mm} \tbllink{pearn_dist.csv}\\
 
 \vspace{4mm}
 
 \normalsize
 
-Much more depth needed on income of households! This is probably the most important section in the document.\\
-
 Capital Income \\
 
 Welfare Income \\
 
-\vspace{4mm}
+\vspace{2mm}
 
 [\textbf{Breakout section on income of the aged}] \\
 
@@ -1519,7 +1539,7 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 
 \newpage
 
-\begin{minipage}{0.38\textwidth}
+\begin{minipage}{0.37\textwidth}
 
 \small The productive investments of businesses are also measured by the new orders for core capital goods. The category excludes the more volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  \\
 
@@ -1540,6 +1560,40 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{dgno.csv}
+\end{minipage}\\
+
+\vspace{8mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\small Text here about the oil boom in certain areas of the US.\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Crude Oil Production}\\
+\footnotesize{\textit{millions of barrels per day}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ymin=0, enlarge x limits={0.01},
+		width=13.0cm, height=8cm, ytick={0, 5, 10}, xticklabel={`\short{\year}},
+		legend style={at={(0.82, 1)}, fill=white}]
+	\rbars
+	\addplot[stack plots=y, area style, draw=none, fill=teal!90!green!96!black] 
+		table [x=date, y=ND_NM_CO, 
+		col sep=comma]{data/oil_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=green!21!yellow!71!white] 
+		table [x=date, y=TX, 
+		col sep=comma]{data/oil_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=blue!46!cyan!88!white] 
+		table [x=date, y=OTH, 
+		col sep=comma]{data/oil_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=blue!47!violet] 
+		table [x=date, y=GM, 
+		col sep=comma]{data/oil_prod.csv}\closedcycle;	
+	\legend{ND + NM + CO, Texas, All Other, Gulf of Mexico};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Energy Information Administration} \hfill \tbllink{oil_prod.csv}
+
 
 
 \end{minipage}
