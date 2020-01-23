@@ -97,13 +97,13 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2019-12-01},
+		xmax={2020-02-01},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
 			{2002-01-01}, {2004-01-01}, {2006-01-01},
 			{2008-01-01}, {2010-01-01}, {2012-01-01}, {2014-01-01},
-		    {2016-01-01}, {2018-01-01}},
+		    {2016-01-01}, {2018-01-01}, {2020-01-01}},
 		minor xtick={{1989-01-01}, {1991-01-01}, {1993-01-01},
 			{1995-01-01}, {1997-01-01}, {1999-01-01}, 
 			{2001-01-01}, {2003-01-01}, {2005-01-01}, {2007-01-01},
@@ -166,6 +166,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/ahe_ind.csv}\ahe
 	\pgfplotstableread[header=true, col sep=comma]{data/poor.csv}\poor
 	\pgfplotstableread[header=true, col sep=comma]{data/poor2.csv}\pvrt
+	\pgfplotstableread[header=true, col sep=comma]{data/spmtbl.csv}\spm
 	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
@@ -1489,6 +1490,89 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 \vspace{-5mm}
 \footnotesize{Source: American Community Survey}
 
+\vspace{2mm}
+
+\normalsize
+
+[TABLE HERE]
+
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+
+\small The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{reports} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2018, Social Security lifted income above the poverty line for 27.2 million people, by far the most effective program for reducing poverty. Refundable tax credits, such as the earned income tax credit and child tax credit, lifted nine million people out of poverty. These tax credits are phased-in (not fully-refundable), meaning they do not reach the poorest of poor people. As a result, phased-in tax credits have more impact on the poverty headcount than on poverty, relative to programs designed to help the poorest of the poor.\\
+
+In terms of elements that add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of eight million people to fall below the poverty line. Work expenses additionally put 5.7 million people in poverty.\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Effect of Individual Elements on Poverty Headcount}\\
+\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2018}}\\ 
+\noindent \hspace*{-12mm}  \begin{tikzpicture}
+        \begin{axis}[clip=false,
+            xbar stacked,
+            \bbar{x}{0},
+            xmin = -31,
+            xmax = 9.5,
+            ymin = -0.5, 
+            ymax = 17.5,
+            stack negative=separate,
+            ymajorgrids=false,
+            %
+            yticklabels from table={\spm}{name},
+			y axis line style = { opacity = 0 },   
+		    x axis line style = { opacity = 0 }, 
+			yticklabel style={black, align=left, anchor=east},            
+            ytick=data,
+            tickwidth = 0pt,
+            legend style={
+                at={(0.0, 1.04)},
+                anchor=north,legend
+                columns=-1, draw=none, 
+            },
+            legend cell align=left,
+            extra x ticks={0},
+            extra x tick style={
+                grid style={black},
+                xticklabel=\empty,
+            },
+            enlarge y limits={0.02},
+			enlarge x limits={0.03},
+            width=10.6cm, height=10.0cm,
+            \barylab{3.8cm}{1.5ex}
+        ]
+            \addplot[fill=green!70!blue!85!black, draw opacity=0] table 
+            	[y expr=\coordindex, x=kids, col sep=comma] {\spm};
+            \addplot[fill=cyan!95!blue!80!white, draw opacity=0] table 
+            	[y expr=\coordindex, x=adults, col sep=comma] {\spm};
+            \addplot[fill=blue!80!purple, draw opacity=0] table 
+            	[y expr=\coordindex, x=elderly, col sep=comma] {\spm};
+            \legend{Under 18, 18 to 64, 65 or older}
+        \end{axis}
+        \begin{axis}[xmin = -31,
+            xmax = 9.5, ymin = -0.5, 
+            ymax = 17.5, enlarge y limits={0.02},
+			enlarge x limits={0.03},
+            width=10.6cm, height=10.0cm,
+            ymajorgrids=false,
+            yticklabels=\empty,
+			y axis line style = { opacity = 0 },   
+		    x axis line style = { opacity = 0 }, ]
+            \addplot[scatter, no marks, draw=none, nodes near coords*={\Label},
+            	nodes near coords align={horizontal},
+        		visualization depends on={value \thisrow{label} \as \Label}] table 		
+        		[x=xloc,y=yloc,col sep=comma] {data/spmtbl.csv};
+        \end{axis}
+    \end{tikzpicture}\\
+\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl.csv}\\
+
+
+
+\end{minipage}
+
+
 
 \newpage
 
@@ -1811,10 +1895,10 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6}, 
 		clip=false, width=6.5cm, height=4.6cm,
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, 
-				{2018-01-01}, {2019-01-01}, {2019-10-01}},
+				{2018-01-01}, {2019-01-01}, {2019-12-01}},
         minor xtick={}, enlarge y limits=0.06, 
         enlarge x limits={0.04}, 
-        xticklabels={`15, `16, `17, `18, `19, Oct}]
+        xticklabels={`15, `16, `17, `18, `19, Dec}]
 	\sbar{violet!60!black}{date}{Consumer goods}{data/indprogr_rec.csv}
 	\sbar{magenta}{date}{ENS}{data/indprogr_rec.csv}
 	\sbar{orange!70!yellow}{date}{Materials}{data/indprogr_rec.csv}
@@ -1825,10 +1909,10 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6}, 
 		clip=false, width=6.5cm, height=4.6cm,
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, 
-				{2018-01-01}, {2019-01-01}, {2019-10-01}},
+				{2018-01-01}, {2019-01-01}, {2019-12-01}},
         minor xtick={}, enlarge y limits=0.06, 
         enlarge x limits={0.04},
-        xticklabels={`15, `16, `17, `18, `19, Oct}]
+        xticklabels={`15, `16, `17, `18, `19, Dec}]
 	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr2_rec.csv}
 	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr2_rec.csv}
 	\sbar{orange!20!yellow}{date}{Mining}{data/indprogr2_rec.csv}
@@ -2524,9 +2608,11 @@ Gross labor income (compensation of employees in the national accounts), which c
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}\\
 
-\vspace{8mm}
+\vspace{4mm}
 
-\small In 2018, X.X percent of commuter zones have at least a third of their population working full-time and full-year. A total of X commuter zones, covering X million people in total, have a quarter of the population or less fully employed. Of commuter zones with 100,000 people or more, the top and bottom ten by fully-employed share of population are listed below.
+\small The employment rate shown above is based on a monthly survey that asks about employment during a specific week of the previous month. However, additional data is available on what share of a population works year-round rather than just during a specific week. This can be combined with data on hours worked to identify the ``fully-employed'', or full-time, full-year workers, who are defined below as the those who usually work 35 hours per week or more for 50 weeks per year or more.\\
+
+\input{text/acs_ftfy_text.txt} Of commuter zones with 100,000 people or more, the top and bottom ten by fully-employed share of population are listed below.
 \end{minipage}
 
 \vspace{3mm}
@@ -2535,7 +2621,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 
 \noindent \normalsize \textbf{Commuter Zone Employment Rate}\\
-\footnotesize{\textit{full-time, full-year worker share of population, 2018}}\\
+\footnotesize{\textit{full-time, full-year worker share of population, \input{text/acs_ftfy_year.txt}}}\\
 
 \vspace{-3mm}
 
@@ -2550,16 +2636,42 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \footnotesize \input{text/acs_ftfy.txt}
 
+
 \end{minipage}
 
+\newpage
 
+\begin{minipage}{0.76\textwidth} 
+
+\small Among major US labor market areas, ...\\
+
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Employment Rates of Largest Commuter Zones, \input{text/acs_ftfy_year.txt}}\\ 
+\vspace{-2mm}
+
+\noindent \footnotesize \hspace{42mm} \textit{all ages} \hspace{20mm} \textit{age 25--54}\\
+\vspace{-2mm}
+ 
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{24mm} R{15mm} R{15mm} R{15mm} R{15mm}}
+		 	& full-time \& full-year & employed & full-time \& full-year & employed \\
+			 \input{data/acs_emp_tables.tex}\hline
+		\end{tabular}
+		}	\\
+
+\footnotesize{Source: American Community Survey}\\
+
+\vspace{8mm}
+
+\end{minipage}
 
 \newpage
 
 \begin{minipage}{0.76\textwidth} 
 
 \small The monthly establishment survey enables tracking of non-farm payrolls. In September 2019, the US economy added 136,000 jobs. In 2019 Q2, the US added an average of 146,000 jobs per month, compared to 205,000 in 2019 Q1 and an annual average of 205,000 in 2018. \\
-
 
 \normalsize [Quarterly employment growth with dot for latest monthly value] 
 
@@ -2936,9 +3048,7 @@ While the recession of 2001 appears mild in measures of expenditure, it was foll
 \footnotesize{\textit{cumulative percentage point contribution to age 18-64 labor force participation,\\data have been adjusted to remove the effect of trends in age and sex}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={}, width=10.0cm,
-		xticklabel={`\short{\year}}, 
-		extra x ticks={2019-10-01},
-		extra x tick labels={0ct}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, 
 		yticklabel style={text width=1.8em}, height=8.5cm]
 	\rebars
 	\thickline{green!80!blue}{date}{Disabled/Ill}{data/nilf.csv}
