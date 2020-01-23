@@ -174,6 +174,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/cps_educ_tot.csv}\edtot
 	
 	
+	
 % % % % % % % %
 %
 %  Begin Document
@@ -1891,35 +1892,8 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \noindent \normalsize \hspace{14mm} Market Group \hspace{38mm} Industry Group \footnotesize 
 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6}, 
-		clip=false, width=6.5cm, height=4.6cm,
-		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, 
-				{2018-01-01}, {2019-01-01}, {2019-12-01}},
-        minor xtick={}, enlarge y limits=0.06, 
-        enlarge x limits={0.04}, 
-        xticklabels={`15, `16, `17, `18, `19, Dec}]
-	\sbar{violet!60!black}{date}{Consumer goods}{data/indprogr_rec.csv}
-	\sbar{magenta}{date}{ENS}{data/indprogr_rec.csv}
-	\sbar{orange!70!yellow}{date}{Materials}{data/indprogr_rec.csv}
-	\end{axis}
-\end{tikzpicture}
-\hfill
-\begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6}, 
-		clip=false, width=6.5cm, height=4.6cm,
-		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, 
-				{2018-01-01}, {2019-01-01}, {2019-12-01}},
-        minor xtick={}, enlarge y limits=0.06, 
-        enlarge x limits={0.04},
-        xticklabels={`15, `16, `17, `18, `19, Dec}]
-	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr2_rec.csv}
-	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr2_rec.csv}
-	\sbar{orange!20!yellow}{date}{Mining}{data/indprogr2_rec.csv}
-	\sbar{green!80!blue}{date}{Electric and gas utilities}{data/indprogr2_rec.csv}
-	\end{axis}
-\end{tikzpicture}
-\\
+\input{text/ip_latest_monthly.tex}
+
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}*
 
 \end{minipage}
@@ -2620,7 +2594,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 \begin{minipage}{0.52\textwidth}
 
 
-\noindent \normalsize \textbf{Commuter Zone Employment Rate}\\
+\noindent \normalsize \textbf{Commuter Zone Fully-Employed Rate}\\
 \footnotesize{\textit{full-time, full-year worker share of population, \input{text/acs_ftfy_year.txt}}}\\
 
 \vspace{-3mm}
