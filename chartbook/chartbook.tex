@@ -576,9 +576,9 @@ Within categories of wealth, the ratio of corporate equities to other categories
 
 \begin{minipage}{0.76\textwidth}
 
-\small Private fixed investment, as measured in the national accounts, includes construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but not automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment and intellectual property products. The change in private inventories (see\cbox{red}) at the end of the accounting period is also, at times, grouped with investment.\\
+\small Private fixed investment, as measured in the national accounts, includes construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but not automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment and intellectual property products. The change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.\\
 
-[PARA HERE ON LATEST DATA]\\
+\input{text/inv_text.txt} \input{text/inv_text2.txt}\\
 
 \vspace{4mm} 
 
@@ -599,6 +599,7 @@ Within categories of wealth, the ratio of corporate equities to other categories
 
 \vspace{3mm}
 
+\normalsize
 [TABLE HERE WITH SECTOR INVESTMENT OVERVIEW]
 
 \end{minipage}
@@ -1544,9 +1545,9 @@ In terms of elements that add to the number of people in poverty, medical expens
             width=10.6cm, height=10.0cm,
             \barylab{3.8cm}{1.5ex}
         ]
-            \addplot[fill=green!70!blue!85!black, draw opacity=0] table 
+            \addplot[fill=green!75!blue!75!black, draw opacity=0] table 
             	[y expr=\coordindex, x=kids, col sep=comma] {\spm};
-            \addplot[fill=cyan!95!blue!80!white, draw opacity=0] table 
+            \addplot[fill=cyan!95!blue!70!white, draw opacity=0] table 
             	[y expr=\coordindex, x=adults, col sep=comma] {\spm};
             \addplot[fill=blue!80!purple, draw opacity=0] table 
             	[y expr=\coordindex, x=elderly, col sep=comma] {\spm};
@@ -3571,6 +3572,8 @@ A large increase in the amount of money held by individuals and institutions can
 \normalsize
 
 Discussion of CPI-U-RS \\ 
+
+Discussion of Chained CPI \\
 
 PPI \\
 
