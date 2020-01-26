@@ -812,9 +812,9 @@ Household formation, measured here as the one-year change in total occupied hous
 
 \begin{minipage}{0.76\textwidth}
 
-\small Earnings, which include wages and salaries as well as self-employment income, comprise the majority of personal income. Yet only 52 percent of people have any earnings in 2018. Only 43 percent of people have earnings above the single-person poverty threshold.\\
+\small Earnings, which include wages and salaries as well as self-employment income, comprise the majority of personal income. Yet only 52 percent of people have any earnings in 2018 (see\cbox{red!70!yellow}). Only 43 percent of people have earnings above the single-person poverty threshold.\\
 
-Total income, including taxes, welfare, and capital income, reaches 71 percent of people. The remainder live with people with income or receive private transfers. \\
+Total income, including taxes, welfare, and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). The remainder live with people with income or receive private transfers. \\
 
 \vspace{2mm}
 
@@ -1712,7 +1712,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \vspace{4mm}
 
-\small Aggregate corporate savings (corporate profits less dividends and corporate profit tax) are the result of net investment and non-business saving. Investment is a source of aggregate profit because it is revenue for one party but not an expense for the other. Non-business saving, which includes household, government, and rest of world saving, necessarily reduces aggregate corporate profits because it is money that did not return to businesses as revenue. \\
+\small Aggregate corporate savings (corporate profits less dividends and corporate profit tax) are the result of net investment and non-business saving. Investment (see\cbox{green!70!black}) is a source of aggregate profit because it is revenue for one party but not an expense for the other. Non-business saving, which includes household (see\cbox{blue!80!green}), government (see\cbox{cyan}), and rest of world saving (see\cbox{yellow!70!lime!80!white}), necessarily reduces aggregate corporate profits because it is money that did not return to businesses as revenue. \\
 
 \vspace{2mm}
 
@@ -2416,7 +2416,7 @@ Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencie
 	\rbars
 	\stdline{blue!60!black}{date}{V0.JRXWTFN_N.B}{data/fx_idx.csv}
 	\stdline{magenta}{date}{V0.JRXWTFB_N.B}{data/fx_idx.csv}
-	\stdnode{8.9cm}{2.1cm}{\footnotesize \color{magenta}Broad}
+	\stdnode{8.8cm}{2.1cm}{\footnotesize \color{magenta}Broad}
 	\stdnode{4.0cm}{1.1cm}{\footnotesize \color{blue!60!black}Major}
 	\end{axis}
 \end{tikzpicture}\\
@@ -2544,7 +2544,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \small In labor markets, unlike other markets, wages (the price of labor) tend not to be cut in response to a decrease in demand; businesses instead employ fewer workers and/or cut hours. As a result, wage data give only a partial picture of the labor income received by households.\\
 
-Gross labor income (compensation of employees in the national accounts), which captures both employment and wages, \input{text/gli.txt} \\
+Gross labor income (compensation of employees in the national accounts), which captures both the amount of employment (see\cbox{teal!80!blue!85!white}) and the rate of compensation (see\cbox{green!80!lime!90!white}), \input{text/gli.txt} \\
 
 \noindent \normalsize \textbf{Gross Labor Income Growth}\\
 \footnotesize{\textit{percentage point contribution to gross labor income growth}}\\
@@ -3011,11 +3011,9 @@ Unemployment by duration \\
 
 \vspace{2mm}
 
-\small An important contribution to .. \\
+\small While the recession of 2001 appears mild in measures of expenditure, it was followed by a substantial reduction in the share of the population earning labor income. The economy was still losing jobs at an alarming rate long after the 2001 recession had officially ended, with some overall weakness masked by a major housing bubble. The burst of the housing bubble caused the great recession seven years after, pushing many more people out of the labor force.\\
 
-Of those age 18--64, the majority are employed (XX.X percent), as of October 2019, and very few are unemployed (X.X percent of the age group). An additional XX.X percent are not in the labor force. \\
-
-While the recession of 2001 appears mild in measures of expenditure, it was followed by a substantial reduction in the share of the population earning labor income. The economy was still losing jobs at an alarming rate long after the 2001 recession had officially ended, with some overall weakness masked by a major housing bubble. The burst of the housing bubble caused the great recession seven years after, pushing many more people out of the labor force. From March 2001 to the latest available month, October 2019, an additional X.X percent of the age 18--64 population left the labor force. The larger-than-normal population cohort born after World War II reached retirement age in this period, such age and sex-related effects explains X.X percent of the cumulative decrease. Additionally, young people are staying in school longer, on average, reducing the age 18--64 labor force by X.X percent. Disability or illness reduced the labor force by another X.X percent. Less retirement among those age 18--64 increased the labor force by X.X percent.. \\
+\input{text/nilf_01.txt} \\
 
 \vspace{2mm}
 
@@ -3087,12 +3085,106 @@ While the recession of 2001 appears mild in measures of expenditure, it was foll
 \footnotesize{Source: Author's Calculations} \hfill \tbllink{disflow.csv}
 \end{minipage}
 
-\vspace{8mm}
+\newpage
+
+\subsubsection*{\color{black!70} \seriffont Job Openings and Labor Turnover Survey}
 
 \begin{minipage}{0.76\textwidth}
 
+\small Some types of turnover in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving of a job as ``quits''. 
+\end{minipage}\\
+
+\begin{minipage}{0.26\textwidth}
+\small \input{text/jolts2.txt}
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.42\textwidth}
+\noindent \normalsize \textbf{Job Turnover}\\
+\footnotesize{\textit{job openings, hires, and quits, in millions}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={2, 4, 6, 8}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=5.6cm, width=8.0cm]
+	\rbars
+	\stdline{cyan}{date}{Hires}{data/jolts.csv}
+	\stdline{red}{date}{Quits}{data/jolts.csv}
+	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
+	\stdnode{3.3cm}{2.0cm}{\scriptsize \color{cyan}\textbf{Hires}}
+	\stdnode{5.1cm}{3.38cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{3.7cm}{0.2cm}{\scriptsize \color{red}\textbf{Quits}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv}
+\end{minipage}
+
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\small The number of people who voluntarily separate (quit) a job in a given month, divided by the total number employed is the ``quits rate''. The rate typically increases when workers are confident enough to leave one job for another one, and a high quits rate, particularly in low-paying industries, can be a sign of a tight labor market.
+
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.38\textwidth}
+\noindent \normalsize \textbf{Quits Rates}\\
+\footnotesize{\textit{voluntary separations as share of workforce}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6}, 
+		xticklabel={`\short{\year}}, ymin=0.3, height=5.0cm, width=7.1cm]
+	\rbars
+	\stdline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
+	\stdnode{3.9cm}{2.95cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
+	\scriptsize \color{red!50!purple}\textbf{\& Food Services}}
+	\stdline{violet}{date}{TOT_QU}{data/quits.csv}
+	\stdnode{4.8cm}{1.4cm}{\scriptsize \color{violet}\textbf{Total}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{14mm} \tbllink{quits.csv}
+\end{minipage}
+\hspace{4mm}
+\begin{minipage}{0.34\textwidth}
+
+\small The quits rate within the accommodations and food services industries (which includes restaurants), is highly cyclical, and tends to rise when a tight labor market pulls people out of restaurant jobs and into higher paying jobs in other industries. \input{text/quits_afs.txt}\\
+
+\end{minipage}
+\vspace{6mm}
+
+\begin{minipage}{0.76\textwidth}
 
 \normalsize
+
+Openings by industry
+
+\end{minipage}
+
+\newpage
+
+\subsubsection*{\color{black!70} \seriffont Initial Jobless Claims}
+
+\begin{minipage}{0.76\textwidth}
+
+\small \input{text/icsa.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
+\footnotesize{\textit{initial claims, in thousands, seasonally adjusted, three-month moving average highlighted}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 400, 600}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+	\rbars
+	\stdline{cyan!30}{date}{weekly}{data/icsa.csv}
+	\stdline{blue!60!black}{date}{3M}{data/icsa.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}\\
+
+\vspace{2mm}
+
+\normalsize
+
+State- and sub-state-level analysis \\
 
 Part-time and full-time and hours worked \\
 
@@ -3169,6 +3261,8 @@ Wage growth: \\
 
 \newpage
 
+\subsubsection*{\color{black!70} \seriffont Nominal Hourly Wages}
+
 \begin{minipage}{0.76\textwidth}
 
 \small \input{text/ahe_summary.txt}\\
@@ -3200,76 +3294,8 @@ Wage growth: \\
 \footnotesize{\textit{one-year growth, production and non-supervisory, \input{text/ahe_bar_date.txt}}}\\ 
 \input{text/ahe_chart.txt}
 
-
 \end{minipage}
 
-\newpage
-
-\begin{minipage}{0.76\textwidth}
-
-
-\small Some types of turnover in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving of a job as ``quits''. 
-\end{minipage}\\
-
-\begin{minipage}{0.26\textwidth}
-\small \input{text/jolts2.txt}
-\end{minipage} \hspace{5mm}
-\begin{minipage}{0.42\textwidth}
-\noindent \normalsize \textbf{Job Turnover}\\
-\footnotesize{\textit{job openings, hires, and quits, in millions}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={2, 4, 6, 8}, 
-		enlarge y limits={0.1}, 
-		xticklabel={`\short{\year}}, height=5.6cm, width=8.0cm]
-	\rbars
-	\stdline{cyan}{date}{Hires}{data/jolts.csv}
-	\stdline{red}{date}{Quits}{data/jolts.csv}
-	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
-	\stdnode{3.3cm}{2.0cm}{\scriptsize \color{cyan}\textbf{Hires}}
-	\stdnode{5.2cm}{3.38cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
-	\stdnode{3.7cm}{0.2cm}{\scriptsize \color{red}\textbf{Quits}}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv}
-\end{minipage}
-
-\vspace{6mm}
-
-\begin{minipage}{0.76\textwidth}
-
-\normalsize
-
-Quits \\ 
-
-Openings \\
-
-\vspace{6mm}
-
-\small \input{text/icsa.txt}\\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
-\footnotesize{\textit{initial claims, in thousands, seasonally adjusted, three-month moving average highlighted}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 400, 600}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
-	\rbars
-	\stdline{cyan!30}{date}{weekly}{data/icsa.csv}
-	\stdline{blue!60!black}{date}{3M}{data/icsa.csv}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}\\
-
-\vspace{2mm}
-
-\normalsize
-
-State- and sub-state-level analysis 
-
-
-
-\end{minipage}
 
 \newpage
 
