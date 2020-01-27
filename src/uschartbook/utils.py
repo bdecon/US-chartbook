@@ -387,3 +387,22 @@ def binned_wage(group, wage_var='WKWAGE', percentile=0.1, bins=list(np.arange(25
                    (wgt_top - wgt_btm)) * bin_size) + pct_bin.left)
     
     return pct_value
+    
+    
+def cps_date():
+    '''Returns latest month of available data'''
+    import os
+
+    cps_loc = '/home/brian/Documents/CPS/data/'
+    
+    raw_files = [(file[0:3], [f'19{file[3:5]}' 
+                              if int(file[3:5]) > 25 
+                              else f'20{file[3:5]}'][0]) 
+                 for file in os.listdir(cps_loc)
+                 if file.endswith('pub.dat')]
+    
+    dates = (pd.to_datetime([f'{mm}, 1, {yy}' 
+                            for mm, yy in raw_files])
+              .sort_values())
+    
+    return dates[-1]
