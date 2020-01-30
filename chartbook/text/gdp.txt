@@ -1,11 +1,11 @@
 \begin{minipage}{0.61\textwidth}
-\small This analysis of the United States economy begins with the most popular measure of economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{Gross Domestic Product} (GDP). According to the Bureau of Economic Analysis, GDP--the seasonally-adjusted annualized value of goods and services produced in the US--was \$21,542 billion in the third quarter of 2019, compared to an inflation-adjusted equivalent of \$10,254 billion in the first quarter of 1989.\\
+\small This analysis of the United States economy begins with the most popular measure of economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{Gross Domestic Product} (GDP). According to the Bureau of Economic Analysis, GDP--the seasonally-adjusted annualized value of goods and services produced in the US--was \$21,734 billion in the fourth quarter of 2019, compared to an inflation-adjusted equivalent of \$10,292 billion in the first quarter of 1989.\\
 
-The US population is growing by about sixth-tenths of a percent per year. GDP per capita (see {\color{blue}\textbf{---}} ), adjusted for inflation to 2019 Q3 dollars, has increased to \$65,342 in 2019 Q3 from \$41,605 in 1989 Q1. \\
+The US population is growing by about sixth-tenths of a percent per year. GDP per capita (see {\color{blue}\textbf{---}} ), adjusted for inflation to 2019 Q4 dollars, has increased to \$66,024 in 2019 Q4 from \$41,760 in 1989 Q1. \\
 \end{minipage}\hfill
 \begin{minipage}{0.34\textwidth}
 \noindent \normalsize \textbf{GDP per capita}\\
-\footnotesize{\textit{in 2019 Q3 dollars}}\\ 
+\footnotesize{\textit{in 2019 Q4 dollars}}\\ 
 \noindent \begin{tikzpicture}
     \begin{axis}[\dateaxisticks clip=false, height=4.2cm, width=5.8cm,
             ytick={40000,50000,60000}, yticklabels={40, 50, \$60k},
@@ -14,8 +14,8 @@ The US population is growing by about sixth-tenths of a percent per year. GDP pe
         xticklabels={`89, `00, `10, `19 Q2}, enlarge y limits={lower, 0.3}, 
         enlarge x limits={0.05}]
     \stdline{blue}{date}{value}{data/gdppc.csv}
-    \node[label={90:{\$65,342}}, circle, blue, fill, inner sep=1.5pt] at 
-        (axis cs:2019-07-01,65342) {};
+    \node[label={90:{\$66,024}}, circle, blue, fill, inner sep=1.5pt] at 
+        (axis cs:2019-10-01,66024) {};
     \end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \\

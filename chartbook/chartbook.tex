@@ -2004,7 +2004,7 @@ In terms of elements that add to the number of people in poverty, medical expens
   		table [y expr=-\coordindex, x index=1] {\rs};
   	\addplot[fill=blue!80!cyan, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\rs};
- 	\legend{2015 Q1, 2019 Q3}
+ 	\legend{2015 Q1, 2019 Q4}
   	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau, Bureau of Economic Analysis} \hspace{12mm} \tbllink{rs_comp.csv}
@@ -2644,9 +2644,32 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \newpage
 
+\begin{minipage}{0.37\textwidth}
+
+\small The ``headline'' figure in the monthly jobs report is the change in nonfarm payrolls, which measures how many additional jobs were created or lost in the US in the previous month. The series is particularly important for gauging whether the number of jobs being created is sufficient as the US population grows. Likewise, during a downturn employers typically reduce payrolls, causing families to lose income to the extent that they are not able to make it up through other sources. 
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.39\textwidth}
+
+\noindent \normalsize \textbf{Nonfarm Payroll Growth}\\
+\footnotesize{\textit{one-month change in total employment, in thousands}}\\
+\footnotesize{\textit{line = required for constant employment rate}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.1cm, height=5.0cm,
+		ymin=2.9, xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2019-12-01}},
+		minor xtick={}, xmin={2013-11-01},
+        xticklabels={`14, `16, `18, Dec `19},]
+	\sbar{blue!60!purple}{date}{ALL}{data/nfp.csv}
+	\stdline{green!50!lime}{date}{TOT}{data/nfp_pop.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{nfp.csv}
+\end{minipage}\\
+
+\vspace{8mm}
+
 \begin{minipage}{0.76\textwidth} 
 
-\small The monthly establishment survey enables tracking of non-farm payrolls. In September 2019, the US economy added 136,000 jobs. In 2019 Q2, the US added an average of 146,000 jobs per month, compared to 205,000 in 2019 Q1 and an annual average of 205,000 in 2018. \\
+\small More text here... \\
 
 \normalsize [Quarterly employment growth with dot for latest monthly value] 
 
