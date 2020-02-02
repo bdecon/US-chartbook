@@ -517,22 +517,30 @@ Perhaps also provide some high level context in this section, by converting larg
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
-	\sbar{blue!70}{date}{Federal Government}{data/liabgr.csv}
-	\sbar{cyan!70}{date}{State and Local Government}{data/liabgr.csv}
-	\sbar{orange!70}{date}{Household and Nonprofit}{data/liabgr.csv}
-	\sbar{lime!70}{date}{Corporate Business}{data/liabgr.csv}
-	\sbar{green!80!black}{date}{Non-corporate Business}{data/liabgr.csv}
+	\sbar{blue!70!white}{date}{FL314190005.Q}{data/liabgr.csv}
+	\sbar{cyan!52!white}{date}{FL214190005.Q}{data/liabgr.csv}
+	\sbar{orange!70!white}{date}{FL154190005.Q}{data/liabgr.csv}
+	\sbar{lime!70!white}{date}{FL104190005.Q}{data/liabgr.csv}
+	\sbar{green!72!black}{date}{FL114190005.Q}{data/liabgr.csv}
 	\legend{Fed. Gov.,State/Loc. Gov., Households, Corp bus., Non-corp. bus.};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabgr.csv}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabgr.csv}\end{minipage}
 
 \vspace{4mm}
 
-\normalsize  [TABLE HERE]
+\noindent \normalsize \textbf{Real Debt Growth}\\
+\footnotesize{\textit{contribution to one-year real growth \hspace{48mm} moving averages}\\ \vspace{4mm}
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{38mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		   R{7.8mm} R{6.7mm} R{6.7mm} }
+			 \input{data/liabgr.tex}\hline
+		\end{tabular}
+		}	\\
 		
-			
-\end{minipage}
+\vspace{-6mm}
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}
 
 \newpage
 
@@ -2058,12 +2066,23 @@ Estimate of markup(s)?\\
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gov.csv}
-\vspace{10mm}
-
-
-\normalsize [Table here.]
 
 \end{minipage}
+\vspace{6mm}
+
+\noindent \normalsize \textbf{Government Consumption and Investment}\\
+\footnotesize{\textit{percentage point contribution to GDP growth \hspace{41mm} moving averages}\\ \vspace{4mm}
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		   R{7.8mm} R{6.7mm} R{6.7mm} }
+			 \input{data/gov.tex}\hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-6mm}
+\footnotesize{Source: Bureau of Economic Analysis}
+
 
 \newpage
 
@@ -3400,13 +3419,16 @@ Wage growth: \\
 \vspace{2mm}
 
 \noindent \normalsize \textbf{S\&P 500 Real Return}\\
-\footnotesize{\textit{trailing 20-year annualized real return}}\\ 
+\footnotesize{\textit{trailing period annualized real return}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 8, 12}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
 		xticklabel={`\short{\year}}, clip=false, 
-		height=4.4cm, enlarge y limits={0.11}]
+		height=4.8cm, enlarge y limits={0.11}, legend style={at={(0.95, 1.05)}}]
 	\rbars
+	\thickline{blue}{date}{Return}{data/sp500rr2.csv}
+	\thickline{orange}{date}{Return}{data/sp500rr4.csv}
 	\thickline{green!80!blue}{date}{Return}{data/sp500rr.csv}
+	\legend{10-year, 15-year, 20-year};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Shiller, Author's Calculations} \hfill \tbllink{sp500rr.csv}\\
@@ -3437,7 +3459,7 @@ Wage growth: \\
 \begin{minipage}{0.76\textwidth}
 
 
-\small The Chicago Board Options Exchange uses S\&P 500 options data to identify expectations of future volatility. \\
+\small The Chicago Board Options Exchange uses S\&P 500 options data to identify expectations of future volatility. \input{text/vixbasic.txt}\\
 
 \vspace{2mm}
 
@@ -3682,7 +3704,7 @@ One option for this section is to have some json data that captures what origina
 
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
 
-Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Yevgeniya Korniyenko, Magali Pinat, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Ernie Tedeschi, Ryan Bonkosky, and Vikas Sharma.
+Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Ryan Bonkosky, Yevgeniya Korniyenko, Magali Pinat, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Ernie Tedeschi, Adam Ozimek, and Vikas Sharma.
 
 \end{minipage}
 
