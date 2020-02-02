@@ -9,7 +9,7 @@ def bea_api_nipa(table_list, bea_key):
     import requests
     from datetime import datetime
 
-    years = ','.join(map(str, range(1989, 2020)))
+    years = ','.join(map(str, range(1988, 2020)))
 
     api_results = []
 
