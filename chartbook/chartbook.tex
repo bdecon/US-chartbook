@@ -1643,16 +1643,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \noindent \normalsize \textbf{New Orders for Core Capital Goods}\\
 \footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 6, 8}, width=7.0cm, height=5.0cm,
-		ymin=2.9, xtick={{1992-01-01}, {1995-01-01}, {2000-01-01}, {2005-01-01}, 
-				{2010-01-01}, {2015-01-01}, {2019-10-01}},
-		minor xtick={}, 
-        xticklabels={`92, `95, `00, `05, `10, `15, Q3},]
-	\rbars
-	\thickline{purple!50!violet}{date}{value}{data/dgno.csv}
-	\end{axis}
-\end{tikzpicture}\\
+\noindent \hspace*{-2mm} \input{text/dgno.tex}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{dgno.csv}
 \end{minipage}\\
 
@@ -1804,21 +1795,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \noindent \normalsize \textbf{Industrial Production}\\
 \footnotesize{\textit{index, 2012=100}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 80, 100}, 
-		enlarge y limits={0.05}, legend cell align={left},
-		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, {2005-01-01}, 
-				{2010-01-01}, {2015-01-01}, {2019-10-01}},
-		minor xtick={}, 
-        xticklabels={`89, `95, `00, `05, `10, `15, Oct},
-		clip=false, height=4.7cm, width=6.4cm,
-		legend style={fill=white, legend columns=1, at={(1.02, 0.33)}}]
-	\rbars
-	\thickline{red}{date}{Manufacturing}{data/indpro.csv}
-	\stdline{blue!90!black}{date}{Total index}{data/indpro.csv}
-	\legend{Manufacturing, Total Index};
-	\end{axis}
-\end{tikzpicture}\\
+\input{text/ip_main_line.tex}
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro.csv}
 
 \end{minipage}\\
@@ -3542,7 +3519,9 @@ Valuations \\
 
 \hspace{4mm} [AAA and high-yield] \\
 
-Yield curve 
+\vspace{4mm}
+
+\small The Treasury yield curve shows the yield on different maturities of Treasury bonds and bills, usually from short-term, such as three-month, to long-term such as 30-year. This measure is at times described as ``inverted'', which means the short-term-debt end of the curve is higher than the long-term-debt end. For example, if the yield on two-year treasuries is higher than the yield on ten-year treasuries. 
 
 \end{minipage}
 
