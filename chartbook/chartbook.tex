@@ -640,7 +640,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 
 \subsubsection*{\color{black!70} \seriffont Age}
 
-\small In discussions of demographics effects on the major advanced economies, aging is often discussed as a serious headwind to growth. That is, the increased share of many countries' population that is of retirement age means a smaller share are working and borrowing and a larger share are receiving pension benefits and lending to the financial system. These trends can be overcome by a workforce that is more efficiently able to provide goods and services. In part due to a shorter life-expectancy, this problem is more pronounced in Japan and western Europe, but is still a important issue for the US.
+\small In discussions on demographics, aging is often described as a serious headwind to economic growth in major advanced economies. The increased share of many countries' population that is of retirement age means a smaller share are working and borrowing and a larger share are receiving pension benefits and lending to the financial system. These trends can be overcome by a workforce that is more efficiently able to provide goods and services. In part due to a shorter life-expectancy, this problem is more pronounced in Japan and western Europe, but is still a important issue for the US.
 
 \end{minipage}
 
@@ -2413,59 +2413,33 @@ Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencie
 	\stdline{red}{date}{RXI_N.B.JA}{data/fx1.csv}
 	\stdline{cyan!90!white}{date}{RXI_N.B.EU}{data/fx1.csv}
 	\stdnode{10.8cm}{0.6cm}{\footnotesize \color{blue!90!cyan}GBP}
-	\stdnode{5.5cm}{3.0cm}{\footnotesize \color{green!90!blue}CAD}
+	\stdnode{5.5cm}{3.0cm}{\footnotesize \color{green!85!blue}CAD}
 	\stdnode{4.1cm}{1.1cm}{\footnotesize \color{cyan!90!white}EUR}
 	\stdnode{1.5cm}{1.24cm}{\footnotesize \color{red}JPY (100)}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{fx1.csv}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{fx1.csv}
+\end{minipage}
 
 \vspace{4mm}
-
-\small Text here about other exchange rates. This next chart covers the Mexican Peso (MXN), the Brazilian Real (BRL), the Chinese Yuan (CNY), and the Singapore Dollar (SGP).\\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{Selected Exchange Rates, Continued}\\
-\footnotesize{\textit{units of foreign currency required to purchase one US dollar}}\\
+\begin{minipage}{0.33\textwidth}
+\noindent \normalsize \textbf{Broad Dollar Index}\\
+\footnotesize{\textit{trade-weighted foreign exchange rate index}}\\
+\footnotesize{\textit{January 2006=100}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={1, 10, 20, 30}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
-	\rbars
-	\stdline{blue!40!cyan}{date}{RXI_N.B.MX}{data/fx2.csv}
-	\stdline{green!70!lime}{date}{RXI_N.B.BZ}{data/fx2.csv}
-	\stdline{orange!80!red}{date}{RXI_N.B.SD}{data/fx2.csv}
-	\stdline{blue!60!black}{date}{RXI_N.B.CH}{data/fx2.csv}
-	\stdnode{9.0cm}{2.1cm}{\footnotesize \color{blue!40!cyan}MXN}
-	\stdnode{4.1cm}{0.6cm}{\footnotesize \color{green!70!lime}BRL}
-	\stdnode{11.0cm}{1.7cm}{\footnotesize \color{orange}SGP}
-	\stdnode{0.1cm}{0.4cm}{\footnotesize \color{blue!60!black}CNY}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{fx2.csv}\\
-
-\vspace{4mm}
-
-\small The trade-weighted dollar indices show the overall effect of individual exchange rates. The broad index, which starts in 1994, covers the exchange rate between the US and most other significant currencies, weighted by the amount of trade done in those currencies. Over the past three years... More text here.\\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{Trade-Weighted USD Indices}\\
-\footnotesize{\textit{index, 1973=100}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={60, 80, 100, 120}, 
+	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={90, 100, 110, 120}, 
 		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
-		legend style={fill=white, at={(0.5, 1.0)}}]
+		xticklabel={`\short{\year}}, width=6.1cm, height=5.8cm]
 	\rbars
-	\stdline{blue!60!black}{date}{V0.JRXWTFN_N.B}{data/fx_idx.csv}
-	\stdline{magenta}{date}{V0.JRXWTFB_N.B}{data/fx_idx.csv}
-	\stdnode{8.8cm}{2.1cm}{\footnotesize \color{magenta}Broad}
-	\stdnode{4.0cm}{1.1cm}{\footnotesize \color{blue!60!black}Major}
+	\stdline{blue!60!black}{date}{JRXWTFB_N.B}{data/fx_idx.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{fx_idx.csv}
+\footnotesize{Source: Federal Reserve} \hspace{16mm} \tbllink{fx_idx.csv}
+\end{minipage}\hspace{4mm}
+\begin{minipage}{0.4\textwidth}
+\small Fed \href{https://www.federalreserve.gov/releases/h10/summary/default.htm}{trade-weighted dollar indices} show weighted-average foreign exchange rates with US trading partners, which simplify thinking about the overall role of foreign exchange rates on the US external sector. The Broad Dollar Index, which starts in 2006, summarizes foreign exchange rates between the US and trading partners, weighting rates by the amount of trade in both goods and services.\\
 
+\input{text/twdbasic.txt}
 \end{minipage}
 
 \newpage
