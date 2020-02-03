@@ -172,7 +172,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
 	\pgfplotstableread[header=true, col sep=semicolon]{data/cps_educ.csv}\edsh
 	\pgfplotstableread[header=true, col sep=comma]{data/cps_educ_tot.csv}\edtot
-	
+	\pgfplotstableread[header=true, col sep=comma]{data/cps_age.csv}\agesh
 	
 	
 % % % % % % % %
@@ -623,9 +623,65 @@ Within categories of wealth, the ratio of corporate equities to other categories
 
 [Table or chart on population] \\
 
+Section overview with two charts: One on demographics and the other on income and outlays.  So comparing 1989 and latest in population, number of households, median age, basic educational attainment, etc. Then compare the same years in real per capita income, spending, etc.\\
+
+\vspace{10mm}
+
+
+\subsection*{\color{black!70} \seriffont Demographics and Household Formation}
+
+This section should capture 1) population, 2) population growth, 3) aging, 4) increased education.
+
 \end{minipage}
 
-\vspace{8mm}
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsubsection*{\color{black!70} \seriffont Age}
+
+\small In discussions of demographics effects on the major advanced economies, aging is often discussed as a serious headwind to growth. That is, the increased share of many countries' population that is of retirement age means a smaller share are working and borrowing and a larger share are receiving pension benefits and lending to the financial system. These trends can be overcome by a workforce that is more efficiently able to provide goods and services. In part due to a shorter life-expectancy, this problem is more pronounced in Japan and western Europe, but is still a important issue for the US.
+
+\end{minipage}
+
+\begin{minipage}{0.32\textwidth}
+\noindent \normalsize \textbf{Age}\\
+\footnotesize{\textit{share of population}}\\
+\noindent \hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.1cm}{1.5ex}
+    	width=4.7cm, bar width=2.0ex, height=4.9cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\agesh}{name}, xmin=0, 
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode},
+		legend style={text=black!70, at={(0.3, 1.14)}, anchor=north, legend columns=-1, 
+				fill=none, draw=none,
+		        /tikz/every even column/.append style={column sep=0.4cm}}]
+  	\addplot[fill=blue!75!green!30, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\agesh};
+  	\addplot[fill=green!55!blue!80, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\agesh};
+  	\legend{1989, 2019}
+  	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's calculations from CPS}
+\end{minipage} \hspace{4mm}
+\begin{minipage}{0.4\textwidth}
+\small \input{text/cps_age.txt}
+\end{minipage}
+
+
+\vspace{2mm}
+
+
+\begin{minipage}{0.76\textwidth}
+\small Mapping American Community Survey data to commuter zones gives insight on the age of the population in local labor markets. \input{text/cps_u18.txt} \\
+
+\input{text/cps_o64.txt}
+
+\end{minipage}
+\vspace{3mm}
 
 \noindent \normalsize \textbf{Age Group Share of Commuter Zone Population, 2018}
 
@@ -635,23 +691,15 @@ Within categories of wealth, the ratio of corporate equities to other categories
 \hspace{-9mm} \input{data/under18pop.pgf} \hspace{-3mm} \input{data/over64pop.pgf}
 
 \vspace{-3mm}
-\footnotesize{Source: American Community Survey, Dorn}
+\footnotesize{Source: American Community Survey, Dorn} \hspace{61mm} \tbllink{acs_cz_age.csv}
 
 
 \newpage
 \begin{minipage}{0.76\textwidth}
 
-\subsection*{\color{black!70} \seriffont Demographics and Household Formation}
-
-\small The Census Bureau estimates that the US population is 327.2 million in 2018 and reports population growth of 0.6 percent over the past year. By age, 22.9 percent are under the age of 18 and 16.1 percent age 65 or older. In 1989, the US population was 246.8 million, with 25.7 percent under 18 and 12.4 percent 65 or older.\\
-
-This section should capture 1) population, 2) population growth, 3) aging, 4) increased education.\\
-
-\vspace{2mm}
-
 \subsubsection*{\color{black!70} \seriffont Household Formation}
 
-Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the home-ownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. \\
+\small Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the home-ownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. \\
 
 \input{text/hhform1.txt}\\
 
@@ -3371,6 +3419,11 @@ Wage growth: \\
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations from Current Population Survey} \hfill \tbllink{union.csv}\\
+
+
+\vspace{4mm}
+
+\normalsize [BAR CHART UNION MEMBERSHIP RATE BY INDUSTRY GROUP]
 
 \end{minipage}
 
