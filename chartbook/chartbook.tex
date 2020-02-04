@@ -173,6 +173,7 @@
 	\pgfplotstableread[header=true, col sep=semicolon]{data/cps_educ.csv}\edsh
 	\pgfplotstableread[header=true, col sep=comma]{data/cps_educ_tot.csv}\edtot
 	\pgfplotstableread[header=true, col sep=comma]{data/cps_age.csv}\agesh
+	\pgfplotstableread[header=true, col sep=semicolon]{data/union_ind.csv}\unmem
 	
 	
 % % % % % % % %
@@ -1007,6 +1008,29 @@ Income and Expenses by Age and Number of Children\\
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pcedecomp.csv}
+
+\end{minipage}
+
+\newpage
+
+\subsubsection*{\color{black!70} \seriffont Consumer Sentiment}
+
+\begin{minipage}{0.76\textwidth}
+
+\small The University of Michigan conducts a regular monthly \href{http://www.sca.isr.umich.edu/}{survey} used to gauge individuals' consumer sentiment. The measure is based on questions related to personal finances, business conditions, and buying conditions. An increase in consumer sentiment means individuals feel more confident about economic conditions and are more willing to make large purchases or take on debt. \input{text/umichsoc.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Consumer Sentiment}\\
+\footnotesize{\textit{index, 1996=100}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 80, 100}, 
+		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
+	\rbars
+	\stdline{violet!60!blue}{date}{ICS_ALL}{data/umichsoc.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: University of Michigan}  \hfill \tbllink{umichsoc.csv}\\
 
 
 \end{minipage}
@@ -2861,35 +2885,21 @@ Gross labor income (compensation of employees in the national accounts), which c
 \noindent \normalsize \textbf{Occupational Employment, December 2019}\\
 \footnotesize{\textit{share of population employed, 12-month average, percent}}\\ 
 \noindent \hspace*{-9mm}  \begin{tikzpicture}
-        \begin{axis}[clip=false,
-            xbar stacked,
-            \bbar{x}{0},
-            % is default anyway:
-            stack negative=separate,
-            ymajorgrids=false,
-            %
+   \begin{axis}[clip=false, xbar stacked, \bbar{x}{0},
+            stack negative=separate, ymajorgrids=false,
             yticklabels from table={\occ}{name},
 			y axis line style = { opacity = 0 },   
 		    x axis line style = { opacity = 0 }, 
 			yticklabel style={black, align=left, anchor=east},            
-            ytick=data,
-            tickwidth = 0pt,
-            legend style={
-                at={(-0.2, 1.05)},
-                anchor=north,legend
-                columns=-1, draw=none, 
-            },
+            ytick=data, tickwidth = 0pt,
+            legend style={at={(-0.2, 1.05)},
+                anchor=north,legend columns=-1, draw=none},
             legend cell align=left,
-            extra x ticks={0},
-            extra x tick style={
-                grid style={black},
-                xticklabel=\empty,
-            },
-            enlarge y limits={0.02},
-			enlarge x limits={0.03},
+            extra x ticks={0}, extra x tick style={
+                grid style={black}, xticklabel=\empty,},
+            enlarge y limits={0.02}, enlarge x limits={0.03},
             width=8.8cm, height=12cm,
-            \barylab{5.0cm}{1.5ex}
-        ]
+            \barylab{5.0cm}{1.5ex}]
             \addplot[fill=green, draw opacity=0] table 
             	[y expr=\coordindex, x=PT, col sep=semicolon] {\occ};
             \addplot[fill=blue, draw opacity=0] table 
@@ -2897,11 +2907,8 @@ Gross labor income (compensation of employees in the national accounts), which c
             \addplot[fill=orange, draw opacity=0, 
             	point meta=x, nodes near coords, nodes near coords align={anchor=west},
     			every node near coord/.append style={
-        			black,
-        			fill=white,
-        			fill opacity=0.75,
-        			text opacity=1,
-        			outer sep=\pgflinewidth}, 
+        			black, fill=white, fill opacity=0.75,
+        			text opacity=1, outer sep=\pgflinewidth}, 
         			nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 					precision=1, assume math mode},] table 
             	[y expr=\coordindex, x=Second, col sep=semicolon] {\occ};
@@ -3394,11 +3401,45 @@ Wage growth: \\
 \end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations from Current Population Survey} \hfill \tbllink{union.csv}\\
 
+\end{minipage}
 
 \vspace{4mm}
 
-\normalsize [BAR CHART UNION MEMBERSHIP RATE BY INDUSTRY GROUP]
+\begin{minipage}{0.43\textwidth}
 
+\noindent \normalsize \textbf{Union Membership Rate by Industry}\\
+\footnotesize{\textit{union or employee association member, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
+            yticklabels from table={\unmem}{name},
+			y axis line style={opacity=0},   
+		    x axis line style={opacity=0}, 
+			yticklabel style={black, font=\footnotesize, 
+			align=left, anchor=east},  
+			nodes near coords align={above},    
+			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
+				precision=1, assume math mode},  
+            ytick=data, tickwidth=0pt, xmin=0,
+            extra x ticks={0}, extra x tick style={
+                grid style={black}, xticklabel=\empty,},
+            enlarge y limits={0.08}, enlarge x limits={0.02},
+            width=5.2cm, height=7.2cm, legend style={at={(0.7, 1.07)}},
+            \barylab{2.7cm}{1.5ex}]
+	\addplot[xbar stacked, bar shift=0pt, fill=none, draw=none] 
+		table [y expr=-\coordindex, x index=1] {\unmem};
+	\addplot[xbar stacked, bar shift=0pt, fill=violet!60!blue, draw=none] 
+		table [y expr=-\coordindex, x index=2] {\unmem};		        
+	\addplot[only marks, mark=diamond*, mark options={fill=orange, 
+		draw=orange, scale=2}] 
+		table [y expr=-\coordindex, x index=3] {\unmem};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=3] {\unmem};
+	\legend{, 30-year range, December 2019}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations from CPS} \hspace{12mm} \tbllink{union_ind.csv}\\
+\end{minipage}\hspace{4mm}
+\begin{minipage}{0.3\textwidth}
+\small Public administration has the highest union membership rate, at 32.0 percent as of December 2019, followed by education and health with 16.1 percent. The manufacturing industry experienced the largest overall percentage point decrease in union membership rates over the past 30 years, and is currently 15.7 percentage points below its February 1989 rate of 23.5 percent. The construction and mining industries union membership rate is 11.2 percent in December 2019. The lowest union membership rate is in the leisure and hospitality industries (2.5 percent). The union membership rate of the industry was 18 percent at its 30-year peak in January 1989. 
 \end{minipage}
 
 \newpage
