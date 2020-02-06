@@ -128,6 +128,10 @@
 	\newcommand{\stdline}[4]{\addplot[very thick, no markers, color=#1] 
 		table [x=#2, y=#3, col sep=comma] {#4};	}
 		
+	% Dashed line
+	\newcommand{\dashline}[4]{\addplot[very thick, dashed, no markers, color=#1] 
+		table [x=#2, y=#3, col sep=comma] {#4};	}
+		
 	% Thicker line
 	\newcommand{\thickline}[4]{\addplot[ultra thick, no markers, color=#1] 
 		table [x=#2, y=#3, col sep=comma] {#4};	}
@@ -914,6 +918,44 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 \end{minipage}
 
 \newpage 
+
+\subsubsection*{\color{black!70} \seriffont Household Income}
+
+\begin{minipage}{0.37\textwidth}
+\noindent \normalsize \textbf{Real Median Household Income}\\
+\footnotesize{\textit{thousands of US dollars}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={20, 40, 60, 80}, 
+		enlarge y limits={0.1},
+		xmax={2019-02-01},
+		xticklabel={`\short{\year}}, width=6.9cm, height=5.8cm]
+	\rbars
+	\dashline{blue!80!black}{Year}{Black-imputed}{data/epi_census_income.csv}
+	\stdline{blue!80!black}{Year}{Black13}{data/epi_census_income.csv}
+	\stdline{blue!80!black}{Year}{Black}{data/epi_census_income.csv}
+	\dashline{green!80!black}{Year}{White-imputed}{data/epi_census_income.csv}
+	\stdline{green!80!black}{Year}{White13}{data/epi_census_income.csv}
+	\stdline{green!80!black}{Year}{White}{data/epi_census_income.csv}
+	\dashline{orange}{Year}{Asian-imputed}{data/epi_census_income.csv}
+	\stdline{orange}{Year}{Asian13}{data/epi_census_income.csv}
+	\stdline{orange}{Year}{Asian}{data/epi_census_income.csv}
+	\dashline{red!90!black}{Year}{Hispanic-imputed}{data/epi_census_income.csv}
+	\stdline{red!90!black}{Year}{Hispanic13}{data/epi_census_income.csv}
+	\stdline{red!90!black}{Year}{Hispanic}{data/epi_census_income.csv}
+	\stdnode{4.7cm}{0.2cm}{\footnotesize \color{blue!80!black}Black}
+	\stdnode{4.5cm}{2.7cm}{\footnotesize \color{green!80!black}White}
+	\stdnode{3.8cm}{3.6cm}{\footnotesize \color{orange}Asian}
+	\stdnode{1.5cm}{1.1cm}{\footnotesize \color{red!90!black}Hispanic}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Economic Policy Institute, Census} 
+\end{minipage}\hspace{4mm}
+\begin{minipage}{0.36\textwidth}
+\small Black median household income in 2018 was \$XX,XXX, compared to an inflation adjusted equivalent of \$XX,XXX in 2017. White, non-Hispanic median household income was... compared to ... in 2017. Hispanic median household income in 2018 was XXX compared to XXX in 2017. Data for 2000--2013 are calculated by \href{https://www.epi.org/blog/racial-and-ethnic-income-gaps-persist-amid-uneven-growth-in-household-incomes/}{EPI}, to be more-comparable over time despite changes to the source data in 2013 and 2017. \\
+\end{minipage}
+
+\newpage 
+
 
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Household Expenditures}
