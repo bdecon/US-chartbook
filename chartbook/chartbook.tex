@@ -112,6 +112,17 @@
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
 		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\shdateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2021-02-01},
+		max space between ticks=40,	    
+		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
+			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
+		minor xtick={},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
+		
 	% Settings for y label text in horizontal bar charts
 	\newcommand{\barylab}[2]{yticklabel style={text width=#1, align=right, 
 		style={black!70}, text height=#2},}
@@ -729,6 +740,51 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
 
+\end{minipage}
+
+\newpage
+\begin{minipage}{0.76\textwidth}
+
+\subsubsection*{\color{black!70} \seriffont Homeownership}
+
+\small The homeownership rate measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Homeownership Rate}\\
+\footnotesize{\textit{owner-occupied share of housing units, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={64, 66, 68}, 
+		enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, height=4.8cm, width=7.3cm, clip=false]
+	\rbars
+	\stdline{red!50!orange}{date}{VALUE}{data/homeown.csv}
+	\input{text/homeown_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \hspace{30mm} \tbllink{homeown.csv} \\
+
+\vspace{5mm}
+
+\small
+
+\input{text/homeeq.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Owner's Equity Share of Real Estate}\\
+\footnotesize{\textit{owner's equity as percent of real estate, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={45, 50, 55, 60, 65, 70}, 
+		enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, height=4.8cm, width=7.3cm, clip=false]
+	\rbars
+	\stdline{red!90!orange}{date}{VALUE}{data/homeeq.csv}
+	\input{text/homeeq_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \hspace{30mm} \tbllink{homeeq.csv} 
+
 
 \end{minipage}
 
@@ -875,7 +931,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 
 \small Earnings, which include wages and salaries as well as self-employment income, comprise the majority of personal income. Yet only 52 percent of people have any earnings in 2018 (see\cbox{red!70!yellow}). Only 43 percent of people have earnings above the single-person poverty threshold.\\
 
-Total income, including taxes, welfare, and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). The remainder live with people with income or receive private transfers. \\
+Total income, including taxes, welfare, and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). The remainder live with people with income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000, which would overflow the page at the current scale. \\
 
 \vspace{2mm}
 
@@ -1747,18 +1803,18 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \newpage
 
-\begin{minipage}{0.37\textwidth}
+\begin{minipage}{0.35\textwidth}
 
-\small The productive investments of businesses are also measured by the new orders for core capital goods. The category excludes the more volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  \\
+\small Productive business investments also show up as new orders for core capital goods. The category excludes the more-volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  \\
 
 \input{text/dgno.txt}
-\end{minipage} \hspace{6mm}
+\end{minipage} \hspace{4mm}
 \begin{minipage}{0.39\textwidth}
 
 \noindent \normalsize \textbf{New Orders for Core Capital Goods}\\
 \footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}\\
 \noindent \hspace*{-2mm} \input{text/dgno.tex}\\
-\footnotesize{Source: Census Bureau} \hfill \tbllink{dgno.csv}
+\footnotesize{Source: Census Bureau} \hspace{25mm} \tbllink{dgno.csv}
 \end{minipage}\\
 
 \vspace{8mm}
@@ -2662,7 +2718,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
 	\rbars
 	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
-	\node[above, align=right] at (axis cs:2018-06-01,80.9) {\scriptsize \input{text/epop.txt}};
+	\node[above, align=right] at (axis cs:2018-09-01,80.9) {\scriptsize \input{text/epop.txt}};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}\\
@@ -2728,7 +2784,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \newpage
 
-\begin{minipage}{0.37\textwidth}
+\begin{minipage}{0.31\textwidth}
 
 \small The establishment survey from the monthly jobs report identifies how many jobs have been added to the economy in a given month. \input{text/nfp_basic_text.txt}
 \end{minipage} \hspace{6mm}
@@ -2738,7 +2794,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 \footnotesize{\textit{one-month change in total employment, in thousands}}\\
 \footnotesize{\textit{line = required for constant employment rate}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.1cm, height=5.0cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.2cm, height=5.0cm,
 		ymin=2.9, xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2019-12-01}},
 		minor xtick={}, xmin={2013-11-01},
         xticklabels={`14, `16, `18, Dec `19},]
@@ -2763,11 +2819,11 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \begin{minipage}{0.76\textwidth} 
 
-\small Employment rates vary over time, but also by age, gender, and education. Over the 12 months ending November 2019, the employment rate for most education groups is lower than it was on average in the year 2000. Only older workers and women with advanced education have higher rates of employment than in 2000. Fix text... \\
+\small Employment rates vary over time, but also by age, gender, and education. Over the 12 months ending \input{text/cps_lfs_date.txt}, the employment rate for most education groups is lower than it was on average in the year 2000. Only older workers and women with advanced education have higher rates of employment than in 2000. Fix text... \\
 
 \vspace{2mm}
 
-\noindent \normalsize \textbf{Employment Rates} \small \hspace{10mm} \cbox{blue} December 2019 \hspace{4mm} \cbox{cyan!50} 2000\\
+\noindent \normalsize \textbf{Employment Rates} \small \hspace{10mm} \cbox{blue} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!50} 2000\\
 \footnotesize{\textit{employed share of age group population, percent}}\\
 
 \centerline{\small Total, Any Education}
@@ -2924,7 +2980,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 \vspace{2mm}
 
 
-\noindent \normalsize \textbf{Occupational Employment, December 2019}\\
+\noindent \normalsize \textbf{Occupational Employment, \input{text/cps_lfs_date.txt}}\\
 \footnotesize{\textit{share of population employed, 12-month average, percent}}\\ 
 \noindent \hspace*{-9mm}  \begin{tikzpicture}
    \begin{axis}[clip=false, xbar stacked, \bbar{x}{0},
@@ -3284,7 +3340,9 @@ Wage growth: \\
 
 \hspace{4mm} [AHE and UWE both in various forms] \\
 
-\hspace{4mm} [Either FRB Atlanta Wage Tracker or replication]
+\hspace{4mm} [Either FRB Atlanta Wage Tracker or replication] \\
+
+\hspace{4mm} [Summary measure with AHE, MWE, ECI, WS, etc]
 
 \end{minipage}
 
@@ -3730,9 +3788,17 @@ A large increase in the amount of money held by individuals and institutions can
 
 \newpage
 
+\begin{minipage}{0.76\textwidth}
+
 \normalsize
 
 Discussion of CPI-U-RS \\ 
+
+\small The consumer price index (CPI-U) is used in contracts that include cost adjustments. As a result, historical CPI-U data are not revised if there is a change to the way the CPI is calculated. For research purposes, however, it is ideal to have the most accurate measure of overall changes in prices faced by consumers. BLS also publishes a research series, the CPI-U-RS, which adjusts the historical data of the CPI-U to be consistent with the current methods of producing it. \\
+
+\vspace{3mm}
+
+\normalsize
 
 Discussion of Chained CPI \\
 
@@ -3744,7 +3810,7 @@ PCE \\
 
 Expectations 
 
-
+\end{minipage}
 
 \newpage
 
