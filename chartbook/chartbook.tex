@@ -571,7 +571,7 @@ Perhaps also provide some high level context in this section, by converting larg
 \noindent \normalsize \textbf{Total US Wealth to GDP Ratio}\\
 \footnotesize{\textit{total US wealth divided by GDP}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=-0.2,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=0,
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
@@ -754,7 +754,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \noindent \normalsize \textbf{Homeownership Rate}\\
 \footnotesize{\textit{owner-occupied share of housing units, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={64, 66, 68}, 
+	\begin{axis}[\shdateaxisticks ytick={64, 66, 68}, 
 		enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, height=4.8cm, width=7.3cm, clip=false]
 	\rbars
@@ -775,7 +775,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \noindent \normalsize \textbf{Owner's Equity Share of Real Estate}\\
 \footnotesize{\textit{owner's equity as percent of real estate, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={45, 50, 55, 60, 65, 70}, 
+	\begin{axis}[\shdateaxisticks ytick={45, 50, 55, 60, 65, 70}, 
 		enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, height=4.8cm, width=7.3cm, clip=false]
 	\rbars
@@ -1007,7 +1007,7 @@ Ideally I would like to look at the demographics (employment adjustment for age)
 \footnotesize{Source: Economic Policy Institute, Census} 
 \end{minipage}\hspace{4mm}
 \begin{minipage}{0.36\textwidth}
-\small Black median household income in 2018 was \$41,692, compared to an inflation adjusted equivalent of \$40,963 in 2017. White, non-Hispanic median household income was \$70,462 compared to \$69,851 in 2017. Hispanic median household income in 2018 was \$51,450 compared to \$51,390 in 2017. Asian median household income was \$87,194 in 2018 and \$83,376 in 2017. Data for 2000--2013, shown with dashed lines, are calculated by \href{https://www.epi.org/blog/racial-and-ethnic-income-gaps-persist-amid-uneven-growth-in-household-incomes/}{EPI}, to be more-comparable over time despite changes to the source data in 2013 and 2017. \\
+\small Black median household income in 2018 was \$41,692, compared to an inflation adjusted equivalent of \$40,963 in 2017. White, non-Hispanic median household income was \$70,462 compared to \$69,851 in 2017. Hispanic median household income in 2018 was \$51,450 compared to \$51,390 in 2017. Asian median household income was \$87,194 in 2018 and \$83,376 in 2017. Data for 2000--2013, shown with dashed lines, are calculated by \href{https://www.epi.org/blog/racial-and-ethnic-income-gaps-persist-amid-uneven-growth-in-household-incomes/}{EPI}, to be more-comparable over time despite changes to the survey design in 2013 and to the processing of survey data in 2017. \\
 \end{minipage}
 
 \newpage 
@@ -2725,7 +2725,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \vspace{4mm}
 
-\small The employment rate shown above is based on a monthly survey that asks about employment during a specific week of the previous month. However, additional data is available on what share of a population works year-round rather than just during a specific week. This can be combined with data on hours worked to identify the ``fully-employed'', or full-time, full-year workers, who are defined below as the those who usually work 35 hours per week or more for 50 weeks per year or more.\\
+\small The employment rate shown above is based on a monthly survey that asks about employment during a specific week of the previous month. However, additional data is available on what share of a population works year-round rather than just during a specific week. This can be combined with data on hours worked to identify the ``fully-employed'', or full-time, full-year workers, who are defined below as the those who usually work 35 hours per week or more for 50 weeks per year or more. The Census Bureau \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-01.html#par_textimage_14}{reports} 118 million fully-employed people in 2018, equivalent to 36 percent of the population. \\
 
 \input{text/acs_ftfy_text.txt} Of commuter zones with 100,000 people or more, the top and bottom ten by fully-employed share of population are listed below.
 \end{minipage}
@@ -3034,8 +3034,8 @@ Gross labor income (compensation of employees in the national accounts), which c
 \footnotesize{\textit{unemployed share of labor force}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm, ymin=1,
-		legend style={fill=white, at={(0.5, 1.0)}}]
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm, ymin=1.2,
+		legend style={fill=white, at={(0.5, 1.01)}}]
 	\rbars
 	\stdline{blue!90!black}{date}{White}{data/unemp.csv}
 	\stdline{cyan!80!white}{date}{Hispanic}{data/unemp.csv}
@@ -3077,17 +3077,58 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \newpage
 
-\vspace{4mm}
-
-\normalsize
-
-Unemployment by duration \\
-
-\vspace{4mm}
 
 \begin{minipage}{0.76\textwidth}
 
-\small Summary text about local area estimates of unemployment. Will need to think about tables that show highlights, because there are too many MSAs to list all data. Something that captures diffusion would be nice. Perhaps I can list how many metro areas had the unemployment rate fall over the past year, and then talk about how many unemployed people that actually means--so that population is taken into consideration in some meaningful way.\\
+\subsubsection*{\color{black!70} \seriffont Duration of unemployment}
+
+\small When someone is unemployed for an extended period of time they risk running out of unemployment benefits, thereby having a sharp reduction in income. Additionally, people may have more trouble re-entering the labor market after a long period of unemployment. \\
+
+\input{text/ltu.txt} 
+\input{text/unempdur.txt} Both measures of unemployment duration are elevated from the levels typically seen several years into an expansion.
+
+\end{minipage}\\
+
+\vspace{2mm}
+
+\begin{minipage}{0.37\textwidth}
+\noindent \normalsize \textbf{Long-term Unemployed}\\
+\footnotesize{\textit{unemployed 27+ weeks, share of population}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3}, 
+		enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, height=4.8cm, width=6.5cm, clip=false]
+	\rbars
+	\stdline{blue}{date}{VALUE}{data/ltu.csv}
+	\input{text/ltu_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: BLS} \hspace{34mm} \tbllink{ltu.csv}
+\end{minipage}\hspace{7mm}
+\begin{minipage}{0.37\textwidth}
+\noindent \normalsize \textbf{Duration of Unemployment}\\
+\footnotesize{\textit{in weeks}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50}, 
+		enlarge y limits={0.1}, ymin=3.5,
+		xticklabel={`\short{\year}}, height=4.8cm, width=6.5cm, clip=false]
+	\rbars
+	\stdline{green!75!blue}{date}{Median}{data/unempdur.csv}
+	\stdline{orange}{date}{Mean}{data/unempdur.csv}
+	\stdnode{4.2cm}{0.3cm}{\footnotesize \color{green!75!blue}Median}
+	\stdnode{1.1cm}{1.6cm}{\footnotesize \color{orange}Average}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: BLS} \hspace{34mm} \tbllink{unempdur.csv}
+\end{minipage}
+\newpage
+
+\subsubsection*{\color{black!70} \seriffont Unemployment by metro area}
+
+\begin{minipage}{0.76\textwidth}
+
+
+\small Summary text about local area estimates of unemployment. Will need to think about tables that show highlights, because there are too many MSAs to list all data. Perhaps I can list how many metro areas had the unemployment rate fall over the past year, and then talk about how many unemployed people that actually means--so that population is taken into consideration in some meaningful way.\\
 
 \vspace{2mm}
 
@@ -3733,6 +3774,11 @@ A large increase in the amount of money held by individuals and institutions can
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE \seriffont Prices}
 \label{sec:pr}
+\small 
+Changes in prices affect the amount of goods and services that can purchased by a fixed amount of income. When researchers try to measure changes in prices, they often look at both the quantity that can be purchased by a unit of currency, and also changes in quality of the item. To understand the overall change in prices faced by a certain group, such as consumers, researchers create a representative ``basket'' of the goods and services purchased by the group, and track the changes in the basket, and the price of the baseket, over time. 
+
+
+\subsection*{\color{black!70} \seriffont Consumer Price Index}
 
 \small \input{text/cpi_main.txt} \\
 
@@ -3815,6 +3861,8 @@ Expectations
 \newpage
 
 \begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Commodity Prices}
 
 \small \input{text/wti.txt}\\
 
