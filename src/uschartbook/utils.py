@@ -1,13 +1,16 @@
 import numpy as np
 import pandas as pd
+import requests
+import json
+import os
+from datetime import datetime
+import sqlite3
 
 qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 
 
 def bea_api_nipa(table_list, bea_key):
     ''' Return tables in table list for years in range'''
-    import requests
-    from datetime import datetime
 
     years = ','.join(map(str, range(1988, 2020)))
 
@@ -32,8 +35,6 @@ def bea_api_nipa(table_list, bea_key):
 
 def bea_api_gdpstate(bea_key):
     ''' Return tables in table list for years in range'''
-    import requests
-    from datetime import datetime
 
     years = ','.join(map(str, range(2008, 2020)))
 
@@ -61,7 +62,6 @@ def bea_api_gdpstate(bea_key):
     
 def bea_to_db(api_results):
 	'''Connect to SQL database and add API results'''
-	import sqlite3
 	conn = sqlite3.connect('../data/chartbook.db')
 
 	c = conn.cursor()
@@ -77,8 +77,6 @@ def bea_to_db(api_results):
 
 def retrieve_table(table_id):
     '''Returns table from local database'''
-    import json
-    import sqlite3
     table_id = (table_id, table_id)
     conn = sqlite3.connect('../data/chartbook.db')
     c = conn.cursor()
@@ -92,7 +90,6 @@ def retrieve_table(table_id):
     
 def nipa_df(nipa_table, series_list):
     '''Returns dataframe from table and series list'''
-    import pandas as pd
     data = {}
     for code in series_list:
     	lineno = [i['LineNumber'] for i in nipa_table if (i['SeriesCode'] == code) & (i['TimePeriod'] == '2016Q4')]
@@ -104,7 +101,6 @@ def nipa_df(nipa_table, series_list):
     
 def gdpstate_df(table):
     '''Returns dataframe from table and series list'''
-    import pandas as pd
     data = {}
     
     series_list = list(set([i['GeoName'] 
@@ -174,10 +170,11 @@ def dtxt(date):
 	     'mon2': date.strftime('%b %Y'),
 	     'mon3': date.strftime('%B'),
 	     'mon4': date.strftime(f'`{date.strftime("%y")} {date.strftime("%b")}'),
+	     'mon5': date.strftime('%Y-%m'),
 	     'day1': date.strftime('%B %-d, %Y'),
 	     'day2': date.strftime('%b %-d, %Y'),
 	     'day3': date.strftime('%d'),
-	     'datetime': date.strftime('%Y-%d-%m')}	
+	     'datetime': date.strftime('%Y-%m-%d')}	
 	return d
 	
 
@@ -225,8 +222,6 @@ def cont_subt(value, style='main'):
 
 def series_info(s):
     '''Return info about a pandas series'''
-    
-    import pandas as pd
     
     obs_per_year = len(s.loc['2017'])
     d = {}
@@ -302,11 +297,6 @@ def three_year_growth(data, series):
 
 def bls_api(series, date_range, bls_key):
     """Collect list of series from BLS API for given dates"""
-        
-    # Import preliminaries
-    import requests
-    import pandas as pd
-    import json
     
     # The url for BLS API v2
     url = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
@@ -356,9 +346,6 @@ def bls_api(series, date_range, bls_key):
 def binned_wage(group, wage_var='WKWAGE', percentile=0.1, bins=list(np.arange(25, 3000, 50.0)), bin_size=50.0):
     """Return BLS-styled binned decile/percentile wage"""
     
-    import pandas as pd
-    import numpy as np
-    
     # Use ORG weight since wage defined only for ORG sample
     weight = 'PWORWGT'
     
@@ -391,8 +378,6 @@ def binned_wage(group, wage_var='WKWAGE', percentile=0.1, bins=list(np.arange(25
     
 def cps_date():
     '''Returns latest month of available data'''
-    import os
-
     cps_loc = '/home/brian/Documents/CPS/data/'
     
     raw_files = [(file[0:3], [f'19{file[3:5]}' 
@@ -406,3 +391,32 @@ def cps_date():
               .sort_values())
     
     return dates[-1]
+    
+    
+def fred_df(series, start='1989'):
+    url = f'http://research.stlouisfed.org/fred2/series/{series}/downloaddata/{series}.csv'
+
+    df = pd.read_csv(url, index_col='DATE', parse_dates=True)
+
+    return df.loc[start:]    
+    
+    
+def end_node(data, color):
+    latest = data.iloc[-1]
+    date = dtxt(data.index[-1])['datetime']
+    text = (f'\\node[label={{0:{{\scriptsize {latest:.1f}\%}}}}, circle, '+
+            f'{color}, fill, inner sep=1.0pt] at '+
+            f'(axis cs:{date}, {latest:.3f}) {{}};')
+    
+    return text
+    
+
+def val_inc_pp(val):
+    if val >= 0.1:
+        txt = f'increased by a total of {val:.1f} percentage points'
+    elif val <= -0.1:
+        txt = f'decreased by a total of {abs(val):.1f} percentage points'
+    else:
+        txt = 'was virtually unchanged'
+        
+    return txt
