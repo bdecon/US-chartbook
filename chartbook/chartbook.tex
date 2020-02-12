@@ -3797,18 +3797,21 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \vspace{2mm}
 
 \noindent \normalsize \textbf{Consumer Price Index}\\
-\footnotesize{\textit{annual growth, percent}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{annual growth, percent}}\\
+\vspace{25mm}
+
+\noindent \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6}, 
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.98, 1.13)}},
-		height=4.4cm, enlarge y limits={0.11}]
+		legend style={at={(0.98, 1.16)}},
+		height=4.6cm, enlarge y limits={0.11}]
 	\rbars
 	\stdline{blue!60!cyan}{date}{ALL}{data/cpi.csv}
 	\stdline{gray}{date}{CORE}{data/cpi.csv}
 	\legend{All-items, Core};
 	\end{axis}
 \end{tikzpicture}\\
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi.csv}
 
 \end{minipage}
@@ -3875,16 +3878,20 @@ PCE \\
 \vspace{2mm}
 
 \noindent \normalsize \textbf{5-year Expected Average Inflation}\\
-\footnotesize{\textit{breakeven rate implied by treasury yields, percent}}\\
+\footnotesize{\textit{percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\ltdateaxisticks ytick={0, 0.5, 1.0, 1.5, 2.0}, 
+	\begin{axis}[\ltdateaxisticks ytick={0, 1.0, 2.0, 3.0}, 
 		enlarge y limits={0.1}, ymin=0.15, \bbar{y}{0}, clip=false,
 		xticklabel={`\short{\year}}, height=5.4cm, width=7.2cm]
 	\thinline{blue!70!black}{date}{VALUE}{data/infbreak.csv}
+	\thickline{violet}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
+	\input{text/infumich_node.txt}
+	\stdnode{2.28cm}{1.58cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
+	\stdnode{2.68cm}{3.35cm}{\scriptsize \color{violet}\textbf{Survey}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: FRED} \hspace{39mm} \tbllink{infbreak.csv}
+\footnotesize{Source: FRED; U. of Michigan} \hspace{19mm} \tbllink{infbreak.csv}
 \end{minipage}
 
 \newpage
