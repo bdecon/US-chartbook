@@ -821,7 +821,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 \end{minipage}\hspace{5mm}
 \begin{minipage}{0.4\textwidth}
 \noindent \normalsize \textbf{Highest Level of Education}\\
-\footnotesize{\textit{age 25+ population, in millions, December 2019}}\\
+\footnotesize{\textit{age 25+ population, in millions, \input{text/cps_ltdate.txt}}}\\
 
 \vspace{-1mm}
 \noindent \hspace*{-4mm} \begin{tikzpicture}
@@ -852,7 +852,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 
 \vspace{2mm}
 
-\noindent \normalsize \textbf{Education Distribution} \small \hspace{10mm} \cbox{red!70!purple} December 2019 \hspace{4mm} \cbox{orange!80} 2000\\
+\noindent \normalsize \textbf{Education Distribution} \small \hspace{10mm} \cbox{red!70!purple} \input{text/cps_ltdate.txt} \hspace{4mm} \cbox{orange!80} 2000\\
 \footnotesize{\textit{share of age 25+ population, percent}}\\
 
 \small \hspace{22mm} Total \hspace{54mm} Employed\\  
@@ -2324,9 +2324,37 @@ Estimate of markup(s)?\\
 
 \vspace{2mm}
 
-\small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a stable asset for the balance sheets domestic households and businesses, and for foreign investors.\\
+\small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a stable asset for the balance sheets domestic households and businesses, and for foreign investors.
 
-\vspace{4mm}
+\end{minipage}
+
+\subsubsection*{\color{black!70} \seriffont Interest Expense}
+
+\begin{minipage}{0.34\textwidth}
+\small \input{text/fedintexp.txt}
+\end{minipage} \hspace{6mm} \begin{minipage}{0.35\textwidth}
+\noindent \normalsize \textbf{Federal Interest Outlays}\\
+\footnotesize{\textit{share of GDP, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={1, 2, 3}, clip=false, ymin=1,
+		xticklabel={`\short{\year}}, height=4.3cm, width=6.6cm]
+	\rbars
+	\thickline{magenta}{date}{VALUE}{data/fedintexp.csv}
+	\input{text/fedintexp_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: FRED; OMB} \hfill \tbllink{fedintexp.csv}
+
+\end{minipage} \\
+\vspace{1mm}
+
+\begin{minipage}{0.76\textwidth}
+\small While debt levels are much lower for the consolidated state and local government sectors, interest rates on municipal bonds are higher, and interest paid to investors is a larger share of government expenses at the state and local level.
+\end{minipage}
+
+
+
+\newpage
 
 \normalsize
 Outlays on interest as share of GDP \\
@@ -2340,8 +2368,6 @@ Local \\
 Balance sheets \\
 
 [BREAKOUT SECTION ON STATE AND LOCAL PENSIONS]
-
-\end{minipage}
 
 
 \newpage
@@ -3275,7 +3301,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \begin{minipage}{0.30\textwidth}
 \small The great recession worsened job-finding prospects for those not in the labor force (NILF) due to disability or illness. Only over the past few years have these prospects recovered. \input{text/disflow.txt}
-\end{minipage} \hspace{8mm} \begin{minipage}{0.38\textwidth}
+\end{minipage} \hspace{8mm} \begin{minipage}{0.39\textwidth}
 \noindent \normalsize \textbf{Flow, Disability to Work}\\
 \footnotesize{\textit{NILF disability/illness, share employed one year later}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -3591,13 +3617,13 @@ Wage growth: \\
 		draw=orange, scale=2}] 
 		table [y expr=-\coordindex, x index=3] {\unmem};
 	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=3] {\unmem};
-	\legend{, 30-year range, December 2019}
+	\legend{, 30-year range, \input{text/cps_ltdate.txt}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations from CPS} \hspace{12mm} \tbllink{union_ind.csv}\\
 \end{minipage}\hspace{4mm}
 \begin{minipage}{0.3\textwidth}
-\small Public administration has the highest union membership rate, at 32.0 percent as of December 2019, followed by education and health with 16.1 percent. The manufacturing industry experienced the largest overall percentage point decrease in union membership rates over the past 30 years, and is currently 15.7 percentage points below its February 1989 rate of 23.5 percent. The construction and mining industries union membership rate is 11.2 percent in December 2019. The lowest union membership rate is in the leisure and hospitality industries (2.5 percent). The union membership rate of the industry was 18 percent at its 30-year peak in January 1989. 
+\small Union membership rates vary substantially by industry. \input{text/union_ind.txt}
 \end{minipage}
 
 \newpage
@@ -3878,13 +3904,13 @@ PCE \\
 \vspace{2mm}
 
 \noindent \normalsize \textbf{5-year Expected Average Inflation}\\
-\footnotesize{\textit{percent}}\\
+\footnotesize{\textit{expected average annual rate, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={0, 1.0, 2.0, 3.0}, 
 		enlarge y limits={0.1}, ymin=0.15, \bbar{y}{0}, clip=false,
 		xticklabel={`\short{\year}}, height=5.4cm, width=7.2cm]
 	\thinline{blue!70!black}{date}{VALUE}{data/infbreak.csv}
-	\thickline{violet}{date}{PX5_MD}{data/infumich.csv}
+	\stdline{violet}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
 	\input{text/infumich_node.txt}
 	\stdnode{2.28cm}{1.58cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
