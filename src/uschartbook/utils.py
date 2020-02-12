@@ -396,7 +396,7 @@ def cps_date():
 def fred_df(series, start='1989'):
     url = f'http://research.stlouisfed.org/fred2/series/{series}/downloaddata/{series}.csv'
 
-    df = pd.read_csv(url, index_col='DATE', parse_dates=True)
+    df = pd.read_csv(url, index_col='DATE', parse_dates=True, na_values=['.'])
 
     return df.loc[start:]    
     

@@ -123,6 +123,18 @@
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
 		
+		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\ltdateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2020-07-01},
+		max space between ticks=40,	    
+		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
+		    {2019-01-01}, {2020-01-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
+		
+		
 	% Settings for y label text in horizontal bar charts
 	\newcommand{\barylab}[2]{yticklabel style={text width=#1, align=right, 
 		style={black!70}, text height=#2},}
@@ -137,6 +149,10 @@
 		
 	% Standard line
 	\newcommand{\stdline}[4]{\addplot[very thick, no markers, color=#1] 
+		table [x=#2, y=#3, col sep=comma] {#4};	}
+		
+	% Thicker line
+	\newcommand{\thinline}[4]{\addplot[no markers, color=#1] 
 		table [x=#2, y=#3, col sep=comma] {#4};	}
 		
 	% Dashed line
@@ -2235,7 +2251,7 @@ Estimate of markup(s)?\\
 
 \begin{minipage}{0.76\textwidth}
 
-\small Government expenditures provide services and income to people. Government receipts remove demand from the economy. When government expenditures exceed receipts, it is referred to as a government deficit, and corresponds to a private sector surplus. The size of the government deficit relative to GDP gives insight into the extent to which the government is stimulating the economy by increasing household income and corporate profits.\\
+\small Government current expenditures include consumption and investment as well as transfers such as government social benefits to persons. Government spending provides services and income to people. Government current receipts, mostly tax receipts, remove demand from the economy. When government expenditures exceed receipts, it is referred to as a government deficit, and corresponds to a private sector surplus. The size of the government deficit relative to GDP gives insight into the extent to which the government is stimulating the economy by increasing household income and corporate profits.\\
 
 \input{text/govexprec2.txt} \\
 
@@ -2308,7 +2324,7 @@ Estimate of markup(s)?\\
 
 \vspace{2mm}
 
-\small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a stable asset for the balance sheets domestic households and businesses, and for foreign investors. \\
+\small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a stable asset for the balance sheets domestic households and businesses, and for foreign investors.\\
 
 \vspace{4mm}
 
@@ -3278,13 +3294,13 @@ Gross labor income (compensation of employees in the national accounts), which c
 
 \begin{minipage}{0.76\textwidth}
 
-\small Some types of turnover in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving of a job as ``quits''. 
+\small Some types of turnover in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving a job as ``quits''. 
 \end{minipage}\\
 
-\begin{minipage}{0.26\textwidth}
+\begin{minipage}{0.28\textwidth}
 \small \input{text/jolts2.txt}
-\end{minipage} \hspace{5mm}
-\begin{minipage}{0.42\textwidth}
+\end{minipage} \hspace{4.5mm}
+\begin{minipage}{0.437\textwidth}
 \noindent \normalsize \textbf{Job Turnover}\\
 \footnotesize{\textit{job openings, hires, and quits, in millions}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -3329,7 +3345,7 @@ Gross labor income (compensation of employees in the national accounts), which c
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{14mm} \tbllink{quits.csv}
 \end{minipage}
-\hspace{4mm}
+\hspace{4.5mm}
 \begin{minipage}{0.34\textwidth}
 
 \small The quits rate within the accommodations and food services industries (which includes restaurants), is highly cyclical, and tends to rise when a tight labor market pulls people out of restaurant jobs and into higher paying jobs in other industries. \input{text/quits_afs.txt}\\
@@ -3680,18 +3696,16 @@ Valuations \\
 
 \subsection*{\color{black!70} \seriffont Interest Rates}
 
-\vspace{4mm}
-
 \small The US Federal Reserve System (Fed) has a congressional \href{https://www.federalreserve.gov/faqs/money_12848.htm}{mandate} to promote price stability and maximum employment. In practice, a Fed committee (FOMC) determines the federal funds rate, which aims to influence interest rates in the broader economy. Fed monetary policy can be neutral or be used to stimulate or slow the economy.\\
 
-\input{text/rates_ff.txt} The FOMC cut interest rates three times in 2018, for a total reduction of 75 basis points. \\
+\input{text/rates_ff.txt} The FOMC cut interest rates three times in 2019, for a total reduction of 75 basis points. \\
 
 \vspace{1mm}
 
 \noindent \normalsize \textbf{Effective Fed Funds Rate}\\
 \footnotesize{\textit{percent, monthly average except for latest value }}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
 	\stdline{blue!60!black}{date}{Fed Funds}{data/rates.csv}
@@ -3699,7 +3713,7 @@ Valuations \\
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}\\
 
-\vspace{4mm}
+\vspace{3mm}
 
 \small \input{text/rates_basic.txt} \\
 
@@ -3708,13 +3722,13 @@ Valuations \\
 \noindent \normalsize \textbf{Treasury Constant Maturity Yields}\\
 \footnotesize{\textit{percent, monthly average except for latest value }}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, ymin=0.05,
-		xticklabel={`\short{\year}}, clip=false]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10}, ymin=0.2,
+		xticklabel={`\short{\year}}, clip=false, height=5.4cm]
 	\rbars
-	\stdline{red!80!purple}{date}{Ten-year}{data/rates.csv}
-	\stdline{orange!70!yellow}{date}{Two-year}{data/rates.csv}
-	\stdnode{6.2cm}{0.65cm}{\scriptsize \color{orange!70!yellow}\textbf{Two-year}}
-	\stdnode{8.7cm}{1.28cm}{\scriptsize \color{red!80!purple}\textbf{Ten-year}}
+	\stdline{red!70!purple!90!black}{date}{Ten-year}{data/rates.csv}
+	\stdline{orange!80!yellow}{date}{Two-year}{data/rates.csv}
+	\stdnode{6.1cm}{0.65cm}{\scriptsize \color{orange!80!yellow}\textbf{Two-year}}
+	\stdnode{8.68cm}{1.36cm}{\scriptsize \color{red!70!purple!90!black}\textbf{Ten-year}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}\\
@@ -3723,13 +3737,11 @@ Valuations \\
 
 \normalsize
 
-\hspace{4mm} [Fed liabilities] \\
-
-\hspace{4mm} [Fed assets] \\
+\hspace{4mm} [Fed balance sheet (assets and liabilities separately)] \\
 
 \hspace{4mm} [AAA and high-yield] \\
 
-\vspace{3mm}
+\vspace{1mm}
 
 \small The Treasury yield curve shows the yield on different maturities of Treasury bonds and bills, usually from short-term, such as three-month, to long-term such as 30-year. This measure is at times described as ``inverted'', which means the short-term-debt end of the curve is higher than the long-term-debt end. For example, if the yield on two-year treasuries is higher than the yield on ten-year treasuries. 
 
@@ -3775,7 +3787,7 @@ A large increase in the amount of money held by individuals and institutions can
 \section*{\color{darkgray}\LARGE \seriffont Prices}
 \label{sec:pr}
 \small 
-Changes in prices affect the amount of goods and services that can purchased by a fixed amount of income. When researchers try to measure changes in prices, they often look at both the quantity that can be purchased by a unit of currency, and also changes in quality of the item. To understand the overall change in prices faced by a certain group, such as consumers, researchers create a representative ``basket'' of the goods and services purchased by the group, and track the changes in the basket, and the price of the baseket, over time. 
+Changes in prices affect the amount of goods and services that can purchased by a fixed amount of income. When researchers try to measure changes in prices, they often look at both the quantity that can be purchased by a unit of currency, and also changes in quality of the item. To understand the overall change in prices faced by a certain group, such as consumers, researchers create a representative ``basket'' of the goods and services purchased by the group, and track the changes in the basket, and the price of the basket, over time. 
 
 
 \subsection*{\color{black!70} \seriffont Consumer Price Index}
@@ -3854,8 +3866,25 @@ XMPI \\
 
 PCE \\
 
-Expectations 
+\vspace{4mm}
 
+\subsection*{\color{black!70} \seriffont Inflation Expectations}
+
+\small Researchers gain insight on what inflation is expected in the future both through regular surveys of consumers and through market data. One market-based measure is known as the inflation ``breakeven'' and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced-in, on average, for the maturity of the bond.\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{5-year Expected Average Inflation}\\
+\footnotesize{\textit{breakeven rate implied by treasury yields, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\ltdateaxisticks ytick={0, 0.5, 1.0, 1.5, 2.0}, 
+		enlarge y limits={0.1}, ymin=0.15, \bbar{y}{0}, clip=false,
+		xticklabel={`\short{\year}}, height=5.4cm, width=7.2cm]
+	\thinline{blue!70!black}{date}{VALUE}{data/infbreak.csv}
+	\input{text/infbreak_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: FRED} \hspace{39mm} \tbllink{infbreak.csv}
 \end{minipage}
 
 \newpage
