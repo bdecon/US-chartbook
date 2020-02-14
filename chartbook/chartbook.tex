@@ -1482,7 +1482,6 @@ Housing permits/starts \\
 
 Geographic location of housing permits \\
 
-Households; owners' equity in real estate as a percentage of household real estate, Level (HOEREPHRE)\\
 
 \vspace{4mm}
 
@@ -1626,9 +1625,9 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 \end{tikzpicture}\\
 \footnotesize{Source: CPS ASEC} \hspace{40mm} \tbllink{poor2.csv}\\
 
-\vspace{2mm}
+\vspace{3mm}
 
-\small By age, market income leaves the elderly particularly vulnerable, given higher average expenditure on healthcare. After welfare income and taxes, the elderly have much lower rates of poverty. After-tax income leaves students and below social security and medicare age vulnerable.\\
+\small By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty, as they are not as likely to have labor income. After social benefits and taxes (disposable income [see\cbox{green!85!blue}]), the elderly have much lower rates of poverty than other age cohorts. Higher survivorship for the wealthy also has the effect of reducing poverty in very old ages. Disposable income still leaves young adults and those just below social security and medicare age (late 50s and early 60s) vulnerable to poverty, relative to other ages.\\
 
 \vspace{2mm}
 
@@ -1636,7 +1635,7 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 \footnotesize{\textit{in billions of 2018 US Dollars}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[ymin=0, ymax=13, enlarge x limits={0.01},
-		width=6.7cm, height=6cm, ytick={0, 5, 10}, xtick={0, 10, 20, 30, 40, 50, 60, 70},
+		width=6.7cm, height=5.9cm, ytick={0, 5, 10}, xtick={0, 10, 20, 30, 40, 50, 60, 70},
 		xlabel={age}]
 	\addplot[stack plots=y, area style, draw=none, fill=green!85!blue] 
 		table [x=age, y=disposable, 
@@ -1650,7 +1649,7 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[ymin=0, ymax=13, enlarge x limits={0.01},
-		width=6.7cm, height=6cm, ytick={0, 5, 10}, xtick={0, 10, 20, 30, 40, 50, 60, 70},
+		width=6.7cm, height=5.9cm, ytick={0, 5, 10}, xtick={0, 10, 20, 30, 40, 50, 60, 70},
 		xlabel={age}]
 	\addplot[stack plots=y, area style, draw=none, fill=green!85!blue] 
 		table [x=age, y=disposable, 
@@ -1661,7 +1660,7 @@ While some fully-employed people are in poverty, the vast majority of poor peopl
 	\stdnode{0.5cm}{4.1cm}{\large 2014}
 	\end{axis}
 \end{tikzpicture}\\
-\vspace{-2mm}
+\vspace{-3mm}
 
 \footnotesize{Source: CPS ASEC, 2014 adjusted for inflation with CPI-U-RS} \hfill \tbllink{poor_age_latest.csv}
 
@@ -3253,17 +3252,19 @@ Gross labor income (compensation of employees in the national accounts), which c
 		xticklabel={`\short{\year}}, clip=false, 
 		yticklabel style={text width=1.8em}, height=8.5cm]
 	\rebars
+	\stdline{violet!70!purple}{date}{Demographics}{data/nilf.csv}
 	\thickline{green!80!blue}{date}{Disabled/Ill}{data/nilf.csv}
 	\thickline{blue}{date}{Discouraged}{data/nilf.csv}
 	\thickline{red}{date}{Family}{data/nilf.csv}
 	\thickline{orange}{date}{Retired}{data/nilf.csv}
 	\thickline{cyan}{date}{School}{data/nilf.csv}
 	\input{text/nilf_nodes.txt}
-	\stdnode{6.3cm}{1.9cm}{\scriptsize \color{green!80!blue}\textbf{Disabled/Ill}}
+	\stdnode{7.25cm}{2.7cm}{\scriptsize \color{green!80!blue}\textbf{Disabled/Ill}}
 	\stdnode{5.2cm}{3.4cm}{\scriptsize \color{blue}\textbf{Discouraged}}
 	\stdnode{5.7cm}{5.2cm}{\scriptsize \color{red}\textbf{Family/Care}}
 	\stdnode{5.2cm}{6.5cm}{\scriptsize \color{orange}\textbf{Retired}}
 	\stdnode{6.2cm}{0.7cm}{\scriptsize \color{cyan}\textbf{School}}	
+	\stdnode{7.75cm}{1.48cm}{\scriptsize \color{violet!80!purple}\textbf{Age/Sex}}	
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations from Current Population Survey} \hspace{16mm} \tbllink{nilf.csv}
