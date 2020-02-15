@@ -420,3 +420,28 @@ def val_inc_pp(val):
         txt = 'was virtually unchanged'
         
     return txt
+    
+    
+def cps_12mo(cps_dir, cps_dt, cols):
+    '''
+    Return 12 months of bd_CPS variables cols ending cps_dt
+    '''
+
+    if 'MONTH' not in cols:
+        cols = cols + ['MONTH']
+    if 'YEAR' not in cols:
+        cols = cols + ['YEAR']
+
+    cps_year = cps_dt.year
+    cps_month = cps_dt.month
+    if cps_month != 12:
+        cps_year1 = cps_year - 1
+        cps_year2 = cps_year
+        df = (pd.read_feather(cps_dir / f'cps{cps_year1}.ft', columns=cols)
+              .query('MONTH > @cps_month')
+              .append(pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
+                        .query('MONTH <= @cps_month')))
+    else:
+        df = pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
+        
+    return df

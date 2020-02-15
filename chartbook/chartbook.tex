@@ -662,7 +662,13 @@ Section overview with two charts: One on demographics and the other on income an
 
 \subsection*{\color{black!70} \seriffont Demographics and Household Formation}
 
-This section should capture 1) population, 2) population growth, 3) aging, 4) increased education.
+\small This section should capture 1) population, 2) population growth, 3) aging, 4) increased education.\\
+
+\vspace{4mm}
+
+The total US population is 329 million. The Census divides the population into those living in households (about 97 percent of the total) and those living in \textbf{group quarters}, such as prisons (1.5 million people), jails (750,000 people, of which 480,000 are pre-trial), nursing homes (1.3 million people), barracks (around 300,000), dormitories (around 2.6 million), group homes (300,000), and shelters (200,000). The numbers for group quarters populations are likely low estimates, as they are derived from older sources than the population estimate. The 2020 Census will provide detailed information on the exact share of each population in each category of living arrangement.\\ 
+
+Among those living in \textbf{households}, roughly 74 million are children under the age of 18, 198 million are age 18 to 64, and 53 million are age 65 or older. These numbers and the group quarters populations do not sum to the total population because of differences in sources as well as some overlap between the two categories, particularly for those in school dormitories. \\
 
 \end{minipage}
 
@@ -672,7 +678,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
 
 \subsubsection*{\color{black!70} \seriffont Age}
 
-\small In discussions on demographics, aging is often described as a serious headwind to economic growth in major advanced economies. The increased share of many countries' population that is of retirement age means a smaller share are working and borrowing and a larger share are receiving pension benefits and lending to the financial system. These trends can be overcome by a workforce that is more efficiently able to provide goods and services. In part due to a shorter life-expectancy, this problem is more pronounced in Japan and western Europe, but is still a important issue for the US.
+\small In discussions on demographics, aging is often described as a serious headwind to economic growth in major advanced economies. The increased share of many countries' population that is of retirement age means a smaller share are working and borrowing and a larger share are receiving pension benefits and lending to the financial system. These trends can be overcome by a workforce that is more efficiently able to provide goods and services. In part due to a shorter life-expectancy in the US, this problem is more pronounced in Japan and western Europe, but is still a important issue for the US.
 
 \end{minipage}
 
@@ -694,7 +700,7 @@ This section should capture 1) population, 2) population growth, 3) aging, 4) in
   		table [y expr=-\coordindex, x index=1] {\agesh};
   	\addplot[fill=green!55!blue!80, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\agesh};
-  	\legend{1989, 2019}
+  	\legend{1989, \input{text/cps_age_dt.txt}}
   	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Author's calculations from CPS}
