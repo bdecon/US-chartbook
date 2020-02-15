@@ -275,33 +275,6 @@
 
 \vspace{2mm}
 
-\newpage
-
-\subsection*{\color{black!70} {\seriffont Ideas/Suggestions/To Do}}
-
-\begin{minipage}{0.76\textwidth}
-
-See \href{https://github.com/bdecon/US-chartbook}{US-chartbook project on GitHub} for source code and list of issues.\\
-
-\small Continue to fill out the content of the document. Additionally, refactor some of the older code and clean up some of the issues with older charts and text. Data retrieved from Census, BLS, the Fed and others needs to be stored in the SQL database, the way BEA data is stored. Individual notebooks or python files should be created for each source.\\
-
-A lot of editing is needed, as the current text is full or errors and often not ideal. Some of the text is already good, but much of it is still in early drafts or not available at all. Part of speeding up the text generation, and cleaning up the existing code, will be writing a module that generates several options for a text value.\\
-
-Shift approach slightly towards making document more accessible to audience without econ background. The primary way to do this is to offer three types of intuition: mathematical, graphical, and logical. In addition to this, try to present data in text, charts, and tables. \\
-
-Critical to emphasize the importance of multiple approaches to GDP compilation. Many people in the US think about GDP only from the expenditure approach, but the income approach is equally important, and arguably more intuitive. \\
-
-Section listing recent updates and upcoming releases would be nice. This would require some thinking in terms of implementation. \\
-
-Get the table of contents up and running soon. Also look into options for links to footnotes at the end of the document. Add in some table and release numbers/data where available.\\
-
-Beyond content, I still need to do/add: links to sources, links to code, date of last update, list of charts and numbering system, links between charts and references, marks for recent updates, explicitly note seasonal adjustment, adjusting to make text associated with values of less than one singular instead of plural (e.g. "0.1 percentage point"), and much much more. \\
-
-In many cases, a link to a .csv file contained the data used in the chart \color{blue}{\faTable}\color{black} \ is available in the bottom right corner of the chart. Each page also has a link to the table of contents \color{blue}{\faList}\color{black} \ in the bottom right corner of the page, to the right of the page number.\\
-
-Major LT developments: rise of imports, computers in the 1990s, welfare reform in 1996, rise in education level, aging of the population. Major MT developments: increase in health care costs, housing bubble, government austerity from 2010 to 2014. Major ST developments: low business investment, higher wages, increased employment, low interest rates on LT debt, low productivity growth. 
-
-\end{minipage}
 
 
 \newpage
@@ -311,11 +284,7 @@ Major LT developments: rise of imports, computers in the 1990s, welfare reform i
 
 \small The US Chartbook aims to be comprehensive, but not arbitrary, in presenting charts, tables, and analysis. The results are fairly detailed, but hopefully well-curated and well-organized. \\
 
-This first section discusses high-level indicators of the health of the US economy. Subsequent sections offer more detail on types of activity, sectors, and markets. Finally, some international comparisons are presented.\\
-
-This first page should show the horizontal range chart for the top five indicators: GDP growth, wages, epop, cpi inflation, and 10 year treasury yields. Additional information on each one should be pretty brief, but the section should be heavy on links to other, more detailed, sections.\\
-
-Perhaps also provide some high level context in this section, by converting large numbers into small ones. 
+This first section discusses high-level indicators of the health of the US economy. Subsequent sections offer more detail on types of activity, sectors, and markets. Finally, some international comparisons are presented.
 
 \end{minipage}
 
@@ -973,29 +942,9 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 	\legend{Earnings, Total Income};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{80mm} \tbllink{pearn_dist.csv}\\
-
-\vspace{6mm}
-
-\normalsize
-
-Capital Income \\
-
-Welfare Income \\
-
-\vspace{2mm}
-
-[\textbf{Breakout section on income of the aged}] \\
-
-\small \href{https://www.ssa.gov/policy/docs/chartbooks/income_aged/}{Income of the aged} is looking like a very important section. I hadn't realized the extent to which demographics are rapidly putting downward pressure on the employment rate. Something like four percent of the population is shifting from work age to retirement age.\\
-
-It's important here to point out that social security retirement income is the solution, not the problem. There has been a reduction in private retirement benefits in the form of defined benefit pension plans and a shift towards reliance on 401k and IRA plans. But social security has never missed a payment. In contrast, hundreds of thousands of people are pushed in bankruptcy each year by medical bills. By not extending social insurance to younger people, a larger portion of pre-retirement-age people have their savings wiped out by common life events like having children or a period of illness. As a result, more pressure is put on social insurance for retirement. \\
-
-Ideally I would like to look at the demographics (employment adjustment for age), and then replicate the income of the aged calculation on an annual basis to show how many households are kept out of poverty by social security retirement income. 
-
+\footnotesize{Source: CPS ASEC} \hspace{80mm} \tbllink{pearn_dist.csv}
 \end{minipage}
 
-\newpage 
 
 \subsubsection*{\color{black!70} \seriffont Household Income}
 
@@ -2189,24 +2138,6 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \newpage
 
-\begin{minipage}{0.76\textwidth}
-
-
-\normalsize
-
-Free cash flow \\
-
-Balance sheets \\
-
-Inventories \\
-
-Estimate of markup(s)?\\
-
-[Box on tech industry]\\
-
-\end{minipage}
-
-\newpage
 
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE \seriffont Government}
@@ -2358,23 +2289,6 @@ Estimate of markup(s)?\\
 \end{minipage}
 
 
-
-\newpage
-
-\normalsize
-Outlays on interest as share of GDP \\
-
-Federal\\
-
-State \\
-
-Local \\
-
-Balance sheets \\
-
-[BREAKOUT SECTION ON STATE AND LOCAL PENSIONS]
-
-
 \newpage
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE \seriffont International Transactions}
@@ -2433,18 +2347,6 @@ Balance sheets \\
 
 \newpage
 
-\begin{minipage}{0.76\textwidth}
-
-
-\normalsize [Capital account balance chart]\\
-
-
-\normalsize [TABLE similar to ITA table 1.1]
-
-
-\end{minipage}
-
-\newpage
 
 \begin{minipage}{0.76\textwidth}
 
@@ -3189,43 +3091,6 @@ Gross labor income (compensation of employees in the national accounts), which c
 \vspace{-2mm}
 
 \footnotesize{Source: Bureau of Labor Statistics}
-
-\end{minipage}
-
-
-\newpage
-
-
-\begin{minipage}{0.76\textwidth}
-
-\subsection*{\color{black!70} \seriffont Non-participation}
-
-\small Start with chart of labor force participation rate, including age-adjusted version. Alternatively, tie the size of unemployment to the size of non-participation. The things I want to capture in this section:\\
-
-1) Definitions \\
-
-2) Long-term trend--increase in female participation \\
-
-3) Aging population puts downward pressure \\
-
-4) Reasons for non-participation \\
-
-5) Disability as a reason \\
-
-6) School as a reason \\
-
-7) Retirement as a reason \\
-
-8) Care for family -- elder care \\
-
-9) Care for family -- child care \\
-
-10) Recent trends \\
-
-11) At least one good crosstab \\
-
-12) Geographic specificity if possible
-
 
 \end{minipage}
 
