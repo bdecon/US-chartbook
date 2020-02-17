@@ -570,7 +570,7 @@ This first section discusses high-level indicators of the health of the US econo
 
 \vspace{4mm}
 
-\small Additional text here. Also need more explanation above for other category because it is so large. Could also consider showing obligations to ROW as a category, but that only makes "other" larger, which means even more need for explanation. A table or bar chart that provides more detail could also do the trick. \\
+\small Additional text here. Also need more explanation above for other category because it is so large. Could also consider showing obligations to ROW as a category, but that only makes ``other'' larger, which means even more need for explanation. A table or bar chart that provides more detail could also do the trick. \\
 
 Within categories of wealth, the ratio of corporate equities to other categories of wealth has increased considerably... \\
 
@@ -585,7 +585,7 @@ Within categories of wealth, the ratio of corporate equities to other categories
 
 \begin{minipage}{0.76\textwidth}
 
-\small Private fixed investment, as measured in the national accounts, includes construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but not automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment and intellectual property products. The change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.\\
+\small \textbf{Private fixed investment}, as measured in the national accounts, includes construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but not automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment and intellectual property products. The change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.\\
 
 \input{text/inv_text.txt} \input{text/inv_text2.txt}\\
 
@@ -738,7 +738,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \subsubsection*{\color{black!70} \seriffont Homeownership}
 
-\small The homeownership rate measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}\\
+\small The \textbf{homeownership rate} measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}\\
 
 \vspace{2mm}
 
@@ -759,7 +759,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \small
 
-\input{text/homeeq.txt}\\
+As seen during the collapse of the housing bubble, it is possible for a ``homeowner'' to have little or no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in \textbf{owner's equity as a share of the market value of real estate} show substantial improvement since the lows following the collapse of the housing bubble.\input{text/homeeq.txt}\\
 
 \vspace{2mm}
 
@@ -770,11 +770,11 @@ Among those living in \textbf{households}, roughly 74 million are children under
 		enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, height=4.8cm, width=7.3cm, clip=false]
 	\rbars
-	\stdline{red!90!orange}{date}{VALUE}{data/homeeq.csv}
+	\stdline{blue!80!violet}{date}{VALUE}{data/homeeq.csv}
 	\input{text/homeeq_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hspace{30mm} \tbllink{homeeq.csv} 
+\footnotesize{Source: Federal Reserve} \hspace{30mm} \tbllink{homeeq.csv} 
 
 
 \end{minipage}
@@ -785,7 +785,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \subsubsection*{\color{black!70} \seriffont Education}
 
-\small Education is central in many discussions of the future of the US economy. Though very expensive in forgone years of earnings and often also expensive in tuition and textbooks costs, education typically results in higher earnings. In response to changing job opportunities from globalization and other policy decisions, household spending on education has increased considerably, resulting in a much more educated population.
+\small Education is central in many discussions of the future of the US economy. Though very expensive in forgone years of earnings and often also expensive in tuition and textbooks costs, education typically results in higher earnings. In response to changing job opportunities from globalization and other policy decisions, household spending on education has increased considerably, resulting in a much \textbf{more educated population}.
 
 \end{minipage}
 
@@ -1038,9 +1038,10 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \footnotesize{\textit{annual growth, per capita real personal consumption expenditures, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4}, 
-		xticklabel={`\short{\year}}, clip=false, height=4.0cm]
+		xticklabel={`\short{\year}}, clip=false, height=4.0cm, width=12.6cm]
 	\rbars
 	\stdline{green!80!black}{date}{rpcepop}{data/pcegrowth.csv}
+	\input{text/pcegrowth_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}  \hfill \tbllink{pcegrowth.csv}\\
@@ -1260,6 +1261,7 @@ Income and Expenses by Age and Number of Children\\
 
 \vspace{8mm}
 
+\subsubsection*{\color{black!70} \seriffont Return on Assets}
 
 \small The increase in assets as a share of GDP also means that the return on total household assets has fallen, as measured by disposable income as a share of household assets. \input{text/dpishta.txt} \\ 
 
@@ -1268,10 +1270,12 @@ Income and Expenses by Age and Number of Children\\
 \noindent \normalsize \textbf{Return on Household Assets}\\
 \footnotesize{\textit{disposable personal income as share of household and nonprofit total assets, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=4.4cm]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16}, 
+		enlarge y limits={0.1}, width=12.6cm, 
+		xticklabel={`\short{\year}}, clip=false, height=4.6cm]
 	\rbars
 	\stdline{red}{date}{DPIsh}{data/dpish.csv}
+	\input{text/dpish_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{dpish.csv}
@@ -1285,7 +1289,7 @@ Income and Expenses by Age and Number of Children\\
 
 \subsubsection*{\color{black!70} \seriffont Net Worth}
 
-\small The total assets of households have risen much faster than their total liabilities. Net worth is an aggregate measure of the financial position of households, measured as total assets minus total liabilities. \input{text/nw1.txt} \\
+\small The market value of assets of households has risen much faster than their total liabilities, causing a \textbf{substantial increase in net worth}. Net worth is an aggregate measure of the financial position of households, measured as total assets minus total liabilities. \input{text/nw1.txt} \\
 
 
 \input{text/nw2.txt}\\
@@ -1409,7 +1413,7 @@ Data are used in the following chart are not adjusted for changes in prices beca
 
 \vspace{8mm}
 
-\small \input{text/permits.txt}\\
+\small The Census Bureau \href{https://www.census.gov/construction/bps/}{tracks} the issuance of new residential building permits, which offer insight into \textbf{planned residential construction}. \input{text/permits.txt}\\
 
 \vspace{2mm}
 
@@ -1432,8 +1436,6 @@ Data are used in the following chart are not adjusted for changes in prices beca
 \begin{minipage}{0.76\textwidth}
 
 \normalsize
-
-Housing permits/starts \\
 
 Geographic location of housing permits \\
 
@@ -1462,7 +1464,7 @@ Geographic location of housing permits \\
 
 \subsubsection*{\color{black!70} \seriffont Saving}
 
-\small The portion of after-tax income that is not spent by households is considered \textbf{personal saving}, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the personal saving rate. Households use savings to handle unexpected expenses or cover expenses when income falls. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
+\small The portion of after-tax income that is not spent by households is considered \textbf{personal saving}, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the \textit{personal saving rate}. Households use savings to handle unexpected expenses or cover expenses when income falls. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
 
 \input{text/psavert.txt}\\
 
@@ -1489,7 +1491,7 @@ Geographic location of housing permits \\
 
 \begin{minipage}{0.43\textwidth}
 \small
-In 2018, income from labor and capital ownership, called market income, was below the Census Bureau threshold for poverty for 77.9 million people in the US. After-tax income, or disposable income, includes income from various government programs and tax credits, such as social security and the child tax credit, and subtracts taxes paid. By disposable income, \textbf{41.3 million people are in poverty}. In other words, government programs and tax credits moved the income of 36.6 million people above the poverty threshold. \\
+In 2018, income from labor and capital ownership, called \textit{market income}, was below the Census Bureau threshold for poverty for 77.9 million people in the US. After-tax income, or disposable income, includes income from various government programs and tax credits, such as social security and the child tax credit, and subtracts taxes paid. By disposable income, \textbf{41.3 million people are in poverty}. In other words, government programs and tax credits moved the income of 36.6 million people above the poverty threshold. \\
 
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.22\textwidth}
@@ -1522,7 +1524,7 @@ In 2018, income from labor and capital ownership, called market income, was belo
 
 \small The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{reports} 41.2 million people in poverty in the US in 2018, equivalent to more than the total population of Canada. For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the official measure being based on three times a price-adjusted 1963 minimal food budget, and the supplemental measure based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.\\
 
-While some fully-employed people are in poverty, the vast majority of poor people are children, elderly, disabled, caregivers, and students. That is, there is often a good reason why poor people are not working. Put another way, if the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poor.\\
+While some fully-employed people are in poverty, \textbf{the vast majority of poor people are children, elderly, disabled, caregivers, and students}. That is, there is often a good reason why poor people are not working. Put another way, if the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poor.\\
 
 \vspace{2mm}
 
@@ -1732,7 +1734,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the loosely defined business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses.
 
 \subsection*{\color{black!70} \seriffont Fixed Investment}
-\small When businesses purchase items with a useful life of more than one year it is considered an investment in fixed assets, which is an exchange of assets rather than an expense. Investments in fixed assets that make workers more productive, by definition, allow businesses to produce goods and services using less effort from people. Business investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
+\small When businesses purchase items with a useful life of more than one year it is considered an investment in fixed assets, which is an exchange of assets rather than an expense. \textbf{Investments in fixed assets make workers more productive}, as they allow businesses to produce goods and services per hour of work. Business investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
 \vspace{5mm}
 
 \noindent \normalsize \textbf{Business Fixed Investment}\\
@@ -1773,7 +1775,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \newpage
 
-\begin{minipage}{0.35\textwidth}
+\begin{minipage}{0.335\textwidth}
 
 \small Productive business investments also show up as \textbf{new orders for core capital goods}. The category excludes the more-volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  \\
 
@@ -1784,7 +1786,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \noindent \normalsize \textbf{New Orders for Core Capital Goods}\\
 \footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}\\
 \noindent \hspace*{-2mm} \input{text/dgno.tex}\\
-\footnotesize{Source: Census Bureau} \hspace{25mm} \tbllink{dgno.csv}
+\footnotesize{Source: Census Bureau} \hspace{23mm} \tbllink{dgno.csv}
 \end{minipage}\\
 
 \vspace{14mm}
@@ -2034,7 +2036,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \end{minipage} \hspace{5mm}
 \begin{minipage}{0.4\textwidth}
 \noindent \normalsize \textbf{Industrial Production and Capacity}\\
-\footnotesize{\textit{total three-year growth, percent}}\\ 
+\footnotesize{\textit{total three-year growth, percent, \input{text/ip_ind_ldate.txt}}}\\ 
 \noindent \hspace*{-5mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
     	width=5.5cm, bar width=1.7ex, height=10.0cm,
@@ -2097,10 +2099,12 @@ In terms of elements that add to the number of people in poverty, medical expens
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
-		width=11.0cm, height=5.0cm]
-	\rbars
+		width=11.0cm, height=5.0cm, clip=false]
+	\rebars
 	\stdline{blue!70!black}{date}{NS_3M}{data/marts.csv}
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
+	\input{text/rs_ns3m_node.txt}
+	\input{text/rs_44x72_node.txt}
 	\stdnode{6.1cm}{0.45cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
 	\stdnode{7.8cm}{2.65cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
@@ -2144,7 +2148,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \label{sec:gov}
 \normalsize
 
-\small Public institutions are collectively referred to as the public-sector or the government. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining production and distribution in the economy.
+\small Public institutions are collectively referred to as the \textit{public-sector} or the \textit{government}. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining production and distribution in the economy.
 
 
 \subsection*{\color{black!70} \seriffont Government Spending and Investment}
@@ -2187,7 +2191,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \begin{minipage}{0.76\textwidth}
 
-\small Government current expenditures include consumption and investment as well as transfers such as government social benefits to persons. Government spending provides services and income to people. Government current receipts, mostly tax receipts, remove demand from the economy. When government expenditures exceed receipts, it is referred to as a government deficit, and corresponds to a private sector surplus. The size of the government deficit relative to GDP gives insight into the extent to which the government is stimulating the economy by increasing household income and corporate profits.\\
+\small Government current expenditures include consumption and investment as well as transfers such as government social benefits to persons. Government spending provides services and income to people. Government current receipts, mostly tax receipts, remove demand from the economy. When government expenditures exceed receipts, it is referred to as a \textit{government deficit}, and corresponds to a private sector surplus. The size of the government deficit relative to GDP gives insight into the extent to which the government is stimulating the economy by increasing household income and corporate profits.\\
 
 \input{text/govexprec2.txt} \\
 
@@ -2260,7 +2264,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \vspace{2mm}
 
-\small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a stable asset for the balance sheets domestic households and businesses, and for foreign investors.
+\small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a safe asset for the balance sheets domestic households and businesses, and for foreign investors.
 
 \end{minipage}
 
@@ -2469,7 +2473,9 @@ Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencie
 
 \subsection*{\color{black!70} \seriffont Exchange Rates}
 
-\small The strength or weakness of the dollar in an important determinant of trade and financial flows. When more Japanese Yen (JPY), British Pounds (GBP), Euros (EUR), or Canadian Dollars (CAD) are required to buy one US Dollar (USD), the dollar is said to be ``strong''. Over the past three years... More text.\\ 
+\small The strength or weakness of the dollar in an important determinant of trade and financial flows. When more Japanese Yen (JPY), British Pounds (GBP), Euros (EUR), or Canadian Dollars (CAD) are required to buy one US Dollar (USD), the dollar is said to be \textit{strong}.\\
+
+ \input{text/selcurr_basic.txt}\\ 
 
 \vspace{2mm}
 
@@ -2508,7 +2514,7 @@ Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencie
 \footnotesize{Source: Federal Reserve} \hspace{16mm} \tbllink{fx_idx.csv}
 \end{minipage}\hspace{4mm}
 \begin{minipage}{0.4\textwidth}
-\small Fed \href{https://www.federalreserve.gov/releases/h10/summary/default.htm}{trade-weighted dollar indices} show weighted-average foreign exchange rates with US trading partners, which simplify thinking about the overall role of foreign exchange rates on the US external sector. The Broad Dollar Index, which starts in 2006, summarizes foreign exchange rates between the US and trading partners, weighting rates by the amount of trade in both goods and services.\\
+\small Fed \href{https://www.federalreserve.gov/releases/h10/summary/default.htm}{trade-weighted dollar indices} show weighted-average foreign exchange rates with US trading partners, which simplify thinking about the overall role of foreign exchange rates on the US external sector. The Broad Dollar Index (see {\color{blue!60!black}\textbf{---}}), which starts in 2006, summarizes foreign exchange rates between the US and trading partners, weighting rates by the amount of trade in both goods and services.\\
 
 \input{text/twdbasic.txt}
 \end{minipage}
@@ -2518,7 +2524,7 @@ Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencie
 \label{sec:lab}
 
 \begin{minipage}{0.34\textwidth}
-\small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is considered \textbf{employment}. \input{text/cps_lfs0.txt}\\
+\small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is considered \textit{employment}. \input{text/cps_lfs0.txt}\\
 
 \input{text/cps_lfs.txt}
 \end{minipage} \hspace{5.5mm}
@@ -2600,7 +2606,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \vspace{3mm}
 
-\small Additionally, changes over time in labor force status are particularly important to understanding both secular and cyclical trends in the economy. For example, the US population is growing but it is also aging. Over the past year, there was a substantial shift towards full-time work. \\
+\small Additionally, changes over time in labor force status are particularly important to understanding both secular and cyclical trends in the economy. For example, the US population is growing but it is also aging. Over the past year, there was a substantial shift towards full-time work. \\ 
 
 \vspace{2mm}
 
@@ -2674,7 +2680,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \vspace{4mm}
 
-\small The employment rate shown above is based on a monthly survey that asks about employment during a specific week of the previous month. However, additional data is available on what share of a population works year-round rather than just during a specific week. This can be combined with data on hours worked to identify the ``fully-employed'', or full-time, full-year workers, who are defined below as the those who usually work 35 hours per week or more for 50 weeks per year or more. The Census Bureau \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-01.html#par_textimage_14}{reports} 118 million fully-employed people in 2018, equivalent to 36 percent of the population. \\
+\small The employment rate shown above is based on a monthly survey that asks about employment during a specific week of the previous month. However, additional data is available on what share of a population works year-round rather than just during a specific week. This can be combined with data on hours worked to identify the \textit{fully-employed}, or \textit{full-time, full-year workers}, who are defined below as the those who usually work 35 hours per week or more for 50 weeks per year or more. The Census Bureau \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-01.html#par_textimage_14}{reports} 118 million fully-employed people in 2018, equivalent to 36 percent of the population. \\
 
 \input{text/acs_ftfy_text.txt} Of commuter zones with 100,000 people or more, the top and bottom ten by fully-employed share of population are listed below.
 \end{minipage}
@@ -2973,7 +2979,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \subsection*{\color{black!70} \seriffont Unemployment}
 
-\small The conventional ``unemployment rate'' is measured as the number of people who do not have a job and looked for one during a reference week, divided by the labor force, which includes the unemployed and those with jobs.\\
+\small The conventional \textit{unemployment rate} is measured as the number of people who do not have a job and looked for one during a reference week, divided by the labor force, which includes the unemployed and those with jobs.\\
 
 \input{text/unemp.txt}\\
 
@@ -3077,7 +3083,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \begin{minipage}{0.76\textwidth}
 
 
-\small Summary text about local area estimates of unemployment. Will need to think about tables that show highlights, because there are too many MSAs to list all data. Perhaps I can list how many metro areas had the unemployment rate fall over the past year, and then talk about how many unemployed people that actually means--so that population is taken into consideration in some meaningful way.\\
+\small The Bureau of Labor Statistics combines data from the surveys that go into the jobs report with additional local data to \href{https://www.bls.gov/lau/}{produce} local area estimates of unemployment, including the \textbf{unemployment rate for metro areas}. Will need to think about tables that show highlights, because there are too many MSAs to list all data. Perhaps I can list how many metro areas had the unemployment rate fall over the past year, and then talk about how many unemployed people that actually means--so that population is taken into consideration in some meaningful way.\\
 
 \vspace{2mm}
 
@@ -3097,6 +3103,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \newpage
 
+\subsubsection*{\color{black!70} \seriffont Reasons for non-participation}
 
 \begin{minipage}{0.76\textwidth}
 
@@ -3192,7 +3199,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \begin{minipage}{0.76\textwidth}
 
-\small Some types of \textbf{turnover} in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving a job as ``quits''. 
+\small Some types of \textbf{turnover} in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving a job as \textit{quits}. 
 \end{minipage}\\
 
 \begin{minipage}{0.28\textwidth}
@@ -3642,7 +3649,7 @@ Valuations \\
 
 \vspace{1mm}
 
-\small The \textbf{Treasury yield curve} \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{shows} the yield on different maturities of Treasury bonds and bills, usually from short-term, such as three-month, to long-term such as 30-year. This measure is at times described as ``inverted'', which means the short-term-debt end of the curve is higher than the long-term-debt end. For example, if the yield on two-year treasuries is higher than the yield on ten-year treasuries. 
+\small The \textbf{Treasury yield curve} \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{shows} the yield on different maturities of Treasury bonds and bills, usually from short-term, such as three-month, to long-term such as 30-year. This measure is at times described as \textit{inverted}, which means the short-term-debt end of the curve is higher than the long-term-debt end. For example, if the yield on two-year treasuries is higher than the yield on ten-year treasuries. 
 
 \end{minipage}
 
@@ -3665,6 +3672,7 @@ A large increase in the amount of money held by individuals and institutions can
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
 	\thickline{green!80!blue}{date}{value}{data/M2imf.csv}
+	\input{text/m2imf_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{M2imf.csv}\\
@@ -3772,25 +3780,30 @@ PCE \\
 
 \subsection*{\color{black!70} \seriffont Inflation Expectations}
 
-\small Researchers gain insight on what inflation is expected in the future both through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the inflation ``breakeven'' and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced-in, on average, for the maturity of the bond.\\
+\small Researchers gain insight on what inflation is expected in the future both through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the \textit{inflation breakeven} and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced-in, on average, for the maturity of the bond.
+\end{minipage}
 
-\vspace{2mm}
-
+\begin{minipage}{0.36\textwidth}
 \noindent \normalsize \textbf{5-year Expected Average Inflation}\\
 \footnotesize{\textit{expected average annual rate, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={0, 1.0, 2.0, 3.0}, 
 		enlarge y limits={0.1}, ymin=0.15, \bbar{y}{0}, clip=false,
-		xticklabel={`\short{\year}}, height=5.4cm, width=7.2cm]
+		xticklabel={`\short{\year}}, height=5.9cm, width=6.8cm]
 	\thinline{blue!70!black}{date}{VALUE}{data/infbreak.csv}
-	\stdline{violet}{date}{PX5_MD}{data/infumich.csv}
+	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
 	\input{text/infumich_node.txt}
-	\stdnode{2.28cm}{1.58cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
-	\stdnode{2.68cm}{3.35cm}{\scriptsize \color{violet}\textbf{Survey}}
+	\stdnode{2.28cm}{1.7cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
+	\stdnode{2.68cm}{3.65cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: FRED; U. of Michigan} \hspace{19mm} \tbllink{infbreak.csv}
+\footnotesize{Source: FRED; U. of Michigan} \hfill \tbllink{infbreak.csv}
+\end{minipage} \hspace{6mm} 
+\begin{minipage}{0.35\textwidth}
+\small \input{text/inf_exp_cons.txt}\\
+
+\input{text/inf_exp_mkts.txt}
 \end{minipage}
 
 \newpage
