@@ -653,7 +653,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \begin{minipage}{0.32\textwidth}
 \noindent \normalsize \textbf{Age}\\
-\footnotesize{\textit{share of population}}\\
+\footnotesize{\textit{share of population, percent}}\\
 \noindent \hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.1cm}{1.5ex}
     	width=4.7cm, bar width=2.0ex, height=4.9cm,
@@ -713,7 +713,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \vspace{2mm}
 
 \noindent \normalsize \textbf{Household Formation by Type}\\
-\footnotesize{\textit{one-year moving average of annual growth rates}}\\
+\footnotesize{\textit{one-year moving average of annual growth rates, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
 		xticklabel={`\short{\year}}, clip=false, 
@@ -943,8 +943,10 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: CPS ASEC} \hspace{80mm} \tbllink{pearn_dist.csv}
-\end{minipage}
+\end{minipage}\\
 
+
+\vspace{6mm}
 
 \subsubsection*{\color{black!70} \seriffont Household Income}
 
@@ -2062,18 +2064,20 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \begin{minipage}{0.76\textwidth}
 
-\small The Federal Reserve's monthly industrial production \href{https://www.federalreserve.gov/releases/g17/}{report} also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called \textbf{capacity utilization}, and calculated as industrial production as a share of total industrial capacity. \input{text/tcu.txt}\\
+\small The Federal Reserve's monthly industrial production \href{https://www.federalreserve.gov/releases/g17/}{report} also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called \textbf{capacity utilization}, and calculated as industrial production as a share of total industrial capacity. Long-term, capacity utilization has fallen as many US factories and industrial production facilities closed. \input{text/tcu.txt}\\
 
 \noindent \normalsize \textbf{Capacity Utilization}\\
 \footnotesize{\textit{industrial production as a share of total capacity, percent}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 80}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 80}, width=12.4cm, clip=false,
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
 	\rbars
 	\thickline{blue!80!black}{date}{Total index}{data/tcu.csv}
 	\stdline{blue!40!cyan}{date}{Manufacturing}{data/tcu.csv}
-	\stdnode{9.0cm}{1.3cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
-	\stdnode{8.4cm}{2.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
+	\input{text/tcu_tot_node.txt}
+	\input{text/tcu_mfg_node.txt}
+	\stdnode{8.8cm}{1.3cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
+	\stdnode{8.0cm}{2.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
@@ -2536,9 +2540,9 @@ Foreign purchases of US bonds (TIC) data, trailing 12m sums: Treasuries, Agencie
 		height=7.2cm, ymin=10, width=7.0cm,
 		clip=false, enlarge x limits={0.04}, 
 		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, 
-				{2005-01-01}, {2010-01-01}, {2015-01-01}, {2019-10-01}},
+				{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
         minor xtick={},
-        xticklabels={`89, `95, `00, `05, `10, `15, Nov},
+        xticklabels={`89, `95, `00, `05, `10, `15, `20},
         legend cell align={left},
 		legend style={fill=white, legend columns=2, at={(0.82, 1.09)}}]
 	\rbars
@@ -2750,9 +2754,9 @@ People who are not employed and not unemployed are considered to be outside of t
 \footnotesize{\textit{line = required for constant employment rate}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.2cm, height=5.0cm,
-		ymin=2.9, xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2019-12-01}},
+		ymin=2.9, xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2020-01-01}},
 		minor xtick={}, xmin={2013-11-01},
-        xticklabels={`14, `16, `18, Dec `19},]
+        xticklabels={`14, `16, `18, `20},]
 	\sbar{blue!60!purple}{date}{ALL}{data/nfp.csv}
 	\stdline{green!50!lime}{date}{TOT}{data/nfp_pop.csv}
 	\end{axis}
@@ -3576,7 +3580,7 @@ Wage growth: \\
 \footnotesize{\textit{index, monthly average shown}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 20, 40, 60}, 
-		xticklabel={`\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, ymin=1,
 		height=4.6cm, enlarge y limits={0.11}]
 	\rbars
 	\stdline{magenta}{date}{value}{data/vix.csv}
@@ -3669,7 +3673,7 @@ A large increase in the amount of money held by individuals and institutions can
 \footnotesize{\textit{one-year percent change, monthly average}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
-		xticklabel={`\short{\year}}, clip=false]
+		xticklabel={`\short{\year}}, clip=false, width=12.6cm,]
 	\rbars
 	\thickline{green!80!blue}{date}{value}{data/M2imf.csv}
 	\input{text/m2imf_node.txt}
