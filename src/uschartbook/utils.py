@@ -174,6 +174,7 @@ def dtxt(date):
 	     'day1': date.strftime('%B %-d, %Y'),
 	     'day2': date.strftime('%b %-d, %Y'),
 	     'day3': date.strftime('%d'),
+	     'day4': date.strftime('%B %-d'),
 	     'datetime': date.strftime('%Y-%m-%d')}	
 	return d
 	
@@ -445,3 +446,28 @@ def cps_12mo(cps_dir, cps_dt, cols):
         df = pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
         
     return df
+    
+
+def cps_1mo(cps_dir, cps_dt, cols):
+    '''
+    Return 1 month of bd_CPS variables cols ending cps_dt
+    '''
+
+    if 'MONTH' not in cols:
+        cols = cols + ['MONTH']
+    if 'YEAR' not in cols:
+        cols = cols + ['YEAR']
+
+    cps_year = cps_dt.year
+    cps_month = cps_dt.month
+    df = (pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
+                .query('MONTH == @cps_month'))
+        
+    return df
+    
+    
+def inc_dec_percent(n):
+    '''Return short text based on value of n'''
+    return (f'increased by {abs(n):.1f} percent' if n >= 0.1 
+        else f'decreased by {abs(n):.1f} percent' 
+        if n <= -0.1 else 'was virtually unchanged')
