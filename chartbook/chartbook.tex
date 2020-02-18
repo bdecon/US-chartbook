@@ -205,6 +205,8 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/cps_educ_tot.csv}\edtot
 	\pgfplotstableread[header=true, col sep=comma]{data/cps_age.csv}\agesh
 	\pgfplotstableread[header=true, col sep=semicolon]{data/union_ind.csv}\unmem
+	\pgfplotstableread[header=true, col sep=semicolon]{data/quits_ind.csv}\quits
+	\pgfplotstableread[header=true, col sep=semicolon]{data/openings_ind.csv}\opens
 	
 	
 % % % % % % % %
@@ -719,7 +721,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={64, 66, 68}, 
 		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.8cm, width=7.3cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.8cm, width=7.0cm, clip=false]
 	\rbars
 	\stdline{red!50!orange}{date}{VALUE}{data/homeown.csv}
 	\input{text/homeown_node.txt}
@@ -731,7 +733,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \small
 
-As seen during the collapse of the housing bubble, it is possible for a ``homeowner'' to have little or no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in \textbf{owner's equity as a share of the market value of real estate} show substantial improvement since the lows following the collapse of the housing bubble.\input{text/homeeq.txt}\\
+As seen during the collapse of the housing bubble, it is possible for a ``homeowner'' to have little or no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in \textbf{owner's equity as a share of the market value of real estate} show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. \input{text/homeeq.txt}\\
 
 \vspace{2mm}
 
@@ -740,7 +742,7 @@ As seen during the collapse of the housing bubble, it is possible for a ``homeow
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={45, 50, 55, 60, 65, 70}, 
 		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.8cm, width=7.3cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.8cm, width=7.0cm, clip=false]
 	\rbars
 	\stdline{blue!80!violet}{date}{VALUE}{data/homeeq.csv}
 	\input{text/homeeq_node.txt}
@@ -3168,6 +3170,76 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \newpage
 
+\begin{minipage}{0.46\textwidth}
+\noindent \normalsize \textbf{Quits Rate by Industry}\\
+\footnotesize{\textit{voluntary separation share of jobs, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
+            yticklabels from table={\quits}{name},
+			y axis line style={opacity=0},   
+		    x axis line style={opacity=0}, 
+			yticklabel style={black, font=\footnotesize, 
+			align=left, anchor=east},  
+			nodes near coords align={above},    
+			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
+				precision=1, assume math mode},  
+            ytick=data, tickwidth=0pt, xmin=0,
+            bar width=2.0ex, 
+            extra x ticks={0}, extra x tick style={
+                grid style={black}, xticklabel=\empty,},
+            enlarge y limits={0.02}, enlarge x limits={0.02},
+            width=5.9cm, height=12.9cm, legend style={at={(0.7, 1.05)}},
+            \barylab{2.7cm}{1.5ex}]
+	\addplot[xbar stacked, bar shift=0pt, fill=none, draw=none] 
+		table [y expr=-\coordindex, x index=1] {\quits};
+	\addplot[xbar stacked, bar shift=0pt, fill=cyan!60!blue, draw=none] 
+		table [y expr=-\coordindex, x index=2] {\quits};		        
+	\addplot[only marks, mark=diamond*, mark options={fill=yellow, 
+		draw=yellow!50!orange, scale=2}] 
+		table [y expr=-\coordindex, x index=3] {\quits};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=3] {\quits};
+	\legend{, 2000-- range, \input{text/jolts_ltdate.txt}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{23mm} \tbllink{quits_ind.csv}
+\end{minipage}\hspace{14mm}
+\begin{minipage}{0.46\textwidth}
+\noindent \normalsize \textbf{Job Openings Rate by Industry}\\
+\footnotesize{\textit{job openings share of jobs, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
+            yticklabels from table={\opens}{name},
+			y axis line style={opacity=0},   
+		    x axis line style={opacity=0}, 
+			yticklabel style={black, font=\footnotesize, 
+			align=left, anchor=east},  
+			nodes near coords align={above},    
+			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
+				precision=1, assume math mode},  
+            ytick=data, tickwidth=0pt, xmin=0,
+            bar width=2.0ex, 
+            extra x ticks={0}, extra x tick style={
+                grid style={black}, xticklabel=\empty,},
+            enlarge y limits={0.02}, enlarge x limits={0.02},
+            width=5.9cm, height=12.9cm, legend style={at={(0.7, 1.05)}},
+            \barylab{2.7cm}{1.5ex}]
+	\addplot[xbar stacked, bar shift=0pt, fill=none, draw=none] 
+		table [y expr=-\coordindex, x index=1] {\opens};
+	\addplot[xbar stacked, bar shift=0pt, fill=green!65!blue, draw=none] 
+		table [y expr=-\coordindex, x index=2] {\opens};		        
+	\addplot[only marks, mark=diamond*, mark options={fill=cyan!50!white, 
+		draw=cyan!50!white, scale=2}] 
+		table [y expr=-\coordindex, x index=3] {\opens};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=3] {\opens};
+	\legend{, 2000-- range, \input{text/jolts_ltdate.txt}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{24mm} \tbllink{openings_ind.csv}
+\end{minipage}
+
+\newpage
+
+
 \subsubsection*{\color{black!70} \seriffont Initial Jobless Claims}
 
 \begin{minipage}{0.76\textwidth}
@@ -3297,7 +3369,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \subsection*{\color{black!70} \seriffont Labor Productivity}
 
-\small Labor productivity is \href{https://www.bls.gov/news.release/prod2.nr0.htm}{reported} by the Bureau of Labor Statistics and measured as real output per hour of work in the nonfarm business sector. Economic theory suggests that labor productivity is particularly important for long-term real economic growth. The measure captures the rate at which people, with all of the resources and equipment and infrastructure available to them, are able to produce goods and services with their work. An increase in labor productivity means real wages can increase without putting upward pressure on inflation. Alternatively, an increase in productivity means a society can meet its material needs with less work.\\
+\small Labor productivity is \href{https://www.bls.gov/news.release/prod2.nr0.htm}{reported} by the Bureau of Labor Statistics and measured as \textbf{real output per hour of work} in the nonfarm business sector. Economic theory suggests that labor productivity is particularly important for long-term real economic growth. The measure captures the rate at which people, with all of the resources and equipment and infrastructure available to them, are able to produce goods and services with their work. An increase in labor productivity means real wages can increase without putting upward pressure on inflation. Alternatively, an increase in productivity means a society can meet its material needs with less work.\\
 
 \input{text/lprod.txt}
 \vspace{5mm}
