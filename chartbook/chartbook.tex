@@ -3170,7 +3170,6 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \newpage
 
-\begin{minipage}{0.46\textwidth}
 \noindent \normalsize \textbf{Quits Rate by Industry}\\
 \footnotesize{\textit{voluntary separation share of jobs, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -3184,12 +3183,12 @@ Among newly employed workers, the vast majority were considered to be out of the
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
             ytick=data, tickwidth=0pt, xmin=0,
-            bar width=2.0ex, 
+            bar width=1.6ex, 
             extra x ticks={0}, extra x tick style={
                 grid style={black}, xticklabel=\empty,},
             enlarge y limits={0.02}, enlarge x limits={0.02},
-            width=5.9cm, height=12.9cm, legend style={at={(0.7, 1.05)}},
-            \barylab{2.7cm}{1.5ex}]
+            width=8.4cm, height=10.4cm, legend style={at={(0.05, 1.05)}},
+            \barylab{5.0cm}{1.5ex}]
 	\addplot[xbar stacked, bar shift=0pt, fill=none, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\quits};
 	\addplot[xbar stacked, bar shift=0pt, fill=cyan!60!blue, draw=none] 
@@ -3201,14 +3200,15 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\legend{, 2000-- range, \input{text/jolts_ltdate.txt}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{23mm} \tbllink{quits_ind.csv}
-\end{minipage}\hspace{14mm}
-\begin{minipage}{0.46\textwidth}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{70mm} \tbllink{quits_ind.csv}\\
+
+\newpage
+
 \noindent \normalsize \textbf{Job Openings Rate by Industry}\\
 \footnotesize{\textit{job openings share of jobs, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
-            yticklabels from table={\opens}{name},
+            yticklabels from table={\quits}{name},
 			y axis line style={opacity=0},   
 		    x axis line style={opacity=0}, 
 			yticklabel style={black, font=\footnotesize, 
@@ -3217,12 +3217,12 @@ Among newly employed workers, the vast majority were considered to be out of the
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
             ytick=data, tickwidth=0pt, xmin=0,
-            bar width=2.0ex, 
+            bar width=1.6ex, 
             extra x ticks={0}, extra x tick style={
                 grid style={black}, xticklabel=\empty,},
             enlarge y limits={0.02}, enlarge x limits={0.02},
-            width=5.9cm, height=12.9cm, legend style={at={(0.7, 1.05)}},
-            \barylab{2.7cm}{1.5ex}]
+            width=8.4cm, height=10.4cm, legend style={at={(0.05, 1.05)}},
+            \barylab{5.0cm}{1.5ex}]
 	\addplot[xbar stacked, bar shift=0pt, fill=none, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\opens};
 	\addplot[xbar stacked, bar shift=0pt, fill=green!65!blue, draw=none] 
@@ -3234,8 +3234,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\legend{, 2000-- range, \input{text/jolts_ltdate.txt}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{24mm} \tbllink{openings_ind.csv}
-\end{minipage}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{70mm} \tbllink{openings_ind.csv}
 
 \newpage
 
