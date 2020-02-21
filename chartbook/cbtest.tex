@@ -207,7 +207,7 @@
 \footnotesize{\textit{voluntary separations as a share of }}\\
 \footnotesize{\textit{total employment, selected industry }}\\
 \footnotesize{\textit{groups, percent}}\\
-\vspace{87mm}
+\vspace{9.2cm}
 
 \hspace{21mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
@@ -220,27 +220,31 @@
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
             ytick=data, tickwidth=0pt, xmin=0,
-            bar width=1.2ex, 
+            bar width=1.1ex, 
             extra x ticks={0}, extra x tick style={
                 grid style={black}, xticklabel=\empty,},
             enlarge y limits={0.02}, enlarge x limits={0.02},
             legend cell align={left}, legend plot pos=right,
-            width=6.6cm, height=11.0cm, legend style={legend columns=1, at={(1.01, 1.14)}},
-            \barylab{2.4cm}{2.0ex}]
+            width=6.6cm, height=11.4cm, legend style={legend columns=1, at={(1.0, 1.16)}},
+            \barylab{2.4cm}{1.2ex}]
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\quits};
 	\addplot[xbar stacked, bar shift=0pt, fill=cyan!60!blue!30!white, draw=cyan!60!blue!30!white] 
 		table [y expr=-\coordindex, x index=2] {\quits};	
+	\addplot[xbar stacked, bar shift=0pt, fill=blue!50!cyan, draw=cyan!60!blue!30!white] 
+		table [y expr=-\coordindex, x index=3] {\quits};
+	\addplot[xbar stacked, bar shift=0pt, fill=cyan!60!blue!30!white, draw=cyan!60!blue!30!white] 
+		table [y expr=-\coordindex, x index=4] {\quits};
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
-		table [y expr=-\coordindex, x index=4] {\quits};	        
+		table [y expr=-\coordindex, x index=5] {\quits};	        
 	\addplot[only marks, mark=diamond*, mark options={fill=blue!40!black, 
 		draw=blue!40!black, scale=1.4}] 
-		table [y expr=-\coordindex, x index=3] {\quits};
-	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=3] {\quits};
-	\legend{, 2000-- range, ,\input{text/jolts_ltdate.txt}}
+		table [y expr=-\coordindex, x index=6] {\quits};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=6] {\quits};
+	\legend{, 2000-- range, 2015-- range,, ,\input{text/jolts_ltdate.txt}}
 	\end{axis}
 \end{tikzpicture}
-\vspace{0.5mm}
+\vspace{1mm}
 
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{25mm} \tbllink{quits_ind.csv}\\
 
