@@ -2559,6 +2559,24 @@ People who are not employed and not unemployed are considered to be outside of t
 \begin{minipage}{0.76\textwidth}
 
 
+\noindent \normalsize \textbf{Labor Share of Income}\\
+\footnotesize{\textit{compensation of employees as share of}}\\
+\footnotesize{\textit{gross domestic income, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={52, 54, 56, 58}, 
+		enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, height=4.8cm, width=7.0cm, clip=false]
+	\rbars
+	\stdline{blue!60!cyan}{date}{Share}{data/laborshare.csv}
+	\input{text/laborshare_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{8mm} \tbllink{laborshare.csv}\\
+
+
+\vspace{10mm}
+
+
 \subsection*{\color{black!70} \seriffont Gross Labor Income}
 
 \small In labor markets, unlike other markets, wages (the price of labor) tend not to be cut in response to a decrease in demand; businesses instead employ fewer workers and/or cut hours. As a result, wage data give only a partial picture of the labor income received by households.\\
@@ -3107,10 +3125,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 \newpage
 
 \subsubsection*{\color{black!70} \seriffont Job Openings and Labor Turnover Survey}
-
 \begin{minipage}{0.76\textwidth}
-
-\small Some types of \textbf{turnover} in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving a job as \textit{quits}. 
+\small Some types of \textbf{turnover} in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. Additionally, the job prospects outside of a firm affect the bargaining power of the workers inside of the firm. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving a job as \textit{quits}. 
 \end{minipage}\\
 
 \begin{minipage}{0.28\textwidth}
@@ -3146,61 +3162,75 @@ Among newly employed workers, the vast majority were considered to be out of the
 \vspace{2mm}
 
 \begin{minipage}{0.38\textwidth}
-\noindent \normalsize \textbf{Quits Rates}\\
+\noindent \normalsize \textbf{Quits Rate}\\
 \footnotesize{\textit{voluntary separations as share of workforce}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6}, 
-		xticklabel={`\short{\year}}, ymin=0.3, height=5.0cm, width=7.1cm]
-	\rbars
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6}, clip=false,
+		xticklabel={`\short{\year}}, ymin=0.3, height=5.2cm, width=7.1cm]
+	\rebars
 	\stdline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
-	\stdnode{3.9cm}{2.95cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
+	\stdnode{3.85cm}{3.08cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
 	\scriptsize \color{red!50!purple}\textbf{\& Food Services}}
+	\input{text/quits_afs_node.txt}
 	\stdline{violet}{date}{TOT_QU}{data/quits.csv}
-	\stdnode{4.8cm}{1.4cm}{\scriptsize \color{violet}\textbf{Total}}
+	\stdnode{4.0cm}{0.7cm}{\scriptsize \color{violet}\textbf{Total nonfarm}}
+	\input{text/quits_tot_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{14mm} \tbllink{quits.csv}
 \end{minipage}
-\hspace{4.5mm}
-\begin{minipage}{0.34\textwidth}
-
-\small The quits rate within the accommodations and food services industries (which includes restaurants), is highly cyclical, and tends to rise when a tight labor market pulls people out of restaurant jobs and into higher paying jobs in other industries. \input{text/quits_afs.txt}\\
-
+\hspace{9mm}
+\begin{minipage}{0.31\textwidth}
+\small The quits rate within the accommodations and food services industries (which includes restaurants), is highly cyclical, and tends to rise when a tight labor market pulls people out of restaurant jobs and into higher paying jobs in other industries. \input{text/quits_afs.txt}
 \end{minipage}
 
 \newpage
 
+
 \noindent \normalsize \textbf{Quits Rate by Industry}\\
-\footnotesize{\textit{voluntary separation share of jobs, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{voluntary separations as share }}\\
+\footnotesize{\textit{of total employment, selected }}\\
+\footnotesize{\textit{industry groups, percent}}\\
+\vspace{9.2cm}
+
+\hspace{20mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
             yticklabels from table={\quits}{name},
 			y axis line style={opacity=0},   
 		    x axis line style={opacity=0}, 
-			yticklabel style={black, font=\footnotesize, 
+			yticklabel style={black, font=\scriptsize, 
 			align=left, anchor=east},  
 			nodes near coords align={above},    
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
             ytick=data, tickwidth=0pt, xmin=0,
-            bar width=1.6ex, 
+            bar width=1.3ex, 
             extra x ticks={0}, extra x tick style={
                 grid style={black}, xticklabel=\empty,},
             enlarge y limits={0.02}, enlarge x limits={0.02},
-            width=8.4cm, height=10.4cm, legend style={at={(0.05, 1.05)}},
-            \barylab{5.0cm}{1.5ex}]
-	\addplot[xbar stacked, bar shift=0pt, fill=none, draw=none] 
+            legend cell align={left}, legend plot pos=right,
+            width=6.0cm, height=11.4cm, legend style={legend columns=1, at={(1.01, 1.15)}},
+            \barylab{2.4cm}{1.2ex}]
+	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\quits};
-	\addplot[xbar stacked, bar shift=0pt, fill=cyan!60!blue, draw=none] 
-		table [y expr=-\coordindex, x index=2] {\quits};		        
-	\addplot[only marks, mark=diamond*, mark options={fill=yellow, 
-		draw=yellow!50!orange, scale=2}] 
+	\addplot[xbar stacked, bar shift=0pt, fill=cyan!55!blue!38!white, draw=cyan!55!blue!38!white] 
+		table [y expr=-\coordindex, x index=2] {\quits};	
+	\addplot[xbar stacked, bar shift=0pt, fill=blue!68!cyan, draw=blue!68!cyan] 
 		table [y expr=-\coordindex, x index=3] {\quits};
-	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=3] {\quits};
-	\legend{, 2000-- range, \input{text/jolts_ltdate.txt}}
+	\addplot[xbar stacked, bar shift=0pt, fill=cyan!55!blue!38!white, draw=cyan!55!blue!38!white] 
+		table [y expr=-\coordindex, x index=4] {\quits};
+	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
+		table [y expr=-\coordindex, x index=5] {\quits};	        
+	\addplot[only marks, mark=diamond*, mark options={fill=orange!65!yellow, 
+		draw=orange!65!yellow, scale=1.5}] 
+		table [y expr=-\coordindex, x index=6] {\quits};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=6] {\quits};
+	\legend{, 2000-- range, 2018-- range,, ,\input{text/jolts_ltdate.txt}}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{70mm} \tbllink{quits_ind.csv}\\
+\end{tikzpicture}
+\vspace{1mm}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{19mm} \tbllink{quits_ind.csv}
 
 \newpage
 
@@ -3208,33 +3238,40 @@ Among newly employed workers, the vast majority were considered to be out of the
 \footnotesize{\textit{job openings share of jobs, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
-            yticklabels from table={\quits}{name},
+            yticklabels from table={\opens}{name},
 			y axis line style={opacity=0},   
 		    x axis line style={opacity=0}, 
-			yticklabel style={black, font=\footnotesize, 
+			yticklabel style={black, font=\scriptsize, 
 			align=left, anchor=east},  
 			nodes near coords align={above},    
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
             ytick=data, tickwidth=0pt, xmin=0,
-            bar width=1.6ex, 
+            bar width=1.3ex, 
             extra x ticks={0}, extra x tick style={
                 grid style={black}, xticklabel=\empty,},
             enlarge y limits={0.02}, enlarge x limits={0.02},
-            width=8.4cm, height=10.4cm, legend style={at={(0.05, 1.05)}},
-            \barylab{5.0cm}{1.5ex}]
-	\addplot[xbar stacked, bar shift=0pt, fill=none, draw=none] 
+            legend cell align={left}, legend plot pos=right,
+            width=6.0cm, height=11.4cm, legend style={legend columns=1, at={(1.01, 1.15)}},
+            \barylab{2.4cm}{1.2ex}]
+	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\opens};
-	\addplot[xbar stacked, bar shift=0pt, fill=green!65!blue, draw=none] 
-		table [y expr=-\coordindex, x index=2] {\opens};		        
-	\addplot[only marks, mark=diamond*, mark options={fill=cyan!50!white, 
-		draw=cyan!50!white, scale=2}] 
+	\addplot[xbar stacked, bar shift=0pt, fill=cyan!55!blue!38!white, draw=cyan!55!blue!38!white] 
+		table [y expr=-\coordindex, x index=2] {\opens};	
+	\addplot[xbar stacked, bar shift=0pt, fill=blue!68!cyan, draw=blue!68!cyan] 
 		table [y expr=-\coordindex, x index=3] {\opens};
-	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=3] {\opens};
-	\legend{, 2000-- range, \input{text/jolts_ltdate.txt}}
+	\addplot[xbar stacked, bar shift=0pt, fill=cyan!55!blue!38!white, draw=cyan!55!blue!38!white] 
+		table [y expr=-\coordindex, x index=4] {\opens};
+	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
+		table [y expr=-\coordindex, x index=5] {\opens};	        
+	\addplot[only marks, mark=diamond*, mark options={fill=orange!65!yellow, 
+		draw=orange!65!yellow, scale=1.5}] 
+		table [y expr=-\coordindex, x index=6] {\opens};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=6] {\opens};
+	\legend{, 2000-- range, 2018-- range,, ,\input{text/jolts_ltdate.txt}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{70mm} \tbllink{openings_ind.csv}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{19mm} \tbllink{openings_ind.csv}
 
 \newpage
 
