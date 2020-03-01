@@ -2556,28 +2556,31 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \newpage
 
-\begin{minipage}{0.76\textwidth}
-
-
+\begin{minipage}{0.325\textwidth}
 \noindent \normalsize \textbf{Labor Share of Income}\\
 \footnotesize{\textit{compensation of employees as share of}}\\
 \footnotesize{\textit{gross domestic income, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={52, 54, 56, 58}, 
 		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.8cm, width=7.0cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.9cm, width=5.8cm, clip=false]
 	\rbars
 	\stdline{blue!60!cyan}{date}{Share}{data/laborshare.csv}
 	\input{text/laborshare_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hspace{8mm} \tbllink{laborshare.csv}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{2mm} \tbllink{laborshare.csv}\\
+\end{minipage}\hspace{7mm}
+\begin{minipage}{0.38\textwidth}
+\small The labor share of income is a broad proxy for how much labor is paid relative to the total income in the economy in a year. While the laborer share of the population has fallen, and an increasing share of income goes to depreciation of capital including housing, cyclical patterns suggest worker bargaining power also affects the labor share of income.  \input{text/laborshare.txt}
+\end{minipage}
 
-
-\vspace{10mm}
+\vspace{4mm}
 
 
 \subsection*{\color{black!70} \seriffont Gross Labor Income}
+
+\begin{minipage}{0.76\textwidth}
 
 \small In labor markets, unlike other markets, wages (the price of labor) tend not to be cut in response to a decrease in demand; businesses instead employ fewer workers and/or cut hours. As a result, wage data give only a partial picture of the labor income received by households.\\
 
@@ -3234,9 +3237,13 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \newpage
 
-\noindent \normalsize \textbf{Job Openings Rate by Industry}\\
-\footnotesize{\textit{job openings share of jobs, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+
+\noindent \normalsize \textbf{Job Openings Rate}\\
+\footnotesize{\textit{job openings share of jobs,}}\\
+\footnotesize{\textit{by industry group, percent}}\\
+\vspace{9.5cm}
+
+\hspace{20mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
             yticklabels from table={\opens}{name},
 			y axis line style={opacity=0},   
@@ -3256,21 +3263,23 @@ Among newly employed workers, the vast majority were considered to be out of the
             \barylab{2.4cm}{1.2ex}]
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\opens};
-	\addplot[xbar stacked, bar shift=0pt, fill=cyan!55!blue!38!white, draw=cyan!55!blue!38!white] 
+	\addplot[xbar stacked, bar shift=0pt, fill=orange!48!white, draw=orange!48!white] 
 		table [y expr=-\coordindex, x index=2] {\opens};	
-	\addplot[xbar stacked, bar shift=0pt, fill=blue!68!cyan, draw=blue!68!cyan] 
+	\addplot[xbar stacked, bar shift=0pt, fill=orange!82!red, draw=orange!82!red] 
 		table [y expr=-\coordindex, x index=3] {\opens};
-	\addplot[xbar stacked, bar shift=0pt, fill=cyan!55!blue!38!white, draw=cyan!55!blue!38!white] 
+	\addplot[xbar stacked, bar shift=0pt, fill=orange!48!white, draw=orange!48!white] 
 		table [y expr=-\coordindex, x index=4] {\opens};
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=5] {\opens};	        
-	\addplot[only marks, mark=diamond*, mark options={fill=orange!65!yellow, 
-		draw=orange!65!yellow, scale=1.5}] 
+	\addplot[only marks, mark=diamond*, mark options={fill=blue, 
+		draw=blue, scale=1.5}] 
 		table [y expr=-\coordindex, x index=6] {\opens};
 	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=6] {\opens};
 	\legend{, 2000-- range, 2018-- range,, ,\input{text/jolts_ltdate.txt}}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+\vspace{1mm}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{19mm} \tbllink{openings_ind.csv}
 
 \newpage
@@ -3505,7 +3514,19 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \vspace{2mm}
 
+\noindent \normalsize \textbf{S\&P 500}\\
+\footnotesize{\textit{index}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={1000, 2000, 3000, 4000}, 
+		enlarge y limits={0.1}, xmin = 1996-10-01,
+		xticklabel={`\short{\year}}, height=5.0cm, width=7.6cm, clip=false]
+	\rebars
+	\stdline{green!80!blue}{date}{GSPC}{data/sp500.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Yahoo! Finance} \hspace{30mm} \tbllink{sp500.csv} \\
 
+\vspace{2mm}
 
 \subsection*{\color{black!70} \seriffont Equity Markets}
 
