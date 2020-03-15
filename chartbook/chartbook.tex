@@ -3589,6 +3589,26 @@ Among newly employed workers, the vast majority were considered to be out of the
 \end{tikzpicture}\\
 \footnotesize{Source: Chicago Board Options Exchange} \hfill \tbllink{vix.csv}
 \end{minipage}
+\vspace{8mm}
+
+
+\noindent \normalsize \textbf{10-Year -- 3-Month Spread}\\
+\footnotesize{\textit{percentage point treasury yield spread}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
+		enlarge y limits={0.1}, xmin = 2011-11-01,
+		xticklabel={`\short{\year}}, height=5.6cm, width=7.6cm, clip=false]
+	\thinline{cyan!60!blue}{date}{Value}{data/spread.csv}
+	\input{text/spread_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hspace{30mm} \tbllink{spread.csv} \\
+
+
+
+
+
+
 
 \newpage
 
