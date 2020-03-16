@@ -3512,22 +3512,27 @@ Among newly employed workers, the vast majority were considered to be out of the
 \label{sec:cap}
 \small The US equity markets and capital markets provide businesses and governments with funding for activities and fixed investments. \\
 
+The S\&P 500 is a market-cap-weighted stock market index based on 500 large companies that are listed on US exchanges. The index is a broad measure of price levels in US equity markets. \input{text/sp500.txt}\\
+
 \vspace{2mm}
 
 \noindent \normalsize \textbf{S\&P 500}\\
 \footnotesize{\textit{index}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={1000, 2000, 3000, 4000}, 
-		enlarge y limits={0.1}, xmin = 1996-10-01,
-		xticklabel={`\short{\year}}, height=5.0cm, width=7.6cm, clip=false]
-	\rebars
+	\begin{axis}[\shdateaxisticks ytick={0, 1000, 2000, 3000, 4000}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=5.6cm, width=7.2cm, clip=false]
+	\rbars
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Yahoo! Finance} \hspace{30mm} \tbllink{sp500.csv} \\
+\footnotesize{Source: Yahoo! Finance} \hspace{26mm} \tbllink{sp500.csv} 
 
-\vspace{2mm}
+\end{minipage}
 
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Equity Markets}
 
 \small \input{text/sp500rr3.txt}  \\
