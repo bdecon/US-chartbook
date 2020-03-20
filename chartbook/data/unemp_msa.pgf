@@ -6,10 +6,17 @@
 %% Make sure the required packages are loaded in your preamble
 %%   \usepackage{pgf}
 %%
+%% and, on pdftex
+%%   \usepackage[utf8]{inputenc}\DeclareUnicodeCharacter{2212}{-}
+%%
+%% or, on luatex and xetex
+%%   \usepackage{unicode-math}
+%%
 %% Figures using additional raster images can only be included by \input if
 %% they are in the same directory as the main LaTeX file. For loading figures
 %% from other directories you can use the `import` package
 %%   \usepackage{import}
+%%
 %% and then include the figures with
 %%   \import{<path to file>}{<filename>.pgf}
 %%
@@ -12739,16 +12746,16 @@
 \pgfsetstrokecolor{currentstroke}%
 \pgfsetstrokeopacity{0.500000}%
 \pgfsetdash{}{0pt}%
-\pgfsys@defobject{currentmarker}{\pgfqpoint{-0.038889in}{-0.038889in}}{\pgfqpoint{0.038889in}{0.038889in}}{%
-\pgfpathmoveto{\pgfqpoint{0.000000in}{-0.038889in}}%
-\pgfpathcurveto{\pgfqpoint{0.010313in}{-0.038889in}}{\pgfqpoint{0.020206in}{-0.034791in}}{\pgfqpoint{0.027499in}{-0.027499in}}%
-\pgfpathcurveto{\pgfqpoint{0.034791in}{-0.020206in}}{\pgfqpoint{0.038889in}{-0.010313in}}{\pgfqpoint{0.038889in}{0.000000in}}%
-\pgfpathcurveto{\pgfqpoint{0.038889in}{0.010313in}}{\pgfqpoint{0.034791in}{0.020206in}}{\pgfqpoint{0.027499in}{0.027499in}}%
-\pgfpathcurveto{\pgfqpoint{0.020206in}{0.034791in}}{\pgfqpoint{0.010313in}{0.038889in}}{\pgfqpoint{0.000000in}{0.038889in}}%
-\pgfpathcurveto{\pgfqpoint{-0.010313in}{0.038889in}}{\pgfqpoint{-0.020206in}{0.034791in}}{\pgfqpoint{-0.027499in}{0.027499in}}%
-\pgfpathcurveto{\pgfqpoint{-0.034791in}{0.020206in}}{\pgfqpoint{-0.038889in}{0.010313in}}{\pgfqpoint{-0.038889in}{0.000000in}}%
-\pgfpathcurveto{\pgfqpoint{-0.038889in}{-0.010313in}}{\pgfqpoint{-0.034791in}{-0.020206in}}{\pgfqpoint{-0.027499in}{-0.027499in}}%
-\pgfpathcurveto{\pgfqpoint{-0.020206in}{-0.034791in}}{\pgfqpoint{-0.010313in}{-0.038889in}}{\pgfqpoint{0.000000in}{-0.038889in}}%
+\pgfsys@defobject{currentmarker}{\pgfqpoint{-0.026389in}{-0.026389in}}{\pgfqpoint{0.026389in}{0.026389in}}{%
+\pgfpathmoveto{\pgfqpoint{0.000000in}{-0.026389in}}%
+\pgfpathcurveto{\pgfqpoint{0.006998in}{-0.026389in}}{\pgfqpoint{0.013711in}{-0.023608in}}{\pgfqpoint{0.018660in}{-0.018660in}}%
+\pgfpathcurveto{\pgfqpoint{0.023608in}{-0.013711in}}{\pgfqpoint{0.026389in}{-0.006998in}}{\pgfqpoint{0.026389in}{0.000000in}}%
+\pgfpathcurveto{\pgfqpoint{0.026389in}{0.006998in}}{\pgfqpoint{0.023608in}{0.013711in}}{\pgfqpoint{0.018660in}{0.018660in}}%
+\pgfpathcurveto{\pgfqpoint{0.013711in}{0.023608in}}{\pgfqpoint{0.006998in}{0.026389in}}{\pgfqpoint{0.000000in}{0.026389in}}%
+\pgfpathcurveto{\pgfqpoint{-0.006998in}{0.026389in}}{\pgfqpoint{-0.013711in}{0.023608in}}{\pgfqpoint{-0.018660in}{0.018660in}}%
+\pgfpathcurveto{\pgfqpoint{-0.023608in}{0.013711in}}{\pgfqpoint{-0.026389in}{0.006998in}}{\pgfqpoint{-0.026389in}{0.000000in}}%
+\pgfpathcurveto{\pgfqpoint{-0.026389in}{-0.006998in}}{\pgfqpoint{-0.023608in}{-0.013711in}}{\pgfqpoint{-0.018660in}{-0.018660in}}%
+\pgfpathcurveto{\pgfqpoint{-0.013711in}{-0.023608in}}{\pgfqpoint{-0.006998in}{-0.026389in}}{\pgfqpoint{0.000000in}{-0.026389in}}%
 \pgfpathclose%
 \pgfusepath{stroke,fill}%
 }%
@@ -16259,16 +16266,16 @@
 \pgfsetstrokecolor{currentstroke}%
 \pgfsetstrokeopacity{0.500000}%
 \pgfsetdash{}{0pt}%
-\pgfsys@defobject{currentmarker}{\pgfqpoint{-0.076389in}{-0.076389in}}{\pgfqpoint{0.076389in}{0.076389in}}{%
-\pgfpathmoveto{\pgfqpoint{0.000000in}{-0.076389in}}%
-\pgfpathcurveto{\pgfqpoint{0.020259in}{-0.076389in}}{\pgfqpoint{0.039690in}{-0.068340in}}{\pgfqpoint{0.054015in}{-0.054015in}}%
-\pgfpathcurveto{\pgfqpoint{0.068340in}{-0.039690in}}{\pgfqpoint{0.076389in}{-0.020259in}}{\pgfqpoint{0.076389in}{0.000000in}}%
-\pgfpathcurveto{\pgfqpoint{0.076389in}{0.020259in}}{\pgfqpoint{0.068340in}{0.039690in}}{\pgfqpoint{0.054015in}{0.054015in}}%
-\pgfpathcurveto{\pgfqpoint{0.039690in}{0.068340in}}{\pgfqpoint{0.020259in}{0.076389in}}{\pgfqpoint{0.000000in}{0.076389in}}%
-\pgfpathcurveto{\pgfqpoint{-0.020259in}{0.076389in}}{\pgfqpoint{-0.039690in}{0.068340in}}{\pgfqpoint{-0.054015in}{0.054015in}}%
-\pgfpathcurveto{\pgfqpoint{-0.068340in}{0.039690in}}{\pgfqpoint{-0.076389in}{0.020259in}}{\pgfqpoint{-0.076389in}{0.000000in}}%
-\pgfpathcurveto{\pgfqpoint{-0.076389in}{-0.020259in}}{\pgfqpoint{-0.068340in}{-0.039690in}}{\pgfqpoint{-0.054015in}{-0.054015in}}%
-\pgfpathcurveto{\pgfqpoint{-0.039690in}{-0.068340in}}{\pgfqpoint{-0.020259in}{-0.076389in}}{\pgfqpoint{0.000000in}{-0.076389in}}%
+\pgfsys@defobject{currentmarker}{\pgfqpoint{-0.038889in}{-0.038889in}}{\pgfqpoint{0.038889in}{0.038889in}}{%
+\pgfpathmoveto{\pgfqpoint{0.000000in}{-0.038889in}}%
+\pgfpathcurveto{\pgfqpoint{0.010313in}{-0.038889in}}{\pgfqpoint{0.020206in}{-0.034791in}}{\pgfqpoint{0.027499in}{-0.027499in}}%
+\pgfpathcurveto{\pgfqpoint{0.034791in}{-0.020206in}}{\pgfqpoint{0.038889in}{-0.010313in}}{\pgfqpoint{0.038889in}{0.000000in}}%
+\pgfpathcurveto{\pgfqpoint{0.038889in}{0.010313in}}{\pgfqpoint{0.034791in}{0.020206in}}{\pgfqpoint{0.027499in}{0.027499in}}%
+\pgfpathcurveto{\pgfqpoint{0.020206in}{0.034791in}}{\pgfqpoint{0.010313in}{0.038889in}}{\pgfqpoint{0.000000in}{0.038889in}}%
+\pgfpathcurveto{\pgfqpoint{-0.010313in}{0.038889in}}{\pgfqpoint{-0.020206in}{0.034791in}}{\pgfqpoint{-0.027499in}{0.027499in}}%
+\pgfpathcurveto{\pgfqpoint{-0.034791in}{0.020206in}}{\pgfqpoint{-0.038889in}{0.010313in}}{\pgfqpoint{-0.038889in}{0.000000in}}%
+\pgfpathcurveto{\pgfqpoint{-0.038889in}{-0.010313in}}{\pgfqpoint{-0.034791in}{-0.020206in}}{\pgfqpoint{-0.027499in}{-0.027499in}}%
+\pgfpathcurveto{\pgfqpoint{-0.020206in}{-0.034791in}}{\pgfqpoint{-0.010313in}{-0.038889in}}{\pgfqpoint{0.000000in}{-0.038889in}}%
 \pgfpathclose%
 \pgfusepath{stroke,fill}%
 }%
