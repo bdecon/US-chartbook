@@ -13,9 +13,9 @@
 		every axis plot/.append style={bar shift=0pt, fill},
 		nodes near coords style={/pgf/number format/.cd,fixed zerofill,precision=1, assume math mode}]
 		\addplot[gray] coordinates {(-2.52, 1)};
-		\addplot[gray] coordinates {(-1.58, 2)};
+		\addplot[gray] coordinates {(-1.59, 2)};
 		\addplot[gray] coordinates {(-0.95, 3)};
-		\addplot[green!80!blue] coordinates {(-0.05, 4)};
+		\addplot[green!80!blue] coordinates {(-0.06, 4)};
 		\addplot[blue!60!cyan] coordinates {(-0.05, 5)};
 		\addplot[red] coordinates {(0.15, 6)};
 	\end{axis}
@@ -31,13 +31,13 @@
 	\rebars
 	\stdline{blue!60!cyan}{date}{Auto Loan}{data/hhcdebt.csv}
     \node[label={0:{\scriptsize 8.0}}, circle, blue!60!cyan, fill, inner sep=1.5pt] at 
-        (axis cs:{2019-10-01},{8.0066}){};
+        (axis cs:{2019-10-01},{8.0059}){};
 	\stdline{green!80!blue}{date}{Student Loan}{data/hhcdebt.csv}
     \node[label={0:{\scriptsize 9.1}}, circle, green!80!blue, fill, inner sep=1.5pt] at 
-        (axis cs:{2019-10-01},{9.0714}){};
+        (axis cs:{2019-10-01},{9.0705}){};
 	\stdline{red}{date}{Credit Card}{data/hhcdebt.csv}
     \node[label={0:{\scriptsize 5.6}}, circle, red, fill, inner sep=1.5pt] at 
-        (axis cs:{2019-10-01},{5.5764}){};
+        (axis cs:{2019-10-01},{5.5758}){};
 	\stdnode{4.2cm}{1.85cm}{\scriptsize \color{blue!60!cyan}{auto}}
 	\stdnode{1.2cm}{0.9cm}{\scriptsize \color{green!80!blue}{student}}
 	\stdnode{3.9cm}{0.82cm}{\scriptsize \color{red}{credit card}}
