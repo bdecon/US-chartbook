@@ -2154,7 +2154,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-07-01}},
         minor xtick={}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04},
-        xticklabels={`89, `00, `10, `19 Q3}, 
+        xticklabels={`89, `00, `10, `19 Q4}, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\stdline{blue!90!cyan}{date}{W005RC}{data/fedgdp.csv}
@@ -2168,7 +2168,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 		clip=false, width=6.7cm, 
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-07-01}},
         minor xtick={}, 
-        xticklabels={`89, `00, `10, `19 Q3}, enlarge y limits={lower, 0.2}, 
+        xticklabels={`89, `00, `10, `19 Q4}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04}]
 	\rbars
 	\stdline{blue!90!cyan}{date}{W023RC}{data/slggdp.csv}
@@ -2368,10 +2368,13 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \newpage
 
+\subsubsection*{\color{black!70} \seriffont Import Penetration}
 
 \begin{minipage}{0.76\textwidth}
 
 \small Goods can be produced domestically or imported or some combination of the two. The import share of the total US demand for goods, measured as US produced goods and imported goods less exported goods, is also referred to as \textit{import penetration}. This measure has risen considerably over the past thirty years. The majority of the long-term increase has been concentrated in consumer goods, while the decrease since 2011 has come primarily from petroleum and products. \\
+
+\input{text/goodsimpsh1.txt} \\
 
 \input{text/goodsimpsh.txt} \\
 
@@ -3189,12 +3192,12 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \newpage
 
-
+\begin{minipage}{0.42\textwidth}
 \noindent \normalsize \textbf{Quits Rate by Industry}\\
 \footnotesize{\textit{voluntary separations as share }}\\
 \footnotesize{\textit{of total employment, selected }}\\
 \footnotesize{\textit{industry groups, percent}}\\
-\vspace{9.2cm}
+\vspace{9.7cm}
 
 \hspace{20mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
@@ -3231,17 +3234,15 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\legend{, 2000-- range, 2018-- range,, ,\input{text/jolts_ltdate.txt}}
 	\end{axis}
 \end{tikzpicture}
-\vspace{1mm}
+\vspace{5mm}
 
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{19mm} \tbllink{quits_ind.csv}
-
-\newpage
-
-
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{quits_ind.csv}
+\end{minipage}\hspace{12mm}
+\begin{minipage}{0.42\textwidth}
 \noindent \normalsize \textbf{Job Openings Rate}\\
 \footnotesize{\textit{job openings share of jobs,}}\\
 \footnotesize{\textit{by industry group, percent}}\\
-\vspace{9.5cm}
+\vspace{10cm}
 
 \hspace{20mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
@@ -3278,9 +3279,10 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\legend{, 2000-- range, 2018-- range,, ,\input{text/jolts_ltdate.txt}}
 	\end{axis}
 \end{tikzpicture}
-\vspace{1mm}
+\vspace{4mm}
 
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{19mm} \tbllink{openings_ind.csv}
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{openings_ind.csv}
+\end{minipage}
 
 \newpage
 
@@ -3296,8 +3298,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 \noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
 \footnotesize{\textit{initial claims, in thousands, seasonally adjusted, three-month moving average highlighted}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 400, 600}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 500, 1000, 2000, 3000}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=7.0cm]
 	\rbars
 	\stdline{cyan!30}{date}{weekly}{data/icsa.csv}
 	\stdline{blue!60!black}{date}{3M}{data/icsa.csv}
@@ -3512,28 +3514,35 @@ Among newly employed workers, the vast majority were considered to be out of the
 \label{sec:cap}
 \small The US equity markets and capital markets provide businesses and governments with funding for activities and fixed investments. \\
 
+\subsection*{\color{black!70} \seriffont Equity Markets}
+
 The S\&P 500 is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. The index is a broad measure of price levels in US equity markets. \input{text/sp500.txt}\\
 
 \vspace{2mm}
 
 \noindent \normalsize \textbf{S\&P 500}\\
-\footnotesize{\textit{index}}\\
+\footnotesize{\textit{index}} \hspace{58mm} \footnotesize{\textit{...recent data in detail}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={0, 1000, 2000, 3000, 4000}, 
 		enlarge y limits={0.1}, 
-		xticklabel={`\short{\year}}, height=5.6cm, width=7.2cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\rbars
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500.csv}
 	\end{axis}
+\end{tikzpicture}
+\hfill
+\begin{tikzpicture}
+	\begin{axis}[\ltdateaxisticks ytick={2000, 2500, 3000, 3500, 4000}, 
+		enlarge y limits={0.1}, xmax={2020-04-01},
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
+	\thickline{black!13!white}{date}{MA}{data/sp500_recent.csv}
+	\thinline{green!80!blue}{date}{GSPC}{data/sp500_recent.csv}
+	\stdnode{1.3cm}{0.36cm}{\scriptsize \color{black!25!white}\textbf{moving average}}
+	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Yahoo! Finance} \hspace{26mm} \tbllink{sp500.csv} 
+\footnotesize{Source: Yahoo! Finance} \hfill \tbllink{sp500_recent.csv} \\
 
-\end{minipage}
-
-\newpage
-
-\begin{minipage}{0.76\textwidth}
-\subsection*{\color{black!70} \seriffont Equity Markets}
+\vspace{5mm}
 
 \small \input{text/sp500rr3.txt}  \\
 
@@ -3557,6 +3566,11 @@ The S\&P 500 is a market-cap-weighted stock market index based on 500 large comp
 \vspace{5mm}
 
 
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \noindent \normalsize \textbf{Corporate Equity Payout}\\
 \footnotesize{\textit{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}}\\
@@ -3571,11 +3585,7 @@ The S\&P 500 is a market-cap-weighted stock market index based on 500 large comp
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{eq_payout.csv}\\
 
-\end{minipage}
-
-\newpage
-
-\begin{minipage}{0.76\textwidth}
+\vspace{6mm}
 
 
 \small The Chicago Board Options Exchange uses S\&P 500 options data to identify expectations of future volatility. \input{text/vixbasic.txt}\\
@@ -3594,26 +3604,6 @@ The S\&P 500 is a market-cap-weighted stock market index based on 500 large comp
 \end{tikzpicture}\\
 \footnotesize{Source: Chicago Board Options Exchange} \hfill \tbllink{vix.csv}
 \end{minipage}
-\vspace{8mm}
-
-
-\noindent \normalsize \textbf{10-Year -- 3-Month Spread}\\
-\footnotesize{\textit{percentage point treasury yield spread}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
-		enlarge y limits={0.1}, xmin = 2011-11-01,
-		xticklabel={`\short{\year}}, height=5.6cm, width=7.6cm, clip=false]
-	\thinline{cyan!60!blue}{date}{Value}{data/spread.csv}
-	\input{text/spread_node.txt}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hspace{30mm} \tbllink{spread.csv} \\
-
-
-
-
-
-
 
 \newpage
 
@@ -3656,13 +3646,53 @@ The S\&P 500 is a market-cap-weighted stock market index based on 500 large comp
 	\stdnode{8.68cm}{1.36cm}{\scriptsize \color{red!70!purple!90!black}\textbf{Ten-year}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}
+
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small The \textbf{Treasury yield curve} \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{shows} the yield on different maturities of Treasury bonds and bills, usually from short-term, such as three-month, to long-term such as 30-year. This measure is at times described as \textit{inverted}, which means the short-term-debt end of the curve is higher than the long-term-debt end. For example, if the yield on two-year treasuries is higher than the yield on ten-year treasuries. \\
+
+\input{text/spread_basic.txt}
+
+
+\end{minipage}
 
 \vspace{3mm}
 
-\small The \textbf{Treasury yield curve} \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{shows} the yield on different maturities of Treasury bonds and bills, usually from short-term, such as three-month, to long-term such as 30-year. This measure is at times described as \textit{inverted}, which means the short-term-debt end of the curve is higher than the long-term-debt end. For example, if the yield on two-year treasuries is higher than the yield on ten-year treasuries. 
 
+\begin{minipage}{0.39\textwidth}
+
+\noindent \normalsize \textbf{10-Year -- 3-Month Spread}\\
+\footnotesize{\textit{percentage point treasury yield spread}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
+		enlarge y limits={0.1}, xmin = 2011-11-01,
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.5cm, clip=false]
+	\thinline{cyan!60!blue}{date}{Ten-3M}{data/spread.csv}
+	\input{text/spread_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hspace{20mm} \tbllink{spread.csv} 
 \end{minipage}
+\hspace{2mm}
+\begin{minipage}{0.39\textwidth}
+\noindent \normalsize \textbf{10-Year -- 2-Year Spread}\\
+\footnotesize{\textit{percentage point treasury yield spread}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
+		enlarge y limits={0.1}, xmin = 2011-11-01,
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.5cm, clip=false]
+	\thinline{orange}{date}{Ten-2Y}{data/spread.csv}
+	\input{text/spread_node2.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hspace{20mm} \tbllink{spread.csv} 
+\end{minipage}
+
 
 \newpage
 
@@ -3687,6 +3717,26 @@ A large increase in the amount of money held by individuals and institutions can
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{M2imf.csv}
+
+\vspace{10mm}
+
+\vspace{1mm}
+
+\noindent \normalsize \textbf{Federal Reserve Balance Sheet}\\
+\footnotesize{\textit{total assets, trillion of USD}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={1, 2, 3, 4, 5}, 
+		enlarge y limits={0.1}, xmax={2020-04-01},
+		xticklabel={`\short{\year}}, height=5.6cm, width=7.0cm, clip=false]
+	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+	\stdline{blue!80!black}{date}{RESPPMA_N.WW}{data/fed_assets.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hspace{26mm} \tbllink{fed_assets.csv}\\
+
+\vspace{3mm}
+
 
 \end{minipage}
 
