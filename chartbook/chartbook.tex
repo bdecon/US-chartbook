@@ -894,6 +894,24 @@ As seen during the collapse of the housing bubble, it is possible for a ``homeow
 
 \begin{minipage}{0.76\textwidth}
 
+\small \input{text/rdpigrowth.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{After-Tax Income Growth}\\
+\footnotesize{\textit{annual growth, per capita real disposable personal income, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6}, 
+		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=12.6cm]
+	\rbars
+	\stdline{blue!80!cyan}{date}{rdpi}{data/rdpigrowth.csv}
+	\input{text/rdpi_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis}  \hfill \tbllink{rdpigrowth.csv}\\
+
+\vspace{6mm}
+
 \small Earnings, which include wages and salaries as well as self-employment income, comprise the majority of personal income. Yet only 52 percent of people have any earnings in 2018 (see\cbox{red!70!yellow}). Only 43 percent of people have earnings above the single-person poverty threshold.\\
 
 Total income, including taxes, welfare, and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). The remainder live with people with income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000, which would overflow the page at the current scale. \\
@@ -917,10 +935,9 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: CPS ASEC} \hspace{80mm} \tbllink{pearn_dist.csv}
-\end{minipage}\\
+\end{minipage}
 
-
-\vspace{6mm}
+\newpage 
 
 \subsubsection*{\color{black!70} \seriffont Household Income}
 
