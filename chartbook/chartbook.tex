@@ -3029,7 +3029,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \begin{minipage}{0.76\textwidth}
 
 
-\small The Bureau of Labor Statistics combines data from the surveys that go into the jobs report with additional local data to \href{https://www.bls.gov/lau/}{produce} local area estimates of unemployment, including the \textbf{unemployment rate for metro areas}. Will need to think about tables that show highlights, because there are too many MSAs to list all data. Perhaps I can list how many metro areas had the unemployment rate fall over the past year, and then talk about how many unemployed people that actually means--so that population is taken into consideration in some meaningful way.\\
+\small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{produce} local area estimates of unemployment, including the \textbf{unemployment rate for metro areas}. \\
 
 \vspace{2mm}
 
@@ -3313,13 +3313,13 @@ Among newly employed workers, the vast majority were considered to be out of the
 \vspace{2mm}
 
 \noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
-\footnotesize{\textit{initial claims, in thousands, seasonally adjusted, three-month moving average highlighted}}\\
+\footnotesize{\textit{initial claims, in thousands, not seasonally adjusted, four-week moving average highlighted}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 500, 1000, 2000, 3000}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=7.0cm]
 	\rbars
-	\stdline{cyan!30}{date}{weekly}{data/icsa.csv}
-	\stdline{blue!60!black}{date}{3M}{data/icsa.csv}
+	\stdline{cyan!35!white}{date}{weekly}{data/icsa.csv}
+	\stdline{blue!60!black}{date}{1M}{data/icsa.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
