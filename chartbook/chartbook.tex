@@ -1232,7 +1232,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 
 
 \noindent \normalsize \textbf{Household and Nonprofit Assets}\\
-\footnotesize{\textit{various measures: \hspace{26mm} trillions of USD \hspace{4mm} share of GDP \hspace{5mm} real growth rate}}\\ \vspace{3mm}
+\footnotesize{\textit{various measures: \hspace{26mm} trillions of USD \hspace{4mm} share of GDP \hspace{5mm} real annual growth rate}}\\ \vspace{3mm}
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{2mm} p{44mm} R{11mm} R{9.5mm} R{9.5mm} R{8mm} 
@@ -1242,7 +1242,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 		}	\\
 		
 \vspace{-6mm}
-\footnotesize{Source: Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
 
 \vspace{8mm}
 
@@ -2702,7 +2702,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \begin{minipage}{0.31\textwidth}
 
-\small The establishment survey from the monthly jobs report identifies how many jobs have been added to the economy in a given month. \input{text/nfp_basic_text.txt}
+\small The \href{https://www.bls.gov/ces/}{establishment survey} from the monthly jobs report identifies how many jobs have been added to the economy in a given month. \input{text/nfp_basic_text.txt}
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.39\textwidth}
 
@@ -2721,11 +2721,32 @@ People who are not employed and not unemployed are considered to be outside of t
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{nfp.csv}
 \end{minipage}
 
+
+
+\vspace{6mm}
+
+\noindent \normalsize \textbf{Nonfarm Payrolls by Industry Group}\\
+\footnotesize{\textit{seasonally adjusted, thousands \hspace{14mm}levels \hspace{17mm} monthly change}\\
+\vspace{-5mm}
+
+\hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{41mm} R{10.5mm} R{10.5mm} R{8.2mm} R{7.8mm} R{7.8mm} 
+		   R{7.8mm} R{7.8mm} }
+			 \input{data/nfp.tex}\hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-2mm}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{6.7cm} \tbllink{ces_data.csv}
+
+
+
 \newpage
 
 \begin{minipage}{0.76\textwidth} 
 
-\small Employment rates vary over time, but also by age, gender, and education. Over the 12 months ending \input{text/cps_lfs_date.txt}, the employment rate for most education groups is lower than it was on average in the year 2000. Only older workers and women with advanced education have higher rates of employment than in 2000. Fix text... \\
+\small Employment rates vary over time, but also by age, gender, and education. Over the 12 months ending \input{text/cps_lfs_date.txt}, the employment rate for most education groups is lower than it was on average in the year 2000. Only older workers and women with advanced education have higher rates of employment than in 2000. \\
 
 \vspace{2mm}
 
@@ -3533,7 +3554,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \subsection*{\color{black!70} \seriffont Equity Markets}
 
-The S\&P 500 is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. The index is a broad measure of price levels in US equity markets. \input{text/sp500.txt}\\
+The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color{green!80!blue}\textbf{---}})is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. The index is a broad measure of price levels in US equity markets. \input{text/sp500.txt}\\
 
 \vspace{2mm}
 
@@ -3605,7 +3626,7 @@ The S\&P 500 is a market-cap-weighted stock market index based on 500 large comp
 \vspace{6mm}
 
 
-\small The Chicago Board Options Exchange uses S\&P 500 options data to identify expectations of future volatility. \input{text/vixbasic.txt}\\
+\small The Chicago Board Options Exchange uses S\&P 500 options data to \href{http://www.cboe.com/vix}{identify} expectations of future volatility. \input{text/vixbasic.txt}\\
 
 \vspace{2mm}
 
@@ -3832,7 +3853,7 @@ Changes in prices affect the amount of goods and services that can purchased by 
 
 \subsection*{\color{black!70} \seriffont Inflation Expectations}
 
-\small Researchers gain insight on what inflation is expected in the future both through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the \textit{inflation breakeven} and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced-in, on average, for the maturity of the bond.
+\small Researchers gain insight on what inflation is expected in the future both through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the \href{https://fred.stlouisfed.org/series/T5YIE}{inflation breakeven} and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced-in, on average, for the maturity of the bond.
 \end{minipage}
 
 \begin{minipage}{0.36\textwidth}

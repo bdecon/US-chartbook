@@ -171,6 +171,7 @@ def dtxt(date):
 	     'mon3': date.strftime('%B'),
 	     'mon4': date.strftime(f'`{date.strftime("%y")} {date.strftime("%b")}'),
 	     'mon5': date.strftime('%Y-%m'),
+	     'mon6': f'{date.strftime("%b")} `{date.strftime("%y")}',
 	     'day1': date.strftime('%B %-d, %Y'),
 	     'day2': date.strftime('%b %-d, %Y'),
 	     'day3': date.strftime('%d'),
