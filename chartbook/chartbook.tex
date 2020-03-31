@@ -3756,27 +3756,39 @@ A large increase in the amount of money held by individuals and institutions can
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{M2imf.csv}
 
-\vspace{10mm}
+\end{minipage}
 
-\vspace{1mm}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small \input{text/fed_assets1.txt}
+
+\end{minipage}
+
+\begin{minipage}{0.39\textwidth}
+
+\vspace{2mm}
 
 \noindent \normalsize \textbf{Federal Reserve Balance Sheet}\\
 \footnotesize{\textit{total assets, trillion of USD}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={1, 2, 3, 4, 5}, 
-		enlarge y limits={0.1}, xmax={2020-04-01},
-		xticklabel={`\short{\year}}, height=5.6cm, width=7.0cm, clip=false]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, 
+		enlarge y limits={0.1}, xmax={2020-04-01}, ymin=0, ymax=6,
+		xticklabel={`\short{\year}}, height=6.0cm, width=6.8cm, clip=false]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
 	\stdline{blue!80!black}{date}{RESPPMA_N.WW}{data/fed_assets.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hspace{26mm} \tbllink{fed_assets.csv}\\
-
-\vspace{3mm}
-
-
+\footnotesize{Source: Federal Reserve} \hspace{22mm} \tbllink{fed_assets.csv}
+\end{minipage}\hspace{1mm}
+\begin{minipage}{0.36\textwidth}
+\small \input{text/fed_assets2.txt}
 \end{minipage}
+
+
 
 \newpage
 
