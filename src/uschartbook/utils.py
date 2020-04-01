@@ -472,3 +472,22 @@ def inc_dec_percent(n):
     return (f'increased by {abs(n):.1f} percent' if n >= 0.1 
         else f'decreased by {abs(n):.1f} percent' 
         if n <= -0.1 else 'was virtually unchanged')
+        
+        
+def compare_text(latest, previous, cutoffs):
+    '''Simple text based on difference between two numbers'''
+    direction = 'above' if latest - previous > 0 else 'below'
+    size = abs(latest - previous)
+    if type(cutoffs) not in [list, tuple] or len(cutoffs) != 3:
+        print('Cutoffs should be list of four numeric values')
+        
+    if size <= cutoffs[0]:
+        text = 'in line with'
+    elif size <= cutoffs[1]:
+        text = f'slightly {direction}'
+    elif size <= cutoffs[2]:
+        text = f'substantially {direction}'
+    else:
+        text = f'far {direction}'
+    
+    return text
