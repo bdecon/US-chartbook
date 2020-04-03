@@ -2637,7 +2637,7 @@ People who are not employed and not unemployed are considered to be outside of t
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
 	\rbars
 	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
-	\node[above, align=right] at (axis cs:2018-09-01,80.9) {\scriptsize \input{text/epop.txt}};
+	\node[above, align=right] at (axis cs:2018-11-01,80.8) {\scriptsize \input{text/epop.txt}};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}\\
@@ -2710,8 +2710,8 @@ People who are not employed and not unemployed are considered to be outside of t
 \footnotesize{\textit{line = required for constant employment rate}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.2cm, height=5.0cm,
-		ymin=2.9, xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2020-01-01}},
-		minor xtick={}, xmin={2013-11-01},
+		xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2020-01-01}},
+		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=1.5em},
         xticklabels={`14, `16, `18, `20},]
 	\sbar{blue!60!purple}{date}{ALL}{data/nfp.csv}
 	\stdline{green!50!lime}{date}{TOT}{data/nfp_pop.csv}
@@ -3335,7 +3335,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
 \footnotesize{\textit{initial claims, in thousands, not seasonally adjusted, four-week moving average highlighted}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 500, 1000, 2000, 3000}, enlarge y limits={0.1},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 500, 1000, 2000, 3000, 4000, 5000, 6000}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=7.0cm]
 	\rbars
 	\stdline{cyan!35!white}{date}{weekly}{data/icsa.csv}
