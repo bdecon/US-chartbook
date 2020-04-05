@@ -97,7 +97,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-05-01},
+		xmax={2020-05-10},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -577,7 +577,7 @@
 
 \begin{minipage}{0.76\textwidth}
 
-\small \textbf{Private fixed investment}, as measured in the national accounts, includes construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but not automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment and intellectual property products. The change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.\\
+\small \textbf{Private fixed investment}, as measured in the national accounts, includes residential fixed investment, such as the construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but does not include spending on durable goods, such as automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment, software, and intellectual property products. Additionally, the change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.\\
 
 \input{text/inv_text.txt} \input{text/inv_text2.txt}\\
 
@@ -2364,7 +2364,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \begin{minipage}{0.76\textwidth}
 
-\small Changes to the trade balance come from a myriad of potential sources, such as changes in demand or relative supply of other countries, changes in exchange rates, changes in preferences for categories of goods, changes in trade policy, and changes in domestic demand. The following table captures the nominal value of major categories of goods and services as a share of nominal gross domestic product at various points over the past 30 years.  \\
+\small Changes to the trade balance can come from many sources, such as changes in domestic or foreign preferences and income, changes in exchange rates, and changes in trade policy. The following table captures the nominal value of major categories of goods and services as a share of nominal gross domestic product at various points over the past 30 years.  \\
 
 \end{minipage}
 
@@ -3367,7 +3367,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\colorline{lime!65!green}{ \ bd CPS} \hspace{3mm} \colorline{blue!65!black}{ \ BLS}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 300, 400, 500}, enlarge y limits={0.15},
-		clip=false, width=6.5cm,
+		clip=false, width=6.5cm, xmin=1988-12-15,
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-10-01}},
         minor xtick={}, xticklabels={`89, `00, `10, `19 Q4}]
 	\rbars
@@ -3564,13 +3564,14 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 		enlarge y limits={0.1}, 
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\rbars
+	\draw [black!25!white, dashed] ({2016-12-01},2000) rectangle ({2020-05-30},3500);
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500.csv}
 	\end{axis}
 \end{tikzpicture}
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={2000, 2500, 3000, 3500, 4000}, 
-		enlarge y limits={0.1}, xmax={2020-04-01},
+		enlarge y limits={0.1}, xmax={2020-04-20},
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\thickline{black!13!white}{date}{MA}{data/sp500_recent.csv}
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500_recent.csv}
@@ -3858,13 +3859,36 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-\small The consumer price index (CPI-U) is used in contracts that include cost adjustments. As a result, historical CPI-U data are not revised if there is a change to the way the CPI is calculated. For research purposes, however, it is ideal to have the most accurate measure of overall changes in prices faced by consumers. BLS also publishes a research series, the CPI-U-RS, which adjusts the historical data of the CPI-U to be consistent with the current methods of producing it. \\
+\small The consumer price index (CPI-U) is used in contracts that include cost adjustments. As a result, historical CPI-U data are not revised if there is a change to the way the CPI is calculated. For research purposes, however, it is ideal to have the most accurate measure of overall changes in prices faced by consumers. BLS also publishes a research series, the CPI-U-RS, which adjusts the historical data of the CPI-U to be consistent with the current methods of producing it. 
+\end{minipage}
+\subsection*{\color{black!70} \seriffont Producer Prices}
 
-\vspace{4mm}
+\begin{minipage}{0.47\textwidth}
+\noindent \normalsize \textbf{Producer Price Index}\\
+\footnotesize{\textit{all commodities, annual growth, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ytick={-20, -10,  0, 10, 20}, 
+		enlarge y limits={0.1}, \bbar{y}{0}, clip=false,
+		yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}, height=4.8cm, width=7.8cm,
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
+        minor xtick={}, xticklabels={`89, `00, `10, `20}]
+    	\rbars
+		\stdline{green!80!blue}{date}{VALUE}{data/ppi.csv}
+		\input{text/ppi_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{ppi.csv}
+\end{minipage} \hspace{6mm} 
+\begin{minipage}{0.24\textwidth}
+\small \input{text/ppi_main.txt}
+\end{minipage}
 
 \subsection*{\color{black!70} \seriffont Inflation Expectations}
 
-\small Researchers gain insight on what inflation is expected in the future both through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the \href{https://fred.stlouisfed.org/series/T5YIE}{inflation breakeven} and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced-in, on average, for the maturity of the bond.
+\begin{minipage}{0.76\textwidth}
+
+\small Researchers gain insight on expected changes in prices through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the \href{https://fred.stlouisfed.org/series/T5YIE}{inflation breakeven} and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced in, on average, for the maturity of the bond.
 \end{minipage}
 
 \begin{minipage}{0.36\textwidth}
