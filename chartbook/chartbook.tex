@@ -2737,7 +2737,7 @@ People who are not employed and not unemployed are considered to be outside of t
 		}	\\
 		
 \vspace{-2mm}
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{6.7cm} \tbllink{ces_data.csv}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{7.1cm} \tbllink{ces_data.csv}
 
 
 
@@ -2945,9 +2945,34 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \subsection*{\color{black!70} \seriffont Unemployment}
 
-\small The \textit{unemployment rate} is measured as the number of people who do not have a job and looked for one during a reference week, divided by the number of people in the labor force (total employed and unemployed).\\
+\small The headline unemployment rate, also known as the U3 unemployment rate, measures people who do not have a job but are looking for one or are on temporary layoff, as a share of the labor force (those employed and unemployed). \input{text/unemp1.txt}
+\end{minipage}\\
 
-\input{text/unemp.txt}\\
+\begin{minipage}{0.37\textwidth}
+\small BLS also \href{https://www.bls.gov/news.release/empsit.t15.htm}{reports} a broader measure of unemployment, known as U6. This labor under-utilization measure includes unemployed people counted in U3 as well as people who have given up looking for work and people who are part-time but would like to work full-time (part-time for economic reasons). \input{text/unemp2.txt}\\
+\end{minipage}\hspace{6mm}
+\begin{minipage}{0.41\textwidth}
+\normalsize \textbf{Unemployment Measures}\\
+\footnotesize{\textit{share of labor force, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15}, 
+		enlarge y limits={0.1}, ymin=1.2,
+		xticklabel={`\short{\year}}, height=3.8cm, width=6.2cm, clip=false]
+	\rbars
+	\stdline{blue}{date}{U6}{data/unemp2.csv}
+	\stdline{blue!50!cyan}{date}{Total}{data/unemp2.csv}
+	\stdnode{4.0cm}{0.3cm}{\footnotesize \color{blue!50!cyan}U3}
+	\stdnode{1.2cm}{1.45cm}{\footnotesize \color{blue}U6}
+	\input{text/u3_node.txt}
+	\input{text/u6_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: BLS} \hspace{31mm} \tbllink{unemp2.csv}
+
+\end{minipage}\\
+
+\begin{minipage}{0.76\textwidth}
+\small \input{text/unemp3.txt}\\
 
 \vspace{1mm}
 
@@ -2958,15 +2983,37 @@ People who are not employed and not unemployed are considered to be outside of t
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm, ymin=1.2,
 		legend style={fill=white, at={(0.5, 1.01)}}]
 	\rbars
-	\stdline{blue!90!black}{date}{White}{data/unemp.csv}
-	\stdline{cyan!80!white}{date}{Hispanic}{data/unemp.csv}
-	\stdline{green!50!teal}{date}{Black}{data/unemp.csv}
-	\legend{White, Hispanic, Black};
+	\stdline{green!50!teal!60!black}{date}{Black}{data/unemp.csv}
+	\stdline{cyan!60!white}{date}{Hispanic}{data/unemp.csv}
+	\stdline{blue!80!black}{date}{White}{data/unemp.csv}
+	\legend{Black, Hispanic, White};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp.csv}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp.csv}
 
-\vspace{1mm}
+\end{minipage}
+
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Unemployment Measures}\\
+\footnotesize{\textit{seasonally adjusted, percent}\\
+\vspace{-5mm}
+
+\hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{32mm} R{8.0mm} R{8.0mm} R{8.0mm} R{8.0mm} R{8.0mm} R{8.0mm} 
+		   R{8.0mm} R{12.8mm} R{11.2mm}}
+			 \input{data/unemp1.tex}\hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-2mm}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{7.35cm} \tbllink{unemp.csv}
+
+
+\newpage
+
+\begin{minipage}{0.76\textwidth} 
 
 \subsubsection*{\color{black!70} \seriffont Reasons for unemployment}
 
@@ -2993,13 +3040,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp_reason.csv}
 
-\end{minipage}
-
-
-\newpage
-
-
-\begin{minipage}{0.76\textwidth}
+\vspace{2mm}
 
 \subsubsection*{\color{black!70} \seriffont Duration of unemployment}
 
@@ -3090,7 +3131,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \vspace{2mm}
 
 \noindent \normalsize \textbf{Contributions to Labor Force Participation Since March 2001}\\
-\footnotesize{\textit{cumulative percentage point contribution to age 18-64 labor force participation,\\data have been adjusted to remove the effect of trends in age and sex}}\\ 
+\footnotesize{\textit{cumulative percentage point contribution to age 18-64 labor force participation}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={}, width=10.0cm,
 		xticklabel={`\short{\year}}, clip=false, 
