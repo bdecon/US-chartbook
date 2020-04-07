@@ -716,44 +716,77 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \subsubsection*{\color{black!70} \seriffont Homeownership}
 
-\small The \textbf{homeownership rate} measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}\\
+\small The \textbf{homeownership rate} measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}
 
-\vspace{2mm}
+\end{minipage}
+
+\vspace{1mm}
+
+\begin{minipage}{0.405\textwidth}
 
 \noindent \normalsize \textbf{Homeownership Rate}\\
-\footnotesize{\textit{owner-occupied share of housing units, percent}}\\
+\footnotesize{\textit{share of households occupied by owners, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={64, 66, 68}, 
-		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.8cm, width=7.0cm, clip=false]
+	\begin{axis}[\shdateaxisticks ytick={40, 50, 60, 70}, 
+		enlarge y limits={0.03}, ymin=40, xmin={1991-01-01},
+		xticklabel={`\short{\year}}, height=8.8cm, width=7.0cm, clip=false]
 	\rbars
-	\stdline{red!50!orange}{date}{VALUE}{data/homeown.csv}
+	\stdline{violet!60!magenta}{date}{VALUE}{data/homeown.csv}
+	\stdline{blue!80!cyan!80!black}{date}{White}{data/homeown2.csv}
+	\stdline{red!80!black}{date}{Other}{data/homeown2.csv}
+	\stdline{green!80!blue!85!black}{date}{Hispanic}{data/homeown2.csv}
+	\stdline{red!20!orange!95!black}{date}{Black}{data/homeown2.csv}
 	\input{text/homeown_node.txt}
+	\input{text/homeown_white_node.txt}
+	\input{text/homeown_other_node.txt}
+	\input{text/homeown_hispanic_node.txt}
+	\input{text/homeown_black_node.txt}
+	\stdnode{4.35cm}{0.4cm}{\footnotesize \color{red!20!orange!95!black}Black}
+	\stdnode{4.4cm}{6.75cm}{\footnotesize \color{blue!80!cyan!80!black}White}
+	\stdnode{4.7cm}{3.4cm}{\footnotesize \color{red!80!black}Other}
+	\stdnode{0.9cm}{5.1cm}{\footnotesize \color{violet!60!magenta}Total}
+	\stdnode{4.3cm}{1.92cm}{\footnotesize \color{green!80!blue!85!black}Hispanic}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hspace{30mm} \tbllink{homeown.csv} \\
+\footnotesize{Source: Census Bureau} \hspace{26mm} \tbllink{homeown2.csv} 
 
-\vspace{5mm}
+\end{minipage}\hspace{5.5mm}
+\begin{minipage}{0.31\textwidth}
+\small Census data also show large differences in homeownership rates by race and ethnicity. \input{text/homeown2.txt} \\
+
+\input{text/homeown3.txt}
+\end{minipage}\hspace{5mm}
+
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth}
 
 \small
 
-As seen during the collapse of the housing bubble, it is possible for a ``homeowner'' to have little or no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in \textbf{owner's equity as a share of the market value of real estate} show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. \input{text/homeeq.txt}\\
+As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in owner's equity as a share of the market value of real estate show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. 
+
+\end{minipage}
 
 \vspace{2mm}
 
+\begin{minipage}{0.29\textwidth}
+
+\small \input{text/homeeq.txt}
+
+\end{minipage}\hspace{8mm}
+\begin{minipage}{0.44\textwidth}
 \noindent \normalsize \textbf{Owner's Equity Share of Real Estate}\\
 \footnotesize{\textit{owner's equity as percent of real estate}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={45, 50, 55, 60, 65, 70}, 
 		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.8cm, width=7.0cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.6cm, width=7.2cm, clip=false]
 	\rbars
 	\stdline{blue!80!violet}{date}{VALUE}{data/homeeq.csv}
 	\input{text/homeeq_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hspace{30mm} \tbllink{homeeq.csv} 
-
 
 \end{minipage}
 
@@ -944,6 +977,13 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \newpage 
 
 \subsubsection*{\color{black!70} \seriffont Household Income}
+
+\begin{minipage}{0.76\textwidth}
+\small Given the massive variance in personal income, with half of the population receiving no market income, the sharing of income between people is key to survival. Household income measures the combined income of all people in a given housing unit. Even among individuals who receive market income, this income is distributed very unevenly. Likewise, the share of the household that receives income varies between households. As a result, differences in income between individual households are still massive. 
+
+\end{minipage}
+
+\vspace{1mm}
 
 \begin{minipage}{0.37\textwidth}
 \noindent \normalsize \textbf{Real Median Household Income}\\
@@ -1418,19 +1458,19 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 
 \begin{minipage}{0.76\textwidth}
 
-\small The Federal Housing Finance Agency (FHFA) \textbf{housing price} index \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{data} look useful primarily because they offer geographic specificity. Look into ways to use these. Ideally, I want to know about the ratio of housing prices to rental equivalent. For now, the chart below is more or less a placeholder, though I may keep it or some variation.\\
-
+\small The Federal Housing Finance Agency (FHFA) \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{housing price index} \input{text/fhfa.txt}\\
 
 \vspace{2mm}
 
 \noindent \normalsize \textbf{House Price Index}\\
-\footnotesize{\textit{one-year percent change}}\\
+\footnotesize{\textit{seasonally adjusted index, one-year percent change}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, 
-		yticklabel style={text width=1.5em},
+		yticklabel style={text width=1.5em}, clip=false,
 		xticklabel={`\short{\year}}, width=11.8cm]
-	\rbars
+	\rebars
 	\thickline{blue!40!cyan}{date}{index_sa}{data/hpi.csv}	
+	\input{text/fhfa_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Housing Finance Agency} \hspace{54mm} \tbllink{hpi.csv}\\
@@ -3608,14 +3648,14 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 		enlarge y limits={0.1}, 
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\rbars
-	\draw [black!25!white, dashed] ({2016-12-01},2000) rectangle ({2020-05-30},3500);
+	\draw [black!25!white, dashed] ({2016-12-01},2000) rectangle ({2020-06-12},3500);
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500.csv}
 	\end{axis}
 \end{tikzpicture}
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={2000, 2500, 3000, 3500, 4000}, 
-		enlarge y limits={0.1}, xmax={2020-04-20},
+		enlarge y limits={0.1}, xmax={2020-04-30},
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\thickline{black!13!white}{date}{MA}{data/sp500_recent.csv}
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500_recent.csv}
@@ -3840,7 +3880,7 @@ A large increase in the amount of money held by individuals and institutions can
 \section*{\color{darkgray}\LARGE \seriffont Prices}
 \label{sec:pr}
 \small 
-Changes in prices affect the amount of goods and services that can purchased by a fixed amount of income. When researchers try to measure changes in prices, they often look at both the quantity that can be purchased by a unit of currency, and also changes in quality of the item. To understand the overall change in prices faced by a certain group, such as consumers, researchers create a representative ``basket'' of the goods and services purchased by the group, and track the changes in the basket, and the price of the basket, over time. 
+Changes in prices affect the amount of goods and services that can purchased by a fixed amount of income. When researchers try to measure changes in prices, they often look at both the quantity that can be purchased by a unit of currency, and also changes in item quality. To understand the overall change in prices faced by a certain group, such as consumers, researchers create a representative ``basket'' of the goods and services purchased by the group, and track the changes in the basket, and the price of the basket, over time. 
 
 
 \subsection*{\color{black!70} \seriffont Consumer Price Index}
