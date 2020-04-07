@@ -949,9 +949,9 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 
 \vspace{6mm}
 
-\small Earnings, which include wages and salaries as well as self-employment income, comprise the majority of personal income. Yet only 52 percent of people have any earnings in 2018 (see\cbox{red!70!yellow}). Only 43 percent of people have earnings above the single-person poverty threshold.\\
+\small Earnings, which include wages and salaries as well as self-employment income, comprise the majority of personal income. Yet only 52 percent of people have any earnings in 2018 (see\cbox{red!70!yellow}). Only 43 percent of people have earnings above the single-person poverty threshold of \$12,800.\\
 
-Total income, including taxes, welfare, and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). The remainder live with people with income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000, which would overflow the page at the current scale. \\
+Total income, including taxes, welfare, and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). The remainder live with people with income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000. \\
 
 \vspace{2mm}
 
@@ -959,9 +959,9 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \footnotesize{\textit{thousands of US Dollars, by percentile}}\\
 \noindent \begin{tikzpicture}
 	\begin{axis}[ymin=0, ymax=100, enlarge x limits={0.02},
-		width=11.6cm, height=6.2cm, ytick={0, 12.8, 50, 100},
+		width=7.6cm, height=5.4cm, ytick={0, 12.8, 50, 100},
 		legend cell align={left},
-		legend style={legend columns=1, at={(0.26, 1)}}]
+		legend style={legend columns=1, at={(0.42, 0.95)}}]
 	\addplot[stack plots=y, area style, draw=none, fill=red!70!yellow] 
 		table [x=percentile, y=Earnings, 
 		col sep=comma]{data/pearn_dist.csv}\closedcycle;	
@@ -971,14 +971,14 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 	\legend{Earnings, Total Income};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{80mm} \tbllink{pearn_dist.csv}
+\footnotesize{Source: CPS ASEC} \hspace{39mm} \tbllink{pearn_dist.csv}
 \end{minipage}
 
 \newpage 
 
 \subsubsection*{\color{black!70} \seriffont Household Income}
 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} 
 \small Given the massive variance in personal income, with half of the population receiving no market income, the sharing of income between people is key to survival. Household income measures the combined income of all people in a given housing unit. Even among individuals who receive market income, this income is distributed very unevenly. Likewise, the share of the household that receives income varies between households. As a result, differences in income between individual households are still massive. 
 
 \end{minipage}
