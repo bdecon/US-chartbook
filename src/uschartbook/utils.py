@@ -40,10 +40,10 @@ def bea_api_gdpstate(bea_key):
 
     api_results = []
 
-    table = 'RGDP_SQN'
+    table = 'SQGDP9'
     url = f'https://www.bea.gov/api/data/?&UserID={bea_key}'\
-          f'&method=GetData&datasetname=RegionalProduct'\
-          f'&IndustryId=1&Component={table}&GeoFIPS=STATE'\
+          f'&method=GetData&datasetname=Regional'\
+          f'&LineCode=1&TableName={table}&GeoFIPS=STATE'\
           f'&Year={years}&ResultFormat=json'
 
     r = requests.get(url)
@@ -104,7 +104,7 @@ def gdpstate_df(table):
     data = {}
     
     series_list = list(set([i['GeoName'] 
-                            for i in retrieve_table('RGDP_SQN')['Data']]))
+                            for i in retrieve_table('SQGDP9')['Data']]))
     for code in series_list:
         obs = [i['DataValue'] for i in table
                if i['GeoName'] == code]
