@@ -88,7 +88,7 @@
 	
 	% stacked diverging bar
 	\newcommand{\sbar}[4]{
-		\addplot[ybar stacked, bar width=2.5pt, draw opacity=0, fill=#1] 
+		\addplot[ybar stacked, bar width=2.6pt, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 					
 	% text node
@@ -3427,8 +3427,69 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
+\end{minipage}
+
+
+\newpage
+
+
+\begin{minipage}{0.76\textwidth}
+
+\subsection*{\color{black!70} \seriffont Hours Worked}
+
+\small The amount of work per person is typically higher in the US than in other developed countries, both on a weekly basis and on a weeks worked per year basis. This section looks at hours worked as well as part-time employment. \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Hours Worked}\\
+\footnotesize{\textit{average hours per week}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={20, 25, 30, 35, 40}, 
+		enlarge y limits={0.1}, xmin={1989-12-30},
+		xticklabel={`\short{\year}}, height=10.2cm, width=6.2cm, clip=false]
+	\rbars
+	\stdline{blue}{date}{TOTLFS}{data/hours.csv}
+	\thinline{lime!90!green}{date}{SERVNSA}{data/hours.csv}
+	\thinline{green!90!blue!70!black}{date}{SERVSA}{data/hours.csv}
+	\stdline{orange}{date}{PNS}{data/hours.csv}
+	\thinline{red!10!white}{date}{PTECONSA}{data/hours.csv}
+	\thinline{red!90!black}{date}{PTECONSA}{data/hours.csv}
+	\stdnode{1.0cm}{7.65cm}{\scriptsize \color{blue}\textbf{Total (LFS)}}
+	\stdnode{1.3cm}{4.75cm}{{\scriptsize \color{orange}\textbf{Production \&}}\\{\scriptsize \color{orange}\textbf{Non-Supervisory}}\\{\scriptsize \color{orange}\textbf{(CES)}}}
+	\stdnode{1.4cm}{1.65cm}{{\scriptsize \color{red!90!black}\textbf{Part Time}}\\{\scriptsize \color{red!90!black}\textbf{Economic Reasons}}\\{\scriptsize \color{red!90!black}\textbf{(LFS)}}}
+	\stdnode{3.9cm}{6.35cm}{{\scriptsize \color{green!90!blue!70!black}\textbf{Services}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{Occupations}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{ (LFS)}}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: BLS} \hspace{30mm} \tbllink{hours.csv}
+
+\vspace{8mm}
+
+\small Part-time workers who would prefer to work full time are referred to as involuntary part time or part time for economic reasons in the labor force statistics produced by the Bureau of Labor Statistics. This group is comprised of people who don't have enough hours because of slack business conditions or who are unable to find full-time work. The size of the group increases rapidly during a typical recession, and as a result gross labor income falls due to the aggregate reduction in hours worked.
 
 \end{minipage}
+
+\vspace{1mm}
+
+\begin{minipage}{0.42\textwidth}
+
+\noindent \normalsize \textbf{Part Time, Economic Reasons}\\
+\footnotesize{\textit{percent of labor force}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={0, 2, 4, 6}, 
+		enlarge y limits={0.1}, ymin=2,
+		xticklabel={`\short{\year}}, height=4.2cm, width=7.2cm, clip=false]
+	\rbars
+	\stdline{red}{date}{PTECON}{data/ptecon.csv}
+	\input{text/ptecon_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{14mm} \tbllink{ptecon.csv} 
+\end{minipage}
+\hspace{6.mm}
+\begin{minipage}{0.29\textwidth}
+\small \input{text/ptecon.txt}
+\end{minipage}
+
 
 
 \newpage
@@ -3456,7 +3517,7 @@ Among newly employed workers, the vast majority were considered to be out of the
         minor xtick={}, xticklabels={`89, `00, `10, `19 Q4}]
 	\rbars
 	\stdline{lime!65!green}{date}{All}{data/uwe_bd.csv}
-	\stdline{blue!65!black}{date}{value}{data/uwe_bls.csv}
+	\stdline{blue!65!black}{date}{p10uwe}{data/uwe_bls.csv}
 	\node[right] at (axis cs:1989-07-01,485) {\footnotesize Levels, USD};
 	\end{axis}
 \end{tikzpicture} \hfill \hspace{3mm}
@@ -3467,7 +3528,7 @@ Among newly employed workers, the vast majority were considered to be out of the
         minor xtick={}, xticklabels={`90, `00, `10, `19 Q4}]
 	\rbars
 	\stdline{lime!65!green}{date}{All}{data/uwe_bd_gr.csv}
-	\stdline{blue!65!black}{date}{value}{data/uwe_bls_gr.csv}
+	\stdline{blue!65!black}{date}{p10uwe}{data/uwe_bls_gr.csv}
 	\node[right] at (axis cs:1990-01-01,9.0) {\footnotesize One-year growth, percent};
 	\end{axis}
 \end{tikzpicture}\\
