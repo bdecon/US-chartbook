@@ -2992,7 +2992,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{minipage}\\
 
 \begin{minipage}{0.37\textwidth}
-\small BLS also \href{https://www.bls.gov/news.release/empsit.t15.htm}{reports} a broader measure of unemployment, known as U6. This labor under-utilization measure includes unemployed people counted in U3 as well as people who have given up looking for work and people who are part-time but would like to work full-time (part-time for economic reasons). \input{text/unemp2.txt}\\
+\small BLS also \href{https://www.bls.gov/news.release/empsit.t15.htm}{reports} a broader measure of unemployment, known as U6. This labor under-utilization rate measure includes unemployed people counted in U3 as well as people who have given up looking for work and people who are part-time but would like to work full-time (part-time for economic reasons). \input{text/unemp2.txt}\\
 \end{minipage}\hspace{6mm}
 \begin{minipage}{0.41\textwidth}
 \normalsize \textbf{Unemployment Measures}\\
@@ -3437,32 +3437,44 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \subsection*{\color{black!70} \seriffont Hours Worked}
 
-\small The amount of work per person is typically higher in the US than in other developed countries, both on a weekly basis and on a weeks worked per year basis. This section looks at hours worked as well as part-time employment. \\
+\small The amount of work per person is typically higher in the US than in other developed countries, both on a weekly basis and on a weeks worked per year basis. However, the measure tends to be cyclical and has been trending downward over time, partially a result of a shift in the composition of US jobs, away from manufacturing and towards services. This section looks at hours worked as well as part-time employment. 
+
+\end{minipage}
 
 \vspace{2mm}
+\begin{minipage}{0.39\textwidth}
+\small \input{text/hours_tot.txt} \\
 
+\input{text/hours_lfs2.txt} \\
+
+\input{text/hours_ces.txt} 
+\end{minipage}\hspace{7mm} \begin{minipage}{0.32\textwidth}
 \noindent \normalsize \textbf{Hours Worked}\\
 \footnotesize{\textit{average hours per week}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={20, 25, 30, 35, 40}, 
 		enlarge y limits={0.1}, xmin={1989-12-30},
-		xticklabel={`\short{\year}}, height=10.2cm, width=6.2cm, clip=false]
+		xticklabel={`\short{\year}}, height=10.6cm, width=6.2cm, clip=false]
 	\rbars
 	\stdline{blue}{date}{TOTLFS}{data/hours.csv}
 	\thinline{lime!90!green}{date}{SERVNSA}{data/hours.csv}
-	\thinline{green!90!blue!70!black}{date}{SERVSA}{data/hours.csv}
+	\stdline{green!90!blue!70!black}{date}{SERVSA}{data/hours.csv}
 	\stdline{orange}{date}{PNS}{data/hours.csv}
 	\thinline{red!10!white}{date}{PTECONSA}{data/hours.csv}
 	\thinline{red!90!black}{date}{PTECONSA}{data/hours.csv}
-	\stdnode{1.0cm}{7.65cm}{\scriptsize \color{blue}\textbf{Total (LFS)}}
-	\stdnode{1.3cm}{4.75cm}{{\scriptsize \color{orange}\textbf{Production \&}}\\{\scriptsize \color{orange}\textbf{Non-Supervisory}}\\{\scriptsize \color{orange}\textbf{(CES)}}}
+	\stdnode{1.0cm}{7.9cm}{\scriptsize \color{blue}\textbf{Total (LFS)}}
+	\stdnode{1.3cm}{4.95cm}{{\scriptsize \color{orange}\textbf{Production \&}}\\{\scriptsize \color{orange}\textbf{Non-Supervisory}}\\{\scriptsize \color{orange}\textbf{(CES)}}}
 	\stdnode{1.4cm}{1.65cm}{{\scriptsize \color{red!90!black}\textbf{Part Time}}\\{\scriptsize \color{red!90!black}\textbf{Economic Reasons}}\\{\scriptsize \color{red!90!black}\textbf{(LFS)}}}
-	\stdnode{3.9cm}{6.35cm}{{\scriptsize \color{green!90!blue!70!black}\textbf{Services}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{Occupations}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{ (LFS)}}}
+	\stdnode{3.92cm}{6.55cm}{{\scriptsize \color{green!90!blue!70!black}\textbf{Services}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{Occupations}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{ (LFS)}}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: BLS} \hspace{30mm} \tbllink{hours.csv}
 
-\vspace{8mm}
+\end{minipage}
+
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth}
 
 \small Part-time workers who would prefer to work full time are referred to as involuntary part time or part time for economic reasons in the labor force statistics produced by the Bureau of Labor Statistics. This group is comprised of people who don't have enough hours because of slack business conditions or who are unable to find full-time work. The size of the group increases rapidly during a typical recession, and as a result gross labor income falls due to the aggregate reduction in hours worked.
 
