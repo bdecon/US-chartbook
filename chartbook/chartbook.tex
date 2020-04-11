@@ -626,6 +626,39 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \newpage
 
+\subsubsection*{\color{black!70} \seriffont Household Formation}
+
+\begin{minipage}{0.76\textwidth}
+
+\small Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the home-ownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. \\
+
+\input{text/hhform1.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Household Formation by Type}\\
+\footnotesize{\textit{one-year moving average of annual growth rates, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.95, 1.11)}}]
+	\rbars
+	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
+		\pgfkeysvalueof{/pgfplots/ymax});
+	\stdnode{4.1cm}{3.0cm}{\scriptsize historical}
+	\stdnode{5.2cm}{3.0cm}{\scriptsize revised}
+	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
+	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
+	\stdline{black}{date}{pop}{data/hhform.csv}
+	\legend{Rented, Owned, Population Growth};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
+
+\end{minipage}
+
+\newpage
+
 \begin{minipage}{0.76\textwidth}
 
 \subsubsection*{\color{black!70} \seriffont Age}
@@ -684,118 +717,10 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \footnotesize{Source: American Community Survey, Dorn} \hspace{61mm} \tbllink{acs_cz_age.csv}
 
 
-\newpage
-\begin{minipage}{0.76\textwidth}
 
-\subsubsection*{\color{black!70} \seriffont Household Formation}
-
-\small Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the home-ownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. \\
-
-\input{text/hhform1.txt}\\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{Household Formation by Type}\\
-\footnotesize{\textit{one-year moving average of annual growth rates, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
-		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.11)}}]
-	\rbars
-	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
-		\pgfkeysvalueof{/pgfplots/ymax});
-	\stdnode{4.1cm}{3.0cm}{\scriptsize historical}
-	\stdnode{5.2cm}{3.0cm}{\scriptsize revised}
-	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
-	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
-	\stdline{black}{date}{pop}{data/hhform.csv}
-	\legend{Rented, Owned, Population Growth};
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
-
-\end{minipage}
 
 \newpage
-\begin{minipage}{0.76\textwidth}
 
-\subsubsection*{\color{black!70} \seriffont Homeownership}
-
-\small The \textbf{homeownership rate} measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}
-
-\end{minipage}
-
-\vspace{1mm}
-
-\begin{minipage}{0.405\textwidth}
-
-\noindent \normalsize \textbf{Homeownership Rate}\\
-\footnotesize{\textit{share of households occupied by owners, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={40, 50, 60, 70}, 
-		enlarge y limits={0.03}, ymin=40, xmin={1991-01-01},
-		xticklabel={`\short{\year}}, height=8.8cm, width=7.0cm, clip=false]
-	\rbars
-	\stdline{violet!60!magenta}{date}{VALUE}{data/homeown.csv}
-	\stdline{blue!80!cyan!80!black}{date}{White}{data/homeown2.csv}
-	\stdline{red!80!black}{date}{Other}{data/homeown2.csv}
-	\stdline{green!80!blue!85!black}{date}{Hispanic}{data/homeown2.csv}
-	\stdline{red!20!orange!95!black}{date}{Black}{data/homeown2.csv}
-	\input{text/homeown_node.txt}
-	\input{text/homeown_white_node.txt}
-	\input{text/homeown_other_node.txt}
-	\input{text/homeown_hispanic_node.txt}
-	\input{text/homeown_black_node.txt}
-	\stdnode{4.35cm}{0.4cm}{\footnotesize \color{red!20!orange!95!black}Black}
-	\stdnode{4.4cm}{6.75cm}{\footnotesize \color{blue!80!cyan!80!black}White}
-	\stdnode{4.7cm}{3.4cm}{\footnotesize \color{red!80!black}Other}
-	\stdnode{0.9cm}{5.1cm}{\footnotesize \color{violet!60!magenta}Total}
-	\stdnode{4.3cm}{1.92cm}{\footnotesize \color{green!80!blue!85!black}Hispanic}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hspace{26mm} \tbllink{homeown2.csv} 
-
-\end{minipage}\hspace{5.5mm}
-\begin{minipage}{0.31\textwidth}
-\small Census data also show large differences in homeownership rates by race and ethnicity. \input{text/homeown2.txt} \\
-
-\input{text/homeown3.txt}
-\end{minipage}\hspace{5mm}
-
-\vspace{3mm}
-
-\begin{minipage}{0.76\textwidth}
-
-\small
-
-As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in owner's equity as a share of the market value of real estate show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. 
-
-\end{minipage}
-
-\vspace{2mm}
-
-\begin{minipage}{0.29\textwidth}
-
-\small \input{text/homeeq.txt}
-
-\end{minipage}\hspace{8mm}
-\begin{minipage}{0.44\textwidth}
-\noindent \normalsize \textbf{Owner's Equity Share of Real Estate}\\
-\footnotesize{\textit{owner's equity as percent of real estate}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={45, 50, 55, 60, 65, 70}, 
-		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.6cm, width=7.2cm, clip=false]
-	\rbars
-	\stdline{blue!80!violet}{date}{VALUE}{data/homeeq.csv}
-	\input{text/homeeq_node.txt}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hspace{30mm} \tbllink{homeeq.csv} 
-
-\end{minipage}
-
-\newpage
 
 \begin{minipage}{0.76\textwidth}
 
@@ -1117,11 +1042,36 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 
 \newpage
 
-\subsubsection*{\color{black!70} \seriffont Consumer Sentiment}
 
 \begin{minipage}{0.76\textwidth}
 
-\small The University of Michigan conducts a regular monthly \href{http://www.sca.isr.umich.edu/}{survey} used to gauge individuals' \textbf{consumer sentiment}. The measure is based on questions related to personal finances, business conditions, and buying conditions. An increase in consumer sentiment means individuals feel more confident about economic conditions and are more willing to make large purchases or take on debt. \input{text/umichsoc.txt}\\
+\subsubsection*{\color{black!70} \seriffont Saving}
+
+\small The portion of after-tax income that is not spent by households is considered \textbf{personal saving}, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the \textit{personal saving rate}. Households use savings to handle unexpected expenses or cover expenses when income falls. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
+
+\input{text/psavert.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Personal Saving Rate}\\
+\footnotesize{\textit{personal saving as a share of disposable personal income}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 8, 12}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, height=4.4cm, width=12.6cm, clip=false]
+	\rbars
+	\stdline{red}{date}{VALUE}{data/psavert.csv}
+	\input{text/psavert_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{66mm} \tbllink{psavert.csv}\\
+
+\vspace{6mm}
+
+
+\subsubsection*{\color{black!70} \seriffont Consumer Sentiment}
+
+
+\small The University of Michigan conducts a regular monthly \href{http://www.sca.isr.umich.edu/}{survey} used to gauge individuals' \textbf{consumer sentiment} (see {\color{violet!60!blue}\\textbf{---}}). The measure is based on questions related to personal finances, business conditions, and buying conditions. An increase in consumer sentiment means individuals feel more confident about economic conditions and are more willing to make large purchases or take on debt. \input{text/umichsoc.txt}\\
 
 \vspace{2mm}
 
@@ -1381,9 +1331,88 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 
 \begin{minipage}{0.76\textwidth}
 
-\normalsize
+\subsubsection*{\color{black!70} \seriffont Homeownership}
+
+\small The \textbf{homeownership rate} measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}
+
+\end{minipage}
+
+\vspace{1mm}
+
+\begin{minipage}{0.405\textwidth}
+
+\noindent \normalsize \textbf{Homeownership Rate}\\
+\footnotesize{\textit{share of households occupied by owners, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={40, 50, 60, 70}, 
+		enlarge y limits={0.03}, ymin=40, xmin={1991-01-01},
+		xticklabel={`\short{\year}}, height=8.8cm, width=7.0cm, clip=false]
+	\rbars
+	\stdline{violet!60!magenta}{date}{VALUE}{data/homeown.csv}
+	\stdline{blue!80!cyan!80!black}{date}{White}{data/homeown2.csv}
+	\stdline{red!80!black}{date}{Other}{data/homeown2.csv}
+	\stdline{green!80!blue!85!black}{date}{Hispanic}{data/homeown2.csv}
+	\stdline{red!20!orange!95!black}{date}{Black}{data/homeown2.csv}
+	\input{text/homeown_node.txt}
+	\input{text/homeown_white_node.txt}
+	\input{text/homeown_other_node.txt}
+	\input{text/homeown_hispanic_node.txt}
+	\input{text/homeown_black_node.txt}
+	\stdnode{4.35cm}{0.4cm}{\footnotesize \color{red!20!orange!95!black}Black}
+	\stdnode{4.4cm}{6.75cm}{\footnotesize \color{blue!80!cyan!80!black}White}
+	\stdnode{4.7cm}{3.4cm}{\footnotesize \color{red!80!black}Other}
+	\stdnode{0.9cm}{5.1cm}{\footnotesize \color{violet!60!magenta}Total}
+	\stdnode{4.3cm}{1.92cm}{\footnotesize \color{green!80!blue!85!black}Hispanic}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \hspace{26mm} \tbllink{homeown2.csv} 
+
+\end{minipage}\hspace{5.5mm}
+\begin{minipage}{0.31\textwidth}
+\small Census data also show large differences in homeownership rates by race and ethnicity. \input{text/homeown2.txt} \\
+
+\input{text/homeown3.txt}
+\end{minipage}\hspace{5mm}
+
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\small
+
+As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in owner's equity as a share of the market value of real estate show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. 
+
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.29\textwidth}
+
+\small \input{text/homeeq.txt}
+
+\end{minipage}\hspace{8mm}
+\begin{minipage}{0.44\textwidth}
+\noindent \normalsize \textbf{Owner's Equity Share of Real Estate}\\
+\footnotesize{\textit{owner's equity as percent of real estate}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={45, 50, 55, 60, 65, 70}, 
+		enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, height=4.6cm, width=7.2cm, clip=false]
+	\rbars
+	\stdline{blue!80!violet}{date}{VALUE}{data/homeeq.csv}
+	\input{text/homeeq_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hspace{30mm} \tbllink{homeeq.csv} 
+
+\end{minipage}
+
+\newpage
+
 
 \subsubsection*{\color{black!70} \seriffont Housing}
+
+\begin{minipage}{0.76\textwidth}
 
 \vspace{2mm}
 
@@ -1463,7 +1492,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 
 \begin{minipage}{0.76\textwidth}
 
-\small The Federal Housing Finance Agency (FHFA) \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{housing price index} \input{text/fhfa.txt}\\
+\small The Federal Housing Finance Agency (FHFA) \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{housing price index} (see {\color{blue!40!cyan}\textbf{---}}) \input{text/fhfa.txt}\\
 
 \vspace{2mm}
 
@@ -1478,31 +1507,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 	\input{text/fhfa_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Housing Finance Agency} \hspace{54mm} \tbllink{hpi.csv}\\
-
-
-\vspace{4mm}
-
-\subsubsection*{\color{black!70} \seriffont Saving}
-
-\small The portion of after-tax income that is not spent by households is considered \textbf{personal saving}, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the \textit{personal saving rate}. Households use savings to handle unexpected expenses or cover expenses when income falls. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
-
-\input{text/psavert.txt}\\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{Personal Saving Rate}\\
-\footnotesize{\textit{personal saving as a share of disposable personal income}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 8, 12}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.4cm, width=12.6cm, clip=false]
-	\rbars
-	\stdline{red}{date}{VALUE}{data/psavert.csv}
-	\input{text/psavert_node.txt}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hspace{66mm} \tbllink{psavert.csv}
-
+\footnotesize{Source: Federal Housing Finance Agency} \hspace{54mm} \tbllink{hpi.csv}
 
 \end{minipage}
 
@@ -1798,39 +1803,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \vspace{14mm}
 
-\begin{minipage}{0.76\textwidth}
 
-\small The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{reports} that US has seen a massive increase in \textbf{crude oil production} over the past six years. The infrastructure for much of this production was put in place when oil prices were higher, and the profitability of the sector depends on oil maintaining a certain price. A large portion of the increase in oil production comes from New Mexico, South Dakota, and Colorado. \\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{Crude Oil Production}\\
-\footnotesize{\textit{millions of barrels per day}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\dateaxisticks ymin=0, enlarge x limits={0.01},
-		width=13.0cm, height=8.2cm, ytick={0, 5, 10}, xticklabel={`\short{\year}},
-		legend style={at={(0.82, 1)}, fill=white}]
-	\rbars
-	\addplot[stack plots=y, area style, draw=none, fill=teal!90!green!96!black] 
-		table [x=date, y=ND_NM_CO, 
-		col sep=comma]{data/oil_prod.csv}\closedcycle;	
-	\addplot[stack plots=y, area style, draw=none, fill=green!21!yellow!71!white] 
-		table [x=date, y=TX, 
-		col sep=comma]{data/oil_prod.csv}\closedcycle;	
-	\addplot[stack plots=y, area style, draw=none, fill=blue!46!cyan!88!white] 
-		table [x=date, y=OTH, 
-		col sep=comma]{data/oil_prod.csv}\closedcycle;	
-	\addplot[stack plots=y, area style, draw=none, fill=blue!47!violet] 
-		table [x=date, y=GM, 
-		col sep=comma]{data/oil_prod.csv}\closedcycle;	
-	\legend{ND + NM + CO, Texas, All Other, Gulf of Mexico};
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Energy Information Administration} \hfill \tbllink{oil_prod.csv}
-
-
-
-\end{minipage}
 
 \newpage 
 
@@ -2091,13 +2064,47 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \newpage
 
+\subsubsection*{\color{black!70} \seriffont Energy Production and Use}
+
 \begin{minipage}{0.76\textwidth}
 
-\vspace{5mm}
+\small The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{reports} that US has seen a massive increase in \textbf{crude oil production} over the past six years. The infrastructure for much of this production was put in place when oil prices were higher, and the profitability of the sector depends on oil maintaining a certain price. A large portion of the increase in oil production comes from New Mexico, South Dakota, and Colorado. \\
 
-\normalsize
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Crude Oil Production}\\
+\footnotesize{\textit{millions of barrels per day}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ymin=0, enlarge x limits={0.01},
+		width=13.0cm, height=8.2cm, ytick={0, 5, 10}, xticklabel={`\short{\year}},
+		legend style={at={(0.82, 1)}, fill=white}]
+	\rbars
+	\addplot[stack plots=y, area style, draw=none, fill=teal!90!green!96!black] 
+		table [x=date, y=ND_NM_CO, 
+		col sep=comma]{data/oil_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=green!21!yellow!71!white] 
+		table [x=date, y=TX, 
+		col sep=comma]{data/oil_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=blue!46!cyan!88!white] 
+		table [x=date, y=OTH, 
+		col sep=comma]{data/oil_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=blue!47!violet] 
+		table [x=date, y=GM, 
+		col sep=comma]{data/oil_prod.csv}\closedcycle;	
+	\legend{ND + NM + CO, Texas, All Other, Gulf of Mexico};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Energy Information Administration} \hfill \tbllink{oil_prod.csv}
+
+
+
+\end{minipage}
+
+\newpage
 
 \subsection*{\color{darkgray} \seriffont Retail Sales}
+
+\begin{minipage}{0.76\textwidth}
 
 \small \input{text/marts.txt} \\
 
@@ -2747,9 +2754,11 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \newpage
 
+\subsubsection*{\color{black!70} \seriffont Changes in Payroll Employment}
+
 \begin{minipage}{0.31\textwidth}
 
-\small The \href{https://www.bls.gov/ces/}{establishment survey} from the monthly jobs report identifies how many jobs have been added to the economy in a given month. \input{text/nfp_basic_text.txt}
+\small The \href{https://www.bls.gov/ces/}{establishment survey} from the monthly jobs report identifies how many jobs have been added to the economy in a given month (see\cbox{blue!60!purple}). \input{text/nfp_basic_text.txt}
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.39\textwidth}
 
@@ -2759,7 +2768,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.2cm, height=5.0cm,
 		xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2020-01-01}},
-		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=1.5em},
+		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=1.8em},
         xticklabels={`14, `16, `18, `20},]
 	\sbar{blue!60!purple}{date}{ALL}{data/nfp.csv}
 	\stdline{green!50!lime}{date}{TOT}{data/nfp_pop.csv}
@@ -3155,6 +3164,29 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \end{minipage}
 
+\newpage
+
+
+\subsubsection*{\color{black!70} \seriffont Initial Jobless Claims}
+
+\begin{minipage}{0.76\textwidth}
+
+\small \input{text/icsa.txt}\\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
+\footnotesize{\textit{initial claims, in thousands, not seasonally adjusted, four-week moving average highlighted}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 500, 1000, 2000, 3000, 4000, 5000, 6000}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=7.0cm]
+	\rbars
+	\stdline{cyan!35!white}{date}{weekly}{data/icsa.csv}
+	\stdline{blue!60!black}{date}{1M}{data/icsa.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
+\end{minipage}
 
 \newpage
 
@@ -3412,31 +3444,6 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \newpage
 
-
-\subsubsection*{\color{black!70} \seriffont Initial Jobless Claims}
-
-\begin{minipage}{0.76\textwidth}
-
-\small \input{text/icsa.txt}\\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
-\footnotesize{\textit{initial claims, in thousands, not seasonally adjusted, four-week moving average highlighted}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 500, 1000, 2000, 3000, 4000, 5000, 6000}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=7.0cm]
-	\rbars
-	\stdline{cyan!35!white}{date}{weekly}{data/icsa.csv}
-	\stdline{blue!60!black}{date}{1M}{data/icsa.csv}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
-\end{minipage}
-
-
-\newpage
-
 \subsection*{\color{black!70} \seriffont Hours Worked}
 
 \begin{minipage}{0.415\textwidth}
@@ -3474,7 +3481,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
-\small BLS also reports a quarterly index tracking aggregate hours worked in nonfarm businesses. \input{text/tot_hours.txt}\\ 
+\small BLS also \href{https://www.bls.gov/lpc/}{reports} a quarterly index tracking aggregate hours worked in nonfarm businesses (see\cbox{cyan!80!blue}). \input{text/tot_hours.txt}\\ 
 
 \noindent \normalsize \textbf{Aggregate Hours Worked}\\
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
@@ -3826,7 +3833,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \small The US Federal Reserve System (Fed) has a congressional \href{https://www.federalreserve.gov/faqs/money_12848.htm}{mandate} to promote price stability and maximum employment. In practice, a Fed committee (FOMC) determines the federal funds rate, which aims to influence interest rates in the broader economy. Fed monetary policy can be neutral or be used to stimulate or slow the economy.\\
 
-\input{text/rates_ff.txt}The FOMC cut interest rates three times in 2019, for a total reduction of 75 basis points. Responding to the economic shock of the coronavirus, the FOMC cut rates twice in March 2020, by 150 basis points, bringing the lower bound of the federal funds rate range to zero. With rates near zero, the Fed has adopted several additional measures to increase liquidity in the global financial system.\\
+\input{text/rates_ff.txt}The FOMC cut \href{https://www.federalreserve.gov/releases/h15/}{interest rates} three times in 2019, for a total reduction of 75 basis points. Responding to the economic shock of the coronavirus, the FOMC cut rates twice in March 2020, by 150 basis points, bringing the lower bound of the federal funds rate range to zero. With rates near zero, the Fed has adopted several additional measures to increase liquidity in the global financial system.\\
 
 \vspace{1mm}
 
@@ -3936,9 +3943,13 @@ A large increase in the amount of money held by individuals and institutions can
 
 \newpage
 
+\subsubsection*{\color{black!70} \seriffont Fed Asset Purchases}
+
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/fed_assets1.txt}
+\small During periods where the Fed funds rate is at or near zero the Fed has engaged in large scale asset purchases in an effort to further improve financial market conditions. These asset purchases show up on the Fed balance sheet, which is \href{https://www.federalreserve.gov/releases/h41/current/default.htm}{reported} weekly. \\
+
+\input{text/fed_assets1.txt}
 
 \end{minipage}
 
