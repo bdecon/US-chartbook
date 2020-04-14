@@ -1547,13 +1547,16 @@ In 2018, income from labor and capital ownership, called \textit{market income},
 \end{minipage}
 
 \begin{minipage}{0.76\textwidth}
-
 \small The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{reports} 41.2 million people in poverty in the US in 2018, equivalent to more than the total population of Canada. For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the official measure being based on three times a price-adjusted 1963 minimal food budget, and the supplemental measure based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.\\
 
-While some fully-employed people are in poverty, \textbf{the vast majority of poor people are children, elderly, disabled, caregivers, and students}. That is, there is often a good reason why poor people are not working. Put another way, if the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poor.\\
+While some fully-employed people are in poverty, \textbf{the vast majority of poor people are children, elderly, disabled, caregivers, and students}. That is, there is often a good reason why poor people are not working. Put another way, if the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poor.
+
+\end{minipage}
 
 \vspace{2mm}
 
+
+\begin{minipage}{0.44\textwidth}
 \noindent \normalsize \textbf{In Poverty Population by Category}\\
 \footnotesize{\textit{share of total, 2018}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -1575,17 +1578,8 @@ While some fully-employed people are in poverty, \textbf{the vast majority of po
   	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: CPS ASEC} \hspace{40mm} \tbllink{poor.csv}
-
-\end{minipage}
-
-\newpage
-
-\begin{minipage}{0.76\textwidth}
-
-\small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In 2018, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a very low rate of poverty. The elderly also have a much lower poverty rate as the result of Social Security.\\
-
-\vspace{2mm}
-
+\end{minipage}\hspace{6mm}
+\begin{minipage}{0.44\textwidth}
 \noindent \normalsize \textbf{Poverty Rate by Category}\\
 \footnotesize{\textit{share of group below poverty line, 2018}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -1606,11 +1600,17 @@ While some fully-employed people are in poverty, \textbf{the vast majority of po
   	\legend{OPM, SPM, Market Income};
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{40mm} \tbllink{poor2.csv}\\
+\footnotesize{Source: CPS ASEC} \hspace{40mm} \tbllink{poor2.csv}
+\end{minipage}
 
-\vspace{3mm}
 
-\small By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty, as they are not as likely to have labor income. After social benefits and taxes (disposable income [see\cbox{green!85!blue}]), the elderly have much lower rates of poverty than other age cohorts. Higher survivorship for the wealthy also has the effect of reducing poverty in very old ages. Disposable income still leaves young adults and those just below social security and medicare age (late 50s and early 60s) vulnerable to poverty, relative to other ages.\\
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In 2018, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a very low rate of poverty. The elderly also have a much lower poverty rate as the result of Social Security.\\
+
+By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty, as they are not as likely to have labor income. After social benefits and taxes (disposable income [see\cbox{green!85!blue}]), the elderly have much lower rates of poverty than other age cohorts. Higher survivorship for the wealthy also has the effect of reducing poverty in very old ages. Disposable income still leaves young adults and those just below social security and medicare age (late 50s and early 60s) vulnerable to poverty, relative to other ages.\\
 
 \vspace{2mm}
 
@@ -1649,7 +1649,7 @@ While some fully-employed people are in poverty, \textbf{the vast majority of po
 
 \end{minipage}
 
-\newpage
+\vspace{7mm}
 
 \noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2018}\\
 \footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,573}}
@@ -2553,7 +2553,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
-\small When a member of a household is not employed but looked for a job during the past four weeks and is available to work, they are considered \href{https://www.bls.gov/cps/cps_htgm.htm}{\textbf{unemployed}}. \input{text/cps_lfs2.txt}\\
+\small When a member of a household is not employed but looked for a job during the past four weeks or is on temporary layoff, they are considered \href{https://www.bls.gov/cps/cps_htgm.htm}{\textbf{unemployed}}. \input{text/cps_lfs2.txt}\\
 
 People who are not employed and not unemployed are considered to be outside of the labor force. \input{text/cps_lfs3.txt} \\
 
@@ -2581,7 +2581,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \begin{minipage}{0.76\textwidth}
 
-\small The labor force status of the US population varies by age, sex, and over time. Because very few people have capital income, the share of the population with labor income is particularly important to overall levels of economic activity. \\
+\small The labor force status of the US population varies by age, sex, and over time. Because very few people receive capital income, the share of the population with labor income is particularly important to overall levels of economic activity. \\
 
 \vspace{1mm}
 
@@ -2604,7 +2604,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \vspace{3mm}
 
-\small Additionally, changes over time in labor force status are particularly important to understanding both secular and cyclical trends in the economy. For example, the US population is growing but it is also aging. Over the past year, there was a substantial shift towards full-time work. \\ 
+\small Additionally, changes over time in labor force status are particularly important to understanding both secular and cyclical trends in the economy. \\ 
 
 \vspace{2mm}
 
@@ -2768,7 +2768,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.2cm, height=5.0cm,
 		xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2020-01-01}},
-		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=1.8em},
+		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=1.9em},
         xticklabels={`14, `16, `18, `20},]
 	\sbar{blue!60!purple}{date}{ALL}{data/nfp.csv}
 	\stdline{green!50!lime}{date}{TOT}{data/nfp_pop.csv}
@@ -3084,20 +3084,36 @@ People who are not employed and not unemployed are considered to be outside of t
 \footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
-		height=5.8cm, ymin=0, legend cell align={left},
+		height=5.8cm, ymin=0.3, legend cell align={left},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={fill=white, legend columns=2, at={(0.48, 1.0)}}]
 	\rbars
-	\sbar{blue!60!purple}{date}{Job Loser}{data/unemp_reason.csv}
-	\sbar{yellow}{date}{Job Leaver}{data/unemp_reason.csv}
-	\sbar{orange!80!yellow}{date}{Re-entrant}{data/unemp_reason.csv}
-	\sbar{red}{date}{New entrant}{data/unemp_reason.csv}
+	\addplot[stack plots=y, area style, draw=none, fill=blue!60!purple] 
+		table [x=date, y=Job Loser, 
+		col sep=comma]{data/unemp_reason.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=yellow] 
+		table [x=date, y=Job Leaver, 
+		col sep=comma]{data/unemp_reason.csv}\closedcycle;
+	\addplot[stack plots=y, area style, draw=none, fill=orange!80!yellow] 
+		table [x=date, y=Re-entrant, 
+		col sep=comma]{data/unemp_reason.csv}\closedcycle;
+	\addplot[stack plots=y, area style, draw=none, fill=red] 
+		table [x=date, y=New entrant, 
+		col sep=comma]{data/unemp_reason.csv}\closedcycle;
+	%\sbar{blue!60!purple}{date}{Job Loser}{data/unemp_reason.csv}
+	%\sbar{yellow}{date}{Job Leaver}{data/unemp_reason.csv}
+	%\sbar{orange!80!yellow}{date}{Re-entrant}{data/unemp_reason.csv}
+	%\sbar{red}{date}{New entrant}{data/unemp_reason.csv}
 	\legend{Job Loser, Job Leaver, Re-entrant, New Entrant};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp_reason.csv}
 
-\vspace{2mm}
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth} 
 
 \subsubsection*{\color{black!70} \seriffont Duration of unemployment}
 
@@ -4102,13 +4118,41 @@ Changes in prices affect the amount of goods and services that can purchased by 
 
 \newpage
 
+\subsection*{\color{black!70} \seriffont Import/Export Price Index}
+
 \begin{minipage}{0.76\textwidth}
+\small \input{text/mxpi_imp.txt} \\
+
+\input{text/mxpi_exp.txt} \\
+
+\vspace{1mm}
+
+\noindent \normalsize \textbf{Import/Export Price Index}\\
+\footnotesize{\textit{annual growth, percent}}\\
+\vspace{25mm}
+
+\noindent \hspace{3mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10,  0, 10, 20}, 
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.98, 1.16)}},
+		yticklabel style={text width=1.5em},
+		height=4.6cm, enlarge y limits={0.11}]
+	\rbars
+	\stdline{cyan!85!yellow}{date}{Imports}{data/mxpi.csv}
+	\stdline{red!25!orange}{date}{Exports}{data/mxpi.csv}
+	\legend{Imports, Exports};
+	\end{axis}
+\end{tikzpicture}\\
+
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{mxpi.csv}
+
+\vspace{6mm}
 
 \subsection*{\color{black!70} \seriffont Commodity Prices}
 
 \small \input{text/wti.txt}\\
 
-\vspace{2mm}
+\vspace{1mm}
 
 \noindent \normalsize \textbf{Oil Price}\\
 \footnotesize{\textit{USD, west Texas intermediate crude, monthly average}}\\ 
