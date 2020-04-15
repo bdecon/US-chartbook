@@ -303,7 +303,14 @@
 %\newpage
 \section*{\color{darkgray} \LARGE  \seriffont Overall Economic Activity}
 \label{sec:oea}
-\input{text/gdp.txt}
+\begin{minipage}{0.61\textwidth}
+\small This analysis of the United States economy begins with the most popular measure of economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{Gross Domestic Product} (GDP). According to the Bureau of Economic Analysis, GDP--the seasonally-adjusted annualized value of goods and services produced in the US--was \input{text/gdp1.txt}\\
+
+\input{text/gdp2.txt}\\
+\end{minipage}\hfill
+\begin{minipage}{0.34\textwidth}
+\input{text/gdp_chart.txt}\\
+\end{minipage}
 
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70}\seriffont Economic Growth}
@@ -1503,13 +1510,29 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 		yticklabel style={text width=1.5em}, clip=false,
 		xticklabel={`\short{\year}}, width=11.8cm]
 	\rebars
-	\thickline{blue!40!cyan}{date}{index_sa}{data/hpi.csv}	
+	\thickline{blue!40!cyan}{date}{United States}{data/hpi.csv}	
 	\input{text/fhfa_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Housing Finance Agency} \hspace{54mm} \tbllink{hpi.csv}
 
 \end{minipage}
+
+\vspace{4mm}
+
+\noindent \normalsize \textbf{Housing Price Growth}\\
+\footnotesize{\textit{seasonally adjusted, one-year percent change}\\
+\vspace{-5mm}
+
+\hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{24mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{12.0mm} R{10.8mm}}
+			 \input{data/hpi.tex}\hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-2mm}
+\footnotesize{Source: Federal Housing Finance Agency} \hspace{6.3cm} \tbllink{hpi.csv}
 
 \newpage
 
@@ -1543,7 +1566,7 @@ In 2018, income from labor and capital ownership, called \textit{market income},
       \addplot[blue] coordinates {(77.9, 1)};
     \end{axis}
   \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC}
+\footnotesize{Source: CPS ASEC}\\
 \end{minipage}
 
 \begin{minipage}{0.76\textwidth}
@@ -1556,18 +1579,18 @@ While some fully-employed people are in poverty, \textbf{the vast majority of po
 \vspace{2mm}
 
 
-\begin{minipage}{0.44\textwidth}
+\begin{minipage}{0.45\textwidth}
 \noindent \normalsize \textbf{In Poverty Population by Category}\\
 \footnotesize{\textit{share of total, 2018}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
-    	width=6.0cm, bar width=1.8ex, height=9.8cm, xmin=0,
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.9cm}{1.5ex}
+    	width=5.0cm, bar width=1.8ex, height=9.8cm, xmin=0,
     	enlarge y limits={abs=0.5cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\poor}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode},
-		legend style={at={(0.92, 1.06)}}]
+		legend style={at={(1.14, 1.06)}}]
   	\addplot[fill=green!60!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\poor};
   	\addplot[fill=lime!70!green!90!blue, draw=none] 
@@ -1577,20 +1600,20 @@ While some fully-employed people are in poverty, \textbf{the vast majority of po
   	\legend{OPM, SPM, Market Income};
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{40mm} \tbllink{poor.csv}
+\footnotesize{Source: CPS ASEC} \hspace{33mm} \tbllink{poor.csv}
 \end{minipage}\hspace{6mm}
-\begin{minipage}{0.44\textwidth}
+\begin{minipage}{0.45\textwidth}
 \noindent \normalsize \textbf{Poverty Rate by Category}\\
 \footnotesize{\textit{share of group below poverty line, 2018}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
-    	width=6.0cm, bar width=1.8ex, height=9.8cm, xmin=0,
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.9cm}{1.5ex}
+    	width=5.0cm, bar width=1.8ex, height=9.8cm, xmin=0,
     	enlarge y limits={abs=0.5cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\pvrt}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode},
-		legend style={at={(0.92, 1.06)}}]
+		legend style={at={(1.14, 1.06)}}]
    	\addplot[fill=green!60!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\pvrt};
   	\addplot[fill=lime!70!green!90!blue, draw=none] 
@@ -1600,7 +1623,7 @@ While some fully-employed people are in poverty, \textbf{the vast majority of po
   	\legend{OPM, SPM, Market Income};
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{40mm} \tbllink{poor2.csv}
+\footnotesize{Source: CPS ASEC} \hspace{33mm} \tbllink{poor2.csv}
 \end{minipage}
 
 
