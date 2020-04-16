@@ -98,7 +98,12 @@
 			
 	% thin stacked diverging bar
 	\newcommand{\tsbar}[4]{
-		\addplot[ybar stacked, bar width=2.3pt, draw opacity=0, fill=#1] 
+		\addplot[ybar stacked, bar width=2.4pt, draw opacity=0, fill=#1] 
+			table [x=#2, y=#3, col sep=comma]{#4};}
+			
+	% very thin stacked diverging bar
+	\newcommand{\vtsbar}[4]{
+		\addplot[ybar stacked, bar width=1.9pt, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 			
 	% extra thin stacked diverging bar
@@ -334,7 +339,7 @@
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, 
 		xticklabel={`\short{\year}}, clip=false, height=4.0cm]
 	\rbars
-	\sbar{red!95!black}{date}{A191RL}{data/gdp.csv}
+	\tsbar{red!95!black}{date}{A191RL}{data/gdp.csv}
 	\node[above, align=left] at (axis cs:2017-01-01,-8.5) {\scriptsize \input{data/gdp.txt}};
 	\end{axis}
 \end{tikzpicture}\\
@@ -1438,48 +1443,48 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
 		ymin = -15, ymax=25,
-		xmin=2001-07-01, width=6.7cm, yticklabel style={text width=1.5em},
+		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\sbar{blue!50!violet}{date}{Midwest_Q}{data/val_ooh.csv}	
-	\sbar{lime!70!green!80!white}{date}{Midwest_P}{data/val_ooh.csv}
+	\vtsbar{blue!50!violet}{date}{Midwest_Q}{data/val_ooh.csv}	
+	\vtsbar{lime!70!green!80!white}{date}{Midwest_P}{data/val_ooh.csv}
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Midwest};
 	\end{axis}
 \end{tikzpicture} \hfill
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
 		ymin = -15, ymax=25,
-		xmin=2001-07-01, width=6.7cm, yticklabel style={text width=1.5em},
+		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\sbar{blue!50!violet}{date}{Northeast_Q}{data/val_ooh.csv}	
-	\sbar{lime!70!green!80!white}{date}{Northeast_P}{data/val_ooh.csv}	
+	\vtsbar{blue!50!violet}{date}{Northeast_Q}{data/val_ooh.csv}	
+	\vtsbar{lime!70!green!80!white}{date}{Northeast_P}{data/val_ooh.csv}	
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Northeast};
 	\end{axis}
 \end{tikzpicture}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
 		ymin = -15, ymax=25,
-		xmin=2001-07-01, width=6.7cm, yticklabel style={text width=1.5em},
+		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\sbar{blue!50!violet}{date}{West_Q}{data/val_ooh.csv}	
-	\sbar{lime!70!green!80!white}{date}{West_P}{data/val_ooh.csv}
+	\vtsbar{blue!50!violet}{date}{West_Q}{data/val_ooh.csv}	
+	\vtsbar{lime!70!green!80!white}{date}{West_P}{data/val_ooh.csv}
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize West};
 	\end{axis}
 \end{tikzpicture} \hfill
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
 		ymin = -15, ymax=25,
-		xmin=2001-07-01, width=6.7cm, yticklabel style={text width=1.5em},
+		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\sbar{blue!50!violet}{date}{South_Q}{data/val_ooh.csv}	
-	\sbar{lime!70!green!80!white}{date}{South_P}{data/val_ooh.csv}	
+	\vtsbar{blue!50!violet}{date}{South_Q}{data/val_ooh.csv}	
+	\vtsbar{lime!70!green!80!white}{date}{South_P}{data/val_ooh.csv}	
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize South};
 	\end{axis}
 \end{tikzpicture}\\
@@ -3720,8 +3725,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 		height=6.0cm, width=12.6cm, enlarge y limits={0.11},
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.0)}}]
 	\rbars
-	\sbar{violet}{date}{Membership}{data/union.csv}	
-	\sbar{magenta!70!purple}{date}{Diff}{data/union.csv}	
+	\vtsbar{violet}{date}{Membership}{data/union.csv}	
+	\vtsbar{magenta!70!purple}{date}{Diff}{data/union.csv}	
 	\legend{Member, Covered Non-member};
 	\end{axis}
 \end{tikzpicture}\\
@@ -3789,14 +3794,14 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 		enlarge y limits={0.1}, 
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\rbars
-	\draw [black!25!white, dashed] ({2016-12-01},2000) rectangle ({2020-06-12},3500);
+	\draw [black!25!white, dashed] ({2016-12-01},2000) rectangle ({2020-06-17},3500);
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500.csv}
 	\end{axis}
 \end{tikzpicture}
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={2000, 2500, 3000, 3500, 4000}, 
-		enlarge y limits={0.1}, xmax={2020-04-30},
+		enlarge y limits={0.1}, xmax={2020-05-03},
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\thickline{black!13!white}{date}{MA}{data/sp500_recent.csv}
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500_recent.csv}
@@ -4131,8 +4136,8 @@ Changes in prices affect the amount of goods and services that can purchased by 
 	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
 	\input{text/infumich_node.txt}
-	\stdnode{2.28cm}{1.7cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
-	\stdnode{2.68cm}{3.65cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
+	\stdnode{2.2cm}{1.85cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
+	\stdnode{2.8cm}{3.75cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: FRED; U. of Michigan} \hfill \tbllink{infbreak.csv}
@@ -4173,10 +4178,12 @@ Changes in prices affect the amount of goods and services that can purchased by 
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{mxpi.csv}
 
-\vspace{6mm}
+\end{minipage}
+
+\newpage
 
 \subsection*{\color{black!70} \seriffont Commodity Prices}
-
+\begin{minipage}{0.76\textwidth}
 \small \input{text/wti.txt}\\
 
 \vspace{1mm}
@@ -4193,6 +4200,23 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \footnotesize{Source: FRED} \hfill \tbllink{wti.csv}\\
 
 \end{minipage}
+
+\vspace{5mm}
+
+\begin{minipage}{0.33\textwidth}
+\noindent \normalsize \textbf{Gold Price}\\
+\footnotesize{\textit{USD, monthly average and latest value}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 500, 1000, 1500, 2000}, 
+		xticklabel={`\short{\year}}, ymin=60, width=6.0cm]
+	\rbars
+	\stdline{orange!40!yellow}{date}{VALUE}{data/gold.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: FRED} \hfill \tbllink{gold.csv}\\
+\end{minipage}
+
+
 
 \newpage
 \begin{minipage}{0.76\textwidth}
