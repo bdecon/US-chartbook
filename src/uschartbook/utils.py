@@ -511,7 +511,7 @@ def clean_fed_data(url):
     date_column = raw_data.loc[5:, 'Series Description']
     date_index = pd.to_datetime(date_column).rename('Date')
     columns = raw_data.iloc[4, 1:].values
-    clean_data = raw_data.iloc[5:, 1:].astype('float')
+    clean_data = raw_data.iloc[5:, 1:].replace('ND', np.NaN).astype('float')
     clean_data.index = date_index
     clean_data.columns = columns
     
