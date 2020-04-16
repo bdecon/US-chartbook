@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import json
 import os
+import re
 from datetime import datetime
 import sqlite3
 
@@ -180,7 +181,7 @@ def dtxt(date):
 	return d
 	
 
-def cont_subt(value, style='main'):
+def cont_subt(value, style='main', digits=2):
     '''
     Return text for value
     
@@ -196,22 +197,25 @@ def cont_subt(value, style='main'):
     
     '''
     text = 'ERROR'
-    abs_val = abs(value)
-    if value > 0:
+    if abs(value) > 1:
+    	abs_val = '{0:.{1}f} percentage points'.format(abs(value), digits)
+    else:
+    	abs_val = '{0:.{1}f} percentage point'.format(abs(value), digits)
+    if value >= 0.01:
         if style == 'main':
-            text = f'contributed {abs_val:.2f} percentage points to'
+            text = f'contributed {abs_val} to'
         elif style == 'of':
-            text = f'contribution of {abs_val:.2f} percentage points'
+            text = f'contribution of {abs_val}'
         elif style == 'end':
-            text = f'contributed {abs_val:.2f} percentage points'
-    if value < 0:
+            text = f'contributed {abs_val}'
+    elif value <= -0.01:
         if style == 'main':
-            text = f'subtracted {abs_val:.2f} percentage points from'
+            text = f'subtracted {abs_val} from'
         elif style == 'of':    
-            text = f'subtraction of {abs_val:.2f} percentage points'
+            text = f'subtraction of {abs_val}'
         elif style == 'end':
-            text = f'subtracted {abs_val:.2f} percentage points'
-    if value == 0:
+            text = f'subtracted {abs_val}'
+    else:
         if style == 'main':
             text = 'did not contribute to'
         elif style == 'of':
@@ -467,11 +471,16 @@ def cps_1mo(cps_dir, cps_dt, cols):
     return df
     
     
-def inc_dec_percent(n):
+def inc_dec_percent(n, how='main'):
     '''Return short text based on value of n'''
-    return (f'increased by {abs(n):.1f} percent' if n >= 0.1 
-        else f'decreased by {abs(n):.1f} percent' 
-        if n <= -0.1 else 'was virtually unchanged')
+    if how == 'main':
+    	return (f'increased by {abs(n):.1f} percent' if n >= 0.1 
+        	else f'decreased by {abs(n):.1f} percent' 
+        	if n <= -0.1 else 'was virtually unchanged')
+    elif how == 'of':
+    	return (f'an increase of {abs(n):.1f} percent' if n >= 0.1 
+        	else f'a decrease of {abs(n):.1f} percent' 
+        	if n <= -0.1 else 'virtually no change')
         
         
 def compare_text(latest, previous, cutoffs):
@@ -491,3 +500,19 @@ def compare_text(latest, previous, cutoffs):
         text = f'far {direction}'
     
     return text
+    
+    
+def clean_fed_data(url):
+    raw_data = pd.read_csv(url)
+
+    d = {v: re.sub("\s+[\(\[].*?[\)\]]", "", i.split(';')[0]) 
+         for i, v in raw_data.iloc[4, 1:].iteritems()}
+
+    date_column = raw_data.loc[5:, 'Series Description']
+    date_index = pd.to_datetime(date_column).rename('Date')
+    columns = raw_data.iloc[4, 1:].values
+    clean_data = raw_data.iloc[5:, 1:].astype('float')
+    clean_data.index = date_index
+    clean_data.columns = columns
+    
+    return (d, clean_data)

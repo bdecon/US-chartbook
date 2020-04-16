@@ -91,9 +91,19 @@
 		\addplot[ybar stacked, bar width=2.6pt, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 			
+	% stacked diverging bar
+	\newcommand{\tkbar}[4]{
+		\addplot[ybar stacked, bar width=2.8pt, draw opacity=0, fill=#1] 
+			table [x=#2, y=#3, col sep=comma]{#4};}
+			
 	% thin stacked diverging bar
 	\newcommand{\tsbar}[4]{
-		\addplot[ybar stacked, bar width=1.8pt, draw opacity=0, fill=#1] 
+		\addplot[ybar stacked, bar width=2.3pt, draw opacity=0, fill=#1] 
+			table [x=#2, y=#3, col sep=comma]{#4};}
+			
+	% extra thin stacked diverging bar
+	\newcommand{\etsbar}[4]{
+		\addplot[ybar stacked, bar width=0.4pt, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 					
 	% text node
@@ -1078,7 +1088,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \subsubsection*{\color{black!70} \seriffont Consumer Sentiment}
 
 
-\small The University of Michigan conducts a regular monthly \href{http://www.sca.isr.umich.edu/}{survey} used to gauge individuals' \textbf{consumer sentiment} (see {\color{violet!60!blue}\\textbf{---}}). The measure is based on questions related to personal finances, business conditions, and buying conditions. An increase in consumer sentiment means individuals feel more confident about economic conditions and are more willing to make large purchases or take on debt. \input{text/umichsoc.txt}\\
+\small The University of Michigan conducts a regular monthly \href{http://www.sca.isr.umich.edu/}{survey} used to gauge individuals' \textbf{consumer sentiment} (see {\color{violet!60!blue}\textbf{---}}). The measure is based on questions related to personal finances, business conditions, and buying conditions. An increase in consumer sentiment means individuals feel more confident about economic conditions and are more willing to make large purchases or take on debt. \input{text/umichsoc.txt}\\
 
 \vspace{2mm}
 
@@ -1931,9 +1941,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \begin{minipage}{0.62\textwidth}
 
-\small \input{text/indpro.txt} \\
-
-\input{text/indpro2.txt}
+\small \input{text/indpro.txt} 
 
 \end{minipage}\hspace{7mm}
 \begin{minipage}{0.35\textwidth}
@@ -1943,24 +1951,22 @@ In terms of elements that add to the number of people in poverty, medical expens
 \input{text/ip_main_line.tex}
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro.csv}
 
-\end{minipage}\\
+\end{minipage}
 
-\begin{minipage}{0.76\textwidth}
 
-\vspace{4mm} 
+\vspace{2mm} 
 
 \noindent \normalsize \textbf{Industrial Production Growth}\\
-\footnotesize{\textit{percentage point contribution to one-year growth of total index \hspace{12mm} moving averages}\\ 
+\footnotesize{\textit{One-year growth \hspace{34mm} contribution to total \hspace{12mm} rate, percent}\\ 
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{2mm} p{47mm} R{7.3mm} R{7.3mm} R{7.3mm} R{7.6mm} R{7.3mm} 
+		{\renewcommand{\arraystretch}{1.54}
+		 \begin{tabular}{p{2mm} p{44mm} R{7.3mm} R{7.3mm} R{7.3mm} R{7.3mm} | R{8mm} R{7.3mm} 
 		   R{7.3mm} R{7.3mm} }
 			 \input{data/indpro.tex}\hline
-		\end{tabular}}	\\
+		\end{tabular}}	
 		
 \footnotesize{Source: Federal Reserve}}
 
-\end{minipage}
 
 \newpage
 
@@ -2002,18 +2008,18 @@ In terms of elements that add to the number of people in poverty, medical expens
 		yticklabel style={text width=1.5em}, legend cell align={left},
 		legend style={legend columns=1, at={(0.43, 0.48)}}]
 	\rbars
-	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr2.csv}
-	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr2.csv}
-	\sbar{orange!20!yellow}{date}{Mining}{data/indprogr2.csv}
-	\sbar{green!80!blue}{date}{Electric and gas utilities}{data/indprogr2.csv}
+	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr.csv}
+	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr.csv}
+	\sbar{orange!20!yellow}{date}{Mining}{data/indprogr.csv}
+	\sbar{green!80!blue}{date}{Electric and gas utilities}{data/indprogr.csv}
 	\legend{Durable Manufacturing, Nondurable Manufacturing, Mining, Utilities};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr2.csv}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}\\
 
 \vspace{3mm}
 
-\small The most recent slowdown has been broad-based. The monthly data are shown in detail below.\\
+\small The recent slowdown has been broad-based. The monthly data are shown in detail below.\\
 
 \vspace{1mm}
 
@@ -2025,16 +2031,14 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \input{text/ip_latest_monthly.tex}
 
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}*
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}
 
 \end{minipage}
 
 \newpage
 
 \begin{minipage}{0.31\textwidth}
-\small \input{text/ip_comp1.txt}\\
-
-\input{text/ip_comp2.txt}
+\small \input{text/ip_comp.txt}
 
 \end{minipage} \hspace{5mm}
 \begin{minipage}{0.4\textwidth}
@@ -2042,8 +2046,8 @@ In terms of elements that add to the number of people in poverty, medical expens
 \footnotesize{\textit{total three-year growth, percent, \input{text/ip_ind_ldate.txt}}}\\ 
 \noindent \hspace*{-5mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
-    	width=5.5cm, bar width=1.7ex, height=10.0cm,
-    	enlarge y limits={abs=0.32cm}, enlarge x limits=0.15, \bbar{x}{0},
+    	width=5.5cm, bar width=1.8ex, height=10.8cm,
+    	enlarge y limits={abs=0.32cm}, enlarge x limits=0.2, \bbar{x}{0},
 		yticklabels from table={\ip}{name}, 
 		yticklabel style={font=\scriptsize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
@@ -2078,7 +2082,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 	\input{text/tcu_tot_node.txt}
 	\input{text/tcu_mfg_node.txt}
 	\stdnode{8.8cm}{1.3cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
-	\stdnode{8.0cm}{2.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
+	\stdnode{7.8cm}{2.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
@@ -2185,7 +2189,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \label{sec:gov}
 \normalsize
 
-\small Public institutions are collectively referred to as the \textit{public-sector} or the \textit{government}. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate private sector activities. The government also enforces policies that determine the ownership of property. These activities are all extremely important in determining production and distribution in the economy.
+\small Public institutions are collectively referred to as the \textit{public-sector} or the \textit{government}. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate economic and financial activity. The government also enforces and determines the ownership of property. These activities are all extremely important to production and distribution in the economy.
 
 
 \subsection*{\color{black!70} \seriffont Government Spending and Investment}
@@ -2563,10 +2567,10 @@ In terms of elements that add to the number of people in poverty, medical expens
         legend cell align={left},
 		legend style={fill=white, legend columns=2, at={(0.82, 1.09)}}]
 	\rbars
-	\sbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}
-	\sbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}
-	\sbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}
-	\sbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}
+	\etsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}
+	\etsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}
+	\etsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}
+	\etsbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}
 	\legend{Employed, Unemployed, Non-Participant, Under 15};
 	\end{axis}
 \end{tikzpicture}\\
@@ -2590,9 +2594,9 @@ People who are not employed and not unemployed are considered to be outside of t
 		legend cell align={left},
 		legend style={legend columns=1, at={(0.29, 0.35)}}]
 	\rbars
-	\sbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs2.csv}
-	\sbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs2.csv}
-	\sbar{blue!80!cyan}{date}{NILF}{data/cps_lfs2.csv}
+	\tkbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs2.csv}
+	\tkbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs2.csv}
+	\tkbar{blue!80!cyan}{date}{NILF}{data/cps_lfs2.csv}
 	\legend{Employed, Unemployed, Non-Participant};
 	\end{axis}
 \end{tikzpicture}\\
