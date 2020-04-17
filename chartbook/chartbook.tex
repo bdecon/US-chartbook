@@ -20,7 +20,7 @@
 	\usepackage{pgfplots, pgfplotstable}
 	\usepackage{xcolor}
 	\usepackage{array}
-	\usepackage{fontawesome}
+	\usepackage{fontawesome5}
 	\usepackage{fancyhdr}
 	\usepackage[colorlinks, linkcolor=blue, filecolor=blue, 
 		citecolor=blue, urlcolor=blue, linktoc=all, 
@@ -1550,13 +1550,10 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \footnotesize{Source: Federal Housing Finance Agency} \hspace{6.3cm} \tbllink{hpi.csv}
 
 \newpage
-
 \subsection*{\color{black!70} \seriffont Poverty}
-
-\begin{minipage}{0.43\textwidth}
+\begin{minipage}{0.46\textwidth}
 \small
-In 2018, income from labor and capital ownership, called \textit{market income}, was below the Census Bureau threshold for poverty for 77.9 million people in the US. After-tax income, or disposable income, includes income from various government programs and tax credits, such as social security and the child tax credit, and subtracts taxes paid. By disposable income, \textbf{41.3 million people are in poverty}. In other words, government programs and tax credits moved the income of 36.6 million people above the poverty threshold. \\
-
+In 2018, income from labor and capital ownership, called \textit{market income}, was below the Census Bureau threshold for poverty for 77.9 million people in the US. Disposable income subtracts taxes and includes market income plus income from government programs and tax credits. \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{According} to the Census Bureau Supplemental Poverty Measure (SPM), \textbf{41.4 million people are in poverty} after taxes and transfers. Government programs and tax credits moved the income of 36.5 million people above the poverty threshold.
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.22\textwidth}
 \noindent \normalsize \textbf{In Poverty, 2018}\\
@@ -1565,7 +1562,7 @@ In 2018, income from labor and capital ownership, called \textit{market income},
     \begin{axis}[
     	\barplotnogrid axis y line=left, \barylab{1.5cm}{1.5ex} \bbar{x}{0},
 		yticklabel style={font=\footnotesize},
-        width=4.5cm, 
+        width=4.2cm, 
         height=4.1cm,
         ytick={0,1},
         yticklabels={Disposable Income\\*(SPM), Market Income},
@@ -1577,70 +1574,72 @@ In 2018, income from labor and capital ownership, called \textit{market income},
         every axis plot/.append style={
           xbar, bar width=5.0ex, bar shift=0pt, fill}, 
           nodes near coords align={left}]
-      \addplot[green!85!blue] coordinates {(41.3, 0)};
+      \addplot[green!85!blue] coordinates {(41.4, 0)};
       \addplot[blue] coordinates {(77.9, 1)};
     \end{axis}
   \end{tikzpicture}\\
 \footnotesize{Source: CPS ASEC}\\
 \end{minipage}
+\vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
-\small The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{reports} 41.2 million people in poverty in the US in 2018, equivalent to more than the total population of Canada. For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the official measure being based on three times a price-adjusted 1963 minimal food budget, and the supplemental measure based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.\\
+\small For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the Official Poverty Measure (OPM) based on three times a price-adjusted 1963 minimal food budget, and the SPM based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.\\
 
-While some fully-employed people are in poverty, \textbf{the vast majority of poor people are children, elderly, disabled, caregivers, and students}. That is, there is often a good reason why poor people are not working. Put another way, if the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poor.
+While some fully-employed people are in poverty, \textbf{the vast majority of poor people are children, elderly, disabled, caregivers, and students}. These groups represent 69.2 percent of those in poverty in 2018. If the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poverty, by definition. As a result, these groups that are disproportionately work-limited in some way have much higher rates of poverty. 
 
 \end{minipage}
 
-\vspace{2mm}
+\vspace{3mm}
 
+\noindent \normalsize \textbf{Poverty Measures, 2018}\\
+\vspace{-6mm}
 
-\begin{minipage}{0.45\textwidth}
-\noindent \normalsize \textbf{In Poverty Population by Category}\\
-\footnotesize{\textit{share of total, 2018}}\\ 
+\ \small \cbox{blue}Market Income \ \hspace{1mm} \cbox{lime!70!green!90!blue}Disposable Income (SPM) \ \hspace{1mm} \cbox{green!60!blue}Disposable Income (OPM)\\
+ \vspace{-3mm}
+
+\begin{minipage}{0.4\textwidth}
+\noindent \normalsize In Poverty\\
+\footnotesize{\textit{share of total, percent}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.9cm}{1.5ex}
-    	width=5.0cm, bar width=1.8ex, height=9.8cm, xmin=0,
+    	width=4.6cm, bar width=1.9ex, height=10.4cm, xmin=0,
     	enlarge y limits={abs=0.5cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\poor}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode},
-		legend style={at={(1.14, 1.06)}}]
+			precision=1, assume math mode}]
   	\addplot[fill=green!60!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\poor};
   	\addplot[fill=lime!70!green!90!blue, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\poor};
   	\addplot[fill=blue, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\poor};
-  	\legend{OPM, SPM, Market Income};
   	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{33mm} \tbllink{poor.csv}
-\end{minipage}\hspace{6mm}
-\begin{minipage}{0.45\textwidth}
-\noindent \normalsize \textbf{Poverty Rate by Category}\\
-\footnotesize{\textit{share of group below poverty line, 2018}}\\ 
+\end{tikzpicture}
+\end{minipage}\hspace{4mm}
+\begin{minipage}{0.4\textwidth}
+\noindent \normalsize Poverty Rate\\
+\footnotesize{\textit{share of group below poverty line, percent}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.9cm}{1.5ex}
-    	width=5.0cm, bar width=1.8ex, height=9.8cm, xmin=0,
+    	width=4.6cm, bar width=1.9ex, height=10.4cm, xmin=0,
     	enlarge y limits={abs=0.5cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\pvrt}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode},
-		legend style={at={(1.14, 1.06)}}]
+			precision=1, assume math mode}]
    	\addplot[fill=green!60!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\pvrt};
   	\addplot[fill=lime!70!green!90!blue, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\pvrt};
   	\addplot[fill=blue, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\pvrt};
-  	\legend{OPM, SPM, Market Income};
   	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC} \hspace{33mm} \tbllink{poor2.csv}
-\end{minipage}
+\end{tikzpicture}
+\end{minipage}\\
 
+\vspace{-2mm}
+\footnotesize{Source: CPS ASEC; Author's Replication of Bruenig, see \href{https://github.com/bdecon/US-chartbook/blob/master/notebooks/Poverty.ipynb}{\faPython}} \hspace{40mm} \tbllink{poor.csv}
 
 \newpage
 
@@ -1652,7 +1651,7 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 
 \vspace{2mm}
 
-\noindent \normalsize \textbf{Amount of Poverty by Age} \small \hspace{8mm} \cbox{blue} Market Income \ \hspace{2mm} \cbox{green!85!blue} Disposable Income\\
+\noindent \normalsize \textbf{Amount of Poverty by Age} \small \hspace{6mm} \cbox{blue} Market Income \ \hspace{2mm} \cbox{green!85!blue} Disposable Income (SPM)\\
 \footnotesize{\textit{in billions of 2018 US Dollars}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[ymin=0, ymax=13, enlarge x limits={0.01},
@@ -3219,18 +3218,21 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/icsa.txt}\\
-
+\small \input{text/icsa.txt}
+\end{minipage}
 \vspace{2mm}
 
-\noindent \normalsize \textbf{New Unemployment Insurance Claims}\\
-\footnotesize{\textit{initial claims, in thousands, not seasonally adjusted, four-week moving average highlighted}}\\
+\begin{minipage}{0.32\textwidth}
+\noindent \normalsize \textbf{New UI Claims}\\
+\footnotesize{\textit{initial claims per week, in thousands,}}\\
+\footnotesize{\textit{not seasonally adjusted}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 500, 1000, 2000, 3000, 4000, 5000, 6000}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=7.0cm]
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1000, 2000, 3000, 4000, 5000, 6000}, 
+		enlarge y limits={0.05}, ymin=250, xmin={2018-01-01},
+		xticklabel={`\short{\year}}, height=6.6cm, width=6.2cm]
 	\rbars
-	\stdline{cyan!35!white}{date}{weekly}{data/icsa.csv}
-	\stdline{blue!60!black}{date}{1M}{data/icsa.csv}
+	\stdline{cyan!75!blue}{date}{weekly}{data/icsa.csv}
+	%\stdline{blue!60!black}{date}{1M}{data/icsa.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
@@ -3325,7 +3327,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \footnotesize{\textit{share employed one year later}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={6, 8}, clip=false,
-		xticklabel={`\short{\year}}, height=5.4cm, width=7.0cm]
+		xticklabel={`\short{\year}}, height=5.8cm, width=7.0cm]
 	\rebars
 	\stdline{blue}{date}{Share}{data/disflow.csv}
 	\input{text/disflow_node.txt}
@@ -3348,30 +3350,27 @@ Among newly employed workers, the vast majority were considered to be out of the
 \noindent \normalsize \textbf{Job Turnover}\\
 \footnotesize{\textit{job openings, hires, and quits, in millions}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={2, 4, 6, 8}, 
-		enlarge y limits={0.1}, 
-		xticklabel={`\short{\year}}, height=5.6cm, width=8.0cm]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8}, 
+		enlarge y limits={0.1}, ymin=0.6,
+		xticklabel={`\short{\year}}, height=5.2cm, width=8.0cm]
 	\rbars
 	\stdline{cyan}{date}{Hires}{data/jolts.csv}
 	\stdline{red}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
-	\stdnode{3.3cm}{2.0cm}{\scriptsize \color{cyan}\textbf{Hires}}
-	\stdnode{5.1cm}{3.38cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
-	\stdnode{3.7cm}{0.2cm}{\scriptsize \color{red}\textbf{Quits}}
+	\stdnode{3.3cm}{2.1cm}{\scriptsize \color{cyan}\textbf{Hires}}
+	\stdnode{5.0cm}{3.1cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{3.7cm}{0.6cm}{\scriptsize \color{red}\textbf{Quits}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv}
 \end{minipage}
-
-\vspace{3mm}
+\vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
 
 \small The number of people who voluntarily separate (quit) a job in a given month, divided by the total number employed is the \textit{quits rate}. The rate typically increases when workers are confident enough to leave one job for another one, and a high quits rate, particularly in low-paying industries, can be a sign of a tight labor market.
-
 \end{minipage}
-
-\vspace{2mm}
+\vspace{1mm}
 
 \begin{minipage}{0.38\textwidth}
 \noindent \normalsize \textbf{Quits Rate}\\
@@ -3389,7 +3388,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\input{text/quits_tot_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{14mm} \tbllink{quits.csv}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{14mm} \tbllink{quits.csv}\\
 \end{minipage}
 \hspace{9mm}
 \begin{minipage}{0.31\textwidth}
@@ -3794,14 +3793,14 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 		enlarge y limits={0.1}, 
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\rbars
-	\draw [black!25!white, dashed] ({2016-12-01},2000) rectangle ({2020-06-17},3500);
+	\draw [black!25!white, dashed] ({2016-12-01},2000) rectangle (rel axis cs:1,1);
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500.csv}
 	\end{axis}
 \end{tikzpicture}
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={2000, 2500, 3000, 3500, 4000}, 
-		enlarge y limits={0.1}, xmax={2020-05-03},
+		enlarge y limits={0.1}, 
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
 	\thickline{black!13!white}{date}{MA}{data/sp500_recent.csv}
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500_recent.csv}
