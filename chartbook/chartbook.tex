@@ -3937,7 +3937,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \footnotesize{\textit{percentage point treasury yield spread}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
-		enlarge y limits={0.1}, xmin = 2011-11-01,
+		enlarge y limits={0.1}, xmin = 2011-12-15, ymin=-0.4, ymax=3,
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.5cm, clip=false]
 	\thinline{cyan!60!blue}{date}{Ten-3M}{data/spread.csv}
 	\input{text/spread_node.txt}
@@ -3951,7 +3951,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \footnotesize{\textit{percentage point treasury yield spread}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
-		enlarge y limits={0.1}, xmin = 2011-11-01,
+		enlarge y limits={0.1}, xmin = 2011-12-15, ymin=-0.4, ymax=3,
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.5cm, clip=false]
 	\thinline{orange}{date}{Ten-2Y}{data/spread.csv}
 	\input{text/spread_node2.txt}
@@ -3959,6 +3959,26 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hspace{20mm} \tbllink{spread.csv} 
 \end{minipage}
+
+\vspace{7mm}
+
+\subsubsection*{\color{black!70} \seriffont Corporate Bonds}
+\begin{minipage}{0.29\textwidth}
+\small The US Treasury \href{https://www.treasury.gov/resource-center/economic-policy/corp-bond-yield/Pages/Corp-Yield-Bond-Curve-Papers.aspx}{publishes} a yield curve for corporate bonds based on an market-weighted average of bonds rated AAA, AA, and A. \input{text/hqcb.txt} \\
+\end{minipage}\hspace{8mm} \begin{minipage}{0.41\textwidth}
+\noindent \normalsize \textbf{10-Year, High Quality}\\
+\footnotesize{\textit{spot rate, percent, monthly average}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
+		xticklabel={`\short{\year}}, clip=false, ymin=0.5, width=7.5cm]
+	\rbars
+	\stdline{blue!60!violet}{date}{VALUE}{data/hqcb.csv}
+	\input{text/hqcb_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Treasury} \hfill \tbllink{hqcb.csv}\\
+\end{minipage}
+
 
 
 \newpage
