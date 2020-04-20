@@ -1141,11 +1141,11 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve and Bureau of Economic Analysis} \hfill \tbllink{hhdebt.csv}\\
 
-\vspace{5mm}
+\vspace{4mm}
 
 \small \input{text/hhcdebt3.txt} \\
 
-\vspace{1mm}
+\vspace{0mm}
 
 
 \normalsize \textbf{Mortgages and Consumer Credit}
@@ -1166,18 +1166,18 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 
 \begin{minipage}{0.76\textwidth}
 
-\small Trends in \textbf{household debt} over the past three years, measured in both the US Financial Accounts and the New York Fed Consumer Credit Panel, show consumer credit growing in line with income while mortgage debt falls relative to income. The two series below, Mortgage Debt Total and Consumer Credit, are comparable between both data sources. Discrepancies arise because the Financial Accounts include debt of nonprofit institutions and the Consumer Credit Panel does not include persons without a social security number.\\
+\small Trends in \textbf{household debt} over the past three years, measured in both the US Financial Accounts and the New York Fed Consumer Credit Panel, show consumer credit growing in line with income while mortgage debt falls relative to income. Minor discrepancies between the two data sources arise because the Financial Accounts include debt of nonprofit institutions and the Consumer Credit Panel does not include persons without a social security number.\\
 
 \input{text/hhcdebt4.txt} \\
 
 \input{text/hhcdebt5.txt} \\
 
-\vspace{4mm}
+\vspace{1mm}
 
 \noindent \normalsize \textbf{Household Debt Outstanding}\\
 \footnotesize{\textit{trillions of US Dollars \hspace{46mm} share of disposable personal income}\\ \vspace{4mm}
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.55}
+		{\renewcommand{\arraystretch}{1.54}
 		 \begin{tabular}{p{36mm} R{11.8mm} R{11.8mm}  R{8.0mm} R{7.4mm} R{7.4mm} 
 		   R{7.4mm} R{7.4mm}}
 			 \input{data/hhcdebt.tex}
@@ -1185,10 +1185,33 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 		\end{tabular}
 		}	\\}
 		
-\vspace{-2mm}
+\vspace{-3.5mm}
 \footnotesize{Source: Federal Reserve, Federal Reserve Bank of New York, Bureau of Economic Analysis}
+\end{minipage}
+\vspace{2mm}
+
+\subsubsection*{\color{black!70} \seriffont Financial Obligations}
+\vspace{-1mm}
+\begin{minipage}{0.32\textwidth}
+\small Payments to service debt, along with rent, auto lease payments, homeowner's insurance, and property tax are considered financial obligations. The Federal Reserve \href{https://www.federalreserve.gov/releases/housedebt/default.htm}{reports} financial obligations as a share of disposable personal income. \input{text/for.txt}  (see {\color{blue!80!black}\textbf{---}}). The measure peaked at 18.1 percent in 2007 Q4, during the housing bubble.
+\end{minipage}\hspace{8mm}
+\begin{minipage}{0.44\textwidth}
+\noindent \normalsize \textbf{Financial Obligation Ratio}\\
+\footnotesize{\textit{share of disposable personal income, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={14, 15, 16, 17, 18, 19}, 
+		enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, height=4.4cm, width=7.0cm, clip=false]
+	\rbars
+	\stdline{blue!80!black}{date}{Financial obligations ratio}{data/for.csv}
+	\input{text/for_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hspace{25mm} \tbllink{for.csv} 
 
 \end{minipage}
+
+
 
 \newpage
 
@@ -1824,12 +1847,12 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 \newpage
 
-\begin{minipage}{0.335\textwidth}
+\begin{minipage}{0.34\textwidth}
 
 \small Productive business investments also show up as \textbf{new orders for core capital goods}. The category excludes the more-volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  \\
 
 \input{text/dgno.txt}
-\end{minipage} \hspace{4mm}
+\end{minipage} \hspace{6mm}
 \begin{minipage}{0.39\textwidth}
 
 \noindent \normalsize \textbf{New Orders for Core Capital Goods}\\
@@ -2284,6 +2307,10 @@ In terms of elements that add to the number of people in poverty, medical expens
 
 
 \newpage
+\subsection*{\color{black!70} \seriffont Government Balance Sheets}
+
+\subsubsection*{\color{black!70} \seriffont Liabilities}
+
 \begin{minipage}{0.76\textwidth}
 
 \small \input{text/pubdebt.txt}\\
@@ -2337,6 +2364,35 @@ In terms of elements that add to the number of people in poverty, medical expens
 \small While debt levels are much lower for the consolidated state and local government sectors, interest rates on municipal bonds are higher, and interest paid to investors is a larger share of government expenses at the state and local level.
 \end{minipage}
 
+
+\newpage
+
+\subsubsection*{\color{black!70} \seriffont Assets}
+
+\begin{minipage}{0.76\textwidth}
+
+\small US government assets include financial assets but are mostly comprised of the non-financial assets of state and local governments (SLG), such as buildings and equipment. Land is not included in US measures of government assets. \\
+
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Government Assets}\\
+\footnotesize{\textit{does not include land, percent of GDP}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100},
+		xticklabel={`\short{\year}}, clip=false, ymin=2, ymax=112, height=6.0cm,
+		legend cell align={left},
+		legend style={legend columns=2, at={(0.6, 1.04)}}]
+	\rbars
+	\sbar{cyan!40!white}{date}{SLG NFA}{data/govassets.csv}
+	\sbar{blue!92!white}{date}{SLG FA}{data/govassets.csv}
+	\sbar{magenta!90!white}{date}{FG NFA}{data/govassets.csv}
+	\sbar{blue!25!violet}{date}{FG FA}{data/govassets.csv}
+	\legend{SLG Nonfinancial, SLG Financial, Federal Nonfinancial, Federal Financial};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{govassets.csv}\\
+
+\end{minipage}
 
 \newpage
 \begin{minipage}{0.76\textwidth}
