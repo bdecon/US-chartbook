@@ -2383,10 +2383,10 @@ In terms of elements that add to the number of people in poverty, medical expens
 		legend cell align={left},
 		legend style={legend columns=2, at={(0.6, 1.04)}}]
 	\rbars
-	\sbar{cyan!40!white}{date}{SLG NFA}{data/govassets.csv}
-	\sbar{blue!92!white}{date}{SLG FA}{data/govassets.csv}
-	\sbar{magenta!90!white}{date}{FG NFA}{data/govassets.csv}
-	\sbar{blue!25!violet}{date}{FG FA}{data/govassets.csv}
+	\sbar{cyan!36!white}{date}{SLG NFA}{data/govassets.csv}
+	\sbar{blue!75!cyan}{date}{SLG FA}{data/govassets.csv}
+	\sbar{violet!60!white}{date}{FG NFA}{data/govassets.csv}
+	\sbar{blue!28!violet!90!black}{date}{FG FA}{data/govassets.csv}
 	\legend{SLG Nonfinancial, SLG Financial, Federal Nonfinancial, Federal Financial};
 	\end{axis}
 \end{tikzpicture}\\
@@ -4178,7 +4178,8 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\dateaxisticks ytick={-20, -10,  0, 10, 20}, 
 		enlarge y limits={0.1}, \bbar{y}{0}, clip=false,
-		yticklabel style={text width=1.5em},
+		yticklabel style={text width=1.35em},
+		xmin = {1989-01-01},
 		xticklabel={`\short{\year}}, height=4.8cm, width=7.8cm,
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, xticklabels={`89, `00, `10, `20}]
