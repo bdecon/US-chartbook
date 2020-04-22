@@ -418,10 +418,14 @@ def end_node(data, color):
     
 
 def val_inc_pp(val):
+    if abs(val) > 1.05:
+        pp = 'percentage points'
+    else:
+        pp =  'percentage point'
     if val >= 0.1:
-        txt = f'increased by a total of {val:.1f} percentage points'
+        txt = f'increased by a total of {val:.1f} {pp}'
     elif val <= -0.1:
-        txt = f'decreased by a total of {abs(val):.1f} percentage points'
+        txt = f'decreased by a total of {abs(val):.1f} {pp}'
     else:
         txt = 'was virtually unchanged'
         

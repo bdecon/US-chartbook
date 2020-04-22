@@ -2209,30 +2209,32 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hspace{67mm} \tbllink{marts.csv}\\
 
-\vspace{5mm}
+\vspace{9mm}
 
 
 \noindent \normalsize \textbf{Retail sales}\\
 \footnotesize{\textit{share of disposable personal income}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+
+\vspace{7.8cm}
+
+\hspace{3.4cm} \begin{tikzpicture}[overlay]
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.7cm}{1.5ex}
-    	width=5.5cm, bar width=1.7ex, height=9.8cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.15, \bbar{x}{0},
+    	width=4.8cm, bar width=1.7ex, height=9.8cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.12, \bbar{x}{0},
 		yticklabels from table={\rs}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=2, assume math mode},
-		legend style={text=black!70, at={(-0.18,1.08)}, anchor=north, legend columns=-1, 
-				fill=none, draw=none,
-		        /tikz/every even column/.append style={column sep=0.4cm}}]
+		legend style={text=black!70, at={(1.1,1.12)}, legend columns=1, 
+				fill=none, draw=none}]
 	\addplot[fill=teal!50!green, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\rs};
   	\addplot[fill=blue!80!cyan, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\rs};
- 	\legend{2015 Q1, 2019 Q4}
+ 	\legend{\input{text/rs_mon2.txt}, \input{text/rs_mon1.txt}}
   	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau, Bureau of Economic Analysis} \hspace{12mm} \tbllink{rs_comp.csv}
+\footnotesize{Source: Census, BEA} \hspace{38mm} \tbllink{rs_comp.csv}
 
 \end{minipage}
 
@@ -2645,7 +2647,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \subsection*{\color{black!70} \seriffont Exchange Rates}
 
-\small The strength or weakness of the dollar in an important determinant of trade and financial flows. When more Japanese Yen (JPY), British Pounds (GBP), Euros (EUR), or Canadian Dollars (CAD) are required to buy one US Dollar (USD), the dollar is said to be \textit{strong}.\\
+\small Changes in the strength or weakness of the US Dollar (USD) can affect trade and financial flows. The dollar is said to be relatively strong when more units of foreign currency, for example Japanese Yen (JPY), British Pounds (GBP), Euros (EUR), or Canadian Dollars (CAD), are required to buy one USD.\\
 
  \input{text/selcurr_basic.txt}\\ 
 
@@ -3986,7 +3988,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \footnotesize{\textit{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, 
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.47, 0.94)}, fill=white}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.49, 0.94)}, fill=white}]
 	\rbars
 	\sbar{blue!90!purple}{date}{Dividends}{data/eq_payout.csv}	
 	\sbar{magenta}{date}{Buybacks}{data/eq_payout.csv}	
