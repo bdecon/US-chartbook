@@ -663,7 +663,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.11)}}]
+		legend style={at={(0.95, 1.13)}, fill=white}]
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
@@ -982,9 +982,9 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.95, 1)}, fill=white}]
 	\rbars
 	\sbar{red}{date}{DGDSRY}{data/pce.csv}
 	\sbar{blue!75!white}{date}{OTHSERV}{data/pce.csv}
@@ -1256,7 +1256,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, height=6.1cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
 			clip=false, legend cell align={left},
-		legend style={legend columns=2, at={(0.55, 0.24)}}]
+		legend style={legend columns=2, at={(0.57, 0.24)}, fill=white}]
 	\rbars
 	\sbar{cyan!40!white}{date}{DEP}{data/hh_asset_growth.csv}	
 	\sbar{blue!55!cyan}{date}{DSL}{data/hh_asset_growth.csv}
@@ -1330,7 +1330,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.98, 1)}, fill=white}]
 	\rbars
 	\sbar{cyan!40!white}{date}{NW}{data/rdpi_nw.csv}
 	\stdline{blue!50!violet}{date}{DPI}{data/rdpi_nw.csv}
@@ -2157,8 +2157,8 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \normalsize \textbf{Crude Oil Production}\\
 \footnotesize{\textit{millions of barrels per day}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\dateaxisticks ymin=0, enlarge x limits={0.01},
-		width=13.0cm, height=8.2cm, ytick={0, 5, 10}, xticklabel={`\short{\year}},
+	\begin{axis}[\dateaxisticks ymin=0.8, enlarge x limits={0.01},
+		width=13.0cm, height=7.2cm, ytick={0, 5, 10}, xticklabel={`\short{\year}},
 		legend style={at={(0.82, 1)}, fill=white}]
 	\rbars
 	\addplot[stack plots=y, area style, draw=none, fill=teal!90!green!96!black] 
@@ -2623,7 +2623,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={50, 100, 150, 200}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
-		legend style={legend columns=1, at={(0.28, 0.9)}}, fill between/on layer={main}]
+		legend style={legend columns=1, at={(0.28, 0.9)}, fill=white}, fill between/on layer={main}]
 	\rbars
 	\addplot[name path=F, ultra thick, no markers, color=red] 
 		table [x=date, y=Liab, col sep=comma] {data/iip.csv};
@@ -3963,7 +3963,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
 		xticklabel={`\short{\year}}, clip=false, 
-		height=4.8cm, enlarge y limits={0.11}, legend style={at={(0.95, 1.05)}}]
+		height=4.8cm, enlarge y limits={0.11}, legend style={at={(0.96, 1.05)}, fill=white}]
 	\rbars
 	\thickline{blue}{date}{Return}{data/sp500rr10.csv}
 	\thickline{orange}{date}{Return}{data/sp500rr15.csv}
@@ -3986,7 +3986,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \footnotesize{\textit{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, 
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.45, 1.0)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.47, 0.94)}, fill=white}]
 	\rbars
 	\sbar{blue!90!purple}{date}{Dividends}{data/eq_payout.csv}	
 	\sbar{magenta}{date}{Buybacks}{data/eq_payout.csv}	
