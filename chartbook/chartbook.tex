@@ -243,11 +243,11 @@
 
 \footnotesize \hspace{11mm} v0.0, \today \normalsize 
 
-\vspace{12mm}
+\vspace{11mm}
 
-\small Open source notes on US economic activity\\
+\normalsize Open source notes on US economic activity\\
 
-\vspace{18mm}
+\vspace{16mm}
 
 \thispagestyle{empty}
 
@@ -1865,21 +1865,30 @@ In terms of elements that add to the number of people in poverty, medical expens
 \vspace{12mm}
 
 \subsection*{\color{black!70} \seriffont Inventories}
+\begin{minipage}{0.76\textwidth}
+\small Changes in private inventories are often grouped with investment in national accounts. For purposes of flow measures such as GDP, inventory changes capture a situation where goods were produced but not sold and therefore are not included in consumption or investment. This situation can allow a drop in spending that was not predicted to be obscured in GDP growth figures. However, BEA \href{https://apps.bea.gov/iTable/index_UD.cfm}{reports} an inflation adjusted indicator of the ratio of inventories to sales in manufacturing and trade businesses (see {\color{blue!60!green}\textbf{---}}) as part of the underlying details tables. \\
 
-\begin{minipage}{0.42\textwidth}
+When thinking about the longer-term trends in these data, it's important to note that sales of businesses include services while inventories include only goods. Over the past 30 years, sales have shifted towards services, which reduces the inventories to sales ratio, all else equal. 
+
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.4\textwidth}
 \noindent \normalsize \textbf{Inventories to Sales Ratio}\\
 \footnotesize{\textit{total business}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={1.2, 1.3, 1.4, 1.5, 1.6}, 
-		xticklabel={`\short{\year}}, width=7.8cm]
+		xticklabel={`\short{\year}}, width=7.3cm]
 	\rbars
-	\stdline{blue!60!green}{date}{VALUE}{data/isratio.csv}
+	\stdline{blue!40!cyan!80!white}{date}{VALUE}{data/isratio.csv}
+	\stdline{blue!60!green}{date}{Value}{data/real_isratio.csv}
+	\legend{Nominal, Real}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: FRED} \hfill \tbllink{isratio.csv}\\
+\footnotesize{Source: FRED, BEA} \hfill \tbllink{isratio.csv}\\
 \end{minipage} \hspace{8mm}
-\begin{minipage}{0.28\textwidth}
-\small Census reports the ratio of inventories to sales for the total business sector.
+\begin{minipage}{0.31\textwidth}
+\small Census \href{https://www.census.gov/mtis/www/data/pdf/mtis_current.pdf}{reports} the nominal ratio of inventories to sales for the total business sector (see {\color{blue!40!cyan!80!white}\textbf{---}}). \input{text/isratio.txt}
 \end{minipage}
 
 
@@ -2610,7 +2619,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \vspace{1mm}
 
 \noindent \normalsize \textbf{International Investment}\\
-\footnotesize{\textit{share of GDP}}\\
+\footnotesize{\textit{share of GDP, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={50, 100, 150, 200}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
