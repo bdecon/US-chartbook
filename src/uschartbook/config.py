@@ -20,6 +20,7 @@ plt.rc('font', family='Lato')
 
 from statsmodels.tsa.x13 import x13_arima_analysis
 
+cb_dir = Path('/home/brian/Documents/uschartbook/notebooks/')
 data_dir = Path('../chartbook/data/')
 text_dir = Path('../chartbook/text/')
 cps_dir = Path('/home/brian/Documents/CPS/data/clean/')

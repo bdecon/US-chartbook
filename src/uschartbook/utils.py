@@ -407,10 +407,14 @@ def fred_df(series, start='1989'):
     return df.loc[start:]    
     
     
-def end_node(data, color):
+def end_node(data, color, percent=True):
+    if percent == True:
+        pct = '\%'
+    else:
+        pct = ''
     latest = data.iloc[-1]
     date = dtxt(data.index[-1])['datetime']
-    text = (f'\\node[label={{0:{{\scriptsize {latest:.1f}\%}}}}, circle, '+
+    text = (f'\\node[label={{0:{{\scriptsize {latest:.1f}{pct}}}}}, circle, '+
             f'{color}, fill, inner sep=1.0pt] at '+
             f'(axis cs:{date}, {latest:.3f}) {{}};')
     
