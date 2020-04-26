@@ -227,6 +227,7 @@
 	\pgfplotstableread[header=true, col sep=semicolon]{data/union_ind.csv}\unmem
 	\pgfplotstableread[header=true, col sep=semicolon]{data/quits_ind.csv}\quits
 	\pgfplotstableread[header=true, col sep=semicolon]{data/openings_ind.csv}\opens
+	\pgfplotstableread[header=true, col sep=comma]{data/nilf_comp.csv}\nilf
 	
 	
 % % % % % % % %
@@ -238,7 +239,7 @@
 
 \chapter*{
 		\textcolor{blue!70}{\rule[-1pt]{6pt}{20pt}}
-		\textcolor{green!70!blue}{\rule[-1pt]{6pt}{32pt}} \ \color{darkgray} \seriffont US Chartbook}
+		\textcolor{green!70!blue}{\rule[-1pt]{6pt}{32pt}} \ \color{darkgray} US Chartbook}
 \vspace*{-16mm}
 
 \footnotesize \hspace{11mm} v0.0, \today \normalsize 
@@ -316,7 +317,7 @@
 
 
 %\newpage
-\section*{\color{darkgray} \LARGE  \seriffont Overall Economic Activity}
+\section*{\color{darkgray} \LARGE Overall Economic Activity}
 \label{sec:oea}
 \begin{minipage}{0.61\textwidth}
 \small This analysis of the United States economy begins with the most popular measure of economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{Gross Domestic Product} (GDP). According to the Bureau of Economic Analysis, GDP--the seasonally-adjusted annualized value of goods and services produced in the US--was \input{text/gdp1.txt}\\
@@ -479,7 +480,7 @@
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-\section*{\color{darkgray}\LARGE \seriffont Financial Accounts}
+\section*{\color{darkgray}\LARGE Financial Accounts}
 \label{sec:ofa}
 
 \small The Federal Reserve \href{https://www.federalreserve.gov/releases/z1/}{reports} the balances and transactions in the US \textbf{financial accounts}. This includes the flow of funds between sectors in the economy and the various components of balance sheets by sector, such as for households, businesses, and government. The sector-specific data are covered in the section of the chartbook that corresponds to the sector, however, the overall financial activities of the US are discussed in this section.
@@ -631,7 +632,7 @@
 \end{minipage}
 
 \newpage
-\section*{\color{darkgray}\LARGE \seriffont Households}
+\section*{\color{darkgray}\LARGE Households}
 \label{sec:hh}
 
 \begin{minipage}{0.76\textwidth}
@@ -1229,11 +1230,14 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 
 \noindent \normalsize \textbf{Selected Household and Nonprofit Assets}\\
 \footnotesize{\textit{share of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+
+\vspace{3.82cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300, 400, 500},
-		 ymin=2, height=5.7cm, xmin=1988-07-01, reverse legend,
+		 ymin=16, height=5.9cm, xmin=1988-10-01, reverse legend,
 		xticklabel={`\short{\year}}, clip=false, legend cell align={left},
-		legend style={legend columns=1, at={(0.33, 1.1)}}]
+		legend style={legend columns=1, at={(0.97, 1.23)}}]
 	\rbars
 	\sbar{green!60!teal}{date}{HRE}{data/hhassetsgdp.csv}
 	\sbar{cyan!40!white}{date}{DEP}{data/hhassetsgdp.csv}	
@@ -1241,7 +1245,10 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 	\sbar{blue!65!black}{date}{TEQ}{data/hhassetsgdp.csv}
 	\legend{Real Estate, Deposits, Debt Securities \& Loans, Business Equity};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
+\vspace{3.5mm}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hhassetsgdp.csv}\\
 
 \vspace{3mm}
@@ -1801,7 +1808,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-\section*{\color{darkgray}\LARGE \seriffont Businesses}
+\section*{\color{darkgray}\LARGE Businesses}
 \label{sec:bus}
 \small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the loosely defined business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses.
 
@@ -2242,7 +2249,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 
 \begin{minipage}{0.76\textwidth}
-\section*{\color{darkgray}\LARGE \seriffont Government}
+\section*{\color{darkgray}\LARGE Government}
 \label{sec:gov}
 \normalsize
 
@@ -2426,7 +2433,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \newpage
 \begin{minipage}{0.76\textwidth}
-\section*{\color{darkgray}\LARGE \seriffont International Transactions}
+\section*{\color{darkgray}\LARGE International Transactions}
 \label{sec:ext}
 \small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). This section details imbalances in international transactions, changes in trade by goods and by partner, international investment positions, and exchange rates. 
 
@@ -2694,7 +2701,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{minipage}
 
 \newpage
-\section*{\color{darkgray}\LARGE \seriffont Labor Markets}
+\section*{\color{darkgray}\LARGE Labor Markets}
 \label{sec:lab}
 
 \begin{minipage}{0.34\textwidth}
@@ -3385,32 +3392,56 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \newpage
 
-\subsubsection*{\color{black!70} \seriffont Reasons for non-participation}
+\subsubsection*{\color{black!70} \seriffont Reasons for labor force non-participation}
+\begin{minipage}{0.76\textwidth}
+\small The Current Population Survey (CPS) asks those who are not employed or looking for work about their major activities and reasons for not participating in the labor market. \href{https://www.frbatlanta.org/chcs/human-capital-currents/2015/0612-measuring-labor-market-status-using-basic-data.aspx}{Answers} vary by age in intuitive ways, and are influenced by labor market conditions. 
+\end{minipage}
+
+\begin{minipage}{0.38\textwidth}
+\noindent \normalsize \textbf{Labor Force Non-Participation}\\
+\footnotesize{\textit{share of age 15+ population, percent}}\\
+\noindent \hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.9cm}{1.5ex}
+    	width=5.0cm, bar width=1.8ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\nilf}{name}, xmin=0, 
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode},
+		legend style={text=black!70, at={(0.26, 1.14)}, anchor=north, legend columns=-1, 
+				fill=none, draw=none,
+		        /tikz/every even column/.append style={column sep=0.4cm}}]
+  	\addplot[fill=green!80!blue!60!lime, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\nilf};
+  	\addplot[fill=green!80!blue!75!black, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\nilf};
+  	\legend{ \input{text/nilf_mo2.txt}, \input{text/nilf_mo1.txt}}
+  	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's calculations from CPS}
+\end{minipage} \hspace{4mm}
+\begin{minipage}{0.34\textwidth}
+\small \input{text/nilfbasic.txt}
+\end{minipage}
+\vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
+\small While the recession of 2001 appears mild in measures of expenditure, it was followed by a substantial reduction in the share of the population receiving labor income. The economy was losing jobs at an alarming rate long after the 2001 recession had officially ended, though labor market weakness was \href{https://www.aeaweb.org/articles?id=10.1257/jep.30.2.179}{partially masked} by a major housing bubble. Seven years after the recession of 2001, the burst of the housing bubble caused the great recession, which pushed many more people out of the labor force.
+\end{minipage}
 
-\small The Current Population Survey asks people who are not employed or looking for work about their major activities and reasons for not participating in the labor market. The answers show a tendency to vary by age, in intuitive ways, but also a strong relationship to the business cycle. By age, those age 16--24 who are not in the labor force disproportionately cite school as the reason for non-participation, while those 55+ disproportionately cite retirement. \\
+\vspace{1.5mm}
 
-\vspace{2mm}
-
-\normalsize
-
-[CHART HERE -- bar chart ]\\
-
-\vspace{2mm}
-
-\small While the recession of 2001 appears mild in measures of expenditure, it was followed by a substantial reduction in the share of the population earning labor income. The economy was still losing jobs at an alarming rate long after the 2001 recession had officially ended, with some overall weakness masked by a major housing bubble. The burst of the housing bubble caused the great recession seven years after, pushing many more people out of the labor force.\\
-
-\input{text/nilf_01.txt} \\
-
-\vspace{2mm}
-
-\noindent \normalsize \textbf{Contributions to Labor Force Participation Since March 2001}\\
-\footnotesize{\textit{cumulative percentage point contribution to age 18-64 labor force participation}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={}, width=10.0cm,
+\begin{minipage}{0.3\textwidth}
+\small \input{text/nilf_01.txt} 
+\end{minipage} \hspace{7mm}
+\begin{minipage}{0.42\textwidth}
+\noindent \normalsize \textbf{Contribution to Labor Force Participation}\\
+\footnotesize{\textit{cumulative percentage point contribution to age 18-64}}\\ 
+\footnotesize{\textit{labor force participation rate since March 2001}}\\ 
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={}, width=7.4cm, height=7.6cm,
 		xticklabel={`\short{\year}}, clip=false, 
-		yticklabel style={text width=1.8em}, height=8.5cm]
+		yticklabel style={text width=1.6em}]
 	\rebars
 	\stdline{violet!70!purple}{date}{Demographics}{data/nilf.csv}
 	\thickline{green!80!blue}{date}{Disabled/Ill}{data/nilf.csv}
@@ -3419,16 +3450,17 @@ People who are not employed and not unemployed are considered to be outside of t
 	\thickline{orange}{date}{Retired}{data/nilf.csv}
 	\thickline{cyan}{date}{School}{data/nilf.csv}
 	\input{text/nilf_nodes.txt}
-	\stdnode{7.25cm}{2.7cm}{\scriptsize \color{green!80!blue}\textbf{Disabled/Ill}}
-	\stdnode{5.2cm}{3.4cm}{\scriptsize \color{blue}\textbf{Discouraged}}
-	\stdnode{5.7cm}{5.2cm}{\scriptsize \color{red}\textbf{Family/Care}}
-	\stdnode{5.2cm}{6.5cm}{\scriptsize \color{orange}\textbf{Retired}}
-	\stdnode{6.2cm}{0.7cm}{\scriptsize \color{cyan}\textbf{School}}	
-	\stdnode{7.75cm}{1.48cm}{\scriptsize \color{violet!80!purple}\textbf{Age/Sex}}	
+	\stdnode{4.65cm}{2.36cm}{\footnotesize \color{green!80!blue}\textbf{Disabled/Ill}}
+	\stdnode{3.5cm}{3.15cm}{\footnotesize \color{blue}\textbf{Discouraged}}
+	\stdnode{4.35cm}{4.5cm}{\footnotesize \color{red}\textbf{Family/Care}}
+	\stdnode{5.1cm}{5.3cm}{\footnotesize \color{orange}\textbf{Retired}}
+	\stdnode{4.7cm}{0.62cm}{\footnotesize \color{cyan}\textbf{School}}	
+	\stdnode{5.45cm}{1.38cm}{\footnotesize \color{violet!80!purple}\textbf{Age/Sex}}	
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations from Current Population Survey} \hspace{16mm} \tbllink{nilf.csv}
+\footnotesize{Source: Author's Calculations from CPS} \hspace{12mm} \tbllink{nilf.csv}\\
 
+\footnotesize Series in the chart are adjusted so that the distribution of the age 18--64 population by age and sex is constant and equal to its March 2001 value. The total effect of this adjustment on labor force participation is included separately in the chart, as \color{violet!80!purple}\textbf{Age/Sex}.
 \end{minipage}
 
 \newpage
@@ -3921,7 +3953,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-\section*{\color{darkgray}\LARGE \seriffont Financial Markets}
+\section*{\color{darkgray}\LARGE Financial Markets}
 \label{sec:cap}
 \small The US equity markets and capital markets provide businesses and governments with funding for activities and fixed investments. \\
 
@@ -4191,7 +4223,7 @@ A large increase in the amount of money held by individuals and institutions can
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-\section*{\color{darkgray}\LARGE \seriffont Prices}
+\section*{\color{darkgray}\LARGE Prices}
 \label{sec:pr}
 \small 
 Changes in prices affect the amount of goods and services that can purchased by a fixed amount of income. When researchers try to measure changes in prices, they often look at both the quantity that can be purchased by a unit of currency, and also changes in item quality. To understand the overall change in prices faced by a certain group, such as consumers, researchers create a representative ``basket'' of the goods and services purchased by the group, and track the changes in the basket, and the price of the basket, over time. 
