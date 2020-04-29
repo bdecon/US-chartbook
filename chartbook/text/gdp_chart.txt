@@ -1,15 +1,15 @@
 \noindent \normalsize \textbf{GDP per capita}\\
-\footnotesize{\textit{in 2019 Q4 dollars}}\\* 
+\footnotesize{\textit{in 2020 Q1 dollars}}\\* 
 \noindent \begin{tikzpicture}
     \begin{axis}[\dateaxisticks clip=false, height=4.2cm, width=5.8cm,
             ytick={40000,50000,60000}, yticklabels={40, 50, \$60k},
             xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-04-01}},
         minor xtick={}, 
-        xticklabels={`89, `00, `10, `19 Q4}, enlarge y limits={lower, 0.3}, 
+        xticklabels={`89, `00, `10, `20 Q1}, enlarge y limits={lower, 0.3}, 
         enlarge x limits={0.05}]
     \stdline{blue}{date}{value}{data/gdppc.csv}
-    \node[label={90:{\$66,009}}, circle, blue, fill, inner sep=1.5pt] at 
-        (axis cs:2019-10-01,66009) {};
+    \node[label={90:{\$65,360}}, circle, blue, fill, inner sep=1.5pt] at 
+        (axis cs:2020-01-01,65360) {};
     \end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis}
