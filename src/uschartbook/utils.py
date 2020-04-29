@@ -13,12 +13,12 @@ qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 def bea_api_nipa(table_list, bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(1988, 2020)))
+    years = ','.join(map(str, range(1988, 2021)))
 
     api_results = []
 
     for table in table_list:
-        url = f'https://www.bea.gov/api/data/?&UserID={bea_key}'\
+        url = f'https://apps.bea.gov/api/data/?&UserID={bea_key}'\
               f'&method=GetData&datasetname=NIPA&TableName={table}'\
               f'&Frequency=Q&Year={years}&ResultFormat=json'
 
@@ -37,12 +37,12 @@ def bea_api_nipa(table_list, bea_key):
 def bea_api_gdpstate(bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(2008, 2020)))
+    years = ','.join(map(str, range(2008, 2021)))
 
     api_results = []
 
     table = 'SQGDP9'
-    url = f'https://www.bea.gov/api/data/?&UserID={bea_key}'\
+    url = f'https://apps.bea.gov/api/data/?&UserID={bea_key}'\
           f'&method=GetData&datasetname=Regional'\
           f'&LineCode=1&TableName={table}&GeoFIPS=STATE'\
           f'&Year={years}&ResultFormat=json'

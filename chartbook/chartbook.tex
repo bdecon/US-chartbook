@@ -981,11 +981,11 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \vspace{1mm}
 
 \noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
-\footnotesize{\textit{percentage point contribution to GDP growth}}\\
+\footnotesize{\textit{percentage point contribution to real GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-6, -4, -2, 0, 2, 4},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1)}, fill=white}]
+		legend style={at={(0.95, 1)}}]
 	\rbars
 	\sbar{red}{date}{DGDSRY}{data/pce.csv}
 	\sbar{blue!75!white}{date}{OTHSERV}{data/pce.csv}
