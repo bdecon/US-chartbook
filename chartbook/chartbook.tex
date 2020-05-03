@@ -834,6 +834,30 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \newpage
 
+\begin{minipage}{0.385\textwidth}
+
+
+\noindent \normalsize \textbf{Personal Income}\\
+\footnotesize{\textit{real per capita income, thousands of US Dollars}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60},
+		xticklabel={`\short{\year}}, clip=false, ymin=3,
+		legend style={at={(0.95, 1.08)}}, width=7.3cm, height=7.6cm]
+	\rbars
+	\etsbar{green!80!black}{date}{LABOR}{data/pi_levels.csv}
+	\etsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}
+	\etsbar{orange!50!yellow}{date}{CAPITAL}{data/pi_levels.csv}
+	\legend{Labor, Welfare$^2$, Capital$^1$};
+	\stdnode{2.7cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\ \scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pi_levels.csv}\\
+
+
+\end{minipage}
+
+\newpage
+
 \begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Income to Persons}
@@ -867,7 +891,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \noindent \normalsize \textbf{Personal Income by Source}\\
 \footnotesize{\textit{percentage point contribution to real personal income growth \hspace{22mm} moving averages}}\\ \vspace{4mm}
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.55}
+		{\renewcommand{\arraystretch}{1.52}
 		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 		   R{7.8mm} R{6.7mm} R{6.7mm} }
 			 \input{data/pi.tex}
@@ -3525,18 +3549,20 @@ Among newly employed workers, the vast majority were considered to be out of the
 \end{minipage} \hspace{4.5mm}
 \begin{minipage}{0.437\textwidth}
 \noindent \normalsize \textbf{Job Turnover}\\
-\footnotesize{\textit{job openings, hires, and quits, in millions}}\\
+\footnotesize{\textit{job openings, hires, quits, and layoffs, in millions}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8}, 
 		enlarge y limits={0.1}, ymin=0.6,
 		xticklabel={`\short{\year}}, height=5.2cm, width=8.0cm]
 	\rbars
 	\stdline{cyan}{date}{Hires}{data/jolts.csv}
-	\stdline{red}{date}{Quits}{data/jolts.csv}
+	\stdline{red!85!violet}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
+	\stdline{orange!70!yellow}{date}{Layoffs}{data/jolts.csv}
 	\stdnode{3.3cm}{2.1cm}{\scriptsize \color{cyan}\textbf{Hires}}
 	\stdnode{5.0cm}{3.1cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
-	\stdnode{3.7cm}{0.6cm}{\scriptsize \color{red}\textbf{Quits}}
+	\stdnode{4.9cm}{1.45cm}{\scriptsize \color{red!85!violet}\textbf{Quits}}
+	\stdnode{1.5cm}{0.55cm}{\scriptsize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv}
@@ -4204,8 +4230,8 @@ A large increase in the amount of money held by individuals and institutions can
 \noindent \normalsize \textbf{Federal Reserve Balance Sheet}\\
 \footnotesize{\textit{total assets, trillion of USD}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, 
-		enlarge y limits={0.1}, xmax={2020-04-01}, ymin=0, ymax=6,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6, 7}, 
+		enlarge y limits={0.1}, xmax={2020-04-01}, ymin=0.5, ymax=6.8,
 		xticklabel={`\short{\year}}, height=6.0cm, width=6.8cm, clip=false]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
@@ -4217,6 +4243,23 @@ A large increase in the amount of money held by individuals and institutions can
 \begin{minipage}{0.36\textwidth}
 \small \input{text/fed_assets2.txt}
 \end{minipage}
+
+\vspace{10mm}
+
+
+\noindent \normalsize \textbf{Federal Reserve Assets}\\
+\footnotesize{\textit{billions of US Dollars}\\ \vspace{4mm}
+\noindent \hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.54}
+\begin{tabular}{p{40mm} R{13.0mm} R{13.0mm} R{13.0mm}
+		 		 R{13.0mm} R{13.0mm}}
+			 \input{data/fed_bal_sheet.tex}
+			 \hline
+		\end{tabular}
+		}	\\}
+		
+\vspace{-5.5mm}
+\footnotesize{Source: Federal Reserve}
 
 
 
@@ -4374,6 +4417,28 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \end{tikzpicture}\\
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{mxpi.csv}
+
+
+
+\vspace{18mm}
+
+\noindent \normalsize \textbf{Personal Consumption Expenditure Price Index}\\
+\footnotesize{\textit{annual growth, percent}}\\
+\vspace{19mm}
+
+\noindent \hspace{3mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={-2, 0, 2, 4, 6}, 
+		xticklabel={`\short{\year}}, clip=false, width=8.6cm,
+		legend style={at={(1.0, 1.11)}, fill=white},
+		height=4.0cm, enlarge y limits={0.11}]
+	\rbars
+	\stdline{blue!60!black}{date}{CORE}{data/pce_pi.csv}
+	\stdline{orange!80!yellow}{date}{PCE}{data/pce_pi.csv}
+	\legend{Core, All-items};
+	\end{axis}
+\end{tikzpicture}\\
+
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{24mm} \tbllink{pce_pi.csv}
 
 \end{minipage}
 
