@@ -834,36 +834,48 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \newpage
 
-\begin{minipage}{0.385\textwidth}
+\subsection*{\color{black!70} \seriffont Income to Persons}
 
+\begin{minipage}{0.34\textwidth}
+\small This section looks at \textbf{income received by people}, by type of income, adjusted for inflation using the PCE implicit price deflator. Income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons, primarily government social benefits, less contributions to social insurance. \\
 
+\input{text/pi_levels_basic.txt}\\
+\end{minipage} \hspace{9mm}
+\begin{minipage}{0.375\textwidth}
 \noindent \normalsize \textbf{Personal Income}\\
 \footnotesize{\textit{real per capita income, thousands of US Dollars}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60},
 		xticklabel={`\short{\year}}, clip=false, ymin=3,
-		legend style={at={(0.95, 1.08)}}, width=7.3cm, height=7.6cm]
+		legend style={at={(0.85, 1.08)}}, width=7.1cm, height=7.6cm]
 	\rbars
 	\etsbar{green!80!black}{date}{LABOR}{data/pi_levels.csv}
 	\etsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}
 	\etsbar{orange!50!yellow}{date}{CAPITAL}{data/pi_levels.csv}
-	\legend{Labor, Welfare$^2$, Capital$^1$};
-	\stdnode{2.7cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\ \scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
+	\legend{Labor, Welfare, Capital};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pi_levels.csv}\\
-
-
 \end{minipage}
+
+\vspace{5mm}
+
+\noindent \normalsize \textbf{Personal Income by Source}\\
+\footnotesize{\textit{per capita, annualized, March 2020 US Dollars}}\\ \vspace{4mm}
+\noindent \hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.52}
+		 \begin{tabular}{p{37mm} R{11.4mm} R{11.4mm} R{11.4mm} R{11.4mm} R{11.4mm} R{11.4mm}}
+			 \input{data/pi_levels.tex}
+			 \hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-6mm}
+\footnotesize{Source: Bureau of Economic Analysis}
 
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-
-\subsection*{\color{black!70} \seriffont Income to Persons}
-\small This section looks at \textbf{income received by people}, by type of income, adjusted for inflation using the PCE implicit price deflator. Income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons less contributions to social insurance. \\
-
-\vspace{2mm}
 
 \noindent \normalsize \textbf{Personal Income}\\
 \footnotesize{\textit{percentage point contribution to real personal income growth}}\\
@@ -2188,7 +2200,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \normalsize \textbf{Crude Oil Production}\\
 \footnotesize{\textit{millions of barrels per day}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\dateaxisticks ymin=0.8, enlarge x limits={0.01},
+	\begin{axis}[\dateaxisticks ymin=0.6, enlarge x limits={0.01},
 		width=13.0cm, height=7.2cm, ytick={0, 5, 10}, xticklabel={`\short{\year}},
 		legend style={at={(0.82, 1)}, fill=white}]
 	\rbars
