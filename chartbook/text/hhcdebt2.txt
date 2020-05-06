@@ -1,4 +1,4 @@
-\noindent \normalsize \hspace{5mm} Total Change, \small 2016 Q4--`19 Q4 \normalsize \hspace{18mm} Consumer Debt Trends \footnotesize 
+\noindent \normalsize \hspace{5mm} Total Change, \small 2017 Q1--`20 Q1 \normalsize \hspace{18mm} Consumer Debt Trends \footnotesize 
 \vspace{1mm}
 
 \hspace{2.1cm} \begin{tikzpicture}[trim axis left]
@@ -12,32 +12,32 @@
 		yticklabel style={font=\small, xshift=-4pt},
 		every axis plot/.append style={bar shift=0pt, fill},
 		nodes near coords style={/pgf/number format/.cd,fixed zerofill,precision=1, assume math mode}]
-		\addplot[gray] coordinates {(-2.52, 1)};
-		\addplot[gray] coordinates {(-1.59, 2)};
-		\addplot[gray] coordinates {(-0.95, 3)};
-		\addplot[green!80!blue] coordinates {(-0.06, 4)};
-		\addplot[blue!60!cyan] coordinates {(-0.05, 5)};
-		\addplot[red] coordinates {(0.15, 6)};
+		\addplot[gray] coordinates {(-1.52, 1)};
+		\addplot[gray] coordinates {(-0.92, 2)};
+		\addplot[gray] coordinates {(-0.81, 3)};
+		\addplot[green!80!blue] coordinates {(-0.01, 4)};
+		\addplot[blue!60!cyan] coordinates {(0.07, 5)};
+		\addplot[red] coordinates {(0.11, 6)};
 	\end{axis}
 \end{tikzpicture}
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={2, 4, 6, 8, 10}, 
 		clip=false, width=6.7cm, 
-		xtick={{1999-01-01}, {2005-01-01}, {2010-01-01}, {2015-01-01}, {2019-10-01}},
+		xtick={{1999-01-01}, {2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
         minor xtick={}, 
-        xticklabels={`99, `05, `10, `15, `19 Q4}, enlarge y limits={lower, 0.2}, 
+        xticklabels={`99, `05, `10, `15, `20 Q1}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04}]
 	\rebars
 	\stdline{blue!60!cyan}{date}{Auto Loan}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 8.0}}, circle, blue!60!cyan, fill, inner sep=1.5pt] at 
-        (axis cs:{2019-10-01},{8.0059}){};
+    \node[label={0:{\scriptsize 8.1}}, circle, blue!60!cyan, fill, inner sep=1.5pt] at 
+        (axis cs:{2020-01-01},{8.0589}){};
 	\stdline{green!80!blue}{date}{Student Loan}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 9.1}}, circle, green!80!blue, fill, inner sep=1.5pt] at 
-        (axis cs:{2019-10-01},{9.0705}){};
+    \node[label={0:{\scriptsize 9.2}}, circle, green!80!blue, fill, inner sep=1.5pt] at 
+        (axis cs:{2020-01-01},{9.1905}){};
 	\stdline{red}{date}{Credit Card}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 5.6}}, circle, red, fill, inner sep=1.5pt] at 
-        (axis cs:{2019-10-01},{5.5758}){};
+    \node[label={0:{\scriptsize 5.3}}, circle, red, fill, inner sep=1.5pt] at 
+        (axis cs:{2020-01-01},{5.3467}){};
 	\stdnode{4.2cm}{1.85cm}{\scriptsize \color{blue!60!cyan}{auto}}
 	\stdnode{1.2cm}{0.9cm}{\scriptsize \color{green!80!blue}{student}}
 	\stdnode{3.9cm}{0.82cm}{\scriptsize \color{red}{credit card}}
