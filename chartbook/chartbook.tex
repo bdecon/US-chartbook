@@ -2907,7 +2907,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \noindent \normalsize \textbf{Employment Rate}\\
 \footnotesize{\textit{employed share of age 25-54 population}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={75, 80}, enlarge y limits={0.1},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 75, 80}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
 	\rbars
 	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
@@ -2983,14 +2983,12 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \noindent \normalsize \textbf{Nonfarm Payroll Growth}\\
 \footnotesize{\textit{one-month change in total employment, in thousands}}\\
-\footnotesize{\textit{line = required for constant employment rate}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.2cm, height=5.0cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.2cm, height=5.6cm,
 		xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2020-01-01}},
-		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=1.9em},
+		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=2.4em},
         xticklabels={`14, `16, `18, `20},]
 	\sbar{blue!60!purple}{date}{ALL}{data/nfp.csv}
-	\stdline{green!50!lime}{date}{TOT}{data/nfp_pop.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{nfp.csv}
@@ -3006,8 +3004,8 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{41mm} R{10.5mm} R{10.5mm} R{8.2mm} R{7.8mm} R{7.8mm} 
-		   R{7.8mm} R{7.8mm} }
+		 \begin{tabular}{p{41mm} R{10.5mm} R{10.5mm} R{9.6mm} R{9.6mm} R{9.6mm} 
+		   R{9.6mm} R{9.6mm} }
 			 \input{data/nfp.tex}\hline
 		\end{tabular}
 		}	\\
@@ -3302,7 +3300,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \noindent \normalsize \textbf{Unemployment by Reason}\\
 \footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
 		height=5.8cm, ymin=0.3, legend cell align={left},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={fill=white, legend columns=2, at={(0.48, 1.0)}}]
@@ -3731,9 +3729,9 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\thinline{red!10!white}{date}{PTECONSA}{data/hours.csv}
 	\thinline{red!90!black}{date}{PTECONSA}{data/hours.csv}
 	\stdnode{0.95cm}{7.32cm}{\scriptsize \color{blue}\textbf{Total (LFS)}}
-	\stdnode{1.3cm}{4.45cm}{{\scriptsize \color{orange}\textbf{Production \&}}\\{\scriptsize \color{orange}\textbf{Non-Supervisory}}\\{\scriptsize \color{orange}\textbf{(CES)}}}
-	\stdnode{1.4cm}{1.65cm}{{\scriptsize \color{red!90!black}\textbf{Part Time}}\\{\scriptsize \color{red!90!black}\textbf{Economic Reasons}}\\{\scriptsize \color{red!90!black}\textbf{(LFS)}}}
-	\stdnode{3.58cm}{6.0cm}{{\scriptsize \color{green!90!blue!70!black}\textbf{Services}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{Occupations}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{(LFS)}}}
+	\stdnode{1.3cm}{4.55cm}{{\scriptsize \color{orange}\textbf{Production \&}}\\{\scriptsize \color{orange}\textbf{Non-Supervisory}}\\{\scriptsize \color{orange}\textbf{(CES)}}}
+	\stdnode{1.4cm}{1.75cm}{{\scriptsize \color{red!90!black}\textbf{Part Time}}\\{\scriptsize \color{red!90!black}\textbf{Economic Reasons}}\\{\scriptsize \color{red!90!black}\textbf{(LFS)}}}
+	\stdnode{3.58cm}{6.1cm}{{\scriptsize \color{green!90!blue!70!black}\textbf{Services}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{Occupations}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{(LFS)}}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: BLS} \hspace{27mm} \tbllink{hours.csv}
@@ -3865,7 +3863,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \noindent \normalsize \textbf{Average Hourly Earnings}\\
 \footnotesize{\textit{nominal one-year growth, percent}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8}, 
 		xticklabel={`\short{\year}}, clip=false, ymin=0,
 		legend columns=1, legend cell align={left},
 		legend style={at={(0.52, 0.35)}}]
