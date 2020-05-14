@@ -2781,9 +2781,9 @@ People who are not employed and not unemployed are considered to be outside of t
 \noindent \normalsize \textbf{Labor Force Status Changes}\\
 \footnotesize{\textit{percentage point contribution to one-year growth of age 15+ population}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
-		xticklabel={`\short{\year}}, clip=false, height=5.9cm,
-		legend cell align={left},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
+		xticklabel={`\short{\year}}, clip=false, height=6.4cm,
+		legend cell align={left}, yticklabel style={text width=1.5em},
 		legend style={legend columns=1, at={(0.29, 0.35)}}]
 	\rbars
 	\tkbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs2.csv}
@@ -3229,14 +3229,14 @@ People who are not employed and not unemployed are considered to be outside of t
 \normalsize \textbf{Unemployment Measures}\\
 \footnotesize{\textit{share of labor force, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15}, 
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, 
 		enlarge y limits={0.1}, ymin=1.2,
 		xticklabel={`\short{\year}}, height=3.8cm, width=6.2cm, clip=false]
 	\rbars
 	\stdline{blue}{date}{U6}{data/unemp2.csv}
 	\stdline{blue!50!cyan}{date}{Total}{data/unemp2.csv}
-	\stdnode{4.0cm}{0.3cm}{\footnotesize \color{blue!50!cyan}U3}
-	\stdnode{1.2cm}{1.45cm}{\footnotesize \color{blue}U6}
+	\stdnode{3.7cm}{0.3cm}{\footnotesize \color{blue!50!cyan}U3}
+	\stdnode{1.2cm}{1.3cm}{\footnotesize \color{blue}U6}
 	\input{text/u3_node.txt}
 	\input{text/u6_node.txt}
 	\end{axis}
