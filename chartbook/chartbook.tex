@@ -329,6 +329,35 @@
 \end{minipage}
 
 \begin{minipage}{0.76\textwidth}
+\subsection*{\color{black!70}\seriffont Types of Economic Activity}
+
+\small GDP is most-often calculated using the \href{https://www.bea.gov/help/glossary/expenditures-approach}{expenditures approach}, and can be decomposed into major types of domestic spending: consumer spending, private investment, and government spending and investment. To capture only domestic production, foreign spending on US produced goods and services is added, while imports (spending on non-US-produced goods and services) are subtracted.\\
+\end{minipage}
+
+\begin{minipage}{0.37\textwidth}
+\noindent \normalsize \textbf{Expenditure Types}\\
+\footnotesize{\textit{per capita, thousands of 2020 Q1 dollars}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40}, 
+		xticklabel={`\short{\year}}, clip=false, height=5.5cm, width=7.0cm]
+	\rbars
+	\stdnode{1.2cm}{3.26cm}{\footnotesize \color{yellow!65!orange}Consumer Spending}
+	\stdline{yellow!65!orange}{date}{DPCERX}{data/gdp_pc_comp.csv}
+	\stdnode{1.6cm}{0.62cm}{\footnotesize \color{blue!70!black}Investment}
+	\stdline{blue!70!black}{date}{A006RX}{data/gdp_pc_comp.csv}
+	\stdnode{1.1cm}{1.35cm}{\footnotesize \color{cyan!60!white}Government}
+	\stdline{cyan!60!white}{date}{A822RX}{data/gdp_pc_comp.csv}
+	\stdnode{4.4cm}{0.5cm}{\footnotesize \color{green!60!black}Net Exports}
+	\stdline{green!60!black}{date}{A019RX}{data/gdp_pc_comp.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{8mm} \tbllink{gdp_pc_comp.csv}\\
+\end{minipage}\hspace{8mm}
+\begin{minipage}{0.33\textwidth}
+\small \input{text/gdp_pc_comp.txt}
+\end{minipage}
+
+\begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70}\seriffont Economic Growth}
 
 \small GDP (see\cbox{red!95!black}) \input{text/gdp_gr.txt}
@@ -345,6 +374,11 @@
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdp.csv}
+
+\end{minipage}
+
+\newpage
+\begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Components of Growth}
 
@@ -2117,7 +2151,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \vspace{3mm}
 
-\small The recent slowdown has been broad-based. The monthly data are shown in detail below.\\
+\small The recent collapse has been broad-based. The monthly data are shown in detail below.\\
 
 \vspace{1mm}
 
@@ -2179,8 +2213,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{blue!40!cyan}{date}{Manufacturing}{data/tcu.csv}
 	\input{text/tcu_tot_node.txt}
 	\input{text/tcu_mfg_node.txt}
-	\stdnode{8.8cm}{1.3cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
-	\stdnode{7.8cm}{2.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
+	\stdnode{8.8cm}{1.5cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
+	\stdnode{7.8cm}{2.3cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
