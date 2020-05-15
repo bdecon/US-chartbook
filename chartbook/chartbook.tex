@@ -2238,7 +2238,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \normalsize \textbf{Retail Sales and Food Services}\\
 \footnotesize{\textit{annual growth, percent; nonstore is 3-month moving average}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
 		width=11.0cm, height=5.0cm, clip=false]
 	\rebars
@@ -2246,8 +2246,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
 	\input{text/rs_ns3m_node.txt}
 	\input{text/rs_44x72_node.txt}
-	\stdnode{6.1cm}{0.45cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
-	\stdnode{7.8cm}{2.65cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
+	\stdnode{6.25cm}{1.9cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
+	\stdnode{7.8cm}{2.85cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hspace{67mm} \tbllink{marts.csv}\\
@@ -3561,7 +3561,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \noindent \normalsize \textbf{Job Turnover}\\
 \footnotesize{\textit{job openings, hires, quits, and layoffs, in millions}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12}, 
 		enlarge y limits={0.1}, ymin=0.6,
 		xticklabel={`\short{\year}}, height=5.2cm, width=8.0cm]
 	\rbars
@@ -3569,10 +3569,10 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\stdline{red!85!violet}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
 	\stdline{orange!70!yellow}{date}{Layoffs}{data/jolts.csv}
-	\stdnode{3.3cm}{2.1cm}{\scriptsize \color{cyan}\textbf{Hires}}
-	\stdnode{5.0cm}{3.1cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
-	\stdnode{4.9cm}{1.45cm}{\scriptsize \color{red!85!violet}\textbf{Quits}}
-	\stdnode{1.5cm}{0.55cm}{\scriptsize \color{orange!70!yellow}\textbf{Layoffs}}
+	\stdnode{3.3cm}{1.45cm}{\scriptsize \color{cyan}\textbf{Hires}}
+	\stdnode{5.0cm}{2.1cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{4.9cm}{1.1cm}{\scriptsize \color{red!85!violet}\textbf{Quits}}
+	\stdnode{1.5cm}{0.35cm}{\scriptsize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv}
@@ -3866,7 +3866,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8}, 
 		xticklabel={`\short{\year}}, clip=false, ymin=0,
 		legend columns=1, legend cell align={left},
-		legend style={at={(0.52, 0.35)}}]
+		legend style={at={(0.52, 1.0)}}]
 	\rbars
 	\thickline{blue!80!black}{date}{PNS}{data/ahe.csv}
 	\stdline{magenta}{date}{ALL}{data/ahe.csv}
