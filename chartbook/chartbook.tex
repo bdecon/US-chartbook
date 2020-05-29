@@ -961,7 +961,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \noindent \normalsize \textbf{After-Tax Income Growth}\\
 \footnotesize{\textit{annual growth, per capita real disposable personal income, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=12.6cm]
 	\rbars
 	\stdline{blue!80!cyan}{date}{rdpi}{data/rdpigrowth.csv}
@@ -1097,8 +1097,9 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \noindent \normalsize \textbf{Consumer Spending Growth}\\
 \footnotesize{\textit{annual growth, per capita real personal consumption expenditures, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-6, -4, -2, 0, 2, 4}, 
-		xticklabel={`\short{\year}}, clip=false, height=4.0cm, width=12.6cm]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -15, -10, -5, 0, 5}, 
+		yticklabel style={text width=1.3em}, 
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=12.6cm]
 	\rbars
 	\stdline{green!80!black}{date}{rpcepop}{data/pcegrowth.csv}
 	\input{text/pcegrowth_node.txt}
@@ -1149,7 +1150,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \noindent \normalsize \textbf{Personal Saving Rate}\\
 \footnotesize{\textit{personal saving as a share of disposable personal income}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={4, 8, 12}, enlarge y limits={0.1},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, height=4.4cm, width=12.6cm, clip=false]
 	\rbars
 	\stdline{red}{date}{VALUE}{data/psavert.csv}
