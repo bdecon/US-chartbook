@@ -3550,15 +3550,15 @@ Among newly employed workers, the vast majority were considered to be out of the
 \noindent \normalsize \textbf{Newly Employed, Not Previously Looking For Work}\\
 \footnotesize{\textit{share of newly employed that were not looking for work in the prior month}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 70}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={40, 50, 60, 70}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=12.4cm,
 		legend columns=1, legend cell align={left},
-		legend style={at={(0.4, 0.97)}}]
+		legend style={at={(0.4, 1.01)}}]
 	\rbars
 	\stdline{lime!50!green!60!white}{date}{total}{data/lf_flow.csv}
 	\stdline{green!60!teal!90!black}{date}{quarterly}{data/lf_flow_q.csv}
 	\input{text/lf_flow_node.txt}
-	\legend{monthly, 3-month moving average};
+	\legend{Monthly, 3-month moving average};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lf_flow.csv}*
