@@ -3437,13 +3437,15 @@ People who are not employed and not unemployed are considered to be outside of t
 \newpage
 
 
-\subsubsection*{\color{black!70} \seriffont Initial Jobless Claims}
+\subsubsection*{\color{black!70} \seriffont Jobless Claims}
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/icsa.txt}
+\small \input{text/icsa.txt}\\
+
+\input{text/ccsa.txt}
 \end{minipage}
-\vspace{2mm}
+\vspace{3mm}
 
 \begin{minipage}{0.32\textwidth}
 \noindent \normalsize \textbf{New UI Claims}\\
@@ -3454,11 +3456,24 @@ People who are not employed and not unemployed are considered to be outside of t
 		enlarge y limits={0.05}, ymin=250, xmin={2018-01-01},
 		xticklabel={`\short{\year}}, height=6.6cm, width=6.2cm]
 	\rbars
-	\stdline{cyan!75!blue}{date}{weekly}{data/icsa.csv}
-	%\stdline{blue!60!black}{date}{1M}{data/icsa.csv}
+	\stdline{cyan!85!blue}{date}{weekly}{data/icsa.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
+\end{minipage} \hspace{14mm}
+\begin{minipage}{0.32\textwidth}
+\noindent \normalsize \textbf{Continued UI Claims}\\
+\footnotesize{\textit{insured unemployed, in thousands,}}\\
+\footnotesize{\textit{not seasonally adjusted}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 5000, 10000, 15000, 20000}, 
+		enlarge y limits={0.05}, ymin=250, xmin={2018-01-01},
+		xticklabel={`\short{\year}}, height=6.6cm, width=6.2cm]
+	\rbars
+	\stdline{green!70!blue}{date}{weekly}{data/ccsa.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
 \end{minipage}
 
 \newpage
