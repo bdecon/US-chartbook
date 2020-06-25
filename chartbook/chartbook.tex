@@ -1617,8 +1617,6 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 
 \small The Federal Housing Finance Agency (FHFA) \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{housing price index} (see {\color{blue!40!cyan}\textbf{---}}) \input{text/fhfa.txt}\\
 
-\vspace{2mm}
-
 \noindent \normalsize \textbf{House Price Index}\\
 \footnotesize{\textit{seasonally adjusted index, one-year percent change}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -1634,14 +1632,14 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 
 \end{minipage}
 
-\vspace{4mm}
+\vspace{3mm}
 
 \noindent \normalsize \textbf{Housing Price Growth}\\
 \footnotesize{\textit{seasonally adjusted, one-year percent change}\\
 \vspace{-5mm}
 
 \hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.55}
+		{\renewcommand{\arraystretch}{1.5}
 		 \begin{tabular}{p{24mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{12.0mm} R{10.8mm}}
 			 \input{data/hpi.tex}\hline
 		\end{tabular}
@@ -1649,6 +1647,27 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 		
 \vspace{-2mm}
 \footnotesize{Source: Federal Housing Finance Agency} \hspace{6.3cm} \tbllink{hpi.csv}
+
+\vspace{5mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\small \input{text/nhs.txt}\\
+
+\noindent \normalsize \textbf{New Home Sales}\\
+\footnotesize{\textit{new single family homes sold, in thousands}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={400, 600, 800, 1000, 1200, 1400}, 
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\stdline{green}{date}{VALUE}{data/nhs.csv}	
+	\input{text/nhs_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \hfill \tbllink{nhs.csv}
+
+\end{minipage}
+
 
 \newpage
 \subsection*{\color{black!70} \seriffont Poverty}
@@ -3603,35 +3622,29 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \subsubsection*{\color{black!70} \seriffont Job Openings and Labor Turnover Survey}
 \begin{minipage}{0.76\textwidth}
-\small Some types of \textbf{turnover} in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. Additionally, the job prospects outside of a firm affect the bargaining power of the workers inside of the firm. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving a job as \textit{quits}. 
-\end{minipage}\\
+\small Some types of \textbf{turnover} in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. Additionally, the job prospects outside of a firm affect the bargaining power of the workers inside of the firm. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving a job as \textit{quits}. \\
 
-\begin{minipage}{0.28\textwidth}
-\small \input{text/jolts2.txt}
-\end{minipage} \hspace{4.5mm}
-\begin{minipage}{0.437\textwidth}
+\small \input{text/jolts2.txt}\\
+
 \noindent \normalsize \textbf{Job Turnover}\\
 \footnotesize{\textit{job openings, hires, quits, and layoffs, in millions}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12}, 
 		enlarge y limits={0.1}, ymin=0.6,
-		xticklabel={`\short{\year}}, height=5.2cm, width=8.0cm]
+		xticklabel={`\short{\year}}, height=6.3cm]
 	\rbars
+	\stdline{orange!70!yellow}{date}{Layoffs}{data/jolts.csv}
 	\stdline{cyan}{date}{Hires}{data/jolts.csv}
 	\stdline{red!85!violet}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
-	\stdline{orange!70!yellow}{date}{Layoffs}{data/jolts.csv}
-	\stdnode{3.3cm}{1.45cm}{\scriptsize \color{cyan}\textbf{Hires}}
-	\stdnode{5.0cm}{2.1cm}{\scriptsize \color{blue!80!black}\textbf{Openings}}
-	\stdnode{4.9cm}{1.1cm}{\scriptsize \color{red!85!violet}\textbf{Quits}}
-	\stdnode{1.5cm}{0.35cm}{\scriptsize \color{orange!70!yellow}\textbf{Layoffs}}
+	\stdnode{3.1cm}{2.2cm}{\footnotesize \color{cyan}\textbf{Hires}}
+	\stdnode{9.3cm}{2.6cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{8.2cm}{1.25cm}{\footnotesize \color{red!85!violet}\textbf{Quits}}
+	\stdnode{2.5cm}{0.45cm}{\footnotesize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv}
-\end{minipage}
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv} \\
 \vspace{1mm}
-
-\begin{minipage}{0.76\textwidth}
 
 \small The number of people who voluntarily separate (quit) a job in a given month, divided by the total number employed is the \textit{quits rate}. The rate typically increases when workers are confident enough to leave one job for another one, and a high quits rate, particularly in low-paying industries, can be a sign of a tight labor market.
 \end{minipage}
