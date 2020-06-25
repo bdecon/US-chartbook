@@ -91,24 +91,14 @@
 		\addplot[ybar stacked, bar width=2.6pt, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 			
-	% stacked diverging bar
-	\newcommand{\tkbar}[4]{
-		\addplot[ybar stacked, bar width=2.8pt, draw opacity=0, fill=#1] 
-			table [x=#2, y=#3, col sep=comma]{#4};}
-			
 	% thin stacked diverging bar
 	\newcommand{\tsbar}[4]{
 		\addplot[ybar stacked, bar width=2.4pt, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 			
-	% very thin stacked diverging bar
-	\newcommand{\vtsbar}[4]{
-		\addplot[ybar stacked, bar width=1.9pt, draw opacity=0, fill=#1] 
-			table [x=#2, y=#3, col sep=comma]{#4};}
-			
-	% extra thin stacked diverging bar
-	\newcommand{\etsbar}[4]{
-		\addplot[ybar stacked, bar width=0.4pt, draw opacity=0, fill=#1] 
+	% custom width stacked diverging bar
+	\newcommand{\ctsbar}[5]{
+		\addplot[ybar stacked, bar width=#5, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 					
 	% text node
@@ -117,7 +107,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-05-10},
+		xmax={2020-07-10},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -870,32 +860,32 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \subsection*{\color{black!70} \seriffont Income to Persons}
 
-\begin{minipage}{0.34\textwidth}
-\small This section looks at \textbf{income received by people}, by type of income, adjusted for inflation using the PCE implicit price deflator. Income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons, primarily government social benefits, less contributions to social insurance. \\
+\begin{minipage}{0.25\textwidth}
+\small Inflation-adjusted income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons, primarily government social benefits, less contributions to social insurance. \\
 
 \input{text/pi_levels_basic.txt}\\
-\end{minipage} \hspace{9mm}
-\begin{minipage}{0.375\textwidth}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.47\textwidth}
 \noindent \normalsize \textbf{Personal Income}\\
 \footnotesize{\textit{real per capita income, thousands of US Dollars}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60},
 		xticklabel={`\short{\year}}, clip=false, ymin=3,
-		legend style={at={(0.85, 1.08)}}, width=7.1cm, height=7.6cm]
+		legend style={at={(0.6, 1.07)}}, width=8.8cm, height=8.7cm]
 	\rbars
-	\etsbar{green!80!black}{date}{LABOR}{data/pi_levels.csv}
-	\etsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}
-	\etsbar{orange!50!yellow}{date}{CAPITAL}{data/pi_levels.csv}
+	\ctsbar{green!80!black}{date}{LABOR}{data/pi_levels.csv}{0.9pt}
+	\ctsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}{0.9pt}
+	\ctsbar{orange!50!yellow}{date}{CAPITAL}{data/pi_levels.csv}{0.9pt}
 	\legend{Labor, Welfare, Capital};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pi_levels.csv}\\
+\footnotesize{Source: Bureau of Economic Analysis; Author} \hfill \tbllink{pi_levels.csv}\\
 \end{minipage}
 
 \vspace{5mm}
 
 \noindent \normalsize \textbf{Personal Income by Source}\\
-\footnotesize{\textit{per capita, annualized, March 2020 US Dollars}}\\ \vspace{4mm}
+\footnotesize{\textit{per capita, annualized, \input{text/pi_date.txt}\unskip \ US Dollars}}\\ \vspace{4mm}
 \noindent \hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.52}
 		 \begin{tabular}{p{37mm} R{11.4mm} R{11.4mm} R{11.4mm} R{11.4mm} R{11.4mm} R{11.4mm}}
@@ -1203,7 +1193,8 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \footnotesize{\textit{by type, as share of disposable personal income}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50, 100}, ymin=2,
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm, 
+		legend cell align={left}, legend style={legend columns=1, at={(0.32, 1.04)}}]
 	\rbars
 	\sbar{blue!60!violet}{date}{Mortgages}{data/hhdebt.csv}	
 	\sbar{magenta}{date}{Consumer Credit}{data/hhdebt.csv}
@@ -1548,8 +1539,8 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 		xticklabel={`\short{\year}}]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\vtsbar{blue!50!violet}{date}{Midwest_Q}{data/val_ooh.csv}	
-	\vtsbar{lime!70!green!80!white}{date}{Midwest_P}{data/val_ooh.csv}
+	\ctsbar{blue!50!violet}{date}{Midwest_Q}{data/val_ooh.csv}{1.9pt}
+	\ctsbar{lime!70!green!80!white}{date}{Midwest_P}{data/val_ooh.csv}{1.9pt}
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Midwest};
 	\end{axis}
 \end{tikzpicture} \hfill
@@ -1560,8 +1551,8 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 		xticklabel={`\short{\year}}]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\vtsbar{blue!50!violet}{date}{Northeast_Q}{data/val_ooh.csv}	
-	\vtsbar{lime!70!green!80!white}{date}{Northeast_P}{data/val_ooh.csv}	
+	\ctsbar{blue!50!violet}{date}{Northeast_Q}{data/val_ooh.csv}{1.9pt}
+	\ctsbar{lime!70!green!80!white}{date}{Northeast_P}{data/val_ooh.csv}{1.9pt}	
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Northeast};
 	\end{axis}
 \end{tikzpicture}\\
@@ -1572,8 +1563,8 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 		xticklabel={`\short{\year}}]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\vtsbar{blue!50!violet}{date}{West_Q}{data/val_ooh.csv}	
-	\vtsbar{lime!70!green!80!white}{date}{West_P}{data/val_ooh.csv}
+	\ctsbar{blue!50!violet}{date}{West_Q}{data/val_ooh.csv}{1.9pt}	
+	\ctsbar{lime!70!green!80!white}{date}{West_P}{data/val_ooh.csv}{1.9pt}
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize West};
 	\end{axis}
 \end{tikzpicture} \hfill
@@ -1584,8 +1575,8 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 		xticklabel={`\short{\year}}]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\vtsbar{blue!50!violet}{date}{South_Q}{data/val_ooh.csv}	
-	\vtsbar{lime!70!green!80!white}{date}{South_P}{data/val_ooh.csv}	
+	\ctsbar{blue!50!violet}{date}{South_Q}{data/val_ooh.csv}{1.9pt}	
+	\ctsbar{lime!70!green!80!white}{date}{South_P}{data/val_ooh.csv}{1.9pt}	
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize South};
 	\end{axis}
 \end{tikzpicture}\\
@@ -2369,7 +2360,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \vspace{6mm}
 
 \noindent \normalsize \textbf{Government Consumption and Investment}\\
-\footnotesize{\textit{percentage point contribution to real GDP growth \hspace{41mm} moving averages}\\ \vspace{4mm}
+\footnotesize{\textit{percentage point contribution to real GDP growth \hspace{37mm} moving averages}\\ \vspace{4mm}
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
@@ -2815,10 +2806,10 @@ When thinking about the longer-term trends in these data, it's important to note
         legend cell align={left},
 		legend style={fill=white, legend columns=2, at={(0.82, 1.09)}}]
 	\rbars
-	\etsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}
-	\etsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}
-	\etsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}
-	\etsbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}
+	\ctsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}{0.4pt}
+	\ctsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}{0.4pt}
+	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}{0.4pt}
+	\ctsbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}{0.4pt}
 	\legend{Employed, Unemployed, Non-Participant, Under 15};
 	\end{axis}
 \end{tikzpicture}\\
@@ -2842,9 +2833,9 @@ People who are not employed and not unemployed are considered to be outside of t
 		legend cell align={left}, yticklabel style={text width=1.5em},
 		legend style={legend columns=1, at={(0.29, 0.35)}}]
 	\rbars
-	\tkbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs2.csv}
-	\tkbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs2.csv}
-	\tkbar{blue!80!cyan}{date}{NILF}{data/cps_lfs2.csv}
+	\ctsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs2.csv}{2.8pt}
+	\ctsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs2.csv}{2.8pt}
+	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs2.csv}{2.8pt}
 	\legend{Employed, Unemployed, Non-Participant};
 	\end{axis}
 \end{tikzpicture}\\
@@ -2862,7 +2853,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 
 \noindent \normalsize \textbf{Labor Force Status}\\
-\footnotesize{\textit{\input{text/cps_lfs_date.txt}, thousands of people, not seasonally adjusted}}\\
+\footnotesize{\textit{\input{text/cps_lfs_date.txt}\unskip, thousands of people, not seasonally adjusted}}\\
 
 \vspace{-3mm}
 
@@ -2885,7 +2876,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 
 \noindent \normalsize \textbf{Labor Force Changes}\\
-\footnotesize{\textit{Change from \input{text/cps_lfs_datepr.txt}, thousands of people}}\\
+\footnotesize{\textit{Change from \input{text/cps_lfs_datepr.txt}\unskip, thousands of people}}\\
 
 \vspace{-3mm}
 
@@ -3031,20 +3022,20 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \subsubsection*{\color{black!70} \seriffont Changes in Payroll Employment}
 
-\begin{minipage}{0.31\textwidth}
+\begin{minipage}{0.25\textwidth}
 
-\small The \href{https://www.bls.gov/ces/}{establishment survey} from the monthly jobs report identifies how many jobs have been added to the economy in a given month (see\cbox{blue!60!purple}). \input{text/nfp_basic_text.txt}
+\small The \href{https://www.bls.gov/ces/}{establishment survey} from the monthly jobs report identifies how many nonfarm payroll jobs were added or lost in a given month (see\cbox{blue!60!purple}). \input{text/nfp_basic_text.txt}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.39\textwidth}
+\begin{minipage}{0.45\textwidth}
 
 \noindent \normalsize \textbf{Nonfarm Payroll Growth}\\
-\footnotesize{\textit{one-month change in total employment, in thousands}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=7.2cm, height=5.6cm,
+\footnotesize{\textit{one-month change in total employment, in millions}}\\
+\noindent \hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=8.2cm, height=6.6cm,
 		xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2020-01-01}},
-		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=2.4em},
+		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=2.0em},
         xticklabels={`14, `16, `18, `20},]
-	\sbar{blue!60!purple}{date}{ALL}{data/nfp.csv}
+	\ctsbar{blue!60!purple}{date}{ALL}{data/nfp.csv}{2.4pt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{nfp.csv}
@@ -3060,7 +3051,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{41mm} R{10.5mm} R{10.5mm} R{9.6mm} R{9.6mm} R{9.6mm} 
+		 \begin{tabular}{p{39.5mm} R{10.5mm} R{10.5mm} R{9.6mm} R{9.6mm} R{9.6mm} 
 		   R{9.6mm} R{9.6mm} }
 			 \input{data/nfp.tex}\hline
 		\end{tabular}
@@ -3347,7 +3338,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \subsubsection*{\color{black!70} \seriffont Reasons for unemployment}
 
-\small There are multiple reasons for unemployment. During the trough of a business cycle, most unemployed are those who lost a job, for example from layoffs, or had a temporary job end (see\cbox{blue!60!purple}). In general, many of the unemployed are re-entrants to the labor market, meaning they were out of the labor force prior but are looking for a job again (see\cbox{orange!80!yellow}). Some are new-entrants who are looking for their first job (see\cbox{red}). A small portion are also those who left a job voluntarily and are looking for a new one (see\cbox{yellow}). \\
+\small There are multiple reasons for unemployment, some of which do not qualify for unemployment insurance. During the trough of a business cycle, most unemployed are those who lost a job, for example from layoffs, or had a temporary job end (see\cbox{blue!60!purple}). In contrast during the peak of the business cycle, a much larger share of the unemployed are re-entrants to the labor market, meaning they had previously left the labor force but are looking for a job again (see\cbox{orange!80!yellow}). Some unemployed are new-entrants who are looking for their first job (see\cbox{red}). New entrants are not traditionally covered by unemployment insurance. Lastly, the unemployed include those who left a job voluntarily and are looking for a new one (see\cbox{yellow}). This group is also traditionally ineligible for unemployment insurance claims. \\
 
 \input{text/unemp_reason.txt} \\
 
@@ -3355,28 +3346,16 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \noindent \normalsize \textbf{Unemployment by Reason}\\
 \footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
-		height=5.8cm, ymin=0.3, legend cell align={left},
+		height=6.0cm, ymin=0.5, legend cell align={left}, reverse legend,
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={fill=white, legend columns=2, at={(0.48, 1.0)}}]
+		legend style={fill=white, legend columns=1, at={(0.28, 0.99)}}]
 	\rbars
-	\addplot[stack plots=y, area style, draw=none, fill=blue!60!purple] 
-		table [x=date, y=Job Loser, 
-		col sep=comma]{data/unemp_reason.csv}\closedcycle;	
-	\addplot[stack plots=y, area style, draw=none, fill=yellow] 
-		table [x=date, y=Job Leaver, 
-		col sep=comma]{data/unemp_reason.csv}\closedcycle;
-	\addplot[stack plots=y, area style, draw=none, fill=orange!80!yellow] 
-		table [x=date, y=Re-entrant, 
-		col sep=comma]{data/unemp_reason.csv}\closedcycle;
-	\addplot[stack plots=y, area style, draw=none, fill=red] 
-		table [x=date, y=New entrant, 
-		col sep=comma]{data/unemp_reason.csv}\closedcycle;
-	%\sbar{blue!60!purple}{date}{Job Loser}{data/unemp_reason.csv}
-	%\sbar{yellow}{date}{Job Leaver}{data/unemp_reason.csv}
-	%\sbar{orange!80!yellow}{date}{Re-entrant}{data/unemp_reason.csv}
-	%\sbar{red}{date}{New entrant}{data/unemp_reason.csv}
+	\ctsbar{blue!60!purple}{date}{Job Loser}{data/unemp_reason.csv}{0.9pt}
+	\ctsbar{yellow}{date}{Job Leaver}{data/unemp_reason.csv}{0.9pt}
+	\ctsbar{orange!80!yellow}{date}{Re-entrant}{data/unemp_reason.csv}{0.9pt}
+	\ctsbar{red}{date}{New entrant}{data/unemp_reason.csv}{0.9pt}
 	\legend{Job Loser, Job Leaver, Re-entrant, New Entrant};
 	\end{axis}
 \end{tikzpicture}\\
@@ -4002,8 +3981,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 		height=6.0cm, width=12.6cm, enlarge y limits={0.11},
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.0)}}]
 	\rbars
-	\vtsbar{violet}{date}{Membership}{data/union.csv}	
-	\vtsbar{magenta!70!purple}{date}{Diff}{data/union.csv}	
+	\ctsbar{violet}{date}{Membership}{data/union.csv}{1.9pt}
+	\ctsbar{magenta!70!purple}{date}{Diff}{data/union.csv}{1.9pt}	
 	\legend{Member, Covered Non-member};
 	\end{axis}
 \end{tikzpicture}\\
