@@ -3365,6 +3365,23 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \end{minipage}
 
+\vspace{6mm}
+
+\noindent \normalsize \textbf{Unemployment Reasons and Employed Not at Work}\\
+\footnotesize{\textit{share of labor force, percent}\\
+\vspace{-6mm}
+
+\hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{31mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		   R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm}}
+			 \input{data/unempreason_table.tex}\hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-2mm}
+\footnotesize{Source: Bureau of Labor Statistics; Author}
+
 \newpage
 
 \begin{minipage}{0.76\textwidth} 
@@ -3456,7 +3473,7 @@ People who are not employed and not unemployed are considered to be outside of t
 		enlarge y limits={0.05}, ymin=250, xmin={2018-01-01},
 		xticklabel={`\short{\year}}, height=6.6cm, width=6.2cm]
 	\rbars
-	\stdline{cyan!85!blue}{date}{weekly}{data/icsa.csv}
+	\stdline{cyan!85!blue}{date}{VALUE}{data/icsa.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
@@ -3470,7 +3487,7 @@ People who are not employed and not unemployed are considered to be outside of t
 		enlarge y limits={0.05}, ymin=250, xmin={2018-01-01},
 		xticklabel={`\short{\year}}, height=6.6cm, width=6.2cm]
 	\rbars
-	\stdline{green!70!blue}{date}{weekly}{data/ccsa.csv}
+	\stdline{green!70!blue}{date}{VALUE}{data/ccsa.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
