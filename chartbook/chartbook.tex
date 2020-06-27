@@ -137,7 +137,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-07-01},
+		xmax={2020-09-01},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}},
@@ -952,7 +952,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \footnotesize{\textit{annual growth, per capita real disposable personal income, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
-		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=12.6cm]
+		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=12.4cm]
 	\rbars
 	\stdline{blue!80!cyan}{date}{rdpi}{data/rdpigrowth.csv}
 	\input{text/rdpi_node.txt}
@@ -962,9 +962,10 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \vspace{6mm}
 
-\small Earnings, which include wages and salaries as well as self-employment income, comprise the majority of personal income. Yet only 52 percent of people have any earnings in 2018 (see\cbox{red!70!yellow}). Only 43 percent of people have earnings above the single-person poverty threshold of \$12,800.\\
+\subsubsection*{\color{black!70} \seriffont Distribution of Personal Income}
+\small Labor income, which includes wages and salaries as well as self-employment income, is the vast majority of personal income. Over calendar year 2018, 52 percent of people have any labor income (see\cbox{red!70!yellow}). Only 43 percent of people have labor income above the single-person poverty threshold of \$12,800.\\
 
-Total income, including taxes, welfare, and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). The remainder live with people with income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000. \\
+Total income, labor income less taxes and including welfare and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). In most cases, the people who do not receive any income live with people who receive income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000. \\
 
 \vspace{2mm}
 
@@ -981,7 +982,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 	\addplot[stack plots=y, area style, draw=none, fill=violet!90!blue] 
 		table [x=percentile, y=Other Income, 
 		col sep=comma]{data/pearn_dist.csv}\closedcycle;
-	\legend{Earnings, Total Income};
+	\legend{Labor Income, Total Income};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: CPS ASEC} \hspace{39mm} \tbllink{pearn_dist.csv}
@@ -1088,8 +1089,8 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \footnotesize{\textit{annual growth, per capita real personal consumption expenditures, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -15, -10, -5, 0, 5}, 
-		yticklabel style={text width=1.3em}, 
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=12.6cm]
+		yticklabel style={text width=1.5em}, 
+		xticklabel={`\short{\year}}, clip=false, height=5.4cm, width=12.4cm]
 	\rbars
 	\stdline{green!80!black}{date}{rpcepop}{data/pcegrowth.csv}
 	\input{text/pcegrowth_node.txt}
@@ -1141,7 +1142,7 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \footnotesize{\textit{personal saving as a share of disposable personal income}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.4cm, width=12.6cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.8cm, width=12.3cm, clip=false]
 	\rbars
 	\stdline{red}{date}{VALUE}{data/psavert.csv}
 	\input{text/psavert_node.txt}
@@ -1163,9 +1164,10 @@ Total income, including taxes, welfare, and capital income, reaches 71 percent o
 \footnotesize{\textit{index, 1996=100}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 80, 100}, 
-		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
+		xticklabel={`\short{\year}}, clip=false, height=4.8cm, width=12.6cm]
 	\rbars
 	\stdline{violet!60!blue}{date}{ICS_ALL}{data/umichsoc.csv}
+	\input{text/soc_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: University of Michigan}  \hfill \tbllink{umichsoc.csv}\\
@@ -2225,7 +2227,7 @@ When thinking about the longer-term trends in these data, it's important to note
 	\input{text/tcu_tot_node.txt}
 	\input{text/tcu_mfg_node.txt}
 	\stdnode{8.8cm}{1.5cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
-	\stdnode{7.8cm}{2.3cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
+	\stdnode{7.7cm}{2.3cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
@@ -3585,12 +3587,12 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={40, 50, 60, 70}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=12.4cm,
 		legend columns=1, legend cell align={left},
-		legend style={at={(0.4, 1.01)}}]
+		legend style={at={(0.43, 1.03)}}]
 	\rbars
 	\stdline{lime!50!green!60!white}{date}{total}{data/lf_flow.csv}
 	\stdline{green!60!teal!90!black}{date}{quarterly}{data/lf_flow_q.csv}
 	\input{text/lf_flow_node.txt}
-	\legend{Monthly, 3-month moving average};
+	\legend{Monthly, 3-Month Moving Average};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lf_flow.csv}*
@@ -3636,7 +3638,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\stdline{red!85!violet}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
 	\stdnode{3.1cm}{2.2cm}{\footnotesize \color{cyan}\textbf{Hires}}
-	\stdnode{9.3cm}{2.6cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{9.2cm}{2.6cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
 	\stdnode{8.2cm}{1.25cm}{\footnotesize \color{red!85!violet}\textbf{Quits}}
 	\stdnode{2.5cm}{0.45cm}{\footnotesize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
@@ -3653,7 +3655,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \footnotesize{\textit{voluntary separations as share of workforce}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6}, clip=false,
-		xticklabel={`\short{\year}}, ymin=0.3, height=5.2cm, width=7.1cm]
+		xticklabel={`\short{\year}}, ymin=0.3, height=5.2cm, width=7.0cm]
 	\rebars
 	\stdline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
 	\stdnode{3.85cm}{3.08cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
@@ -4115,6 +4117,8 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \begin{minipage}{0.76\textwidth}
 
+\small The total return on corporate equities includes both dividends and stock buybacks. US nonfinancial corporations have used stock buybacks to return money to investors, often at the expense of domestic fixed investment. \\
+
 \noindent \normalsize \textbf{Corporate Equity Payout}\\
 \footnotesize{\textit{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -4126,23 +4130,45 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 	\legend{Net Dividends, Net Issuance};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{eq_payout.csv}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{eq_payout.csv}
 
-\vspace{6mm}
+\vspace{4mm}
 
+\subsubsection*{\color{black!70} \seriffont Valuation}
+
+\small The cyclically-adjusted price to earnings ratio (CAPE) compares the current price of the S\&P 500 to the previous ten-years of total S\&P 500 returns, including dividends and buybacks (treated as dividends). Typically, earnings data cover the latest year or analyst forecasts for future earnings. Robert Shiller's CAPE intends to capture the full business cycle so that earnings are not biased by the idiosyncrasies of one point in a business cycle. \\
+
+
+\noindent \normalsize \textbf{Price to Earnings Ratio}\\
+\footnotesize{\textit{10-year total return PE ratio}}\\ 
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 20, 30, 40, 50}, 
+		xticklabel={`\short{\year}}, clip=false, 
+		height=4.4cm, width=12.4cm]
+	\rbars
+	\stdline{blue!80!black}{date}{CATRPE}{data/catrpe.csv}
+	\input{text/cape_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Shiller} \hfill \tbllink{catrpe.csv}
+
+
+\vspace{4mm}
+
+\subsubsection*{\color{black!70} \seriffont Volatility}
 
 \small The Chicago Board Options Exchange uses S\&P 500 options data to \href{http://www.cboe.com/vix}{identify} expectations of future volatility. \input{text/vixbasic.txt}\\
 
-\vspace{2mm}
 
 \noindent \normalsize \textbf{S\&P 500 Volatility Index}\\
 \footnotesize{\textit{index, monthly average shown}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 20, 40, 60}, 
 		xticklabel={`\short{\year}}, clip=false, ymin=1,
-		height=4.6cm, enlarge y limits={0.11}]
+		height=4.4cm, enlarge y limits={0.11}, width=12.5cm]
 	\rbars
 	\stdline{magenta}{date}{value}{data/vix.csv}
+	\input{text/vix_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Chicago Board Options Exchange} \hfill \tbllink{vix.csv}
@@ -4246,7 +4272,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \footnotesize{\textit{spot rate, percent, monthly average}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
-		xticklabel={`\short{\year}}, clip=false, ymin=0.5, width=7.5cm]
+		xticklabel={`\short{\year}}, clip=false, ymin=0.5, width=7.4cm]
 	\rbars
 	\stdline{blue!60!violet}{date}{VALUE}{data/hqcb.csv}
 	\input{text/hqcb_node.txt}
@@ -4444,7 +4470,7 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={0, 1.0, 2.0, 3.0}, 
 		enlarge y limits={0.1}, ymin=0.15, \bbar{y}{0}, clip=false,
-		xticklabel={`\short{\year}}, height=5.9cm, width=6.8cm]
+		xticklabel={`\short{\year}}, height=5.9cm, width=6.6cm]
 	\thinline{blue!70!black}{date}{VALUE}{data/infbreak.csv}
 	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
@@ -4495,15 +4521,20 @@ Changes in prices affect the amount of goods and services that can purchased by 
 
 \vspace{18mm}
 
+\subsection*{\color{black!70} \seriffont PCE Price Index}
+\small The Personal Consumption Expenditure (PCE) Price Index from the Bureau of Economic Analysis captures both changes in the price of goods and services and changes in consumer behavior. The index is additionally updated over time to the latest methodology. \input{text/pce_inf_basic.txt}
+
+\vspace{5mm}
+
 \noindent \normalsize \textbf{Personal Consumption Expenditure Price Index}\\
 \footnotesize{\textit{annual growth, percent}}\\
-\vspace{19mm}
+\vspace{30mm}
 
 \noindent \hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={-2, 0, 2, 4, 6}, 
-		xticklabel={`\short{\year}}, clip=false, width=8.6cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6}, 
+		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(1.0, 1.11)}, fill=white},
-		height=4.0cm, enlarge y limits={0.11}]
+		height=5.0cm]
 	\rbars
 	\stdline{blue!60!black}{date}{CORE}{data/pce_pi.csv}
 	\stdline{orange!80!yellow}{date}{PCE}{data/pce_pi.csv}
@@ -4511,7 +4542,7 @@ Changes in prices affect the amount of goods and services that can purchased by 
 	\end{axis}
 \end{tikzpicture}\\
 
-\footnotesize{Source: Bureau of Economic Analysis} \hspace{24mm} \tbllink{pce_pi.csv}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pce_pi.csv}
 
 \end{minipage}
 
