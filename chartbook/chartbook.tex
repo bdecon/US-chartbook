@@ -379,7 +379,7 @@
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.83, 1.13)}}]
 	\rbars
 	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
 	\sbar{blue!70!black}{date}{A006RY}{data/comp.csv}
@@ -401,7 +401,7 @@
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.74, 1.13)}}]
 	\rbars
 	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
@@ -427,7 +427,7 @@
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.65, 1.13)}}]
 	\rbars
 	\sbar{magenta!90!blue}{date}{A4002C}{data/gdi.csv}
 	\sbar{yellow!60!orange}{date}{W271RC}{data/gdi.csv}
@@ -447,7 +447,7 @@
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.83, 1.13)}}]
 	\rbars
 	\sbar{lime}{date}{pop_contr}{data/gdpjobs.csv}
 	\sbar{green!30!teal!90!black}{date}{epop_contr}{data/gdpjobs.csv}
@@ -518,7 +518,7 @@
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10},
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.53, 1.13)}}]
 	\rbars
 	\sbar{green!70!black}{date}{PRIV}{data/sectbal.csv}
 	\sbar{yellow!70!orange}{date}{GOV}{data/sectbal.csv}
@@ -545,7 +545,7 @@
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10},
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.43, 1.13)}}]
 	\rbars
 	\sbar{purple!50!red}{date}{W995RC}{data/sectbal2.csv}
 	\sbar{orange!90!yellow}{date}{W996RC}{data/sectbal2.csv}
@@ -616,7 +616,7 @@
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=0,
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.68, 1.13)}}]
 	\rbars
 	\sbar{cyan!35!white}{date}{Other}{data/wealthgdp.csv}
 	\sbar{green!80!blue}{date}{Real Estate}{data/wealthgdp.csv}
@@ -643,7 +643,7 @@
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, -2, 0, 2, 5},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.78, 1.13)}}]
 	\rbars
 	\sbar{yellow!50!orange}{date}{A008RY}{data/inv.csv}
 	\sbar{blue!90!black}{date}{A011RY}{data/inv.csv}
@@ -688,7 +688,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}, fill=white}]
+		legend style={at={(0.58, 1.15)}, fill=white}]
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
@@ -906,7 +906,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em}, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.4, 1.13)}}]
 	\rbars
 	\sbar{green!80!black}{date}{A033RC}{data/pi.csv}
 	\sbar{orange!50!yellow}{date}{CAPITAL}{data/pi.csv}
@@ -1112,7 +1112,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.63, 1.13)}}]
 	\rbars
 	\sbar{cyan!50!white}{date}{A067RC}{data/pcedecomp.csv}
 	\sbar{green!60!blue}{date}{SAVING}{data/pcedecomp.csv}
@@ -1425,7 +1425,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \noindent \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(1.0, 1.13)}}]
+		legend style={at={(0.96, 1.13)}}]
 	\rbars
 	\sbar{violet}{date}{INV}{data/nw_gr.csv}
 	\sbar{magenta!85!white}{date}{INC}{data/nw_gr.csv}
@@ -1904,7 +1904,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.72, 1.13)}}]
 	\rbars
 	\sbar{yellow!50!orange}{date}{A009RY}{data/businv.csv}
 	\sbar{cyan!60!white}{date}{Y033RY}{data/businv.csv}
@@ -1999,7 +1999,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{share of net national income}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, ymin=0.2,
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.7, 1.13)}}]
 	\rbars
 	\sbar{blue!70!purple}{date}{DIV}{data/cprof.csv}
 	\sbar{cyan!50!white}{date}{RE}{data/cprof.csv}
@@ -2019,7 +2019,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{contribution to corporate saving, as share of gross national income}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.9, 1.13)}}]
 	\rbars
 	\sbar{cyan}{date}{Gov Saving}{data/cprof2.csv}
 	\sbar{yellow!70!lime!80!white}{date}{ROW Saving}{data/cprof2.csv}
@@ -2046,7 +2046,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{by type, as share of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75}, ymin=2,
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.94, 1.13)}}]
 	\rbars
 	\sbar{violet}{date}{Bank Loans and Mortgages}{data/busdebtgdp2.csv}	
 	\sbar{magenta!70!purple}{date}{Debt Securities}{data/busdebtgdp2.csv}	
@@ -2068,7 +2068,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{by type, as share of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50,  100, 150}, ymin=2,
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.88, 1.13)}}]
 	\rbars
 	\sbar{orange!70!yellow}{date}{Financial Loans}{data/busdebtgdp2.csv}	
 	\sbar{red!60!purple}{date}{Agency MBS}{data/busdebtgdp2.csv}
@@ -2348,7 +2348,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-1, 0, 1},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.7, 1.14)}}]
 	\rbars
 	\sbar{blue!60!black}{date}{A824RY}{data/gov.csv}
 	\sbar{green!85!black}{date}{A825RY}{data/gov.csv}
@@ -2379,13 +2379,12 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \begin{minipage}{0.76\textwidth}
 
-\small Government current expenditures include consumption and investment as well as transfers such as government social benefits to persons. Government spending provides services and income to people. Government current receipts, mostly tax receipts, remove demand from the economy. When government expenditures exceed receipts, it is referred to as a \textit{government deficit}, and corresponds to a private sector surplus. The size of the government deficit relative to GDP gives insight into the extent to which the government is stimulating the economy by increasing household income and corporate profits.\\
+\small Government current expenditures include consumption and investment as well as transfers such as government social benefits to persons. Government spending provides services and income to people. Government current receipts come primarily from taxes. When government expenditures exceed receipts, it is referred to as a \textit{government deficit}, and corresponds to a private sector surplus. A large government deficit, relative to GDP gives, means the government is increasing household income and corporate profits.\\
 
 \input{text/govexprec2.txt} \\
 
 \input{text/govexprec1.txt} \\
 
-\vspace{2mm}
 
 \textbf{Receipts and Expenditures as Share of GDP}
 \vspace{2mm}
@@ -2396,10 +2395,10 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={15, 20, 25}, 
 		clip=false, width=6.7cm, 
-		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-07-01}},
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04},
-        xticklabels={`89, `00, `10, `19 Q4}, 
+        xticklabels={`89, `00, `10, `20}, 
 		legend style={at={(0.95, 1.13)}}]
 	\rbars
 	\stdline{blue!90!cyan}{date}{W005RC}{data/fedgdp.csv}
@@ -2411,9 +2410,9 @@ When thinking about the longer-term trends in these data, it's important to note
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16}, 
 		clip=false, width=6.7cm, 
-		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-07-01}},
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, 
-        xticklabels={`89, `00, `10, `19 Q4}, enlarge y limits={lower, 0.2}, 
+        xticklabels={`89, `00, `10, `20}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04}]
 	\rbars
 	\stdline{blue!90!cyan}{date}{W023RC}{data/slggdp.csv}
@@ -2421,10 +2420,34 @@ When thinking about the longer-term trends in these data, it's important to note
 	\end{axis}
 \end{tikzpicture}
 \\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv}*
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv}*\\
+
+\vspace{1mm}
+
+\subsubsection*{\color{black!70} \seriffont Government Jobs}
+
+\small Government employment is a major source of household income. Government jobs are also disproportionately likely to provide health insurance and retirement benefits.  
 
 \end{minipage}
+\vspace{1mm}
 
+\begin{minipage}{0.47\textwidth}
+\noindent \normalsize \textbf{Government Employment}\\
+\footnotesize{\textit{share of age 16+ population, percent}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={8, 9, 10}, clip=false, 
+		xticklabel={`\short{\year}}, height=5.1cm, width=8.1cm, 
+        enlarge y limits={0.14}]
+	\rbars
+	\stdline{blue!50!cyan}{date}{GOVJOBS}{data/govjobs.csv}
+	\input{text/govjobs_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{govjobs.csv}
+\end{minipage}\hspace{7mm}
+\begin{minipage}{0.24\textwidth}
+\small \input{text/govjobs.txt}
+\end{minipage}
 
 \newpage
 \subsection*{\color{black!70} \seriffont Government Balance Sheets}
@@ -2484,7 +2507,6 @@ When thinking about the longer-term trends in these data, it's important to note
 \small While debt levels are much lower for the consolidated state and local government sectors, interest rates on municipal bonds are higher, and interest paid to investors is a larger share of government expenses at the state and local level.
 \end{minipage}
 
-
 \newpage
 
 \subsubsection*{\color{black!70} \seriffont Assets}
@@ -2532,7 +2554,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.78, 1.13)}}]
 	\rbars
 	\sbar{yellow!60!lime!85!white}{date}{GOODS}{data/cab.csv}
 	\sbar{cyan!50!white}{date}{SERVICES}{data/cab.csv}
@@ -2546,13 +2568,11 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \vspace{3mm}
 
-
 \small Financial account transactions include the net domestic acquisition of foreign assets and the net domestic incurrence of foreign liabilities. The US \textbf{financial account balance} (see\cbox{yellow!80!orange}) is the net lending or borrowing of the combined domestic sectors with the rest of the world. The timing of payments lead to a statistical discrepancy (see\cbox{red}), but the financial and capital account balance and current account balance otherwise sum to zero. \\
 
 \input{text/fab.txt}\\
 
 \vspace{1mm}
-
 
 \noindent \normalsize \textbf{Financial Account Balance}\\
 \footnotesize{\textit{percent of GDP}}\\
@@ -2574,7 +2594,6 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \newpage
 
-
 \begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Trade}
@@ -2588,7 +2607,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 5},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.92, 1.13)}}]
 	\rbars
 	\sbar{green!70!white}{date}{A253RY}{data/nx.csv}
 	\sbar{green!50!black}{date}{A646RY}{data/nx.csv}
@@ -2605,7 +2624,6 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \vspace{2mm}
 
-
 \noindent \normalsize \textbf{Imports and Exports, Nonpetroleum}\\
 \footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -2620,11 +2638,9 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{eximgdp.csv}
 
-
 \end{minipage}
 
 \newpage
-
 
 \begin{minipage}{0.76\textwidth}
 
@@ -2644,8 +2660,6 @@ When thinking about the longer-term trends in these data, it's important to note
 \vspace{-2mm}
 \footnotesize{Source: Bureau of Economic Analysis}}
 
-
-
 \newpage
 
 \subsubsection*{\color{black!70} \seriffont Import Penetration}
@@ -2662,7 +2676,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{import share of domestic-produced and imported goods less exports, by category}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30, 40}, ymin=2,
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.8, 1.13)}}]
 	\rbars
 	\sbar{cyan!40!white}{date}{Consumer}{data/goodsimpsh.csv}	
 	\sbar{blue!50!cyan}{date}{Capital}{data/goodsimpsh.csv}	
@@ -2935,7 +2949,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
 		xticklabel={`\short{\year}}, clip=false,  yticklabel style={text width=1.5em},
-		legend style={at={(0.95, 1.13)}}]
+		legend style={at={(0.42, 1.13)}}]
 	\rbars
 	\sbar{green!80!lime!90!white}{date}{wage}{data/gli.csv}
 	\sbar{teal!80!blue!85!white}{date}{work}{data/gli.csv}
