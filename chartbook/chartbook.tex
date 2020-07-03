@@ -2672,6 +2672,8 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \input{text/goodsimpsh.txt} \\
 
+\vspace{1mm}
+
 \noindent \normalsize \textbf{Import Share of Goods}\\
 \footnotesize{\textit{import share of domestic-produced and imported goods less exports, by category}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
@@ -3669,13 +3671,13 @@ Among newly employed workers, the vast majority were considered to be out of the
 \footnotesize{\textit{voluntary separations as share of workforce}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6}, clip=false,
-		xticklabel={`\short{\year}}, ymin=0.3, height=5.2cm, width=7.0cm]
+		xticklabel={`\short{\year}}, ymin=0.3, height=5.5cm, width=7.0cm]
 	\rebars
 	\stdline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
-	\stdnode{3.85cm}{3.08cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
+	\stdnode{3.85cm}{3.28cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
 	\scriptsize \color{red!50!purple}\textbf{\& Food Services}}
 	\input{text/quits_afs_node.txt}
-	\stdline{violet}{date}{TOT_QU}{data/quits.csv}
+	\stdline{violet!90!black}{date}{TOT_QU}{data/quits.csv}
 	\stdnode{4.0cm}{0.7cm}{\scriptsize \color{violet}\textbf{Total nonfarm}}
 	\input{text/quits_tot_node.txt}
 	\end{axis}
@@ -3688,6 +3690,27 @@ Among newly employed workers, the vast majority were considered to be out of the
 \end{minipage}
 
 \newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\small \input{text/unjo.txt}\\
+
+\noindent \normalsize \textbf{Job Openings Per Unemployed Person}\\
+\footnotesize{\textit{job openings divided by total employment}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 0.5, 1.0, 1.5}, 
+		enlarge y limits={0.1}, ymin=0.05,
+		xticklabel={`\short{\year}}, height=6.0cm, width=12.3cm, clip=false]
+	\rebars
+	\stdline{magenta!80!violet!90!white}{date}{unjo}{data/unjo.csv}
+	\input{text/unjo_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unjo.csv}
+\end{minipage}
+
+\vspace{9mm}
+
 
 \begin{minipage}{0.42\textwidth}
 \noindent \normalsize \textbf{Quits Rate by Industry}\\
