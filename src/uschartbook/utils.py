@@ -528,3 +528,14 @@ def clean_fed_data(url):
     clean_data.columns = columns
     
     return (d, clean_data)
+    
+    
+    
+def jolts_codes(d, code_text, ind, value='i'):
+    '''Input dictionary, code_text (for example JOR) and industry dict'''
+    for code, name in ind.items():
+        i = 'JTS' + code + '00' + code_text
+        d[i] = i
+        if value == 'name':
+            d[i] = name
+    return d
