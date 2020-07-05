@@ -2542,19 +2542,19 @@ When thinking about the longer-term trends in these data, it's important to note
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE International Transactions}
 \label{sec:ext}
-\small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). This section details imbalances in international transactions, changes in trade by goods and by partner, international investment positions, and exchange rates. 
+\small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). 
 
 \subsection*{\color{black!70} \seriffont Balance of Payments}
-\small The \textbf{current account balance} can be decomposed into the balance on trade in goods (see\cbox{yellow!60!lime!85!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets, referred to here as income [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes, referred to here as transfers [see\cbox{green!80!blue}]). \input{text/cab.txt} 
+\small The \textbf{current account balance} can be decomposed into the balance on trade in goods (see\cbox{yellow!60!lime!85!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes [see\cbox{green!80!blue}]). \input{text/cab.txt} 
 
-\vspace{5mm}
+\vspace{4mm}
 
 \noindent \normalsize \textbf{Current Account Balance}\\
 \footnotesize{\textit{balance on individual current account component, as percent of GDP}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.78, 1.13)}}]
+		legend style={at={(0.71, 1.13)}}]
 	\rbars
 	\sbar{yellow!60!lime!85!white}{date}{GOODS}{data/cab.csv}
 	\sbar{cyan!50!white}{date}{SERVICES}{data/cab.csv}
@@ -2564,9 +2564,27 @@ When thinking about the longer-term trends in these data, it's important to note
 	\legend{Goods, Services, Income, Transfers, Total};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}
+\end{minipage}
 
-\vspace{3mm}
+\vspace{2mm}
+
+\noindent \normalsize \textbf{Components of Current Account}\\
+\footnotesize{\textit{share of GDP, percent \hspace{70mm} moving averages}\\ \vspace{4mm}
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.54}
+		 \begin{tabular}{p{32mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} 
+		   R{7.6mm} R{9.1mm} R{8.0mm} }
+			 \input{data/cab.tex}\hline
+		\end{tabular}
+		}	\\
+		
+\vspace{-6mm}
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 
 \small Financial account transactions include the net domestic acquisition of foreign assets and the net domestic incurrence of foreign liabilities. The US \textbf{financial account balance} (see\cbox{yellow!80!orange}) is the net lending or borrowing of the combined domestic sectors with the rest of the world. The timing of payments lead to a statistical discrepancy (see\cbox{red}), but the financial and capital account balance and current account balance otherwise sum to zero. \\
 
@@ -4201,7 +4219,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \footnotesize{\textit{index, monthly average shown}}\\ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 20, 40, 60}, 
-		xticklabel={`\short{\year}}, clip=false, ymin=1,
+		xticklabel={`\short{\year}}, clip=false, ymin=4,
 		height=4.4cm, enlarge y limits={0.11}, width=12.5cm]
 	\rbars
 	\stdline{magenta}{date}{value}{data/vix.csv}
