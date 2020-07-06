@@ -61,6 +61,24 @@ def bea_api_gdpstate(bea_key):
     return api_results
 
     
+def bea_api_ita(ind_list, bea_key):
+    ''' Return tables in table list for years in range'''
+    years = ','.join(map(str, range(1988, 2021)))
+
+    api_results = []
+
+    for ind in ind_list:
+        url = f'https://www.bea.gov/api/data/?&UserID={bea_key}'\
+              f'&method=GetData&datasetname=ITA&Indicator={ind}'\
+              f'&Frequency=QSA&Year={years}&ResultFormat=json'
+
+        r = requests.get(url)
+
+        api_results.append((ind, r.text))
+
+    return api_results
+    
+    
 def bea_to_db(api_results):
 	'''Connect to SQL database and add API results'''
 	conn = sqlite3.connect('../data/chartbook.db')
@@ -425,15 +443,19 @@ def end_node(data, color, percent=True, date=False):
     return text
     
 
-def val_inc_pp(val):
+def val_inc_pp(val, threshold=0.1):
+    if threshold >= 0.1:
+        format_string = '.1f'
+    else:
+        format_string = '.2f'
     if abs(val) > 1.05:
         pp = 'percentage points'
     else:
         pp =  'percentage point'
-    if val >= 0.1:
-        txt = f'increased by a total of {val:.1f} {pp}'
-    elif val <= -0.1:
-        txt = f'decreased by a total of {abs(val):.1f} {pp}'
+    if val >= threshold:
+        txt = f'increased by a total of {val:{format_string}} {pp}'
+    elif val <= -threshold:
+        txt = f'decreased by a total of {abs(val):{format_string}} {pp}'
     else:
         txt = 'was virtually unchanged'
         
@@ -528,7 +550,6 @@ def clean_fed_data(url):
     clean_data.columns = columns
     
     return (d, clean_data)
-    
     
     
 def jolts_codes(d, code_text, ind, value='i'):
