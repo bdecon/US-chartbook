@@ -991,7 +991,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \begin{tikzpicture}
 	\begin{axis}[ymin=0, ymax=100, enlarge x limits={0.02},
 		width=7.6cm, height=5.4cm, ytick={0, 12.8, 50, 100},
-		legend cell align={left},
+		legend cell align={left}, yticklabel style={text width=1.8em}, 
 		legend style={legend columns=1, at={(0.42, 0.95)}}]
 	\addplot[stack plots=y, area style, draw=none, fill=red!70!yellow] 
 		table [x=percentile, y=Earnings, 
@@ -1299,43 +1299,39 @@ Total income, labor income less taxes and including welfare and capital income, 
 \vspace{2mm}
 
 \subsubsection*{\color{black!70} \seriffont Financial Obligations}
-\vspace{-1mm}
-\begin{minipage}{0.32\textwidth}
+\begin{minipage}{0.3\textwidth}
 \small Payments to service debt, along with rent, auto lease payments, homeowner's insurance, and property tax are considered financial obligations. The Federal Reserve \href{https://www.federalreserve.gov/releases/housedebt/default.htm}{reports} financial obligations as a share of disposable personal income. \input{text/for.txt}  (see {\color{blue!80!black}\textbf{---}}). The measure peaked at 18.1 percent in 2007 Q4, during the housing bubble.
 \end{minipage}\hspace{8mm}
-\begin{minipage}{0.44\textwidth}
-\noindent \normalsize \textbf{Financial Obligation Ratio}\\
-\footnotesize{\textit{share of disposable personal income, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\begin{minipage}{0.405\textwidth}
+\normalsize \textbf{Financial Obligation Ratio}
+
+\footnotesize{\textit{share of disposable personal income, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={14, 15, 16, 17, 18, 19}, 
-		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.4cm, width=7.0cm, clip=false]
+		enlarge y limits={0.1}, yticklabel style={text width=1.4em}, 
+		xticklabel={`\short{\year}}, height=4.6cm, width=6.7cm, clip=false]
 	\rbars
 	\stdline{blue!80!black}{date}{Financial obligations ratio}{data/for.csv}
 	\input{text/for_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hspace{25mm} \tbllink{for.csv} 
+\end{tikzpicture}
 
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{for.csv} 
 \end{minipage}
-
-
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
-
 \subsubsection*{\color{black!70} \seriffont Assets}
 
 \small \input{text/hhasset1.txt} \\
 
 \input{text/hhasset2.txt} \\
 
-\input{text/hhasset3.txt} \\
+\input{text/hhasset3.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Selected Household and Nonprofit Assets}\\
+\normalsize \textbf{Selected Household and Nonprofit Assets}\\
 \footnotesize{\textit{share of GDP}}\\
 
 \vspace{3.82cm}
@@ -1361,13 +1357,15 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \vspace{5mm}
 
-\small \input{text/hhasset4.txt} \\
+\small \input{text/hhasset4.txt} 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Contributions to Real Growth in Household and Nonprofit Assets}\\
-\footnotesize{\textit{contribution to one-year percent change in assets, adjusted by PCE price deflator}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\normalsize \textbf{Contributions to Real Growth in Household and Nonprofit Assets}
+
+\footnotesize{\textit{contribution to one-year percent change in assets, adjusted by PCE price deflator}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, height=6.1cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
 			clip=false, legend cell align={left},
@@ -1379,20 +1377,16 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\sbar{blue!65!black}{date}{TEQ}{data/hh_asset_growth.csv}
 	\legend{Deposits, Debt Securities \& Loans, Real Estate, Business Equity};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hh_asset_growth.csv}
-
-
 \end{minipage}
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
 
-
-\noindent \normalsize \textbf{Household and Nonprofit Assets}\\
+\normalsize \textbf{Household and Nonprofit Assets}\\
 \footnotesize{\textit{various measures: \hspace{26mm} trillions of USD \hspace{4mm} share of GDP \hspace{5mm} real annual growth rate}}\\ \vspace{3mm}
-\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{2mm} p{44mm} R{11mm} R{9.5mm} R{9.5mm} R{8mm} 
 		   R{8mm} R{8mm} }
@@ -1401,48 +1395,46 @@ Total income, labor income less taxes and including welfare and capital income, 
 		}	\\
 		
 \vspace{-6mm}
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}
 
-\vspace{8mm}
+\vspace{9mm}
 
 \subsubsection*{\color{black!70} \seriffont Return on Assets}
 
-\small The increase in assets as a share of GDP also means that the return on total household assets has fallen, as measured by disposable income as a share of household assets. \input{text/dpishta.txt} \\ 
+\small The increase in assets as a share of GDP also means that the return on total household assets has fallen, as measured by disposable income as a share of household assets. \input{text/dpishta.txt} 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Return on Household Assets}\\
-\footnotesize{\textit{disposable personal income as share of household and nonprofit total assets, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Return on Household Assets}
+
+\footnotesize{\textit{disposable personal income as share of household and nonprofit total assets, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16}, 
-		enlarge y limits={0.1}, width=12.6cm, 
+		enlarge y limits={0.1}, width=12.4cm, yticklabel style={text width=1.4em}, 
 		xticklabel={`\short{\year}}, clip=false, height=4.6cm]
 	\rbars
 	\stdline{red}{date}{DPIsh}{data/dpish.csv}
 	\input{text/dpish_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{dpish.csv}
-
-
 \end{minipage}
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
-
 \subsubsection*{\color{black!70} \seriffont Net Worth}
-
 \small The market value of assets of households has risen much faster than their total liabilities, causing a \textbf{substantial increase in net worth}. Net worth is an aggregate measure of the financial position of households, measured as total assets minus total liabilities. \input{text/nw1.txt} \\
 
+\input{text/nw2.txt}
 
-\input{text/nw2.txt}\\
+\vspace{5mm}
 
-\vspace{3mm}
+\normalsize \textbf{Net Worth and After-Tax Income Growth}
 
-\noindent \normalsize \textbf{Net Worth and After-Tax Income Growth}\\
-\footnotesize{\textit{one-year percent change in net worth and after-tax income, adjusted by PCE price deflator}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\footnotesize{\textit{one-year percent change in net worth and after-tax income, adjusted by PCE price deflator}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.98, 1)}, fill=white}]
@@ -1451,18 +1443,15 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\stdline{blue!50!violet}{date}{DPI}{data/rdpi_nw.csv}
 	\legend{Net Worth, After-Tax Income};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{rdpi_nw.csv}
-
 \end{minipage}
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
+\small Changes in net worth come from the revaluation of assets and from net investment of income. Changes to the value of assets, for example capital gains from an increase in the market value of corporate equities, explain most of the changes in net worth (see\cbox{cyan!40!white}). Each period households also receive income and decide investment, saving, and borrowing. Net investment equals capital expenditures less depreciation plus net lending/borrowing; positive net investment results in an increase in net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. Income that goes to net investment at this historical-average rate (see\cbox{magenta!85!white}) can be separated from periods where the rate of net investment is above or below this historical average (see\cbox{violet}). This distinction can identify how changes in disposable personal income, and changes in decisions about how to use that income, combine to affect net worth. Changes in data sources or from natural disasters are also identified as other volume changes (see\cbox{cyan!70!blue}).
 
-\small Changes in net worth come from the revaluation of assets and from net investment of income. Changes to the value of assets, for example capital gains from an increase in the market value of corporate equities, explain most of the changes in net worth (see\cbox{cyan!40!white}). Each period households also receive income and decide investment, saving, and borrowing. Net investment equals capital expenditures less depreciation plus net lending/borrowing; positive net investment results in an increase in net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. Income that goes to net investment at this historical-average rate (see\cbox{magenta!85!white}) can be separated from periods where the rate of net investment is above or below this historical average (see\cbox{violet}). This distinction can identify how changes in disposable personal income, and changes in decisions about how to use that income, combine to affect net worth. Changes in data sources or from natural disasters are also identified as other volume changes (see\cbox{cyan!70!blue}).\\
-
-\vspace{2mm}
+\vspace{4mm}
 
 \normalsize{\textbf{Net Worth Growth}}
 
@@ -1551,8 +1540,8 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 
 \small \input{text/homeeq.txt}
 
-\end{minipage}\hspace{8mm}
-\begin{minipage}{0.44\textwidth}
+\end{minipage}\hspace{7mm}
+\begin{minipage}{0.46\textwidth}
 \normalsize \textbf{Owner's Equity Share of Real Estate}
 
 \footnotesize{\textit{owner's equity as percent of real estate}}
@@ -1560,8 +1549,8 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={45, 50, 55, 60, 65, 70}, 
 		xticklabel={`\short{\year}}, 
-		yticklabel style={text width=1.5em}, height=4.4cm, 
-		width=7.1cm, clip=false]
+		yticklabel style={text width=1.4em}, height=4.4cm, 
+		width=7.0cm, clip=false]
 	\rbars
 	\stdline{blue!80!violet}{date}{VALUE}{data/homeeq.csv}
 	\input{text/homeeq_node.txt}
@@ -1669,13 +1658,13 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, 
 		yticklabel style={text width=1.5em}, clip=false,
-		xticklabel={`\short{\year}}, width=12.0cm]
+		xticklabel={`\short{\year}}, width=12.1cm]
 	\rebars
 	\thickline{blue!40!cyan}{date}{United States}{data/hpi.csv}	
 	\input{text/fhfa_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Housing Finance Agency} \hspace{54mm} \tbllink{hpi.csv}
+\footnotesize{Source: Federal Housing Finance Agency} \hfill \tbllink{hpi.csv}
 
 \vspace{4mm}
 
@@ -1705,7 +1694,7 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={400, 600, 800, 1000, 1200, 1400}, 
-		xticklabel={`\short{\year}}, clip=false, width=11.8cm, 
+		xticklabel={`\short{\year}}, clip=false, width=11.9cm, 
 		yticklabel style={text width=2.2em}]
 	\rbars
 	\stdline{green}{date}{VALUE}{data/nhs.csv}	
@@ -1989,20 +1978,20 @@ In terms of elements that add to the number of people in poverty, medical expens
 		
 \vspace{-6mm}
 \footnotesize{Source: Bureau of Economic Analysis}
-
 \newpage
-
-\begin{minipage}{0.34\textwidth}
-
+\begin{minipage}{0.33\textwidth}
 \small Productive business investments also show up as \textbf{new orders for core capital goods}. The category excludes the more-volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  \\
 
 \input{text/dgno.txt}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.39\textwidth}
+\begin{minipage}{0.43\textwidth}
 
-\noindent \normalsize \textbf{New Orders for Core Capital Goods}\\
-\footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}\\
-\noindent \hspace*{-2mm} \input{text/dgno.tex}\\
+\noindent \normalsize \textbf{New Orders for Core Capital Goods}
+
+\footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}
+
+\noindent \hspace*{-2mm} \input{text/dgno.tex}
+
 \footnotesize{Source: Census Bureau} \hspace{23mm} \tbllink{dgno.csv}
 \end{minipage}
 
@@ -2268,13 +2257,15 @@ When thinking about the longer-term trends in these data, it's important to note
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
+\small The Federal Reserve's monthly industrial production \href{https://www.federalreserve.gov/releases/g17/}{report} also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called \textbf{capacity utilization}, and calculated as industrial production as a share of total industrial capacity. Long-term, capacity utilization has fallen as many US factories and industrial production facilities closed. \input{text/tcu.txt}
 
-\small The Federal Reserve's monthly industrial production \href{https://www.federalreserve.gov/releases/g17/}{report} also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called \textbf{capacity utilization}, and calculated as industrial production as a share of total industrial capacity. Long-term, capacity utilization has fallen as many US factories and industrial production facilities closed. \input{text/tcu.txt}\\
+\vspace{2mm}
 
-\noindent \normalsize \textbf{Capacity Utilization}\\
-\footnotesize{\textit{industrial production as a share of total capacity, percent}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 80}, width=12.4cm, clip=false,
+\normalsize \textbf{Capacity Utilization}
+\footnotesize{\textit{industrial production as a share of total capacity, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 80}, width=12.2cm, clip=false,
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
 	\rbars
 	\thickline{blue!80!black}{date}{Total index}{data/tcu.csv}
@@ -2284,7 +2275,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdnode{8.8cm}{1.5cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
 	\stdnode{7.7cm}{2.3cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
 
 \end{minipage}
@@ -2322,27 +2314,22 @@ When thinking about the longer-term trends in these data, it's important to note
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Energy Information Administration} \hfill \tbllink{oil_prod.csv}
-
-
-
 \end{minipage}
-
 \newpage
-
 \subsection*{\color{darkgray} \seriffont Retail Sales}
-
 \begin{minipage}{0.76\textwidth}
+\small \input{text/marts.txt}
 
-\small \input{text/marts.txt} \\
+\vspace{4mm}
 
-\vspace{2mm}
+\normalsize \textbf{Retail Sales and Food Services}
 
-\noindent \normalsize \textbf{Retail Sales and Food Services}\\
-\footnotesize{\textit{annual growth, percent; nonstore is 3-month moving average}}\\ 
+\footnotesize{\textit{annual growth, percent; nonstore is 3-month moving average}}
+ 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
-		width=11.3cm, height=5.0cm, clip=false]
+		width=11.7cm, height=5.0cm, clip=false]
 	\rebars
 	\stdline{blue!70!black}{date}{NS_3M}{data/marts.csv}
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
@@ -2351,14 +2338,15 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdnode{6.4cm}{1.8cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
 	\stdnode{7.8cm}{2.7cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hspace{74mm} \tbllink{marts.csv}
+\end{tikzpicture}
+
+\footnotesize{Source: Census Bureau} \hfill \tbllink{marts.csv}
 
 \end{minipage}
 \vspace{9mm}
 
 \begin{minipage}{0.4\textwidth}
-\noindent \normalsize \textbf{Retail sales}
+\normalsize \textbf{Retail sales}
 
 \footnotesize{\textit{share of disposable personal income}}
 
@@ -2492,7 +2480,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{share of age 16+ population, percent}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={8, 9, 10}, clip=false, 
-		xticklabel={`\short{\year}}, height=5.1cm, width=8.1cm, 
+		xticklabel={`\short{\year}}, height=5.1cm, width=8.0cm, 
         enlarge y limits={0.14}]
 	\rbars
 	\stdline{blue!50!cyan}{date}{GOVJOBS}{data/govjobs.csv}
@@ -2541,46 +2529,48 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \subsubsection*{\color{black!70} \seriffont Interest Expense}
 
-\begin{minipage}{0.34\textwidth}
+\begin{minipage}{0.33\textwidth}
 \small \input{text/fedintexp.txt}
-\end{minipage} \hspace{6mm} \begin{minipage}{0.35\textwidth}
-\noindent \normalsize \textbf{Federal Interest Outlays}\\
-\footnotesize{\textit{share of GDP, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={1, 2, 3}, clip=false, ymin=1,
-		xticklabel={`\short{\year}}, height=4.3cm, width=6.6cm]
+\end{minipage} \hspace{7mm} \begin{minipage}{0.37\textwidth}
+\normalsize \textbf{Federal Interest Outlays}
+
+\footnotesize{\textit{share of GDP, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={1, 2, 3}, clip=false, ymin=1.05,
+		xticklabel={`\short{\year}}, height=4.3cm, width=6.5cm]
 	\rbars
 	\thickline{magenta}{date}{VALUE}{data/fedintexp.csv}
 	\input{text/fedintexp_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: FRED; OMB} \hfill \tbllink{fedintexp.csv}
 
-\end{minipage} \\
-\vspace{1mm}
+\end{minipage} 
+
+\vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
 \small While debt levels are much lower for the consolidated state and local government sectors, interest rates on municipal bonds are higher, and interest paid to investors is a larger share of government expenses at the state and local level.
 \end{minipage}
-
 \newpage
-
 \subsubsection*{\color{black!70} \seriffont Assets}
-
 \begin{minipage}{0.76\textwidth}
-
 \small US government assets include financial assets but are mostly comprised of the non-financial assets of state and local governments (SLG), such as buildings and equipment. Land is not included in US measures of government assets. \\
 
-\input{text/govassets.txt}\\
+\input{text/govassets.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Government Assets}\\
-\footnotesize{\textit{does not include land, percent of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100},
+\normalsize \textbf{Government Assets}
+
+\footnotesize{\textit{does not include land, percent of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100}, width=12.9cm,
 		xticklabel={`\short{\year}}, clip=false, ymin=2, ymax=112, height=6.0cm,
-		legend cell align={left},
+		legend cell align={left}, yticklabel style={text width=1.5em}, 
 		legend style={legend columns=2, at={(0.6, 1.04)}}]
 	\rbars
 	\sbar{cyan!36!white}{date}{SLG NFA}{data/govassets.csv}
@@ -2589,9 +2579,9 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{blue!28!violet!90!black}{date}{FG FA}{data/govassets.csv}
 	\legend{SLG Nonfinancial, SLG Financial, Federal Nonfinancial, Federal Financial};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{govassets.csv}\\
+\end{tikzpicture}
 
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{govassets.csv}
 \end{minipage}
 
 \newpage
@@ -2676,12 +2666,14 @@ When thinking about the longer-term trends in these data, it's important to note
  \input{text/trade.txt} 
 \vspace{5mm}
 
-\noindent \normalsize \textbf{International Trade}\\
-\footnotesize{\textit{percentage point contribution to real GDP growth}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 5},
+\normalsize \textbf{International Trade}
+
+\footnotesize{\textit{percentage point contribution to real GDP growth}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.92, 1.13)}}]
+		legend style={at={(0.91, 1.13)}}]
 	\rbars
 	\sbar{green!70!white}{date}{A253RY}{data/nx.csv}
 	\sbar{green!50!black}{date}{A646RY}{data/nx.csv}
@@ -2689,18 +2681,21 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{blue!70!black}{date}{A656RY}{data/nx.csv}	
 	\legend{Goods Exports, Services Exports, Goods Imports, Services Imports};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{nx.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{nx.csv}
 
 \vspace{8mm}
 
-\small \input{text/exim.txt}\\
+\small \input{text/exim.txt}
 
-\vspace{2mm}
+\vspace{3mm}
 
-\noindent \normalsize \textbf{Imports and Exports, Nonpetroleum}\\
-\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Imports and Exports, Nonpetroleum}
+
+\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 12, 14}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
 		legend style={legend columns=1, at={(0.28, 0.84)}}]
@@ -2709,17 +2704,13 @@ When thinking about the longer-term trends in these data, it's important to note
 	\thickline{green!60!teal!80!black}{date}{IM}{data/eximgdp.csv}
 	\legend{Exports, Imports};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{eximgdp.csv}
-
 \end{minipage}
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
-
-\small Changes to the trade balance can come from many sources, such as changes in domestic or foreign preferences and income, changes in exchange rates, and changes in trade policy. The following table captures the nominal value of major categories of goods and services as a share of nominal gross domestic product at various points over the past 30 years.  \\
-
+\small Changes to the trade balance can come from many sources, such as changes in domestic or foreign preferences and income, changes in exchange rates, and changes in trade policy. The following table captures the nominal value of major categories of goods and services as a share of nominal gross domestic product at various points over the past 30 years. 
 \end{minipage}
 
 \noindent \normalsize \textbf{Exports and Imports by Type}\\
@@ -2735,22 +2726,21 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Bureau of Economic Analysis}}
 
 \newpage
-
 \subsubsection*{\color{black!70} \seriffont Import Penetration}
-
 \begin{minipage}{0.76\textwidth}
-
 \small Goods can be produced domestically or imported or some combination of the two. The import share of the total US demand for goods, measured as US produced goods and imported goods less exported goods, is also referred to as \textit{import penetration}. This measure has risen considerably over the past thirty years. The majority of the long-term increase has been concentrated in consumer goods, while the decrease since 2011 has come primarily from petroleum and products. \\
 
 \input{text/goodsimpsh1.txt} \\
 
-\input{text/goodsimpsh.txt} \\
+\input{text/goodsimpsh.txt}
 
-\vspace{1mm}
+\vspace{3mm}
 
-\noindent \normalsize \textbf{Import Share of Goods}\\
-\footnotesize{\textit{import share of domestic-produced and imported goods less exports, by category}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Import Share of Goods}
+
+\footnotesize{\textit{import share of domestic-produced and imported goods less exports, by category}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30, 40}, ymin=2,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.8, 1.13)}}]
 	\rbars
@@ -2759,15 +2749,12 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{purple}{date}{B648RC}{data/goodsimpsh.csv}	
 	\legend{Consumer, Capital/Supplies/Other, Petroleum and Products};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{goodsimpsh.csv}
-
 \end{minipage}
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
-
 \small The US Census Bureau \href{https://www.census.gov/foreign-trade/data/index.html}{reports} monthly data on US trade in goods, including by partner country. \input{text/trade_partner_sh.txt} 
 \vspace{4mm}
 
@@ -2832,13 +2819,15 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \small Changes in the strength or weakness of the US Dollar (USD) can affect trade and financial flows. The dollar is said to be relatively strong when more units of foreign currency, for example Japanese Yen (JPY), British Pounds (GBP), Euros (EUR), or Canadian Dollars (CAD), are required to buy one USD.\\
 
- \input{text/selcurr_basic.txt}\\ 
+ \input{text/selcurr_basic.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Selected Exchange Rates}\\
-\footnotesize{\textit{units of foreign currency required to purchase one US dollar}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Selected Exchange Rates}
+
+\footnotesize{\textit{units of foreign currency required to purchase one US dollar}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={0.5, 1, 1.5}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
 	\rbars
@@ -2851,26 +2840,31 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdnode{4.1cm}{1.1cm}{\footnotesize \color{cyan!90!white}EUR}
 	\stdnode{1.5cm}{1.24cm}{\footnotesize \color{red}JPY (100)}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{fx1.csv}
 \end{minipage}
 
 \vspace{4mm}
 \begin{minipage}{0.33\textwidth}
-\noindent \normalsize \textbf{Broad Dollar Index}\\
-\footnotesize{\textit{trade-weighted foreign exchange rate index}}\\
-\footnotesize{\textit{January 2006=100}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Broad Dollar Index}
+
+\footnotesize{\textit{trade-weighted foreign exchange rate index}}
+
+\footnotesize{\textit{January 2006=100}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={90, 100, 110, 120}, 
 		yticklabel style={text width=1.5em}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, width=6.0cm, height=6.0cm]
 	\rbars
 	\stdline{blue!60!black}{date}{JRXWTFB_N.B}{data/fx_idx.csv}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{fx_idx.csv}
 \end{minipage}\hspace{8mm}
-\begin{minipage}{0.383\textwidth}
+\begin{minipage}{0.38\textwidth}
 \small Fed \href{https://www.federalreserve.gov/releases/h10/summary/default.htm}{trade-weighted dollar indices} show weighted-average foreign exchange rates with US trading partners, which simplify thinking about the overall role of foreign exchange rates on the US external sector. The Broad Dollar Index (see {\color{blue!60!black}\textbf{---}}), which starts in 2006, summarizes foreign exchange rates between the US and trading partners, weighting rates by the amount of trade in both goods and services.\\
 
 \input{text/twdbasic.txt}
@@ -2886,12 +2880,15 @@ When thinking about the longer-term trends in these data, it's important to note
 \input{text/cps_lfs.txt}
 \end{minipage} \hspace{5.5mm}
 \begin{minipage}{0.375\textwidth}
-\noindent \normalsize \textbf{Labor Force Status of Population}\\
-\footnotesize{\textit{millions of people}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\normalsize \textbf{Labor Force Status of Population}
+
+\footnotesize{\textit{millions of people}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300}, 
 		height=7.2cm, ymin=10, width=7.0cm,
 		clip=false, enlarge x limits={0.04}, 
+		yticklabel style={text width=1.5em},
 		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, 
 				{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
         minor xtick={},
@@ -2905,12 +2902,12 @@ When thinking about the longer-term trends in these data, it's important to note
 	\ctsbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}{0.4pt}
 	\legend{Employed, Unemployed, Non-Participant, Under 15};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_lfs.csv}
 \end{minipage}
 
 \vspace{4mm}
-
 \begin{minipage}{0.76\textwidth}
 \small When a member of a household is not employed but looked for a job during the past four weeks or is on temporary layoff, they are considered \href{https://www.bls.gov/cps/cps_htgm.htm}{\textbf{unemployed}}. \input{text/cps_lfs2.txt}\\
 
@@ -3021,8 +3018,10 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \textbf{Gross labor income} (compensation of employees in the national accounts), which captures both the amount of employment (see\cbox{teal!80!blue!85!white}) and the rate of compensation (see\cbox{green!80!lime!90!white}), \input{text/gli.txt} \\
 
-\noindent \normalsize \textbf{Gross Labor Income Growth}\\
-\footnotesize{\textit{percentage point contribution to gross labor income growth}}\\
+\normalsize \textbf{Gross Labor Income Growth}
+
+\footnotesize{\textit{percentage point contribution to gross labor income growth}}
+
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
 		xticklabel={`\short{\year}}, clip=false,  yticklabel style={text width=1.5em},
@@ -3032,22 +3031,20 @@ People who are not employed and not unemployed are considered to be outside of t
 	\sbar{teal!80!blue!85!white}{date}{work}{data/gli.csv}
 	\legend{Rate of Compensation, Hours of Work};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Author's Calculations} \hfill \tbllink{gli.csv}
 
 \end{minipage}
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
-
 \subsection*{\color{black!70} \seriffont Employment}
-
-
 \small \input{text/epop_text.txt} \\
 
-\noindent \normalsize \textbf{Employment Rate}\\
-\footnotesize{\textit{employed share of age 25-54 population}}\\
+\normalsize \textbf{Employment Rate}
+
+\footnotesize{\textit{employed share of age 25-54 population}}
+
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 75, 80}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
@@ -3055,10 +3052,11 @@ People who are not employed and not unemployed are considered to be outside of t
 	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
 	\node[above, align=right] at (axis cs:2018-11-01,80.8) {\scriptsize \input{text/epop.txt}};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}\\
+\end{tikzpicture}
 
-\vspace{4mm}
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}
+
+\vspace{6mm}
 
 \small The employment rate shown above is based on a monthly survey that asks about employment during a specific week of the previous month. However, additional data is available on what share of a population works year-round rather than just during a specific week. This can be combined with data on hours worked to identify the \textit{fully-employed}, or \textit{full-time, full-year workers}, who are defined below as the those who usually work 35 hours per week or more for 50 weeks per year or more. The Census Bureau \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-01.html#par_textimage_14}{reports} 118 million fully-employed people in 2018, equivalent to 36 percent of the population. \\
 
@@ -3119,26 +3117,27 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \small The \href{https://www.bls.gov/ces/}{establishment survey} from the monthly jobs report identifies how many nonfarm payroll jobs were added or lost in a given month (see\cbox{blue!60!purple}). \input{text/nfp_basic_text.txt}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.46\textwidth}
 
-\noindent \normalsize \textbf{Nonfarm Payroll Growth}\\
-\footnotesize{\textit{one-month change in total employment, in millions}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\normalsize \textbf{Nonfarm Payroll Growth}
+
+\footnotesize{\textit{one-month change in total employment, in millions}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks width=8.2cm, height=6.6cm,
 		xtick={{2014-01-01}, {2016-01-01}, {2018-01-01}, {2020-01-01}},
 		minor xtick={}, xmin={2013-11-01}, yticklabel style={text width=2.0em},
         xticklabels={`14, `16, `18, `20},]
 	\ctsbar{blue!60!purple}{date}{ALL}{data/nfp.csv}{2.4pt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{nfp.csv}
 \end{minipage}
 
-
-
 \vspace{6mm}
 
-\noindent \normalsize \textbf{Nonfarm Payrolls by Industry Group}\\
+\normalsize \textbf{Nonfarm Payrolls by Industry Group}\\
 \footnotesize{\textit{seasonally adjusted, thousands \hspace{14mm}levels \hspace{17mm} monthly change}\\
 \vspace{-5mm}
 
@@ -3153,17 +3152,13 @@ People who are not employed and not unemployed are considered to be outside of t
 \vspace{-2mm}
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{7.1cm} \tbllink{ces_data.csv}
 
-
-
 \newpage
-
 \begin{minipage}{0.76\textwidth} 
-
 \small Employment rates vary over time, but also by age, gender, and education. Over the 12 months ending \input{text/cps_lfs_date.txt}, the employment rate for most education groups is lower than it was on average in the year 2000. Only older workers and women with advanced education have higher rates of employment than in 2000. 
 
 \vspace{4mm}
 
-\normalsize \textbf{Employment Rates} \small \hspace{10mm} \cbox{blue} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!50} 2000
+\textbf{Employment Rates} \small \hspace{10mm} \cbox{blue} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!50} 2000
 
 \footnotesize{\textit{employed share of age group population, percent}}
 
@@ -3413,7 +3408,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \vspace{3mm}
 
-\noindent \normalsize \textbf{Unemployment Measures}\\
+\normalsize \textbf{Unemployment Measures}\\
 \footnotesize{\textit{seasonally adjusted, percent}\\
 \vspace{-5mm}
 
@@ -3437,16 +3432,18 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \small There are multiple reasons for unemployment, some of which do not qualify for unemployment insurance. During the trough of a business cycle, most unemployed are those who lost a job, for example from layoffs, or had a temporary job end (see\cbox{blue!60!purple}). In contrast during the peak of the business cycle, a much larger share of the unemployed are re-entrants to the labor market, meaning they had previously left the labor force but are looking for a job again (see\cbox{orange!80!yellow}). Some unemployed are new-entrants who are looking for their first job (see\cbox{red}). New entrants are not traditionally covered by unemployment insurance. Lastly, the unemployed include those who left a job voluntarily and are looking for a new one (see\cbox{yellow}). This group is also traditionally ineligible for unemployment insurance claims. \\
 
-\input{text/unemp_reason.txt} \\
+\input{text/unemp_reason.txt} 
 
-\vspace{1mm}
+\vspace{3mm}
 
-\noindent \normalsize \textbf{Unemployment by Reason}\\
-\footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Unemployment by Reason}
+
+\footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
 		height=6.0cm, ymin=0.5, legend cell align={left}, reverse legend,
-		xticklabel={`\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
 		legend style={fill=white, legend columns=1, at={(0.28, 0.99)}}]
 	\rbars
 	\ctsbar{blue!60!purple}{date}{Job Loser}{data/unemp_reason.csv}{0.9pt}
@@ -3455,18 +3452,19 @@ People who are not employed and not unemployed are considered to be outside of t
 	\ctsbar{red}{date}{New entrant}{data/unemp_reason.csv}{0.9pt}
 	\legend{Job Loser, Job Leaver, Re-entrant, New Entrant};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp_reason.csv}
 
 \end{minipage}
 
 \vspace{6mm}
 
-\noindent \normalsize \textbf{Unemployment Reasons and Employed Not at Work}\\
+\normalsize \textbf{Unemployment Reasons and Employed Not at Work}\\
 \footnotesize{\textit{share of labor force, percent}\\
 \vspace{-6mm}
 
-\hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{31mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 		   R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm}}
@@ -3480,47 +3478,51 @@ People who are not employed and not unemployed are considered to be outside of t
 \newpage
 
 \begin{minipage}{0.76\textwidth} 
-
 \subsubsection*{\color{black!70} \seriffont Duration of unemployment}
-
 \small When someone is unemployed for an extended period of time they risk running out of unemployment benefits, thereby having a sharp reduction in income. Additionally, people may have more trouble re-entering the labor market after a long period of unemployment. \\
 
 \input{text/ltu.txt} 
 \input{text/unempdur.txt} Both measures of unemployment duration are elevated from the levels typically seen several years into an expansion.
 
-\end{minipage}\\
+\end{minipage}
 
-\vspace{2mm}
+\vspace{4mm}
 
 \begin{minipage}{0.37\textwidth}
-\noindent \normalsize \textbf{Long-term Unemployed}\\
-\footnotesize{\textit{unemployed 27+ weeks, share of population}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Long-term Unemployed}
+
+\footnotesize{\textit{unemployed 27+ weeks, share of population}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3}, 
 		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.8cm, width=6.5cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.8cm, width=6.4cm, clip=false]
 	\rbars
 	\stdline{blue}{date}{VALUE}{data/ltu.csv}
 	\input{text/ltu_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: BLS} \hspace{34mm} \tbllink{ltu.csv}
+\end{tikzpicture}
+
+\footnotesize{Source: BLS} \hfill \tbllink{ltu.csv}
 \end{minipage}\hspace{7mm}
-\begin{minipage}{0.37\textwidth}
-\noindent \normalsize \textbf{Duration of Unemployment}\\
-\footnotesize{\textit{in weeks}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\begin{minipage}{0.34\textwidth}
+\normalsize \textbf{Duration of Unemployment}
+
+\footnotesize{\textit{in weeks}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50}, 
 		enlarge y limits={0.1}, ymin=3.5,
-		xticklabel={`\short{\year}}, height=4.8cm, width=6.5cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.8cm, width=6.3cm, clip=false]
 	\rbars
 	\stdline{green!75!blue}{date}{Median}{data/unempdur.csv}
 	\stdline{orange}{date}{Mean}{data/unempdur.csv}
-	\stdnode{4.1cm}{0.4cm}{\footnotesize \color{green!75!blue}Median}
+	\stdnode{3.9cm}{0.4cm}{\footnotesize \color{green!75!blue}Median}
 	\stdnode{1.1cm}{1.7cm}{\footnotesize \color{orange}Average}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: BLS} \hspace{34mm} \tbllink{unempdur.csv}
+\end{tikzpicture}
+
+\footnotesize{Source: BLS} \hfill \tbllink{unempdur.csv}
 \end{minipage}
 \newpage
 
@@ -3605,9 +3607,11 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{minipage}
 
 \begin{minipage}{0.38\textwidth}
-\noindent \normalsize \textbf{Labor Force Non-Participation}\\
-\footnotesize{\textit{share of age 15+ population, percent}}\\
-\noindent \hspace*{-4mm} \begin{tikzpicture}
+\normalsize \textbf{Labor Force Non-Participation}
+
+\footnotesize{\textit{share of age 15+ population, percent}}
+
+\hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.9cm}{1.5ex}
     	width=5.0cm, bar width=1.8ex, height=5.6cm,
     	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
@@ -3624,7 +3628,8 @@ People who are not employed and not unemployed are considered to be outside of t
   		table [y expr=-\coordindex, x index=1] {\nilf};
   	\legend{ \input{text/nilf_mo2.txt}, \input{text/nilf_mo1.txt}}
   	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Author's calculations from CPS}
 \end{minipage} \hspace{4mm}
 \begin{minipage}{0.34\textwidth}
@@ -3642,10 +3647,13 @@ People who are not employed and not unemployed are considered to be outside of t
 \small \input{text/nilf_01.txt} 
 \end{minipage} \hspace{7mm}
 \begin{minipage}{0.42\textwidth}
-\noindent \normalsize \textbf{Contribution to Labor Force Participation}\\
-\footnotesize{\textit{cumulative percentage point contribution to age 18-64}}\\ 
-\footnotesize{\textit{labor force participation rate since March 2001}}\\ 
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\normalsize \textbf{Contribution to Labor Force Participation}
+
+\footnotesize{\textit{cumulative percentage point contribution to age 18-64}}
+
+\footnotesize{\textit{labor force participation rate since March 2001}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={}, width=7.4cm, height=7.6cm,
 		xticklabel={`\short{\year}}, clip=false, 
 		yticklabel style={text width=1.6em}]
@@ -3664,28 +3672,27 @@ People who are not employed and not unemployed are considered to be outside of t
 	\stdnode{4.7cm}{0.62cm}{\footnotesize \color{cyan}\textbf{School}}	
 	\stdnode{5.45cm}{1.38cm}{\footnotesize \color{violet!80!purple}\textbf{Age/Sex}}	
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations from CPS} \hspace{12mm} \tbllink{nilf.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{nilf.csv}\\
 
 \footnotesize Series in the chart are adjusted so that the distribution of the age 18--64 population by age and sex is constant and equal to its March 2001 value. The total effect of this adjustment on labor force participation is included separately in the chart, as \color{violet!80!purple}\textbf{Age/Sex}.
 \end{minipage}
 
 \newpage
-
-
 \begin{minipage}{0.76\textwidth}
-
 \subsection*{\color{black!70} \seriffont Labor Force Flows}
-
 \small The current population survey interviews households up to eight times over 16 months, allowing insight into the labor force status of the same individual over time, and in particular, into \textbf{flows between different employment, unemployment, and other categories}. The Bureau of Labor Statistics \href{https://www.bls.gov/cps/cps_flows.htm}{publishes} many monthly indicators based on labor force flows, and others can be calculated directly from the public use data.\\
 
-Among newly employed workers, the vast majority were considered to be out of the labor force the prior month, as opposed unemployed. \input{text/lf_flow.txt} \\
+Among newly employed workers, the vast majority were considered to be out of the labor force the prior month, as opposed unemployed. \input{text/lf_flow.txt} 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Newly Employed, Not Previously Looking For Work}\\
-\footnotesize{\textit{share of newly employed that were not looking for work in the prior month}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Newly Employed, Not Previously Looking For Work}
+
+\footnotesize{\textit{share of newly employed that were not looking for work in the prior month}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={40, 50, 60, 70}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=12.4cm,
 		legend columns=1, legend cell align={left},
@@ -3696,22 +3703,26 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\input{text/lf_flow_node.txt}
 	\legend{Monthly, 3-Month Moving Average};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lf_flow.csv}*
 
 \end{minipage}
 
 \vspace{5mm}
 
-\begin{minipage}{0.33\textwidth}
+\begin{minipage}{0.32\textwidth}
 \small The great recession worsened job-finding prospects for those not in the labor force (NILF) due to disability or illness. As a result, the flow into employment for people age 25 to 54 who are out of the labor force due to a disability or illness slowed considerably. Only over the past few years have these prospects recovered. \input{text/disflow.txt}
-\end{minipage} \hspace{5mm} \begin{minipage}{0.39\textwidth}
-\noindent \normalsize \textbf{Flow, Disability to Work}\\
-\footnotesize{\textit{NILF disability/illness, age 25 to 54,}}\\
-\footnotesize{\textit{share employed one year later}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\end{minipage} \hspace{5mm} \begin{minipage}{0.4\textwidth}
+\normalsize \textbf{Flow, Disability to Work}
+
+\footnotesize{\textit{NILF disability/illness, age 25 to 54,}}
+
+\footnotesize{\textit{share employed one year later}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={6, 8}, clip=false,
-		xticklabel={`\short{\year}}, height=5.8cm, width=7.0cm]
+		xticklabel={`\short{\year}}, height=5.9cm, width=7.0cm]
 	\rebars
 	\stdline{blue}{date}{Share}{data/disflow.csv}
 	\input{text/disflow_node.txt}
@@ -3728,9 +3739,11 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \small \input{text/jolts2.txt}\\
 
-\noindent \normalsize \textbf{Job Turnover}\\
-\footnotesize{\textit{job openings, hires, quits, and layoffs, in millions}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Job Turnover}
+
+\footnotesize{\textit{job openings, hires, quits, and layoffs, in millions}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12}, 
 		enlarge y limits={0.1}, ymin=0.6,
 		xticklabel={`\short{\year}}, height=6.3cm]
@@ -3744,18 +3757,22 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\stdnode{8.2cm}{1.25cm}{\footnotesize \color{red!85!violet}\textbf{Quits}}
 	\stdnode{2.5cm}{0.45cm}{\footnotesize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv} \\
-\vspace{1mm}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv} 
+
+\vspace{3mm}
 
 \small The number of people who voluntarily separate (quit) a job in a given month, divided by the total number employed is the \textit{quits rate}. The rate typically increases when workers are confident enough to leave one job for another one, and a high quits rate, particularly in low-paying industries, can be a sign of a tight labor market.
 \end{minipage}
 \vspace{1mm}
 
 \begin{minipage}{0.38\textwidth}
-\noindent \normalsize \textbf{Quits Rate}\\
-\footnotesize{\textit{voluntary separations as share of workforce}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Quits Rate}
+
+\footnotesize{\textit{voluntary separations as share of workforce}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6}, clip=false,
 		xticklabel={`\short{\year}}, ymin=0.3, height=5.5cm, width=7.0cm]
 	\rebars
@@ -3767,8 +3784,10 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\stdnode{4.0cm}{0.7cm}{\scriptsize \color{violet}\textbf{Total nonfarm}}
 	\input{text/quits_tot_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{14mm} \tbllink{quits.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{quits.csv}
+
 \end{minipage}
 \hspace{9mm}
 \begin{minipage}{0.31\textwidth}
@@ -3786,7 +3805,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 0.5, 1.0, 1.5}, 
 		enlarge y limits={0.1}, ymin=0.05,
-		xticklabel={`\short{\year}}, height=6.0cm, width=12.3cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.6cm, width=12.3cm, clip=false]
 	\rebars
 	\stdline{magenta!80!violet!90!white}{date}{unjo}{data/unjo.csv}
 	\input{text/unjo_node.txt}
@@ -4147,6 +4166,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15, 20}, ymin=1,
 		height=6.0cm, width=12.6cm, enlarge y limits={0.11},
+		yticklabel style={text width=1.4em}, 
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.95, 1.0)}}]
 	\rbars
 	\ctsbar{violet}{date}{Membership}{data/union.csv}{1.9pt}
@@ -4215,12 +4235,14 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \vspace{2mm}
 
-\noindent \normalsize \textbf{S\&P 500}\\
-\footnotesize{\textit{index}} \hspace{58mm} \footnotesize{\textit{...recent data in detail}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{S\&P 500}
+
+\footnotesize{\textit{index}} \hspace{58mm} \footnotesize{\textit{...recent data in detail}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={0, 1000, 2000, 3000, 4000}, 
-		enlarge y limits={0.1}, 
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
+		enlarge y limits={0.1}, yticklabel style={text width=2.0em}, 
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.7cm, clip=false]
 	\rbars
 	\draw [black!25!white, dashed] ({2016-12-01},2000) rectangle (rel axis cs:1,1);
 	\stdline{green!80!blue}{date}{GSPC}{data/sp500.csv}
@@ -4229,13 +4251,14 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={2000, 2500, 3000, 3500, 4000}, 
-		enlarge y limits={0.1}, 
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.6cm, clip=false]
+		enlarge y limits={0.1}, yticklabel style={text width=2.0em}, 
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.0cm, clip=false]
 	\thickline{black!13!white}{date}{MA}{data/sp500_recent.csv}
-	\stdline{green!80!blue}{date}{GSPC}{data/sp500_recent.csv}
+	\thinline{green!80!blue}{date}{GSPC}{data/sp500_recent.csv}
 	\stdnode{1.3cm}{0.36cm}{\scriptsize \color{black!25!white}\textbf{moving average}}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Yahoo! Finance} \hfill \tbllink{sp500_recent.csv} 
 
 \vspace{6mm}
@@ -4470,7 +4493,8 @@ A large increase in the amount of money held by individuals and institutions can
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15, 20, 25, 30}, 
-		xticklabel={`\short{\year}}, clip=false, width=12.6cm, height=5.6cm]
+		yticklabel style={text width=1.4em}, 
+		xticklabel={`\short{\year}}, clip=false, width=12.2cm, height=5.6cm]
 	\rbars
 	\thickline{green!80!blue}{date}{value}{data/M2imf.csv}
 	\input{text/m2imf_node.txt}
@@ -4548,11 +4572,11 @@ Changes in prices affect the amount of goods and services that can purchased by 
 
 \subsection*{\color{black!70} \seriffont Consumer Price Index}
 
-\small \input{text/cpi_main.txt} \\
+\small \input{text/cpi_main.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Consumer Price Index}\\
+\normalsize \textbf{Consumer Price Index}\\
 \footnotesize{\textit{annual growth, percent}}\\
 \vspace{25mm}
 
@@ -4580,9 +4604,11 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \input{text/cpicomp2.txt} 
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.4\textwidth}
-\noindent \normalsize \textbf{Consumer Price Index}\\
-\footnotesize{\textit{contribution to annual growth, percentage points}}\\ 
-\noindent \hspace*{-7mm} \begin{tikzpicture}
+\normalsize \textbf{Consumer Price Index}
+
+\footnotesize{\textit{contribution to annual growth, percentage points}}
+ 
+\hspace*{-7mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
     	width=5.0cm, bar width=1.6ex, height=7.8cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.3, \bbar{x}{0},
@@ -4599,7 +4625,8 @@ Changes in prices affect the amount of goods and services that can purchased by 
   		table [y expr=-\coordindex, x index=1] {\cpi};
  	\legend{\input{text/cpi_mo2.txt}, \input{text/cpi_mo1.txt}}
   	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi_comp.csv}
 \end{minipage}
 
@@ -4611,21 +4638,24 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \subsection*{\color{black!70} \seriffont Producer Prices}
 
 \begin{minipage}{0.47\textwidth}
-\noindent \normalsize \textbf{Producer Price Index}\\
-\footnotesize{\textit{all commodities, annual growth, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Producer Price Index}
+
+\footnotesize{\textit{all commodities, annual growth, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\dateaxisticks ytick={-20, -10,  0, 10, 20}, 
 		enlarge y limits={0.1}, \bbar{y}{0}, clip=false,
-		yticklabel style={text width=1.35em},
+		yticklabel style={text width=1.4em},
 		xmin = {1989-01-01},
-		xticklabel={`\short{\year}}, height=4.8cm, width=7.8cm,
+		xticklabel={`\short{\year}}, height=4.7cm, width=7.6cm,
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, xticklabels={`89, `00, `10, `20}]
     	\rbars
 		\stdline{green!80!blue}{date}{VALUE}{data/ppi.csv}
 		\input{text/ppi_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{ppi.csv}
 \end{minipage} \hspace{6mm} 
 \begin{minipage}{0.24\textwidth}
@@ -4645,9 +4675,9 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \footnotesize{\textit{expected average annual rate, percent}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\ltdateaxisticks ytick={0, 1.0, 2.0, 3.0}, 
+	\begin{axis}[\ltdateaxisticks ytick={0, 1, 2, 3}, 
 		enlarge y limits={0.1}, ymin=0.15, \bbar{y}{0}, clip=false,
-		xticklabel={`\short{\year}}, height=5.9cm, width=6.6cm]
+		xticklabel={`\short{\year}}, height=5.9cm, width=6.4cm]
 	\thinline{blue!70!black}{date}{VALUE}{data/infbreak.csv}
 	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
@@ -4672,22 +4702,22 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \begin{minipage}{0.76\textwidth}
 \small \input{text/mxpi_imp.txt} \\
 
-\input{text/mxpi_exp.txt} \\
+\input{text/mxpi_exp.txt}
 
-\vspace{1mm}
+\vspace{3mm}
 
 \normalsize \textbf{Import/Export Price Index}
 
 \footnotesize{\textit{annual growth, percent}}
 
-\vspace{25mm}
+\vspace{28mm}
 
-\noindent \hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10,  0, 10, 20}, 
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.98, 1.16)}},
 		yticklabel style={text width=1.5em},
-		height=4.6cm, enlarge y limits={0.11}]
+		width=12.9cm, height=4.6cm, enlarge y limits={0.11}]
 	\rbars
 	\stdline{cyan!85!yellow}{date}{Imports}{data/mxpi.csv}
 	\stdline{red!25!orange}{date}{Exports}{data/mxpi.csv}
@@ -4695,11 +4725,11 @@ Changes in prices affect the amount of goods and services that can purchased by 
 	\end{axis}
 \end{tikzpicture}
 
+\vspace{3mm}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{mxpi.csv}
 
-
-
-\vspace{18mm}
+\vspace{16mm}
 
 \subsection*{\color{black!70} \seriffont PCE Price Index}
 \small The Personal Consumption Expenditure (PCE) Price Index from the Bureau of Economic Analysis captures both changes in the price of goods and services and changes in consumer behavior. The index is additionally updated over time to the latest methodology. \input{text/pce_inf_basic.txt}
@@ -4734,51 +4764,54 @@ Changes in prices affect the amount of goods and services that can purchased by 
 
 \vspace{1mm}
 
-\noindent \normalsize \textbf{Oil Price}\\
-\footnotesize{\textit{USD, west Texas intermediate crude, monthly average}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Oil Price}
+
+\footnotesize{\textit{USD, west Texas intermediate crude, monthly average}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50, 100}, 
+		yticklabel style={text width=1.5em}, width=12.8cm,
 		xticklabel={`\short{\year}}, ymin=4]
 	\rbars
 	\stdline{red!80!purple}{date}{VALUE}{data/wti.csv}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: FRED} \hfill \tbllink{wti.csv}\\
+\end{tikzpicture}
 
+\footnotesize{Source: FRED} \hfill \tbllink{wti.csv}
 \end{minipage}
 
 \vspace{10mm}
 
 \begin{minipage}{0.41\textwidth}
-\noindent \normalsize \textbf{Gold Price}\\
-\footnotesize{\textit{USD, monthly average and latest value}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Gold Price}
+
+\footnotesize{\textit{USD, monthly average and latest value}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 500, 1000, 1500, 2000}, 
-		xticklabel={`\short{\year}}, ymin=60, width=7.6cm]
+		yticklabel style={text width=2.2em}, 
+		xticklabel={`\short{\year}}, ymin=60, width=7.2cm]
 	\rbars
 	\stdline{orange!40!yellow}{date}{VALUE}{data/gold.csv}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: FRED} \hfill \tbllink{gold.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: FRED} \hfill \tbllink{gold.csv}
 \end{minipage} \hspace{8mm}
 \begin{minipage}{0.29\textwidth}
 \small London Bullion Market data on gold prices is \href{https://fred.stlouisfed.org/series/GOLDAMGBD228NLBM}{available} through FRED. \input{text/gold.txt}
 \end{minipage}
-
-
 \newpage
 \begin{minipage}{0.76\textwidth}
 %\section*{\color{darkgray}\LARGE \seriffont International Comparisons}
 %\label{sec:int}
 
-
 %\section*{\color{darkgray}\LARGE \seriffont References}
 %\label{sec:ref}
 
-
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
 \small
-Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Ernie Tedeschi, Adam Ozimek, and Vikas Sharma.
+Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Ernie Tedeschi, and Vikas Sharma.
 
 \end{minipage}
 
