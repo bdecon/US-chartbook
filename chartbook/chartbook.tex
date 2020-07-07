@@ -2104,13 +2104,15 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \small The debt of the domestic financial sector includes agency and government-sponsored enterprise (GSE) backed securities (see\cbox{red!60!purple}), corporate and foreign bonds, loans (see\cbox{orange!70!yellow}), and open market paper. The long-term increase in financial sector debt reflects the emergence and growth of various asset-backed securities. In addition to home mortgage-backed securities, the domestic financial sector issues debt securities based on commercial mortgages, auto loans, credit card, student debt, and even restaurant revenue. \\
 
-\input{text/findebtgdp.txt} \\
+\input{text/findebtgdp.txt} 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Financial Sector Debt}\\
-\footnotesize{\textit{by type, as share of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Financial Sector Debt}
+
+\footnotesize{\textit{by type, as share of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50,  100, 150}, ymin=2,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.88, 1.13)}}]
 	\rbars
@@ -2119,17 +2121,14 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{blue!40!violet}{date}{Other}{data/busdebtgdp2.csv}
 	\legend{Loans, Agency- and GSE-backed Securities, Other Debt Securities};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve and Bureau of Economic Analysis} \hfill \tbllink{busdebtgdp2.csv}
 
 \end{minipage}
-
 \newpage
-
 \subsection*{\color{black!70} \seriffont Industrial Production}
-
 \begin{minipage}{0.62\textwidth}
-
 \small \input{text/indpro.txt} 
 
 \end{minipage}\hspace{7mm}
@@ -2141,7 +2140,6 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro.csv}
 
 \end{minipage}
-
 
 \vspace{2mm} 
 
@@ -2156,20 +2154,18 @@ When thinking about the longer-term trends in these data, it's important to note
 		
 \footnotesize{Source: Federal Reserve}}
 
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
+\vspace{3mm}
+\small Market group data show the lack of growth in the production of consumer goods, equipment, and nonindustrial supplies over the past decade.
 
 \vspace{3mm}
 
-\small Market group data show the lack of growth in the production of consumer goods, equipment, and nonindustrial supplies over the past decade.\\
+\normalsize \textbf{Industrial Production Growth, Market Group}
 
-\vspace{1mm}
+\footnotesize{\textit{percentage point contribution to one-year growth}}
 
-\noindent \normalsize \textbf{Industrial Production Growth, Market Group}\\
-\footnotesize{\textit{percentage point contribution to one-year growth}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
 		yticklabel style={text width=1.5em}, legend cell align={left},
@@ -2180,18 +2176,21 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{orange!70!yellow}{date}{Materials}{data/indprogr.csv}
 	\legend{Consumer Goods, Equipment \& Nonindustrial Supplies, Materials};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}
+
+\vspace{5mm}
+
+\small Industry group data show a change in the composition of new industrial activity, towards mining and away from manufacturing.
 
 \vspace{3mm}
 
-\small Industry group data show a change in the composition of new industrial activity, towards mining and away from manufacturing.\\
+\normalsize \textbf{Industrial Production Growth, Industry Group}
 
-\vspace{1mm}
+\footnotesize{\textit{percentage point contribution to one-year growth}}
 
-\noindent \normalsize \textbf{Industrial Production Growth, Industry Group}\\
-\footnotesize{\textit{percentage point contribution to one-year growth}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
 		yticklabel style={text width=1.5em}, legend cell align={left},
@@ -2203,18 +2202,19 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{green!80!blue}{date}{Electric and gas utilities}{data/indprogr.csv}
 	\legend{Durable Manufacturing, Nondurable Manufacturing, Mining, Utilities};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}
+
+\vspace{5mm}
+
+\small The recent collapse has been broad-based. The monthly data are shown in detail below.
 
 \vspace{3mm}
 
-\small The recent collapse has been broad-based. The monthly data are shown in detail below.\\
+\noindent \normalsize \textbf{Recent data in detail}
 
 \vspace{1mm}
-
-\noindent \normalsize \textbf{Recent data in detail}\\
-
-\vspace{-1mm}
 
 \noindent \normalsize \hspace{14mm} Market Group \hspace{38mm} Industry Group \footnotesize 
 
@@ -2223,9 +2223,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}
 
 \end{minipage}
-
 \newpage
-
 \begin{minipage}{0.31\textwidth}
 \small \input{text/ip_comp.txt}
 
@@ -2287,13 +2285,15 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \begin{minipage}{0.76\textwidth}
 
-\small The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{reports} that US has seen a massive increase in \textbf{crude oil production} over the past six years. The infrastructure for much of this production was put in place when oil prices were higher, and the profitability of the sector depends on oil maintaining a certain price. A large portion of the increase in oil production comes from New Mexico, South Dakota, and Colorado. \\
+\small The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{reports} that US has seen a massive increase in \textbf{crude oil production} over the past six years. The infrastructure for much of this production was put in place when oil prices were higher, and the profitability of the sector depends on oil maintaining a certain price. A large portion of the increase in oil production comes from New Mexico, South Dakota, and Colorado. 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Crude Oil Production}\\
-\footnotesize{\textit{millions of barrels per day}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Crude Oil Production}
+
+\footnotesize{\textit{millions of barrels per day}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\dateaxisticks ymin=0.6, enlarge x limits={0.01},
 		width=13.0cm, height=7.2cm, ytick={0, 5, 10}, xticklabel={`\short{\year}},
 		legend style={at={(0.82, 1)}, fill=white}]
@@ -2312,7 +2312,8 @@ When thinking about the longer-term trends in these data, it's important to note
 		col sep=comma]{data/oil_prod.csv}\closedcycle;	
 	\legend{ND + NM + CO, Texas, All Other, Gulf of Mexico};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Energy Information Administration} \hfill \tbllink{oil_prod.csv}
 \end{minipage}
 \newpage
@@ -2326,7 +2327,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \footnotesize{\textit{annual growth, percent; nonstore is 3-month moving average}}
  
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
 		width=11.7cm, height=5.0cm, clip=false]
@@ -2463,10 +2464,10 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{red}{date}{W024RC}{data/slggdp.csv}
 	\end{axis}
 \end{tikzpicture}
-\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv}*\\
 
-\vspace{1mm}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv}*
+
+\vspace{3mm}
 
 \subsubsection*{\color{black!70} \seriffont Government Jobs}
 
@@ -2476,9 +2477,11 @@ When thinking about the longer-term trends in these data, it's important to note
 \vspace{1mm}
 
 \begin{minipage}{0.47\textwidth}
-\noindent \normalsize \textbf{Government Employment}\\
-\footnotesize{\textit{share of age 16+ population, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Government Employment}
+
+\footnotesize{\textit{share of age 16+ population, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={8, 9, 10}, clip=false, 
 		xticklabel={`\short{\year}}, height=5.1cm, width=8.0cm, 
         enlarge y limits={0.14}]
@@ -2486,7 +2489,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{blue!50!cyan}{date}{GOVJOBS}{data/govjobs.csv}
 	\input{text/govjobs_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{govjobs.csv}
 \end{minipage}\hspace{7mm}
 \begin{minipage}{0.24\textwidth}
@@ -2500,13 +2504,15 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/pubdebt.txt}\\
+\small \input{text/pubdebt.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Total Public Debt By Holder}\\
-\footnotesize{\textit{percent of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Total Public Debt By Holder}
+
+\footnotesize{\textit{percent of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100},
 		xticklabel={`\short{\year}}, clip=false, ymin=2, height=5.6cm,
 		legend cell align={left},
@@ -2518,10 +2524,11 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{blue}{date}{FDHBFRBN}{data/pubdebt.csv}
 	\legend{Foreign, Private Domestic, Intragovernmental, Federal Reserve};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Treasury} \hfill \tbllink{pubdebt.csv}\\
+\end{tikzpicture}
 
-\vspace{2mm}
+\footnotesize{Source: Treasury} \hfill \tbllink{pubdebt.csv}
+
+\vspace{4mm}
 
 \small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a safe asset for the balance sheets domestic households and businesses, and for foreign investors.
 
@@ -2595,9 +2602,11 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \vspace{4mm}
 
-\noindent \normalsize \textbf{Current Account Balance}\\
-\footnotesize{\textit{balance on individual current account component, as percent of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Current Account Balance}
+
+\footnotesize{\textit{balance on individual current account component, as percent of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.71, 1.13)}}]
@@ -2609,7 +2618,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{black}{date}{A124RC}{data/cab.csv}
 	\legend{Goods, Services, Income, Transfers, Total};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}
 \end{minipage}
 
@@ -2627,20 +2637,19 @@ When thinking about the longer-term trends in these data, it's important to note
 		
 \vspace{-6mm}
 \footnotesize{Source: Bureau of Economic Analysis}
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
-
 \small Financial account transactions include the net domestic acquisition of foreign assets and the net domestic incurrence of foreign liabilities. The US \textbf{financial account balance} (see\cbox{yellow!80!orange}) is the net lending or borrowing of the combined domestic sectors with the rest of the world. The timing of payments lead to a statistical discrepancy (see\cbox{red}), but the financial and capital account balance and current account balance otherwise sum to zero. \\
 
-\input{text/fab.txt}\\
+\input{text/fab.txt}
 
-\vspace{1mm}
+\vspace{3mm}
 
-\noindent \normalsize \textbf{Financial Account Balance}\\
-\footnotesize{\textit{percent of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Financial Account Balance}
+
+\footnotesize{\textit{percent of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.95, 1.13)}}]
@@ -2651,7 +2660,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{black}{date}{TOT}{data/fab.csv}
 	\legend{Balance excl. Derivatives, Derivatives, Statistical Discrepancy, Total};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fab.csv}
 
 \end{minipage}
@@ -4020,14 +4030,14 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \vspace{5mm}
 
-\noindent \normalsize \textbf{Weekly Earnings, First Decile} 
+\normalsize \textbf{Weekly Earnings, First Decile} 
 
 \vspace{-2mm}
 \footnotesize{\textit{full-time, wage and salary earners, age 16+}} \hspace{10mm} \small 	
 	\colorline{lime!65!green}{ \ bd CPS} \hspace{3mm} \colorline{blue!65!black}{ \ BLS}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 300, 400, 500}, enlarge y limits={0.15},
-		clip=false, width=6.5cm, xmin=1988-12-15,
+		clip=false, width=6.4cm, xmin=1988-12-15, yticklabel style={text width=1.5em}, 
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-10-01}},
         minor xtick={}, xticklabels={`89, `00, `10, `19 Q4}]
 	\rbars
@@ -4320,7 +4330,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 20, 30, 40, 50}, 
-		xticklabel={`\short{\year}}, clip=false, 
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
 		height=4.4cm, width=12.4cm]
 	\rbars
 	\stdline{blue!80!black}{date}{CATRPE}{data/catrpe.csv}
@@ -4345,6 +4355,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 20, 40, 60}, 
 		xticklabel={`\short{\year}}, clip=false, ymin=4,
+		yticklabel style={text width=1.4em}, width=12.9cm,
 		height=4.4cm, enlarge y limits={0.11}, width=12.5cm]
 	\rbars
 	\stdline{magenta}{date}{value}{data/vix.csv}
