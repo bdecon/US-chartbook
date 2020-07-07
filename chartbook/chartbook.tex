@@ -812,24 +812,24 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \vspace{-3mm}
 
-\footnotesize{Source: Author's Calculations from CPS} \hspace{8mm} \tbllink{cps_educ_tot.csv}
+\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_educ_tot.csv}
 \end{minipage}
 
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/cps_educ2.txt} One argument is that households were compensating for a weak labor market and lack of bargaining power by borrowing large sums of money for education. However, given the extent of the increase in education, and the typical wage premium of education, labor income should have increased much more than it actually did. \\
+\small \input{text/cps_educ2.txt} One argument is that households were compensating for a weak labor market and lack of bargaining power by borrowing large sums of money for education. However, given the extent of the increase in education, and the typical wage premium of education, labor income should have increased much more than it actually did. 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Education Distribution} \small \hspace{10mm} \cbox{red!70!purple} \input{text/cps_ltdate.txt} \hspace{4mm} \cbox{orange!80} 2000\\
-\footnotesize{\textit{share of age 25+ population, percent}}\\
+\normalsize \textbf{Education Distribution} \small \hspace{10mm} \cbox{red!70!purple} \input{text/cps_ltdate.txt} \hspace{4mm} \cbox{orange!80} 2000
 
-\small \hspace{22mm} Total \hspace{54mm} Employed\\  
+\footnotesize{\textit{share of age 25+ population, percent}}
 
-\vspace{-3mm}
-\noindent \hspace*{-4mm} \begin{tikzpicture}
+\small \hspace{22mm} Total \hspace{54mm} Employed
+
+\hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.0cm}{1.5ex}
     	width=3.9cm, bar width=1.7ex, height=6.9cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
@@ -856,9 +856,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
   	\addplot[fill=red!70!purple, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\edsh};
   	\end{axis}
-\end{tikzpicture}\\
-
-\vspace{-2mm}
+\end{tikzpicture}
 
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_educ.csv}
 
@@ -871,14 +869,17 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \begin{minipage}{0.25\textwidth}
 \small Inflation-adjusted income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons, primarily government social benefits, less contributions to social insurance. \\
 
-\input{text/pi_levels_basic.txt}\\
+\input{text/pi_levels_basic.txt}
+
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.49\textwidth}
-\noindent \normalsize \textbf{Personal Income}\\
-\footnotesize{\textit{real per capita income, thousands of US Dollars}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\begin{minipage}{0.495\textwidth}
+\normalsize \textbf{Personal Income}
+
+\footnotesize{\textit{real per capita income, thousands of US Dollars}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60},
-		xticklabel={`\short{\year}}, clip=false, ymin=3,
+		xticklabel={`\short{\year}}, clip=false, ymin=3, yticklabel style={text width=1.4em},
 		legend style={at={(0.6, 1.07)}}, width=8.8cm, height=8.7cm]
 	\rbars
 	\ctsbar{green!80!black}{date}{LABOR}{data/pi_levels.csv}{0.9pt}
@@ -886,7 +887,8 @@ Among those living in \textbf{households}, roughly 74 million are children under
 	\ctsbar{orange!50!yellow}{date}{CAPITAL}{data/pi_levels.csv}{0.9pt}
 	\legend{Labor, Welfare, Capital};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis; Author} \hfill \tbllink{pi_levels.csv}
 \end{minipage}
 
@@ -1048,7 +1050,8 @@ Total income, labor income less taxes and including welfare and capital income, 
 \footnotesize{Source: Economic Policy Institute, Census} 
 \end{minipage}\hspace{4mm}
 \begin{minipage}{0.36\textwidth}
-\small Black median household income in 2018 was \$41,692, compared to an inflation adjusted equivalent of \$40,963 in 2017. White, non-Hispanic median household income was \$70,462 compared to \$69,851 in 2017. Hispanic median household income in 2018 was \$51,450 compared to \$51,390 in 2017. Asian median household income was \$87,194 in 2018 and \$83,376 in 2017. Data for 2000--2013, shown with dashed lines, are calculated by \href{https://www.epi.org/blog/racial-and-ethnic-income-gaps-persist-amid-uneven-growth-in-household-incomes/}{EPI}, to be more-comparable over time despite changes to the survey design in 2013 and to the processing of survey data in 2017. \\
+\small Black median household income in 2018 was \$41,692, compared to an inflation adjusted equivalent of \$40,963 in 2017. White, non-Hispanic median household income was \$70,462 compared to \$69,851 in 2017. Hispanic median household income in 2018 was \$51,450 compared to \$51,390 in 2017. Asian median household income was \$87,194 in 2018 and \$83,376 in 2017. Data for 2000--2013, shown with dashed lines, are calculated by \href{https://www.epi.org/blog/racial-and-ethnic-income-gaps-persist-amid-uneven-growth-in-household-incomes/}{EPI}, to be more-comparable over time despite changes to the survey design in 2013 and to the processing of survey data in 2017. 
+
 \end{minipage}
 
 \newpage 
@@ -1057,8 +1060,9 @@ Total income, labor income less taxes and including welfare and capital income, 
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Household Expenditures}
 
-\small This section covers household spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing services and utilities combined with residential fixed investment). \input{text/pce1.txt}\\
-\vspace{1mm}
+\small This section covers household spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing services and utilities combined with residential fixed investment). \input{text/pce1.txt}
+
+\vspace{2mm}
 
 \normalsize \textbf{Consumer Spending and Residential Investment}
 
@@ -1077,33 +1081,38 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pce.csv}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pce.csv}
+
+\vspace{4mm}
 
 \small \input{text/pce2.txt} 
 
-\end{minipage}\\
+\vspace{3mm}
 
-\noindent \normalsize \textbf{Consumer Spending and Residential Investment}\\
-\footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}\\ \vspace{4mm}
-\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{2.0mm} p{38mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
-		   R{7.8mm} R{6.7mm} R{6.7mm} }
-			 \input{data/pce.tex}
-			 \hline
-		\end{tabular}
-		}	\\
-		
-\vspace{-6mm}
+\normalsize \textbf{Consumer Spending and Residential Investment}
+
+\footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}}
+
+\hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+	{\renewcommand{\arraystretch}{1.55}
+	\begin{tabular}{p{2.0mm} p{38mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+					R{7.8mm} R{6.7mm} R{6.7mm}}
+		\input{data/pce.tex}
+		\hline
+	\end{tabular}}
+
+	\vspace{1mm}	
+	
 \footnotesize{Source: Bureau of Economic Analysis}
 
+\end{minipage}
 \newpage 
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/pcegrowth.txt}\\
+\small \input{text/pcegrowth.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
 \normalsize \textbf{Consumer Spending Growth}
 
@@ -1119,20 +1128,21 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Bureau of Economic Analysis}  \hfill \tbllink{pcegrowth.csv}\\
+\footnotesize{Source: Bureau of Economic Analysis}  \hfill \tbllink{pcegrowth.csv}
 
-\vspace{4mm}
+\vspace{6mm}
 
 \small Changes to consumer spending (see {\color{black}\textbf{---}}) are largely the result of changes to income (see\cbox{cyan!50!white}) and changes to the rate at which income is saved (see\cbox{green!60!blue}). Changes to other outlays (see\cbox{blue!60!violet}) reflect changes in interest payments, fines and fees, and charitable giving. \\
 
-\input{text/pcedecomp.txt}\\
+\input{text/pcedecomp.txt}
 
+\vspace{3mm} 
 
-\vspace{1mm} 
+\normalsize \textbf{Contributions to Consumer Spending}
 
-\noindent \normalsize \textbf{Contributions to Consumer Spending}\\
-\footnotesize{\textit{percentage point contribution to real per capita PCE growth, one-year moving average}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\footnotesize{\textit{percentage point contribution to real per capita PCE growth, one-year moving average}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.63, 1.13)}}]
@@ -1143,7 +1153,8 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\stdline{black}{date}{DPCERC}{data/pcedecomp.csv}
 	\legend{Income, Saving, Other Outlays, Total};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pcedecomp.csv}
 
 \end{minipage}
@@ -1167,14 +1178,15 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.8cm, width=12.3cm, clip=false]
+		yticklabel style={text width=1.4em},
+		xticklabel={`\short{\year}}, height=4.8cm, width=12.2cm, clip=false]
 	\rbars
 	\stdline{red}{date}{VALUE}{data/psavert.csv}
 	\input{text/psavert_node.txt}
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Bureau of Economic Analysis} \hspace{66mm} \tbllink{psavert.csv}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{psavert.csv}
 
 \vspace{7mm}
 
@@ -1224,6 +1236,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50, 100}, ymin=2,
+		yticklabel style={text width=1.8em}, width=12.9cm,
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, 
 		legend cell align={left}, legend style={legend columns=1, at={(0.32, 1.04)}}]
 	\rbars
@@ -1329,9 +1342,10 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300, 400, 500},
-		 ymin=16, height=5.9cm, xmin=1988-08-01, reverse legend,
-		xticklabel={`\short{\year}}, clip=false, legend cell align={left},
-		legend style={legend columns=1, at={(0.42, 1.08)}}]
+		 ymin=16, height=5.9cm, xmin=1988-08-01, reverse legend, 
+		 yticklabel style={text width=1.6em}, width=12.9cm,
+		 xticklabel={`\short{\year}}, clip=false, legend cell align={left},
+		 legend style={legend columns=1, at={(0.42, 1.08)}}]
 	\rbars
 	\sbar{green!60!teal}{date}{HRE}{data/hhassetsgdp.csv}
 	\sbar{cyan!40!white}{date}{DEP}{data/hhassetsgdp.csv}	
@@ -1343,9 +1357,9 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \vspace{3.5mm}
 
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hhassetsgdp.csv}\\
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hhassetsgdp.csv}
 
-\vspace{3mm}
+\vspace{5mm}
 
 \small \input{text/hhasset4.txt} \\
 
@@ -2328,35 +2342,35 @@ When thinking about the longer-term trends in these data, it's important to note
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em},
-		width=11.0cm, height=5.0cm, clip=false]
+		width=11.3cm, height=5.0cm, clip=false]
 	\rebars
 	\stdline{blue!70!black}{date}{NS_3M}{data/marts.csv}
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
 	\input{text/rs_ns3m_node.txt}
 	\input{text/rs_44x72_node.txt}
-	\stdnode{6.25cm}{1.9cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
-	\stdnode{7.8cm}{2.85cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
+	\stdnode{6.4cm}{1.8cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
+	\stdnode{7.8cm}{2.7cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hspace{67mm} \tbllink{marts.csv}\\
+\footnotesize{Source: Census Bureau} \hspace{74mm} \tbllink{marts.csv}
 
+\end{minipage}
 \vspace{9mm}
 
+\begin{minipage}{0.4\textwidth}
+\noindent \normalsize \textbf{Retail sales}
 
-\noindent \normalsize \textbf{Retail sales}\\
-\footnotesize{\textit{share of disposable personal income}}\\ 
+\footnotesize{\textit{share of disposable personal income}}
 
-\vspace{7.8cm}
-
-\hspace{3.4cm} \begin{tikzpicture}[overlay]
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.7cm}{1.5ex}
-    	width=4.8cm, bar width=1.7ex, height=9.8cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.12, \bbar{x}{0},
+\hspace*{-2mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.6cm}{1.5ex}
+    	width=4.8cm, bar width=1.7ex, height=11.0cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.15, \bbar{x}{0},
 		yticklabels from table={\rs}{name}, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=2, assume math mode},
-		legend style={text=black!70, at={(1.1,1.12)}, legend columns=1, 
+		legend style={text=black!70, at={(1.14,0.12)}, legend columns=1, 
 				fill=none, draw=none}]
 	\addplot[fill=teal!50!green, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\rs};
@@ -2364,13 +2378,12 @@ When thinking about the longer-term trends in these data, it's important to note
   		table [y expr=-\coordindex, x index=2] {\rs};
  	\legend{\input{text/rs_mon2.txt}, \input{text/rs_mon1.txt}}
   	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Census, BEA} \hspace{38mm} \tbllink{rs_comp.csv}
+\end{tikzpicture}
+
+\footnotesize{Source: Census, BEA} \hfill \tbllink{rs_comp.csv}
 
 \end{minipage}
-
 \newpage
-
 
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE Government}
@@ -2379,14 +2392,15 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \small Public institutions are collectively referred to as the \textit{public-sector} or the \textit{government}. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate economic and financial activity. The government also enforces and determines the ownership of property. These activities are all extremely important to production and distribution in the economy.
 
-
 \subsection*{\color{black!70} \seriffont Government Spending and Investment}
-\small \input{text/gov.txt}  \\
-\vspace{2mm}
+\small \input{text/gov.txt}  
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Government Consumption and Investment}\\
-\footnotesize{\textit{percentage point contribution to real GDP growth}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Government Consumption and Investment}
+
+\footnotesize{\textit{percentage point contribution to real GDP growth}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-1, 0, 1},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.7, 1.14)}}]
@@ -2396,7 +2410,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{purple!70!magenta}{date}{A829RY}{data/gov.csv}
 	\legend{Defense, Federal Non-Defense, State and Local};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gov.csv}
 
 \end{minipage}
@@ -2754,47 +2769,47 @@ When thinking about the longer-term trends in these data, it's important to note
 \begin{minipage}{0.76\textwidth}
 
 \small The US Census Bureau \href{https://www.census.gov/foreign-trade/data/index.html}{reports} monthly data on US trade in goods, including by partner country. \input{text/trade_partner_sh.txt} 
-
-\end{minipage}
-
 \vspace{4mm}
 
+\normalsize \textbf{US Trade in Goods} \hspace{14mm} \input{text/trade_date.txt} \hspace{24mm} \input{text/trade_date2.txt}
 
-\noindent \normalsize \textbf{US Trade in Goods} \hspace{12mm} \input{text/trade_date.txt} \hspace{18mm} \input{text/trade_date2.txt}\\
-\footnotesize{\textit{census basis, millions of USD,}}\\
-\footnotesize{\textit{not seasonally adjusted}}\\
+\footnotesize{\textit{census basis, millions of USD,}}
 
-\vspace{-3mm}
+\footnotesize{\textit{not seasonally adjusted}}
 
-\noindent \hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+\vspace{-2mm}
+
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.54}
-		 \begin{tabular}{p{30mm} R{12mm} R{12mm} R{12mm}  R{15mm} R{12mm} R{12mm}}
+		 \begin{tabular}{p{30mm} R{12mm} R{12mm} R{12mm} R{15mm} R{12mm} R{12mm}}
 			 \input{data/trade_partner.tex}\hline
-		\end{tabular}}	\\
-
-\vspace{-3mm}		
+		\end{tabular}}	
+		
+\vspace{1mm}
 		
 \footnotesize{Source: Census Bureau}
 
-
+\end{minipage}
 \newpage
-
 \begin{minipage}{0.76\textwidth}
-
 \subsection*{\color{black!70} \seriffont International Investment Position}
-
 \small The Bureau of Economic Analysis \href{https://www.bea.gov/data/intl-trade-investment/international-investment-position}{reports} the US International Investment Position (IIP). These data are reported on a quarterly basis beginning in 2006. \\ 
 
-\input{text/niip.txt}\\
+\input{text/niip.txt}
 
-\vspace{1mm}
+\vspace{3mm}
 
-\noindent \normalsize \textbf{International Investment}\\
-\footnotesize{\textit{share of GDP, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={50, 100, 150, 200}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
-		legend style={legend columns=1, at={(0.28, 0.9)}, fill=white}, fill between/on layer={main}]
+\normalsize \textbf{International Investment}
+
+\footnotesize{\textit{share of GDP, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={50, 100, 150, 200}, 
+		enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm, 
+		yticklabel style={text width=1.5em}, width=12.9cm,
+		legend style={legend columns=1, at={(0.28, 0.9)}, fill=white}, 
+		fill between/on layer={main}]
 	\rbars
 	\addplot[name path=F, ultra thick, no markers, color=red] 
 		table [x=date, y=Liab, col sep=comma] {data/iip.csv};
@@ -2804,10 +2819,9 @@ When thinking about the longer-term trends in these data, it's important to note
 		fill between[of=F and G];
 	\legend{Liabilities, Assets, Net IIP};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{iip.csv}
-
-
 \end{minipage}
 
 \newpage
@@ -2893,20 +2907,22 @@ When thinking about the longer-term trends in these data, it's important to note
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_lfs.csv}
-\end{minipage}\\
+\end{minipage}
 
-\vspace{2mm}
+\vspace{4mm}
 
 \begin{minipage}{0.76\textwidth}
 \small When a member of a household is not employed but looked for a job during the past four weeks or is on temporary layoff, they are considered \href{https://www.bls.gov/cps/cps_htgm.htm}{\textbf{unemployed}}. \input{text/cps_lfs2.txt}\\
 
-People who are not employed and not unemployed are considered to be outside of the labor force. \input{text/cps_lfs3.txt} \\
+People who are not employed and not unemployed are considered to be outside of the labor force. \input{text/cps_lfs3.txt} 
 
-\vspace{3mm}
+\vspace{5mm}
 
-\noindent \normalsize \textbf{Labor Force Status Changes}\\
-\footnotesize{\textit{percentage point contribution to one-year growth of age 15+ population}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Labor Force Status Changes}
+
+\footnotesize{\textit{percentage point contribution to one-year growth of age 15+ population}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
 		xticklabel={`\short{\year}}, clip=false, height=6.4cm,
 		legend cell align={left}, yticklabel style={text width=1.5em},
@@ -2917,7 +2933,8 @@ People who are not employed and not unemployed are considered to be outside of t
 	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs2.csv}{2.8pt}
 	\legend{Employed, Unemployed, Non-Participant};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_lfs2.csv}
 
 \end{minipage}
@@ -2926,60 +2943,57 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \begin{minipage}{0.76\textwidth}
 
-\small The labor force status of the US population varies by age, sex, and over time. Because very few people receive capital income, the share of the population with labor income is particularly important to overall levels of economic activity. \\
-
-\vspace{1mm}
-
-
-\noindent \normalsize \textbf{Labor Force Status}\\
-\footnotesize{\textit{\input{text/cps_lfs_date.txt}\unskip, thousands of people, not seasonally adjusted}}\\
-
-\vspace{-3mm}
-
-\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.52}
-		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} R{10.6mm} R{10.4mm} R{10.4mm}}
-			 \input{data/lfs_table1.tex}\hline
-		\end{tabular}
-		}	\\
-		
-\vspace{-3mm}		
-		
-\footnotesize{Source: Author's Calculations from CPS}\\
+\small The labor force status of the US population varies by age, sex, and over time. Because very few people receive capital income, the share of the population with labor income is particularly important to overall levels of economic activity. 
 
 \vspace{3mm}
 
-\small Additionally, changes over time in labor force status are particularly important to understanding both secular and cyclical trends in the economy. \\ 
+\noindent \normalsize \textbf{Labor Force Status}
 
-\vspace{2mm}
-
-
-\noindent \normalsize \textbf{Labor Force Changes}\\
-\footnotesize{\textit{Change from \input{text/cps_lfs_datepr.txt}\unskip, thousands of people}}\\
-
-\vspace{-3mm}
+\footnotesize{\textit{\input{text/cps_lfs_date.txt}\unskip, thousands of people, not seasonally adjusted}}
 
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.52}
-		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} R{10.6mm} R{10.4mm} R{10.4mm}}
-			 \input{data/lfs_table2.tex}\hline
-		\end{tabular}
-		}	\\
+		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
+		 				 R{10.6mm} R{10.4mm} R{10.4mm}}
+			 \input{data/lfs_table1.tex}\hline
+		\end{tabular}}
 		
-\vspace{-3mm}	
+\vspace{1mm}	
 	
 \footnotesize{Source: Author's Calculations from CPS}
 
+\vspace{4mm}
+
+\small Additionally, changes over time in labor force status are particularly important to understanding both secular and cyclical trends in the economy. 
+
+\vspace{3mm}
+
+\noindent \normalsize \textbf{Labor Force Changes}
+
+\footnotesize{\textit{Change from \input{text/cps_lfs_datepr.txt}\unskip, thousands of people}}
+
+\noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.52}
+		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
+		 				 R{10.6mm} R{10.4mm} R{10.4mm}}
+			 \input{data/lfs_table2.tex}\hline
+		\end{tabular}}
+		
+		\vspace{1mm}
+		
+\footnotesize{Source: Author's Calculations from CPS}
 
 \end{minipage}
-
 \newpage
 
 \begin{minipage}{0.325\textwidth}
-\noindent \normalsize \textbf{Labor Share of Income}\\
-\footnotesize{\textit{compensation of employees as share of}}\\
-\footnotesize{\textit{gross domestic income, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Labor Share of Income}
+
+\footnotesize{\textit{compensation of employees as share of}}
+
+\footnotesize{\textit{gross domestic income, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={52, 54, 56, 58}, 
 		enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, height=5.9cm, width=5.8cm, clip=false]
@@ -2987,8 +3001,10 @@ People who are not employed and not unemployed are considered to be outside of t
 	\stdline{blue!60!cyan}{date}{Share}{data/laborshare.csv}
 	\input{text/laborshare_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hspace{2mm} \tbllink{laborshare.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{2mm} \tbllink{laborshare.csv}
+
 \end{minipage}\hspace{7mm}
 \begin{minipage}{0.38\textwidth}
 \small The labor share of income measures how much labor is paid relative to the total income in the economy in a year. While the laborer share of the population has fallen, and an increasing share of income goes to depreciation of capital including housing, cyclical patterns suggest worker bargaining power also affects the labor share of income.  \input{text/laborshare.txt}
@@ -3077,24 +3093,22 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \begin{minipage}{0.76\textwidth} 
 
-\noindent \normalsize \textbf{Employment Rates of Largest Commuter Zones, \input{text/acs_ftfy_year.txt}}\\ 
-\vspace{-2mm}
+\normalsize \textbf{Employment Rates of Largest Commuter Zones, \input{text/acs_ftfy_year.txt}}
 
-\noindent \footnotesize \hspace{42mm} \textit{all ages} \hspace{20mm} \textit{age 25--54}\\
-\vspace{-2mm}
+\vspace{1mm}
+
+\footnotesize \hspace{42mm} \textit{all ages} \hspace{20mm} \textit{age 25--54}
  
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{24mm} R{15mm} R{15mm} R{15mm} R{15mm}}
 		 	& full-time \& full-year & employed & full-time \& full-year & employed \\
 			 \input{data/acs_emp_tables.tex}\hline
-		\end{tabular}
-		}	\\
+		\end{tabular}}	
+		
+\vspace{1mm}
 
-\footnotesize{Source: American Community Survey}\\
-
-\vspace{8mm}
-
+\footnotesize{Source: American Community Survey}
 \end{minipage}
 
 \newpage
@@ -3145,18 +3159,20 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \begin{minipage}{0.76\textwidth} 
 
-\small Employment rates vary over time, but also by age, gender, and education. Over the 12 months ending \input{text/cps_lfs_date.txt}, the employment rate for most education groups is lower than it was on average in the year 2000. Only older workers and women with advanced education have higher rates of employment than in 2000. \\
+\small Employment rates vary over time, but also by age, gender, and education. Over the 12 months ending \input{text/cps_lfs_date.txt}, the employment rate for most education groups is lower than it was on average in the year 2000. Only older workers and women with advanced education have higher rates of employment than in 2000. 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Employment Rates} \small \hspace{10mm} \cbox{blue} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!50} 2000\\
-\footnotesize{\textit{employed share of age group population, percent}}\\
+\normalsize \textbf{Employment Rates} \small \hspace{10mm} \cbox{blue} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!50} 2000
+
+\footnotesize{\textit{employed share of age group population, percent}}
+
+\vspace{1mm}
 
 \centerline{\small Total, Any Education}
-\hspace{22mm} Men \hspace{54mm} Women\\ 
+\hspace{22mm} Men \hspace{54mm} Women
 
-\vspace{-2mm}
-\noindent \hspace*{-4mm} \begin{tikzpicture}
+\hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
     	width=6.1cm, bar width=1.6ex, height=5.2cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
@@ -3183,15 +3199,14 @@ People who are not employed and not unemployed are considered to be outside of t
   	\addplot[fill=blue, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\empt};
   	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
 
-\vspace{1mm}
+\vspace{3mm}
 
 \centerline{\small High School Degree or Less}
-\hspace{22mm} Men \hspace{54mm} Women\\ 
+\hspace{22mm} Men \hspace{54mm} Women
 
-\vspace{-2mm}
-\noindent \hspace*{-4mm} \begin{tikzpicture}
+\hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
     	width=6.1cm, bar width=1.6ex, height=4.6cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
@@ -3218,14 +3233,13 @@ People who are not employed and not unemployed are considered to be outside of t
   	\addplot[fill=blue, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\emp};
   	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
 
-\vspace{1mm}
+\vspace{3mm}
 
 \centerline{\small Some College}
-\hspace{22mm} Men \hspace{54mm} Women\\  
+\hspace{22mm} Men \hspace{54mm} Women
 
-\vspace{-2mm}
 \noindent \hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
     	width=6.1cm, bar width=1.6ex, height=4.6cm,
@@ -3253,15 +3267,14 @@ People who are not employed and not unemployed are considered to be outside of t
   	\addplot[fill=blue, draw=none] 
   		table [y expr=-\coordindex, x index=8] {\emp};
   	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
 
-\vspace{1mm}
+\vspace{3mm}
 
 \centerline{\small Bachelor or Advanced Degree}
-\hspace{22mm} Men \hspace{54mm} Women\\ 
+\hspace{22mm} Men \hspace{54mm} Women 
 
-\vspace{-2mm}
-\noindent \hspace*{-4mm} \begin{tikzpicture}
+\hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
     	width=6.1cm, bar width=1.6ex, height=4.6cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
@@ -3288,22 +3301,20 @@ People who are not employed and not unemployed are considered to be outside of t
   	\addplot[fill=blue, draw=none] 
   		table [y expr=-\coordindex, x index=12] {\emp};
   	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
 
-\vspace{-1mm}
+\vspace{1mm}
 
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{empgroups.csv}
-
-
 \end{minipage}
 
 \newpage
-
 \begin{minipage}{0.76\textwidth} 
+\normalsize \textbf{Occupational Employment, \input{text/cps_lfs_date.txt}}
 
-\noindent \normalsize \textbf{Occupational Employment, \input{text/cps_lfs_date.txt}}\\
-\footnotesize{\textit{share of population employed, 12-month average, percent}}\\ 
-\noindent \hspace*{-9mm}  \begin{tikzpicture}
+\footnotesize{\textit{share of population employed, 12-month average, percent}}
+
+\hspace*{-9mm}  \begin{tikzpicture}
    \begin{axis}[clip=false, xbar stacked, \bbar{x}{0},
             stack negative=separate, ymajorgrids=false,
             yticklabels from table={\occ}{name},
@@ -3333,31 +3344,31 @@ People who are not employed and not unemployed are considered to be outside of t
             	[y expr=\coordindex, x=Second, col sep=semicolon] {\occ};
             \legend{Part-time, Full-time, Second Job}
         \end{axis}
-    \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculation from CPS} \hfill \tbllink{occs.csv}\\
-
-
+    \end{tikzpicture}
+    
+\footnotesize{Source: Author's Calculation from CPS} \hfill \tbllink{occs.csv}
 \end{minipage}
 
 \newpage
-
 \begin{minipage}{0.76\textwidth} 
-
 \subsection*{\color{black!70} \seriffont Unemployment}
 
 \small The headline unemployment rate, also known as the U3 unemployment rate, measures people who do not have a job but are looking for one or are on temporary layoff, as a share of the labor force (those employed and unemployed). \input{text/unemp1.txt}
 \end{minipage}\\
 
-\begin{minipage}{0.37\textwidth}
-\small BLS also \href{https://www.bls.gov/news.release/empsit.t15.htm}{reports} a broader measure of unemployment, known as U6. This labor under-utilization rate measure includes unemployed people counted in U3 as well as people who have given up looking for work and people who are part-time but would like to work full-time (part-time for economic reasons). \input{text/unemp2.txt}\\
-\end{minipage}\hspace{6mm}
+\begin{minipage}{0.305\textwidth}
+\small BLS also \href{https://www.bls.gov/news.release/empsit.t15.htm}{reports} a broader measure of unemployment, known as U6. This labor under-utilization rate includes unemployed people counted in U3 as well as people who have given up looking for work and people who are part-time but would like to work full-time. \input{text/unemp2.txt}
+
+\end{minipage}\hspace{7mm}
 \begin{minipage}{0.41\textwidth}
-\normalsize \textbf{Unemployment Measures}\\
-\footnotesize{\textit{share of labor force, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Unemployment Measures}
+
+\footnotesize{\textit{share of labor force, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, 
 		enlarge y limits={0.1}, ymin=1.2,
-		xticklabel={`\short{\year}}, height=3.8cm, width=6.2cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.0cm, width=6.7cm, clip=false]
 	\rbars
 	\stdline{blue}{date}{U6}{data/unemp2.csv}
 	\stdline{blue!50!cyan}{date}{Total}{data/unemp2.csv}
@@ -3366,20 +3377,26 @@ People who are not employed and not unemployed are considered to be outside of t
 	\input{text/u3_node.txt}
 	\input{text/u6_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: BLS} \hspace{31mm} \tbllink{unemp2.csv}
+\end{tikzpicture}
 
-\end{minipage}\\
+\footnotesize{Source: BLS} \hfill \tbllink{unemp2.csv}
+
+\end{minipage}
+
+\vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
-\small \input{text/unemp3.txt}\\
+\small \input{text/unemp3.txt}
 
-\vspace{1mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Unemployment Rate}\\
-\footnotesize{\textit{unemployed share of labor force}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, enlarge y limits={0.1},
+\normalsize \textbf{Unemployment Rate}
+
+\footnotesize{\textit{unemployed share of labor force}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, 
+		enlarge y limits={0.1}, yticklabel style={text width=1.4em},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm, ymin=1.2,
 		legend style={fill=white, at={(0.5, 1.01)}}]
 	\rbars
@@ -3388,12 +3405,13 @@ People who are not employed and not unemployed are considered to be outside of t
 	\stdline{blue!80!black}{date}{White}{data/unemp.csv}
 	\legend{Black, Hispanic, White};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp.csv}
 
 \end{minipage}
 
-\vspace{5mm}
+\vspace{3mm}
 
 \noindent \normalsize \textbf{Unemployment Measures}\\
 \footnotesize{\textit{seasonally adjusted, percent}\\
