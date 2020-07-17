@@ -107,7 +107,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-07-10},
+		xmax={2020-08-10},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -125,7 +125,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-02-01},
+		xmax={2021-01-01},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -193,7 +193,7 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-08-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-09-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rebars}{
 		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
@@ -201,7 +201,7 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-08-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-09-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 	
 	\newfontfamily\seriffont{SourceSerifPro}	
 	
@@ -2340,8 +2340,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
 	\input{text/rs_ns3m_node.txt}
 	\input{text/rs_44x72_node.txt}
-	\stdnode{6.4cm}{1.8cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
-	\stdnode{7.8cm}{2.7cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
+	\stdnode{9.4cm}{1.1cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
+	\stdnode{7.8cm}{2.5cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}
 
@@ -2849,10 +2849,10 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{green!90!blue}{date}{RXI_N.B.CA}{data/fx1.csv}
 	\stdline{red}{date}{RXI_N.B.JA}{data/fx1.csv}
 	\stdline{cyan!90!white}{date}{RXI_N.B.EU}{data/fx1.csv}
-	\stdnode{10.8cm}{0.6cm}{\footnotesize \color{blue!90!cyan}GBP}
-	\stdnode{5.5cm}{3.0cm}{\footnotesize \color{green!85!blue}CAD}
-	\stdnode{4.1cm}{1.1cm}{\footnotesize \color{cyan!90!white}EUR}
-	\stdnode{1.5cm}{1.24cm}{\footnotesize \color{red}JPY (100)}
+	\stdnode{10.6cm}{0.62cm}{\footnotesize \color{blue!90!cyan}GBP}
+	\stdnode{5.3cm}{3.0cm}{\footnotesize \color{green!85!blue}CAD}
+	\stdnode{4.0cm}{1.1cm}{\footnotesize \color{cyan!90!white}EUR}
+	\stdnode{1.45cm}{1.24cm}{\footnotesize \color{red}JPY (100)}
 	\end{axis}
 \end{tikzpicture}
 
@@ -2870,7 +2870,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={90, 100, 110, 120}, 
 		yticklabel style={text width=1.5em}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, width=6.0cm, height=6.0cm]
+		xticklabel={`\short{\year}}, width=6.0cm, height=6.2cm]
 	\rbars
 	\stdline{blue!60!black}{date}{JRXWTFB_N.B}{data/fx_idx.csv}
 	\end{axis}
@@ -2878,7 +2878,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{fx_idx.csv}
 \end{minipage}\hspace{8mm}
-\begin{minipage}{0.38\textwidth}
+\begin{minipage}{0.375\textwidth}
 \small Fed \href{https://www.federalreserve.gov/releases/h10/summary/default.htm}{trade-weighted dollar indices} show weighted-average foreign exchange rates with US trading partners, which simplify thinking about the overall role of foreign exchange rates on the US external sector. The Broad Dollar Index (see {\color{blue!60!black}\textbf{---}}), which starts in 2006, summarizes foreign exchange rates between the US and trading partners, weighting rates by the amount of trade in both goods and services.\\
 
 \input{text/twdbasic.txt}
