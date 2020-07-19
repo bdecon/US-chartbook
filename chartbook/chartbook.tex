@@ -4028,7 +4028,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \subsection*{\color{black!70} \seriffont Wage Growth}
 
-\small The \textbf{usual wages of full-time workers} can be measured at various points in the income distribution using the Current Population Survey. BLS reports these data by decile and quartile, with the most commonly used measure being the median usual weekly earnings. The \textbf{first decile} usual weekly earnings of full-time workers have increased rapidly over the past year, suggesting fewer people are working full-time for less than \$10 per hour.\\
+\small The \textbf{usual wages of full-time workers} can be measured at various points in the income distribution using the Current Population Survey. BLS reports these data by decile and quartile, with the most commonly used measure being the median usual weekly earnings.\\
 
 \input{text/uwe_basic.txt}
 
@@ -4042,46 +4042,77 @@ Among newly employed workers, the vast majority were considered to be out of the
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 300, 400, 500}, enlarge y limits={0.15},
 		clip=false, width=6.4cm, xmin=1988-12-15, yticklabel style={text width=1.5em}, 
-		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2019-10-01}},
-        minor xtick={}, xticklabels={`89, `00, `10, `19 Q4}]
+		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-04-01}},
+        minor xtick={}, xticklabels={`89, `00, `10, `20 Q2}]
 	\rbars
 	\stdline{lime!65!green}{date}{All}{data/uwe_bd.csv}
 	\stdline{blue!65!black}{date}{p10uwe}{data/uwe_bls.csv}
-	\node[right] at (axis cs:1989-07-01,485) {\footnotesize Levels, USD};
+	\node[right] at (axis cs:1989-07-01,510) {\footnotesize Levels, USD};
 	\end{axis}
 \end{tikzpicture} \hfill \hspace{3mm}
 \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, enlarge y limits={0.15},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10}, enlarge y limits={0.15},
 		clip=false, width=6.5cm, xmin=1989-12-15,
-		xtick={{1990-01-01}, {2000-01-01}, {2010-01-01}, {2019-10-01}},
-        minor xtick={}, xticklabels={`90, `00, `10, `19 Q4}]
+		xtick={{1990-01-01}, {2000-01-01}, {2010-01-01}, {2020-04-01}},
+        minor xtick={}, xticklabels={`90, `00, `10, `20 Q2}]
 	\rbars
 	\stdline{lime!65!green}{date}{All}{data/uwe_bd_gr.csv}
 	\stdline{blue!65!black}{date}{p10uwe}{data/uwe_bls_gr.csv}
-	\node[right] at (axis cs:1990-01-01,9.0) {\footnotesize One-year growth, percent};
+	\node[right] at (axis cs:1990-01-01,10.8) {\footnotesize One-year growth, percent};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics and Author's Calculations} \hfill \tbllink{uwe_bd.csv}*
 
-\vspace{8mm}
+\vspace{6mm}
 
+\normalsize \textbf{Usual Weekly Earnings}
 
-\normalsize \textbf{Weekly Earnings Growth, First Decile and Median}
+\footnotesize{\textit{full-time, wage and salary earners, age 16+, nominal USD}}
+
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{19mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} 
+		   R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm}}
+			 \input{data/wage_dist_bls2.tex}\hline
+		\end{tabular}}
+\vspace{1mm}
+		
+\footnotesize{Source: Bureau of Labor Statistics}
+
+\vspace{5mm}
+
+\normalsize \textbf{Weekly Earnings Growth}
 
 \footnotesize{\textit{full-time, wage and salary earners, age 16+, one-year growth, percent}}
 
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6, 8}, 
-		enlarge y limits={0.1}, legend style={at={(0.98, 1.13)}},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
-	\rbars
-	\stdline{cyan!70!blue}{date}{p10_sa}{data/p10med.csv}
-	\stdline{violet}{date}{p50_sa}{data/p10med.csv}
-	\legend{First Decile, Median};
-	\end{axis}
-\end{tikzpicture}
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{19mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} 
+		   R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm}}
+			 \input{data/wage_dist_bls.tex}\hline
+		\end{tabular}}
+\vspace{1mm}
+		
+\footnotesize{Source: Bureau of Labor Statistics}
 
-\footnotesize{Source: Author's Calculations} \hfill \tbllink{p10med.csv} 
+
+
+%\normalsize \textbf{Weekly Earnings Growth, First Decile and Median}
+
+%\footnotesize{\textit{full-time, wage and salary earners, age 16+, one-year growth, percent}}
+
+%\hspace*{-2mm} \begin{tikzpicture}
+%	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6, 8}, 
+%		enlarge y limits={0.1}, legend style={at={(0.98, 1.13)}},
+%		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
+%	\rbars
+%	\stdline{cyan!70!blue}{date}{p10_sa}{data/p10med.csv}
+%	\stdline{violet}{date}{p50_sa}{data/p10med.csv}
+%	\legend{First Decile, Median};
+%	\end{axis}
+%\end{tikzpicture}
+
+%\footnotesize{Source: Author's Calculations} \hfill \tbllink{p10med.csv} 
 
 \end{minipage}
 
