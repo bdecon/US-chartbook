@@ -1522,7 +1522,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \footnotesize{Source: Census Bureau} \hspace{26mm} \tbllink{homeown2.csv} 
 
 \end{minipage}\hspace{5.5mm}
-\begin{minipage}{0.31\textwidth}
+\begin{minipage}{0.315\textwidth}
 \small Census data also show large differences in homeownership rates by race and ethnicity. \input{text/homeown2.txt} \\
 
 \input{text/homeown3.txt}
@@ -4427,7 +4427,13 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}
 
-\vspace{5mm}
+\end{minipage}
+
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+
+\subsubsection*{\color{black!70} \seriffont Government Bonds}
 
 \small \input{text/rates_basic.txt} 
 
@@ -4449,6 +4455,24 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \end{tikzpicture}
 
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}
+
+\vspace{5mm}
+
+\normalsize \textbf{Selected US Treasury Rates}
+
+\footnotesize{\textit{constant maturity yield, percent}
+
+\hspace*{-1mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.54}
+\begin{tabular}{p{19mm} R{10mm} R{10mm} R{10mm} R{10mm}
+		 		 R{10mm} R{10mm} R{10mm} R{10mm}}
+			 \input{data/treasury_rates.tex}
+			 \hline
+		\end{tabular}}}
+
+\vspace{1mm}		
+		
+\footnotesize{Source: Federal Reserve}
 
 \end{minipage}
 
