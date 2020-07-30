@@ -358,18 +358,22 @@ Contents not reliable
 \subsection*{\color{black!70}\seriffont Economic Growth}
 
 \small GDP (see\cbox{red!95!black}) \input{text/gdp_gr.txt}
-\vspace{5mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Real Gross Domestic Product Growth}\\
-\footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5}, 
-		xticklabel={`\short{\year}}, clip=false, height=4.0cm]
+\normalsize \textbf{Real Gross Domestic Product Growth}
+
+\footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, 
+		yticklabel style={text width=1.4em}, 
+		xticklabel={`\short{\year}}, clip=false, height=4.6cm]
 	\rbars
 	\tsbar{red!95!black}{date}{A191RL}{data/gdp.csv}
-	\node[above, align=left] at (axis cs:2017-01-01,-8.5) {\scriptsize \input{data/gdp.txt}};
+	\node[above, align=left] at (axis cs:2017-01-01,-28.5) {\scriptsize \input{data/gdp.txt}};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdp.csv}
 
 \end{minipage}
@@ -382,10 +386,13 @@ Contents not reliable
 \small The \textbf{expenditure approach}, which compiles GDP from the sum of spending on domestic goods and services, gives insight into the sources of changes in overall economic activity. \input{text/gdp_exp_basic.txt}
 \vspace{5mm}
 
-\noindent \normalsize \textbf{Real GDP Growth by Expenditure Type}\\
-\footnotesize{\textit{percentage point contribution to GDP growth}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+\normalsize \textbf{Real GDP Growth by Expenditure Type}
+
+\footnotesize{\textit{percentage point contribution to GDP growth}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
+		yticklabel style={text width=1.4em}, height=5.2cm,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.83, 1.13)}}]
 	\rbars
 	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
@@ -395,7 +402,8 @@ Contents not reliable
 	\stdnode{2.2cm}{0.4cm}{\footnotesize $^*$ Includes change in private inventories}
 	\legend{Consumer Spending, Investment$^*$, Government, Net Exports};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{comp.csv}
 \end{minipage}
 
@@ -444,17 +452,23 @@ Contents not reliable
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdi.csv}
-\vspace{6mm}
+\end{minipage}
+
+\newpage
+\begin{minipage}{0.76\textwidth}
 
 \small Changes to GDP can be assigned to changes in \textbf{household inputs}: population (see\cbox{lime}), employment rates (see\cbox{green!30!teal!90!black}), average hours worked (see\cbox{blue}), and total economy productivity (see\cbox{cyan!50!white}). 
 \vspace{5mm}
 
-\noindent \normalsize \textbf{Real GDP Growth by Inputs}\\
-\footnotesize{\textit{percentage point contribution to GDP growth}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
+\normalsize \textbf{Real GDP Growth by Inputs}
+
+\footnotesize{\textit{percentage point contribution to GDP growth}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-75, -50, -25, 0, 25, 50},
+		height=6.8cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
-		legend style={at={(0.83, 1.13)}}]
+		legend style={at={(0.83, 1.0)}}]
 	\rbars
 	\sbar{lime}{date}{pop_contr}{data/gdpjobs.csv}
 	\sbar{green!30!teal!90!black}{date}{epop_contr}{data/gdpjobs.csv}
@@ -462,7 +476,8 @@ Contents not reliable
 	\sbar{blue}{date}{hours_contr}{data/gdpjobs.csv}	
 	\legend{Population, Employment Rate, Productivity, Average Hours};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Author's Calculations} \hfill \tbllink{gdpjobs.csv}
 \end{minipage}
 
@@ -472,7 +487,7 @@ Contents not reliable
 \footnotesize{\textit{percentage point contribution to real GDP/GDI growth \hspace{30mm} moving averages}\\ \vspace{4mm}
 \hspace*{-2mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.5pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{2mm} p{35.2mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} p{0mm} R{6.8mm} R{6.8mm} R{6.8mm} }
+		 \begin{tabular}{p{2mm} p{35.2mm} R{7.2mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} p{0mm} R{6.8mm} R{6.8mm} R{6.8mm} }
 \input{data/gdptable.tex}
 		\end{tabular}}	\\
 \footnotesize{Source: Bureau of Economic Analysis and Author's Calculations}
@@ -653,7 +668,8 @@ Contents not reliable
 \noindent \normalsize \textbf{Private Fixed Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth}}\\
 \noindent \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, -2, 0, 2, 5},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5},
+		yticklabel style={text width=1.4em}, height=5.2cm, 
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.78, 1.13)}}]
 	\rbars
@@ -920,7 +936,8 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \footnotesize{\textit{percentage point contribution to real personal income growth}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20, 30, 40, 50, 60},
+		height=6.2cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.8em}, 
 		legend style={at={(0.4, 1.13)}}]
 	\rbars
@@ -944,7 +961,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \footnotesize{\textit{percentage point contribution to real personal income growth \hspace{22mm} moving averages}}\\ \vspace{4mm}
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.52}
-		 \begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		 \begin{tabular}{p{41mm} R{7.6mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 		   R{7.8mm} R{6.7mm} R{6.7mm} }
 			 \input{data/pi.tex}
 			 \hline
@@ -1073,9 +1090,10 @@ Total income, labor income less taxes and including welfare and capital income, 
 \footnotesize{\textit{percentage point contribution to real GDP growth}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-6, -4, -2, 0, 2, 4},
-		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.95, 1)}}]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
+		xticklabel={`\short{\year}}, clip=false, height=5.2cm,
+		yticklabel style={text width=1.5em},
+		legend style={at={(0.95, 1.05)}}]
 	\rbars
 	\sbar{red}{date}{DGDSRY}{data/pce.csv}
 	\sbar{blue!75!white}{date}{OTHSERV}{data/pce.csv}
@@ -1099,7 +1117,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.55}
-	\begin{tabular}{p{2.0mm} p{38mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+	\begin{tabular}{p{2.0mm} p{38mm} R{7.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 					R{7.8mm} R{6.7mm} R{6.7mm}}
 		\input{data/pce.tex}
 		\hline
@@ -1146,9 +1164,10 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \footnotesize{\textit{percentage point contribution to real per capita PCE growth, one-year moving average}}
 
-\hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6},
-		xticklabel={`\short{\year}}, clip=false, 
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10},
+		xticklabel={`\short{\year}}, clip=false, height=7.0cm,
+		yticklabel style={text width=1.4em}, 
 		legend style={at={(0.63, 1.13)}}]
 	\rbars
 	\sbar{cyan!50!white}{date}{A067RC}{data/pcedecomp.csv}
@@ -2442,7 +2461,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \vspace{1mm}
 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={15, 20, 25}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 20, 30, 40, 50}, 
 		clip=false, width=6.7cm, 
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, enlarge y limits={lower, 0.2}, 
@@ -2685,7 +2704,9 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{percentage point contribution to real GDP growth}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -2, 0, 2, 4, 6},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
+		yticklabel style={text width=1.4em},
+		height=5.2cm,
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.91, 1.13)}}]
 	\rbars
@@ -3037,7 +3058,8 @@ People who are not employed and not unemployed are considered to be outside of t
 \footnotesize{\textit{percentage point contribution to gross labor income growth}}
 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30, 40},
+		height=6.0cm,
 		xticklabel={`\short{\year}}, clip=false,  yticklabel style={text width=1.5em},
 		legend style={at={(0.45, 1.13)}}]
 	\rbars
