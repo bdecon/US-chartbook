@@ -2287,7 +2287,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{industrial production as a share of total capacity, percent}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 80}, width=12.2cm, clip=false,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 70, 80}, width=12.2cm, clip=false,
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
 	\rbars
 	\thickline{blue!80!black}{date}{Total index}{data/tcu.csv}
@@ -4726,8 +4726,41 @@ Changes in prices affect the amount of goods and services that can purchased by 
 \newpage
 
 \begin{minipage}{0.76\textwidth}
+\normalsize \textbf{CPI Decomposition}
+
+\footnotesize{\textit{contribution to one-year change in CPI-U, percentage points}}
+
+\hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -3, -2, -1, 0, 1, 2, 3, 4, 5}, 
+		height=5.4cm, width=10.2cm,
+		enlarge x limits={0.04}, 
+		yticklabel style={text width=1.5em},
+		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, 
+				{2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01},
+				{2018-01-01}, {2019-01-01}, {2020-01-01}},
+        minor xtick={},
+        xticklabels={2011, `12, `13, `14, `15, `16, `17, `18, `19, `20},
+        legend cell align={left},
+		legend style={fill=white, legend columns=2, at={(0.7, 1.09)}}]
+	\rbars
+	\ctsbar{blue!75!cyan}{date}{core_goods}{data/cpi_decomp.csv}{2pt}
+	\ctsbar{green!80!yellow!80!black}{date}{core_services}{data/cpi_decomp.csv}{2pt}
+	\ctsbar{yellow!80!orange}{date}{shelter}{data/cpi_decomp.csv}{2pt}
+	\ctsbar{red}{date}{food_energy}{data/cpi_decomp.csv}{2pt}
+	\legend{Core Goods, Core Services, Shelter, Food \& Energy};
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Author's calculations from BLS data} \hspace{32mm} \tbllink{cpi_decomp.csv}
+
+\vspace{5mm}
+
+
 \small The consumer price index (CPI-U) is used in contracts that include cost adjustments. As a result, historical CPI-U data are not revised if there is a change to the way the CPI is calculated. For research purposes, however, it is ideal to have the most accurate measure of overall changes in prices faced by consumers. BLS also publishes a research series, the CPI-U-RS, which adjusts the historical data of the CPI-U to be consistent with the current methods of producing it. 
 \end{minipage}
+
+\newpage
+
 \subsection*{\color{black!70} \seriffont Producer Prices}
 
 \begin{minipage}{0.47\textwidth}
