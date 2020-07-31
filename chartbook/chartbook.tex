@@ -638,9 +638,11 @@ Contents not reliable
 
 \vspace{1mm}
 
-\noindent \normalsize \textbf{Total US Wealth to GDP Ratio}\\
-\footnotesize{\textit{total US wealth divided by GDP}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\normalsize \textbf{Total US Wealth to GDP Ratio}
+
+\footnotesize{\textit{total US wealth divided by GDP}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=0,
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.68, 1.13)}}]
@@ -650,7 +652,8 @@ Contents not reliable
 	\sbar{magenta!50!violet}{date}{Corporate Equities}{data/wealthgdp.csv}
 	\legend{Other, Residential Real Estate, Corporate Equities};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{wealthgdp.csv}
 \end{minipage}
 
@@ -661,13 +664,15 @@ Contents not reliable
 
 \small \textbf{Private fixed investment}, as measured in the national accounts, includes residential fixed investment, such as the construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but does not include spending on durable goods, such as automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment, software, and intellectual property products. Additionally, the change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.\\
 
-\input{text/inv_text.txt} \input{text/inv_text2.txt}\\
+\input{text/inv_text.txt} \input{text/inv_text2.txt}
 
-\vspace{4mm} 
+\vspace{5mm} 
 
-\noindent \normalsize \textbf{Private Fixed Investment}\\
-\footnotesize{\textit{percentage point contribution to real GDP growth}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\normalsize \textbf{Private Fixed Investment}
+
+\footnotesize{\textit{percentage point contribution to real GDP growth}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5},
 		yticklabel style={text width=1.4em}, height=5.2cm, 
 		xticklabel={`\short{\year}}, clip=false, 
@@ -678,9 +683,9 @@ Contents not reliable
 	\sbar{red}{date}{A014RY}{data/inv.csv}
 	\legend{Non-Residential, Residential, Change in Private Inventories};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inv.csv} 
+\end{tikzpicture}
 
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inv.csv} 
 \end{minipage}
 
 \newpage
@@ -707,13 +712,15 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \small Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the home-ownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. \\
 
-\input{text/hhform1.txt}\\
+\input{text/hhform1.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Household Formation by Type}\\
-\footnotesize{\textit{one-year moving average of annual growth rates, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Household Formation by Type}
+
+\footnotesize{\textit{one-year moving average of annual growth rates, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.58, 1.15)}, fill=white}]
@@ -727,7 +734,8 @@ Among those living in \textbf{households}, roughly 74 million are children under
 	\stdline{black}{date}{pop}{data/hhform.csv}
 	\legend{Rented, Owned, Population Growth};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
 
 \end{minipage}
@@ -743,9 +751,11 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \end{minipage}
 
 \begin{minipage}{0.32\textwidth}
-\noindent \normalsize \textbf{Age}\\
-\footnotesize{\textit{share of population, percent}}\\
-\noindent \hspace*{-4mm} \begin{tikzpicture}
+\normalsize \textbf{Age}
+
+\footnotesize{\textit{share of population, percent}}
+
+\hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.1cm}{1.5ex}
     	width=4.7cm, bar width=2.0ex, height=4.9cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
@@ -809,13 +819,13 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \begin{minipage}{0.33\textwidth}
 \small \input{text/cps_educ.txt} 
-\end{minipage}\hspace{5mm}
-\begin{minipage}{0.4\textwidth}
-\noindent \normalsize \textbf{Highest Level of Education}\\
-\footnotesize{\textit{age 25+ population, in millions, \input{text/cps_ltdate.txt}}}\\
+\end{minipage}\hspace{6mm}
+\begin{minipage}{0.39\textwidth}
+\normalsize \textbf{Highest Level of Education}
 
-\vspace{-1mm}
-\noindent \hspace*{-4mm} \begin{tikzpicture}
+\footnotesize{\textit{age 25+ population, in millions, \input{text/cps_ltdate.txt}}}
+
+\hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.5cm}{1.5ex}
     	width=5.3cm, bar width=3.4ex, height=5.6cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
@@ -828,9 +838,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
   	\addplot[fill=red!70!purple, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\edtot};
   	\end{axis}
-\end{tikzpicture}\\
-
-\vspace{-3mm}
+\end{tikzpicture}
 
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_educ_tot.csv}
 \end{minipage}
@@ -2907,6 +2915,23 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{minipage}
 
 \newpage
+
+\normalsize \textbf{Selected Exchange Rates}
+\vspace{-2mm}
+
+\footnotesize{\textit{units of foreign currency required to buy one US Dollar}}
+\vspace{-1mm}
+
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.52}
+		 \hspace{-1mm}\begin{tabular}{p{16mm} R{15mm} R{15mm} R{15mm} R{14.5mm} 
+		 				 R{14.5mm} R{14.5mm}}
+			 \input{data/fx_table.tex}\hline
+		\end{tabular}}	
+	
+\footnotesize{Source: Federal Reserve}
+
+\newpage
 \section*{\color{darkgray}\LARGE Labor Markets}
 \label{sec:lab}
 
@@ -4743,10 +4768,10 @@ Changes in prices affect the amount of goods and services that can purchased by 
         legend cell align={left},
 		legend style={fill=white, legend columns=2, at={(0.7, 1.08)}}]
 	\rbars
-	\ctsbar{blue!75!cyan}{date}{core_goods}{data/cpi_decomp.csv}{2pt}
-	\ctsbar{green!80!yellow!80!black}{date}{core_services}{data/cpi_decomp.csv}{2pt}
-	\ctsbar{yellow!80!orange}{date}{shelter}{data/cpi_decomp.csv}{2pt}
-	\ctsbar{red}{date}{food_energy}{data/cpi_decomp.csv}{2pt}
+	\ctsbar{blue!75!cyan}{date}{core_goods}{data/cpi_decomp.csv}{2.1pt}
+	\ctsbar{green!80!yellow!80!black}{date}{core_services}{data/cpi_decomp.csv}{2.1pt}
+	\ctsbar{yellow!80!orange}{date}{shelter}{data/cpi_decomp.csv}{2.1pt}
+	\ctsbar{red}{date}{food_energy}{data/cpi_decomp.csv}{2.1pt}
 	\legend{Core Goods, Core Services, Shelter, Food \& Energy};
 	\end{axis}
 \end{tikzpicture}
