@@ -4203,6 +4203,57 @@ Among newly employed workers, the vast majority were considered to be out of the
 \footnotesize{\textit{one-year growth, production and non-supervisory, \input{text/ahe_bar_date.txt}}}
 
 \input{text/ahe_chart.txt}
+\end{minipage}
+
+
+\newpage
+
+\subsubsection*{\color{black!70} \seriffont Wage Growth Tracker}
+
+\begin{minipage}{0.76\textwidth}
+
+\small The Federal Reserve Bank of Atlanta \href{https://www.frbatlanta.org/chcs/wage-growth-tracker}{publishes} a wage growth tracker that captures the distribution of changes in nominal hourly wages of the same people over one year. This approach avoids some of the compositional changes that affect aggregate wage growth measures, though the sample used to calculate the data is affected by changes to respondents' employment status, and by survey response rates. 
+
+\vspace{6mm}
+
+\normalsize \textbf{Wage Growth Tracker}
+
+\footnotesize{\textit{median one-year wage growth, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-1, 0, 1, 2, 3, 4, 5, 6}, 
+		enlarge y limits={0.1}, ymin=0.2,
+		xticklabel={`\short{\year}}, height=5.2cm, width=11.1cm, clip=false]
+	\rebars
+	\thinline{orange!60!white}{date}{bd_cps}{data/atl_wgt.csv}
+	\stdline{blue!75!cyan}{date}{3ma}{data/atl_wgt.csv}
+	\legend{Unsmoothed, 3-month moving average};
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Author's Calculations} \hspace{59mm} \tbllink{atl_wgt.csv}
+
+
+
+
+\vspace{16mm}
+
+\normalsize \textbf{Zero Wage Change}
+
+\footnotesize{\textit{share of individuals with one-year wage growth between -0.5 and 0.5 percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={8, 10, 12, 14, 16, 18}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=5.2cm, width=11.1cm, clip=false]
+	\rebars
+	\stdline{red}{date}{zwc}{data/atl_wgt.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Author's Calculations} \hspace{59mm} \tbllink{atl_wgt.csv}
+
+
 
 \end{minipage}
 
@@ -4646,7 +4697,7 @@ A large increase in the amount of money held by individuals and institutions can
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6, 7}, 
-		enlarge y limits={0.1}, xmax={2020-04-01}, ymin=0.5, ymax=6.8,
+		enlarge y limits={0.1}, xmax={2020-06-01}, ymin=0.5, ymax=6.8,
 		xticklabel={`\short{\year}}, height=6.0cm, width=6.8cm, clip=false]
 	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
@@ -4962,7 +5013,7 @@ Changes in prices affect the amount of goods and services that can purchased by 
 
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
 \small
-Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Ernie Tedeschi, and Vikas Sharma.
+Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Skanda Amarnath, Ernie Tedeschi, and Vikas Sharma.
 
 \end{minipage}
 
