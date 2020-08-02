@@ -4208,6 +4208,42 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \newpage
 
+\subsubsection*{\color{black!70} \seriffont Employment Cost Index}
+
+\begin{minipage}{0.76\textwidth}
+\small The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/eci.nr0.htm}{publishes} the employment cost index as a measure of changes in the cost of employing a fixed set of labor inputs. The index is less influenced by short-term changes in the industry and occupation composition of the US workforce. The publication separates total compensation and wages and salaries.
+
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.44\textwidth}
+
+\normalsize \textbf{Wage and Salary Growth}
+
+\footnotesize{\textit{private industry wage and salary workers,}}
+
+\footnotesize{\textit{12-month percent change}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4}, 
+		enlarge y limits={0.1}, ymin=0.2,
+		xticklabel={`\short{\year}}, width=7.5cm, height=5.0cm, clip=false]
+	\rebars
+	\stdline{green!75!blue!90!black}{date}{PrivateWS}{data/eci.csv}
+	\input{text/eci_node.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{eci.csv}
+
+\end{minipage} \hspace{6mm} \begin{minipage}{0.27\textwidth}
+\small \input{text/eci.txt}
+
+\end{minipage}
+
+\newpage
+
 \subsubsection*{\color{black!70} \seriffont Wage Growth Tracker}
 
 \begin{minipage}{0.76\textwidth}
@@ -4237,6 +4273,10 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 
 \vspace{16mm}
+
+\small Matching wage observations one year apart makes it possible to track how many people do not receive a wage increase. The Atlanta Fed measures this as the share of individuals who have one-year wage growth of between -0.5 and 0.5 percent.
+
+\vspace{3mm}
 
 \normalsize \textbf{Zero Wage Change}
 
@@ -4286,7 +4326,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \vspace{5mm}
 
-\small There are two areas to investigate in understanding trends in productivity growth rates. The first is the theory that the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, determines productivity growth. Such investment allows more goods and services to be produced by the same number amount of work. The second theory, sometimes called the \textit{Kaldor-Verdoorn Law}, is that overall economic growth and capacity utilization determine productivity growth. In this scenario, an economy facing real resource constraints is more likely to find ways to produce goods and services more efficiently.\\
+\small There are two areas to investigate in understanding trends in productivity growth rates. The first is the theory that the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, determines productivity growth. Such investment allows more goods and services to be produced by the same hours of work. The second theory, sometimes called the \textit{Kaldor-Verdoorn Law}, is that overall economic growth and capacity utilization determine productivity growth. In this scenario, an economy facing real resource constraints is more likely to find ways to produce goods and services more efficiently.\\
 
 
 \end{minipage}
