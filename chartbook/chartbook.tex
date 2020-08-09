@@ -333,7 +333,7 @@ Contents not reliable
 
 \begin{minipage}{0.37\textwidth}
 \noindent \normalsize \textbf{Expenditure Types}\\
-\footnotesize{\textit{per capita, thousands of 2020 Q1 dollars}}\\
+\footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.5cm, width=7.0cm]
@@ -1211,7 +1211,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30}, enlarge y limits={0.1},
 		yticklabel style={text width=1.4em},
-		xticklabel={`\short{\year}}, height=4.8cm, width=12.2cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.5cm, width=12.2cm, clip=false]
 	\rbars
 	\stdline{red}{date}{VALUE}{data/psavert.csv}
 	\input{text/psavert_node.txt}
@@ -1328,14 +1328,44 @@ Total income, labor income less taxes and including welfare and capital income, 
 		
 \footnotesize{Source: Federal Reserve, Federal Reserve Bank of New York, Bureau of Economic Analysis}
 \end{minipage}
-\vspace{2mm}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{\color{black!70} \seriffont Consumer Credit}
+
+\small The Federal Reserve also \href{https://www.federalreserve.gov/releases/g19/current/default.htm}{reports} consumer credit credit on a monthly basis. \input{text/cc_dpi.txt}\\
+
+\input{text/cc_dpi_2.txt}
+
+\vspace{3mm}
+
+\normalsize \textbf{Consumer Credit}
+
+\footnotesize{\textit{share of disposable personal income, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={16, 18, 20, 22, 24, 26}, 
+		enlarge y limits={0.1}, height=5.4cm, width=12.4cm, 
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\thickline{lime!75!green}{date}{value}{data/cc_dpi_quarterly.csv}
+	\thinline{green!70!blue!80!black}{date}{value}{data/cc_dpi_monthly.csv}
+	\input{text/cc_dpi_monthly_node.txt}
+	\stdnode{3.3cm}{0.65cm}{\color{lime!75!green}FRBNY}
+	\stdnode{8.2cm}{3.2cm}{\color{green!70!blue!80!black}Fed G.19}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve; FRBNY} \hfill \tbllink{cc_dpi_monthly.csv}
+\end{minipage}
+
+\vspace{5mm}
 
 \subsubsection*{\color{black!70} \seriffont Financial Obligations}
 \begin{minipage}{0.3\textwidth}
 \small Payments to service debt, along with rent, auto lease payments, homeowner's insurance, and property tax are considered financial obligations. The Federal Reserve \href{https://www.federalreserve.gov/releases/housedebt/default.htm}{reports} financial obligations as a share of disposable personal income. \input{text/for.txt}  (see {\color{blue!80!black}\textbf{---}}). The measure peaked at 18.1 percent in 2007 Q4, during the housing bubble.
 \end{minipage}\hspace{8mm}
 \begin{minipage}{0.405\textwidth}
-\normalsize \textbf{Financial Obligation Ratio}
+\normalsize \textbf{Financial Obligations Ratio}
 
 \footnotesize{\textit{share of disposable personal income, percent}}
 
@@ -2289,9 +2319,10 @@ When thinking about the longer-term trends in these data, it's important to note
 \begin{minipage}{0.76\textwidth}
 \small The Federal Reserve's monthly industrial production \href{https://www.federalreserve.gov/releases/g17/}{report} also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called \textbf{capacity utilization}, and calculated as industrial production as a share of total industrial capacity. Long-term, capacity utilization has fallen as many US factories and industrial production facilities closed. \input{text/tcu.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
 \normalsize \textbf{Capacity Utilization}
+
 \footnotesize{\textit{industrial production as a share of total capacity, percent}}
 
 \hspace*{-2mm} \begin{tikzpicture}
@@ -2302,8 +2333,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{blue!40!cyan}{date}{Manufacturing}{data/tcu.csv}
 	\input{text/tcu_tot_node.txt}
 	\input{text/tcu_mfg_node.txt}
-	\stdnode{8.8cm}{1.5cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
-	\stdnode{7.7cm}{2.3cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
+	\stdnode{8.8cm}{1.55cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
+	\stdnode{7.55cm}{2.3cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}
 
@@ -2630,7 +2661,11 @@ When thinking about the longer-term trends in these data, it's important to note
 \small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). 
 
 \subsection*{\color{black!70} \seriffont Balance of Payments}
-\small The \textbf{current account balance} can be decomposed into the balance on trade in goods (see\cbox{yellow!60!lime!85!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes [see\cbox{green!80!blue}]). \input{text/cab.txt} 
+\small The \textbf{current account balance} captures international payments for goods and services as well as international transfers of money and net income received from ownership of foreign assets. It is the result of a set of payments to US residents, called current receipts, which are largely for exports of goods and services and returns on foreign assets, and a set of payments from US residents to the rest of the world, called current payments. Current payments are for goods and services imports, as well as transfers and payments for foreign ownership of US-based assets.\\
+
+The current account balance can be decomposed into the balance on trade in goods (see\cbox{yellow!60!lime!85!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes [see\cbox{green!80!blue}]). \\
+
+\input{text/cab.txt} 
 
 \vspace{4mm}
 
@@ -2639,7 +2674,8 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{balance on individual current account component, as percent of GDP}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-8, -6, -4, -2, 0, 2, 4}, 
+		height=5.0cm,
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.71, 1.13)}}]
 	\rbars
@@ -2655,7 +2691,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}
 \end{minipage}
 
-\vspace{4mm}
+\newpage
 
 \noindent \normalsize \textbf{Components of Current Account}\\
 \footnotesize{\textit{share of GDP, percent \hspace{70mm} moving averages}\\ \vspace{4mm}
@@ -3546,9 +3582,28 @@ People who are not employed and not unemployed are considered to be outside of t
 \input{text/ltu.txt} 
 \input{text/unempdur.txt} Both measures of unemployment duration are elevated from the levels typically seen several years into an expansion.
 
+\vspace{3mm}
+
+\normalsize \textbf{Duration of Unemployment}
+
+\footnotesize{\textit{in weeks}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30, 40, 50}, 
+		enlarge y limits={0.1}, ymin=3.5,
+		xticklabel={`\short{\year}}, height=5.0cm, clip=false]
+	\rbars
+	\stdline{orange}{date}{Mean}{data/unempdur.csv}
+	\stdline{green!75!blue}{date}{Median}{data/unempdur.csv}
+	\stdnode{10.1cm}{1.1cm}{\color{green!75!blue}Median}
+	\stdnode{9.5cm}{2.7cm}{\color{orange}Average}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: BLS} \hfill \tbllink{unempdur.csv}
 \end{minipage}
 
-\vspace{4mm}
+\vspace{6mm}
 
 \begin{minipage}{0.37\textwidth}
 \normalsize \textbf{Long-term Unemployed}
@@ -3566,25 +3621,6 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{tikzpicture}
 
 \footnotesize{Source: BLS} \hfill \tbllink{ltu.csv}
-\end{minipage}\hspace{7mm}
-\begin{minipage}{0.34\textwidth}
-\normalsize \textbf{Duration of Unemployment}
-
-\footnotesize{\textit{in weeks}}
-
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50}, 
-		enlarge y limits={0.1}, ymin=3.5,
-		xticklabel={`\short{\year}}, height=4.8cm, width=6.3cm, clip=false]
-	\rbars
-	\stdline{green!75!blue}{date}{Median}{data/unempdur.csv}
-	\stdline{orange}{date}{Mean}{data/unempdur.csv}
-	\stdnode{3.9cm}{0.4cm}{\footnotesize \color{green!75!blue}Median}
-	\stdnode{1.1cm}{1.7cm}{\footnotesize \color{orange}Average}
-	\end{axis}
-\end{tikzpicture}
-
-\footnotesize{Source: BLS} \hfill \tbllink{unempdur.csv}
 \end{minipage}
 \newpage
 
@@ -3613,15 +3649,15 @@ People who are not employed and not unemployed are considered to be outside of t
 \newpage
 
 
-\subsubsection*{\color{black!70} \seriffont Jobless Claims}
-
 \begin{minipage}{0.76\textwidth}
+
+\subsubsection*{\color{black!70} \seriffont Jobless Claims}
 
 \small \input{text/icsa.txt}\\
 
 \input{text/ccsa.txt}
 \end{minipage}
-\vspace{3mm}
+\vspace{1mm}
 
 \begin{minipage}{0.335\textwidth}
 \normalsize \textbf{New UI Claims}
@@ -3633,7 +3669,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, 
 		enlarge y limits={0.05}, ymin=0.25, xmin={2018-01-01},
-		xticklabel={`\short{\year}}, height=6.7cm, width=6.3cm]
+		xticklabel={`\short{\year}}, height=6.6cm, width=6.3cm]
 	\rbars
 	\stdline{cyan!85!blue}{date}{VALUE}{data/icsa.csv}
 	\end{axis}
@@ -3652,13 +3688,45 @@ People who are not employed and not unemployed are considered to be outside of t
 	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 5, 10, 15, 20}, 
 		enlarge y limits={0.05}, ymin=0.25, xmin={2018-01-01},
 		yticklabel style={text width=1.4em},
-		xticklabel={`\short{\year}}, height=6.7cm, width=6.3cm]
+		xticklabel={`\short{\year}}, height=6.6cm, width=6.3cm]
 	\rbars
 	\stdline{green!70!blue}{date}{VALUE}{data/ccsa.csv}
 	\end{axis}
 \end{tikzpicture}
 
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
+
+\end{minipage}
+
+\vspace{5mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\subsubsection*{\color{black!70} \seriffont Labor Force Participation}
+
+\small Those who are either employed or unemployed are considered to be in the labor force. Over the long terms, the share of the US population that is in the labor force has been falling because of the aging of the population. However, non-participation in the labor force is often cyclical and the result of economic conditions. For example, during a downturn more people become discouraged by their labor force prospects and stop looking for work, removing them from the labor force.\\
+
+\input{text/lfpr_text.txt}
+
+\vspace{3mm}
+
+\normalsize \textbf{Labor Force Participation Rate}
+
+\footnotesize{\textit{labor force as share of population, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 62, 64, 66, 68}, 
+		width=12.2cm, 
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\stdline{red}{date}{lfpr}{data/lfpr.csv}
+	\input{text/lfpr_node.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lfpr.csv}
+
+
 \end{minipage}
 
 \newpage
@@ -4248,7 +4316,9 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \begin{minipage}{0.76\textwidth}
 
-\small The Federal Reserve Bank of Atlanta \href{https://www.frbatlanta.org/chcs/wage-growth-tracker}{publishes} a wage growth tracker that captures the distribution of changes in nominal hourly wages of the same people over one year. This approach avoids some of the compositional changes that affect aggregate wage growth measures, though the sample used to calculate the data is affected by changes to respondents' employment status, and by survey response rates. 
+\small The Federal Reserve Bank of Atlanta \href{https://www.frbatlanta.org/chcs/wage-growth-tracker}{publishes} a wage growth tracker that captures the distribution of changes in nominal hourly wages of the same people over one year. This approach avoids some of the compositional changes that affect aggregate wage growth measures, though the sample used to calculate the data is affected by changes to respondents' employment status, and by survey response rates. \\
+
+\input{text/atl_wgt.txt}
 
 \vspace{6mm}
 
@@ -4274,7 +4344,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \vspace{16mm}
 
-\small Matching wage observations one year apart makes it possible to track how many people do not receive a wage increase. The Atlanta Fed measures this as the share of individuals who have one-year wage growth of between -0.5 and 0.5 percent.
+\small Matching wage observations one year apart makes it possible to track how many people do not receive a wage increase. The Atlanta Fed measures this as the share of individuals who have one-year wage growth of between -0.5 and 0.5 percent. The Atlanta Fed approach is replicated using the bd CPS and a 3-month moving average. \input{text/atl_zwc.txt}
 
 \vspace{3mm}
 
