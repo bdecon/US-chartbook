@@ -3624,7 +3624,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \footnotesize{Source: BLS} \hfill \tbllink{ltu.csv}
 \end{minipage}
 
-\vspace{3mm}
+\vspace{4mm}
 
 \begin{minipage}{0.76\textwidth} 
 \small \input{text/unempdur.txt}
@@ -4163,6 +4163,40 @@ Among newly employed workers, the vast majority were considered to be out of the
 \small \input{text/ptecon.txt}
 \end{minipage}
 
+\vspace{8mm}
+
+\subsection*{\color{black!70} \seriffont More Than One Job}
+
+\begin{minipage}{0.76\textwidth}
+
+\small Multiple jobholding rates have been fairly stable from 2000 to 2019. The household survey used to identify people with more than one job asks about a specific reference week. As a result, the multiple jobholding rate is not intending to capture people who rely on a patchwork of multiple jobs over time, but usually just work at one job within a given week. 
+
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.43\textwidth}
+
+\normalsize \textbf{Multiple Jobholders}
+
+\footnotesize{\textit{percent of workers}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={4, 5, 6}, 
+		enlarge y limits={0.1}, clip=false,
+		xticklabel={`\short{\year}}, height=4.5cm, width=7.3cm, clip=false]
+	\rebars
+	\stdline{cyan!50!blue}{date}{MJH}{data/mjh.csv}
+	\input{text/mjh_node.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{mjh.csv} 
+\end{minipage}
+\hspace{7mm}
+\begin{minipage}{0.28\textwidth}
+\small \input{text/mjh.txt}
+\end{minipage}
 
 
 \newpage
