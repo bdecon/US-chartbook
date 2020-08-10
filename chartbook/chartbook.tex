@@ -2689,8 +2689,11 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}
-\end{minipage}
 
+\vspace{4mm}
+
+\small US current payments exceed current receipts and the US runs a persistent current account deficit. As a result, the extra flow of income (including in the form of goods and services) is balanced by an outflow of assets. Economic theory suggests that investment flows towards countries with lower labor costs and less capital per worker, as they have higher marginal productivity from additional capital. However, in the case of the US the opposite is happening, as net investment is flowing from less-developed countries with lower wages into the US. In other words, the US is borrowing money from less-developed countries to balance out its trade deficit, as shown in the financial accounts. 
+\end{minipage}
 \newpage
 
 \noindent \normalsize \textbf{Components of Current Account}\\
@@ -2705,7 +2708,9 @@ The current account balance can be decomposed into the balance on trade in goods
 		
 \vspace{-6mm}
 \footnotesize{Source: Bureau of Economic Analysis}
-\newpage
+
+\vspace{6mm}
+
 \begin{minipage}{0.76\textwidth}
 \small Financial account transactions include the net domestic acquisition of foreign assets and the net domestic incurrence of foreign liabilities. The US \textbf{financial account balance} (see\cbox{yellow!80!orange}) is the net lending or borrowing of the combined domestic sectors with the rest of the world. The timing of payments lead to a statistical discrepancy (see\cbox{red}), but the financial and capital account balance and current account balance otherwise sum to zero. \\
 
@@ -3579,8 +3584,50 @@ People who are not employed and not unemployed are considered to be outside of t
 \subsubsection*{\color{black!70} \seriffont Duration of unemployment}
 \small When someone is unemployed for an extended period of time they risk running out of unemployment benefits, thereby having a sharp reduction in income. Additionally, people may have more trouble re-entering the labor market after a long period of unemployment. \\
 
-\input{text/ltu.txt} 
-\input{text/unempdur.txt} Both measures of unemployment duration are elevated from the levels typically seen several years into an expansion.
+\input{text/ltu.txt}
+\end{minipage}
+
+\vspace{3mm}
+
+\begin{minipage}{0.37\textwidth}
+\normalsize \textbf{Long-term Unemployed}
+
+\footnotesize{\textit{unemployed 27+ weeks, share of population}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3}, 
+		enlarge y limits={0.1}, ymin=0.1,
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.4cm, clip=false]
+	\rbars
+	\stdline{blue}{date}{LT}{data/ltu.csv}
+	\input{text/ltu_node.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: BLS} \hfill \tbllink{ltu.csv}
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.37\textwidth}
+\normalsize \textbf{Long-term Unemployed}
+
+\footnotesize{\textit{unemployed 15+ weeks, share of population}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3, 4, 5}, 
+		enlarge y limits={0.1}, ymin=0.1,
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.4cm, clip=false]
+	\rbars
+	\stdline{red}{date}{MT}{data/ltu.csv}
+	\input{text/ltu_node2.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: BLS} \hfill \tbllink{ltu.csv}
+\end{minipage}
+
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth} 
+\small \input{text/unempdur.txt}
 
 \vspace{3mm}
 
@@ -3601,26 +3648,6 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{tikzpicture}
 
 \footnotesize{Source: BLS} \hfill \tbllink{unempdur.csv}
-\end{minipage}
-
-\vspace{6mm}
-
-\begin{minipage}{0.37\textwidth}
-\normalsize \textbf{Long-term Unemployed}
-
-\footnotesize{\textit{unemployed 27+ weeks, share of population}}
-
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3}, 
-		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=4.8cm, width=6.4cm, clip=false]
-	\rbars
-	\stdline{blue}{date}{VALUE}{data/ltu.csv}
-	\input{text/ltu_node.txt}
-	\end{axis}
-\end{tikzpicture}
-
-\footnotesize{Source: BLS} \hfill \tbllink{ltu.csv}
 \end{minipage}
 \newpage
 
