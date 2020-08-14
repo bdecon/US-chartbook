@@ -591,13 +591,15 @@ Contents not reliable
 
 \small The contribution of different sectors to the \textbf{total change in borrowing} can identify potential risks in the domestic economy. For example, the tech bubble of the late 1990s and early 2000s shows up as a large increase in corporate borrowing. The housing bubble from the 1990s to 2007 shows up as an increase in household borrowing. Government borrowing increased following the collapse of the housing bubble, in an effort to compensate for the massive fall in wage income. Keep in mind, however, that the vast majority of liabilities in the domestic economy are to other domestic parties.\\
 
-\input{text/liabgr.txt} \\
+\input{text/liabgr.txt} 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Real Debt Growth}\\
-\footnotesize{\textit{contribution to one-year percent change in liabilities, adjusted by PCE price deflator}}\\
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\normalsize \textbf{Real Debt Growth}
+
+\footnotesize{\textit{contribution to one-year percent change in liabilities, adjusted by PCE price deflator}}
+
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6, 8}, 
 		xmin = 1989-01-01, height=5.0cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
@@ -610,7 +612,8 @@ Contents not reliable
 	\sbar{green!72!black}{date}{FL114190005.Q}{data/liabgr.csv}
 	\legend{Fed. Gov.,State/Loc. Gov., Households, Corp bus., Non-corp. bus.};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabgr.csv}\end{minipage}
 
 \vspace{4mm}
@@ -634,9 +637,9 @@ Contents not reliable
 
 \subsection*{\color{black!70} \seriffont Wealth}
 
-\small \textbf{Total US wealth} is the tangible assets of all non-corporate sectors of the US, plus the market value of domestic corporate equities, less US financial obligations to the rest of the world. \input{text/wealthgdp.txt}\\
+\small \textbf{Total US wealth} is the tangible assets of all non-corporate sectors of the US, plus the market value of domestic corporate equities, less US financial obligations to the rest of the world. \input{text/wealthgdp.txt}
 
-\vspace{1mm}
+\vspace{4mm}
 
 \normalsize \textbf{Total US Wealth to GDP Ratio}
 
@@ -727,8 +730,8 @@ Among those living in \textbf{households}, roughly 74 million are children under
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
-	\stdnode{4.1cm}{3.0cm}{\scriptsize historical}
-	\stdnode{5.2cm}{3.0cm}{\scriptsize revised}
+	\stdnode{4.0cm}{3.0cm}{\scriptsize historical}
+	\stdnode{5.1cm}{3.0cm}{\scriptsize revised}
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
 	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
 	\stdline{black}{date}{pop}{data/hhform.csv}
@@ -961,9 +964,9 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \vspace{5mm}
 
-\small \input{text/pi.txt} \\
+\small \input{text/pi.txt} 
 
-\vspace{2mm}
+\vspace{4mm}
 
 \noindent \normalsize \textbf{Personal Income by Source}\\
 \footnotesize{\textit{percentage point contribution to real personal income growth \hspace{22mm} moving averages}}\\ \vspace{4mm}
@@ -985,9 +988,9 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/rdpigrowth.txt}\\
+\small \input{text/rdpigrowth.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
 \normalsize \textbf{After-Tax Income Growth}
 
@@ -1009,9 +1012,9 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \subsubsection*{\color{black!70} \seriffont Distribution of Personal Income}
 \small Labor income, which includes wages and salaries as well as self-employment income, is the vast majority of personal income. Over calendar year 2018, 52 percent of people have any labor income (see\cbox{red!70!yellow}). Only 43 percent of people have labor income above the single-person poverty threshold of \$12,800.\\
 
-Total income, labor income less taxes and including welfare and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). In most cases, the people who do not receive any income live with people who receive income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000. \\
+Total income, labor income less taxes and including welfare and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). In most cases, the people who do not receive any income live with people who receive income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000. 
 
-\vspace{2mm}
+\vspace{4mm}
 
 \normalsize \textbf{Distribution of Personal Income, 2018}
 
@@ -1519,7 +1522,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \footnotesize{\textit{contribution to one-year percent change in net worth, nominal}}
 
-\noindent \hspace*{-3mm} \begin{tikzpicture}
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.96, 1.13)}}]
@@ -1530,10 +1533,11 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\sbar{cyan!40!white}{date}{RV}{data/nw_gr.csv}
 	\legend{Rate of Net Investment, Income, Other Volume Changes, Holding Gains};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{nw_gr.csv}\\
+\end{tikzpicture}
 
-\vspace{3mm}
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{nw_gr.csv}
+
+\vspace{5mm}
 
 \small \input{text/nwcontrib.txt}
 
@@ -1553,9 +1557,11 @@ Total income, labor income less taxes and including welfare and capital income, 
 \vspace{1mm}
 
 \begin{minipage}{0.405\textwidth}
-\noindent \normalsize \textbf{Homeownership Rate}\\
-\footnotesize{\textit{share of households occupied by owners, percent}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Homeownership Rate}
+
+\footnotesize{\textit{share of households occupied by owners, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={40, 50, 60, 70}, 
 		enlarge y limits={0.03}, ymin=40, xmin={1991-01-01},
 		xticklabel={`\short{\year}}, height=8.8cm, width=7.0cm, clip=false]
@@ -1576,7 +1582,8 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\stdnode{0.9cm}{5.1cm}{\footnotesize \color{violet!60!magenta}Total}
 	\stdnode{4.3cm}{1.92cm}{\footnotesize \color{green!80!blue!85!black}Hispanic}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Census Bureau} \hspace{26mm} \tbllink{homeown2.csv} 
 
 \end{minipage}\hspace{5.5mm}
@@ -1656,7 +1663,7 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Northeast};
 	\end{axis}
 \end{tikzpicture}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
 		ymin = -15, ymax=25,
 		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
@@ -1775,9 +1782,11 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 In 2018, income from labor and capital ownership, called \textit{market income}, was below the Census Bureau threshold for poverty for 77.9 million people in the US. Disposable income subtracts taxes and includes market income plus income from government programs and tax credits. \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{According} to the Census Bureau Supplemental Poverty Measure (SPM), \textbf{41.4 million people are in poverty} after taxes and transfers. Government programs and tax credits moved the income of 36.5 million people above the poverty threshold.
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.22\textwidth}
-\noindent \normalsize \textbf{In Poverty, 2018}\\
-\footnotesize{\textit{millions of people}}\\ 
-  \noindent \hspace*{-4mm} \begin{tikzpicture}
+\normalsize \textbf{In Poverty, 2018}
+
+\footnotesize{\textit{millions of people}}
+ 
+  \hspace*{-4mm} \begin{tikzpicture}
     \begin{axis}[
     	\barplotnogrid axis y line=left, \barylab{1.5cm}{1.5ex} \bbar{x}{0},
 		yticklabel style={font=\footnotesize},
@@ -1796,8 +1805,10 @@ In 2018, income from labor and capital ownership, called \textit{market income},
       \addplot[green!85!blue] coordinates {(41.4, 0)};
       \addplot[blue] coordinates {(77.9, 1)};
     \end{axis}
-  \end{tikzpicture}\\
-\footnotesize{Source: CPS ASEC}\\
+  \end{tikzpicture}
+  
+\footnotesize{Source: CPS ASEC}
+
 \end{minipage}
 \vspace{1mm}
 
@@ -1866,13 +1877,15 @@ While some fully-employed people are in poverty, \textbf{the vast majority of po
 
 \small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In 2018, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a very low rate of poverty. The elderly also have a much lower poverty rate as the result of Social Security.\\
 
-By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty, as they are not as likely to have labor income. After social benefits and taxes (disposable income [see\cbox{green!85!blue}]), the elderly have much lower rates of poverty than other age cohorts. Higher survivorship for the wealthy also has the effect of reducing poverty in very old ages. Disposable income still leaves young adults and those just below social security and medicare age (late 50s and early 60s) vulnerable to poverty, relative to other ages.\\
+By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty, as they are not as likely to have labor income. After social benefits and taxes (disposable income [see\cbox{green!85!blue}]), the elderly have much lower rates of poverty than other age cohorts. Higher survivorship for the wealthy also has the effect of reducing poverty in very old ages. Disposable income still leaves young adults and those just below social security and medicare age (late 50s and early 60s) vulnerable to poverty, relative to other ages.
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Amount of Poverty by Age} \small \hspace{6mm} \cbox{blue} Market Income \ \hspace{2mm} \cbox{green!85!blue} Disposable Income (SPM)\\
-\footnotesize{\textit{in billions of 2018 US Dollars}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Amount of Poverty by Age} \small \hspace{6mm} \cbox{blue} Market Income \ \hspace{2mm} \cbox{green!85!blue} Disposable Income (SPM)
+
+\footnotesize{\textit{in billions of 2018 US Dollars}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[ymin=0, ymax=13, enlarge x limits={0.01},
 		width=6.7cm, height=5.9cm, ytick={0, 5, 10}, xtick={0, 10, 20, 30, 40, 50, 60, 70},
 		xlabel={age}]
@@ -1898,8 +1911,7 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 		col sep=comma]{data/poor_age_prev.csv}\closedcycle;	
 	\stdnode{0.5cm}{4.1cm}{\large 2014}
 	\end{axis}
-\end{tikzpicture}\\
-\vspace{-3mm}
+\end{tikzpicture}
 
 \footnotesize{Source: CPS ASEC, 2014 adjusted for inflation with CPI-U-RS} \hfill \tbllink{poor_age_latest.csv}
 
@@ -1907,7 +1919,8 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 
 \vspace{7mm}
 
-\noindent \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2018}\\
+\normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2018}
+
 \footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,573}}
 
 \vspace{-3mm}
@@ -1924,13 +1937,15 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 
 \small The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{reports} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2018, Social Security lifted income above the poverty line for 27.2 million people, by far the most effective program for reducing poverty. Refundable tax credits, such as the earned income tax credit and child tax credit, lifted nine million people out of poverty. These tax credits are phased-in (not fully-refundable), meaning they do not reach the poorest of poor people. As a result, phased-in tax credits have more impact on the poverty headcount than on poverty, relative to programs designed to help the poorest of the poor.\\
 
-In terms of elements that add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of eight million people to fall below the poverty line. Work expenses additionally put 5.7 million people in poverty.\\
+In terms of elements that add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of eight million people to fall below the poverty line. Work expenses additionally put 5.7 million people in poverty.
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Effect of Individual Elements on Poverty Headcount}\\
-\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2018}}\\ 
-\noindent \hspace*{-12mm}  \begin{tikzpicture}
+\normalsize \textbf{Effect of Individual Elements on Poverty Headcount}
+
+\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2018}} 
+
+\hspace*{-12mm}  \begin{tikzpicture}
         \begin{axis}[clip=false,
             xbar stacked,
             \bbar{x}{0},
@@ -1985,17 +2000,12 @@ In terms of elements that add to the number of people in poverty, medical expens
         		visualization depends on={value \thisrow{label} \as \Label}] table 		
         		[x=xloc,y=yloc,col sep=comma] {data/spmtbl.csv};
         \end{axis}
-    \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl.csv}\\
-
-
+    \end{tikzpicture}
+    
+\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl.csv}
 
 \end{minipage}
-
-
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE Businesses}
 \label{sec:bus}
@@ -2005,9 +2015,11 @@ In terms of elements that add to the number of people in poverty, medical expens
 \small When businesses purchase items with a useful life of more than one year it is considered an investment, an exchange of assets rather than an expense. \textbf{Investments in fixed assets make workers more productive}, as they allow businesses to produce goods and services per hour of work. Business investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
 \vspace{5mm}
 
-\noindent \normalsize \textbf{Business Fixed Investment}\\
-\footnotesize{\textit{percentage point contribution to real GDP growth}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Business Fixed Investment}
+
+\footnotesize{\textit{percentage point contribution to real GDP growth}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.72, 1.13)}}]
@@ -2017,18 +2029,17 @@ In terms of elements that add to the number of people in poverty, medical expens
 	\sbar{violet}{date}{Y001RY}{data/businv.csv}
 	\legend{Structures, Equipment, Intellectual Property Products};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businv.csv} \hspace{12mm}\\
+\end{tikzpicture}
 
-\vspace{3mm}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businv.csv} \hspace{12mm}
 
-\small
+\vspace{5mm}
 
-\input{text/businv.txt} 
+\small \input{text/businv.txt} 
 
 \end{minipage}
 
-\noindent \normalsize \textbf{Business Investment}\\
+\normalsize \textbf{Business Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}\\ \vspace{4mm}
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
@@ -2048,11 +2059,11 @@ In terms of elements that add to the number of people in poverty, medical expens
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.43\textwidth}
 
-\noindent \normalsize \textbf{New Orders for Core Capital Goods}
+\normalsize \textbf{New Orders for Core Capital Goods}
 
 \footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}
 
-\noindent \hspace*{-2mm} \input{text/dgno.tex}
+\hspace*{-2mm} \input{text/dgno.tex}
 
 \footnotesize{Source: Census Bureau} \hspace{23mm} \tbllink{dgno.csv}
 \end{minipage}
@@ -2070,9 +2081,11 @@ When thinking about the longer-term trends in these data, it's important to note
 \vspace{1mm}
 
 \begin{minipage}{0.4\textwidth}
-\noindent \normalsize \textbf{Inventories to Sales Ratio}\\
-\footnotesize{\textit{total business}}\\ 
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Inventories to Sales Ratio}
+
+\footnotesize{\textit{total business}}
+ 
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={1.2, 1.3, 1.4, 1.5, 1.6}, 
 		xticklabel={`\short{\year}}, width=7.3cm]
 	\rbars
@@ -2080,8 +2093,10 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{blue!60!green}{date}{Value}{data/real_isratio.csv}
 	\legend{Nominal, Real}
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: FRED, BEA} \hfill \tbllink{isratio.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: FRED, BEA} \hfill \tbllink{isratio.csv}
+
 \end{minipage} \hspace{8mm}
 \begin{minipage}{0.31\textwidth}
 \small Census \href{https://www.census.gov/mtis/www/data/pdf/mtis_current.pdf}{reports} the nominal ratio of inventories to sales for the total business sector (see {\color{blue!40!cyan!80!white}\textbf{---}}). \input{text/isratio.txt}
@@ -2097,13 +2112,15 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \subsection*{\color{black!70} \seriffont Corporate Profits}
 
-\small The national accounts include detailed information on \textbf{aggregate corporate profits}, which are an important determinant in the business cycle. \input{text/cprof.txt} \\
+\small The national accounts include detailed information on \textbf{aggregate corporate profits}, which are an important determinant in the business cycle. \input{text/cprof.txt} 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Destination of Corporate Profits}\\
-\footnotesize{\textit{share of net national income}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Destination of Corporate Profits}
+
+\footnotesize{\textit{share of net national income}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, ymin=0.2,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.7, 1.13)}}]
 	\rbars
@@ -2112,18 +2129,21 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{red!80!orange}{date}{TAX}{data/cprof.csv}	
 	\legend{Net Dividends, Retained Earnings, Corporate Taxes};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cprof.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cprof.csv}
+
+\vspace{6mm}
+
+\small Aggregate corporate savings (corporate profits less dividends and corporate profit tax) are the result of net investment and non-business saving. Investment (see\cbox{green!70!black}) is a source of aggregate profit because it is revenue for one party but not an expense for the other. Non-business saving, which includes household (see\cbox{blue!80!green}), government (see\cbox{cyan}), and rest of world saving (see\cbox{yellow!70!lime!80!white}), necessarily reduces aggregate corporate profits because it is money that did not return to businesses as revenue. 
 
 \vspace{4mm}
 
-\small Aggregate corporate savings (corporate profits less dividends and corporate profit tax) are the result of net investment and non-business saving. Investment (see\cbox{green!70!black}) is a source of aggregate profit because it is revenue for one party but not an expense for the other. Non-business saving, which includes household (see\cbox{blue!80!green}), government (see\cbox{cyan}), and rest of world saving (see\cbox{yellow!70!lime!80!white}), necessarily reduces aggregate corporate profits because it is money that did not return to businesses as revenue. \\
+\normalsize \textbf{Sources of Corporate Saving}
 
-\vspace{2mm}
+\footnotesize{\textit{contribution to corporate saving, as share of gross national income}}
 
-\noindent \normalsize \textbf{Sources of Corporate Saving}\\
-\footnotesize{\textit{contribution to corporate saving, as share of gross national income}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.9, 1.13)}}]
 	\rbars
@@ -2133,7 +2153,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{blue!80!green}{date}{HH Saving}{data/cprof2.csv}	
 	\legend{Government Saving, ROW Saving, Investment, Household Saving};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cprof2.csv}
 
 \end{minipage}
@@ -2144,13 +2165,15 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \subsection*{\color{black!70} \seriffont Business Debt}
 
-\small \input{text/busdebtgdp.txt} \\
+\small \input{text/busdebtgdp.txt} 
 
-\vspace{2mm}
+\vspace{4mm}
 
-\noindent \normalsize \textbf{Nonfinancial Business Debt}\\
-\footnotesize{\textit{by type, as share of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{Nonfinancial Business Debt}
+
+\footnotesize{\textit{by type, as share of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75}, ymin=2,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.94, 1.13)}}]
 	\rbars
@@ -2159,10 +2182,11 @@ When thinking about the longer-term trends in these data, it's important to note
 	\sbar{blue}{date}{Nonbank Loans}{data/busdebtgdp2.csv}	
 	\legend{Mortgages and Bank Loans, Corporate Debt Securities, Nonbank Loans};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis} \hfill \tbllink{busdebtgdp2.csv}\\
+\end{tikzpicture}
 
-\vspace{4mm}
+\footnotesize{Source: Federal Reserve and Bureau of Economic Analysis} \hfill \tbllink{busdebtgdp2.csv}
+
+\vspace{6mm}
 
 \small The debt of the domestic financial sector includes agency and government-sponsored enterprise (GSE) backed securities (see\cbox{red!60!purple}), corporate and foreign bonds, loans (see\cbox{orange!70!yellow}), and open market paper. The long-term increase in financial sector debt reflects the emergence and growth of various asset-backed securities. In addition to home mortgage-backed securities, the domestic financial sector issues debt securities based on commercial mortgages, auto loans, credit card, student debt, and even restaurant revenue. \\
 
@@ -2196,8 +2220,10 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{minipage}\hspace{7mm}
 \begin{minipage}{0.35\textwidth}
 
-\noindent \normalsize \textbf{Industrial Production}\\
-\footnotesize{\textit{index, 2012=100}}\\
+\normalsize \textbf{Industrial Production}
+
+\footnotesize{\textit{index, 2012=100}}
+
 \input{text/ip_main_line.tex}
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro.csv}
 
@@ -2205,14 +2231,19 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \vspace{2mm} 
 
-\noindent \normalsize \textbf{Industrial Production Growth}\\
-\footnotesize{\textit{One-year growth \hspace{34mm} contribution to total \hspace{12mm} rate, percent}\\ 
+\normalsize \textbf{Industrial Production Growth}
+\vspace{-2mm}
+
+\footnotesize{\textit{One-year growth \hspace{34mm} contribution to total \hspace{12mm} rate, percent}
+\vspace{-2mm}
+
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.54}
 		 \begin{tabular}{p{2mm} p{44mm} R{7.3mm} R{7.3mm} R{7.3mm} R{7.3mm} | R{8mm} R{7.3mm} 
 		   R{7.3mm} R{7.3mm} }
 			 \input{data/indpro.tex}\hline
 		\end{tabular}}	
+		\vspace{-1mm}
 		
 \footnotesize{Source: Federal Reserve}}
 
@@ -2274,11 +2305,11 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \vspace{3mm}
 
-\noindent \normalsize \textbf{Recent data in detail}
+\normalsize \textbf{Recent data in detail}
 
 \vspace{1mm}
 
-\noindent \normalsize \hspace{14mm} Market Group \hspace{38mm} Industry Group \footnotesize 
+\normalsize \hspace{14mm} Market Group \hspace{38mm} Industry Group \footnotesize 
 
 \input{text/ip_latest_monthly.tex}
 
@@ -2291,9 +2322,11 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \end{minipage} \hspace{5mm}
 \begin{minipage}{0.4\textwidth}
-\noindent \normalsize \textbf{Industrial Production and Capacity}\\
-\footnotesize{\textit{total three-year growth, percent, \input{text/ip_ind_ldate.txt}}}\\ 
-\noindent \hspace*{-5mm} \begin{tikzpicture}
+\normalsize \textbf{Industrial Production and Capacity}
+
+\footnotesize{\textit{total three-year growth, percent, \input{text/ip_ind_ldate.txt}}}
+
+\hspace*{-5mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
     	width=5.5cm, bar width=1.8ex, height=10.8cm,
     	enlarge y limits={abs=0.32cm}, enlarge x limits=0.2, \bbar{x}{0},
@@ -2310,8 +2343,10 @@ When thinking about the longer-term trends in these data, it's important to note
   		table [y expr=-\coordindex, x index=1] {\ip};
  	\legend{Capacity, Production}
   	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{ip_comp.csv}\\
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{ip_comp.csv}
+
 \end{minipage}
 
 \vspace{2mm}
@@ -3889,12 +3924,13 @@ Among newly employed workers, the vast majority were considered to be out of the
 \end{minipage}
 
 \newpage
-
-\subsubsection*{\color{black!70} \seriffont Job Openings and Labor Turnover Survey}
 \begin{minipage}{0.76\textwidth}
+\subsubsection*{\color{black!70} \seriffont Job Openings and Labor Turnover Survey}
 \small Some types of \textbf{turnover} in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. Additionally, the job prospects outside of a firm affect the bargaining power of the workers inside of the firm. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{reports} the number of job openings, hires, and separations in several industry groups on a monthly basis. Within separations, these data distinguish voluntarily leaving a job as \textit{quits}. \\
 
-\small \input{text/jolts2.txt}\\
+\small \input{text/jolts2.txt}
+
+\vspace{3mm}
 
 \normalsize \textbf{Job Turnover}
 
@@ -3955,19 +3991,24 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/unjo.txt}\\
+\small \input{text/unjo.txt}
 
-\noindent \normalsize \textbf{Job Openings Per Unemployed Person}\\
-\footnotesize{\textit{job openings divided by total employment}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\vspace{3mm}
+
+\normalsize \textbf{Job Openings Per Unemployed Person}
+
+\footnotesize{\textit{job openings divided by total employment}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 0.5, 1.0, 1.5}, 
 		enlarge y limits={0.1}, ymin=0.05,
-		xticklabel={`\short{\year}}, height=5.6cm, width=12.3cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.6cm, width=12.4cm, clip=false]
 	\rebars
 	\stdline{magenta!80!violet!90!white}{date}{unjo}{data/unjo.csv}
 	\input{text/unjo_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unjo.csv}
 \end{minipage}
 
@@ -4123,7 +4164,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\rbars
 	\sbar{cyan!80!blue}{date}{hours}{data/lprod.csv}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lprod.csv}
 
 \end{minipage}
@@ -4299,9 +4341,9 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/ahe_summary.txt}\\
+\small \input{text/ahe_summary.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
 \normalsize \textbf{Average Hourly Earnings}
 
@@ -4457,9 +4499,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \vspace{5mm}
 
-\small There are two areas to investigate in understanding trends in productivity growth rates. The first is the theory that the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, determines productivity growth. Such investment allows more goods and services to be produced by the same hours of work. The second theory, sometimes called the \textit{Kaldor-Verdoorn Law}, is that overall economic growth and capacity utilization determine productivity growth. In this scenario, an economy facing real resource constraints is more likely to find ways to produce goods and services more efficiently.\\
-
-
+\small There are two areas to investigate in understanding trends in productivity growth rates. The first is the theory that the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, determines productivity growth. Such investment allows more goods and services to be produced by the same hours of work. The second theory, sometimes called the \textit{Kaldor-Verdoorn Law}, is that overall economic growth and capacity utilization determine productivity growth. In this scenario, an economy facing real resource constraints is more likely to find ways to produce goods and services more efficiently.
 \end{minipage}
 
 \newpage
@@ -4546,9 +4586,9 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \subsection*{\color{black!70} \seriffont Equity Markets}
 
-The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color{green!80!blue}\textbf{---}}) is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. The index is a broad measure of price levels in US equity markets. \input{text/sp500.txt}\\
+The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color{green!80!blue}\textbf{---}}) is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. The index is a broad measure of price levels in US equity markets. \input{text/sp500.txt}
 
-\vspace{2mm}
+\vspace{4mm}
 
 \normalsize \textbf{S\&P 500}
 
@@ -4607,11 +4647,15 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \begin{minipage}{0.76\textwidth}
 
-\small The total return on corporate equities includes both dividends and stock buybacks. US nonfinancial corporations have used stock buybacks to return money to investors, often at the expense of domestic fixed investment. \\
+\small The total return on corporate equities includes both dividends and stock buybacks. US nonfinancial corporations have used stock buybacks to return money to investors, often at the expense of domestic fixed investment. 
 
-\noindent \normalsize \textbf{Corporate Equity Payout}\\
-\footnotesize{\textit{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\vspace{3mm}
+
+\normalsize \textbf{Corporate Equity Payout}
+
+\footnotesize{\textit{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, 
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.49, 0.94)}, fill=white}]
 	\rbars
@@ -4619,15 +4663,17 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 	\sbar{magenta}{date}{Buybacks}{data/eq_payout.csv}	
 	\legend{Net Dividends, Net Issuance};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{eq_payout.csv}
 
 \vspace{4mm}
 
 \subsubsection*{\color{black!70} \seriffont Valuation}
 
-\small The cyclically-adjusted price to earnings ratio (CAPE) compares the current price of the S\&P 500 to the previous ten-years of total S\&P 500 returns, including dividends and buybacks (treated as dividends). Typically, earnings data cover the latest year or analyst forecasts for future earnings. Robert Shiller's CAPE intends to capture the full business cycle so that earnings are not biased by the idiosyncrasies of one point in a business cycle. \\
+\small The cyclically-adjusted price to earnings ratio (CAPE) compares the current price of the S\&P 500 to the previous ten-years of total S\&P 500 returns, including dividends and buybacks (treated as dividends). Typically, earnings data cover the latest year or analyst forecasts for future earnings. Robert Shiller's CAPE intends to capture the full business cycle so that earnings are not biased by the idiosyncrasies of one point in a business cycle. 
 
+\vspace{3mm}
 
 \normalsize \textbf{Price to Earnings Ratio}
 
@@ -4650,8 +4696,9 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \subsubsection*{\color{black!70} \seriffont Volatility}
 
-\small The Chicago Board Options Exchange uses S\&P 500 options data to \href{http://www.cboe.com/vix}{identify} expectations of future volatility. \input{text/vixbasic.txt}\\
+\small The Chicago Board Options Exchange uses S\&P 500 options data to \href{http://www.cboe.com/vix}{identify} expectations of future volatility. \input{text/vixbasic.txt}
 
+\vspace{3mm}
 
 \normalsize \textbf{S\&P 500 Volatility Index}
 
@@ -4762,30 +4809,36 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \begin{minipage}{0.39\textwidth}
 
-\noindent \normalsize \textbf{10-Year -- 3-Month Spread}\\
-\footnotesize{\textit{percentage point treasury yield spread}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{10-Year -- 3-Month Spread}
+
+\footnotesize{\textit{percentage point treasury yield spread}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
 		enlarge y limits={0.1}, xmin = 2011-12-15, ymin=-0.4, ymax=3,
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.5cm, clip=false]
 	\thinline{cyan!60!blue}{date}{Ten-3M}{data/spread.csv}
 	\input{text/spread_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve} \hspace{20mm} \tbllink{spread.csv} 
 \end{minipage}
 \hspace{2mm}
 \begin{minipage}{0.39\textwidth}
-\noindent \normalsize \textbf{10-Year -- 2-Year Spread}\\
-\footnotesize{\textit{percentage point treasury yield spread}}\\
-\noindent \hspace*{-2mm} \begin{tikzpicture}
+\normalsize \textbf{10-Year -- 2-Year Spread}
+
+\footnotesize{\textit{percentage point treasury yield spread}}
+
+\hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
 		enlarge y limits={0.1}, xmin = 2011-12-15, ymin=-0.4, ymax=3,
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.5cm, clip=false]
 	\thinline{orange}{date}{Ten-2Y}{data/spread.csv}
 	\input{text/spread_node2.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve} \hspace{20mm} \tbllink{spread.csv} 
 \end{minipage}
 
@@ -5116,7 +5169,7 @@ Changes in prices affect the amount of goods and services that can purchased by 
 
 \vspace{5mm}
 
-\noindent \normalsize \textbf{Personal Consumption Expenditure Price Index}\\
+\normalsize \textbf{Personal Consumption Expenditure Price Index}\\
 \footnotesize{\textit{annual growth, percent}}\\
 \vspace{30mm}
 

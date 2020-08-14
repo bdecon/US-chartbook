@@ -425,7 +425,7 @@ def fred_df(series, start='1989'):
     return df.loc[start:]    
     
     
-def end_node(data, color, percent=True, date=False):
+def end_node(data, color, percent=True, date=False, offset=0):
     if percent == True:
         pct = '\%'
     else:
@@ -435,13 +435,24 @@ def end_node(data, color, percent=True, date=False):
     else:
         dt = ''
     latest = data.iloc[-1]
+    offs = f'{offset}cm'
     date = dtxt(data.index[-1])['datetime']
-    text = (f'\\node[label={{0:{{\scriptsize\\rowcolors{{1}}{{}}{{white!0}}\setlength{{\\tabcolsep}}{{0.2pt}}\\begin{{tabular}}{{l}}{dt}{latest:.1f}{pct}\end{{tabular}}}}}}, circle, anchor=north, '+
+    text = (f'\\node[label={{[yshift={offs}]0:{{\scriptsize\\rowcolors{{1}}{{}}{{white!0}}\setlength{{\\tabcolsep}}{{0.2pt}}\\begin{{tabular}}{{l}}{dt}{latest:.1f}{pct}\end{{tabular}}}}}}, circle, anchor=north, '+
             f'{color}, fill, inner sep=1.0pt] at '+
             f'(axis cs:{date}, {latest:.3f}) {{}};')
     
     return text
     
+
+def node_adjust(df, color_dict):
+    '''Return offsets for node text'''
+    df = df[color_dict.keys()]
+    std = df.std().std()
+    lt = df.iloc[-1]
+    adj_list = lt[lt.sort_values().diff() < std]
+    d = {name: std/2 for name in adj_list.index}
+    return d
+
 
 def val_inc_pp(val, threshold=0.1):
     if threshold >= 0.1:
