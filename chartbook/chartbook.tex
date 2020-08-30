@@ -367,7 +367,7 @@ Contents not reliable
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, 
 		yticklabel style={text width=1.4em}, 
-		xticklabel={`\short{\year}}, clip=false, height=4.6cm]
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm]
 	\rbars
 	\tsbar{red!95!black}{date}{A191RL}{data/gdp.csv}
 	\node[above, align=left] at (axis cs:2017-01-01,-28.5) {\scriptsize \input{data/gdp.txt}};
@@ -392,7 +392,7 @@ Contents not reliable
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
-		yticklabel style={text width=1.4em}, height=5.2cm,
+		yticklabel style={text width=1.4em}, height=5.6cm,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.83, 1.13)}}]
 	\rbars
 	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
@@ -440,8 +440,8 @@ Contents not reliable
 \noindent \normalsize \textbf{Real Gross Domestic Income Growth}\\
 \footnotesize{\textit{percentage point contribution to GDI growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
-		xticklabel={`\short{\year}}, clip=false, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, height=5.6cm,
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
 		legend style={at={(0.65, 1.13)}}]
 	\rbars
 	\sbar{magenta!90!blue}{date}{A4002C}{data/gdi.csv}
@@ -466,7 +466,7 @@ Contents not reliable
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-75, -50, -25, 0, 25, 50},
-		height=6.8cm,
+		height=7.0cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
 		legend style={at={(0.83, 1.0)}}]
 	\rbars
@@ -724,14 +724,14 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \footnotesize{\textit{one-year moving average of annual growth rates, percent}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2},
-		xticklabel={`\short{\year}}, clip=false, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2, 3},
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
 		legend style={at={(0.58, 1.15)}, fill=white}]
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
-	\stdnode{4.0cm}{3.0cm}{\scriptsize historical}
-	\stdnode{5.1cm}{3.0cm}{\scriptsize revised}
+	\stdnode{4.0cm}{3.9cm}{\scriptsize historical}
+	\stdnode{5.1cm}{3.9cm}{\scriptsize revised}
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
 	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
 	\stdline{black}{date}{pop}{data/hhform.csv}
