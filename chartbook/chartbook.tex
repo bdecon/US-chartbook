@@ -440,7 +440,7 @@ Contents not reliable
 \noindent \normalsize \textbf{Real Gross Domestic Income Growth}\\
 \footnotesize{\textit{percentage point contribution to GDI growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.65, 1.13)}}]
 	\rbars
@@ -2144,7 +2144,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{contribution to corporate saving, as share of gross national income}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30}, height=5.8cm, 
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.9, 1.13)}}]
 	\rbars
 	\sbar{cyan}{date}{Gov Saving}{data/cprof2.csv}
@@ -4158,8 +4158,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-40, -30, -20, -10, 0, 5, 10}, 
-		yticklabel style={text width=1.5em}, width=12.9cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-40, -30, -20, -10, 0, 10}, 
+		yticklabel style={text width=1.5em}, width=12.9cm, height=5.8cm,
 		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
 	\rbars
 	\sbar{cyan!80!blue}{date}{hours}{data/lprod.csv}
