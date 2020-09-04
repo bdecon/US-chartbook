@@ -328,7 +328,7 @@ Contents not reliable
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70}\seriffont Types of Economic Activity}
 
-\small GDP is most-often calculated using the \href{https://www.bea.gov/help/glossary/expenditures-approach}{expenditures approach}, and can be decomposed into major types of domestic spending: consumer spending, private investment, and government spending and investment. To capture only domestic production, foreign spending on US produced goods and services is added, while imports (spending on non-US-produced goods and services) are subtracted.\\
+\small GDP calculated using the \href{https://www.bea.gov/help/glossary/expenditures-approach}{expenditures approach} is the sum of major types of domestic spending: consumer spending, private investment, and government spending and investment. To capture only domestic production, foreign spending on US produced goods and services is added, while imports (spending on non-US-produced goods and services) are subtracted.\\
 \end{minipage}
 
 \begin{minipage}{0.37\textwidth}
@@ -336,9 +336,9 @@ Contents not reliable
 \footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40}, 
-		xticklabel={`\short{\year}}, clip=false, height=5.5cm, width=7.0cm]
+		xticklabel={`\short{\year}}, clip=false, height=5.7cm, width=7.0cm]
 	\rbars
-	\stdnode{1.2cm}{3.26cm}{\footnotesize \color{yellow!65!orange}Consumer\\ \color{yellow!65!orange}Spending}
+	\stdnode{1.15cm}{3.29cm}{\footnotesize \color{yellow!65!orange}Consumer\\ \color{yellow!65!orange}Spending}
 	\stdline{yellow!65!orange}{date}{DPCERX}{data/gdp_pc_comp.csv}
 	\stdnode{1.6cm}{0.62cm}{\footnotesize \color{blue!70!black}Investment}
 	\stdline{blue!70!black}{date}{A006RX}{data/gdp_pc_comp.csv}
@@ -353,6 +353,25 @@ Contents not reliable
 \begin{minipage}{0.33\textwidth}
 \small \input{text/gdp_pc_comp.txt}
 \end{minipage}
+
+\vspace{4mm}
+
+\begin{minipage}{0.76\textwidth}
+\normalsize \textbf{Expenditure Types}
+
+\footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}
+
+\hspace{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.6}
+		 \begin{tabular}{p{54mm} R{13mm} R{13mm} R{13mm} R{13mm}}
+			\input{data/gdppc_levels.tex} \hline
+		\end{tabular}}
+\vspace{1mm}
+
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\end{minipage}
+\newpage
 
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70}\seriffont Economic Growth}
@@ -376,10 +395,7 @@ Contents not reliable
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdp.csv}
 
-\end{minipage}
-
-\newpage
-\begin{minipage}{0.76\textwidth}
+\vspace{10mm}
 
 \subsection*{\color{black!70} \seriffont Components of Growth}
 
@@ -1489,7 +1505,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Wealth/Net Worth}
-\small Wealth-holding, measured by net worth, varies between households. Net worth is an aggregate measure of the financial position of households, measured as total assets minus total liabilities. In 2016, white non-Hispanic households average net worth was \$933,700, compared to \$138,200 for black non-Hispanic households, and \$191,200 for Hispanic households of any race. Additionally, the wealth of a typical (median) household is much lower than the wealth of the average (mean) household, the result of a concentration of wealth among the wealthiest households.
+\small Wealth-holding varies between households. Net worth, measured as total assets minus total liabilities, captures the overall financial position--or wealth--of households. In 2016, white non-Hispanic households average net worth was \$933,700, compared to \$138,200 for black non-Hispanic households, and \$191,200 for Hispanic households of any race. Additionally, the wealth of a typical (median) household is much lower than the wealth of the average (mean) household, the result of a concentration of wealth among the wealthiest households.
 
 \vspace{3mm}
 
@@ -1501,11 +1517,11 @@ Total income, labor income less taxes and including welfare and capital income, 
 \hspace*{-3mm} \begin{tikzpicture}
 \begin{axis}[clip=false,
     symbolic x coords={White, Black, Hispanic, Other},
-    xtick=data, ymin=0, width=6.5cm, height=5cm, bar width=20pt,
+    xtick=data, ymin=0, width=6.7cm, height=5cm, bar width=20pt,
     enlarge x limits={0.2}, nodes near coords, 
     nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode},
-	xticklabel style={font=\footnotesize}]
+	xticklabel style={black, font=\small}]
     \addplot[ybar,fill=blue, draw=blue] coordinates {
         (White,933.7)
         (Black,138.2)
@@ -1518,11 +1534,11 @@ Total income, labor income less taxes and including welfare and capital income, 
 \begin{tikzpicture}
 \begin{axis}[clip=false,
     symbolic x coords={White, Black, Hispanic, Other},
-    xtick=data, ymin=0, width=6.5cm, height=5cm, bar width=20pt,
+    xtick=data, ymin=0, width=6.7cm, height=5cm, bar width=20pt,
     enlarge x limits={0.2}, nodes near coords, 
     nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode},
-	xticklabel style={font=\footnotesize}]
+	xticklabel style={black, font=\small}]
     \addplot[ybar,fill=blue, draw=blue] coordinates {
         (White,171.0)
         (Black,17.6)
@@ -1533,7 +1549,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Federal Reserve Survey of Consumer Finances}
+\footnotesize{Source: Federal Reserve, Survey of Consumer Finances}
 
 \vspace{12mm}
 
@@ -1550,7 +1566,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(0.98, 1)}, fill=white}]
+		legend style={at={(0.96, 1)}, fill=white}]
 	\rbars
 	\sbar{cyan!40!white}{date}{NW}{data/rdpi_nw.csv}
 	\stdline{blue!50!violet}{date}{DPI}{data/rdpi_nw.csv}
@@ -1644,7 +1660,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \small
 
-Caution is needed when interpreting changes in homeownership rates, including for data affected by the COVID-19 pandemic. Individuals who are renters or homeowners are captured by the measure, but when an individual moves in with family they are dropped from the measure. Recent increases in homeownership rates reflect renters moving in with family. \\
+Use caution when interpreting changes in homeownership rates, including for data affected by the COVID-19 pandemic. Individuals who are renters or homeowners are captured by the measure, but when an individual moves in with family they are dropped from the measure. Recent increases in homeownership rates reflect renters moving in with family. \\
 
 As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in owner's equity as a share of the market value of real estate show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. 
 
