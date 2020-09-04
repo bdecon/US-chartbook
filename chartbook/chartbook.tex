@@ -107,7 +107,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-08-10},
+		xmax={2020-10-01},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -193,7 +193,7 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-09-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-10-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rebars}{
 		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
@@ -201,7 +201,7 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-09-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-10-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 	
 	\newfontfamily\seriffont{SourceSerifPro}	
 	
@@ -434,13 +434,13 @@ Contents not reliable
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva.csv}
 \vspace{6mm}
 
-\small The \textbf{income approach} calculates GDP as the sum of market income to persons (in exchange for labor (see\cbox{magenta!90!blue}) or from returns on capital (see\cbox{yellow!60!orange})), indirect taxes such as sales taxes or tariffs (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). 
+\small The \textbf{income approach} calculates GDP as the sum of market income to persons (in exchange for labor (see\cbox{magenta!90!blue}) or from returns on capital (see\cbox{yellow!60!orange})), indirect taxes such as sales taxes or tariffs less subsidies (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). 
 \vspace{5mm}
 
 \noindent \normalsize \textbf{Real Gross Domestic Income Growth}\\
 \footnotesize{\textit{percentage point contribution to GDI growth}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, height=5.6cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, height=6.2cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
 		legend style={at={(0.65, 1.13)}}]
 	\rbars
@@ -466,7 +466,7 @@ Contents not reliable
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-75, -50, -25, 0, 25, 50},
-		height=7.0cm,
+		height=7.4cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
 		legend style={at={(0.83, 1.0)}}]
 	\rbars
@@ -948,7 +948,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20, 30, 40, 50, 60},
-		height=6.2cm,
+		height=6.8cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.8em}, 
 		legend style={at={(0.4, 1.13)}}]
 	\rbars
@@ -1488,12 +1488,60 @@ Total income, labor income less taxes and including welfare and capital income, 
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsubsection*{\color{black!70} \seriffont Net Worth}
-\small The market value of assets of households has risen much faster than their total liabilities, causing a \textbf{substantial increase in net worth}. Net worth is an aggregate measure of the financial position of households, measured as total assets minus total liabilities. \input{text/nw1.txt} \\
+\subsubsection*{\color{black!70} \seriffont Wealth/Net Worth}
+\small Wealth-holding, measured by net worth, varies between households. Net worth is an aggregate measure of the financial position of households, measured as total assets minus total liabilities. In 2016, white non-Hispanic households average net worth was \$933,700, compared to \$138,200 for black non-Hispanic households, and \$191,200 for Hispanic households of any race. Additionally, the wealth of a typical (median) household is much lower than the wealth of the average (mean) household, the result of a concentration of wealth among the wealthiest households.
+
+\vspace{3mm}
+
+\normalsize \textbf{Racial Wealth Gap}
+
+\footnotesize{\textit{net worth by race/ethnicity, thousands of US dollars, 2016}}
+\vspace{3mm}
+
+\hspace*{-3mm} \begin{tikzpicture}
+\begin{axis}[clip=false,
+    symbolic x coords={White, Black, Hispanic, Other},
+    xtick=data, ymin=0, width=6.5cm, height=5cm, bar width=20pt,
+    enlarge x limits={0.2}, nodes near coords, 
+    nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode},
+	xticklabel style={font=\footnotesize}]
+    \addplot[ybar,fill=blue, draw=blue] coordinates {
+        (White,933.7)
+        (Black,138.2)
+        (Hispanic,191.2)
+        (Other,457.8)
+    };
+    \stdnode{1.9cm}{3.9cm}{\large Mean};
+\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+\begin{axis}[clip=false,
+    symbolic x coords={White, Black, Hispanic, Other},
+    xtick=data, ymin=0, width=6.5cm, height=5cm, bar width=20pt,
+    enlarge x limits={0.2}, nodes near coords, 
+    nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode},
+	xticklabel style={font=\footnotesize}]
+    \addplot[ybar,fill=blue, draw=blue] coordinates {
+        (White,171.0)
+        (Black,17.6)
+        (Hispanic,20.7)
+        (Other,64.8)
+    };
+    \stdnode{1.9cm}{3.9cm}{\large Median};
+\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve Survey of Consumer Finances}
+
+\vspace{12mm}
+
+\small The market value of assets of households has risen much faster than their total liabilities, causing a \textbf{substantial increase in net worth}. \input{text/nw1.txt} \\
 
 \input{text/nw2.txt}
 
-\vspace{5mm}
+\vspace{4mm}
 
 \normalsize \textbf{Net Worth and After-Tax Income Growth}
 
@@ -1547,11 +1595,8 @@ Total income, labor income less taxes and including welfare and capital income, 
 \newpage
 
 \begin{minipage}{0.76\textwidth}
-
 \subsubsection*{\color{black!70} \seriffont Homeownership}
-
 \small The \textbf{homeownership rate} measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}
-
 \end{minipage}
 
 \vspace{1mm}
@@ -1564,7 +1609,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={40, 50, 60, 70}, 
 		enlarge y limits={0.03}, ymin=40, xmin={1991-01-01},
-		xticklabel={`\short{\year}}, height=8.8cm, width=7.0cm, clip=false]
+		xticklabel={`\short{\year}}, height=8.6cm, width=7.0cm, clip=false]
 	\rbars
 	\stdline{violet!60!magenta}{date}{VALUE}{data/homeown.csv}
 	\stdline{blue!80!cyan!80!black}{date}{White}{data/homeown2.csv}
@@ -1598,6 +1643,8 @@ Total income, labor income less taxes and including welfare and capital income, 
 \begin{minipage}{0.76\textwidth}
 
 \small
+
+Caution is needed when interpreting changes in homeownership rates, including for data affected by the COVID-19 pandemic. Individuals who are renters or homeowners are captured by the measure, but when an individual moves in with family they are dropped from the measure. Recent increases in homeownership rates reflect renters moving in with family. \\
 
 As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in owner's equity as a share of the market value of real estate show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. 
 
@@ -2144,7 +2191,8 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{contribution to corporate saving, as share of gross national income}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30}, height=5.8cm, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30}, 
+		yticklabel style={text width=1.5em}, height=6.6cm, 
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.9, 1.13)}}]
 	\rbars
 	\sbar{cyan}{date}{Gov Saving}{data/cprof2.csv}
@@ -2361,15 +2409,16 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{industrial production as a share of total capacity, percent}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 70, 80}, width=12.2cm, clip=false,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 70, 80}, width=12.2cm, 
+		height=6.2cm, clip=false,
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
 	\rbars
 	\thickline{blue!80!black}{date}{Total index}{data/tcu.csv}
 	\stdline{blue!40!cyan}{date}{Manufacturing}{data/tcu.csv}
 	\input{text/tcu_tot_node.txt}
 	\input{text/tcu_mfg_node.txt}
-	\stdnode{8.8cm}{1.55cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
-	\stdnode{7.55cm}{2.3cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
+	\stdnode{8.8cm}{2.2cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
+	\stdnode{7.55cm}{3.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}
 
@@ -2444,14 +2493,14 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{minipage}
 \vspace{9mm}
 
-\begin{minipage}{0.4\textwidth}
+\begin{minipage}{0.55\textwidth}
 \normalsize \textbf{Retail sales}
 
 \footnotesize{\textit{share of disposable personal income}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.6cm}{1.5ex}
-    	width=4.8cm, bar width=1.7ex, height=11.0cm,
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.8cm}{1.5ex}
+    	width=5.8cm, bar width=1.7ex, height=11.0cm,
     	enlarge y limits={abs=0.3cm}, enlarge x limits=0.15, \bbar{x}{0},
 		yticklabels from table={\rs}{name}, 
 		yticklabel style={font=\footnotesize},
@@ -3161,7 +3210,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30, 40},
-		height=6.0cm,
+		height=6.8cm,
 		xticklabel={`\short{\year}}, clip=false,  yticklabel style={text width=1.5em},
 		legend style={at={(0.45, 1.13)}}]
 	\rbars
@@ -3181,14 +3230,15 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \normalsize \textbf{Employment Rate}
 
-\footnotesize{\textit{employed share of age 25-54 population}}
+\footnotesize{\textit{employed share of age 25--54 population}}
 
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 75, 80}, enlarge y limits={0.1},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 75, 80}, 
+		width=12.2cm, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
 	\rbars
 	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
-	\node[above, align=right] at (axis cs:2018-11-01,80.8) {\scriptsize \input{text/epop.txt}};
+	\input{text/epop_node.txt}
 	\end{axis}
 \end{tikzpicture}
 
