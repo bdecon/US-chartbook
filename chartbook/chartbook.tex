@@ -338,11 +338,11 @@ Contents not reliable
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.7cm, width=7.0cm]
 	\rbars
-	\stdnode{1.15cm}{3.29cm}{\footnotesize \color{yellow!65!orange}Consumer\\ \color{yellow!65!orange}Spending}
+	\stdnode{1.1cm}{3.35cm}{\footnotesize \color{yellow!65!orange}Consumer\\ \color{yellow!65!orange}Spending}
 	\stdline{yellow!65!orange}{date}{DPCERX}{data/gdp_pc_comp.csv}
-	\stdnode{1.6cm}{0.62cm}{\footnotesize \color{blue!70!black}Investment}
+	\stdnode{1.6cm}{0.68cm}{\footnotesize \color{blue!70!black}Investment}
 	\stdline{blue!70!black}{date}{A006RX}{data/gdp_pc_comp.csv}
-	\stdnode{1.1cm}{1.35cm}{\footnotesize \color{cyan!60!white}Government}
+	\stdnode{1.2cm}{1.4cm}{\footnotesize \color{cyan!60!white}Government}
 	\stdline{cyan!60!white}{date}{A822RX}{data/gdp_pc_comp.csv}
 	\stdnode{4.4cm}{0.5cm}{\footnotesize \color{green!60!black}Net Exports}
 	\stdline{green!60!black}{date}{A019RX}{data/gdp_pc_comp.csv}
@@ -539,16 +539,14 @@ Contents not reliable
 \footnotesize{Source: Bureau of Economic Analysis}
 
 \newpage
-
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE Financial Accounts}
 \label{sec:ofa}
-
 \small The Federal Reserve \href{https://www.federalreserve.gov/releases/z1/}{reports} the balances and transactions in the US \textbf{financial accounts}. This includes the flow of funds between sectors in the economy and the various components of balance sheets by sector, such as for households, businesses, and government. The sector-specific data are covered in the section of the chartbook that corresponds to the sector, however, the overall financial activities of the US are discussed in this section.
-
 \subsection*{\color{black!70} \seriffont Sectoral Balances}
+\small A high-level overview of US financial activities can be provided by dividing the world economy into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examining the net lending and borrowing between the groups, which must sum to zero at an aggregate level. That is, if one sector is running a deficit, another sector must be running a surplus.
 
-\small A high-level overview of US financial activities can be provided by dividing the world economy into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examining the net lending and borrowing between the groups, which must sum to zero at an aggregate level. That is, if one sector is running a deficit, another sector must be running a surplus.\\
+\vspace{2mm}
 
 \normalsize \textbf{Sectoral Financial Balance}
 
@@ -576,9 +574,9 @@ Contents not reliable
 
 \small \input{text/sectbal.txt} \\
 
-\input{text/sectbal2.txt}\\
+\input{text/sectbal2.txt}
 
-\vspace{1mm}
+\vspace{2mm}
 
 \normalsize \textbf{Domestic Private Sector Financial Balance}
 
@@ -4012,7 +4010,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\stdline{red!85!violet}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
 	\stdnode{3.1cm}{2.2cm}{\footnotesize \color{cyan}\textbf{Hires}}
-	\stdnode{9.2cm}{2.6cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{9.1cm}{2.6cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
 	\stdnode{8.2cm}{1.25cm}{\footnotesize \color{red!85!violet}\textbf{Quits}}
 	\stdnode{2.5cm}{0.45cm}{\footnotesize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
