@@ -1,6 +1,6 @@
 # US-chartbook :bar_chart:
 
-### A comprehensive picture of US economic data
+### Open source notes on US economic activity
 
 
 [View the chartbook](https://www.bd-econ.com/chartbook.pdf)
@@ -8,30 +8,29 @@
 
 Brian Dew, @bd_econ
 
-December 13, 2019
+September 6, 2020
 
 
 ----
 
 ## Notes
 
-Work in progress--still not at version 0.1.
+Work in progress--about 90 percent of the way to version 0.1.
 
 ## To Do
 
 See [list](https://github.com/bdecon/US-chartbook/issues) of open issues.
 
-## Sections
+## Sections (in progress)
 
-- [x] Overall Economic Activity
-- [ ] Overall Financial Activity (in progress)
-- [ ] Households (in progress)
-- [ ] Businesses (in progress)
-- [ ] Government (in progress)
-- [ ] International Trade (in progress)
-- [ ] Labor Markets (in progress)
-- [ ] Capital Markets (in progress)
-- [ ] Prices (in progress)
-- [ ] International Comparisons 
-- [ ] Technical notes
-- [ ] Sources / References
+- [ ] Overall Economic Activity
+- [ ] Overall Financial Activity
+- [ ] Households 
+- [ ] Businesses 
+- [ ] Government 
+- [ ] International Trade 
+- [ ] Labor Markets 
+- [ ] Capital Markets 
+- [ ] Prices
+- [ ] International Comparisons (forthcoming)
+- [ ] Sources / References / Acknowledgments 
