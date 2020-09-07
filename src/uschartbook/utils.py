@@ -68,7 +68,7 @@ def bea_api_ita(ind_list, bea_key):
     api_results = []
 
     for ind in ind_list:
-        url = f'https://www.bea.gov/api/data/?&UserID={bea_key}'\
+        url = f'https://apps.bea.gov/api/data/?&UserID={bea_key}'\
               f'&method=GetData&datasetname=ITA&Indicator={ind}'\
               f'&Frequency=QSA&Year={years}&ResultFormat=json'
 
