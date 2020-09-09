@@ -516,15 +516,22 @@ def cps_1mo(cps_dir, cps_dt, cols):
     return df
     
     
-def inc_dec_percent(n, how='main'):
+def inc_dec_percent(n, how='main', annualized=False):
     '''Return short text based on value of n'''
-    if how == 'main':
-    	return (f'increased by {abs(n):.1f} percent' if n >= 0.1 
-        	else f'decreased by {abs(n):.1f} percent' 
+    atxt1 = 'by'
+    atxt2 = ''
+    if annualized == True:
+    	atxt1 = 'at an annual rate of'
+    	atxt2 = ' (annualized)'
+    if how not in ['of', 'main']:
+    	print('Options: "of" or "main", annualized: False by default')
+    elif how == 'main':
+    	return (f'increased {atxt1} {abs(n):.1f} percent' if n >= 0.1 
+        	else f'decreased {atxt1} {abs(n):.1f} percent' 
         	if n <= -0.1 else 'was virtually unchanged')
     elif how == 'of':
-    	return (f'an increase of {abs(n):.1f} percent' if n >= 0.1 
-        	else f'a decrease of {abs(n):.1f} percent' 
+    	return (f'an increase of {abs(n):.1f} percent{atxt2}' if n >= 0.1 
+        	else f'a decrease of {abs(n):.1f} percent{atxt2}' 
         	if n <= -0.1 else 'virtually no change')
         
         
