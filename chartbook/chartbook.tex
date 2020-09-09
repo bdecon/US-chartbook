@@ -353,9 +353,9 @@ Contents not reliable
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The less-discussed \textbf{income approach} calculates the level of overall economic activity from the sum of income payments from production and certain expenses occurred in production. Income from production is the payout to labor and capital. Income for labor is referred to as ``compensation of employees, paid'' in the national accounts and includes wages and salaries and also supplements to wages and salaries, such as health insurance premiums and retirement account contributions. Income received as profit is referred to as ``net operating surplus'' in national accounts and includes interest payments, rental profits, business proprietor profits, and corporate profits.\\
+\small The less-discussed \textbf{income approach} calculates the level of overall economic activity from the sum of income payments from production and certain expenses occurred in production. Income from production is the payout to labor and capital. Income for labor is referred to as ``compensation of employees, paid'' in the national accounts and includes wages and salaries as well supplements to wages and salaries such as employer-paid health insurance premiums and retirement account contributions. Income received as profit is referred to as ``net operating surplus'' in national accounts and includes interest payments, rental profits, business proprietor profits, and corporate profits.\\
 
-Additionally some income does not get paid out to these groups. One example is tariffs, which are government taxes on imports. Other taxes on production, such as sales tax, property tax, and licensing fees are also included. However, the government also provides subsidies, which are income payments for production that did occur, and which are subtracted from income measures of production. Lastly, a growing portion of potential income goes toward replacing and maintaining buildings and equipment, recorded as ``consumption of fixed capital'', and referred to as depreciation below.\\
+Additionally some income does not get paid out to these groups. Taxes on imports and production, such as tariffs, sales tax, property tax, and licensing fees are tracked separately. If the government provides subsidies, which are income payments for production that did not occur, they must be subtracted from income measures of production. Lastly, a growing portion of potential income goes toward replacing and maintaining buildings and equipment used in production. This expense is recorded as ``consumption of fixed capital'' in the national accounts and referred to as depreciation below.\\
 
 \input{text/gdi_levels.txt}
 \end{minipage}
@@ -439,7 +439,7 @@ Because annual rates amplify large short-term changes in production, some analys
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Components of Growth}
 \small The \textbf{expenditure approach} also gives insight into the sources of changes in overall economic activity. \input{text/gdp_exp_basic.txt}
-\vspace{5mm}
+\vspace{4mm}
 
 \normalsize \textbf{Real GDP Growth by Expenditure Type}
 
@@ -447,7 +447,7 @@ Because annual rates amplify large short-term changes in production, some analys
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
-		yticklabel style={text width=1.4em}, height=5.8cm,
+		yticklabel style={text width=1.4em}, height=5.7cm,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.83, 1.13)}}]
 	\rbars
 	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
@@ -461,17 +461,19 @@ Because annual rates amplify large short-term changes in production, some analys
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{comp.csv}
 
-\vspace{10mm}
+\vspace{8mm}
 
-\small The \textbf{income approach} enables decomposing annualized production growth into gross labor income (see\cbox{magenta!90!blue}), profit (see\cbox{yellow!60!orange}), indirect taxes less subsidies (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). 
-\vspace{5mm}
+\small The \textbf{income approach} enables decomposing annualized production growth into gross labor income (see\cbox{magenta!90!blue}), profit (see\cbox{yellow!60!orange}), indirect taxes less subsidies (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). \\
+
+\input{text/gdi_growth_comp.txt}
+\vspace{4mm}
 
 \normalsize \textbf{Real Gross Domestic Income Growth}
 
 \footnotesize{\textit{percentage point contribution to GDI growth}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, height=6.2cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, height=5.7cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
 		legend style={at={(0.65, 1.13)}}]
 	\rbars
@@ -1685,7 +1687,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \vspace{3mm}
 
 \begin{minipage}{0.76\textwidth}
-\small Use caution when interpreting changes in homeownership rates, including for data affected by the COVID-19 pandemic. Individuals who are renters or homeowners are captured by the measure, but when an individual moves in with family they are dropped from the measure. Recent increases in homeownership rates reflect renters moving in with family. \\
+\small Use caution when interpreting homeownership rates affected by the COVID-19 pandemic. Individuals who are renters or homeowners are captured by the measure, but when an individual moves in with family and stops being a head of household, they are dropped from the measure. Therefore when renters move in with family the homeownership rate increases. Recent increases in homeownership rates reflect renters moving in with family. \\
 
 As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in owner's equity as a share of the market value of real estate show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. 
 \end{minipage}
@@ -2076,7 +2078,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the loosely defined business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses.
 
 \subsection*{\color{black!70} \seriffont Fixed Investment}
-\small When businesses purchase items with a useful life of more than one year it is considered an investment, an exchange of assets rather than an expense. \textbf{Investments in fixed assets make workers more productive}, as they allow businesses to produce goods and services per hour of work. Business investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
+\small When businesses purchase items with a useful life of more than one year it is considered an investment, an exchange of assets rather than an expense. \textbf{Investments in fixed assets make workers more productive}, as they allow businesses to produce more goods and services with the same hours of work. Business investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
 \vspace{5mm}
 
 \normalsize \textbf{Business Fixed Investment}
