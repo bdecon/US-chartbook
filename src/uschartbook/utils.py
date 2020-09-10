@@ -498,6 +498,32 @@ def cps_12mo(cps_dir, cps_dt, cols):
     return df
     
 
+def cps_3mo(cps_dir, cps_dt, cols):
+    '''
+    Return 3 months of bd_CPS variables cols ending cps_dt
+    '''
+
+    if 'MONTH' not in cols:
+        cols = cols + ['MONTH']
+    if 'YEAR' not in cols:
+        cols = cols + ['YEAR']
+
+    cps_year = cps_dt.year
+    cps_month = cps_dt.month
+    cps_month3 = (cps_dt - pd.DateOffset(months=2)).month
+    if cps_month != 12:
+        cps_year1 = cps_year - 1
+        cps_year2 = cps_year
+        df = (pd.read_feather(cps_dir / f'cps{cps_year1}.ft', columns=cols)
+              .query('MONTH >= @cps_month3')
+              .append(pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
+                        .query('MONTH <= @cps_month')))
+    else:
+        df = pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
+        
+    return df
+    
+
 def cps_1mo(cps_dir, cps_dt, cols):
     '''
     Return 1 month of bd_CPS variables cols ending cps_dt
