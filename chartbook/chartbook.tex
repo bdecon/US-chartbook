@@ -723,7 +723,7 @@ Because annual rates amplify large short-term changes in production, some analys
 
 \begin{minipage}{0.76\textwidth}
 
-\small \textbf{Private fixed investment}, as measured in the national accounts, includes residential fixed investment, such as the construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but does not include spending on durable goods, such as automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment, software, and intellectual property products. Additionally, the change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.\\
+\small \textbf{\href{https://www.bea.gov/help/glossary/gross-private-fixed-investment}{Gross private fixed investment}}, as measured in the national accounts, includes residential fixed investment, such as the construction and improvement of houses, apartment buildings, and other residential property (see\cbox{blue!90!black}), but does not include spending on durable goods, such as automobiles, appliances, or furniture. Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment, software, and intellectual property products. Additionally, the change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.\\
 
 \input{text/inv_text.txt} \input{text/inv_text2.txt}
 
@@ -962,9 +962,9 @@ Among those living in \textbf{households}, roughly 74 million are children under
 		xticklabel={`\short{\year}}, clip=false, ymin=3, yticklabel style={text width=1.4em},
 		legend style={at={(0.46, 1)}, fill=white}, width=11.2cm, height=7.2cm]
 	\rbars
-	\ctsbar{green!75!black}{date}{LABOR}{data/pi_levels.csv}{0.7pt}
-	\ctsbar{orange!40!yellow}{date}{CAPITAL}{data/pi_levels.csv}{0.7pt}
-	\ctsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}{0.7pt}
+	\ctsbar{green!75!black}{date}{LABOR}{data/pi_levels.csv}{0.75pt}
+	\ctsbar{orange!40!yellow}{date}{CAPITAL}{data/pi_levels.csv}{0.75pt}
+	\ctsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}{0.75pt}
 	\legend{Labor, Capital, Welfare};
 	\end{axis}
 \end{tikzpicture}
@@ -1250,7 +1250,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \subsubsection*{\color{black!70} \seriffont Saving}
 
-\small The portion of after-tax income that is not spent by households is considered \textbf{personal saving}, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the \textit{personal saving rate}. Households use savings for investment and because income can be more volatile than expenses. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
+\small The portion of after-tax income that is not spent by households is considered \textbf{\href{https://www.bea.gov/index.php/help/glossary/personal-saving}{personal saving}}, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the \textit{personal saving rate}. Households use savings for investment and because income can be more volatile than expenses. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
 
 \input{text/psavert.txt}
 
@@ -2005,14 +2005,15 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 \vspace{7mm}
 
 \normalsize \textbf{Share of local population in bottom third of housing-adjusted income, 2018}
+\vspace{-2mm}
 
 \footnotesize{\textit{Share of commuting zone householders with after-housing-expense annual income below \$13,573}}
 
-\vspace{-3mm}
+\vspace{-1mm}
 \hspace{-15mm} \input{/home/brian/Documents/ACS/acs_map.pgf}
 
 \vspace{-5mm}
-\footnotesize{Source: American Community Survey}
+\footnotesize{Source: American Community Survey, Author's Calculations}
 
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -2752,7 +2753,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). 
 
 \subsection*{\color{black!70} \seriffont Balance of Payments}
-\small The \textbf{current account balance} captures international payments for goods and services as well as international transfers of money and net income received from ownership of foreign assets. It is the result of a set of payments to US residents, called current receipts, which are largely for exports of goods and services and returns on foreign assets, and a set of payments from US residents to the rest of the world, called current payments. Current payments are for goods and services imports, as well as transfers and payments for foreign ownership of US-based assets.\\
+\small The \textbf{\href{https://www.bea.gov/help/glossary/balance-current-account-national-income-and-product-accounts}{current account balance}} captures international payments for goods and services as well as international transfers of money and net income received from ownership of foreign assets. It is the result of a set of payments to US residents, called current receipts, which are largely for exports of goods and services and returns on foreign assets, and a set of payments from US residents to the rest of the world, called current payments. Current payments are for goods and services imports, as well as transfers and payments for foreign ownership of US-based assets.\\
 
 The current account balance can be decomposed into the balance on trade in goods (see\cbox{yellow!60!lime!85!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes [see\cbox{green!80!blue}]). \\
 
@@ -3801,7 +3802,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 5, 10, 15, 20}, 
-		enlarge y limits={0.05}, ymin=0.25, xmin={2018-01-01},
+		enlarge y limits={0.05}, ymin=1, xmin={2018-01-01},
 		yticklabel style={text width=1.4em},
 		xticklabel={`\short{\year}}, height=6.6cm, width=6.3cm]
 	\rbars
