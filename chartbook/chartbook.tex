@@ -125,7 +125,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-01-01},
+		xmax={2020-11-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -137,7 +137,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-09-01},
+		xmax={2020-09-30},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}},
@@ -947,14 +947,12 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \newpage
 
 \subsection*{\color{black!70} \seriffont Income to Persons}
-
-\begin{minipage}{0.25\textwidth}
-\small Inflation-adjusted income is divided into labor income (see\cbox{green!80!black}), which is measured as compensation of employees, capital income (see\cbox{orange!50!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income  (see\cbox{blue!80!white}), which is measured as transfers to persons, primarily government social benefits, less contributions to social insurance. \\
+\begin{minipage}{0.3\textwidth}
+\small \href{https://www.bea.gov/data/income-saving/personal-income}{Personal income} includes labor income (see\cbox{green!75!black}), measured as compensation of employees, capital income (see\cbox{orange!40!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income (see\cbox{blue!80!white}), measured primarily as government social benefits less contributions to social insurance. \\
 
 \input{text/pi_levels_basic.txt}
-
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.495\textwidth}
+\begin{minipage}{0.635\textwidth}
 \normalsize \textbf{Personal Income}
 
 \footnotesize{\textit{real per capita income, thousands of US Dollars}}
@@ -962,19 +960,19 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60},
 		xticklabel={`\short{\year}}, clip=false, ymin=3, yticklabel style={text width=1.4em},
-		legend style={at={(0.6, 1.07)}}, width=8.8cm, height=8.7cm]
+		legend style={at={(0.46, 1)}, fill=white}, width=11.2cm, height=7.2cm]
 	\rbars
-	\ctsbar{green!80!black}{date}{LABOR}{data/pi_levels.csv}{0.9pt}
-	\ctsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}{0.9pt}
-	\ctsbar{orange!50!yellow}{date}{CAPITAL}{data/pi_levels.csv}{0.9pt}
-	\legend{Labor, Welfare, Capital};
+	\ctsbar{green!75!black}{date}{LABOR}{data/pi_levels.csv}{0.7pt}
+	\ctsbar{orange!40!yellow}{date}{CAPITAL}{data/pi_levels.csv}{0.7pt}
+	\ctsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}{0.7pt}
+	\legend{Labor, Capital, Welfare};
 	\end{axis}
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis; Author} \hfill \tbllink{pi_levels.csv}
 \end{minipage}
 
-\vspace{5mm}
+\vspace{4mm}
 
 \normalsize \textbf{Personal Income by Source}\\
 \footnotesize{\textit{per capita, annualized, \input{text/pi_date.txt}\unskip \ US Dollars}}\\ \vspace{4mm}
@@ -997,14 +995,14 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \footnotesize{\textit{percentage point contribution to real personal income growth}}
 
-\hspace*{-2mm} \begin{tikzpicture}
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20, 30, 40, 50, 60},
 		height=6.8cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.8em}, 
-		legend style={at={(0.4, 1.13)}}]
+		legend style={at={(0.43, 1)}, fill=white}]
 	\rbars
-	\sbar{green!80!black}{date}{A033RC}{data/pi.csv}
-	\sbar{orange!50!yellow}{date}{CAPITAL}{data/pi.csv}
+	\sbar{green!75!black}{date}{A033RC}{data/pi.csv}
+	\sbar{orange!40!yellow}{date}{CAPITAL}{data/pi.csv}
 	\sbar{blue!80!white}{date}{TRANSFER}{data/pi.csv}
 	\legend{Labor, Capital$^1$, Welfare$^2$};
 	\stdnode{3.4cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\ \scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
@@ -3071,15 +3069,15 @@ The current account balance can be decomposed into the balance on trade in goods
 \small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is considered \textit{employment}. \input{text/cps_lfs0.txt}\\
 
 \input{text/cps_lfs.txt}
-\end{minipage} \hspace{5.5mm}
-\begin{minipage}{0.375\textwidth}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.58\textwidth}
 \normalsize \textbf{Labor Force Status of Population}
 
 \footnotesize{\textit{millions of people}}
 
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300}, 
-		height=7.2cm, ymin=10, width=7.0cm,
+		height=7.2cm, ymin=10, width=10.0cm,
 		clip=false, enlarge x limits={0.04}, 
 		yticklabel style={text width=1.5em},
 		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, 
@@ -3087,12 +3085,12 @@ The current account balance can be decomposed into the balance on trade in goods
         minor xtick={},
         xticklabels={`89, `95, `00, `05, `10, `15, `20},
         legend cell align={left},
-		legend style={fill=white, legend columns=2, at={(0.82, 1.09)}}]
+		legend style={fill=white, legend columns=2, at={(0.54, 1.09)}}]
 	\rbars
-	\ctsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}{0.4pt}
-	\ctsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}{0.4pt}
-	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}{0.4pt}
-	\ctsbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}{0.4pt}
+	\ctsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}{0.6pt}
+	\ctsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}{0.6pt}
+	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}{0.6pt}
+	\ctsbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}{0.6pt}
 	\legend{Employed, Unemployed, Non-Participant, Under 15};
 	\end{axis}
 \end{tikzpicture}
@@ -3330,7 +3328,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \vspace{5mm}
 
 \normalsize \textbf{Nonfarm Payrolls by Industry Group}\\
-\footnotesize{\textit{seasonally adjusted, thousands \hspace{10mm}levels \hspace{19mm} monthly change \hspace{29mm} combined}\\
+\footnotesize{\textit{seasonally adjusted, thousands \hspace{10mm}levels \hspace{19mm} monthly change \hspace{32mm} combined}\\
 \vspace{-5mm}
 
 \hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
@@ -3997,7 +3995,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\stdline{red!85!violet}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
 	\stdnode{3.1cm}{2.2cm}{\footnotesize \color{cyan}\textbf{Hires}}
-	\stdnode{9.1cm}{2.6cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{9.0cm}{2.6cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
 	\stdnode{8.2cm}{1.25cm}{\footnotesize \color{red!85!violet}\textbf{Quits}}
 	\stdnode{2.5cm}{0.45cm}{\footnotesize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
