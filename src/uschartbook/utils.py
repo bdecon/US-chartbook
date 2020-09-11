@@ -604,3 +604,102 @@ def jolts_codes(d, code_text, ind, value='i'):
         if value == 'name':
             d[i] = name
     return d
+
+    
+def value_text(value, style='increase', ptype='percent', adj=None, 
+               time_str='', digits=1, threshold=0):
+    '''
+    RETURN TEXT STRING FOR SPECIFIED FLOAT VALUE
+    
+    OPTIONS
+    style: increase, increase_of, contribution, contribution to,
+           contribution_of, contribution_end
+    ptype: percent, pp, None
+    adj: sa, annual, annualized, saa, saar, total
+    time_pd: blank unless specified directly, for example "one-year"
+    
+    '''
+    text = 'Error, options not available'
+    abv = abs(value)
+    val = f'{abv:.{digits}f}'
+    indef = 'an' if ((val[0] == '8') | (val[0:3] in ['11.', '11,', '18.', '18,'])) else 'a'
+    neg = True if value < 0 else False
+    insig = True if abv < threshold else False
+    plural = 's' if ((abv > 1) & (style[-3:] != 'end')) else ''
+    ptxtd = {None: '', 'percent': ' percent', 'pp': f' percentage point{plural}'}
+    ptxt = ptxtd[ptype]
+    
+    if style in ['increase', 'increase_by']:
+        atxtd = {None: ' by ', 'sa': ' at a seasonally-adjusted rate of ', 
+                 'annual': ' at an annual rate of ', 
+                 'annualized': ' at an annualized rate of ', 
+                 'saa': ' at a seasonally-adjusted and annualized rate of ', 
+                 'saar': ' at a seasonally-adjusted annualized rate of ', 
+                 'total': ' by a total of '}
+        if style == 'increase':
+            atxtd[None] = ' '
+        atxt = atxtd[adj]
+        stxt = 'increased' if neg == False else 'decreased'
+        ttxt = f' over the {time_str} period' if time_str != '' else ''
+        text = f'{stxt}{atxt}{val}{ptxt}{ttxt}'
+        if insig == True:
+            text = 'was virtually unchanged'
+            
+    if style in ['contribution', 'contribution_to']:
+        atxtd = {None: '', 'sa': ' on a seasonally-adjusted basis', 
+                 'annual': ' on an annual basis', 
+                 'annualized': ' on an annualized-basis', 
+                 'saa': ' on a seasonally-adjusted and annualized basis', 
+                 'saar': ' on a seasonally-adjusted annualized basis', 
+                 'total': ' in total'}
+        atxt = atxtd[adj]
+        stxt = ('contributed', 'to') if neg == False else ('subtracted', 'from')
+        ttxt = f' over the {time_str} period' if time_str != '' else ''
+        text = f'{stxt[0]} {val}{ptxt}{atxt}{ttxt}'
+        if style == 'contribution_to':
+            text = f'{stxt[0]} {val}{ptxt} {stxt[1]}'
+        if insig == True:
+            text = 'did not contribute'
+            if style == 'contribution_to':
+                text = 'did not contribute to'
+            
+    elif style in ['increase_of', 'contribution_of']:
+        stxt1 = 'increase' if neg == False else 'decrease'
+        stxt2 = 'an increase' if neg == False else 'a decrease'
+        if style == 'contribution_of':
+            stxt1 = 'contribution' if neg == False else 'subtraction'
+            stxt2 = 'a contribution' if neg == False else 'a subtraction'            
+        if time_str != '':
+            stxt2 = f'a {time_str}{stxt1}'
+        atxtd = {None: f'{stxt2} of', 'sa': f'a seasonally-adjusted {time_str}{stxt1} of', 
+                 'annual': f'an annual {time_str}{stxt1} of', 
+                 'annualized': f'an annualized {time_str}{stxt1} of', 
+                 'saa': f'a seasonally-adjusted and annualized {time_str}{stxt1} of', 
+                 'saar': f'a seasonally-adjusted annualized {time_str}{stxt1} of', 
+                 'total': f'a total {time_str}{stxt1} of'}
+        atxt = atxtd[adj]
+        text = f'{atxt} {val}{ptxt}'
+        if insig == True:
+            text = 'virtually no change'
+            if style[:3] == 'con':
+                text = 'virtually no contribition'
+            
+    elif style in ['increase_end', 'contribution_end']:
+        stxt = 'increase' if neg == False else 'decrease'
+        if style == 'contribution_end':
+            stxt = 'contribution' if neg == False else 'subtraction'
+        atxtd = {None: f'{indef} ', 'sa': 'a seasonally-adjusted ', 
+                 'annual': 'an annual ', 
+                 'annualized': 'an annualized ', 
+                 'saa': 'a seasonally-adjusted and annualized ', 
+                 'saar': 'a seasonally-adjusted annualized ', 
+                 'total': 'a total '}
+        atxt = atxtd[adj]
+        ttxt = f'{time_str} ' if time_str != '' else ''
+        text = f'{atxt}{ttxt}{val}{ptxt} {stxt}'
+        if insig == True:
+            text = 'virtually no change'
+            if style[:3] == 'con':
+                text = 'virtually no contribution'
+    
+    return(text)
