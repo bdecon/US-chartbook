@@ -211,7 +211,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/ahe_ind.csv}\ahe
 	\pgfplotstableread[header=true, col sep=comma]{data/poor.csv}\poor
 	\pgfplotstableread[header=true, col sep=comma]{data/poor2.csv}\pvrt
-	\pgfplotstableread[header=true, col sep=comma]{data/spmtbl.csv}\spm
+	\pgfplotstableread[header=true, col sep=comma]{data/spmtbl19.csv}\spm
 	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
@@ -1866,10 +1866,10 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \subsection*{\color{black!70} \seriffont Poverty}
 \begin{minipage}{0.46\textwidth}
 \small
-In 2018, income from labor and capital ownership, called \textit{market income}, was below the Census Bureau threshold for poverty for 77.9 million people in the US. Disposable income subtracts taxes and includes market income plus income from government programs and tax credits. \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{According} to the Census Bureau Supplemental Poverty Measure (SPM), \textbf{41.4 million people are in poverty} after taxes and transfers. Government programs and tax credits moved the income of 36.5 million people above the poverty threshold.
+In 2019, income from labor and capital ownership, called \textit{market income}, was below the Census Bureau threshold for poverty for 75.7 million people in the US. Disposable income subtracts taxes and includes market income plus income from government programs and tax credits. \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{According} to the Census Bureau Supplemental Poverty Measure (SPM), \textbf{38.1 million people are in poverty} after taxes and transfers. Government programs and tax credits moved the income of 37.6 million people above the poverty threshold.
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.22\textwidth}
-\normalsize \textbf{In Poverty, 2018}
+\normalsize \textbf{In Poverty, 2019}
 
 \footnotesize{\textit{millions of people}}
  
@@ -1889,8 +1889,8 @@ In 2018, income from labor and capital ownership, called \textit{market income},
         every axis plot/.append style={
           xbar, bar width=5.0ex, bar shift=0pt, fill}, 
           nodes near coords align={left}]
-      \addplot[green!85!blue] coordinates {(41.4, 0)};
-      \addplot[blue] coordinates {(77.9, 1)};
+      \addplot[green!85!blue] coordinates {(38.1, 0)};
+      \addplot[blue] coordinates {(75.7, 1)};
     \end{axis}
   \end{tikzpicture}
   
@@ -1902,13 +1902,13 @@ In 2018, income from labor and capital ownership, called \textit{market income},
 \begin{minipage}{0.76\textwidth}
 \small For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the Official Poverty Measure (OPM) based on three times a price-adjusted 1963 minimal food budget, and the SPM based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.\\
 
-While some fully-employed people are in poverty, \textbf{the vast majority of poor people are children, elderly, disabled, caregivers, and students}. These groups represent 69.2 percent of those in poverty in 2018. If the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poverty, by definition. As a result, these groups that are disproportionately work-limited in some way have much higher rates of poverty. 
+While some fully-employed people are in poverty, \textbf{the vast majority of poor people are either children, elderly, disabled, caregivers, or students}. These groups represent 72.5 percent of those in poverty in 2019. If the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poverty, by definition. As a result, these groups that are disproportionately work-limited in some way have much higher rates of poverty. 
 
 \end{minipage}
 
 \vspace{3mm}
 
-\normalsize \textbf{Poverty Measures, 2018}\\
+\normalsize \textbf{Poverty Measures, 2019}\\
 \vspace{-6mm}
 
 \ \small \cbox{blue}Market Income \ \hspace{1mm} \cbox{lime!70!green!90!blue}Disposable Income (SPM) \ \hspace{1mm} \cbox{green!60!blue}Disposable Income (OPM)\\
@@ -1965,7 +1965,7 @@ While some fully-employed people are in poverty, \textbf{the vast majority of po
 
 \begin{minipage}{0.76\textwidth}
 
-\small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In 2018, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a low rate of poverty. \\
+\small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In 2019, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a low rate of poverty. \\
 
 By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty as they are not as likely to have labor income. After social benefits and taxes (disposable income [see\cbox{green!85!blue}]), the elderly have much lower rates of poverty than other age cohorts. Higher survivorship for the wealthy also has the effect of reducing poverty in very old ages. Disposable income still leaves young adults and those just below social security and medicare age (late 50s and early 60s) vulnerable to poverty, relative to other ages.
 
@@ -1973,7 +1973,7 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 
 \normalsize \textbf{Amount of Poverty by Age} \small \hspace{6mm} \cbox{blue} Market Income \ \hspace{2mm} \cbox{green!85!blue} Disposable Income (SPM)
 
-\footnotesize{\textit{in billions of 2018 US Dollars}}
+\footnotesize{\textit{in billions of 2019 US Dollars}}
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[ymin=0, ymax=13, enlarge x limits={0.01},
@@ -1985,7 +1985,7 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 	\addplot[stack plots=y, area style, draw=none, fill=blue] 
 		table [x=age, y=market, 
 		col sep=comma]{data/poor_age_latest.csv}\closedcycle;	
-	\stdnode{0.5cm}{4.1cm}{\large 2018}
+	\stdnode{0.5cm}{4.1cm}{\large 2019}
 	\end{axis}
 \end{tikzpicture}
 \hfill
@@ -2022,15 +2022,15 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The Census Bureau \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{report} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2018, Social Security lifted income above the poverty line for 27.2 million people, by far the most effective program for reducing poverty. Refundable tax credits, such as the earned income tax credit and child tax credit, lifted nine million people out of poverty. These tax credits are phased-in (not fully-refundable), meaning they do not reach the poorest of poor people. As a result, phased-in tax credits have more impact on the poverty headcount than on poverty, relative to programs designed to help the poorest of the poor.\\
+\small The Census Bureau \href{https://www.census.gov/library/publications/2020/demo/p60-272.html}{report} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2019, Social Security lifted income above the poverty line for 26.5 million people, by far the most effective program for reducing poverty. Refundable tax credits, such as the earned income tax credit and child tax credit, lifted 7.5 million people out of poverty. These tax credits are phased-in (not fully-refundable), meaning they do not reach the poorest of poor people. As a result, phased-in tax credits have more impact on the poverty headcount than on poverty, relative to programs designed to help the poorest of the poor.\\
 
-In terms of elements that add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of eight million people to fall below the poverty line. Work expenses additionally put 5.7 million people in poverty.
+In terms of elements that add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of 7.7 million people to fall below the poverty line. Work expenses additionally put five million people in poverty.
 
 \vspace{4mm}
 
 \normalsize \textbf{Effect of Individual Elements on Poverty Headcount}
 
-\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2018}} 
+\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2019}} 
 
 \hspace*{-12mm}  \begin{tikzpicture}
 	\begin{axis}[clip=false,
@@ -2068,11 +2068,11 @@ In terms of elements that add to the number of people in poverty, medical expens
             \addplot[scatter, no marks, draw=none, nodes near coords*={\Label},
             	nodes near coords align={horizontal},
         		visualization depends on={value \thisrow{label} \as \Label}] table 		
-        		[x=xloc,y=yloc,col sep=comma] {data/spmtbl.csv};
+        		[x=xloc,y=yloc,col sep=comma] {data/spmtbl19.csv};
         \end{axis}
     \end{tikzpicture}
     
-\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl.csv}
+\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl19.csv}
 
 \end{minipage}
 \newpage
