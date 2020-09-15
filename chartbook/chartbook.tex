@@ -405,11 +405,9 @@ Additionally some income does not get paid out to these groups. Taxes on imports
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70}\seriffont Economic Growth}
-\small Economists are concerned with changes in production. Decreased production can mean material hardship for ordinary people. It's important to note, however, that GDP is not a tool for describing how goods and services are distributed in society. GDP is an aggregate measure, the sum of all of the individual activities. As a result, the experiences of individuals in the group can \href{https://equitablegrowth.org/research-paper/disaggregating-growth/}{differ} drastically from the overall outcome. For example, GDP can increase while the vast majority of people receive no additional goods or services.\\
+\small Economists are concerned with changes in production. Decreased production can result in material hardship for ordinary people. This chartbook section covers changes in production measured as the rate of growth of overall economic activity, and also describes how major categories of activities contribute to overall growth.\\
 
-Next, it's worth noting that production (GDP) can increase without an increase in inputs, a situation economists call productivity growth. This is an important consideration given the increasing population and serious concerns over environmental impacts of increased production. Lastly, price-adjusted or real measures of production attempt to adjust for changes in quality, meaning real GDP can increase even if the quantity produced does not change. Distribution,  productivity, and prices are important considerations discussed in later sections. This section covers the rate of growth of overall economic activity and how major categories of activities contribute.\\
-
-GDP (see\cbox{red!95!black}) \input{text/gdp_gr.txt}
+\href{https://www.bea.gov/data/gdp/gross-domestic-product}{GDP} (see\cbox{red!95!black}) \input{text/gdp_gr.txt}
 \vspace{4mm}
 
 \normalsize \textbf{Real Gross Domestic Product Growth}
@@ -419,7 +417,7 @@ GDP (see\cbox{red!95!black}) \input{text/gdp_gr.txt}
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, 
 		yticklabel style={text width=1.4em}, 
-		xticklabel={`\short{\year}}, clip=false, height=5.6cm]
+		xticklabel={`\short{\year}}, clip=false, height=5.3cm]
 	\rbars
 	\tsbar{red!95!black}{date}{A191RL}{data/gdp.csv}
 	\node[above, align=left] at (axis cs:2017-01-01,-28.5) {\scriptsize \input{data/gdp.txt}};
@@ -428,12 +426,19 @@ GDP (see\cbox{red!95!black}) \input{text/gdp_gr.txt}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdp.csv}
 
-\vspace{4mm}
+\vspace{1mm}
+
+\subsubsection*{\color{black!70}\seriffont Notes on economic growth}
+\small GDP is not a tool for describing how goods and services are distributed in society. GDP is an aggregate measure, the sum of individual activities. As a result, the experiences of individuals can \href{https://equitablegrowth.org/research-paper/disaggregating-growth/}{differ} drastically from the overall outcome. For example, GDP can increase while the vast majority of people receive no additional goods or services.\\
+
+Production (GDP) isn't a measure of inputs, its a measure of outputs. In fact, production can increase without an increase in inputs, a situation economists call productivity growth. This is an important consideration given the aging US population and serious concerns over environmental impacts of increased production. \\
+
+Price-adjusted or real GDP is adjusted for changes in quality. This means that real GDP can increase even if the quantity produced does not change. Distribution,  productivity, and prices are discussed in later sections.
 
 \subsubsection*{\color{black!70}\seriffont A note on annualized rates}
 \small US statistical agencies traditionally report annualized data. For example, the level of GDP in a given quarter is reported as the production that would occur over an entire year at the rate of production in the quarter. When this concept is applied to quarterly growth rates, as in the previous chart, it indicates what the quarterly change in production would be if it were sustained for an entire year. \\
 
-Because annual rates amplify large short-term changes in production, some analysis has instead used quarterly rates when discussing changes in production during the COVID-19 pandemic. It's also worth noting that many statistical agencies traditionally report quarterly--not annualized--growth rates. However, for purposes of consistency, annualized data are used in this section of the chartbook.
+Because annual rates amplify short-term changes in production, some analysis has instead used quarterly rates when discussing changes in production during the COVID-19 pandemic. It's also worth noting that many other countries' statistical agencies report quarterly--not annualized--growth rates. However, to be consistent with reported data, the chartbook will generally use annualized rates.
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
