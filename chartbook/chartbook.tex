@@ -1864,11 +1864,12 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 
 \newpage
 \subsection*{\color{black!70} \seriffont Poverty}
-\begin{minipage}{0.46\textwidth}
-\small
-In 2019, income from labor and capital ownership, called \textit{market income}, was below the Census Bureau threshold for poverty for 75.7 million people in the US. Disposable income subtracts taxes and includes market income plus income from government programs and tax credits. \href{https://www.census.gov/library/publications/2019/demo/p60-268.html}{According} to the Census Bureau Supplemental Poverty Measure (SPM), \textbf{38.1 million people are in poverty} after taxes and transfers. Government programs and tax credits moved the income of 37.6 million people above the poverty threshold.
+\begin{minipage}{0.76\textwidth}
+\small \input{text/poverty_main.txt}\\
+
+For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the Official Poverty Measure (OPM) based on three times a price-adjusted 1963 minimal food budget, and the SPM based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.22\textwidth}
+\begin{minipage}{0.21\textwidth}
 \normalsize \textbf{In Poverty, 2019}
 
 \footnotesize{\textit{millions of people}}
@@ -1877,7 +1878,7 @@ In 2019, income from labor and capital ownership, called \textit{market income},
     \begin{axis}[
     	\barplotnogrid axis y line=left, \barylab{1.5cm}{1.5ex} \bbar{x}{0},
 		yticklabel style={font=\footnotesize},
-        width=4.2cm, 
+        width=4.0cm, 
         height=4.1cm,
         ytick={0,1},
         yticklabels={Disposable Income\\*(SPM), Market Income},
@@ -1890,19 +1891,17 @@ In 2019, income from labor and capital ownership, called \textit{market income},
           xbar, bar width=5.0ex, bar shift=0pt, fill}, 
           nodes near coords align={left}]
       \addplot[green!85!blue] coordinates {(38.1, 0)};
-      \addplot[blue] coordinates {(75.7, 1)};
+      \addplot[blue] coordinates {(73.3, 1)};
     \end{axis}
   \end{tikzpicture}
   
 \footnotesize{Source: CPS ASEC}
-
+\vfill
 \end{minipage}
 \vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
-\small For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the Official Poverty Measure (OPM) based on three times a price-adjusted 1963 minimal food budget, and the SPM based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.\\
-
-While some fully-employed people are in poverty, \textbf{the vast majority of poor people are either children, elderly, disabled, caregivers, or students}. These groups represent 68.6 percent of those in poverty in 2019. If the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poverty, by definition. As a result, these groups that are disproportionately work-limited in some way have much higher rates of poverty. 
+\small While some fully-employed people are in poverty, \textbf{the vast majority of poor people are either children, elderly, disabled, caregivers, or students}. \input{text/poverty_groups.txt} If the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poverty, by definition. As a result, these groups that are disproportionately work-limited in some way have much higher rates of poverty. 
 
 \end{minipage}
 
@@ -2022,9 +2021,9 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The Census Bureau \href{https://www.census.gov/library/publications/2020/demo/p60-272.html}{report} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2019, Social Security lifted income above the poverty line for 26.5 million people, by far the most effective program for reducing poverty.\\
+\small The Census Bureau \href{https://www.census.gov/library/publications/2020/demo/p60-272.html}{report} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2019, Social Security payments lift income above the poverty line for 26.5 million people, by far the most effective program for reducing poverty.\\
 
-Refundable tax credits, such as the earned income tax credit and child tax credit, lifted 7.5 million people out of poverty. These tax credits are phased-in (not fully-refundable) and increase as someone's labor income increases, and then phased-out, decreasing as labor income continues to increase. As a result, of the phase-in, these tax credits do not reach the poorest of poor people. \href{https://www.peoplespolicyproject.org/2020/05/18/the-myths-of-the-earned-income-tax-credit/}{Additionally}, the tax credits are not received by many who are eligible and are subject to high private administration costs in the form of payments for tax preparation services. As a result, phased-in tax credits have more impact on the poverty headcount than on poverty, relative to programs designed to help the poorest of the poor.\\
+Census estimates that assume 100 percent participation show that refundable tax credits, such as the earned income tax credit and child tax credit, lift 7.5 million people out of poverty in 2019. These tax credits are phased-in (not fully-refundable) and increase as someone's labor income increases. Because of the phase-in, these tax credits do not reach the poorest of poor people. \href{https://www.peoplespolicyproject.org/2020/05/18/the-myths-of-the-earned-income-tax-credit/}{Additionally}, the tax credits are not received by many who are eligible and are subject to high private administrative costs in the form of payments for tax preparation services. Overall, phased-in tax credits have more impact on the model of poverty than on poverty.\\
 
 In terms of elements that add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of 7.7 million people to fall below the poverty line. Work expenses additionally put five million people in poverty.
 
@@ -3806,7 +3805,8 @@ People who are not employed and not unemployed are considered to be outside of t
 		enlarge y limits={0.05}, ymin=0.25, xmin={2018-01-01},
 		xticklabel={`\short{\year}}, height=6.6cm, width=6.3cm]
 	\rbars
-	\stdline{cyan!85!blue}{date}{VALUE}{data/icsa.csv}
+	\stdline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
+	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
 	\end{axis}
 \end{tikzpicture}
 
@@ -3825,15 +3825,22 @@ People who are not employed and not unemployed are considered to be outside of t
 		yticklabel style={text width=1.4em},
 		xticklabel={`\short{\year}}, height=6.6cm, width=6.3cm]
 	\rbars
-	\stdline{green!70!blue}{date}{VALUE}{data/ccsa.csv}
+	\stdline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
+	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
 	\end{axis}
 \end{tikzpicture}
 
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
-
 \end{minipage}
 
-\vspace{5mm}
+\vspace{2mm}
+\begin{minipage}{0.76\textwidth}
+\small In response to the COVID-19 pandemic, traditional state-run unemployment insurance was boosted by federal programs that expanded eligibility for benefits and increased the amount of benefit payments. Over the past few months, many of the new and continuing claims for unemployment insurance have been through the federal programs. \\
+
+\input{text/fed_uic.txt}
+
+\end{minipage}
+\newpage
 
 \begin{minipage}{0.76\textwidth}
 
@@ -4718,7 +4725,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Interest Rates}
-\small The US Federal Reserve System (Fed) has a congressional \href{https://www.federalreserve.gov/faqs/money_12848.htm}{mandate} to promote price stability and maximum employment. In practice, a Fed committee (FOMC) determines the federal funds rate, which aims to influence interest rates in the broader economy. Fed monetary policy can be neutral or be used to stimulate or slow the economy.\\
+\small The US Federal Reserve System (Fed) has a congressional \href{https://www.federalreserve.gov/faqs/money_12848.htm}{mandate} to promote price stability and maximum employment. In practice, a Fed committee (the FOMC) determines the federal funds rate, which aims to influence interest rates in the broader economy. Fed monetary policy can be neutral or be used to stimulate or slow the economy.\\
 
 \input{text/rates_ff.txt}The FOMC cut \href{https://www.federalreserve.gov/releases/h15/}{interest rates} three times in 2019, for a total reduction of 75 basis points. Responding to the economic shock of the coronavirus, the FOMC cut rates twice in March 2020, by 150 basis points, bringing the lower bound of the federal funds rate range to zero. With rates near zero, the Fed has adopted several additional measures to increase liquidity in the global financial system.
 
