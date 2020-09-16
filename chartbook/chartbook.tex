@@ -1064,13 +1064,13 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \vspace{6mm}
 
 \subsubsection*{\color{black!70} \seriffont Distribution of Personal Income}
-\small Labor income, which includes wages and salaries as well as self-employment income, is the vast majority of personal income. Over calendar year 2018, 52 percent of people have any labor income (see\cbox{red!70!yellow}). Only 43 percent of people have labor income above the single-person poverty threshold of \$12,800.\\
+\small Labor income, which includes wages and salaries as well as self-employment income, is the vast majority of personal income. Over calendar year 2019, 52 percent of people have any labor income (see\cbox{red!70!yellow}). Only 44 percent of people have labor income above the single-person poverty threshold of \$12,760.\\
 
-Total income, labor income less taxes and including welfare and capital income, reaches 71 percent of people (see\cbox{violet!90!blue}). In most cases, the people who do not receive any income live with people who receive income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000. 
+Total income, labor income less taxes and including welfare and capital income, reaches 72 percent of people (see\cbox{violet!90!blue}). In most cases, the people who do not receive any income live with people who receive income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000. 
 
 \vspace{4mm}
 
-\normalsize \textbf{Distribution of Personal Income, 2018}
+\normalsize \textbf{Distribution of Personal Income, 2019}
 
 \footnotesize{\textit{thousands of US Dollars, by percentile}}
 
@@ -1089,7 +1089,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: CPS ASEC} \hspace{39mm} \tbllink{pearn_dist.csv}
+\footnotesize{Source: CPS ASEC} \hspace{42mm} \tbllink{pearn_dist.csv}
 \end{minipage}
 
 \newpage 
@@ -1902,7 +1902,7 @@ In 2019, income from labor and capital ownership, called \textit{market income},
 \begin{minipage}{0.76\textwidth}
 \small For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the Official Poverty Measure (OPM) based on three times a price-adjusted 1963 minimal food budget, and the SPM based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.\\
 
-While some fully-employed people are in poverty, \textbf{the vast majority of poor people are either children, elderly, disabled, caregivers, or students}. These groups represent 72.5 percent of those in poverty in 2019. If the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poverty, by definition. As a result, these groups that are disproportionately work-limited in some way have much higher rates of poverty. 
+While some fully-employed people are in poverty, \textbf{the vast majority of poor people are either children, elderly, disabled, caregivers, or students}. These groups represent 68.6 percent of those in poverty in 2019. If the missing labor income required to keep a person out of poverty is not supplied in the form of capital income or welfare income, the person will be poverty, by definition. As a result, these groups that are disproportionately work-limited in some way have much higher rates of poverty. 
 
 \end{minipage}
 
@@ -2022,15 +2022,19 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The Census Bureau \href{https://www.census.gov/library/publications/2020/demo/p60-272.html}{report} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2019, Social Security lifted income above the poverty line for 26.5 million people, by far the most effective program for reducing poverty. Refundable tax credits, such as the earned income tax credit and child tax credit, lifted 7.5 million people out of poverty. These tax credits are phased-in (not fully-refundable), meaning they do not reach the poorest of poor people. As a result, phased-in tax credits have more impact on the poverty headcount than on poverty, relative to programs designed to help the poorest of the poor.\\
+\small The Census Bureau \href{https://www.census.gov/library/publications/2020/demo/p60-272.html}{report} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2019, Social Security lifted income above the poverty line for 26.5 million people, by far the most effective program for reducing poverty.\\
+
+Refundable tax credits, such as the earned income tax credit and child tax credit, lifted 7.5 million people out of poverty. These tax credits are phased-in (not fully-refundable) and increase as someone's labor income increases, and then phased-out, decreasing as labor income continues to increase. As a result, of the phase-in, these tax credits do not reach the poorest of poor people. \href{https://www.peoplespolicyproject.org/2020/05/18/the-myths-of-the-earned-income-tax-credit/}{Additionally}, the tax credits are not received by many who are eligible and are subject to high private administration costs in the form of payments for tax preparation services. As a result, phased-in tax credits have more impact on the poverty headcount than on poverty, relative to programs designed to help the poorest of the poor.\\
 
 In terms of elements that add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of 7.7 million people to fall below the poverty line. Work expenses additionally put five million people in poverty.
 
-\vspace{4mm}
+\vspace{5mm}
 
 \normalsize \textbf{Effect of Individual Elements on Poverty Headcount}
 
 \footnotesize{\textit{individual element effect on number of people in poverty, millions, 2019}} 
+
+\vspace{0.5mm}
 
 \hspace*{-12mm}  \begin{tikzpicture}
 	\begin{axis}[clip=false,
@@ -2043,7 +2047,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 			yticklabel style={black, align=left, anchor=east},            
             ytick=data, tickwidth = 0pt,
             legend style={
-                at={(0.0, 1.04)},
+                at={(0.0, 1.05)},
                 anchor=north,legend
                 columns=-1, draw=none},
             legend cell align=left, extra x ticks={0},
@@ -2505,14 +2509,14 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{minipage}
 \vspace{9mm}
 
-\begin{minipage}{0.55\textwidth}
+\begin{minipage}{0.56\textwidth}
 \normalsize \textbf{Retail sales}
 
 \footnotesize{\textit{share of disposable personal income}}
 
 \hspace*{-2mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.8cm}{1.5ex}
-    	width=5.8cm, bar width=1.7ex, height=11.0cm,
+    	width=5.8cm, bar width=1.7ex, height=9.5cm,
     	enlarge y limits={abs=0.3cm}, enlarge x limits=0.15, \bbar{x}{0},
 		yticklabels from table={\rs}{name}, 
 		yticklabel style={font=\footnotesize},
@@ -3334,23 +3338,23 @@ People who are not employed and not unemployed are considered to be outside of t
 \vspace{5mm}
 
 \normalsize \textbf{Nonfarm Payrolls by Industry Group}\\
-\footnotesize{\textit{seasonally adjusted, thousands \hspace{10mm}levels \hspace{19mm} monthly change \hspace{32mm} combined}\\
+\footnotesize{\textit{seasonally adjusted, thousands \hspace{9mm}levels \hspace{17mm} monthly change \hspace{29mm} combined}\\
 \vspace{-5mm}
 
 \hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{40mm} R{12mm} R{12mm} | R{11mm} R{11mm} R{11mm} 
-		   R{11mm} | R{11mm} R{11mm}}
+		 \begin{tabular}{p{38mm} R{12mm} R{12mm} | R{9.5mm} R{9.5mm} R{9.5mm} 
+		   R{10mm} | R{11mm} R{11mm}}
 			 \input{data/nfp.tex}\hline
 		\end{tabular}
 		}	\\
 		
 \vspace{-2mm}
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{10.1cm} \tbllink{ces_data.csv}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{9.7cm} \tbllink{ces_data.csv}
 
 \newpage
 \begin{minipage}{0.76\textwidth} 
-\small Employment rates vary over time, but also by age, gender, and education. Over the three months ending \input{text/cps_lfs_date.txt}, the employment rate for most education groups is lower than it was during the same three months one year prior.
+\small Employment rates vary over time, but also by age, gender, and education. Over the three months ending \input{text/cps_lfs_date.txt}\unskip, the employment rate for most education groups is lower than it was during the same three months one year prior.
 
 \vspace{5mm}
 
@@ -3500,10 +3504,15 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{minipage}
 
 \newpage
+\subsubsection*{\color{black!70} \seriffont Changes in Employment by Occupation}
 \begin{minipage}{0.76\textwidth} 
-\normalsize \textbf{Occupational Employment, \input{text/cps_lfs_date.txt}}
+\small The share of the US population that is employed in a given occupational group has shifted drastically as a result of the COVID-19 pandemic. Additionally, some full-time workers became part-time and some part-time workers became full-time. During the past three months, which end \input{text/cps_lfs_date.txt}\unskip, the share of people employed full-time decreased in most occupational groups compared to the same three months one year prior.
 
-\footnotesize{\textit{share of population employed, 12-month average, percent}}
+\vspace{4mm}
+
+\normalsize \textbf{Change in Occupational Employment, \input{text/cps_lfs_date.txt}}
+
+\footnotesize{\textit{change in share of population employed, latest three months vs year ago, percentage points}}
 
 \hspace*{-9mm}  \begin{tikzpicture}
    \begin{axis}[clip=false, xbar stacked, \bbar{x}{0},
@@ -3513,7 +3522,7 @@ People who are not employed and not unemployed are considered to be outside of t
 		    x axis line style = { opacity = 0 }, 
 			yticklabel style={black, align=left, anchor=east},            
             ytick=data, tickwidth = 0pt,
-            legend style={at={(-0.2, 1.05)},
+            legend style={at={(-0.3, 1.05)},
                 anchor=north,legend columns=-1, draw=none},
             legend cell align=left,
             extra x ticks={0}, extra x tick style={
@@ -3521,19 +3530,11 @@ People who are not employed and not unemployed are considered to be outside of t
             enlarge y limits={0.02}, enlarge x limits={0.03},
             width=8.8cm, height=12cm,
             \barylab{5.0cm}{1.5ex}]
-            \addplot[fill=green, draw opacity=0] table 
+            \addplot[fill=green!85!blue, draw opacity=0] table 
             	[y expr=\coordindex, x=PT, col sep=semicolon] {\occ};
-            \addplot[fill=blue, draw opacity=0] table 
+            \addplot[fill=blue!60!cyan, draw opacity=0] table 
             	[y expr=\coordindex, x=FT, col sep=semicolon] {\occ};
-            \addplot[fill=orange, draw opacity=0, 
-            	point meta=x, nodes near coords, nodes near coords align={anchor=west},
-    			every node near coord/.append style={
-        			black, fill=white, fill opacity=0.75,
-        			text opacity=1, outer sep=\pgflinewidth}, 
-        			nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-					precision=1, assume math mode},] table 
-            	[y expr=\coordindex, x=Second, col sep=semicolon] {\occ};
-            \legend{Part-time, Full-time, Second Job}
+            \legend{Part-time, Full-time}
         \end{axis}
     \end{tikzpicture}
     
@@ -3749,13 +3750,15 @@ People who are not employed and not unemployed are considered to be outside of t
 \begin{minipage}{0.76\textwidth}
 
 
-\small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{produce} local area estimates of unemployment, including the \textbf{unemployment rate for metro areas}. 
+\small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{produce} local area estimates of unemployment, including the \textbf{unemployment rate for metro areas}. BLS report the share of the local area labor force that is unemployed in the largest 300 or so metropolitan areas. The following map captures recent changes by displaying the difference between the average unemployment rate over the past three months and the previous three months. A positive change indicates that the unemployment rate increased. 
 
 \vspace{4mm}
 
 \normalsize \textbf{Change in Unemployment Rate by Metro Area}
 
-\footnotesize{\textit{one-year change, in percentage points, \input{text/unemp_map_date.txt}}}
+\footnotesize{\textit{most recent three months change from previous three months}}
+
+\footnotesize{\textit{in percentage points, latest three months end \input{text/unemp_map_date.txt}}}
 
 \vspace{-2mm}
 
@@ -3768,10 +3771,21 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{minipage}
 
 \newpage
-
-
+\subsubsection*{\color{black!70} \seriffont Unemployment by state}
 \begin{minipage}{0.76\textwidth}
+\small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{report} the state unemployment rate--unemployed people as a share of the state labor force--each month, around two weeks after reporting the national unemployment rate. \input{text/state_unemp.txt}
+\end{minipage}
 
+\vspace{3mm}
+
+\normalsize \textbf{Unemployment Rate by State}\\
+\footnotesize{\textit{unemployed share of labor force, percent}}\\
+\vspace{-2mm}
+\hspace{-8mm} \input{data/unemp_map.pgf} \\
+\footnotesize{Source: Bureau of Labor Statistics}
+
+\newpage
+\begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Jobless Claims}
 
 \small \input{text/icsa.txt}\\
