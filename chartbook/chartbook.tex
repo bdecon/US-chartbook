@@ -1109,9 +1109,9 @@ Total income, labor income less taxes and including welfare and capital income, 
 \footnotesize{\textit{thousands of US dollars}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={20, 40, 60, 80}, 
+	\begin{axis}[\bbar{y}{1}, \dateaxisticks ytick={20, 40, 60, 80, 100}, 
 		enlarge y limits={0.1},
-		xmax={2019-02-01},
+		xmax={2020-02-01},
 		xticklabel={`\short{\year}}, width=6.9cm, height=5.8cm]
 	\rbars
 	\dashline{blue!80!black}{Year}{Black-imputed}{data/epi_census_income.csv}
@@ -1127,16 +1127,16 @@ Total income, labor income less taxes and including welfare and capital income, 
 	\stdline{red!90!black}{Year}{Hispanic13}{data/epi_census_income.csv}
 	\stdline{red!90!black}{Year}{Hispanic}{data/epi_census_income.csv}
 	\stdnode{4.7cm}{0.2cm}{\footnotesize \color{blue!80!black}Black}
-	\stdnode{4.5cm}{2.7cm}{\footnotesize \color{green!80!black}White}
-	\stdnode{3.8cm}{3.6cm}{\footnotesize \color{orange}Asian}
-	\stdnode{1.5cm}{1.1cm}{\footnotesize \color{red!90!black}Hispanic}
+	\stdnode{4.5cm}{2.5cm}{\footnotesize \color{green!80!black}White}
+	\stdnode{3.8cm}{3.2cm}{\footnotesize \color{orange}Asian}
+	\stdnode{1.5cm}{1.0cm}{\footnotesize \color{red!90!black}Hispanic}
 	\end{axis}
 \end{tikzpicture}
 
 \footnotesize{Source: Economic Policy Institute, Census} 
 \end{minipage}\hspace{4mm}
 \begin{minipage}{0.36\textwidth}
-\small Black median household income in 2018 was \$41,692, compared to an inflation adjusted equivalent of \$40,963 in 2017. White, non-Hispanic median household income was \$70,462 compared to \$69,851 in 2017. Hispanic median household income in 2018 was \$51,450 compared to \$51,390 in 2017. Asian median household income was \$87,194 in 2018 and \$83,376 in 2017. Data for 2000--2013, shown with dashed lines, are calculated by \href{https://www.epi.org/blog/racial-and-ethnic-income-gaps-persist-amid-uneven-growth-in-household-incomes/}{EPI}, to be more-comparable over time despite changes to the survey design in 2013 and to the processing of survey data in 2017. 
+\small Black median household income in 2019 was \$46,073, compared to an inflation adjusted equivalent of \$42,447 in 2018. White, non-Hispanic median household income was \$76,057 compared to \$71,922 in 2018. Hispanic median household income in 2019 was \$56,113 compared to \$52,382 in 2018. Asian median household income was \$87,194 in 2019 and \$88,774 in 2018. Data for 2000--2013, shown with dashed lines, are calculated by \href{https://www.epi.org/blog/racial-and-ethnic-income-gaps-persist-amid-uneven-growth-in-household-incomes/}{EPI}, to be more-comparable over time despite changes to the survey design in 2013 and to the processing of survey data in 2017. 
 
 \end{minipage}
 
@@ -3563,7 +3563,7 @@ People who are not employed and not unemployed are considered to be outside of t
 	\rbars
 	\stdline{blue}{date}{U6}{data/unemp2.csv}
 	\stdline{blue!50!cyan}{date}{Total}{data/unemp2.csv}
-	\stdnode{3.7cm}{0.3cm}{\footnotesize \color{blue!50!cyan}U3}
+	\stdnode{3.7cm}{0.5cm}{\footnotesize \color{blue!50!cyan}U3}
 	\stdnode{1.2cm}{1.3cm}{\footnotesize \color{blue}U6}
 	\input{text/u3_node.txt}
 	\input{text/u6_node.txt}
@@ -3807,6 +3807,8 @@ People who are not employed and not unemployed are considered to be outside of t
 	\rbars
 	\stdline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
+	\stdnode{5.9cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}
 
@@ -3827,6 +3829,8 @@ People who are not employed and not unemployed are considered to be outside of t
 	\rbars
 	\stdline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
+	\stdnode{6.02cm}{1.5cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{4.0cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}
 
