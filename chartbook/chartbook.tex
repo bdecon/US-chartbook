@@ -18,6 +18,7 @@
 	\usepackage{microtype}
 	\usepackage[default]{lato}
 	\usepackage{pgfplots, pgfplotstable}
+	\usepackage[eulergreek]{sansmath}
 	\usepackage{xcolor}
 	\usepackage{array}
 	\usepackage{fontawesome5}
@@ -3333,7 +3334,21 @@ People who are not employed and not unemployed are considered to be outside of t
 \vspace{1mm}
 
 \footnotesize{Source: American Community Survey}
+
+\vspace{8mm}
+
+\small The share of the age 16 and older population that is employed in any amount at a point in time varies by state and over time. \input{text/state_emp.txt}
+
 \end{minipage}
+
+\vspace{2mm}
+
+\normalsize \textbf{Employment Rate by State}\\
+\footnotesize{\textit{employed share of population, percent}}\\
+\vspace{-2mm}
+\hspace{-8mm} \input{data/epop_map.pgf} \\
+\footnotesize{Source: Bureau of Labor Statistics}
+
 \newpage
 \subsubsection*{\color{black!70} \seriffont Changes in Payroll Employment}
 \begin{minipage}{0.28\textwidth}
@@ -4267,7 +4282,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-40, -30, -20, -10, 0, 10}, 
 		yticklabel style={text width=1.5em}, width=12.9cm, height=5.8cm,
-		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm]
 	\rbars
 	\sbar{cyan!80!blue}{date}{hours}{data/lprod.csv}
 	\end{axis}
@@ -4800,10 +4815,10 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10}, ymin=0.2,
 		xticklabel={`\short{\year}}, clip=false, height=5.4cm]
 	\rbars
-	\stdline{red!70!purple!90!black}{date}{Ten-year}{data/rates.csv}
-	\stdline{orange!80!yellow}{date}{Two-year}{data/rates.csv}
-	\stdnode{6.1cm}{0.65cm}{\scriptsize \color{orange!80!yellow}\textbf{Two-year}}
-	\stdnode{8.68cm}{1.36cm}{\scriptsize \color{red!70!purple!90!black}\textbf{Ten-year}}
+	\stdline{red!90}{date}{Ten-year}{data/rates.csv}
+	\stdline{blue!80}{date}{Two-year}{data/rates.csv}
+	\stdnode{6.0cm}{0.65cm}{\scriptsize \color{blue}\textbf{Two-year}}
+	\stdnode{8.68cm}{1.36cm}{\scriptsize \color{red!90}\textbf{Ten-year}}
 	\end{axis}
 \end{tikzpicture}
 
@@ -4827,11 +4842,44 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 		
 \footnotesize{Source: Federal Reserve}
 \end{minipage}
+
+\vspace{11mm}
+\begin{minipage}{0.45\textwidth}
+\normalsize \textbf{Treasury Yield Curve}
+
+\footnotesize{\textit{constant maturity yield, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}[trim axis right]
+	\begin{axis}[max space between ticks=38, height=6.8cm, width=8.0cm,	  
+		axis line style={draw=none}, nodes near coords style={font=\scriptsize},
+		xtick=data, xticklabels={one-\\ month, three-\\ month,one-\\ year,two-\\ year, 
+			five-\\ year, ten-\\ year, 20-\\ year, 30-\\ year},
+		enlarge y limits={0.08}, enlarge x limits={0.02}, \bbar{y}{0}]
+	\addplot[thick, mark=*, mark options={fill=white}, color=blue!65!black!30] 
+		table [x=number, y=fiveyear, col sep=comma] {data/yc.csv}
+		node[pos=0.85,pin=180:{\color{black!80} Five years ago}] {};
+	\addplot[thick, mark=*, mark options={fill=white}, color=blue!65!black!60] 
+		table [x=number, y=oneyear, col sep=comma] {data/yc.csv}
+		node[pos=0.3,pin={[pin distance=3mm]90:{\color{black!80} Year ago}}] {};			
+	\addplot[ultra thick, mark=*, mark options={fill=white},
+    	visualization depends on=\thisrow{alignment} \as \alignment, nodes near coords, 
+    	every node near coord/.style={anchor=\alignment, /pgf/number format/fixed}, 
+    		color=blue!60!black] 
+		table [x=number, y=value, col sep=comma] {data/yc.csv}
+		node[pos=0.72,pin=280:{\textbf{Most recent}}] {};						 	
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.26\textwidth}
+
+\small The \textbf{Treasury yield curve} \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{shows} the yield on different maturities of Treasury bonds and bills, usually from short-term, such as three-month, to long-term such as 30-year. This measure is at times described as \textit{inverted}, which means the short-term-debt end of the curve is higher than the long-term-debt end. For example, if the yield on two-year treasuries is higher than the yield on ten-year treasuries. 
+\end{minipage}
+
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The \textbf{Treasury yield curve} \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{shows} the yield on different maturities of Treasury bonds and bills, usually from short-term, such as three-month, to long-term such as 30-year. This measure is at times described as \textit{inverted}, which means the short-term-debt end of the curve is higher than the long-term-debt end. For example, if the yield on two-year treasuries is higher than the yield on ten-year treasuries. \\
-
-\input{text/spread_basic.txt}
+\small \input{text/spread_basic.txt}
 \end{minipage}
 
 \vspace{3mm}
