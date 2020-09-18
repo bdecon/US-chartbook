@@ -3875,23 +3875,34 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \subsubsection*{\color{black!70} \seriffont Labor Force Participation}
 
-\small Those who are either employed or unemployed are considered to be in the labor force. Over the long terms, the share of the US population that is in the labor force has been falling because of the aging of the population. However, non-participation in the labor force is often cyclical and the result of economic conditions. For example, during a downturn more people become discouraged by their labor force prospects and stop looking for work, removing them from the labor force.\\
+\small Those who are either employed or unemployed are considered to be in the labor force. Over the long term, the share of the US population that is in the labor force, called the labor force participation rate, has been falling because of the aging of the population (because labor force participation rates are lower among the elderly and an increasing share of the overall population are elderly). However, participation in the labor force is also cyclical and affected by economic conditions. For example, during a downturn people become discouraged by their labor force prospects and stop looking for work, removing them from the labor force.\\
 
-\input{text/lfpr_text.txt}
+Age is not the only demographic factor affecting labor force participation. The US population has become much more educated over the past 30 years, putting upward pressure on labor force participation, as participation rates tend to increase with education. Additionally, women were participating in the labor force at increasing rate in the US until the 2000s while men were not.\\
+
+\input{text/lfpr_text.txt}\\
+
+\input{text/lfpr_text2.txt}
 
 \vspace{3mm}
 
 \normalsize \textbf{Labor Force Participation Rate}
 
-\footnotesize{\textit{labor force as share of population, percent}}
+\footnotesize{\textit{labor force as share of age 16 and older population, percent}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={60, 62, 64, 66, 68}, 
-		width=12.2cm, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={50, 55, 60, 65, 70, 75, 80}, 
+		width=12.2cm, height=7.2cm,
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
-	\stdline{red}{date}{lfpr}{data/lfpr.csv}
-	\input{text/lfpr_node.txt}
+	\stdline{green!80!blue}{date}{TotLFPR}{data/lfpr.csv}
+	\stdline{orange}{date}{WomenLFPR}{data/lfpr.csv}
+	\stdline{blue!80!cyan}{date}{MenLFPR}{data/lfpr.csv}
+	\input{text/totlfpr_node.txt}
+	\stdnode{2.0cm}{3.2cm}{\footnotesize \color{green!80!blue}\textbf{Total}}
+	\input{text/menlfpr_node.txt}
+	\stdnode{3.2cm}{4.5cm}{\footnotesize \color{blue!80!cyan}\textbf{Men}}
+	\input{text/womenlfpr_node.txt}
+	\stdnode{3.0cm}{1.0cm}{\footnotesize \color{orange}\textbf{Women}}
 	\end{axis}
 \end{tikzpicture}
 
