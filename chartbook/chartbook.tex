@@ -774,7 +774,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \input{text/hhform1.txt}
 
-\vspace{4mm}
+\vspace{3mm}
 
 \normalsize \textbf{Household Formation by Type}
 
@@ -782,13 +782,13 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2, 3},
-		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
-		legend style={at={(0.58, 1.15)}, fill=white}]
+		xticklabel={`\short{\year}}, clip=false, height=5.7cm,
+		legend style={at={(0.58, 1.01)}, fill=white}]
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
-	\stdnode{4.0cm}{3.9cm}{\scriptsize historical}
-	\stdnode{5.1cm}{3.9cm}{\scriptsize revised}
+	\stdnode{3.9cm}{3.3cm}{\scriptsize historical}
+	\stdnode{5.1cm}{3.3cm}{\scriptsize revised}
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
 	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
 	\stdline{black}{date}{pop}{data/hhform.csv}
@@ -797,7 +797,32 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \end{tikzpicture}
 
 \footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
+\end{minipage}
 
+\vspace{1mm}
+
+\subsubsection*{\color{black!70} \seriffont Headship Rate}
+\begin{minipage}{0.3\textwidth}
+\small Individual decisions about starting a household or living with family are influenced by economic conditions. The ratio of households to people age 16 or older is referred to as the \href{https://www.federalreserve.gov/econres/notes/feds-notes/an-early-evaluation-of-the-effects-of-the-pandemic-on-living-arrangements-and-household-formation-20200807.htm}{aggregate headship} rate. This measure fell substantially following the collapse of the housing bubble and dropped rapidly during the COVID-19 pandemic as people moved in with family. \input{text/headship.txt}
+\end{minipage}\hspace{8mm}
+\begin{minipage}{0.405\textwidth}
+\normalsize \textbf{Aggregate Headship Rate}
+
+\footnotesize{\textit{households per person age 16 or older}}
+
+\footnotesize{\textit{seasonally adjusted}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={49, 50, 51}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=5.8cm, width=6.8cm, clip=false]
+	\rebars
+	\thinline{red}{date}{value}{data/headship.csv}
+	\input{text/headship_node.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Author's calculations} \hfill \tbllink{headship.csv} 
 \end{minipage}
 
 \newpage
@@ -851,7 +876,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \end{minipage}
 \vspace{3mm}
 
-\noindent \normalsize \textbf{Age Group Share of Commuter Zone Population, 2018}
+\noindent \normalsize \textbf{Age Group Share of Commuter Zone Population, 2019}
 
 \hspace{2mm} Age 0 to 17 \hspace{62mm} Age 65+
 
@@ -5199,6 +5224,6 @@ A large increase in the amount of money held by individuals and institutions can
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
 \small
-Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Skanda Amarnath, Ernie Tedeschi, and Vikas Sharma.
+Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Andrew Paciorek, Skanda Amarnath, Ernie Tedeschi, and Vikas Sharma.
 \end{minipage}
 \end{document}
