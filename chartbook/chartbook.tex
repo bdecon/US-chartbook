@@ -5023,8 +5023,13 @@ A large increase in the amount of money held by individuals and institutions can
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE Prices}
 \label{sec:pr}
-\small Changes in prices affect the amount of goods and services that can purchased by a fixed amount of income. When researchers try to measure changes in prices, they often look at both the quantity that can be purchased by a unit of currency, and also changes in item quality. To understand the overall change in prices faced by a certain group, such as consumers, researchers create a representative ``basket'' of the goods and services purchased by the group, and track the changes in the basket, and the price of the basket, over time. 
+\small Changes in prices affect the amount of goods and services that can purchased by a fixed amount of income. When measuring changes in prices, researchers consider both the quantity that can be purchased by a unit of currency, and also changes in item quality. To understand the overall change in prices faced by a certain group, such as consumers, researchers create a representative ``consumption basket'' of the goods and services purchased by the group, and track the changes in the basket, and the price of the basket, over time. \\
 
+This section covers various measures of prices. Inflation--a general increase in the price level--is measured in the section by the one-year percent change of a price index. Additionally, there is some discussion of inflation expectations and a brief look at commodity prices. 
+\end{minipage}
+\newpage
+
+\begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Consumer Price Index}
 
 \small \input{text/cpi_main.txt}
@@ -5048,15 +5053,17 @@ A large increase in the amount of money held by individuals and institutions can
 \end{tikzpicture}\\
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi.csv}
+
+\vspace{4mm}
+
+\small The prices of individual goods and services are obvious not all increasing at the same rate. Likewise, a large change in the price of one category of goods or services is not likely to cause a large change in the overall price level, particularly if the category is a small portion of the consumption basket or if consumers are able to substitute or reduce consumption of the category. The contribution of a category to overall inflation is an important consideration, and reflects both changes in price within a category and the relative importance of the category to the overall index (its share of the consumption basket).
 \end{minipage}
 
 \vspace{2mm}
 
-\begin{minipage}{0.3\textwidth}
-\small \input{text/cpicomp.txt} \\
-
-\input{text/cpicomp2.txt} 
-\end{minipage} \hspace{6mm}
+\begin{minipage}{0.32\textwidth}
+\small \input{text/cpicomp.txt}
+\end{minipage} \hspace{7mm}
 \begin{minipage}{0.4\textwidth}
 \normalsize \textbf{Consumer Price Index}
 
@@ -5064,7 +5071,7 @@ A large increase in the amount of money held by individuals and institutions can
  
 \hspace*{-7mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
-    	width=5.0cm, bar width=1.6ex, height=7.8cm,
+    	width=5.0cm, bar width=1.7ex, height=8.4cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.3, \bbar{x}{0},
 		yticklabels from table={\cpi}{name}, 
 		yticklabel style={font=\footnotesize, xshift=-4pt},
@@ -5085,7 +5092,7 @@ A large increase in the amount of money held by individuals and institutions can
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small CPI inflation comes from changes in the prices of individual goods and services but is also affected by an occasional re-weighting of the components used in the index, based on changes in consumption habits. By considering both sources of changes, we can decompose medium- or long-term trends based on the contribution to overall inflation from different categories of spending. Specifically in this example, economic theory suggests the Fed has more influence over prices of core goods and services than over prices of housing (which is affected more by the housing stock, zoning, and limitations on land) and food and energy (for which prices are historically volatile). \\
+\small As mentioned above, CPI inflation comes from changes in the prices of individual goods and services but is also affected by an occasional re-weighting of the components used in the index, based on changes in consumption habits. By considering both sources of changes, we can decompose medium- or long-term trends based on the contribution to overall inflation from different categories of spending. \\
 
 \input{text/cpi_decomp.txt}
 
@@ -5119,8 +5126,35 @@ A large increase in the amount of money held by individuals and institutions can
 
 \vspace{8mm}
 
+\subsubsection*{\color{black!70} \seriffont Why isn't the CPI revised?}
+\small The consumer price index (CPI-U) is used in contracts that include cost adjustments. As a result, historical CPI-U data are not revised if there is a change to the way the CPI is calculated. For research purposes, however, it is ideal to have the most accurate measure of overall changes in prices faced by consumers. BLS also publish a research series, the \href{https://www.bls.gov/cpi/research-series/r-cpi-u-rs-home.htm}{CPI-U-RS}, which adjusts the historical data of the CPI-U to be consistent with the current methods of producing it. 
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{\color{black!70} \seriffont Relative Prices}
+\small While the previous section decomposes the overall change in prices to identify the contributions from categories of consumer spending, the next table instead shows the one-year percent change in prices for each category. Additionally, the weight that a category has in the overall index--the category share of the basket of goods and services--is included as the last column in the table.
 
-\small The consumer price index (CPI-U) is used in contracts that include cost adjustments. As a result, historical CPI-U data are not revised if there is a change to the way the CPI is calculated. For research purposes, however, it is ideal to have the most accurate measure of overall changes in prices faced by consumers. BLS also publish a research series, the CPI-U-RS, which adjusts the historical data of the CPI-U to be consistent with the current methods of producing it. 
+\vspace{3.5mm}
+
+\normalsize \textbf{Selected CPI Categories}
+
+\footnotesize{\textit{one-year percent change}
+
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.54}
+\begin{tabular}{p{41mm} R{7.0mm} R{7.0mm} R{7.0mm} R{7.0mm}
+		 		 R{7.0mm} R{7.0mm} R{7.0mm} R{10mm}}
+			 \input{data/cpi_comp.tex}
+			 \hline
+		\end{tabular}}}
+
+\vspace{1mm}		
+		
+\footnotesize{Source: Bureau of Labor Statistics}
+
+\vspace{5.5mm}
+
+\small \input{text/cpicomp2.txt}
 \end{minipage}
 \newpage
 \subsection*{\color{black!70} \seriffont Producer Prices}
