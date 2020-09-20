@@ -607,7 +607,8 @@ def jolts_codes(d, code_text, ind, value='i'):
 
     
 def value_text(value, style='increase', ptype='percent', adj=None, 
-               time_str='', digits=1, threshold=0):
+               time_str='', digits=1, threshold=0, num_txt=True,
+               casual=False):
     '''
     RETURN TEXT STRING FOR SPECIFIED FLOAT VALUE
     
@@ -617,11 +618,19 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     ptype: percent, pp, None
     adj: sa, annual, annualized, saa, saar, total
     time_pd: blank unless specified directly, for example "one-year"
+    num_txt: replace round numbers with text, for example: 9.0 -> nine
+    casual: replaces certain words: decreased -> fell, for example
     
     '''
     text = 'Error, options not available'
     abv = abs(value)
     val = f'{abv:.{digits}f}'
+    numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
+               '4.0': 'four', '5.0': 'five', 
+               '6.0': 'six', '7.0': 'seven', 
+               '8.0': 'eight', '9.0': 'nine'}
+    if (num_txt == True) & (val in numbers.keys()):
+        val = numbers[val]
     indef = 'an' if ((val[0] == '8') | (val[0:3] in ['11.', '11,', '18.', '18,'])) else 'a'
     neg = True if value < 0 else False
     insig = True if abv < threshold else False
@@ -701,5 +710,17 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             text = 'virtually no change'
             if style[:3] == 'con':
                 text = 'virtually no contribution'
+    
+    if casual == True:
+        text = (text.replace('decreased', 'fell')
+                    .replace('contributed', 'added')
+                    .replace('increased', 'grew')
+                    .replace('contribute', 'add')
+                    .replace('a contribution', 'an addition')
+                    .replace('contribution', 'addition')
+                    .replace('decrease', 'fall')
+                    .replace('subtraction', 'reduction')
+                    .replace('increase of', 'growth of')
+                    .replace('decrease of', 'fall of'))
     
     return(text)
