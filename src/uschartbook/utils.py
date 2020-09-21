@@ -608,7 +608,7 @@ def jolts_codes(d, code_text, ind, value='i'):
     
 def value_text(value, style='increase', ptype='percent', adj=None, 
                time_str='', digits=1, threshold=0, num_txt=True,
-               casual=False):
+               casual=False, obj='singular'):
     '''
     RETURN TEXT STRING FOR SPECIFIED FLOAT VALUE
     
@@ -616,10 +616,11 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     style: increase, increase_of, contribution, contribution to,
            contribution_of, contribution_end
     ptype: percent, pp, None
-    adj: sa, annual, annualized, saa, saar, total
+    adj: sa, annual, annualized, saa, saar, total, average
     time_pd: blank unless specified directly, for example "one-year"
     num_txt: replace round numbers with text, for example: 9.0 -> nine
     casual: replaces certain words: decreased -> fell, for example
+    obj: switch to "plural" if the object is plural, e.g. prices
     
     '''
     text = 'Error, options not available'
@@ -644,7 +645,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'annualized': ' at an annualized rate of ', 
                  'saa': ' at a seasonally-adjusted and annualized rate of ', 
                  'saar': ' at a seasonally-adjusted annualized rate of ', 
-                 'total': ' by a total of '}
+                 'total': ' by a total of ', 
+                 'average': ' at an average rate of '}
         if style == 'increase':
             atxtd[None] = ' '
         atxt = atxtd[adj]
@@ -660,7 +662,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'annualized': ' on an annualized-basis', 
                  'saa': ' on a seasonally-adjusted and annualized basis', 
                  'saar': ' on a seasonally-adjusted annualized basis', 
-                 'total': ' in total'}
+                 'total': ' in total',
+                 'average': ' on an average basis'}
         atxt = atxtd[adj]
         stxt = ('contributed', 'to') if neg == False else ('subtracted', 'from')
         ttxt = f' over the {time_str} period' if time_str != '' else ''
@@ -685,7 +688,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'annualized': f'an annualized {time_str}{stxt1} of', 
                  'saa': f'a seasonally-adjusted and annualized {time_str}{stxt1} of', 
                  'saar': f'a seasonally-adjusted annualized {time_str}{stxt1} of', 
-                 'total': f'a total {time_str}{stxt1} of'}
+                 'total': f'a total {time_str}{stxt1} of',
+                 'average': f'an average {time_str}{stxt1} of'}
         atxt = atxtd[adj]
         text = f'{atxt} {val}{ptxt}'
         if insig == True:
@@ -702,7 +706,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'annualized': 'an annualized ', 
                  'saa': 'a seasonally-adjusted and annualized ', 
                  'saar': 'a seasonally-adjusted annualized ', 
-                 'total': 'a total '}
+                 'total': 'a total ',
+                 'average': 'an average '}
         atxt = atxtd[adj]
         ttxt = f'{time_str} ' if time_str != '' else ''
         text = f'{atxt}{ttxt}{val}{ptxt} {stxt}'
@@ -722,5 +727,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                     .replace('subtraction', 'reduction')
                     .replace('increase of', 'growth of')
                     .replace('decrease of', 'fall of'))
+                    
+    if obj == 'plural':
+        text = (text.replace('was', 'were'))
     
     return(text)

@@ -298,7 +298,7 @@ Contents not reliable
 \section*{\color{darkgray} \LARGE Overall Economic Activity}
 \label{sec:oea}
 \begin{minipage}{0.61\textwidth}
-\small This analysis of the United States economy begins with the most popular measure of economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{Gross Domestic Product} (GDP). GDP is a tool for measuring the production of goods and services in a given location during a given period of time. According to the Bureau of Economic Analysis, the seasonally-adjusted annualized value of goods and services produced in the US was \input{text/gdp1.txt}\\
+\small This analysis of the United States economy begins with the most popular measure of economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{Gross Domestic Product} (GDP). GDP estimates the production of goods and services in a given location during a given period of time. According to the Bureau of Economic Analysis, the seasonally-adjusted annualized value of goods and services produced in the US was \input{text/gdp1.txt}\\
 
 \input{text/gdp2.txt}\\
 \end{minipage}\hfill
@@ -340,10 +340,10 @@ Contents not reliable
 \begin{minipage}{0.76\textwidth}
 \normalsize \textbf{Expenditure Types}
 
-\footnotesize{\textit{per capita, annualized, thousands of \input{text/gdp_ltdt.txt}dollars}}
+\footnotesize{\textit{per capita, annualized, \input{text/gdp_ltdt.txt}dollars}}
 
 \hspace{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.6}
+		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{54mm} R{13mm} R{13mm} R{13mm} R{13mm}}
 			\input{data/gdppc_levels.tex} \hline
 		\end{tabular}}
@@ -392,7 +392,7 @@ Additionally some income does not get paid out to these groups. Taxes on imports
 
 \normalsize \textbf{Income Types}
 
-\footnotesize{\textit{per capita, annualized, thousands of \input{text/gdi_ltdt.txt}dollars}}
+\footnotesize{\textit{per capita, annualized, \input{text/gdi_ltdt.txt}dollars}}
 
 \hspace{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.6}
@@ -403,6 +403,92 @@ Additionally some income does not get paid out to these groups. Taxes on imports
 
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{\color{black!70}\seriffont Household inputs to production}
+\small It's useful to consider household inputs when measuring economic output. For example, is the population growing? Are more people working? Are people working more hours? Is the economy more productive in its use of labor? These questions all add import context to discussion of aggregate ouput.\\
+
+The US population is increasing (see {\color{lime!90!green}\textbf{---}}), though at a slower rate than in the past. Over the past 30 years, the US has added 80 million people. This means the amount of goods and services produced needed to increase by 30 percent over the period to maintain a constant standard of living. Employment of any amount (see {\color{green!30!teal!90!black}\textbf{---}}) comes from around half of the population during the peak of an economic expansion as a tighter labor market and higher wages pull people into employment, and falls during a recession as people lose jobs. Hours worked per worker per week (see {\color{blue}\textbf{---}}) are also influenced by economic conditions. During an economic expansion, more hours of work are available to those who want them. During a recession and when demand for goods and services is relatively low, hours of work are cut.
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.31\textwidth}
+\normalsize \textbf{Population}
+
+\footnotesize{\textit{millions of people}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={200, 220, 240, 260, 280, 300, 320, 340}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=4.2cm, width=5.8cm, clip=false]
+	\rbars
+	\thickline{lime!90!green}{date}{pop}{data/gdpjobslvl.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: BEA}
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.31\textwidth}
+\normalsize \textbf{Employment Rate}
+
+\footnotesize{\textit{share of population}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={42, 44, 46, 48, 50, 52}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=4.2cm, width=5.8cm, clip=false]
+	\rbars
+	\stdline{green!30!teal!90!black}{date}{epop}{data/gdpjobslvl.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: CPS microdata}
+\end{minipage}\hspace{5mm}
+\begin{minipage}{0.31\textwidth}
+\normalsize \textbf{Hours Worked}
+
+\footnotesize{\textit{average per worker per week}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={36, 37, 38}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=4.2cm, width=5.8cm, clip=false]
+	\rbars
+	\stdline{blue}{date}{hours}{data/gdpjobslvl.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: CPS microdata}
+\end{minipage}
+
+\vspace{4mm}
+
+\begin{minipage}{0.76\textwidth}
+\small By multiplying the population, employment rate, and average hours worked, we approximate the aggregate hours worked in the US. We can then divide real GDP by aggregate hours worked to estimate GDP per hour of work, or productivity (see {\color{cyan!60!white}\textbf{---}}). During a recession, economic theory suggests that productivity increases as less-productive workers disproportionately lose jobs: less-productive firms close and existing firms lay off less-productive workers.
+\end{minipage}
+
+\begin{minipage}{0.3\textwidth}
+\small \input{text/gdp_per_hour.txt}
+\end{minipage}\hspace{8mm}
+\begin{minipage}{0.405\textwidth}
+\normalsize \textbf{GDP per hour of work}
+
+\footnotesize{\textit{\input{text/gdpjobs_ltdt.txt}dollars}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shdateaxisticks ytick={40, 50, 60, 70}, 
+		enlarge y limits={0.1}, 
+		xticklabel={`\short{\year}}, height=5.2cm, width=7.4cm, clip=false]
+	\rbars
+	\thickline{cyan!60!white}{date}{gdpinp}{data/gdpjobslvl.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Author's calculations} \hfill \tbllink{gdpjobslvl.csv} 
+\end{minipage}
+
+
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70}\seriffont Economic Growth}
@@ -521,24 +607,26 @@ Because annual rates amplify short-term changes in production, some analysis has
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva.csv}
-\vspace{9mm}
+\vspace{10mm}
 
-\small Changes to GDP can also be assigned to changes in \textbf{household inputs}: population (see\cbox{lime}), employment rates (see\cbox{green!30!teal!90!black}), average hours worked (see\cbox{blue}), and total economy productivity (see\cbox{cyan!50!white}). 
+\small Changes to GDP can also be assigned to changes in \textbf{household inputs}: population (see\cbox{lime!90!green}), employment rates (see\cbox{green!30!teal!90!black}), average hours worked (see\cbox{blue}), and total economy productivity (see\cbox{cyan!60!white}). \\
+
+\input{text/gdpjobsch.txt}
 \vspace{5mm}
 
-\normalsize \textbf{Real GDP Growth by Inputs}
+\normalsize \textbf{Real GDP Growth by Household Inputs}
 
 \footnotesize{\textit{percentage point contribution to GDP growth}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-75, -50, -25, 0, 25, 50},
-		height=7.4cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30},
+		height=8.0cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
-		legend style={at={(0.83, 1.0)}}]
+		legend style={at={(0.83, 1.01)}, fill=white}]
 	\rbars
-	\sbar{lime}{date}{pop_contr}{data/gdpjobs.csv}
+	\sbar{lime!90!green}{date}{pop_contr}{data/gdpjobs.csv}
 	\sbar{green!30!teal!90!black}{date}{epop_contr}{data/gdpjobs.csv}
-	\sbar{cyan!50!white}{date}{prod}{data/gdpjobs.csv}
+	\sbar{cyan!60!white}{date}{prod}{data/gdpjobs.csv}
 	\sbar{blue}{date}{hours_contr}{data/gdpjobs.csv}	
 	\legend{Population, Employment Rate, Productivity, Average Hours};
 	\end{axis}
@@ -2870,10 +2958,10 @@ The current account balance can be decomposed into the balance on trade in goods
 \begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Trade}
-\small The \textbf{trade balance} (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment in GDP calculations. As the US runs a persistent trade deficit, trade will generally subtract from GDP growth. In the income approach, the expanded trade deficit reduced nominal compensation of employees (extensive margin through outsourcing, intensive margin through lower wages from labor market slack) and reduced prices. \\
+\small The \textbf{trade balance} (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment when calculating domestic production using the expenditure approach. A country with a positive trade balance, or trade surplus, produces more exports than its residents purchase in imports, therefore its trade balance is added to domestic purchases to calculate domestic production. The US runs a persistent trade deficit, which is subtracted from spending data to estimate domestic production. \\
 
  \input{text/trade.txt} 
-\vspace{5mm}
+\vspace{3mm}
 
 \normalsize \textbf{International Trade}
 
@@ -2882,9 +2970,9 @@ The current account balance can be decomposed into the balance on trade in goods
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
 		yticklabel style={text width=1.4em},
-		height=6.2cm,
+		height=5.9cm,
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.91, 1.13)}}]
+		legend style={at={(0.91, 1.01)}, fill=white}]
 	\rbars
 	\sbar{green!70!white}{date}{A253RY}{data/nx.csv}
 	\sbar{green!50!black}{date}{A646RY}{data/nx.csv}
@@ -2896,7 +2984,7 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{nx.csv}
 
-\vspace{8mm}
+\vspace{6mm}
 
 \small \input{text/exim.txt}
 
@@ -2908,7 +2996,7 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 12, 14}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm,
+		xticklabel={`\short{\year}}, clip=false, height=4.7cm,
 		legend style={legend columns=1, at={(0.28, 0.84)}}]
 	\rbars
 	\thickline{blue!90!cyan}{date}{EX}{data/eximgdp.csv}
@@ -5215,9 +5303,7 @@ This section covers various measures of prices. Inflation--a general increase in
 \newpage
 \subsection*{\color{black!70} \seriffont Import/Export Price Index}
 \begin{minipage}{0.76\textwidth}
-\small \input{text/mxpi_imp.txt} \\
-
-\input{text/mxpi_exp.txt}
+\small \input{text/mxpi.txt}
 
 \vspace{3mm}
 
@@ -5244,10 +5330,10 @@ This section covers various measures of prices. Inflation--a general increase in
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{mxpi.csv}
 
-\vspace{16mm}
+\vspace{12mm}
 
 \subsection*{\color{black!70} \seriffont PCE Price Index}
-\small The Personal Consumption Expenditure (PCE) Price Index from the Bureau of Economic Analysis captures both changes in the price of goods and services and changes in consumer behavior. The index is additionally updated over time to the latest methodology. \input{text/pce_inf_basic.txt}
+\small The Personal Consumption Expenditure (PCE) Price Index from the Bureau of Economic Analysis \href{https://www.bea.gov/data/personal-consumption-expenditures-price-index}{captures} both changes in the price of goods and services as well as monthly changes in consumer behavior. The index is additionally updated over time to the latest methodology. \input{text/pce_inf_basic.txt}
 
 \vspace{5mm}
 
