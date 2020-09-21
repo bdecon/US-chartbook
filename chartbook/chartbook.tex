@@ -406,7 +406,7 @@ Additionally some income does not get paid out to these groups. Taxes on imports
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70}\seriffont Household inputs to production}
-\small It's useful to consider household inputs when measuring economic output. For example, is the population growing? Are more people working? Are people working more hours? Is the economy more productive in its use of labor? These questions all add import context to discussion of aggregate ouput.\\
+\small It's useful to consider household inputs when analyzing economic output. For example, is the population growing? Are more people working? Are people working more hours? Is the economy more productive in its use of labor? These questions all add import context to discussion of aggregate ouput.\\
 
 The US population is increasing (see {\color{lime!90!green}\textbf{---}}), though at a slower rate than in the past. Over the past 30 years, the US has added 80 million people. This means the amount of goods and services produced needed to increase by 30 percent over the period to maintain a constant standard of living. Employment of any amount (see {\color{green!30!teal!90!black}\textbf{---}}) comes from around half of the population during the peak of an economic expansion as a tighter labor market and higher wages pull people into employment, and falls during a recession as people lose jobs. Hours worked per worker per week (see {\color{blue}\textbf{---}}) are also influenced by economic conditions. During an economic expansion, more hours of work are available to those who want them. During a recession and when demand for goods and services is relatively low, hours of work are cut.
 \end{minipage}
@@ -902,8 +902,8 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \footnotesize{\textit{seasonally adjusted}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={49, 50, 51}, 
-		enlarge y limits={0.1}, 
+	\begin{axis}[\shdateaxisticks ytick={0.49, 0.50, 0.51}, 
+		enlarge y limits={0.1}, yticklabel style={text width=1.4em},
 		xticklabel={`\short{\year}}, height=5.8cm, width=6.8cm, clip=false]
 	\rebars
 	\thinline{red}{date}{value}{data/headship.csv}
@@ -985,7 +985,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \subsubsection*{\color{black!70} \seriffont Education}
 
-\small Education is central in many discussions of the future of the US economy. Though very expensive in forgone years of earnings and often also expensive in tuition and other costs, education typically results in higher earnings. In response to changing job opportunities from globalization and other policy decisions, household spending on education has increased considerably, resulting in a much \textbf{more educated population}.
+\small Education is central in many discussions of the future of the US economy. Though very expensive in forgone years of earnings and often also expensive in tuition and other costs, education typically provides individuals with higher earnings. In response to changing job opportunities from globalization and other policy decisions, household spending on education has increased considerably, resulting in a much \textbf{more educated population}.
 \end{minipage}
 
 \vspace{2mm}
@@ -1020,7 +1020,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/cps_educ2.txt} One argument is that households were compensating for a weak labor market and lack of bargaining power by borrowing large sums of money for education. However, given the extent of the increase in education, and the typical wage premium of education, labor income should have increased much more than it actually did. 
+\small \input{text/cps_educ2.txt} Some argue households compensated for a weak labor market and lack of bargaining power by borrowing large sums of money for education. Given the extent of the increase in education, and the typical wage premium of education, labor income should have increased substantially more than it actually did. 
 
 \vspace{4mm}
 
@@ -1180,7 +1180,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \subsubsection*{\color{black!70} \seriffont Distribution of Personal Income}
 \small Labor income, which includes wages and salaries as well as self-employment income, is the vast majority of personal income. Over calendar year 2019, 52 percent of people have any labor income (see\cbox{red!70!yellow}). Only 44 percent of people have labor income above the single-person poverty threshold of \$12,760.\\
 
-Total income, labor income less taxes and including welfare and capital income, reaches 72 percent of people (see\cbox{violet!90!blue}). In most cases, the people who do not receive any income live with people who receive income or receive private transfers. Values of high-earners are not show because of space constraints. The top one percent income threshold is around \$420,000. 
+Total income (see\cbox{violet!90!blue}) reaches 72 percent of people in 2019. Total income includes after-tax labor income plus welfare and capital income. People who did not receive any income by the total income measure typically live with people who receive income. Values of high-earners are not shown because of space constraints. The top five percent income threshold is around \$270,000 in 2019. 
 
 \vspace{4mm}
 
@@ -1211,7 +1211,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 \subsubsection*{\color{black!70} \seriffont Household Income}
 
 \begin{minipage}{0.76\textwidth} 
-\small Given the massive variance in personal income, with half of the population receiving no market income, the sharing of income between people is key to survival. Household income measures the combined income of all people in a given housing unit. Even among individuals who receive market income, this income is distributed very unevenly. Likewise, the share of the household that receives income varies between households. As a result, differences in income between individual households are still massive. 
+\small Given massive variance in personal income, with half of the population receiving no market income, many people rely on the income of other members of their household for survival. Next, we discuss household income, which measures the combined income of all people in a given housing unit. Like personal income, household income is distributed very unevenly in the US.
 
 \end{minipage}
 
@@ -1369,7 +1369,7 @@ Total income, labor income less taxes and including welfare and capital income, 
 
 \subsubsection*{\color{black!70} \seriffont Saving}
 
-\small The portion of after-tax income that is not spent by households is considered \textbf{\href{https://www.bea.gov/index.php/help/glossary/personal-saving}{personal saving}}, from an economic accounting perspective. Personal saving as a share of disposable personal income is referred to as the \textit{personal saving rate}. Households use savings for investment and because income can be more volatile than expenses. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
+\small The portion of after-tax income that is not spent by households is considered \textbf{\href{https://www.bea.gov/index.php/help/glossary/personal-saving}{personal saving}}, from an economic accounting perspective. Personal saving as a share of disposable personal income is the \textit{personal saving rate}. Households use savings for investment and because income can be more volatile than expenses. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. \\
 
 \input{text/psavert.txt}
 
@@ -3633,7 +3633,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \newpage
 \subsubsection*{\color{black!70} \seriffont Changes in Employment by Occupation}
 \begin{minipage}{0.76\textwidth} 
-\small The share of the US population that is employed in a given occupational group has shifted drastically as a result of the COVID-19 pandemic. Additionally, some full-time workers became part-time and some part-time workers became full-time. During the past three months, which end \input{text/cps_lfs_date.txt}\unskip, the share of people employed full-time decreased in most occupational groups compared to the same three months one year prior.
+\small The COVID-19 pandemic shifted the share of the US population that is employed in various occupational groups. Many workers lost or changed jobs and, additionally, some full-time workers became part-time and some part-time workers became full-time. The share of people employed full-time decreased in most occupational groups during the past three months, which end \input{text/cps_lfs_date.txt}\unskip, compared to the same three months one year prior.
 
 \vspace{4mm}
 
@@ -3676,7 +3676,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{minipage}\\
 
 \begin{minipage}{0.305\textwidth}
-\small BLS also \href{https://www.bls.gov/news.release/empsit.t15.htm}{report} a broader measure of unemployment, known as U6. This labor under-utilization rate includes unemployed people counted in U3 as well as people who have given up looking for work and people who are part-time but would like to work full-time. \input{text/unemp2.txt}
+\small BLS also \href{https://www.bls.gov/news.release/empsit.t15.htm}{report} a broader measure of unemployment, known as U6 or labor under-utilization. Labor under-utilization includes unemployed people counted in U3 as well as people who have given up looking for work and people who are part-time but would like to work full-time. \input{text/unemp2.txt}
 
 \end{minipage}\hspace{7mm}
 \begin{minipage}{0.41\textwidth}
