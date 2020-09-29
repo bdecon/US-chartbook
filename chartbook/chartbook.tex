@@ -33,7 +33,7 @@
 %
 
 	% Paragraph spacing
-		\setlength{\parskip}{8pt}
+		\setlength{\parskip}{6pt}
 		\setlength{\parindent}{0pt}
 		
 %
@@ -108,7 +108,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-10-01},
+		xmax={2020-10-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -126,7 +126,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-11-15},
+		xmax={2020-11-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -138,7 +138,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-09-30},
+		xmax={2020-10-15},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}},
@@ -194,7 +194,7 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-10-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-10-30}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rebars}{
 		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
@@ -202,7 +202,7 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-10-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-10-30}, \pgfkeysvalueof{/pgfplots/ymax});}
 	
 	\newfontfamily\seriffont{SourceSerifPro}	
 	
@@ -1258,11 +1258,121 @@ Total income (see\cbox{violet!90!blue}) reaches 72 percent of people in 2019. To
 
 
 \begin{minipage}{0.76\textwidth}
-\subsection*{\color{black!70} \seriffont Household Expenditures}
+\subsection*{\color{black!70} \seriffont Household Spending and Saving}
 
-\small This section covers household spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing services and utilities combined with residential fixed investment). \input{text/pce1.txt}
+\small The previous subsection examines money coming into households while this section covers money leaving households. \href{https://www.bea.gov/data/consumer-spending/main}{Consumer spending} includes household purchases of goods and services, certain spending for households, such as Medicare and Medicaid, and estimates for services furnished without payment. As an example of a special estimate, homeowners are considered to rent their homes to themselves. \\
+
+Over the past 30 years, increased consumer spending represents the majority of economic growth. Consumer spending generally increases as households have more income and falls when households have less income. This affect is visible in both the long-run and during the course of a business cycle, with consumer spending generally falling or slowing during a recession. During the COVID-19 pandemic, some categories of spending were lower as a result of business closures and restrictions.\\
+
+\href{https://www.bea.gov/data/income-saving/personal-saving-rate}{Personal saving} occurs when households have income in excess of their expenses. Savings are invested, often providing additional income, and are used for future expenses, such as costs incurred during retirement.
+
+\subsubsection*{\color{black!70} \seriffont Spending}
+
+\small Consumer spending is comprised of two broad expenditure types: goods and services. Spending on goods includes durable goods (goods with a useful life of at least three years), such as cars, furniture, or recreational goods, and nondurable goods, such as groceries, clothing, and gasoline. Spending on services includes housing, health care, restaurants and bars, transportation services, financial services, and other services. 
+\end{minipage}
 
 \vspace{2mm}
+
+\begin{minipage}{0.37\textwidth}
+\normalsize \textbf{Expenditure Types}
+
+\footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30}, ymin=1,
+		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.0cm]
+	\rbars
+	\stdnode{4.3cm}{1.7cm}{\footnotesize \color{red}Goods}
+	\stdline{red}{date}{Goods}{data/pce_levels.csv}
+	\stdnode{1.05cm}{2.9cm}{\footnotesize \color{orange}Services}
+	\stdline{orange}{date}{Services}{data/pce_levels.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{8mm} \tbllink{pce_levels.csv}
+\end{minipage} \hspace{8mm}
+\begin{minipage}{0.33\textwidth}
+\small \input{text/pce_levels.txt}
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.37\textwidth}
+\normalsize \textbf{Shelter Costs}
+
+\footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, ymin=0.3,
+		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.0cm]
+	\rbars
+	\stdnode{4.0cm}{3.0cm}{\footnotesize \color{green!60!blue}Housing and Utilities}
+	\stdline{green!60!blue}{date}{Housing}{data/pce_levels.csv}
+	\stdnode{1.55cm}{0.65cm}{\footnotesize \color{blue!80!black}Residential Investment}
+	\stdline{blue!80!black}{date}{ResInv}{data/pce_levels.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{8mm} \tbllink{pce_levels.csv}
+\end{minipage} \hspace{8mm}
+\begin{minipage}{0.33\textwidth}
+\small \input{text/pce2_levels.txt}
+\end{minipage}
+
+\newpage 
+\begin{minipage}{0.76\textwidth}
+\small Combining the categories from the previous two charts allows separation of spending on goods, spending on services other than shelter, and spending on housing, utilities, and residential construction. Because of adjustments for changes in prices, these categories will not necessarily sum to the total in past data. It's also worth noting that these are not traditional categories, but are created because they more intuitively represent the costs associated with the household sector of the economy. 
+\end{minipage}
+
+\vspace{2mm}
+
+\begin{minipage}{0.37\textwidth}
+\normalsize \textbf{Expenditure Types}
+
+\footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, ymin=1,
+		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=7.0cm]
+	\rbars
+	\stdnode{4.2cm}{2.5cm}{\footnotesize \color{red}Goods}
+	\stdline{red}{date}{Goods}{data/pce_levels.csv}
+	\stdnode{2.8cm}{3.95cm}{\footnotesize \color{blue!75!white}Services ex. Housing}
+	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
+	\stdnode{1.4cm}{2.2cm}{\footnotesize \color{green!85!blue}Shelter}
+	\stdline{green!85!blue}{date}{SHELTER}{data/pce_levels.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{8mm} \tbllink{pce_levels.csv}
+\end{minipage} \hspace{8mm}
+\begin{minipage}{0.33\textwidth}
+\small \input{text/pce3_levels.txt}
+\end{minipage}
+
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth}
+\normalsize \textbf{Expenditure Types}
+
+\footnotesize{\textit{per capita, annualized, \input{text/gdp_ltdt.txt}dollars}}
+
+\hspace{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.55}
+		 \begin{tabular}{p{54mm} R{13mm} R{13mm} R{13mm} R{13mm}}
+			\input{data/pce_levels.tex} \hline
+		\end{tabular}}
+\vspace{1mm}
+
+\footnotesize{Source: Bureau of Economic Analysis}
+
+\end{minipage}
+
+\newpage 
+\begin{minipage}{0.76\textwidth}
+\small Next, we examine how changes in consumer spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing and utilities plus residential fixed investment), affect GDP growth. \input{text/pce1.txt}
+
+\vspace{3mm}
 
 \normalsize \textbf{Consumer Spending and Residential Investment}
 
@@ -1270,7 +1380,7 @@ Total income (see\cbox{violet!90!blue}) reaches 72 percent of people in 2019. To
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
-		xticklabel={`\short{\year}}, clip=false, height=5.2cm,
+		xticklabel={`\short{\year}}, clip=false, height=5.4cm,
 		yticklabel style={text width=1.5em},
 		legend style={at={(0.95, 1.05)}}]
 	\rbars
@@ -1290,7 +1400,7 @@ Total income (see\cbox{violet!90!blue}) reaches 72 percent of people in 2019. To
 
 \end{minipage}
 
-\vspace{1mm}
+\vspace{2mm}
 
 \normalsize \textbf{Consumer Spending and Residential Investment}
 
@@ -1657,13 +1767,13 @@ Total income (see\cbox{violet!90!blue}) reaches 72 percent of people in 2019. To
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Wealth/Net Worth}
-\small Wealth-holding varies between households. Net worth, measured as total assets minus total liabilities, captures the overall financial position--or wealth--of households. In 2016, white non-Hispanic households average net worth was \$933,700, compared to \$138,200 for black non-Hispanic households, and \$191,200 for Hispanic households of any race. Additionally, the wealth of a typical (median) household is much lower than the wealth of the average (mean) household, the result of a concentration of wealth among the wealthiest households.
+\small Wealth-holding varies between households. Net worth, measured as total assets minus total liabilities, captures the overall financial position--or wealth--of households. In 2019, white non-Hispanic households average net worth was \$980,550, compared to \$142,330 for black non-Hispanic households, and \$165,540 for Hispanic households of any race. Additionally, the wealth of a typical (median) household is much lower than the wealth of the average (mean) household, the result of a concentration of wealth among the wealthiest households.
 
 \vspace{3mm}
 
 \normalsize \textbf{Racial Wealth Gap}
 
-\footnotesize{\textit{net worth by race/ethnicity, thousands of US dollars, 2016}}
+\footnotesize{\textit{net worth by race/ethnicity, thousands of US dollars, 2019}}
 \vspace{3mm}
 
 \hspace*{-3mm} \begin{tikzpicture}
@@ -1675,10 +1785,10 @@ Total income (see\cbox{violet!90!blue}) reaches 72 percent of people in 2019. To
 			precision=1, assume math mode},
 	xticklabel style={black, font=\small}]
     \addplot[ybar,fill=blue, draw=blue] coordinates {
-        (White,933.7)
-        (Black,138.2)
-        (Hispanic,191.2)
-        (Other,457.8)};
+        (White,980.6)
+        (Black,142.3)
+        (Hispanic,165.54)
+        (Other,656.6)};
     \stdnode{1.9cm}{3.9cm}{\large Mean};
 \end{axis}
 \end{tikzpicture} \hfill
@@ -1691,10 +1801,10 @@ Total income (see\cbox{violet!90!blue}) reaches 72 percent of people in 2019. To
 			precision=1, assume math mode},
 	xticklabel style={black, font=\small}]
     \addplot[ybar,fill=blue, draw=blue] coordinates {
-        (White,171.0)
-        (Black,17.6)
-        (Hispanic,20.7)
-        (Other,64.8)};
+        (White,189.1)
+        (Black,24.1)
+        (Hispanic,36.1)
+        (Other,74.5)};
     \stdnode{1.9cm}{3.9cm}{\large Median};
 \end{axis}
 \end{tikzpicture}
@@ -2790,10 +2900,10 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{percent of GDP}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100},
-		xticklabel={`\short{\year}}, clip=false, ymin=2, height=5.6cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100, 125, 150},
+		xticklabel={`\short{\year}}, clip=false, ymin=2, height=6.4cm,
 		legend cell align={left},
-		legend style={legend columns=2, at={(0.58, 1.0)}}]
+		legend style={legend columns=2, at={(0.52, 1.0)}, fill=white}]
 	\rbars
 	\sbar{orange!70!white}{date}{FDHBFIN}{data/pubdebt.csv}
 	\sbar{green!60!black}{date}{PD}{data/pubdebt.csv}
@@ -3716,7 +3826,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15, 20}, 
 		enlarge y limits={0.1}, yticklabel style={text width=1.4em},
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm, ymin=1.2,
+		xticklabel={`\short{\year}}, clip=false, height=4.7cm, ymin=1.7,
 		legend style={fill=white, at={(0.5, 1.01)}}]
 	\rbars
 	\stdline{green!50!teal!60!black}{date}{Black}{data/unemp.csv}
@@ -3727,10 +3837,9 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp.csv}
-
 \end{minipage}
 
-\vspace{3mm}
+\vspace{2mm}
 
 \normalsize \textbf{Unemployment Measures}\\
 \footnotesize{\textit{seasonally adjusted, percent}\\
@@ -3935,7 +4044,7 @@ People who are not employed and not unemployed are considered to be outside of t
 	\rbars
 	\stdline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{5.9cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{5.86cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}
@@ -3957,7 +4066,7 @@ People who are not employed and not unemployed are considered to be outside of t
 	\rbars
 	\stdline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{6.02cm}{1.5cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{5.96cm}{1.3cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
 	\stdnode{4.0cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}
@@ -4361,7 +4470,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \begin{minipage}{0.76\textwidth}
 \small BLS also \href{https://www.bls.gov/lpc/}{report} a quarterly index tracking aggregate hours worked in nonfarm businesses (see\cbox{cyan!80!blue}). \input{text/tot_hours.txt}
 
-\vspace{2mm}
+\vspace{3mm}
 
 \normalsize \textbf{Aggregate Hours Worked}
 
@@ -5402,7 +5511,7 @@ This section covers various measures of prices. Inflation--a general increase in
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
-\small
-Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Mike Sieferling, Matt Bruenig, Andrew Paciorek, Skanda Amarnath, Ernie Tedeschi, and Vikas Sharma.
+%\small
+Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Matt Bruenig, Andrew Paciorek, Skanda Amarnath, Ernie Tedeschi, and Vikas Sharma.
 \end{minipage}
 \end{document}
