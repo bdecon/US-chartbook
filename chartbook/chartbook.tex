@@ -223,6 +223,7 @@
 	\pgfplotstableread[header=true, col sep=semicolon]{data/quits_ind.csv}\quits
 	\pgfplotstableread[header=true, col sep=semicolon]{data/openings_ind.csv}\opens
 	\pgfplotstableread[header=true, col sep=comma]{data/nilf_comp.csv}\nilf
+	\pgfplotstableread[header=true, col sep=comma]{data/pinc.csv}\pinc
 	
 	
 % % % % % % % %
@@ -897,16 +898,16 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \begin{minipage}{0.405\textwidth}
 \normalsize \textbf{Aggregate Headship Rate}
 
-\footnotesize{\textit{households per person age 16 or older}}
+\footnotesize{\textit{persons age 16 or older}}
 
 \footnotesize{\textit{seasonally adjusted}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={0.49, 0.50, 0.51}, 
+	\begin{axis}[\shdateaxisticks ytick={49, 50, 51}, 
 		enlarge y limits={0.1}, yticklabel style={text width=1.4em},
 		xticklabel={`\short{\year}}, height=5.8cm, width=6.8cm, clip=false]
 	\rebars
-	\thinline{red}{date}{value}{data/headship.csv}
+	\stdline{red}{date}{value}{data/headship.csv}
 	\input{text/headship_node.txt}
 	\end{axis}
 \end{tikzpicture}
@@ -1207,10 +1208,45 @@ Total income (see\cbox{violet!90!blue}) reaches 72 percent of people in 2019. To
 \end{minipage}
 
 \newpage 
+\begin{minipage}{0.76\textwidth} 
+\subsubsection*{\color{black!70} \seriffont Contributions to Personal Income Growth}
+\small Annual data on personal income \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-09.html}{detail} the number of people receiving various categories of income and the average payment. As a result, it is possible to match changes in aggregate personal income from changes in payments and changes in who is receiving payments. \\
+
+In 2019, aggregate personal income increased by 6.8 percent after adjusting for changes in prices. Compared to 2018, more people were working in 2019, which explains 1.1 percentage points of the overall change. Changes in per person wage and salary income, which reflects wage increases and changes in hours worked, explain 2.6 percentage points. Income payments from owning property increased substantially in 2019 and explains 1.5 percentage points of the total change. More people receiving property income explains 0.3 percentage point. The remaining growth is explained by social security and retirement income.
+
+\vspace{4mm}
+
+\begin{minipage}{0.55\textwidth}
+\normalsize \textbf{Sources of Personal Income Growth, 2019}
+
+\footnotesize{\textit{percentage point contribution to aggregate growth}}
+
+\hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.7cm}{1.5ex}
+    	width=5.9cm, bar width=2.4ex, height=5.0cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\pinc}{Name}, xmin=0, 
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode},
+		legend style={text=black!70, at={(0.23, 1.2)}, anchor=north, legend columns=-1, 
+				fill=none, draw=none,
+		        /tikz/every even column/.append style={column sep=0.4cm}}]
+  	\addplot[fill=green!90!blue, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\pinc};
+  	\addplot[fill=blue!60!cyan, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\pinc};
+  	\legend{Number of recipients, Amount per recipient}
+  	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Census Bureau}
+\end{minipage} 
+
+\vspace{7mm}
 
 \subsubsection*{\color{black!70} \seriffont Household Income}
 
-\begin{minipage}{0.76\textwidth} 
 \small Given massive variance in personal income, with half of the population receiving no market income, many people rely on the income of other members of their household for survival. Next, we discuss household income, which measures the combined income of all people in a given housing unit. Like personal income, household income is distributed very unevenly in the US.
 
 \end{minipage}
@@ -2917,7 +2953,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \vspace{4mm}
 
-\small The ratio of public debt to GDP is fairly stable, and the interest income from holding public debt is lower than in the past because of lower interest rates. Treasuries and other government debt securities provide a safe asset for the balance sheets domestic households and businesses, and for foreign investors.
+\small The ratio of public debt to GDP increased during the COVID-19 response, while the typical interest income from holding public debt fell because of lower interest rates. Treasuries and other government debt securities provide a safe asset for the balance sheets domestic households and businesses, and for foreign investors.
 
 \end{minipage}
 
