@@ -583,14 +583,15 @@ Because annual rates amplify short-term changes in production, some analysis has
 \newpage
 \begin{minipage}{0.76\textwidth}
 \small The \textbf{production approach} calculates GDP as the sum of gross value added--output minus inputs--in each sector. This identifies contributions from: goods-producing sectors combined with trade, transportation, and utilities (see\cbox{purple!70!blue}), finance, insurance, and real estate (see\cbox{red!90!white}), other service-providing sectors (see\cbox{blue!90!white}), and government (see\cbox{orange!80!white}).
-\vspace{5mm}
+\vspace{3mm}
 
 \normalsize \textbf{Real GDP Growth by Industry Group}
 
 \footnotesize{\textit{percentage point contribution to GDP growth}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -25, -20, -15, -10, -5, 0, 5, 10},
+		height=6.0cm,  yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.74, 1.13)}}]
 	\rbars
 	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01},
@@ -608,12 +609,12 @@ Because annual rates amplify short-term changes in production, some analysis has
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva.csv}
-\vspace{10mm}
+\vspace{8mm}
 
 \small Changes to GDP can also be assigned to changes in \textbf{household inputs}: population (see\cbox{lime!90!green}), employment rates (see\cbox{green!30!teal!90!black}), average hours worked (see\cbox{blue}), and total economy productivity (see\cbox{cyan!60!white}). \\
 
 \input{text/gdpjobsch.txt}
-\vspace{5mm}
+\vspace{4mm}
 
 \normalsize \textbf{Real GDP Growth by Household Inputs}
 
@@ -621,7 +622,7 @@ Because annual rates amplify short-term changes in production, some analysis has
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30},
-		height=8.0cm,
+		height=7.4cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
 		legend style={at={(0.83, 1.01)}, fill=white}]
 	\rbars
@@ -635,7 +636,6 @@ Because annual rates amplify short-term changes in production, some analysis has
 
 \footnotesize{Source: Author's Calculations} \hfill \tbllink{gdpjobs.csv}
 \end{minipage}
-
 \newpage
 
 \noindent \normalsize \textbf{Components of Economic Growth}\\
@@ -692,7 +692,8 @@ Because annual rates amplify short-term changes in production, some analysis has
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}
 
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30},
+		height=5.2cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.53, 1.13)}}]
 	\rbars
@@ -722,7 +723,8 @@ Because annual rates amplify short-term changes in production, some analysis has
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}
 
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15, 20, 25},
+		height=5.2cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.43, 1.13)}}]
 	\rbars
@@ -5547,7 +5549,7 @@ This section covers various measures of prices. Inflation--a general increase in
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
-%\small
+\normalsize
 Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Matt Bruenig, Andrew Paciorek, Skanda Amarnath, Ernie Tedeschi, and Vikas Sharma.
 \end{minipage}
 \end{document}
