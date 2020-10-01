@@ -75,7 +75,7 @@
 		xtick style={black!20}, ytick style={draw=none},
 		every tick label/.style={black!50, font=\scriptsize,
 			/pgf/number format/assume math mode=true},
-		width=12.9cm, height=4.8cm, 
+		width=12.85cm, height=4.8cm, 
 		xticklabel style={align=left}, 
 		yticklabel style={text width=0.9em, align=right},       
 		axis x line*=bottom, x axis line style={black!50},
@@ -414,7 +414,7 @@ The US population is increasing (see {\color{lime!90!green}\textbf{---}}), thoug
 
 \vspace{2mm}
 
-\begin{minipage}{0.31\textwidth}
+\begin{minipage}{0.32\textwidth}
 \normalsize \textbf{Population}
 
 \footnotesize{\textit{millions of people}}
@@ -429,8 +429,8 @@ The US population is increasing (see {\color{lime!90!green}\textbf{---}}), thoug
 \end{tikzpicture}
 
 \footnotesize{Source: BEA}
-\end{minipage} \hspace{5mm}
-\begin{minipage}{0.31\textwidth}
+\end{minipage} \hspace{4mm}
+\begin{minipage}{0.32\textwidth}
 \normalsize \textbf{Employment Rate}
 
 \footnotesize{\textit{share of population}}
@@ -445,8 +445,8 @@ The US population is increasing (see {\color{lime!90!green}\textbf{---}}), thoug
 \end{tikzpicture}
 
 \footnotesize{Source: CPS microdata}
-\end{minipage}\hspace{5mm}
-\begin{minipage}{0.31\textwidth}
+\end{minipage}\hspace{4mm}
+\begin{minipage}{0.32\textwidth}
 \normalsize \textbf{Hours Worked}
 
 \footnotesize{\textit{average per worker per week}}
@@ -480,7 +480,7 @@ The US population is increasing (see {\color{lime!90!green}\textbf{---}}), thoug
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={40, 50, 60, 70}, 
 		enlarge y limits={0.1}, 
-		xticklabel={`\short{\year}}, height=5.2cm, width=7.4cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.4cm, width=7.4cm, clip=false]
 	\rbars
 	\thickline{cyan!60!white}{date}{gdpinp}{data/gdpjobslvl.csv}
 	\end{axis}
@@ -1169,7 +1169,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
-		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=12.4cm]
+		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=12.3cm]
 	\rbars
 	\stdline{blue!80!cyan}{date}{rdpi}{data/rdpigrowth.csv}
 	\input{text/rdpi_node.txt}
@@ -1912,7 +1912,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 
 \vspace{1mm}
 
-\begin{minipage}{0.405\textwidth}
+\begin{minipage}{0.41\textwidth}
 \normalsize \textbf{Homeownership Rate}
 
 \footnotesize{\textit{share of households occupied by owners, percent}}
@@ -1942,7 +1942,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 
 \footnotesize{Source: Census Bureau} \hspace{26mm} \tbllink{homeown2.csv} 
 
-\end{minipage}\hspace{5.5mm}
+\end{minipage}\hspace{5.0mm}
 \begin{minipage}{0.315\textwidth}
 \small Census data also show large differences in homeownership rates by race and ethnicity. \input{text/homeown2.txt} \\
 
@@ -2112,7 +2112,7 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={400, 600, 800, 1000, 1200, 1400}, 
-		xticklabel={`\short{\year}}, clip=false, width=11.9cm, 
+		xticklabel={`\short{\year}}, clip=false, width=11.7cm, 
 		yticklabel style={text width=2.2em}]
 	\rbars
 	\stdline{green}{date}{VALUE}{data/nhs.csv}	
@@ -2864,7 +2864,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 20, 30, 40, 50}, 
-		clip=false, width=6.7cm, 
+		clip=false, width=6.65cm, 
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04},
@@ -2879,7 +2879,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16, 18, 20}, 
-		clip=false, width=6.7cm, 
+		clip=false, width=6.65cm, 
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, 
         xticklabels={`89, `00, `10, `20}, enlarge y limits={lower, 0.2}, 
@@ -3227,7 +3227,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont International Investment Position}
-\small The Bureau of Economic Analysis \href{https://www.bea.gov/data/intl-trade-investment/international-investment-position}{report} the US International Investment Position (IIP). These data are reported on a quarterly basis beginning in 2006. \\ 
+\small The US net international investment position (IIP) measures the difference between residents' foreign assets and liabilities. The Bureau of Economic Analysis \href{https://www.bea.gov/data/intl-trade-investment/international-investment-position}{report} the US IIP data on a quarterly basis beginning in 2006, while prior data are annual. \\ 
 
 \input{text/niip.txt}
 
@@ -3957,7 +3957,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \vspace{3mm}
 
-\begin{minipage}{0.37\textwidth}
+\begin{minipage}{0.36\textwidth}
 \normalsize \textbf{Long-term Unemployed}
 
 \footnotesize{\textit{unemployed 27+ weeks, share of population}}
@@ -3965,7 +3965,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3}, 
 		enlarge y limits={0.1}, ymin=0.1,
-		xticklabel={`\short{\year}}, height=5.0cm, width=6.4cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.1cm, clip=false]
 	\rbars
 	\stdline{blue}{date}{LT}{data/ltu.csv}
 	\input{text/ltu_node.txt}
@@ -3973,8 +3973,8 @@ People who are not employed and not unemployed are considered to be outside of t
 \end{tikzpicture}
 
 \footnotesize{Source: BLS} \hfill \tbllink{ltu.csv}
-\end{minipage} \hspace{5mm}
-\begin{minipage}{0.37\textwidth}
+\end{minipage} \hspace{4mm}
+\begin{minipage}{0.36\textwidth}
 \normalsize \textbf{Long-term Unemployed}
 
 \footnotesize{\textit{unemployed 15+ weeks, share of population}}
@@ -3982,7 +3982,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3, 4, 5}, 
 		enlarge y limits={0.1}, ymin=0.1,
-		xticklabel={`\short{\year}}, height=5.0cm, width=6.4cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.1cm, clip=false]
 	\rbars
 	\stdline{red}{date}{MT}{data/ltu.csv}
 	\input{text/ltu_node2.txt}
@@ -4581,7 +4581,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={4, 5, 6}, 
 		enlarge y limits={0.1}, clip=false,
-		xticklabel={`\short{\year}}, height=4.5cm, width=7.3cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.5cm, width=7.2cm, clip=false]
 	\rebars
 	\stdline{cyan!50!blue}{date}{MJH}{data/mjh.csv}
 	\input{text/mjh_node.txt}
@@ -4610,7 +4610,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\colorline{lime!65!green}{ \ bd CPS} \hspace{3mm} \colorline{blue!65!black}{ \ BLS}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 300, 400, 500}, enlarge y limits={0.15},
-		clip=false, width=6.4cm, xmin=1988-12-15, yticklabel style={text width=1.5em}, 
+		clip=false, width=6.35cm, xmin=1988-12-15, yticklabel style={text width=1.5em}, 
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-04-01}},
         minor xtick={}, xticklabels={`89, `00, `10, `20 Q2}]
 	\rbars
@@ -4618,10 +4618,10 @@ Among newly employed workers, the vast majority were considered to be out of the
 	\stdline{blue!65!black}{date}{p10uwe}{data/uwe_bls.csv}
 	\node[right] at (axis cs:1989-07-01,510) {\footnotesize Levels, USD};
 	\end{axis}
-\end{tikzpicture} \hfill \hspace{3mm}
+\end{tikzpicture} \hfill
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10}, enlarge y limits={0.15},
-		clip=false, width=6.5cm, xmin=1989-12-15,
+		clip=false, width=6.45cm, xmin=1989-12-15,
 		xtick={{1990-01-01}, {2000-01-01}, {2010-01-01}, {2020-04-01}},
         minor xtick={}, xticklabels={`90, `00, `10, `20 Q2}]
 	\rbars
@@ -4775,7 +4775,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={8, 10, 12, 14, 16, 18}, 
 		enlarge y limits={0.1}, 
-		xticklabel={`\short{\year}}, height=5.2cm, width=11.1cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.2cm, width=11.0cm, clip=false]
 	\rebars
 	\stdline{red}{date}{zwc}{data/atl_wgt.csv}
 	\end{axis}
@@ -4884,10 +4884,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE Financial Markets}
 \label{sec:cap}
-\small The US equity markets and capital markets provide businesses and governments with funding for activities and fixed investments. \\
-
+\small The US equity markets and capital markets provide businesses and governments with funding for activities and fixed investments. 
 \subsection*{\color{black!70} \seriffont Equity Markets}
-
 The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color{green!80!blue}\textbf{---}}) is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. The index is a broad measure of price levels in US equity markets. \input{text/sp500.txt}
 
 \vspace{4mm}
@@ -4909,7 +4907,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={2000, 2500, 3000, 3500, 4000}, 
 		enlarge y limits={0.1}, yticklabel style={text width=2.0em}, 
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.0cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.6cm, width=5.9cm, clip=false]
 	\thickline{black!13!white}{date}{MA}{data/sp500_recent.csv}
 	\thinline{green!80!blue}{date}{GSPC}{data/sp500_recent.csv}
 	\stdnode{1.3cm}{0.36cm}{\scriptsize \color{black!25!white}\textbf{moving average}}
@@ -4978,7 +4976,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 20, 30, 40, 50}, 
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
-		height=4.4cm, width=12.4cm]
+		height=4.4cm, width=12.3cm]
 	\rbars
 	\stdline{blue!80!black}{date}{CATRPE}{data/catrpe.csv}
 	\input{text/cape_node.txt}
@@ -5002,8 +5000,8 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 20, 40, 60}, 
 		xticklabel={`\short{\year}}, clip=false, ymin=4,
-		yticklabel style={text width=1.4em}, width=12.9cm,
-		height=4.4cm, enlarge y limits={0.11}, width=12.5cm]
+		yticklabel style={text width=1.4em}, width=12.3cm,
+		height=4.4cm, enlarge y limits={0.11}]
 	\rbars
 	\stdline{magenta}{date}{value}{data/vix.csv}
 	\input{text/vix_node.txt}
@@ -5067,8 +5065,8 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \hspace*{-1mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.54}
-\begin{tabular}{p{19mm} R{10mm} R{10mm} R{10mm} R{10mm}
-		 		 R{10mm} R{10mm} R{10mm} R{10mm}}
+\begin{tabular}{p{18mm} R{9.5mm} R{9.5mm} R{9.5mm} R{9.5mm}
+		 		 R{9.5mm} R{9.5mm} R{9.5mm} R{9.5mm}}
 			 \input{data/treasury_rates.tex}
 			 \hline
 		\end{tabular}}}
@@ -5086,7 +5084,8 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 
 \hspace*{-2mm} \begin{tikzpicture}[trim axis right]
 	\begin{axis}[max space between ticks=38, height=6.8cm, width=8.0cm,	  
-		axis line style={draw=none}, nodes near coords style={font=\scriptsize},
+		axis line style={draw=none}, nodes near coords style={/pgf/number format/.cd, 
+			fixed zerofill, precision=2, assume math mode},
 		xtick=data, xticklabels={one-\\ month, three-\\ month,one-\\ year,two-\\ year, 
 			five-\\ year, ten-\\ year, 20-\\ year, 30-\\ year},
 		enlarge y limits={0.08}, enlarge x limits={0.02}, \bbar{y}{0}]
@@ -5096,9 +5095,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 	\addplot[thick, mark=*, mark options={fill=white}, color=blue!65!black!60] 
 		table [x=number, y=oneyear, col sep=comma] {data/yc.csv}
 		node[pos=0.3,pin={[pin distance=3mm]90:{\color{black!80} Year ago}}] {};			
-	\addplot[ultra thick, mark=*, mark options={fill=white},
-    	visualization depends on=\thisrow{alignment} \as \alignment, nodes near coords, 
-    	every node near coord/.style={anchor=\alignment, /pgf/number format/fixed}, 
+	\addplot[ultra thick, mark=*, mark options={fill=white}, nodes near coords, 
     		color=blue!60!black] 
 		table [x=number, y=value, col sep=comma] {data/yc.csv}
 		node[pos=0.72,pin=280:{\textbf{Most recent}}] {};						 	
@@ -5296,23 +5293,23 @@ This section covers various measures of prices. Inflation--a general increase in
 
 \vspace{2mm}
 
-\begin{minipage}{0.32\textwidth}
+\begin{minipage}{0.29\textwidth}
 \small \input{text/cpicomp.txt}
-\end{minipage} \hspace{7mm}
-\begin{minipage}{0.4\textwidth}
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.42\textwidth}
 \normalsize \textbf{Consumer Price Index}
 
 \footnotesize{\textit{contribution to annual growth, percentage points}}
  
-\hspace*{-7mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
-    	width=5.0cm, bar width=1.7ex, height=8.4cm,
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2cm}{1.5ex}
+    	width=5.6cm, bar width=1.9ex, height=9.2cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.3, \bbar{x}{0},
 		yticklabels from table={\cpi}{name}, 
 		yticklabel style={font=\footnotesize, xshift=-4pt},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=2, assume math mode},
-		legend style={text=black!70, at={(-0.18,1.08)}, anchor=north, legend columns=-1, 
+		legend style={text=black!70, at={(0,1.08)}, anchor=north, legend columns=-1, 
 				fill=none, draw=none,
 		        /tikz/every even column/.append style={column sep=0.4cm}}]
   	\addplot[fill=cyan!40, draw=none] 
