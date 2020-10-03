@@ -203,6 +203,10 @@
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2020-10-30}, \pgfkeysvalueof{/pgfplots/ymax});}
+			
+	\newcommand{\rbar}{
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2020-10-30}, \pgfkeysvalueof{/pgfplots/ymax});}
 	
 	\newfontfamily\seriffont{SourceSerifPro}	
 	
@@ -3020,7 +3024,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE International Transactions}
 \label{sec:ext}
-\small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). 
+\small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). This section discusses both types of transactions with a focus on the difference between payments from residents and payments to residents, referred to as the balance of payments. The section also covers trade in more detail and discusses trends in exchanges rates. 
 
 \subsection*{\color{black!70} \seriffont Balance of Payments}
 \small The \textbf{\href{https://www.bea.gov/help/glossary/balance-current-account-national-income-and-product-accounts}{current account balance}} captures international payments for goods and services as well as international transfers of money and net income received from ownership of foreign assets. It is the result of a set of payments to US residents, called current receipts, which are largely for exports of goods and services and returns on foreign assets, and a set of payments from US residents to the rest of the world, called current payments. Current payments are for goods and services imports, as well as transfers and payments for foreign ownership of US-based assets.\\
@@ -3106,6 +3110,89 @@ The current account balance can be decomposed into the balance on trade in goods
 \begin{minipage}{0.76\textwidth}
 
 \subsection*{\color{black!70} \seriffont Trade}
+
+\small Transactions for goods and services between the US and foreign countries are \href{https://www.census.gov/foreign-trade/Press-Release/current\_press\_release/ftdpress.pdf}{reported} monthly by the Census Bureau. Purchases of foreign goods and services by the US are imports (see {\color{blue!80!violet}\textbf{---}}) and purchases of US goods and services by foreign countries are exports (see {\color{green!80!blue}\textbf{---}}). Trade in goods includes consumer goods, industrial equipment, and agricultural products. Trade in services is a bit more complicated and includes travel and tourism, business services, and charges for the use of intellectual property, among other services. 
+\end{minipage}
+\vspace{3mm}
+
+\begin{minipage}{0.38\textwidth}
+\normalsize \textbf{US Imports and Exports, Monthly}
+
+\footnotesize{\textit{billions of USD, seasonally adjusted}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={100, 150, 200, 250}, 
+		enlarge y limits={0.05}, clip=false, 
+		yticklabel style={text width=1.4em},
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.4cm]
+	\rbar
+	\stdline{green!80!blue}{Period}{EXP}{data/tradelt.csv}
+	\input{text/explt.txt}
+	\stdline{blue!80!violet}{Period}{IMP}{data/tradelt.csv}
+	\input{text/implt.txt}
+	\stdnode{3.0cm}{2.5cm}{\footnotesize \color{green!80!blue}Exports}
+	\stdnode{0.9cm}{3.0cm}{\footnotesize \color{blue!80!violet}Imports}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Census Bureau} \hfill \tbllink{tradelt.csv}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.33\textwidth}
+\small \input{text/tradeltlevels.txt}
+\end{minipage}
+
+\vspace{12mm}
+
+\begin{minipage}{0.76\textwidth}
+\small While the US is less dependent on exports than most major economies, trade is far from inconsequential to domestic economic activity and quality of life. Additionally, over the past 40 years, a major shift in trade policy, the reduction of tariffs, lowered prices substantially but closed a large portion of the US factories with very little compensation for workers.
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{0.33\textwidth}
+\small \input{text/tariff.txt}
+\end{minipage} \hspace{7mm} \begin{minipage}{0.37\textwidth}
+\normalsize \textbf{Average Import Tariff Rate}
+
+\footnotesize{\textit{weighted average applied rate, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3, 4}, clip=false, ymin=0.15,
+		xticklabel={`\short{\year}}, height=5.5cm, width=6.5cm]
+	\rbars
+	\thickline{violet}{date}{tariff}{data/tariff.csv}
+	\input{text/tariff_node.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: World Bank} \hfill \tbllink{tariff.csv}
+\end{minipage} 
+
+\vspace{9mm}
+
+\begin{minipage}{0.76\textwidth}
+\small \input{text/exim.txt}
+
+\vspace{3mm}
+
+\normalsize \textbf{Imports and Exports, Nonpetroleum}
+
+\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 12, 14}, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=4.7cm,
+		legend style={legend columns=1, at={(0.28, 0.84)}}]
+	\rbars
+	\thickline{blue!90!cyan}{date}{EX}{data/eximgdp.csv}
+	\thickline{green!60!teal!80!black}{date}{IM}{data/eximgdp.csv}
+	\legend{Exports, Imports};
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{eximgdp.csv}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
 \small The \textbf{trade balance} (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment when calculating domestic production using the expenditure approach. A country with a positive trade balance, or trade surplus, produces more exports than its residents purchase in imports, therefore its trade balance is added to domestic purchases to calculate domestic production. The US runs a persistent trade deficit, which is subtracted from spending data to estimate domestic production. \\
 
  \input{text/trade.txt} 
@@ -3131,29 +3218,6 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{nx.csv}
-
-\vspace{6mm}
-
-\small \input{text/exim.txt}
-
-\vspace{3mm}
-
-\normalsize \textbf{Imports and Exports, Nonpetroleum}
-
-\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}
-
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 12, 14}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, clip=false, height=4.7cm,
-		legend style={legend columns=1, at={(0.28, 0.84)}}]
-	\rbars
-	\thickline{blue!90!cyan}{date}{EX}{data/eximgdp.csv}
-	\thickline{green!60!teal!80!black}{date}{IM}{data/eximgdp.csv}
-	\legend{Exports, Imports};
-	\end{axis}
-\end{tikzpicture}
-
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{eximgdp.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -5546,7 +5610,6 @@ This section covers various measures of prices. Inflation--a general increase in
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} {\seriffont Acknowledgments}}
-\normalsize
-Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Matt Bruenig, Andrew Paciorek, Skanda Amarnath, Ernie Tedeschi, and Vikas Sharma.
+\small Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Alberto Rodelgo, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Matt Bruenig, Andrew Paciorek, Skanda Amarnath, Ernie Tedeschi, and Vikas Sharma.
 \end{minipage}
 \end{document}
