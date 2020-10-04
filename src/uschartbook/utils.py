@@ -439,7 +439,7 @@ def end_node(data, color, percent=True, date=False, offset=0):
     date = dtxt(data.index[-1])['datetime']
     text = (f'\\node[label={{[yshift={offs}]0:{{\scriptsize\\rowcolors{{1}}{{}}{{white!0}}\setlength{{\\tabcolsep}}{{0.2pt}}\\begin{{tabular}}{{l}}{dt}{latest:.1f}{pct}\end{{tabular}}}}}}, circle, anchor=north, '+
             f'{color}, fill, inner sep=1.0pt] at '+
-            f'(axis cs:{date}, {latest:.3f}) {{}};')
+            f'(axis cs:{date}, {latest:.1f}) {{}};')
     
     return text
     
