@@ -1879,6 +1879,165 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{rdpi_nw.csv}
 \end{minipage}
 \newpage
+
+\subsubsection*{\color{black!70} \seriffont Wealth and Income}
+\begin{minipage}{0.76\textwidth}
+\small Wealth, when measured as assets minus liabilities, can be a source of income, but does not correspond perfectly to income. For example, early-career professionals with student debt may have a negative net worth and a high income. That said, data on family income by wealth percentile show that income tends to increase with wealth. \\
+
+Additionally, the before-tax income of the wealthiest ten percent of families (see {\color{blue!80!cyan!80!black}\textbf{---}}) has \href{https://www.federalreserve.gov/econres/scf/dataviz/scf/chart/#series:Before_Tax_Income;demographic:nwcat;population:1,2,3,4,5;units:median}{increased} substantially more than the income of other groups. The top ten percent of families by wealth, percentiles 90 to 100 with a mean wealth of \$5.7 million and a median wealth of \$2.6 million in 2019, \input{text/income_wealthg1.txt} 
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{0.4\textwidth}
+\normalsize \textbf{Before-Tax Income by Wealth Percentile}
+
+\footnotesize{\textit{median annual income, thousands of 2019 USD}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 50, 100, 150, 200, 250}, 
+		enlarge y limits={0.1}, ymin=20,
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.3em}, 
+		height=7.4cm, width=6.9cm, clip=false]
+	\rbars
+	\stdline{blue!80!cyan!80!black}{date}{90-100}{data/scfwealthmedian.csv}
+	\stdline{red!80!black}{date}{75-89.9}{data/scfwealthmedian.csv}
+	\stdline{green!80!blue!85!black}{date}{50-74.9}{data/scfwealthmedian.csv}
+	\stdline{red!20!orange!95!black}{date}{25-49.9}{data/scfwealthmedian.csv}
+	\stdline{violet}{date}{Less than 25}{data/scfwealthmedian.csv}
+	\input{text/scfwealthmedian_node1.txt}
+	\input{text/scfwealthmedian_node2.txt}
+	\input{text/scfwealthmedian_node3.txt}
+	\input{text/scfwealthmedian_node4.txt}
+	\input{text/scfwealthmedian_node5.txt}
+	\stdnode{1.2cm}{3.6cm}{\footnotesize \color{blue!80!cyan!80!black}90-100}
+	\stdnode{4.35cm}{2.25cm}{\footnotesize \color{red!80!black}75-89.9}
+	\stdnode{4.2cm}{1.5cm}{\footnotesize \color{green!80!blue!85!black}50-74.9}
+	\stdnode{1.0cm}{0.6cm}{\footnotesize \color{red!20!orange!95!black}25-49.9}
+	\stdnode{4.2cm}{0.15cm}{\footnotesize \color{violet}Less than 25}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{scfwealthmedian.csv} 
+\end{minipage}\hspace{5.0mm}
+\begin{minipage}{0.32\textwidth}
+\small \input{text/income_wealthg2.txt}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small The US history of slavery and inter-generational white wealth show up in current data from the Survey of Consumer Finances. The racial wealth gap discussed above cannot be explained by borrowing or access to credit. White families have substantially more financial assets including stocks and are much more likely to receive inheritance. Income for black families is also substantially lower--about half of white family income. Persistent structural inequalities are seen in income data, but are also evident from measures of wealth and assets.
+
+\vspace{3mm}
+
+\normalsize \textbf{Measures of Wealth and Income by Race or Ethnicity}
+
+\footnotesize{\textit{by family, mean, thousands of 2019 USD}} 
+\vspace{1mm}
+
+\Large{\color{red!80!white}\textbf{---}} \footnotesize{White, non-Hispanic} \ \ \ \Large{\color{green!90!blue}\textbf{---}} \footnotesize{Black, non-Hispanic} \ \ \ \Large{\color{magenta!50!violet}\textbf{---}} \footnotesize{Hispanic} \ \ \ \Large{\color{blue}\textbf{---}} \footnotesize{Other}
+\end{minipage}
+
+\begin{minipage}{0.26\textwidth}
+\normalsize Net Worth
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 250, 500, 750, 1000}, ymin=50,
+		yticklabel style={text width=1.5em}, 
+		xticklabel={`\short{\year}}, height=4.8cm, width=5.0cm, clip=false]
+	\rbars
+	\stdline{red!80!white}{date}{White}{data/scfracemean.csv}
+	\stdline{blue}{date}{Other}{data/scfracemean.csv}
+	\stdline{magenta!50!violet}{date}{Hispanic}{data/scfracemean.csv}
+	\stdline{green!90!blue}{date}{Black}{data/scfracemean.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}\hspace{4mm}
+\begin{minipage}{0.26\textwidth}
+\normalsize Financial Assets
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 100, 200, 300, 400, 500}, ymin=25,
+		yticklabel style={text width=1.2em}, 
+		xticklabel={`\short{\year}}, height=4.8cm, width=4.95cm, clip=false]
+	\rbars
+	\stdline{red!80!white}{date}{White}{data/scfracemean0.csv}
+	\stdline{blue}{date}{Other}{data/scfracemean0.csv}
+	\stdline{magenta!50!violet}{date}{Hispanic}{data/scfracemean0.csv}
+	\stdline{green!90!blue}{date}{Black}{data/scfracemean0.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}\hspace{4mm}
+\begin{minipage}{0.26\textwidth}
+\normalsize Pre-Tax Income
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 25, 50, 75, 100, 125}, ymin=6,
+		yticklabel style={text width=1.2em}, 
+		xticklabel={`\short{\year}}, height=4.8cm, width=4.95cm, clip=false]
+	\rbars
+	\stdline{red!80!white}{date}{White}{data/scfracemean1.csv}
+	\stdline{blue}{date}{Other}{data/scfracemean1.csv}
+	\stdline{magenta!50!violet}{date}{Hispanic}{data/scfracemean1.csv}
+	\stdline{green!90!blue}{date}{Black}{data/scfracemean1.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\vspace{-1mm}
+
+\begin{minipage}{0.76\textwidth}
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{scfracemean.csv} \tbllink{scfracemean0.csv} \tbllink{scfracemean1.csv}
+\end{minipage}
+
+\vspace{5mm}
+
+
+\begin{minipage}{0.76\textwidth}
+\small \input{text/scfracestocks.txt} 
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{0.36\textwidth}
+\normalsize \textbf{Stock Holdings}
+
+\footnotesize{\textit{mean value, thousands of 2019 USD}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 100, 200, 300, 400, 500}, ymin=20,
+		yticklabel style={text width=1.2em}, 
+		xticklabel={`\short{\year}}, height=5.2cm, width=6.5cm, clip=false]
+	\rbars
+	\stdline{red!80!white}{date}{White}{data/scfracemean2.csv}
+	\stdline{blue}{date}{Other}{data/scfracemean2.csv}
+	\stdline{magenta!50!violet}{date}{Hispanic}{data/scfracemean2.csv}
+	\stdline{green!90!blue}{date}{Black}{data/scfracemean2.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{scfracemean2.csv} 
+
+\end{minipage}\hspace{7mm}
+\begin{minipage}{0.36\textwidth}
+\normalsize \textbf{Stock Holdings}
+
+\footnotesize{\textit{share of families with holdings, percent}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60, 70}, ymin=3,
+		xticklabel={`\short{\year}}, height=5.2cm, width=6.5cm, clip=false]
+	\rbars
+	\stdline{red!80!white}{date}{White}{data/scfracehave.csv}
+	\stdline{blue}{date}{Other}{data/scfracehave.csv}
+	\stdline{magenta!50!violet}{date}{Hispanic}{data/scfracehave.csv}
+	\stdline{green!90!blue}{date}{Black}{data/scfracehave.csv}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{scfracehave.csv} 
+
+\end{minipage}
+
+
+
+\newpage
 \begin{minipage}{0.76\textwidth}
 \small Changes in net worth come from the revaluation of assets and from net investment of income. Changes to the value of assets, for example capital gains from an increase in the market value of corporate equities, explain most of the changes in net worth (see\cbox{cyan!40!white}). Each period households also receive income and decide investment, saving, and borrowing. Net investment equals capital expenditures less depreciation plus net lending/borrowing; positive net investment results in an increase in net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. Income that goes to net investment at this historical-average rate (see\cbox{magenta!85!white}) can be separated from periods where the rate of net investment is above or below this historical average (see\cbox{violet}). This distinction can identify how changes in disposable personal income, and changes in decisions about how to use that income, combine to affect net worth. Changes in data sources or from natural disasters are also identified as other volume changes (see\cbox{cyan!70!blue}).
 
