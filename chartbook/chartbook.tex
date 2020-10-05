@@ -748,7 +748,7 @@ Because annual rates amplify short-term changes in production, some analysis has
 
 \subsection*{\color{black!70} \seriffont Liabilities}
 
-\small The contribution of different sectors to the \textbf{total change in borrowing} can identify potential risks in the domestic economy. For example, the tech bubble of the late 1990s and early 2000s shows up as a large increase in corporate borrowing. The housing bubble from the 1990s to 2007 shows up as an increase in household borrowing. Government borrowing increased following the collapse of the housing bubble, in an effort to compensate for the massive fall in wage income. Keep in mind, however, that the vast majority of liabilities in the domestic economy are to other domestic parties.\\
+\small Calculating the contribution of different sectors to the \textbf{total change in borrowing} can highlight risks to economic activity. For example, the tech bubble of the late 1990s and early 2000s shows up as a large increase in corporate borrowing. The housing bubble from the 1990s to 2007 shows up as an increase in household borrowing. Government borrowing increased following the collapse of the housing bubble, in an effort to compensate for the massive fall in wage income. Keep in mind, however, that the vast majority of liabilities in the domestic economy are to other domestic parties.\\
 
 \input{text/liabgr.txt} 
 
@@ -855,7 +855,7 @@ Because annual rates amplify short-term changes in production, some analysis has
 \label{sec:hh}
 
 \begin{minipage}{0.76\textwidth}
-\small This section covers the household sector of the economy, including demographics, personal income and outlays, residential fixed investment, household balance sheets, home ownership, housing, and poverty.
+\small This section covers the household sector of the economy, including demographics, personal income and outlays, residential investment, household balance sheets, home ownership, housing, and poverty.
 
 \subsection*{\color{black!70} \seriffont Demographics and Household Formation}
 
@@ -1027,7 +1027,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \begin{minipage}{0.76\textwidth}
 
-\small \input{text/cps_educ2.txt} Some argue households compensated for a weak labor market and lack of bargaining power by borrowing large sums of money for education. Given the extent of the increase in education, and the typical wage premium of education, labor income should have increased substantially more than it actually did. 
+\small \input{text/cps_educ2.txt} Some argue households compensated for a weak labor market and lack of worker bargaining power by borrowing large sums of money for education. Given the extent of the increase in education, and the typical wage premium of education, labor income should have increased substantially more than it actually did. 
 
 \vspace{4mm}
 
@@ -1069,7 +1069,6 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_educ.csv}
 
 \end{minipage}
-
 \newpage
 
 \subsection*{\color{black!70} \seriffont Income to Persons}
@@ -1078,14 +1077,15 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \input{text/pi_levels_basic.txt}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.635\textwidth}
+\begin{minipage}{0.65\textwidth}
 \normalsize \textbf{Personal Income}
 
 \footnotesize{\textit{real per capita income, thousands of US Dollars}}
 
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60},
-		xticklabel={`\short{\year}}, clip=false, ymin=3, yticklabel style={text width=1.4em},
+		xmin={1989-12-01},
+		xticklabel={`\short{\year}}, clip=false, ymin=3, yticklabel style={text width=1.0em},
 		legend style={at={(0.46, 1)}, fill=white}, width=11.2cm, height=7.2cm]
 	\rbars
 	\ctsbar{green!75!black}{date}{LABOR}{data/pi_levels.csv}{0.75pt}
@@ -1124,7 +1124,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20, 30, 40, 50, 60},
 		height=6.8cm,
-		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.8em}, 
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.6em}, 
 		legend style={at={(0.43, 1)}, fill=white}]
 	\rbars
 	\sbar{green!75!black}{date}{A033RC}{data/pi.csv}
@@ -1173,6 +1173,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=12.3cm]
 	\rbars
 	\stdline{blue!80!cyan}{date}{rdpi}{data/rdpigrowth.csv}
@@ -1321,7 +1322,8 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30}, ymin=1,
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30}, ymin=1, 
+		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.0cm]
 	\rbars
 	\stdnode{4.3cm}{1.7cm}{\footnotesize \color{red}Goods}
@@ -1345,8 +1347,9 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, ymin=0.3,
-		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.0cm]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, ymin=0.3, 
+		yticklabel style={text width=1.0em},
+		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=6.8cm]
 	\rbars
 	\stdnode{4.0cm}{3.0cm}{\footnotesize \color{green!60!blue}Housing and Utilities}
 	\stdline{green!60!blue}{date}{Housing}{data/pce_levels.csv}
@@ -1374,8 +1377,9 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, ymin=1,
-		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=7.0cm]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, ymin=1, 
+		yticklabel style={text width=1.0em},
+		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=6.8cm]
 	\rbars
 	\stdnode{4.2cm}{2.5cm}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
@@ -1809,7 +1813,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Wealth/Net Worth}
-\small Wealth-holding varies between households. Net worth, measured as total assets minus total liabilities, captures the overall financial position--or wealth--of households. In 2019, white non-Hispanic households average net worth was \$980,550, compared to \$142,330 for black non-Hispanic households, and \$165,540 for Hispanic households of any race. Additionally, the wealth of a typical (median) household is much lower than the wealth of the average (mean) household, the result of a concentration of wealth among the wealthiest households.
+\small Wealth \href{https://www.federalreserve.gov/econres/notes/feds-notes/disparities-in-wealth-by-race-and-ethnicity-in-the-2019-survey-of-consumer-finances-20200928.htm}{varies} substantially by race and ethnicity. Net worth, measured as total assets minus total liabilities, captures the overall financial position--or wealth--of families. In 2019, white non-Hispanic families' average net worth was \$980,550, compared to \$142,330 for black non-Hispanic families, and \$165,540 for Hispanic families of any race. Additionally, the wealth of a typical (median) family is much lower than the average wealth of families, the result of a concentration of wealth among the wealthiest families.
 
 \vspace{3mm}
 
@@ -2070,7 +2074,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Homeownership}
-\small The \textbf{homeownership rate} measures the percent of housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}
+\small The \textbf{homeownership rate} measures the percent of occupied housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}
 \end{minipage}
 
 \vspace{1mm}
@@ -2082,7 +2086,8 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={40, 50, 60, 70}, 
-		enlarge y limits={0.03}, ymin=40, xmin={1991-01-01},
+		enlarge y limits={0.03}, ymin=40, xmin={1991-01-01}, 
+		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, height=8.6cm, width=7.0cm, clip=false]
 	\rbars
 	\stdline{violet!60!magenta}{date}{VALUE}{data/homeown.csv}
@@ -2294,7 +2299,7 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 
 For purposes of program eligibility and economic data, poverty is defined by having income below a certain threshold. The processes for calculating poverty vary, with the Official Poverty Measure (OPM) based on three times a price-adjusted 1963 minimal food budget, and the SPM based on food, shelter, clothing, and utilities costs and additionally capturing program benefits and taxes, along with other adjustments.
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.21\textwidth}
+\begin{minipage}{0.23\textwidth}
 \normalsize \textbf{In Poverty, 2019}
 
 \footnotesize{\textit{millions of people}}
@@ -2448,7 +2453,7 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 \begin{minipage}{0.76\textwidth}
 \small The Census Bureau \href{https://www.census.gov/library/publications/2020/demo/p60-272.html}{report} the number of people taken out of poverty by various government programs, along with how many people are put in poverty by various expenses. In 2019, Social Security payments lift income above the poverty line for 26.5 million people, by far the most effective program for reducing poverty.\\
 
-Census estimates that assume 100 percent participation show that refundable tax credits, such as the earned income tax credit and child tax credit, lift 7.5 million people out of poverty in 2019. These tax credits are phased-in (not fully-refundable) and increase as someone's labor income increases. Because of the phase-in, these tax credits do not reach the poorest of poor people. \href{https://www.peoplespolicyproject.org/2020/05/18/the-myths-of-the-earned-income-tax-credit/}{Additionally}, the tax credits are not received by many who are eligible and are subject to high private administrative costs in the form of payments for tax preparation services. Overall, phased-in tax credits have more impact on the model of poverty than on poverty.\\
+Census estimates that assume 100 percent participation in programs show that refundable tax credits, such as the earned income tax credit and child tax credit, lift 7.5 million people out of poverty in 2019. These tax credits are phased-in (not fully-refundable) and increase as someone's labor income increases. Because of the phase-in, these tax credits do not reach the poorest of poor people. \href{https://www.peoplespolicyproject.org/2020/05/18/the-myths-of-the-earned-income-tax-credit/}{Additionally}, the tax credits are not received by many who are eligible and are subject to high private administrative costs in the form of payments for tax preparation services. Overall, phased-in tax credits have more impact on the model of poverty than on poverty.\\
 
 In terms of elements that add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of 7.7 million people to fall below the poverty line. Work expenses additionally put five million people in poverty.
 
@@ -2510,7 +2515,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses.
 
 \subsection*{\color{black!70} \seriffont Fixed Investment}
-\small When businesses purchase items with a useful life of more than one year it is considered an investment, an exchange of assets rather than an expense. \textbf{Investments in fixed assets make workers more productive}, as they allow businesses to produce more goods and services with the same hours of work. Business investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
+\small When businesses purchase items with a useful life of more than one year it is considered a \href{https://www.bea.gov/help/glossary/nonresidential-fixed-investment}{fixed investment}, which is exchange of assets rather than an expense. Business fixed investment includes spending on structures, equipment, and software. \textbf{Investments in fixed assets make workers more productive}, as they allow businesses to produce more goods and services with the same hours of work. Business investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
 \vspace{5mm}
 
 \normalsize \textbf{Business Fixed Investment}
@@ -2529,12 +2534,11 @@ In terms of elements that add to the number of people in poverty, medical expens
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businv.csv} \hspace{12mm}
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businv.csv}
 
 \vspace{5mm}
 
 \small \input{text/businv.txt} 
-
 \end{minipage}
 
 \normalsize \textbf{Business Investment}\\
@@ -2585,6 +2589,7 @@ When thinking about the longer-term trends in these data, it's important to note
  
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={1.2, 1.3, 1.4, 1.5, 1.6}, 
+		yticklabel style={text width=1.2em},
 		xticklabel={`\short{\year}}, width=7.3cm]
 	\rbars
 	\stdline{blue!40!cyan!80!white}{date}{VALUE}{data/isratio.csv}
@@ -2619,7 +2624,8 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{share of net national income}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, ymin=0.2,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15}, ymin=0.2, 
+		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.7, 1.13)}}]
 	\rbars
 	\sbar{blue!70!purple}{date}{DIV}{data/cprof.csv}
@@ -2668,7 +2674,8 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{by type, as share of GDP}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75}, ymin=2,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75}, ymin=2, 
+		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.94, 1.13)}}]
 	\rbars
 	\sbar{violet}{date}{Bank Loans and Mortgages}{data/busdebtgdp2.csv}	
@@ -3028,6 +3035,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 20, 30, 40, 50}, 
 		clip=false, width=6.65cm, 
+		yticklabel style={text width=1.0em},
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04},
@@ -3043,6 +3051,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={12, 14, 16, 18, 20}, 
 		clip=false, width=6.65cm, 
+		yticklabel style={text width=1.0em},
 		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
         minor xtick={}, 
         xticklabels={`89, `00, `10, `20}, enlarge y limits={lower, 0.2}, 
@@ -3071,7 +3080,9 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={8, 9, 10}, clip=false, 
-		xticklabel={`\short{\year}}, height=5.1cm, width=8.0cm, 
+		xticklabel={`\short{\year}}, height=5.1cm, width=7.8cm, 
+		yticklabel style={text width=1.0em},
+		xmin={1990-01-01},
         enlarge y limits={0.14}]
 	\rbars
 	\stdline{blue!50!cyan}{date}{GOVJOBS}{data/govjobs.csv}
@@ -3103,7 +3114,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100, 125, 150},
 		xticklabel={`\short{\year}}, clip=false, ymin=2, height=6.4cm,
-		legend cell align={left},
+		legend cell align={left}, yticklabel style={text width=1.5em},
 		legend style={legend columns=2, at={(0.52, 1.0)}, fill=white}]
 	\rbars
 	\sbar{orange!70!white}{date}{FDHBFIN}{data/pubdebt.csv}
@@ -3133,7 +3144,7 @@ When thinking about the longer-term trends in these data, it's important to note
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={1, 2, 3}, clip=false, ymin=1.05,
-		xticklabel={`\short{\year}}, height=4.3cm, width=6.5cm]
+		xticklabel={`\short{\year}}, height=4.3cm, width=6.3cm]
 	\rbars
 	\thickline{magenta}{date}{VALUE}{data/fedintexp.csv}
 	\input{text/fedintexp_node.txt}
@@ -3163,8 +3174,8 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{\textit{does not include land, percent of GDP}}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100}, width=12.9cm,
-		xticklabel={`\short{\year}}, clip=false, ymin=2, ymax=112, height=6.0cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100}, width=12.8cm,
+		xticklabel={`\short{\year}}, clip=false, ymin=4, ymax=112, height=6.1cm,
 		legend cell align={left}, yticklabel style={text width=1.5em}, 
 		legend style={legend columns=2, at={(0.6, 1.04)}}]
 	\rbars
@@ -3282,8 +3293,8 @@ The current account balance can be decomposed into the balance on trade in goods
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={100, 150, 200, 250}, 
 		enlarge y limits={0.05}, clip=false, 
-		yticklabel style={text width=1.4em},
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.4cm]
+		yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.3cm]
 	\rbar
 	\stdline{green!80!blue}{Period}{EXP}{data/tradelt.csv}
 	\input{text/explt.txt}
@@ -3340,6 +3351,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 12, 14}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, clip=false, height=4.7cm,
+		yticklabel style={text width=1.0em},
 		legend style={legend columns=1, at={(0.28, 0.84)}}]
 	\rbars
 	\thickline{blue!90!cyan}{date}{EX}{data/eximgdp.csv}
@@ -3349,9 +3361,9 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{eximgdp.csv}
-\end{minipage}
-\newpage
-\begin{minipage}{0.76\textwidth}
+\vspace{10mm}
+
+\subsubsection*{\color{black!70} \seriffont Contribution to Overall Growth}
 \small The \textbf{trade balance} (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment when calculating domestic production using the expenditure approach. A country with a positive trade balance, or trade surplus, produces more exports than its residents purchase in imports, therefore its trade balance is added to domestic purchases to calculate domestic production. The US runs a persistent trade deficit, which is subtracted from spending data to estimate domestic production. \\
 
  \input{text/trade.txt} 
@@ -3678,7 +3690,8 @@ People who are not employed and not unemployed are considered to be outside of t
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={52, 54, 56, 58}, 
 		enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, height=5.9cm, width=5.8cm, clip=false]
+		yticklabel style={text width=1.0em},
+		xticklabel={`\short{\year}}, height=5.9cm, width=5.7cm, clip=false]
 	\rbars
 	\stdline{blue!60!cyan}{date}{Share}{data/laborshare.csv}
 	\input{text/laborshare_node.txt}
@@ -4004,7 +4017,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \newpage
 \subsubsection*{\color{black!70} \seriffont Changes in Employment by Occupation}
 \begin{minipage}{0.76\textwidth} 
-\small The COVID-19 pandemic shifted the share of the US population that is employed in various occupational groups. Many workers lost or changed jobs and, additionally, some full-time workers became part-time and some part-time workers became full-time. The share of people employed full-time decreased in most occupational groups during the past three months, which end \input{text/cps_lfs_date.txt}\unskip, compared to the same three months one year prior.
+\small The COVID-19 pandemic changed the occupational composition of the US workforce. Business closures reduced the share of the US population that is employed in personal care and related services, administrative support, and sales. Many workers trained in these occupations lost or changed jobs and, additionally, some full-time workers became part-time. While employment increased in some occupations, such as healthcare support, the share of people employed full-time decreased in most occupational groups during the past three months, which end \input{text/cps_lfs_date.txt}\unskip, compared to the same three months one year prior.
 
 \vspace{4mm}
 
@@ -4038,7 +4051,6 @@ People who are not employed and not unemployed are considered to be outside of t
     
 \footnotesize{Source: Author's Calculation from CPS} \hfill \tbllink{occs.csv}
 \end{minipage}
-
 \newpage
 \begin{minipage}{0.76\textwidth} 
 \subsection*{\color{black!70} \seriffont Unemployment}
@@ -4108,8 +4120,8 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{32mm} R{8.0mm} R{8.0mm} R{8.0mm} R{8.0mm} R{8.0mm} R{8.0mm} 
-		   R{8.0mm} R{12.8mm} R{11.2mm}}
+		 \begin{tabular}{p{32mm} R{7.9mm} R{7.9mm} R{7.9mm} R{7.9mm} R{7.9mm} R{7.9mm} 
+		   R{7.9mm} R{12.8mm} R{11.2mm}}
 			 \input{data/unemp1.tex}\hline
 		\end{tabular}
 		}	\\
@@ -4173,7 +4185,7 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \begin{minipage}{0.76\textwidth} 
 \subsubsection*{\color{black!70} \seriffont Duration of unemployment}
-\small When someone is unemployed for an extended period of time they risk running out of unemployment benefits, thereby having a sharp reduction in income. Additionally, people may have more trouble re-entering the labor market after a long period of unemployment. \\
+\small US unemployment benefits are available for a relatively short duration, compared with other advanced countries. Therefore, those with an extended period of unemployment risk running out of unemployment benefits, causing a sharp reduction in income. Additionally, long periods of unemployment can make re-entering the labor market more challenging. \\
 
 \input{text/ltu.txt}
 \end{minipage}
@@ -4228,7 +4240,8 @@ People who are not employed and not unemployed are considered to be outside of t
 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30, 40, 50}, 
-		enlarge y limits={0.1}, ymin=3.5,
+		enlarge y limits={0.1}, ymin=3.5, 
+		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, height=5.0cm, clip=false]
 	\rbars
 	\stdline{orange}{date}{Mean}{data/unempdur.csv}
@@ -4687,11 +4700,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{openings_ind.csv}
 \end{minipage}
-
 \newpage
-
 \subsection*{\color{black!70} \seriffont Hours Worked}
-
 \begin{minipage}{0.415\textwidth}
 \small The Bureau of Labor Statistics (BLS) report hours worked per week in both Current Employment Statistics (CES) and Labor Force Statistics (LFS).\\
 
@@ -4748,17 +4758,11 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lprod.csv}
 \end{minipage}
-
 \newpage
-
 \subsection*{\color{black!70} \seriffont Part-time Work}
-
 \begin{minipage}{0.76\textwidth}
-
 \small Part-time workers who would prefer full-time work are referred to as involuntary part time or part time for economic reasons in the labor force statistics produced by the Bureau of Labor Statistics. This group is comprised of people who don't have enough hours because of slack business conditions or who are unable to find full-time work. 
-
 \end{minipage}
-
 \vspace{2mm}
 
 \begin{minipage}{0.43\textwidth}
@@ -4787,10 +4791,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 \vspace{8mm}
 
 \subsection*{\color{black!70} \seriffont More Than One Job}
-
 \begin{minipage}{0.76\textwidth}
-
-\small Multiple jobholding rates have been fairly stable from 2000 to 2019. The household survey used to identify people with more than one job asks about a specific reference week. As a result, the multiple jobholding rate is not intending to capture people who rely on a patchwork of multiple jobs over time, but usually just work at one job within a given week. 
+\small Multiple jobholding rates have been fairly stable from 2000 to 2019. The household survey used to identify people with more than one job asks about a specific reference week. As a result, the multiple jobholding rate is not intending to capture people who rely on a patchwork of multiple jobs over time, but work at one job in the survey reference week. 
 \end{minipage}
 
 \vspace{2mm}
@@ -4987,7 +4989,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 
 \vspace{16mm}
 
-\small Matching wage observations one year apart makes it possible to track how many people do not receive a wage increase. The Atlanta Fed measures this as the share of individuals who have one-year wage growth of between -0.5 and 0.5 percent. The Atlanta Fed approach is replicated using the bd CPS and a 3-month moving average. \input{text/atl_zwc.txt}
+\small By observing the same person's wage at two points, one year apart, we see how many people do not receive a wage increase. The Atlanta Fed measures this as the share of individuals who have one-year wage growth of between -0.5 and 0.5 percent. The Atlanta Fed approach is replicated using the bd CPS, and smoothed with a 3-month moving average. \input{text/atl_zwc.txt}
 
 \vspace{3mm}
 
@@ -5165,7 +5167,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The total return on corporate equities includes both dividends and stock buybacks. US nonfinancial corporations have used stock buybacks to return money to investors, often at the expense of domestic fixed investment. 
+\small The total return on corporate equities includes both dividends and stock buybacks. US nonfinancial corporations have used stock buybacks to return money to investors, often at the expense of domestic fixed investment. To the extent that markets respond rationally, however, buybacks are no different from dividends. 
 
 \vspace{3mm}
 
