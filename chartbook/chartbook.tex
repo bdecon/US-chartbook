@@ -3107,7 +3107,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300}, 
 		height=7.2cm, ymin=10, width=10.0cm,
-		clip=false, enlarge x limits={0.02}, 
+		clip=false, enlarge x limits={0.01}, 
 		yticklabel style={text width=1.3em},
 		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, 
 				{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -3116,10 +3116,10 @@ The current account balance can be decomposed into the balance on trade in goods
         legend cell align={left},
 		legend style={fill=white, legend columns=2, at={(0.54, 1.09)}}]
 	\rbars
-	\ctsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}{0.6pt}
-	\ctsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}{0.6pt}
-	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}{0.6pt}
-	\ctsbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}{0.6pt}
+	\ctsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}{0.7pt}
+	\ctsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}{0.7pt}
+	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}{0.7pt}
+	\ctsbar{cyan!80!white}{date}{Children}{data/cps_lfs.csv}{0.7pt}
 	\legend{Employed, Unemployed, Non-Participant, Under 15};
 	\end{axis}
 \end{tikzpicture}\\
@@ -3513,15 +3513,15 @@ People who are not employed and not unemployed are considered to be outside of t
 \begin{minipage}{0.305\textwidth}
 \small BLS also \href{https://www.bls.gov/news.release/empsit.t15.htm}{report} a broader measure of unemployment, known as U6 or labor under-utilization. Labor under-utilization includes unemployed people counted in U3 as well as people who have given up looking for work and people who are part-time but would like to work full-time. \input{text/unemp2.txt}
 
-\end{minipage}\hspace{7mm}
+\end{minipage}\hspace{6mm}
 \begin{minipage}{0.41\textwidth}
 \normalsize \textbf{Unemployment Measures}\\
 \footnotesize{\textit{share of labor force, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, 
 		yticklabel style={text width=1.0em}, 
-		enlarge y limits={0.1}, ymin=1.2,
-		xticklabel={`\short{\year}}, height=4.0cm, width=6.7cm, clip=false]
+		enlarge y limits={0.1}, ymin=1.2, xmin={1989-12-01},
+		xticklabel={`\short{\year}}, height=4.1cm, width=6.8cm, clip=false]
 	\rbars
 	\stdline{blue}{date}{U6}{data/unemp2.csv}
 	\stdline{blue!50!cyan}{date}{Total}{data/unemp2.csv}
@@ -4313,7 +4313,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10}, 
-		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
 	\rbars
 	\sbar{teal}{date}{value}{data/lprod.csv}
 	\end{axis}
@@ -4494,7 +4494,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Interest Rates}
-\small The US Federal Reserve System (Fed) has a congressional \href{https://www.federalreserve.gov/faqs/money_12848.htm}{mandate} to promote price stability and maximum employment. In practice, a Fed committee (the FOMC) determines the federal funds rate, which aims to influence interest rates in the broader economy. Fed monetary policy can be neutral or be used to stimulate or slow the economy.
+\small The US Federal Reserve System (Fed) has a congressional \href{https://www.federalreserve.gov/faqs/money_12848.htm}{mandate} to promote price stability and maximum employment. In practice, a Fed committee (the FOMC) determines the federal funds rate, which aims to influence interest rates in the broader economy. There are several channels through which interest rates affect broader economic activity, for example, lower interest rates stimulate investment in capital goods and the production of these capital goods employs people, who in turn spend their wages on other goods and services. In other words, the Fed's monetary policy can aim to be neutral or to stimulate or slow the economy.
 
 \input{text/rates_ff.txt}The FOMC cut \href{https://www.federalreserve.gov/releases/h15/}{interest rates} three times in 2019, for a total reduction of 75 basis points. Responding to the economic shock of the coronavirus, the FOMC cut rates twice in March 2020, by 150 basis points, bringing the lower bound of the federal funds rate range to zero. With rates near zero, the Fed has adopted several additional measures to increase liquidity in the global financial system.
 \vspace{2mm}
@@ -4502,13 +4502,20 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \normalsize \textbf{Effective Fed Funds Rate}\\
 \footnotesize{\textit{percent, monthly average except for latest value }}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
-		xticklabel={`\short{\year}}, clip=false]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10}, 
+		height=7.4cm, xticklabel={`\short{\year}}, clip=false]
 	\rbars
+	\thickline{cyan!30!white}{date}{Value}{data/taylor.csv}
 	\stdline{blue!60!black}{date}{Fed Funds}{data/rates.csv}
+	\stdnode{2.5cm}{4.4cm}{\scriptsize \color{blue!60!black}\textbf{Fed Funds Rate}}
+	\stdnode{8.4cm}{1.5cm}{\scriptsize \color{cyan!50!white}\textbf{Modified Taylor Rule}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{rates.csv}
+\vspace{2mm}
+
+\small Despite its full employment mandate, the Fed has traditionally responded to inflation and output. Economist John Taylor described a rule for determining the Fed Funds rate based on inflation and output. Versions of this Taylor Rule track the actual Fed Funds rate fairly closely during the 1990s and 2000s. Former Fed Chair Ben Bernanke \href{https://www.brookings.edu/blog/ben-bernanke/2015/04/28/the-taylor-rule-a-benchmark-for-monetary-policy/}{described} a modified Taylor rule based on core PCE inflation and a stronger response to the output gap (see {\color{cyan!30!white}\textbf{---}}), which currently suggests a strongly negative policy rate. 
+
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -4586,7 +4593,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
 		enlarge y limits={0.1}, xmin = 2011-12-15, ymin=-0.4, ymax=3,
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.5cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.0cm, clip=false]
 	\thinline{cyan!60!blue}{date}{Ten-3M}{data/spread.csv}
 	\input{text/spread_node.txt}
 	\end{axis}
@@ -4600,7 +4607,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3}, 
 		enlarge y limits={0.1}, xmin = 2011-12-15, ymin=-0.4, ymax=3,
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.5cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.0cm, clip=false]
 	\thinline{orange}{date}{Ten-2Y}{data/spread.csv}
 	\input{text/spread_node2.txt}
 	\end{axis}
@@ -4618,8 +4625,8 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \footnotesize{\textit{spot rate, percent, monthly average}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, 
-		yticklabel style={text width=1.0em}, 
-		xticklabel={`\short{\year}}, clip=false, ymin=0.5, width=7.3cm]
+		yticklabel style={text width=1.0em}, xmin={1989-12-01},
+		xticklabel={`\short{\year}}, clip=false, ymin=0.5, width=7.2cm]
 	\rbars
 	\stdline{blue!60!violet}{date}{VALUE}{data/hqcb.csv}
 	\input{text/hqcb_node.txt}
@@ -4755,32 +4762,36 @@ This section covers various measures of prices. Inflation--a general increase in
 \small As mentioned above, CPI inflation comes from changes in the prices of individual goods and services but is also affected by an occasional re-weighting of the components used in the index, based on changes in consumption habits. By considering both sources of changes, we can decompose medium- or long-term trends based on the contribution to overall inflation from different categories of spending. 
 
 \input{text/cpi_decomp.txt}
-\vspace{3mm}
+\end{minipage}
+\vspace{2mm}
 
+\begin{minipage}{0.635\textwidth}
 \normalsize \textbf{CPI Decomposition}\\
 \footnotesize{\textit{contribution to one-year change in CPI-U, percentage points}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-4, -3, -2, -1, 0, 1, 2, 3, 4, 5}, 
-		height=5.4cm, width=10.2cm, enlarge x limits={0.04}, 
-		yticklabel style={text width=1.5em},
+		height=6.2cm, width=11.0cm, enlarge x limits={0.01}, 
+		yticklabel style={text width=1.2em},
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, 
 				{2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01},
 				{2018-01-01}, {2019-01-01}, {2020-01-01}},
         minor xtick={},
         xticklabels={2011, `12, `13, `14, `15, `16, `17, `18, `19, `20},
         legend cell align={left},
-		legend style={fill=white, legend columns=2, at={(0.7, 1.08)}}]
+		legend style={legend columns=2, at={(0.61, 1.0)}}]
 	\rbars
-	\ctsbar{blue!75!cyan}{date}{core_goods}{data/cpi_decomp.csv}{2.1pt}
-	\ctsbar{green!80!yellow!80!black}{date}{core_services}{data/cpi_decomp.csv}{2.1pt}
-	\ctsbar{yellow!80!orange}{date}{shelter}{data/cpi_decomp.csv}{2.1pt}
-	\ctsbar{red}{date}{food_energy}{data/cpi_decomp.csv}{2.1pt}
+	\ctsbar{blue!75!cyan}{date}{core_goods}{data/cpi_decomp.csv}{2.3pt}
+	\ctsbar{green!80!yellow!80!black}{date}{core_services}{data/cpi_decomp.csv}{2.3pt}
+	\ctsbar{yellow!80!orange}{date}{shelter}{data/cpi_decomp.csv}{2.3pt}
+	\ctsbar{red}{date}{food_energy}{data/cpi_decomp.csv}{2.3pt}
 	\legend{Core Goods, Core Services, Shelter, Food \& Energy};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Author's calculations from BLS data} \hspace{32mm} \tbllink{cpi_decomp.csv}
+\footnotesize{Source: Author's calculations from BLS data} \hfill \tbllink{cpi_decomp.csv}
+\end{minipage}
 \vspace{6mm}
 
+\begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Why isn't the CPI revised?}
 \small The consumer price index (CPI-U) is used in contracts that include cost adjustments. As a result, historical CPI-U data are not revised if there is a change to the way the CPI is calculated. For research purposes, however, it is ideal to have the most accurate measure of overall changes in prices faced by consumers. BLS also publish a research series, the \href{https://www.bls.gov/cpi/research-series/r-cpi-u-rs-home.htm}{CPI-U-RS}, which adjusts the historical data of the CPI-U to be consistent with the current methods of producing it. 
 \end{minipage}
@@ -4831,6 +4842,8 @@ This section covers various measures of prices. Inflation--a general increase in
 \begin{minipage}{0.24\textwidth}
 \small \input{text/ppi_main.txt}
 \end{minipage}
+\vspace{2mm}
+
 \subsection*{\color{black!70} \seriffont Inflation Expectations}
 \begin{minipage}{0.76\textwidth}
 \small Researchers gain insight on expected changes in prices through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the \href{https://fred.stlouisfed.org/series/T5YIE}{inflation breakeven} and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced in, on average, for the maturity of the bond.
@@ -4917,8 +4930,8 @@ This section covers various measures of prices. Inflation--a general increase in
 \footnotesize{\textit{USD, west Texas intermediate crude, monthly average}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 50, 100}, 
-		yticklabel style={text width=1.5em}, width=12.8cm,
-		xticklabel={`\short{\year}}, ymin=4]
+		yticklabel style={text width=1.5em}, width=12.8cm, height=5.2cm,
+		xticklabel={`\short{\year}}, ymin=7]
 	\rbars
 	\stdline{red!80!purple}{date}{VALUE}{data/wti.csv}
 	\end{axis}
