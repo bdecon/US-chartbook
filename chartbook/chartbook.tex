@@ -2171,11 +2171,74 @@ In terms of elements that add to the number of people in poverty, medical expens
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE Businesses}
 \label{sec:bus}
-\small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses.
+\small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of businesses. While the US has some state-owned enterprises, such as the US Postal Service, the Tennessee Valley Authority, and Amtrak, the data contained in this section cover private businesses. 
 
-\subsection*{\color{black!70} \seriffont Fixed Investment}
-\small When businesses purchase items with a useful life of more than one year it is considered a \href{https://www.bea.gov/help/glossary/nonresidential-fixed-investment}{fixed investment}, which is exchange of assets rather than an expense. Business fixed investment includes spending on structures, equipment, and software. \textbf{Investments in fixed assets make workers more productive}, as they allow businesses to produce more goods and services with the same hours of work. Business investments in fixed assets are grouped broadly as structures (see\cbox{yellow!50!orange}), equipment (see\cbox{cyan!60!white}), and intellectual property products (see\cbox{violet}). 
-\vspace{3mm}
+\subsection*{\color{black!70} \seriffont Investment}
+\small Production by private businesses requires capital goods, such as buildings, equipment, and software. When businesses purchase such items, defined as having a useful life of more than one year, it is considered \href{https://www.bea.gov/help/glossary/nonresidential-fixed-investment}{fixed investment}, or investment in fixed assets. From an accounting perspective, these transactions are considered an exchange of assets (cash in exchange for capital goods) rather than an expense.
+
+Over time, these capital goods wear down, a process called consumption of fixed capital or depreciation. Depreciation is the expense related to capital goods from an accounting perspective. Businesses must decide whether to replace or add to the existing stock of capital goods, and their new purchases of capital goods and inventory investment are considered \href{https://www.bea.gov/help/glossary/gross-private-domestic-investment}{gross investment}. Accordingly, net investment is gross investment minus depreciation, and measures whether the stock of capital goods is expanding.
+
+Net investment is important for many reasons. In the short run, the production and installation of capital goods adds directly to GDP and increases the level of economic activity. In the long run, \textbf{investments in fixed assets make workers more productive}, as they allow businesses to produce more goods and services with the same hours of work. 
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.37\textwidth}
+\normalsize \textbf{Investment and Depreciation}\\
+\footnotesize{\textit{share of GDP, percent}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15}, 
+		height=8.6cm, width=6.8cm, xmin={1989-12-01}, clip=false,
+		yticklabel style={text width=1.0em},
+		xticklabel={`\short{\year}}]
+	\rbars
+	\thickline{cyan!80!white}{date}{A008RC}{data/businv_main.csv}
+	\stdline{blue!60!violet}{date}{W987RC}{data/businv_main.csv}
+	\stdline{magenta}{date}{W276RC}{data/businv_main.csv}
+	\stdline{green!80!blue}{date}{W790RC}{data/businv_main.csv}
+	\stdnode{3.1cm}{6.5cm}{\footnotesize \color{blue!60!violet}Gross Investment}
+	\stdnode{1.5cm}{5.2cm}{\footnotesize \color{cyan!80!white}\ \ \ Fixed\\ \footnotesize \color{cyan!80!white} Investment}
+	\stdnode{1.2cm}{3.95cm}{\footnotesize \color{magenta}Depreciation}
+	\stdnode{4.3cm}{2.6cm}{\footnotesize \color{green!80!blue}Net \\ \footnotesize \color{green!80!blue}Investment}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businv_main.csv}
+\end{minipage} \hspace{4.5mm}
+\begin{minipage}{0.35\textwidth}
+\small \input{text/businv_levels.txt}
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.76\textwidth}
+\small Note that gross investment includes fixed investment and inventory investment, or the \href{https://www.bea.gov/help/glossary/change-private-inventories-cipi}{change in private inventories}. Changes to private inventories capture the difference between sales and production. Reduced production of new inventory explains much of the overall reduction in gross investment during the COVID-19 pandemic. 
+\end{minipage}
+\newpage
+\begin{minipage}{0.3\textwidth}
+\small \input{text/businv_sh.txt}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.41\textwidth}
+\normalsize \textbf{Business Fixed Investment by Type}\\
+\footnotesize{\textit{share of GDP, percent}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks 
+		ytick={0, 2, 4, 6}, xmin={1989-12-01}, clip=false,
+		ymin=0.4, xticklabel={`\short{\year}}, height=5.0cm, width=7.5cm]
+	\rbars
+	\stdline{yellow!50!orange}{date}{B009RC}{data/businvsh.csv}
+	\stdline{cyan!60!white}{date}{Y033RC}{data/businvsh.csv}
+	\stdline{violet}{date}{Y001RC}{data/businvsh.csv}
+	\stdnode{4.95cm}{1.1cm}{\footnotesize \color{yellow!50!orange} Structures}
+	\stdnode{4.7cm}{2.9cm}{\footnotesize \color{cyan!60!white} Equipment}
+	\stdnode{1.35cm}{2.1cm}{\footnotesize \color{violet} Intellectual \\ \footnotesize \color{violet} Property}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businvsh.csv}
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{\color{black!70} \seriffont Contribution to Growth}
+\small \input{text/businv.txt} 
+\vspace{1mm}
 
 \normalsize \textbf{Business Fixed Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth}}\\
@@ -2193,9 +2256,7 @@ In terms of elements that add to the number of people in poverty, medical expens
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businv.csv}
 \vspace{3mm}
 
-\small \input{text/businv.txt} 
-
-\normalsize \textbf{Business Investment}\\
+\normalsize \textbf{Business Fixed Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}}\\ 
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
@@ -2207,16 +2268,16 @@ In terms of elements that add to the number of people in poverty, medical expens
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
-\begin{minipage}{0.33\textwidth}
+\begin{minipage}{0.32\textwidth}
 \small Productive business investments also show up as \textbf{new orders for core capital goods}. The category excludes the more-volatile aircraft orders as well as defense-related orders, and is derived from a Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  
 
 \input{text/dgno.txt}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.43\textwidth}
+\begin{minipage}{0.39\textwidth}
 \normalsize \textbf{New Orders for Core Capital Goods}\\
 \footnotesize{\textit{nondefense capital goods ex-aircraft, share of GDP}}\\
 \hspace*{-2mm} \input{text/dgno.tex}\\
-\footnotesize{Source: Census Bureau} \hspace{23mm} \tbllink{dgno.csv}
+\footnotesize{Source: Census Bureau} \hfill \tbllink{dgno.csv}
 \end{minipage}
 \vspace{10mm}
 
@@ -2241,7 +2302,7 @@ When thinking about the longer-term trends in these data, it's important to note
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: FRED, BEA} \hfill \tbllink{isratio.csv}
-\end{minipage} \hspace{8mm}
+\end{minipage} \hspace{7mm}
 \begin{minipage}{0.31\textwidth}
 \small Census \href{https://www.census.gov/mtis/www/data/pdf/mtis_current.pdf}{report} the nominal ratio of inventories to sales for the total business sector (see {\color{blue!40!cyan!80!white}\textbf{---}}). \input{text/isratio.txt}
 \end{minipage}
@@ -2401,7 +2462,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \small The recent collapse has been broad-based. The monthly data are shown in detail below.
 \vspace{1mm}
 
-\normalsize \textbf{Recent data in detail}\\
+\normalsize \textbf{Recent data in detail}
 \vspace{1mm}
 
 \normalsize \hspace{14mm} Market Group \hspace{38mm} Industry Group \footnotesize \\
@@ -2453,7 +2514,7 @@ When thinking about the longer-term trends in these data, it's important to note
 	\input{text/tcu_tot_node.txt}
 	\input{text/tcu_mfg_node.txt}
 	\stdnode{8.8cm}{2.2cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
-	\stdnode{7.55cm}{3.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
+	\stdnode{7.4cm}{3.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
@@ -2499,13 +2560,13 @@ When thinking about the longer-term trends in these data, it's important to note
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em},
-		width=11.6cm, height=5.0cm, clip=false]
+		width=12.1cm, height=5.0cm, clip=false]
 	\rebars
 	\stdline{blue!70!black}{date}{NS_3M}{data/marts.csv}
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
 	\input{text/rs_ns3m_node.txt}
 	\input{text/rs_44x72_node.txt}
-	\stdnode{9.3cm}{1.1cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
+	\stdnode{9.5cm}{1.1cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
 	\stdnode{7.8cm}{2.5cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
@@ -2614,7 +2675,7 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{red}{date}{W024RC}{data/slggdp.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv}*
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv} \ \tbllink{slggdp.csv}
 \vspace{3mm}
 
 \subsubsection*{\color{black!70} \seriffont Government Jobs}
@@ -2671,12 +2732,13 @@ When thinking about the longer-term trends in these data, it's important to note
 \subsubsection*{\color{black!70} \seriffont Interest Expense}
 \begin{minipage}{0.33\textwidth}
 \small \input{text/fedintexp.txt}
-\end{minipage} \hspace{7mm} \begin{minipage}{0.37\textwidth}
+\end{minipage} \hspace{6mm} \begin{minipage}{0.38\textwidth}
 \normalsize \textbf{Federal Interest Outlays}\\
 \footnotesize{\textit{share of GDP, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={1, 2, 3}, clip=false, ymin=1.05,
-		xticklabel={`\short{\year}}, height=4.3cm, width=6.3cm]
+		xmin={1990-01-01},
+		xticklabel={`\short{\year}}, height=4.4cm, width=6.6cm]
 	\rbars
 	\thickline{magenta}{date}{VALUE}{data/fedintexp.csv}
 	\input{text/fedintexp_node.txt}
@@ -3039,13 +3101,13 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \input{text/cps_lfs.txt}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.58\textwidth}
+\begin{minipage}{0.57\textwidth}
 \normalsize \textbf{Labor Force Status of Population}\\
 \footnotesize{\textit{millions of people}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300}, 
 		height=7.2cm, ymin=10, width=10.0cm,
-		clip=false, enlarge x limits={0.04}, 
+		clip=false, enlarge x limits={0.02}, 
 		yticklabel style={text width=1.3em},
 		xtick={{1989-01-01}, {1995-01-01}, {2000-01-01}, 
 				{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -3900,7 +3962,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \footnotesize{\textit{voluntary separations as share }}\\
 \footnotesize{\textit{of total employment, selected }}\\
 \footnotesize{\textit{industry groups, percent}}\\
-\vspace{7.7cm}
+\vspace{9.4cm}
 
 \hspace{20mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
@@ -3943,7 +4005,7 @@ Among newly employed workers, the vast majority were considered to be out of the
 \noindent \normalsize \textbf{Job Openings Rate}\\
 \footnotesize{\textit{job openings share of jobs,}}\\
 \footnotesize{\textit{by industry group, percent}}\\
-\vspace{8cm}
+\vspace{9.8cm}
 
 \hspace{20mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
@@ -4038,14 +4100,15 @@ Among newly employed workers, the vast majority were considered to be out of the
 \begin{minipage}{0.76\textwidth}
 \small Part-time workers who would prefer full-time work are referred to as involuntary part time or part time for economic reasons in the labor force statistics produced by the Bureau of Labor Statistics. This group is comprised of people who don't have enough hours because of slack business conditions or who are unable to find full-time work. 
 \end{minipage}
+\vspace{1mm}
 
-\begin{minipage}{0.43\textwidth}
+\begin{minipage}{0.408\textwidth}
 \normalsize \textbf{Part Time, Economic Reasons}\\
 \footnotesize{\textit{percent of labor force}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={0, 2, 4, 6}, 
 		enlarge y limits={0.1}, ymin=2,
-		xticklabel={`\short{\year}}, height=4.5cm, width=7.2cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.5cm, width=6.9cm, clip=false]
 	\rbars
 	\stdline{red}{date}{PTECON}{data/ptecon.csv}
 	\input{text/ptecon_node.txt}
@@ -4053,8 +4116,8 @@ Among newly employed workers, the vast majority were considered to be out of the
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{ptecon.csv} 
 \end{minipage}
-\hspace{7mm}
-\begin{minipage}{0.28\textwidth}
+\hspace{5mm}
+\begin{minipage}{0.31\textwidth}
 \small \input{text/ptecon.txt}
 \end{minipage}
 \vspace{6mm}
