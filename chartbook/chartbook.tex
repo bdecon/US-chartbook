@@ -648,6 +648,8 @@ Because annual rates amplify short-term changes in production, some analysis has
 \small The Federal Reserve \href{https://www.federalreserve.gov/releases/z1/}{report} transactions and levels of financial assets and liabilities in the US \textbf{financial accounts}. This includes balances sheets for households, businesses, and governments. Sector-specific data are covered in the section of the chartbook that corresponds to the sector and overall financial activities of the US are discussed in this section.
 \subsection*{\color{black!70} \seriffont Sectoral Balances}
 \small A high-level overview of US financial activities can be provided by dividing the world into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examining the net lending and borrowing between the groups, which must sum to zero at an aggregate level. That is, if one sector is running a deficit, another sector must be running a surplus.
+
+A sector runs a surplus in a given accounting period when its aggregate income is higher than its outlays. When this occurs the sector becomes a lender of the savings created by having more income than expenses. Likewise, if a sector spends more than it takes in, it borrows the difference. Therefore, when the government sector runs a deficit and is a net borrower, it is creating a surplus for other sectors because it is taking in fewer payments through taxes than it is making through spending. 
 \vspace{2mm}
 
 \normalsize \textbf{Sectoral Financial Balance}\\
@@ -672,9 +674,10 @@ Because annual rates amplify short-term changes in production, some analysis has
 \vspace{2mm}
 
 \small \input{text/sectbal.txt} 
-
-\input{text/sectbal2.txt}
-
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small \input{text/sectbal2.txt}
 \vspace{2mm}
 
 \normalsize \textbf{Domestic Private Sector Financial Balance}\\
@@ -691,19 +694,13 @@ Because annual rates amplify short-term changes in production, some analysis has
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{sectbal2.csv}
-
 \end{minipage}
-
 \newpage
-
 \begin{minipage}{0.76\textwidth}
-
 \subsection*{\color{black!70} \seriffont Liabilities}
-
 \small Calculating the contribution of different sectors to the \textbf{total change in borrowing} can highlight risks to economic activity. For example, the tech bubble of the late 1990s and early 2000s shows up as a large increase in corporate borrowing. The housing bubble from the 1990s to 2007 shows up as an increase in household borrowing. Government borrowing increased following the collapse of the housing bubble, in an effort to compensate for the massive fall in wage income. Keep in mind, however, that the vast majority of liabilities in the domestic economy are to other domestic parties.
 
 \input{text/liabgr.txt} 
-
 \vspace{2mm}
 
 \normalsize \textbf{Real Debt Growth}\\
