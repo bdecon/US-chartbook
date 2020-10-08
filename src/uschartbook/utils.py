@@ -424,8 +424,25 @@ def fred_df(series, start='1989'):
 
     return df.loc[start:]    
     
+def end_node(data, color, percent=True, date=False):
+    if percent == True:
+        pct = '\%'
+    else:
+        pct = ''
+    if date == True:
+        dt = data.index[-1].strftime('%b\\\\`%y:\\\\')
+    else:
+        dt = ''
+    latest = data.iloc[-1]
+    date = dtxt(data.index[-1])['datetime']
+    text = (f'\\node[label={{0:{{\scriptsize\\rowcolors{{1}}{{}}{{white!0}}\setlength{{\\tabcolsep}}{{0.2pt}}\\begin{{tabular}}{{l}}{dt}{latest:.1f}{pct}\end{{tabular}}}}}}, circle, anchor=north, '+
+            f'{color}, fill, inner sep=1.0pt] at '+
+            f'(axis cs:{date}, {latest:.3f}) {{}};')
     
-def end_node(data, color, percent=True, date=False, offset=0):
+    return text
+    
+    
+def end_node2(data, color, percent=True, date=False, offset=0):
     if percent == True:
         pct = '\%'
     else:
@@ -443,6 +460,20 @@ def end_node(data, color, percent=True, date=False, offset=0):
     
     return text
     
+
+def end_node3(data, color, percent=True):
+    if percent == True:
+        pct = '\%'
+    else:
+        pct = ''
+    latest = data.iloc[-1]
+    date = data.index[-1]
+    text = (f'\\node[label={{0:{{\scriptsize{latest:.1f}{pct}}}}}, circle, '+
+            f'{color}, fill, inner sep=1.0pt] at '+
+            f'(axis cs:{date}, {latest}) {{}};')
+    
+    return text
+
 
 def node_adjust(df, color_dict):
     '''Return offsets for node text'''
