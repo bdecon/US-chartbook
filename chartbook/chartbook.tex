@@ -799,7 +799,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \newpage
 \subsubsection*{\color{black!70} \seriffont Household Formation}
 \begin{minipage}{0.76\textwidth}
-\small Household formation, measured here as the one-year change in total occupied housing units, can result from a net increase in renters or a net increase in homeowners. Household formation should keep pace with population growth, all else equal. During the housing bubble, the home-ownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, housing formation was often below population growth. Additionally, home ownership decreased as foreclosures converted homeowners into renters. 
+\small Household formation measures the change in occupied housing units, and should keep pace with population growth, all else equal. During the housing bubble, the home-ownership rate increased and household formation exceeded population growth. Following the collapse of the housing bubble, household formation was often below population growth and home ownership decreased as foreclosures converted homeowners into renters. 
 
 \input{text/hhform1.txt}
 
@@ -824,20 +824,21 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
 \end{minipage}
-\vspace{1mm}
+\vspace{3mm}
 
 \subsubsection*{\color{black!70} \seriffont Headship Rate}
-\begin{minipage}{0.3\textwidth}
+\begin{minipage}{0.315\textwidth}
 \small Individual decisions about starting a household or living with family are influenced by economic conditions. The ratio of households to people age 16 or older is referred to as the \href{https://www.federalreserve.gov/econres/notes/feds-notes/an-early-evaluation-of-the-effects-of-the-pandemic-on-living-arrangements-and-household-formation-20200807.htm}{aggregate headship} rate. This measure fell substantially following the collapse of the housing bubble and dropped rapidly during the COVID-19 pandemic as people moved in with family. \input{text/headship.txt}
-\end{minipage}\hspace{8mm}
-\begin{minipage}{0.405\textwidth}
+\end{minipage}\hspace{7mm}
+\begin{minipage}{0.4\textwidth}
 \normalsize \textbf{Aggregate Headship Rate}\\
 \footnotesize{\textit{persons age 16 or older}}\\
 \footnotesize{\textit{seasonally adjusted}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks ytick={49, 50, 51}, 
-		enlarge y limits={0.1}, yticklabel style={text width=1.4em},
-		xticklabel={`\short{\year}}, height=5.8cm, width=6.8cm, clip=false]
+		xmin={1998-07-01},
+		enlarge y limits={0.1}, yticklabel style={text width=1.0em},
+		xticklabel={`\short{\year}}, height=5.9cm, width=6.6cm, clip=false]
 	\rebars
 	\stdline{red}{date}{value}{data/headship.csv}
 	\input{text/headship_node.txt}
