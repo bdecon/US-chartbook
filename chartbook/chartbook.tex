@@ -263,41 +263,101 @@
 
 \thispagestyle{empty}
 
-\begin{minipage}{0.34\textwidth}
-\subsection*{\hyperlink{toc}{\faList}\color{black!70} \ {\seriffont Contents}}
-\hypertarget{toc}{}
-\begin{description}
-
-\item {\hyperref[sec:oea]{Overall Economic Activity}}
-\item {\hyperref[sec:ofa]{Overall Financial Activity}}
-\item {\hyperref[sec:hh]{Households}}
-\item {\hyperref[sec:bus]{Businesses}}
-\item {\hyperref[sec:gov]{Government}}
-\item {\hyperref[sec:ext]{External Sector}}
-\item {\hyperref[sec:lab]{Labor Markets}}
-\item {\hyperref[sec:cap]{Capital Markets}}
-\item {\hyperref[sec:pr]{Prices}}
-
-\end{description}
-\end{minipage}
-\hspace{6mm} \begin{minipage}{0.36\textwidth}
+\begin{minipage}{0.36\textwidth}
 \subsection*{ {\color{red} \faExclamationTriangle} \color{black!70} {\seriffont Notes}}
 
 {\color{red} \textbf{Very early stage draft:}} \\
 Contents not reliable 
+\vfill
 
+\end{minipage} \vspace{12mm}
+\begin{minipage}{0.36\textwidth}
 \subsection*{{\color{gray} \faUser} \color{black!70} {\seriffont Contact}}
 
 \textbf{Brian Dew} \  \\
 {\color{gray} \faEnvelope} \ brian.w.dew@gmail.com \ \\
 {\color{gray} \faTwitter} \ @bd\_econ \ \\
 {\color{gray} \faGithub} \ \ \href{https://github.com/bdecon/US-chartbook}{bdecon/US-chartbook}
-
-\vfill
 \end{minipage}
+\newpage
+\section*{\hyperlink{toc}{\faList}\color{darkgray} \LARGE \ {Contents}}
+\hypertarget{toc}{}
+\vspace{4mm}
+
+\begin{minipage}{0.4\textwidth}
+\begin{description}
+\item {\hyperref[sec:oea]{Overall Economic Activity}}
+\begin{description}
+\item Types of Activity
+\item Economic Growth
+\item Components of Growth
+\end{description}
+\item {\hyperref[sec:ofa]{Overall Financial Activity}}
+\begin{description}
+\item Sectoral Balances
+\item Borrowing and Liabilities
+\item Assets
+\item Wealth
+\end{description}
+\item {\hyperref[sec:hh]{Households}}
+\begin{description}
+\item Demographics
+\item Income
+\item Spending and Saving
+\item Balance Sheet
+\item Poverty
+\end{description}
+\item {\hyperref[sec:bus]{Businesses}}
+\begin{description}
+\item Industry Composition*
+\item Production and Sales
+\item Investment
+\item Profit
+\item Balance Sheet
+\end{description}
+\item {\hyperref[sec:gov]{Government}}
+\begin{description}
+\item Spending and Investment
+\item Revenue*
+\item Balance Sheet
+\end{description}
+\end{description}
+\end{minipage} \hspace{12mm} 
+\begin{minipage}{0.4\textwidth}
+\begin{description}
+\item {\hyperref[sec:ext]{External Sector}}
+\begin{description}
+\item Balance of Payments
+\item International Investment Position
+\item Trade
+\item Exchange Rates
+\end{description}
+\item {\hyperref[sec:lab]{Labor Markets}}
+\begin{description}
+\item Employment
+\item Unemployment
+\item Participation
+\item Hours
+\item Wages
+\item Productivity
+\item Union Membership
+\end{description}
+\item {\hyperref[sec:cap]{Capital Markets}}
+\begin{description}
+\item Equity Markets
+\item Interest Rates
+\item Money and Monetary Policy
+\end{description}
+\item {\hyperref[sec:pr]{Prices}}
+\end{description}
+\vspace{5cm}
+
+\end{minipage}
+\vspace{6mm}
+
+\small * \ Forthcoming
 
 \newpage
-
 \section*{\color{darkgray} \LARGE Overall Economic Activity}
 \label{sec:oea}
 \begin{minipage}{0.61\textwidth}
@@ -4274,10 +4334,10 @@ Among newly employed workers, the vast majority were considered to be out of the
 \vspace{4mm}
 
 \normalsize \textbf{Wage Growth Tracker}\\
-\footnotesize{\textit{median one-year wage growth, percent}}\\
+\footnotesize{\textit{median one-year hourly wage growth, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-1, 0, 1, 2, 3, 4, 5, 6}, 
-		enlarge y limits={0.1}, ymin=0.2,
+		enlarge y limits={0.1}, ymin=0.4,
 		xticklabel={`\short{\year}}, height=5.2cm, width=11.1cm, clip=false]
 	\rebars
 	\thinline{orange!60!white}{date}{bd_cps}{data/atl_wgt.csv}
