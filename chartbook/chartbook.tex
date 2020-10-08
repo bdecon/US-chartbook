@@ -209,6 +209,12 @@
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2020-10-30}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
+	\newcommand{\recbars}{
+		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2020-10-30}, \pgfkeysvalueof{/pgfplots/ymax});}
+			
 	\newcommand{\rbar}{
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2020-10-30}, \pgfkeysvalueof{/pgfplots/ymax});}
@@ -4513,7 +4519,31 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 \vspace{2mm}
 
 \small Despite its full employment mandate, the Fed has traditionally responded to inflation and output. Economist John Taylor described a rule for determining the Fed Funds rate based on inflation and output. Versions of this Taylor Rule track the actual Fed Funds rate fairly closely during the 1990s and 2000s. Former Fed Chair Ben Bernanke \href{https://www.brookings.edu/blog/ben-bernanke/2015/04/28/the-taylor-rule-a-benchmark-for-monetary-policy/}{described} a modified Taylor rule based on core PCE inflation and a stronger response to the output gap (see {\color{cyan!30!white}\textbf{---}}), which currently suggests a strongly negative policy rate. 
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{\color{black!70} \seriffont Real Interest Rates}
+\small Since the goods and services that can be purchased by a dollar change over time, inflation is important to money markets. A lender expecting the future purchasing power of the principal to be below its current purchasing power will charge a higher interest rate to make up for the difference. Interest rates that have been adjusted for expected inflation are referred to as real interest rates, and can offer insight into economic and financial conditions. Low real interest rates encourage borrowing and consumption and increased economic activity while high real interest rates discourage borrowing and encourage saving. 
+\end{minipage}
+\vspace{1mm}
 
+\begin{minipage}{0.375\textwidth}
+\normalsize \textbf{Real Interest Rates}\\
+\footnotesize{\textit{yield, inflation-index treasury, percent}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={-2, -1, 0, 1, 2, 3, 4}, 
+		xticklabel={`\short{\year}}, height=6.2cm, width=7.0cm, clip=false]
+	\recbars
+	\stdline{red}{date}{Ten-year}{data/real_rates.csv}
+	\stdline{violet}{date}{Five-year}{data/real_rates.csv}
+	\stdnode{0.9cm}{1.65cm}{\scriptsize \color{violet}\textbf{Five-year}}
+	\stdnode{2.6cm}{2.8cm}{\scriptsize \color{red}\textbf{Ten-year}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{real_rates.csv}
+\end{minipage} \hspace{7mm}
+\begin{minipage}{0.33\textwidth}
+\small \input{text/real_rates_basic.txt} 
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -4666,10 +4696,9 @@ A large increase in the amount of money held by individuals and institutions can
 \footnotesize{\textit{total assets, trillion of USD}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6, 7}, 
-		enlarge y limits={0.1}, xmax={2020-06-01}, ymin=0.5, ymax=6.8,
+		enlarge y limits={0.1}, ymin=0.5, ymax=6.8,
 		xticklabel={`\short{\year}}, height=6.0cm, width=6.8cm, clip=false]
-	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+	\recbars
 	\stdline{blue!80!black}{date}{RESPPMA_N.WW}{data/fed_assets.csv}
 	\end{axis}
 \end{tikzpicture}\\
