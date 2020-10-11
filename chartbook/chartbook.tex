@@ -462,6 +462,53 @@ Additionally some income does not get paid out to these groups. Taxes on imports
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\small The \textbf{production approach} to GDP identifies how individual industries contribute to domestic production by calculating the \href{https://www.bea.gov/help/glossary/value-added}{value added} by each industry during the production process. The value added by an industry or sector group is its sales or gross output minus any \href{https://www.bea.gov/help/glossary/intermediate-inputs}{intermediate inputs} used in production. The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gdp-industry}{report} GDP by industry, which is summarized briefly in this subsection by grouping the various private industries into broad categories. 
+
+\input{text/gdpva_sh.txt}
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.35\textwidth}
+\noindent \normalsize \textbf{Production Types}\\
+\footnotesize{\textit{per capita, thousands of \input{text/gdpva_ltdt.txt}dollars}}\\
+\noindent \hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20}, 
+		yticklabel style={text width=1.0em}, ymin=1.2, xmin={1998-03-01},
+		xticklabel={`\short{\year}}, clip=false, height=6.1cm, width=6.4cm]
+	\rebars
+	\stdnode{3.9cm}{1.4cm}{\footnotesize \color{orange!80!white}Government}
+	\stdline{orange!80!white}{date}{Government}{data/gdpva_pc.csv}
+	\stdnode{1.0cm}{3.15cm}{\footnotesize \color{blue!90!white}Other Services}
+	\stdline{blue!90!white}{date}{Oth_Serv}{data/gdpva_pc.csv}
+	\stdnode{1.5cm}{2.25cm}{\footnotesize \color{red!90!white}FIRE+}
+	\stdline{red!90!white}{date}{FIRE}{data/gdpva_pc.csv}
+	\stdnode{3.35cm}{4.25cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
+	\stdline{purple!70!blue}{date}{GoodsTTU}{data/gdpva_pc.csv}
+	\stdnode{2.2cm}{0.3cm}{\footnotesize See text for category descriptions}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva_pc.csv}\\
+\end{minipage}\hspace{6mm}
+\begin{minipage}{0.365\textwidth}
+\small \input{text/gdpva_pc.txt} 
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\normalsize \textbf{Production Types}\\
+\footnotesize{\textit{per capita, annualized, \input{text/gdpva_ltdt.txt}dollars}}\\
+\hspace{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.6}
+		 \begin{tabular}{p{38mm} R{12.8mm} R{12.8mm} R{12.8mm} R{12.8mm} R{12.8mm}}
+			\input{data/gdpva_pc.tex} \hline
+		\end{tabular}}
+\vspace{-2mm}
+
+\footnotesize{Source: Bureau of Economic Analysis}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70}\seriffont Household inputs to production}
 \small It's useful to consider household inputs when analyzing economic output. For example, is the population growing? Are more people working? Are people working more hours? Is the economy more productive in its use of labor? These questions all add import context to discussion of aggregate ouput.
 
@@ -617,15 +664,17 @@ Because annual rates amplify short-term changes in production, some analysis has
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The \textbf{production approach} calculates GDP as the sum of gross value added--output minus inputs--in each sector. This identifies contributions from: goods-producing sectors combined with trade, transportation, and utilities (see\cbox{purple!70!blue}), finance, insurance, and real estate (see\cbox{red!90!white}), other service-providing sectors (see\cbox{blue!90!white}), and government (see\cbox{orange!80!white}).
-\vspace{2mm}
+\small The \textbf{production approach} calculates GDP as the sum of value added--gross output minus intermediate inputs--in each sector. The broad groupings discussed above are used to identify contributions from: goods-producing sectors combined with trade, transportation, and utilities (see\cbox{purple!70!blue}), finance, insurance, and real estate plus information (see\cbox{red!90!white}), other service-providing sectors (see\cbox{blue!90!white}), and government (see\cbox{orange!80!white}).
+
+\input{text/gdpva_growth.txt}
+\vspace{1mm}
 
 \normalsize \textbf{Real GDP Growth by Industry Group}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -25, -20, -15, -10, -5, 0, 5, 10},
-		height=6.0cm,  yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.74, 1.13)}}]
+		height=7.0cm,  yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.74, 1.1)}}]
 	\rbars
 	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
@@ -637,22 +686,23 @@ Because annual rates amplify short-term changes in production, some analysis has
 	\sbar{purple!70!blue}{date}{GoodsTTU}{data/gdpva.csv}
 	\stdnode{0.65cm}{0.4cm}{\scriptsize historical data}
 	\stdnode{4.1cm}{0.4cm}{\scriptsize annual data}
-	\legend{Government, Other Services, FIRE, Goods and TTU};
+	\legend{Government, Other Services, FIRE+, Goods and TTU};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva.csv}
-\vspace{6mm}
-
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
 \small Changes to GDP can also be assigned to changes in \textbf{household inputs}: population (see\cbox{lime!90!green}), employment rates (see\cbox{green!30!teal!90!black}), average hours worked (see\cbox{blue}), and total economy productivity (see\cbox{cyan!60!white}). 
 
 \input{text/gdpjobsch.txt}
-\vspace{2mm}
+\vspace{1mm}
 
 \normalsize \textbf{Real GDP Growth by Household Inputs}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30},
-		height=7.4cm,
+		height=7.3cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
 		legend style={at={(0.83, 1.01)}, fill=white}]
 	\rbars
@@ -673,7 +723,7 @@ Because annual rates amplify short-term changes in production, some analysis has
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{2mm} p{35.2mm} R{8.2mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} p{0mm} R{6.8mm} R{6.8mm} R{6.8mm} }
 \input{data/gdptable.tex}
-		\end{tabular}}	\vspace{-2mm}
+		\end{tabular}}	\vspace{-6mm}
 		
 \footnotesize{Source: Bureau of Economic Analysis and Author's Calculations}
 \end{minipage}	
@@ -722,15 +772,15 @@ A sector runs a surplus in a given accounting period when its aggregate income i
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30},
-		height=5.2cm, 
+		height=7.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(0.53, 1.13)}}]
+		legend style={at={(0.54, 1.02)}, fill=white}]
 	\rbars
 	\sbar{green!70!black}{date}{PRIV}{data/sectbal.csv}
 	\sbar{yellow!70!orange}{date}{GOV}{data/sectbal.csv}
 	\sbar{blue!90!black}{date}{ROW}{data/sectbal.csv}
     \node[align=left] (source) at (axis cs:2017-06-15,10.5) {%
-      	\tiny TCJA repatriation};
+      	\scriptsize TCJA \\ \scriptsize repatriation};
     \node (destination) at (axis cs:2017-11-01,3.1) {};
     \draw[-] (source)--(destination);
 	\legend{Private, Government, Rest of World};
@@ -750,7 +800,7 @@ A sector runs a surplus in a given accounting period when its aggregate income i
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15, 20, 25},
-		height=5.2cm, 
+		height=6.2cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.43, 1.13)}}]
 	\rbars
@@ -812,7 +862,8 @@ A sector runs a surplus in a given accounting period when its aggregate income i
 \normalsize \textbf{Total US Wealth to GDP Ratio}\\
 \footnotesize{\textit{total US wealth divided by GDP}}\\
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=0,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=0.15,
+		height=5.6cm,
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.68, 1.13)}}]
 	\rbars
@@ -4331,26 +4382,53 @@ Among newly employed workers, the vast majority were considered to be out of the
 \small The Federal Reserve Bank of Atlanta \href{https://www.frbatlanta.org/chcs/wage-growth-tracker}{publish} a wage growth tracker that captures the distribution of changes in nominal hourly wages of the same people over one year. This approach avoids some of the compositional changes that affect aggregate wage growth measures, though the sample used to calculate the data is affected by changes to respondents' employment status, and by survey response rates. 
 
 \input{text/atl_wgt.txt}
-\vspace{4mm}
+\end{minipage}
+\vspace{1mm}
 
+\begin{minipage}{0.3\textwidth}
 \normalsize \textbf{Wage Growth Tracker}\\
-\footnotesize{\textit{median one-year hourly wage growth, percent}}\\
+\footnotesize{\textit{median one-year wage growth, percent}}
+\end{minipage} \hspace{7mm}
+\begin{minipage}{0.44\textwidth}
+\footnotesize \colorline{blue!75!cyan}{ \ 3-month moving average} \\ \colorline{orange!60!white}{ \ Unsmoothed}
+\end{minipage}
+\vspace{-1mm}
+
+\begin{minipage}{0.76\textwidth}
+\normalsize \ \ \ \ Hourly Wage \hspace{4.1cm} \normalsize Weekly Wage
+\end{minipage}
+\vspace{-2mm}
+
+\begin{minipage}{0.36\textwidth}
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-1, 0, 1, 2, 3, 4, 5, 6}, 
-		enlarge y limits={0.1}, ymin=0.4,
-		xticklabel={`\short{\year}}, height=5.2cm, width=11.1cm, clip=false]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, 
+		enlarge y limits={0.1}, ymin=0.5, ymax=6.0,
+		xticklabel={`\short{\year}}, height=5.8cm, width=6.6cm, clip=false]
 	\rebars
 	\thinline{orange!60!white}{date}{bd_cps}{data/atl_wgt.csv}
 	\stdline{blue!75!cyan}{date}{3ma}{data/atl_wgt.csv}
-	\legend{Unsmoothed, 3-month moving average};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Author's Calculations} \hspace{59mm} \tbllink{atl_wgt.csv}
-\vspace{14mm}
+\end{tikzpicture}
+\end{minipage}\hspace{5.5mm}
+\begin{minipage}{0.36\textwidth}
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, 
+		enlarge y limits={0.1}, ymin=0.5, ymax=6.0,
+		xticklabel={`\short{\year}}, height=5.8cm, width=6.6cm, clip=false]
+	\rebars
+	\thinline{orange!60!white}{date}{wk}{data/atl_wgt.csv}
+	\stdline{blue!75!cyan}{date}{wk3ma}{data/atl_wgt.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\vspace{-2mm}
 
-\small By observing the same person's wage at two points, one year apart, we see how many people do not receive a wage increase. The Atlanta Fed measures this as the share of individuals who have one-year wage growth of between -0.5 and 0.5 percent. The Atlanta Fed approach is replicated using the bd CPS, and smoothed with a 3-month moving average. \input{text/atl_zwc.txt}
+\begin{minipage}{0.76\textwidth}
+\footnotesize{Source: Author's Calculations} \hfill \tbllink{atl_wgt.csv}
+\vspace{6mm}
 
-\vspace{1mm}
+\small By observing the same person's wage at two points, one year apart, we see how many people do not receive a wage increase. The Atlanta Fed measures this as the share of individuals who have one-year hourly wage growth of between -0.5 and 0.5 percent. The Atlanta Fed approach is replicated using the bd CPS, and smoothed with a 3-month moving average. \input{text/atl_zwc.txt}
+\vspace{2mm}
 
 \normalsize \textbf{Zero Wage Change}\\
 \footnotesize{\textit{share of individuals with one-year wage growth between -0.5 and 0.5 percent}}\\
