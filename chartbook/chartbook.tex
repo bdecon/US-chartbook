@@ -1051,7 +1051,7 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
-\small \input{text/cps_educ2.txt} Some argue households compensated for a weak labor market and lack of worker bargaining power by borrowing large sums of money for education. Given the extent of the increase in education, and the typical wage premium of education, labor income should have increased substantially more than it actually did. 
+\small \input{text/cps_educ2.txt}Some argue households compensated for a weak labor market and lack of worker bargaining power by borrowing large sums of money for education. Given the extent of the increase in education, and the typical wage premium of education, labor income should have increased substantially more than it actually did. 
 \vspace{2mm}
 
 \normalsize \textbf{Education Distribution} \small \hspace{10mm} \cbox{red!70!purple} \input{text/cps_ltdate.txt} \hspace{4mm} \cbox{orange!80} 2000\\
@@ -2507,10 +2507,8 @@ When thinking about the longer-term trends in these data, it's important to note
 \subsection*{\color{black!70} \seriffont Industrial Production}
 \begin{minipage}{0.62\textwidth}
 \small \input{text/indpro.txt} 
-
 \end{minipage}\hspace{7mm}
 \begin{minipage}{0.35\textwidth}
-
 \normalsize \textbf{Industrial Production}\\
 \footnotesize{\textit{index, 2012=100}}\\
 \input{text/ip_main_line.tex}
@@ -4060,8 +4058,8 @@ Among newly-employed workers, some were looking for work or otherwise considered
 \footnotesize{\textit{job openings divided by total employment}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 0.5, 1.0, 1.5}, 
-		yticklabel style={text width=1.3em}, 
-		enlarge y limits={0.1}, ymin=0.05,
+		yticklabel style={text width=1.3em}, xmin={2001-05-01},
+		ymin=0.05,
 		xticklabel={`\short{\year}}, height=5.6cm, width=12.4cm, clip=false]
 	\rebars
 	\stdline{magenta!80!violet!90!white}{date}{unjo}{data/unjo.csv}
