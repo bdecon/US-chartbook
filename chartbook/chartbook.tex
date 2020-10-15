@@ -2715,6 +2715,98 @@ When thinking about the longer-term trends in these data, it's important to note
 \label{sec:gov}
 \small Public institutions are collectively referred to as the \textit{public-sector} or the \textit{government}. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate economic and financial activity. The government also enforces and determines the ownership of property. These activities are all extremely important to production and distribution in the economy.
 
+This chartbook section covers various government statistics, including contributions to current economic activity, receipts and expenditures, assets and liabilities, and government jobs.
+\subsection*{\color{black!70} \seriffont Current Economic Activity}
+\small The government has several roles in society and there are multiple ways to interpret its contribution to current economic activity. The contribution to overall economic activity from the government sector can be measured as: 1) the gross output of the sector minus intermediate inputs used in production (value added); 2) the government income payments to people and on behalf of people and taxes and social insurance contributions; or 3) the sum of government expenditures on final goods and services, including investment. 
+
+The value added in production by the government sector is composed primarily of the compensation of government employees. These employees provide all types of services: education, health care, transportation, utilities, sanitation, etc. Government value added also includes a residual term called \href{https://www.bea.gov/help/glossary/gross-operating-surplus}{gross operating surplus}, much of which reflects money spent replacing and maintaining government fixed assets. 
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{0.38\textwidth}
+\normalsize \textbf{Value Added in Domestic Production}\\
+\footnotesize{\textit{per capita, thousands of \input{text/gdpva_ltdt.txt}dollars}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6},
+		ymin=0.3, 
+		yticklabel style={text width=1.0em}, 
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=7.0cm]
+	\rebars
+	\stdnode{1.7cm}{1.8cm}{\footnotesize \color{blue!70!white}Federal}
+	\stdline{blue!70!white}{date}{Federal}{data/gdpva_pc.csv}
+	\stdnode{4.1cm}{3.3cm}{\footnotesize \color{red}State and Local}
+	\stdline{red}{date}{State and local}{data/gdpva_pc.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva_pc.csv}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.33\textwidth}
+\small \input{text/govva.txt}
+\end{minipage}
+\newpage
+
+\begin{minipage}{0.76\textwidth}
+\small Payments from the government to people include both the wages and salaries of government workers and transfer payments, also referred to as government social benefits or welfare. Welfare is critically important to society, yet the word is stigmatized in the US. It's worth noting that a huge portion of US welfare payments are not cash transfers to people but payments to businesses on behalf of people. For example, the US overpays for prescription drugs and medical services on behalf of people. Those over-payments benefit shareholders and doctors. The US also structures certain welfare payments as complex phased-in tax credits, paid the following year, which have very high private administrative costs (around ten percent goes to tax preparation services) and exclude the poorest people.
+
+Over the past thirty years, welfare payments, including those made to businesses, have mostly kept pace with consumer spending, while tax collection lagged behind income growth. Increased welfare payments on a per capita basis reflect price protections for the medical industry, as well as a larger share of the population receiving social security benefits. During the COVID-19 pandemic, consumer spending on services collapsed as businesses were closed, while government transfer payments to people hit record highs. As a result, estimates show seven million people taken out of poverty.
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.38\textwidth}
+\normalsize \textbf{Personal Income and Outlays}\\
+\footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20},
+		ymin=0.8, 
+		yticklabel style={text width=1.0em}, 
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=7.0cm]
+	\rbars
+	\stdnode{4.6cm}{3.1cm}{\footnotesize \color{violet}Welfare}
+	\stdline{violet}{date}{Welfare}{data/govpi.csv}
+	\stdnode{1.3cm}{3.1cm}{\footnotesize \color{cyan!80!blue}Tax \& Social\\ \footnotesize \color{cyan!80!blue} Insurance\\ \footnotesize \color{cyan!80!blue} Contributions}
+	\stdline{cyan!80!blue}{date}{TaxSI}{data/govpi.csv}
+	\stdnode{1.2cm}{0.65cm}{\footnotesize \color{orange}Wages and \\ \footnotesize \color{orange}Salaries}
+	\stdline{orange}{date}{WandS}{data/govpi.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{govpi.csv}
+\end{minipage}\hspace{5.5mm}
+\begin{minipage}{0.34\textwidth}
+\small \input{text/govpi.txt}
+\end{minipage}
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth}
+\small Another approach to calculating the government sector effect on current economic activity is to add up spending on final goods and services. Government consumption and investment tends to be more stable than consumer spending or private investment, and thus tends to rise as a share of economic activity during recessions. This category does not include government transfer payments, which mostly become consumer spending.
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.38\textwidth}
+\normalsize \textbf{Consumption and Investment}\\
+\footnotesize{\textit{share of GDP, percent}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20},
+		ymin=0.6, 
+		yticklabel style={text width=1.0em}, 
+		xticklabel={`\short{\year}}, clip=false, height=5.8cm, width=7.0cm]
+	\rbars
+	\stdnode{1.3cm}{0.6cm}{\footnotesize \color{green!85!black}Federal\\ \footnotesize \color{green!85!black} Non-Defense}
+	\stdline{green!85!black}{date}{A825RC}{data/govci.csv}
+	\stdnode{4.3cm}{3.1cm}{\footnotesize \color{purple!70!magenta}State \& Local}
+	\stdline{purple!70!magenta}{date}{A829RC}{data/govci.csv}
+	\stdnode{1.2cm}{2.0cm}{\footnotesize \color{blue!60!black}Defense}
+	\stdline{blue!60!black}{date}{A824RC}{data/govci.csv}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{govci.csv}
+\end{minipage}\hspace{5.5mm}
+\begin{minipage}{0.34\textwidth}
+\small \input{text/govci.txt}
+\end{minipage}
+
+
+\newpage
+\begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Government Spending and Investment}
 \small \input{text/gov.txt}  
 \vspace{2mm}
