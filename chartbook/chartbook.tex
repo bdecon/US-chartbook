@@ -239,6 +239,8 @@
 	\pgfplotstableread[header=true, col sep=semicolon]{data/openings_ind.csv}\opens
 	\pgfplotstableread[header=true, col sep=comma]{data/nilf_comp.csv}\nilf
 	\pgfplotstableread[header=true, col sep=comma]{data/pinc.csv}\pinc
+	\pgfplotstableread[header=true, col sep=comma]{data/unemp_grp.csv}\ungrp
+	
 	
 	
 % % % % % % % %
@@ -3771,6 +3773,29 @@ People who are not employed and not unemployed are considered to be outside of t
 \vspace{-2mm}
 
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{7.35cm} \tbllink{unemp.csv}
+\end{minipage}
+\newpage
+\begin{minipage}{0.445\textwidth} 
+\normalsize \textbf{Unemployment Rate}\small \hspace{8mm} \cbox{green} \input{text/cps_lfs_date.txt}\\
+\footnotesize{\textit{unemployed share of labor force}}\small \hspace{4mm} \cbox{cyan!50} \input{text/cps_lfs_dateyr.txt}\\
+\footnotesize{\textit{three month average}}
+\vspace{-1mm}
+
+\hspace*{-2mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.1cm}{1.5ex}
+    	width=5.8cm, bar width=1.6ex, height=5.2cm,
+    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\ungrp}{name}, xmin=0.2, 
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=cyan!50, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\ungrp};
+  	\addplot[fill=green, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\ungrp};
+  	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's calculations from CPS} \hfill \tbllink{unemp_grp.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} 
