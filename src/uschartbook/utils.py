@@ -542,7 +542,7 @@ def cps_3mo(cps_dir, cps_dt, cols):
     cps_year = cps_dt.year
     cps_month = cps_dt.month
     cps_month3 = (cps_dt - pd.DateOffset(months=2)).month
-    if cps_month != 12:
+    if cps_month < 3:
         cps_year1 = cps_year - 1
         cps_year2 = cps_year
         df = (pd.read_feather(cps_dir / f'cps{cps_year1}.ft', columns=cols)
@@ -550,7 +550,8 @@ def cps_3mo(cps_dir, cps_dt, cols):
               .append(pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
                         .query('MONTH <= @cps_month')))
     else:
-        df = pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
+        df = (pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
+              .query('MONTH >= @cps_month3'))
         
     return df
     
