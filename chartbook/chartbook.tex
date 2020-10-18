@@ -231,6 +231,9 @@
 	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
+	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups.csv}\unemp
+	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups2.csv}\unempt
+	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups3.csv}\unemptt
 	\pgfplotstableread[header=true, col sep=semicolon]{data/cps_educ.csv}\edsh
 	\pgfplotstableread[header=true, col sep=comma]{data/cps_educ_tot.csv}\edtot
 	\pgfplotstableread[header=true, col sep=comma]{data/cps_age.csv}\agesh
@@ -240,6 +243,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/nilf_comp.csv}\nilf
 	\pgfplotstableread[header=true, col sep=comma]{data/pinc.csv}\pinc
 	\pgfplotstableread[header=true, col sep=comma]{data/unemp_grp.csv}\ungrp
+	\pgfplotstableread[header=true, col sep=comma]{data/unemp_grpsh.csv}\ungrpsh
 	
 	
 	
@@ -2920,7 +2924,7 @@ Over the past thirty years, welfare payments, including those made to businesses
 \footnotesize{\textit{percent of GDP}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100, 125, 150},
-		xticklabel={`\short{\year}}, clip=false, ymin=2, height=6.4cm,
+		xticklabel={`\short{\year}}, clip=false, ymin=4, height=6.4cm,
 		legend cell align={left}, yticklabel style={text width=1.5em},
 		legend style={legend columns=2, at={(0.52, 1.0)}, fill=white}]
 	\rbars
@@ -3454,7 +3458,7 @@ People who are not employed and not unemployed are considered to be outside of t
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}
 \vspace{4mm}
 
-\small The employment rate shown above is based on a monthly survey that asks about employment during a specific week of the previous month. However, additional data is available on what share of a population works year-round rather than just during a specific week. This can be combined with data on hours worked to identify the \textit{fully-employed}, or \textit{full-time, full-year workers}, who are defined below as the those who usually work 35 hours per week or more for 50 weeks per year or more. The Census Bureau \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-01.html#par_textimage_14}{report} 118 million fully-employed people in 2018, equivalent to 36 percent of the overall US population. 
+\small The employment rate shown above is based on a monthly survey that asks about employment during a specific week of the previous month. However, additional data is available on what share of a population works year-round rather than just during a specific week. This can be combined with data on hours worked to identify the \textit{fully-employed}, or \textit{full-time, full-year workers}, who are defined below as the those who usually work 35 hours per week or more for 50 weeks per year or more. The Census Bureau \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-01.html#par_textimage_14}{report} 119 million fully-employed people in 2019, equivalent to 36 percent of the overall US population. 
 
 \input{text/acs_ftfy_text.txt} Of commuter zones with 100,000 people or more, the top and bottom ten by fully-employed share of population are listed below.
 \end{minipage}
@@ -3713,7 +3717,6 @@ People who are not employed and not unemployed are considered to be outside of t
 \newpage
 \begin{minipage}{0.76\textwidth} 
 \subsection*{\color{black!70} \seriffont Unemployment}
-
 \small The headline unemployment rate, also known as the U3 unemployment rate, measures people who do not have a job but are looking for one or are on temporary layoff, as a share of the labor force (those employed and unemployed). \input{text/unemp1.txt}
 \end{minipage}
 
@@ -3775,26 +3778,414 @@ People who are not employed and not unemployed are considered to be outside of t
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{7.35cm} \tbllink{unemp.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.445\textwidth} 
-\normalsize \textbf{Unemployment Rate}\small \hspace{8mm} \cbox{green} \input{text/cps_lfs_date.txt}\\
-\footnotesize{\textit{unemployed share of labor force}}\small \hspace{4mm} \cbox{cyan!50} \input{text/cps_lfs_dateyr.txt}\\
-\footnotesize{\textit{three month average}}
-\vspace{-1mm}
+\begin{minipage}{0.76\textwidth}
+\small Current Population Survey microdata are used to calculate unemployment by race and ethnicity over the latest six months, on average, and for the same six months before the COVID-19 pandemic. The groups used to produce these estimates separate those with a non-Hispanic ethnicity by race: white alone, black alone, Asian or Hawaiian/Pacific Islander alone, Native American/American Indian or Alaskan Native alone, or more than one race, from those with a Hispanic ethnicity and any race.  
+\end{minipage}
+\vspace{1.5mm}
 
-\hspace*{-2mm} \begin{tikzpicture}
+\begin{minipage}{0.28\textwidth} 
+\normalsize \textbf{Unemployment Rate}\\
+\footnotesize{\textit{unemployed share of labor force}}\\
+\footnotesize{\textit{age 18 to 64}}\\
+\footnotesize{\textit{not seasonally adjusted}}
+\end{minipage}
+\begin{minipage}{0.17\textwidth} 
+\footnotesize \ 6 mo. ending:\\
+\small \cbox{orange!75!yellow} \input{text/cps_lfs_datesh.txt}\\
+\small \cbox{blue!40!magenta} \input{text/cps_lfs_dateyrsh.txt}
+\end{minipage}\hspace{1mm}
+\begin{minipage}{0.28\textwidth} 
+\normalsize \textbf{Share of Unemployed}\\
+\footnotesize{\textit{group share of unemployed}}\\
+\footnotesize{\textit{age 18 to 64}}\\
+\footnotesize{\textit{not seasonally adjusted}}
+\end{minipage}
+\vspace{-1.5mm}
+
+\begin{minipage}{0.37\textwidth} 
+\hspace*{-3mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.1cm}{1.5ex}
-    	width=5.8cm, bar width=1.6ex, height=5.2cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
+    	width=4.3cm, bar width=2.4ex, height=6.9cm,
+    	enlarge y limits={abs=0.42cm}, enlarge x limits=0.03, \bbar{x}{0},
 		yticklabels from table={\ungrp}{name}, xmin=0.2, 
 		yticklabel style={font=\footnotesize},
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=blue!40!magenta, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\ungrp};
-  	\addplot[fill=green, draw=none] 
+  	\addplot[fill=orange!75!yellow, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\ungrp};
   	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+\end{minipage} \hspace{2mm}
+\begin{minipage}{0.37\textwidth} 
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.1cm}{1.5ex}
+    	width=4.3cm, bar width=1.7ex, height=6.9cm,
+    	enlarge y limits={abs=0.42cm}, enlarge x limits=0.03, \bbar{x}{0},
+		yticklabels from table={\ungrpsh}{name}, xmin=0.2, 
+		yticklabel style={font=\footnotesize}, clip=false,
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=green!80!blue, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\ungrpsh};
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\ungrpsh};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\ungrpsh};
+  	\stdnode{2.2cm}{0.8cm}{{\color{green!75!blue} \faSquare}:  \footnotesize Share of\\ \footnotesize Labor Force}
+  	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\vspace{-1.5mm}
+
+\begin{minipage}{0.76\textwidth} 
+\footnotesize{Source: Author's calculations from CPS} \hfill \tbllink{unempgroups3.csv} \ \tbllink{unempgroups.csv} \ \tbllink{unempgroups2.csv}
+\vspace{3mm}
+
+\normalsize \textbf{Unemployment Rate}
+\vspace{0.5mm}
+
+\centerline{\small Total, any race or ethnicity}
+\vspace{-2mm}
+
+Total \hspace{34mm} Men \hspace{32mm} Women\\
+\hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemptt}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=5] {\unemptt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=6] {\unemptt};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemptt}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\unemptt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\unemptt};
+  	\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemptt}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\unemptt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=4] {\unemptt};
+  	\end{axis}
+\end{tikzpicture}
+\vspace{3mm}
+
+\centerline{\small White, non-Hispanic, alone}
+\vspace{-2mm}
+
+Total \hspace{34mm} Men \hspace{32mm} Women\\
+\hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=5] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=6] {\unemp};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\unemp};
+  	\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=4] {\unemp};
+  	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth} 
+\normalsize \textbf{Unemployment Rate, Continued}
+\vspace{1mm}
+
+\centerline{\small Black, non-Hispanic, alone}
+\vspace{-2mm}
+
+Total \hspace{34mm} Men \hspace{32mm} Women\\
+\hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=11] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=12] {\unemp};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=7] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=8] {\unemp};
+  	\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=9] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=10] {\unemp};
+  	\end{axis}
+\end{tikzpicture}
+\vspace{3mm}
+
+\centerline{\small Hispanic, any race}
+\vspace{-2mm}
+
+Total \hspace{34mm} Men \hspace{32mm} Women\\
+\hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=17] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=18] {\unemp};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=13] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=14] {\unemp};
+  	\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=15] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=16] {\unemp};
+  	\end{axis}
+\end{tikzpicture}
+\vspace{3mm}
+
+\centerline{\small Asian or Hawaiian/Pacific Islander, non-Hispanic, alone}
+\vspace{-2mm}
+
+Total \hspace{34mm} Men \hspace{32mm} Women\\
+\hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=23] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=24] {\unemp};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=19] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=20] {\unemp};
+  	\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=5.6cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=21] {\unemp};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=22] {\unemp};
+  	\end{axis}
+\end{tikzpicture}
+\vspace{3mm}
+
+\centerline{\small Native American/American Indian or Alaskan Native, non-Hispanic, alone}
+\vspace{-2mm}
+
+Total \hspace{34mm} Men \hspace{32mm} Women\\
+\hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=2.7cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=5] {\unempt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=6] {\unempt};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=2.7cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=1] {\unempt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=2] {\unempt};
+  	\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=2.7cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=3] {\unempt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=4] {\unempt};
+  	\end{axis}
+\end{tikzpicture}
+\vspace{3mm}
+
+\centerline{\small More than one race, non-Hispanic}
+\vspace{-2mm}
+
+Total \hspace{34mm} Men \hspace{32mm} Women\\
+\hspace*{-4mm} \begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=2.7cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=11] {\unempt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=12] {\unempt};
+  	\end{axis}
+\end{tikzpicture} \hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=2.7cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=7] {\unempt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=8] {\unempt};
+  	\end{axis}
+\end{tikzpicture}\hfill
+\begin{tikzpicture}
+  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
+    	width=4.0cm, bar width=1.2ex, height=2.7cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.05, \bbar{x}{0},
+		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=15,
+		yticklabel style={font=\footnotesize},
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[fill=blue!40!magenta, draw=none] 
+  		table [y expr=-\coordindex, x index=9] {\unempt};
+  	\addplot[fill=orange!75!yellow, draw=none] 
+  		table [y expr=-\coordindex, x index=10] {\unempt};
+  	\end{axis}
+\end{tikzpicture}
+\vspace{-1mm}
+
 \footnotesize{Source: Author's calculations from CPS} \hfill \tbllink{unemp_grp.csv}
 \end{minipage}
 \newpage
