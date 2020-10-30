@@ -601,7 +601,7 @@ The US population is increasing (see {\color{lime!90!green}\textbf{---}}), thoug
 \normalsize \textbf{Real Gross Domestic Product Growth}\\
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30}, 
 		yticklabel style={text width=1.4em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.3cm]
 	\rbars
@@ -632,8 +632,8 @@ Because annual rates amplify short-term changes in production, some analysis has
 \normalsize \textbf{Real GDP Growth by Expenditure Type}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
-		yticklabel style={text width=1.4em}, height=5.7cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30},
+		yticklabel style={text width=1.4em}, height=6.0cm,
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.83, 1.13)}}]
 	\rbars
 	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
@@ -645,7 +645,7 @@ Because annual rates amplify short-term changes in production, some analysis has
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{comp.csv}
-\vspace{5mm}
+\vspace{4mm}
 
 \small The \textbf{income approach} enables decomposing annualized production growth into gross labor income (see\cbox{magenta!90!blue}), profit (see\cbox{yellow!60!orange}), indirect taxes less subsidies (see\cbox{violet}), and depreciation (see\cbox{teal!60!white}). 
 
@@ -722,12 +722,12 @@ Because annual rates amplify short-term changes in production, some analysis has
 \footnotesize{Source: Author's Calculations} \hfill \tbllink{gdpjobs.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.79\textwidth}
 \normalsize \textbf{Components of Economic Growth}\\
 \footnotesize{\textit{annualized percentage point contribution to real GDP/GDI growth \hspace{20mm} moving averages}}\\ \vspace{4mm}
 \hspace*{-2mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.5pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{2mm} p{35.2mm} R{8.2mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} p{0mm} R{6.8mm} R{6.8mm} R{6.8mm} }
+		 \begin{tabular}{p{2mm} p{35.2mm} R{8.2mm} R{8.2mm} R{6.8mm} R{6.8mm} R{6.8mm} p{0mm} R{6.8mm} R{6.8mm} R{6.8mm} }
 \input{data/gdptable.tex}
 		\end{tabular}}	\vspace{-6mm}
 		
@@ -893,8 +893,8 @@ A sector runs a surplus in a given accounting period when its aggregate income i
 \normalsize \textbf{Private Fixed Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth}}\\
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5},
-		yticklabel style={text width=1.4em}, height=5.2cm, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10, 15},
+		yticklabel style={text width=1.4em}, height=5.8cm, 
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.78, 1.13)}}]
 	\rbars
@@ -1152,13 +1152,14 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \vspace{3mm}
 
 \small \input{text/pi.txt} 
-\vspace{2mm}
+\end{minipage}
 
+\begin{minipage}{0.79\textwidth}
 \normalsize \textbf{Personal Income by Source}\\
 \footnotesize{\textit{percentage point contribution to real personal income growth \hspace{22mm} moving averages}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.52}
-		\begin{tabular}{p{39.5mm} R{8.2mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		\begin{tabular}{p{39.5mm} R{8.2mm} R{8.2mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 		   R{7.8mm} R{6.7mm} R{6.7mm} }
 			 \input{data/pi.tex}
 			 \hline
@@ -1351,7 +1352,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 	\rbars
 	\stdnode{4.2cm}{2.5cm}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
-	\stdnode{2.8cm}{3.95cm}{\footnotesize \color{blue!75!white}Services ex. Housing}
+	\stdnode{2.8cm}{3.95cm}{\footnotesize \color{blue!75!white}Services ex. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
 	\stdnode{1.4cm}{2.2cm}{\footnotesize \color{green!85!blue}Shelter}
 	\stdline{green!85!blue}{date}{SHELTER}{data/pce_levels.csv}
@@ -1384,7 +1385,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \normalsize \textbf{Consumer Spending and Residential Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30},
 		xticklabel={`\short{\year}}, clip=false, height=6.0cm,
 		yticklabel style={text width=1.5em},
 		legend style={at={(0.95, 1.05)}}]
@@ -1403,12 +1404,12 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.78\textwidth}
+\begin{minipage}{0.80\textwidth}
 \normalsize \textbf{Consumer Spending and Residential Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.55}
-\hspace*{-2mm} \begin{tabular}{p{2.0mm} p{39mm} R{8.2mm} R{7.2mm} R{7.2mm} R{7.2mm} R{7.2mm} 
+\hspace*{-2mm} \begin{tabular}{p{2.0mm} p{39mm} R{8.2mm} R{8.2mm} R{7.2mm} R{7.2mm} R{7.2mm} 
 					R{7.8mm} R{7.2mm} R{7.2mm}}
 		\input{data/pce.tex}
 		\hline
@@ -2589,7 +2590,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.31\textwidth}
+\begin{minipage}{0.3\textwidth}
 \small \input{text/ip_comp.txt}
 \end{minipage} \hspace{5mm}
 \begin{minipage}{0.4\textwidth}
@@ -2615,7 +2616,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{ip_comp.csv}
 \end{minipage}
-\vspace{1mm}
+\vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
 \small The Federal Reserve's monthly industrial production \href{https://www.federalreserve.gov/releases/g17/}{report} also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called \textbf{capacity utilization}, and calculated as industrial production as a share of total industrial capacity. Long-term, capacity utilization has fallen as many US factories and industrial production facilities closed. \input{text/tcu.txt}
