@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.9.8)  11 NOV 2020 20:45
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.9.8)  12 NOV 2020 13:24
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -2859,16 +2859,20 @@ Package pgfplots info on input line 964: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/headship.csv}
 
-(./text/headship_node.txt) [20
+(./text/headship_node.txt)
+Overfull \hbox (0.94518pt too wide) in paragraph at lines 957--971
+|  [] 
+ []
+
+[20
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 Package pgfplots info on input line 994: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerxbar'): LUA does not support xtick=data (yet).
 Package pgfplots info on input line 996: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerxbar'): LUA does not support xtick=data (yet).
- (./text/cps_age_dt.txt) (./text/cps_age.txt)
-(./text/cps_u18.txt) (./text/cps_o64.txt) (./data/under18pop.pgf)
-(./data/over64pop.pgf)
+ (./text/cps_age_dt.txt) (./text/cps_age.txt) (./text/cps_u18.txt)
+(./text/cps_o64.txt) (./data/under18pop.pgf) (./data/over64pop.pgf)
 Overfull \hbox (2.25957pt too wide) in paragraph at lines 1023--1024
 []  []   [] 
  []
@@ -5098,10 +5102,6 @@ data/flags/HKD.png><./data/flags/INR.png><./data/flags/AUD.png><./data/flags/NZD
 .png><./data/flags/BRL.png><./data/flags/KRW.png><./data/flags/MYR.png><./data/f
 lags/DKK.png><./data/flags/NOK.png><./data/flags/SEK.png><./data/flags/ZAR.png><
 ./data/flags/SGD.png><./data/flags/TWD.png>] (./text/cps_lfs0.txt)
-Underfull \hbox (badness 1502) in paragraph at lines 3312--3313
-\TU/Lato(0)/m/n/9 for US house-holds and is es-sen-tial
- []
-
 (./text/cps_lfs.txt)
 Package pgfplots info on input line 3329: dateplot: setting 'date ZERO={2020-11-
 15}' for this axis.
@@ -5291,11 +5291,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 3714--3714
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 3714--3714
- [][][]\TU/Lato(0)/m/n/7 Con-struc-tion & ex-trac-tion[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3714--3714
  [][][]\TU/Lato(0)/m/n/7 Man-age-ment[]
  []
 
@@ -5311,22 +5306,7 @@ Underfull \hbox (badness 1769) in paragraph at lines 3714--3714
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 3714--3714
- [][][]\TU/Lato(0)/m/n/7 Pro-tec-tive ser-vice[]
- []
-
-
-Underfull \hbox (badness 7291) in paragraph at lines 3714--3714
- [][][]\TU/Lato(0)/m/n/7 Farm-ing, fish-ing, & forestry[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3714--3714
- [][][]\TU/Lato(0)/m/n/7 Le-gal[]
- []
-
-
-Underfull \hbox (badness 7379) in paragraph at lines 3714--3714
- [][][]\TU/Lato(0)/m/n/7 Ar-chi-tec-ture & en-gi-neer-ing[]
+ [][][]\TU/Lato(0)/m/n/7 Con-struc-tion & ex-trac-tion[]
  []
 
 
@@ -5335,13 +5315,33 @@ Underfull \hbox (badness 1371) in paragraph at lines 3714--3714
  []
 
 
+Underfull \hbox (badness 7291) in paragraph at lines 3714--3714
+ [][][]\TU/Lato(0)/m/n/7 Farm-ing, fish-ing, & forestry[]
+ []
+
+
 Underfull \hbox (badness 1642) in paragraph at lines 3714--3714
  [][][]\TU/Lato(0)/m/n/7 Com-puter & math-e-mat-i-cal sci-ence[]
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 3714--3714
+ [][][]\TU/Lato(0)/m/n/7 Le-gal[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3714--3714
+ [][][]\TU/Lato(0)/m/n/7 Pro-tec-tive ser-vice[]
+ []
+
+
 Underfull \hbox (badness 6412) in paragraph at lines 3714--3714
  [][][]\TU/Lato(0)/m/n/7 Com-mu-nity & so-cial ser-vice[]
+ []
+
+
+Underfull \hbox (badness 7379) in paragraph at lines 3714--3714
+ [][][]\TU/Lato(0)/m/n/7 Ar-chi-tec-ture & en-gi-neer-ing[]
  []
 
 
@@ -5719,8 +5719,13 @@ Underfull \hbox (badness 4217) in paragraph at lines 1--4427
  []
 
 (./text/nilf_01.txt
-Underfull \hbox (badness 1033) in paragraph at lines 1--2
-\TU/Lato(0)/m/n/9 di-tional 3.3 per-cent of the age
+Underfull \hbox (badness 1314) in paragraph at lines 1--2
+\TU/Lato(0)/m/n/9 end-ing Oc-to-ber 2020, an ad-di-
+ []
+
+
+Underfull \hbox (badness 2065) in paragraph at lines 1--2
+\TU/Lato(0)/m/n/9 pop-u-la-tion left the la-bor force.
  []
 
 )
@@ -5739,7 +5744,7 @@ PGFPlots: reading {data/nilf.csv}
 PGFPlots: reading {data/nilf.csv}
 PGFPlots: reading {data/nilf.csv}
 (./text/nilf_nodes.txt)
-Overfull \hbox (8.6779pt too wide) in paragraph at lines 4437--4461
+Overfull \hbox (9.35425pt too wide) in paragraph at lines 4437--4461
 |  [] 
  []
 
@@ -5760,7 +5765,7 @@ Package pgfplots info on input line 4499: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/disflow.csv}
  (./text/disflow_node.txt)
-Overfull \hbox (6.34566pt too wide) in paragraph at lines 4494--4506
+Overfull \hbox (6.88449pt too wide) in paragraph at lines 4494--4506
 |  [] 
  []
 
@@ -7088,17 +7093,7 @@ Underfull \hbox (badness 1533) in paragraph at lines 5029--5029
  \TU/Lato(0)/m/n/8 hos-pi-tal-ity[]
  []
 
-(./text/cps_ltdate.txt) (./text/union_ind.txt)
-Underfull \hbox (badness 2698) in paragraph at lines 5034--5035
-\TU/Lato(0)/m/n/9 and hos-pi-tal-ity in-dus-try ex-pe-ri-
- []
-
-
-Underfull \hbox (badness 1264) in paragraph at lines 5034--5035
-\TU/Lato(0)/m/n/9 ber-ship rates over the past 30
- []
-
-[101
+(./text/cps_ltdate.txt) (./text/union_ind.txt) [101
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/sp500.txt)
 Package pgfplots info on input line 5050: dateplot: setting 'date ZERO={2020-12-
@@ -7112,7 +7107,8 @@ Package pgfplots info on input line 5060: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/sp500_recent.csv}
 PGFPlots: reading {data/sp500_recent.csv}
- (./text/sp500rr3.txt)
+
+(./text/sp500rr3.txt)
 Package pgfplots info on input line 5078: dateplot: setting 'date ZERO={2020-11-
 15}' for this axis.
 Package pgfplots info on input line 5078: Using 'lua backend=false' for axis: x 
@@ -7268,24 +7264,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 5388--5399
 
  []
 
-(./text/cpicomp.txt
-Underfull \hbox (badness 5490) in paragraph at lines 1--2
-\TU/Lato(0)/m/n/9 added 0.38 per-cent-age point
- []
-
-
-Underfull \hbox (badness 2426) in paragraph at lines 1--2
-\TU/Lato(0)/m/n/9 cent-age point. Hous-ing con-
- []
-
-)
+(./text/cpicomp.txt)
 Package pgfplots info on input line 5424: Using 'lua backend=false' for plot 0 (
 type 'pgfplothandlerxbar'): LUA does not support xtick=data (yet).
 Package pgfplots info on input line 5426: Using 'lua backend=false' for plot 1 (
 type 'pgfplothandlerxbar'): LUA does not support xtick=data (yet).
  (./text/cpi_mo1.txt) (./text/cpi_mo2.txt) [111
 Missing character: There is no ; (U+003B) in font nullfont!
-] (./text/cpi_decomp.txt)
+]
+(./text/cpi_decomp.txt)
 Package pgfplots info on input line 5453: dateplot: setting 'date ZERO={2020-11-
 15}' for this axis.
 Package pgfplots info on input line 5453: Using 'lua backend=false' for axis: x 
@@ -7294,17 +7281,16 @@ PGFPlots: reading {data/cpi_decomp.csv}
 PGFPlots: reading {data/cpi_decomp.csv}
 PGFPlots: reading {data/cpi_decomp.csv}
 PGFPlots: reading {data/cpi_decomp.csv}
-
-[112
+ [112
 Missing character: There is no ; (U+003B) in font nullfont!
-] (./data/cpi_comp.tex) (./text/cpicomp2.txt) [113]
+] (./data/cpi_comp.tex) (./text/cpicomp2.txt)
+[113]
 Package pgfplots info on input line 5506: dateplot: setting 'date ZERO={1989-01-
 01}' for this axis.
 Package pgfplots info on input line 5506: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/ppi.csv}
- (./text/ppi_node.txt)
-(./text/ppi_main.txt)
+ (./text/ppi_node.txt) (./text/ppi_main.txt)
 Underfull \hbox (badness 2932) in paragraph at lines 1--5516
 \TU/Lato(0)/m/n/9 goods and ser-vices they
  []
@@ -7528,7 +7514,7 @@ ts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></usr/share/fonts
 /fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy6.pfb>
-Output written on chartbook.pdf (117 pages, 2326110 bytes).
+Output written on chartbook.pdf (117 pages, 2325943 bytes).
 
 PDF statistics: 1198 PDF objects out of 1200 (max. 8388607)
  1027 compressed objects within 11 object streams
