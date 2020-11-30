@@ -113,7 +113,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-11-15},
+		xmax={2020-11-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -143,13 +143,22 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2020-11-15},
+		xmax={2020-11-30},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
 		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\lfdateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2020-10-15},
+		max space between ticks=40,	    
+		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
+			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
 		
 	% Settings for y label text in horizontal bar charts
 	\newcommand{\barylab}[2]{yticklabel style={text width=#1, align=right, 
@@ -655,7 +664,7 @@ Because annual rates amplify short-term changes in production, some analysis has
 \normalsize \textbf{Real Gross Domestic Income Growth}\\
 \footnotesize{\textit{percentage point contribution to GDI growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10}, height=5.7cm,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30}, height=5.7cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
 		legend style={at={(0.65, 1.13)}}]
 	\rbars
@@ -3124,8 +3133,8 @@ The current account balance can be decomposed into the balance on trade in goods
 		yticklabel style={text width=1.0em},
 		legend style={legend columns=1, at={(0.28, 0.84)}}]
 	\rbars
-	\thickline{blue!90!cyan}{date}{EX}{data/eximgdp.csv}
-	\thickline{green!60!teal!80!black}{date}{IM}{data/eximgdp.csv}
+	\thickline{green!60!teal!80!black}{date}{EX}{data/eximgdp.csv}
+	\thickline{blue!90!cyan}{date}{IM}{data/eximgdp.csv}
 	\legend{Exports, Imports};
 	\end{axis}
 \end{tikzpicture}\\
@@ -3203,7 +3212,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \small The US Census Bureau \href{https://www.census.gov/foreign-trade/data/index.html}{report} monthly data on US trade in goods, including by partner country. \input{text/trade_partner_sh.txt} 
 \vspace{2mm}
 
-\normalsize \textbf{US Trade in Goods} \hspace{14mm} \input{text/trade_date.txt} \hspace{24mm} \input{text/trade_date2.txt}\\
+\normalsize \textbf{US Trade in Goods} \hspace{12mm} \input{text/trade_date.txt} \hspace{20mm} \input{text/trade_date2.txt}\\
 \footnotesize{\textit{census basis, millions of USD,}}\\
 \footnotesize{\textit{not seasonally adjusted}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
@@ -3395,6 +3404,90 @@ People who are not employed and not unemployed are considered to be outside of t
 		
 \footnotesize{Source: Author's Calculations from CPS}
 \end{minipage}
+\newpage
+\subsection*{\color{black!70} \seriffont Gross Labor Force Status Changes}
+\begin{minipage}{0.76\textwidth}
+\small The changes in labor force status described above are net changes, rather than gross changes. That is, the one-year change in unemployment is the result of some people staying unemployed, some becoming unemployed, and some no longer being unemployed, as well as other flows like deaths and people becoming working age. This section looks at six categories of gross changes, specifically the share of people with a given labor force status who move to a different status in the following month. 
+\end{minipage}
+\vspace{2mm}
+
+\normalsize \textbf{Gross Flows}\\
+\footnotesize{\textit{share of initial labor force status, percent}}
+
+\begin{minipage}{0.35\textwidth}
+\normalsize Employed to Unemployed\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 5, 10}, ymin=0.6,
+		legend style={fill=white, legend columns=1, at={(0.45, 0.99)}},
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.7cm]
+	\rbars
+	\stdline{blue!80!cyan}{date}{MenEUE}{data/grosslf.csv}
+	\stdline{green!80!blue}{date}{WomenEUE}{data/grosslf.csv}
+	\legend{Men, Women};
+	\end{axis}
+\end{tikzpicture}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.35\textwidth}
+\normalsize Employed to Out of Labor Force\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 2, 4, 6}, ymin=0.35,
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.7cm]
+	\rbars
+	\stdline{blue!80!cyan}{date}{MenENE}{data/grosslf.csv}
+	\stdline{green!80!blue}{date}{WomenENE}{data/grosslf.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}{0.35\textwidth}
+\normalsize Unemployed to Employed\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 10, 20, 30, 40}, ymin=1.8,
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.7cm]
+	\rbars
+	\stdline{blue!80!cyan}{date}{MenUEU}{data/grosslf.csv}
+	\stdline{green!80!blue}{date}{WomenUEU}{data/grosslf.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.35\textwidth}
+\normalsize Unemployed to Out of Labor Force\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 10, 20, 30, 40}, ymin=1.8,
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.7cm]
+	\rbars
+	\stdline{blue!80!cyan}{date}{MenUNU}{data/grosslf.csv}
+	\stdline{green!80!blue}{date}{WomenUNU}{data/grosslf.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+
+\begin{minipage}{0.35\textwidth}
+\normalsize Out of Labor Force to Employed\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 2, 4, 6}, ymin=0.3,
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.7cm]
+	\rbars
+	\stdline{blue!80!cyan}{date}{MenNEN}{data/grosslf.csv}
+	\stdline{green!80!blue}{date}{WomenNEN}{data/grosslf.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.35\textwidth}
+\normalsize Out of Labor Force to Unemployed\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=0.25,
+		xticklabel={`\short{\year}}, height=5.0cm, width=6.7cm]
+	\rbars
+	\stdline{blue!80!cyan}{date}{MenNUN}{data/grosslf.csv}
+	\stdline{green!80!blue}{date}{WomenNUN}{data/grosslf.csv}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{72mm} \tbllink{grosslf.csv}
+
 \newpage
 \begin{minipage}{0.325\textwidth}
 \normalsize \textbf{Labor Share of Income}\\
@@ -4328,7 +4421,7 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 	\rbars
 	\stdline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{5.86cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{5.7cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
@@ -4346,7 +4439,7 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 	\rbars
 	\stdline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{5.96cm}{1.3cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{5.7cm}{1.1cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
 	\stdnode{4.0cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
