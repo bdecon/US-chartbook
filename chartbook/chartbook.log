@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.11.18)  4 JAN 2021 20:17
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2020.11.18)  5 JAN 2021 20:55
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -4681,10 +4681,16 @@ Package pgfplots info on input line 3269: dateplot: setting 'date ZERO={2021-01-
 Package pgfplots info on input line 3269: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/fx1.csv}
-PGFPlots: reading {data/fx1.csv}
-PGFPlots: reading {data/fx1.csv}
-PGFPlots: reading {data/fx1.csv}
 
+NOTE: coordinate (2021-01-01,) has been dropped because of a coordinate filter. 
+(see also unbounded coords=jump). 
+PGFPlots: reading {data/fx1.csv}
+NOTE: coordinate (2021-01-01,) has been dropped because of a coordinate filter. 
+(see also unbounded coords=jump). 
+PGFPlots: reading {data/fx1.csv}
+NOTE: coordinate (2021-01-01,) has been dropped because of a coordinate filter. 
+(see also unbounded coords=jump). 
+PGFPlots: reading {data/fx1.csv}
 NOTE: coordinate (1989-01-01,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 NOTE: coordinate (1989-02-01,) has been dropped because of a coordinate filter. 
@@ -4924,6 +4930,8 @@ NOTE: coordinate (1998-10-01,) has been dropped because of a coordinate filter.
 NOTE: coordinate (1998-11-01,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 NOTE: coordinate (1998-12-01,) has been dropped because of a coordinate filter. 
+(see also unbounded coords=jump). 
+NOTE: coordinate (2021-01-01,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 Package pgfplots info on input line 3292: dateplot: setting 'date ZERO={2021-01-
 15}' for this axis.
@@ -7535,7 +7543,7 @@ NOTE: coordinate (2021-01-01,) has been dropped because of a coordinate filter.
 (see also unbounded coords=jump). 
 PGFPlots: reading {data/infumich.csv}
 (./text/infbreak_node.txt) (./text/infumich_node.txt)
-Overfull \hbox (8.80922pt too wide) in paragraph at lines 5618--5633
+Overfull \hbox (8.87015pt too wide) in paragraph at lines 5618--5633
 |  [] 
  []
 
@@ -7569,13 +7577,13 @@ Package pgfplots info on input line 5714: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/gold.csv}
  (./text/gold.txt)
-Underfull \hbox (badness 3514) in paragraph at lines 5722--5723
-\TU/Lato(0)/m/n/9 one troy ounce of gold sells
+Underfull \hbox (badness 1112) in paragraph at lines 5722--5723
+\TU/Lato(0)/m/n/9 FRED. As of Jan-uary 4, 2021,
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 5722--5723
-\TU/Lato(0)/m/n/9 ounce dur-ing De-cem-ber 2019.
+Underfull \hbox (badness 3514) in paragraph at lines 5722--5723
+\TU/Lato(0)/m/n/9 one troy ounce of gold sells
  []
 
 
@@ -7618,7 +7626,7 @@ ts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></usr/share/fonts
 /fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy6.pfb>
-Output written on chartbook.pdf (118 pages, 2337257 bytes).
+Output written on chartbook.pdf (118 pages, 2337395 bytes).
 
 PDF statistics: 1206 PDF objects out of 1440 (max. 8388607)
  1034 compressed objects within 11 object streams
