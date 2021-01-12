@@ -687,7 +687,7 @@ Because annual rates amplify short-term changes in production, some analysis has
 \normalsize \textbf{Real GDP Growth by Industry Group}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -25, -20, -15, -10, -5, 0, 5, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30, 40},
 		height=7.0cm,  yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.74, 1.1)}}]
 	\rbars
@@ -5433,8 +5433,8 @@ A large increase in the amount of money held by individuals and institutions can
 \normalsize \textbf{Federal Reserve Balance Sheet}\\
 \footnotesize{\textit{total assets, trillion of USD}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6, 7}, 
-		enlarge y limits={0.1}, ymin=0.5, ymax=6.8,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6, 7, 8}, 
+		enlarge y limits={0.1}, ymin=0.5, ymax=7.5,
 		xticklabel={`\short{\year}}, height=6.0cm, width=6.8cm, clip=false]
 	\recbars
 	\stdline{blue!80!black}{date}{RESPPMA_N.WW}{data/fed_assets.csv}
