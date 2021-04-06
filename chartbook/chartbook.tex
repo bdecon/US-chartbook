@@ -2924,8 +2924,59 @@ Over the past thirty years, welfare payments, including those made to businesses
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+
+\subsubsection*{\color{black!70} \seriffont Government Net Investment}
+
+\small \input{text/govnetinv.txt}
+
+\vspace{2mm}
+
+\normalsize \textbf{Government Net Investment}\\
+\footnotesize{\textit{government investment less depreciation, share of GDP}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 0.5, 1.0, 1.5, 2.0}, width=12.1cm, 
+		height=6.2cm, clip=false,
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
+	\rbars
+	\thickline{red}{date}{Value}{data/govnetinv.csv}
+	\input{text/govnetinv_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{govnetinv.csv}
+
+\vspace{6mm}
+
 \subsection*{\color{black!70} \seriffont Government Balance Sheets}
 
+\subsubsection*{\color{black!70} \seriffont Government Sector Net Worth}
+
+\small \input{text/govshnw.txt}
+
+\vspace{2mm}
+
+\normalsize \textbf{Government Share of US Wealth}\\
+\footnotesize{\textit{government share of US net worth, percent}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={10, 5, 0, -5, -10, -15}, width=12.1cm, 
+		height=6.2cm, clip=false,
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
+	\rbars
+	\thickline{green!80!blue}{date}{Gov NW}{data/govshnw.csv}
+	\stdnode{4.05cm}{2.4cm}{\footnotesize \color{green!80!blue}General Government}
+	\stdline{orange!80!white}{date}{FG NW}{data/govshnw.csv}
+	\stdnode{7.7cm}{0.7cm}{\footnotesize \color{orange!80!white}Federal}
+	\stdline{blue!90!black}{date}{SLG NW}{data/govshnw.csv}
+	\stdnode{3.2cm}{4.0cm}{\footnotesize \color{blue!90!black}State \& Local}
+	\input{text/govshnw_node.txt}
+	\input{text/fgshnw_node.txt}
+	\input{text/slgshnw_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{govshnw.csv}
+
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Liabilities}
 \small \input{text/pubdebt.txt}
 \vspace{2mm}
@@ -3492,9 +3543,9 @@ People who are not employed and not unemployed are considered to be outside of t
 \begin{minipage}{0.325\textwidth}
 \normalsize \textbf{Labor Share of Income}\\
 \footnotesize{\textit{compensation of employees as share of}}\\
-\footnotesize{\textit{gross domestic income, percent}}\\
+\footnotesize{\textit{net domestic income, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={52, 54, 56, 58}, 
+	\begin{axis}[\shdateaxisticks ytick={58, 60, 62, 64, 66, 68, 70, 72}, 
 		enlarge y limits={0.1},
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, height=5.9cm, width=5.7cm, clip=false]
@@ -4421,7 +4472,7 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 	\rbars
 	\stdline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{5.7cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{5.0cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
@@ -4439,8 +4490,8 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 	\rbars
 	\stdline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{5.7cm}{1.1cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{4.0cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
+	\stdnode{5.6cm}{4.10cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{3.9cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
@@ -5332,14 +5383,14 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 		enlarge y limits={0.08}, enlarge x limits={0.02}, \bbar{y}{0}]
 	\addplot[thick, mark=*, mark options={fill=white}, color=blue!65!black!30] 
 		table [x=number, y=fiveyear, col sep=comma] {data/yc.csv}
-		node[pos=0.85,pin=180:{\color{black!80} Five years ago}] {};
+		node[pos=0.45,pin=180:{\color{black!80} Five years ago}] {};
 	\addplot[thick, mark=*, mark options={fill=white}, color=blue!65!black!60] 
 		table [x=number, y=oneyear, col sep=comma] {data/yc.csv}
-		node[pos=0.3,pin={[pin distance=3mm]90:{\color{black!80} Year ago}}] {};			
+		node[pos=0.73,pin={[pin distance=3mm]270:{\color{black!80} Year ago}}] {};			
 	\addplot[ultra thick, mark=*, mark options={fill=white}, nodes near coords, 
     		color=blue!60!black] 
 		table [x=number, y=value, col sep=comma] {data/yc.csv}
-		node[pos=0.72,pin=280:{\textbf{Most recent}}] {};						 	
+		node[pos=0.8,pin=280:{\textbf{Most recent}}] {};						 	
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve}
