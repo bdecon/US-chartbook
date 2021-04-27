@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2021.4.19)  20 APR 2021 22:52
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2021.4.19)  26 APR 2021 20:10
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -4352,7 +4352,12 @@ PGFPlots: reading {data/businv.csv}
  (./data/businv.tex) [51
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
-(./text/dgno.txt) (./text/dgno.tex
+(./text/dgno.txt)
+Underfull \hbox (badness 1102) in paragraph at lines 1--2597
+\TU/Lato(0)/m/n/9 talled $73 bil-lion in March 2021,
+ []
+
+(./text/dgno.tex
 Package pgfplots info on input line 1: dateplot: setting 'date ZERO={2021-04-30}
 ' for this axis.
 Package pgfplots info on input line 1: Using 'lua backend=false' for axis: x coo
@@ -4365,7 +4370,8 @@ Package pgfplots info on input line 2619: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/isratio.csv}
 PGFPlots: reading {data/real_isratio.csv}
- (./text/isratio.txt) [52] (./text/cprof.txt)
+ (./text/isratio.txt) [52]
+(./text/cprof.txt)
 Package pgfplots info on input line 2642: dateplot: setting 'date ZERO={2021-04-
 30}' for this axis.
 Package pgfplots info on input line 2642: Using 'lua backend=false' for axis: x 
@@ -6022,7 +6028,7 @@ Package pgfplots info on input line 4693: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/fed_uic.csv}
 
-NOTE: coordinate (2021-04-10,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (2021-04-17,) has been dropped because of a coordinate filter. 
 (see also unbounded coords=jump). 
 PGFPlots: reading {data/ccsa.csv}
 (./text/fed_uic.txt) [93] (./text/lfpr_text.txt) (./text/lfpr_text2.txt)
@@ -7790,7 +7796,7 @@ NOTE: coordinate (2021-02-15,) has been dropped because of a coordinate filter.
 (see also unbounded coords=jump). 
 PGFPlots: reading {data/infumich.csv}
 (./text/infbreak_node.txt) (./text/infumich_node.txt)
-Overfull \hbox (8.89876pt too wide) in paragraph at lines 5873--5888
+Overfull \hbox (9.24774pt too wide) in paragraph at lines 5873--5888
 |  [] 
  []
 
@@ -7825,7 +7831,7 @@ coord trafo unsupported.
 PGFPlots: reading {data/gold.csv}
  (./text/gold.txt)
 Underfull \hbox (badness 3657) in paragraph at lines 5979--5980
-\TU/Lato(0)/m/n/9 FRED. As of April 20, 2021,
+\TU/Lato(0)/m/n/9 FRED. As of April 23, 2021,
  []
 
 
@@ -7849,14 +7855,14 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 51176 strings out of 478903
+ 51175 strings out of 478903
  932076,2848258 words of node,token memory allocated
  587 words of node memory still in use:
    5 hlist, 1 vlist, 3 rule, 2 glue, 3 kern, 1 glyph, 9 attribute, 70 glue_spec,
  9 attribute_list, 2 write, 2 pdf_action nodes
    avail lists: 1:6,2:140648,3:139701,4:4378,5:1173,6:870,7:11761,8:31,9:6695,10
 :27,11:620
- 63483 multiletter control sequences out of 65536+600000
+ 63482 multiletter control sequences out of 65536+600000
  120 fonts using 33168527 bytes
  122i,22n,117p,2545b,3888s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/TTF/Lato-Italic.ttf></usr/share/texmf-dist/fonts/opentype/publ
@@ -7867,7 +7873,7 @@ ts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></usr/share/fonts
 /fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy6.pfb>
-Output written on chartbook.pdf (122 pages, 2373611 bytes).
+Output written on chartbook.pdf (122 pages, 2373957 bytes).
 
 PDF statistics: 1242 PDF objects out of 1440 (max. 8388607)
  1066 compressed objects within 11 object streams
