@@ -13,7 +13,7 @@ qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 def bea_api_nipa(table_list, bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(1988, 2021)))
+    years = ','.join(map(str, range(1988, 2022)))
 
     api_results = []
 
@@ -37,7 +37,7 @@ def bea_api_nipa(table_list, bea_key):
 def bea_api_gdpstate(bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(2008, 2021)))
+    years = ','.join(map(str, range(2008, 2022)))
 
     api_results = []
 
@@ -63,7 +63,7 @@ def bea_api_gdpstate(bea_key):
     
 def bea_api_ita(ind_list, bea_key):
     ''' Return tables in table list for years in range'''
-    years = ','.join(map(str, range(1988, 2021)))
+    years = ','.join(map(str, range(1988, 2022)))
 
     api_results = []
 

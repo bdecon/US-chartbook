@@ -1129,7 +1129,7 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 \footnotesize{\textit{per capita, thousands of \input{text/pi_date.txt}\unskip \ US Dollars}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60, 70, 80}, 
-		ymin=0, ymax=59,
+		ymin=0, ymax=66,
 		yticklabel style={text width=0.9em},
 		xticklabel={`\short{\year}}, clip=false, height=8.8cm, width=7.8cm]
 	\rbars
@@ -1148,7 +1148,7 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 \footnotesize{\textit{per capita, thousands of \input{text/pi_date.txt}\unskip \ US Dollars}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60, 70, 80}, 
-		ymin=0, ymax=59,
+		ymin=0, ymax=66,
 		yticklabel style={text width=0.9em},
 		xticklabel={`\short{\year}}, clip=false, height=8.8cm, width=7.8cm]
 	\rbars
@@ -1311,7 +1311,7 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 \footnotesize{\textit{percentage point contribution to real personal income growth \hspace{22mm} moving averages}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.52}
-		\begin{tabular}{p{39.5mm} R{8.2mm} R{8.2mm} R{8.2mm} R{6.7mm} R{6.7mm} 
+		\begin{tabular}{p{39.5mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{6.7mm} 
 		   R{7.8mm} R{6.7mm} R{6.7mm} }
 			 \input data/pi.tex \hline
 		\end{tabular}}\vspace{-2mm}
@@ -1326,9 +1326,9 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 \normalsize \textbf{After-Tax Income Growth}\\
 \footnotesize{\textit{annual growth, per capita real disposable personal income, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15, 20, 25, 30}, 
 		yticklabel style={text width=1.0em}, 
-		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=12.3cm]
+		xticklabel={`\short{\year}}, clip=false, height=6.6cm, width=12.3cm]
 	\rbars
 	\stdline{blue!80!cyan}{date}{rdpi}{data/rdpigrowth.csv}
 	\input{text/rdpi_node.txt}
@@ -1560,7 +1560,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{\textit{percentage point contribution to real GDP growth \hspace{36mm} moving averages}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.55}
-\hspace*{-2mm} \begin{tabular}{p{2.0mm} p{39mm} R{8.2mm} R{8.2mm} R{8.2mm} R{7.2mm} R{7.2mm} 
+\hspace*{-2mm} \begin{tabular}{p{2.0mm} p{39mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{7.2mm} 
 					R{7.8mm} R{7.2mm} R{7.2mm}}
 		\input data/pce.tex \hline
 	\end{tabular}}
@@ -1576,7 +1576,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \normalsize \textbf{Consumer Spending Growth}\\
 \footnotesize{\textit{annual growth, per capita real personal consumption expenditures, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -15, -10, -5, 0, 5}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -15, -10, -5, 0, 5, 10}, 
 		yticklabel style={text width=1.5em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.4cm, width=12.4cm]
 	\rbars
@@ -1595,7 +1595,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \normalsize \textbf{Contributions to Consumer Spending}\\
 \footnotesize{\textit{percentage point contribution to real per capita PCE growth, one-year moving average}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20},
 		xticklabel={`\short{\year}}, clip=false, height=7.0cm,
 		yticklabel style={text width=1.4em}, 
 		legend style={at={(0.63, 1.13)}}]
