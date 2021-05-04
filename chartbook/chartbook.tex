@@ -113,7 +113,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-04-30},
+		xmax={2021-05-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -131,7 +131,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-04-30},
+		xmax={2021-05-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -143,7 +143,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-04-30},
+		xmax={2021-05-15},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}},
@@ -153,7 +153,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-04-30},
+		xmax={2021-05-15},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}},
@@ -208,7 +208,7 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2021-04-30}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2021-05-15}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rebars}{
 		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
@@ -216,17 +216,17 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2021-04-30}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2021-05-15}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\recbars}{
 		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2021-04-30}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2021-05-15}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rbar}{
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2021-04-30}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2021-05-15}, \pgfkeysvalueof{/pgfplots/ymax});}
 	
 	\newfontfamily\seriffont{SourceSerifPro}	
 	
@@ -1133,11 +1133,11 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 		yticklabel style={text width=0.9em},
 		xticklabel={`\short{\year}}, clip=false, height=8.8cm, width=7.8cm]
 	\rbars
-	\stdnode{1.1cm}{4.1cm}{\footnotesize \color{blue!75!black}Income}
+	\stdnode{1.1cm}{4.0cm}{\footnotesize \color{blue!75!black}Income}
 	\stdline{blue!75!black}{date}{DPI}{data/inc_out_save.csv}
-	\stdnode{4.6cm}{4.2cm}{\footnotesize \color{orange}Spending}
+	\stdnode{4.6cm}{3.9cm}{\footnotesize \color{orange}Spending}
 	\stdline{orange}{date}{PCE}{data/inc_out_save.csv}
-	\stdnode{5.0cm}{0.95cm}{\footnotesize \color{green!80!blue}Saving}
+	\stdnode{5.0cm}{0.9cm}{\footnotesize \color{green!80!blue}Saving}
 	\stdline{green!80!blue}{date}{PSAVE}{data/inc_out_save.csv}
 	\end{axis}
 \end{tikzpicture}\\
@@ -1152,9 +1152,9 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 		yticklabel style={text width=0.9em},
 		xticklabel={`\short{\year}}, clip=false, height=8.8cm, width=7.8cm]
 	\rbars
-	\stdnode{4.5cm}{2.8cm}{\footnotesize \color{blue!50!cyan}Income}
+	\stdnode{4.5cm}{2.6cm}{\footnotesize \color{blue!50!cyan}Income}
 	\stdline{blue!50!cyan}{date}{INCAFTTX_4}{data/medincexp.csv}
-	\stdnode{4.6cm}{2.0cm}{\footnotesize \color{red!50!orange}Spending}
+	\stdnode{4.6cm}{1.8cm}{\footnotesize \color{red!50!orange}Spending}
 	\stdline{red!50!orange}{date}{ADJEXP_4}{data/medincexp.csv}
 	\stdnode{4.8cm}{0.8cm}{\footnotesize \color{green!50!blue}Saving}
 	\stdline{green!50!blue}{date}{DI_SAVE_4}{data/medincexp.csv}
@@ -3088,8 +3088,30 @@ Over the past thirty years, welfare payments, including those made to businesses
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{fedgdp.csv} \ \tbllink{slggdp.csv}
-\vspace{3mm}
+\end{minipage}
+\vspace{8mm}
 
+\begin{minipage}{0.36\textwidth}
+\normalsize \textbf{Federal Government Receipts}\\
+\footnotesize{\textit{trillions of USD, one-year moving sum}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={1.4, 1.5, 1.6, 1.7, 1.8, 1.9}, 
+		enlarge y limits={0.08}, clip=false, 
+		yticklabel style={text width=1.3em}, xmin={2016-01-01},
+		xticklabel={`\short{\year}}, height=6.2cm, width=6.4cm]
+	\rbar
+	\stdline{blue!70!black}{date}{Individual Income Taxes}{data/tmb_rec.csv}
+	\input{text/tmb_rec_iit.txt}
+	\stdline{blue!40!cyan}{date}{Other}{data/tmb_rec.csv}
+	\input{text/tmb_rec_oth.txt}
+	\stdnode{1.4cm}{1.2cm}{\footnotesize \color{blue!70!black}Individual Income Taxes}
+	\stdnode{1.4cm}{3.4cm}{\footnotesize \color{blue!40!cyan}Other}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Treasury} \hfill \tbllink{tmb_rec.csv}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Government Jobs}
 \small Government employment is a major source of household income. Government jobs are also disproportionately likely to provide health insurance and retirement benefits.  
 \end{minipage}
