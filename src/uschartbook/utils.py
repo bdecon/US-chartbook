@@ -366,39 +366,21 @@ def bls_api(series, date_range, bls_key):
 
     return df
     
-    
-def binned_wage(group, wage_var='WKWAGE', percentile=0.1, bins=list(np.arange(25, 3000, 50.0)), bin_size=50.0):
-    """Return BLS-styled binned decile/percentile wage"""
-    
-    # Use ORG weight since wage defined only for ORG sample
-    weight = 'PWORWGT'
-    
-    # Cut wage series according to bins of bin_size
-    bin_cut = lambda x: pd.cut(x[wage_var], bins, include_lowest=True)
-    
-    # Calculate cumulative sum for weight variable
-    cum_sum = lambda x: x[weight].cumsum()
-    
-    # Sort wages then apply bin_cut and cum_sum
-    df = (group.sort_values(wage_var)
-               .assign(WAGE_BIN = bin_cut, CS = cum_sum))
-    
-    # Find the weight at the percentile of interest
-    pct_wgt = df[weight].sum() * percentile
 
-    # Find wage bin for person nearest to weighted percentile
-    pct_bin = df.iloc[df['CS'].searchsorted(pct_wgt)].WAGE_BIN
+def binned_wage(df, wage_var='WKEARN', percentile=0.1, 
+                bins=np.arange(-25, 3000, 50)):
+    '''
+    Returns wage estimate based on linear interpolation through 
+    the bin containing the wage.
     
-    # Weight at bottom and top of bin
-    wgt_btm, wgt_top = (df.loc[df['WAGE_BIN'] == pct_bin, 'CS']
-                          .iloc[[0, -1]].values)
+    perc = percentile of interest (0.5 is median)
+    bins = list of bin start locations
+    '''
+    cdf = (df.groupby(pd.cut(df[wage_var], bins))
+             .PWORWGT.sum().cumsum() / df.PWORWGT.sum())
     
-    # Find where in the bin the percentile is and return that value
-    pct_value = ((((pct_wgt - wgt_btm) / 
-                   (wgt_top - wgt_btm)) * bin_size) + pct_bin.left)
-    
-    return pct_value
-    
+    return np.interp(percentile, cdf, bins[1:])
+        
     
 def cps_date():
     '''Returns latest month of available data'''
