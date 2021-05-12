@@ -1257,7 +1257,7 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 \normalsize \textbf{Personal Income}\\
 \footnotesize{\textit{real per capita income, thousands of US Dollars}}\\
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60},
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60, 70},
 		xmin={1989-08-01},
 		xticklabel={`\short{\year}}, clip=false, ymin=3, yticklabel style={text width=1.1em},
 		legend style={at={(0.46, 1)}, fill=white}, width=11.2cm, height=7.2cm]
@@ -1290,7 +1290,7 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30, 40, 50, 60},
 		height=8.6cm,
-		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.2em}, 
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.3em}, 
 		legend style={at={(0.43, 1)}, fill=white}]
 	\rbars
 	\sbar{green!75!black}{date}{A033RC}{data/pi.csv}
@@ -5407,7 +5407,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 \begin{minipage}{0.76\textwidth}
 \section*{\color{darkgray}\LARGE Financial Markets}
 \label{sec:cap}
-\small The US equity markets and capital markets provide businesses and governments with funding for activities and fixed investments. 
+\small The US equity and capital markets and provide funding for borrowers' activities and provide additional income to lenders. 
 \subsection*{\color{black!70} \seriffont Equity Markets}
 The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color{green!80!blue}\textbf{---}}) is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. The index is a broad measure of price levels in US equity markets. \input{text/sp500.txt}
 \vspace{2mm}
