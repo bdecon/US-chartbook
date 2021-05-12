@@ -80,7 +80,7 @@
 		xtick style={black!20}, ytick style={draw=none},
 		every tick label/.style={black!50, font=\scriptsize,
 			/pgf/number format/assume math mode=true},
-		width=12.85cm, height=4.8cm, 
+		width=12.8cm, height=4.8cm, 
 		xticklabel style={align=left}, 
 		yticklabel style={text width=0.9em, align=right},       
 		axis x line*=bottom, x axis line style={black!50},
@@ -94,12 +94,12 @@
 	
 	% stacked diverging bar
 	\newcommand{\sbar}[4]{
-		\addplot[ybar stacked, bar width=2.6pt, draw opacity=0, fill=#1] 
+		\addplot[ybar stacked, bar width=2.5pt, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 			
 	% thin stacked diverging bar
 	\newcommand{\tsbar}[4]{
-		\addplot[ybar stacked, bar width=2.4pt, draw opacity=0, fill=#1] 
+		\addplot[ybar stacked, bar width=2.3pt, draw opacity=0, fill=#1] 
 			table [x=#2, y=#3, col sep=comma]{#4};}
 			
 	% custom width stacked diverging bar
@@ -689,19 +689,21 @@ Because annual rates amplify short-term changes in production, some analysis has
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30, 40},
-		height=7.0cm,  yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.74, 1.1)}}]
+		height=9.6cm,  yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.74, 1.0)}, fill=white}]
 	\rbars
-	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2004-10-01},
+	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
+		(axis cs:{2004-10-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
-	\draw [dashed] (axis cs:{1998-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{1998-01-01},
+	\draw [dashed] (axis cs:{1998-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
+		(axis cs:{1998-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
 	\sbar{orange!80!white}{date}{Government}{data/gdpva.csv}
 	\sbar{blue!90!white}{date}{Oth_Serv}{data/gdpva.csv}
 	\sbar{red!90!white}{date}{FIRE}{data/gdpva.csv}
 	\sbar{purple!70!blue}{date}{GoodsTTU}{data/gdpva.csv}
-	\stdnode{0.65cm}{0.4cm}{\scriptsize historical data}
-	\stdnode{4.1cm}{0.4cm}{\scriptsize annual data}
+	\stdnode{0.68cm}{0.45cm}{\scriptsize historical data}
+	\stdnode{4.1cm}{0.45cm}{\scriptsize annual data}
 	\legend{Government, Other Services, FIRE+, Goods and TTU};
 	\end{axis}
 \end{tikzpicture}\\
@@ -718,9 +720,9 @@ Because annual rates amplify short-term changes in production, some analysis has
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30},
-		height=7.3cm,
+		height=13.6cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
-		legend style={at={(0.83, 1.01)}, fill=white}]
+		legend style={at={(0.84, 1.0)}, fill=white}]
 	\rbars
 	\sbar{lime!90!green}{date}{pop_contr}{data/gdpjobs.csv}
 	\sbar{green!30!teal!90!black}{date}{epop_contr}{data/gdpjobs.csv}
@@ -816,9 +818,9 @@ A sector runs a surplus in a given accounting period when its aggregate income i
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15, 20, 25},
-		height=6.2cm, 
-		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(0.43, 1.13)}}]
+		height=7.2cm, 
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em}, clip=false, 
+		legend style={at={(0.44, 1.0)}, fill=white}]
 	\rbars
 	\sbar{purple!50!red}{date}{W995RC}{data/sectbal2.csv}
 	\sbar{orange!90!yellow}{date}{W996RC}{data/sectbal2.csv}
@@ -1290,7 +1292,7 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30, 40, 50, 60},
 		height=8.6cm,
-		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.3em}, 
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
 		legend style={at={(0.43, 1)}, fill=white}]
 	\rbars
 	\sbar{green!75!black}{date}{A033RC}{data/pi.csv}
@@ -1501,11 +1503,11 @@ Over the past 30 years, increased consumer spending represents the majority of e
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=6.8cm]
 	\rbars
-	\stdnode{4.2cm}{2.5cm}{\footnotesize \color{red}Goods}
+	\stdnode{4.1cm}{2.5cm}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
 	\stdnode{2.8cm}{3.95cm}{\footnotesize \color{blue!75!white}Services ex. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
-	\stdnode{1.4cm}{2.2cm}{\footnotesize \color{green!85!blue}Shelter}
+	\stdnode{1.4cm}{2.15cm}{\footnotesize \color{green!85!blue}Shelter}
 	\stdline{green!85!blue}{date}{SHELTER}{data/pce_levels.csv}
 	\end{axis}
 \end{tikzpicture}\\
@@ -1770,7 +1772,7 @@ The middle fifth of households, which includes the 40th to 60th percentiles by t
 	\thinline{green!70!blue!80!black}{date}{value}{data/cc_dpi_monthly.csv}
 	\input{text/cc_dpi_monthly_node.txt}
 	\stdnode{3.3cm}{0.65cm}{\color{lime!75!green}FRBNY}
-	\stdnode{7.9cm}{3.2cm}{\color{green!70!blue!80!black}Fed G.19}
+	\stdnode{7.8cm}{3.2cm}{\color{green!70!blue!80!black}Fed G.19}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve; FRBNY} \hfill \tbllink{cc_dpi_monthly.csv}
@@ -4698,7 +4700,7 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{5.0cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{4.9cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
@@ -4716,8 +4718,8 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{5.6cm}{4.10cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{3.9cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
+	\stdnode{5.55cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{3.8cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
@@ -5079,7 +5081,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-40, -30, -20, -10, 0, 10, 20, 30, 40}, 
-		yticklabel style={text width=1.5em}, width=12.9cm, height=7.8cm,
+		yticklabel style={text width=1.5em}, width=12.8cm, height=7.8cm,
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
 	\sbar{cyan!80!blue}{date}{hours}{data/lprod.csv}
@@ -5982,22 +5984,22 @@ This section covers various measures of prices. Inflation--a general increase in
 \end{tikzpicture}\\
 \footnotesize{Source: FRED} \hfill \tbllink{wti.csv}
 \end{minipage}
-\vspace{8mm}
+\vspace{12mm}
 
-\begin{minipage}{0.41\textwidth}
+\begin{minipage}{0.475\textwidth}
 \normalsize \textbf{Gold Price}\\
 \footnotesize{\textit{USD, monthly average and latest value}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 500, 1000, 1500, 2000}, 
-		yticklabel style={text width=2.2em}, 
-		xticklabel={`\short{\year}}, ymin=60, width=7.2cm]
+		yticklabel style={text width=2.0em}, 
+		xticklabel={`\short{\year}}, ymin=95, width=8.0cm, height=5.5cm]
 	\rbars
-	\thinline{orange!45!yellow}{date}{VALUE}{data/gold.csv}
+	\thinline{orange!50!yellow}{date}{VALUE}{data/gold.csv}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: FRED} \hfill \tbllink{gold.csv}
 \end{minipage} \hspace{8mm}
-\begin{minipage}{0.29\textwidth}
+\begin{minipage}{0.225\textwidth}
 \small London Bullion Market data on gold prices is \href{https://fred.stlouisfed.org/series/GOLDAMGBD228NLBM}{available} through FRED. \input{text/gold.txt}
 \end{minipage}
 \newpage
