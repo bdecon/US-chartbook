@@ -1579,8 +1579,8 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{\textit{annual growth, per capita real personal consumption expenditures, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -15, -10, -5, 0, 5, 10}, 
-		yticklabel style={text width=1.5em}, 
-		xticklabel={`\short{\year}}, clip=false, height=5.4cm, width=12.4cm]
+		yticklabel style={text width=1.4em}, 
+		xticklabel={`\short{\year}}, clip=false, height=6.2cm, width=12.2cm]
 	\rbars
 	\stdline{green!80!black}{date}{rpcepop}{data/pcegrowth.csv}
 	\input{text/pcegrowth_node.txt}
@@ -1598,9 +1598,9 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{\textit{percentage point contribution to real per capita PCE growth, one-year moving average}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20},
-		xticklabel={`\short{\year}}, clip=false, height=7.0cm,
+		xticklabel={`\short{\year}}, clip=false, height=7.4cm,
 		yticklabel style={text width=1.4em}, 
-		legend style={at={(0.63, 1.13)}}]
+		legend style={at={(0.64, 1.0)}, fill=white}]
 	\rbars
 	\sbar{cyan!50!white}{date}{A067RC}{data/pcedecomp.csv}
 	\sbar{green!60!blue}{date}{SAVING}{data/pcedecomp.csv}
@@ -1623,7 +1623,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{\textit{personal saving as a share of disposable personal income}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30}, enlarge y limits={0.1},
-		yticklabel style={text width=1.4em},
+		yticklabel style={text width=1.2em},
 		xticklabel={`\short{\year}}, height=5.5cm, width=12.2cm, clip=false]
 	\rbars
 	\stdline{red}{date}{VALUE}{data/psavert.csv}
@@ -3054,7 +3054,7 @@ Over the past thirty years, welfare payments, including those made to businesses
 \input{text/fedgdp.txt} 
 
 \input{text/slggdp.txt} 
-\vspace{2mm}
+\vspace{1mm}
 
 \textbf{Receipts and Expenditures as Share of GDP}
 
@@ -3093,11 +3093,16 @@ Over the past thirty years, welfare payments, including those made to businesses
 \end{minipage}
 \vspace{8mm}
 
+\begin{minipage}{0.76\textwidth}
+\small \input{text/tmb_rec.txt}
+\end{minipage}  
+\vspace{2mm}
+
 \begin{minipage}{0.36\textwidth}
 \normalsize \textbf{Federal Government Receipts}\\
 \footnotesize{\textit{trillions of USD, one-year moving sum}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={1.4, 1.5, 1.6, 1.7, 1.8, 1.9}, 
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0}, 
 		enlarge y limits={0.08}, clip=false, 
 		yticklabel style={text width=1.3em}, xmin={2016-01-01},
 		xticklabel={`\short{\year}}, height=6.2cm, width=6.4cm]
@@ -3106,8 +3111,8 @@ Over the past thirty years, welfare payments, including those made to businesses
 	\input{text/tmb_rec_iit.txt}
 	\stdline{blue!40!cyan}{date}{Other}{data/tmb_rec.csv}
 	\input{text/tmb_rec_oth.txt}
-	\stdnode{1.4cm}{1.2cm}{\footnotesize \color{blue!70!black}Individual Income Taxes}
-	\stdnode{1.4cm}{3.4cm}{\footnotesize \color{blue!40!cyan}Other}
+	\stdnode{2.0cm}{1.45cm}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
+	\stdnode{1.4cm}{2.95cm}{\footnotesize \color{blue!40!cyan}Other}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Treasury} \hfill \tbllink{tmb_rec.csv}
