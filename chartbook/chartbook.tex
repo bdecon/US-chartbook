@@ -642,9 +642,9 @@ Because annual rates amplify short-term changes in production, some analysis has
 \normalsize \textbf{Real GDP Growth by Expenditure Type}\\
 \footnotesize{\textit{percentage point contribution to GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30, 40},
 		yticklabel style={text width=1.4em}, height=6.0cm,
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.83, 1.13)}}]
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.83, 1.0)}, fill=white}]
 	\rbars
 	\sbar{yellow!80!orange}{date}{DPCERY}{data/comp.csv}
 	\sbar{blue!70!black}{date}{A006RY}{data/comp.csv}
@@ -667,7 +667,7 @@ Because annual rates amplify short-term changes in production, some analysis has
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30}, height=5.7cm,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
-		legend style={at={(0.65, 1.13)}}]
+		legend style={at={(0.65, 1.0)}, fill=white}]
 	\rbars
 	\sbar{magenta!90!blue}{date}{A4002C}{data/gdi.csv}
 	\sbar{yellow!60!orange}{date}{W271RC}{data/gdi.csv}
@@ -2769,7 +2769,7 @@ When thinking about the longer-term trends in these data, it's important to note
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15},
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
 		yticklabel style={text width=1.5em}, legend cell align={left},
-		legend style={legend columns=1, at={(0.43, 0.48)}}]
+		legend style={legend columns=1, at={(0.43, 0.44)}}]
 	\rbars
 	\sbar{blue!60!black}{date}{Durable manufacturing}{data/indprogr.csv}
 	\sbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr.csv}
