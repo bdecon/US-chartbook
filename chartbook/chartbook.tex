@@ -2746,7 +2746,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \normalsize \textbf{Industrial Production Growth, Market Group}\\
 \footnotesize{\textit{percentage point contribution to one-year growth}}\\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15},
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
 		yticklabel style={text width=1.5em}, legend cell align={left},
 		legend style={legend columns=1, at={(0.53, 0.4)}}]
@@ -2766,7 +2766,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \normalsize \textbf{Industrial Production Growth, Industry Group}\\
 \footnotesize{\textit{percentage point contribution to one-year growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15},
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
 		yticklabel style={text width=1.5em}, legend cell align={left},
 		legend style={legend columns=1, at={(0.43, 0.48)}}]
@@ -2781,7 +2781,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}
 \vspace{3mm}
 
-\small The recent collapse has been broad-based. The monthly data are shown in detail below.
+\small Reduced production during the pandemic was broad-based. The monthly data are shown in detail below.
 \vspace{1mm}
 
 \normalsize \textbf{Recent data in detail}
@@ -2880,7 +2880,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \normalsize \textbf{Retail Sales and Food Services}\\
 \footnotesize{\textit{annual growth, percent; nonstore is 3-month moving average}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20, 30}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20, 30, 40, 50}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em},
 		width=12.1cm, height=6.5cm, clip=false]
 	\rebars
@@ -2888,8 +2888,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
 	\input{text/rs_ns3m_node.txt}
 	\input{text/rs_44x72_node.txt}
-	\stdnode{9.5cm}{1.5cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
-	\stdnode{7.8cm}{3.2cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
+	\stdnode{9.5cm}{1.0cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
+	\stdnode{7.8cm}{2.4cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{marts.csv}
@@ -3111,7 +3111,7 @@ Over the past thirty years, welfare payments, including those made to businesses
 	\input{text/tmb_rec_iit.txt}
 	\stdline{blue!40!cyan}{date}{Other}{data/tmb_rec.csv}
 	\input{text/tmb_rec_oth.txt}
-	\stdnode{2.0cm}{1.45cm}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
+	\stdnode{2.1cm}{1.45cm}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
 	\stdnode{1.4cm}{2.95cm}{\footnotesize \color{blue!40!cyan}Other}
 	\end{axis}
 \end{tikzpicture}\\
