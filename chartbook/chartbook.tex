@@ -5891,8 +5891,7 @@ This section covers various measures of prices. Inflation--a general increase in
 \begin{minipage}{0.24\textwidth}
 \small \input{text/ppi_main.txt}
 \end{minipage}
-\vspace{2mm}
-
+\newpage
 \subsection*{\color{black!70} \seriffont Inflation Expectations}
 \begin{minipage}{0.76\textwidth}
 \small Researchers gain insight on expected changes in prices through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the \href{https://fred.stlouisfed.org/series/T5YIE}{inflation breakeven} and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced in, on average, for the maturity of the bond.
@@ -5903,14 +5902,14 @@ This section covers various measures of prices. Inflation--a general increase in
 \footnotesize{\textit{expected average annual rate, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={0, 1, 2, 3}, 
-		enlarge y limits={0.1}, ymin=0.15, \bbar{y}{0}, clip=false,
+		enlarge y limits={0.1}, ymin=0.25, \bbar{y}{0}, clip=false,
 		xticklabel={`\short{\year}}, height=5.9cm, width=6.4cm]
 	\thinline{blue!70!black}{date}{VALUE}{data/infbreak.csv}
 	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
 	\input{text/infumich_node.txt}
-	\stdnode{2.2cm}{1.85cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
-	\stdnode{2.8cm}{3.75cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
+	\stdnode{2.2cm}{1.75cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
+	\stdnode{2.8cm}{3.5cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: FRED; U. of Michigan} \hfill \tbllink{infbreak.csv}
@@ -5920,6 +5919,54 @@ This section covers various measures of prices. Inflation--a general increase in
 
 \input{text/inf_exp_mkts.txt}
 \end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.76\textwidth}
+
+\small Both survey- and market-based estimates of expected inflation offer techniques for distinguishing between near-term inflation and expected medium-term inflation. The survey-based measure asks about inflation over the next year. \input{text/inf_exp_surv_st.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Survey of Expected Inflation}\\
+\footnotesize{\textit{annual rate, percent}}\\
+\vspace{22mm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, 
+		xticklabel={`\short{\year}}, clip=false, 
+		legend style={at={(0.98, 1.16)}},
+		yticklabel style={text width=1.0em},
+		width=12.9cm, height=4.6cm, enlarge y limits={0.11}]
+	\rbars
+	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumichlt.csv}
+	\stdline{green}{date}{PX_MD}{data/infumichlt.csv}
+	\legend{Next 5 years, Next year};
+	\end{axis}
+\end{tikzpicture}
+\vspace{1mm}
+
+\footnotesize{Source: University of Michigan} \hfill \tbllink{infumichlt.csv}
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.47\textwidth}
+\normalsize \textbf{Market Expected Inflation}\\
+\footnotesize{\textit{annual rate, percent}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\ltdateaxisticks ytick={0, 1, 2, 3, 4}, 
+		enlarge y limits={0.1}, ymin=0.2, \bbar{y}{0}, clip=false,
+		xticklabel={`\short{\year}}, height=4.7cm, width=8.4cm]
+		\thinline{blue!70!black}{date}{5_year_breakeven}{data/infbreak_comb.csv}
+		\thinline{cyan}{date}{5_year_5_year_forward}{data/infbreak_comb.csv}
+		\stdnode{1.2cm}{0.85cm}{\scriptsize \color{blue!70!black}\textbf{Next 5 years}}
+		\stdnode{1.85cm}{2.6cm}{\scriptsize \color{cyan}\textbf{Following 5 years}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: FRED} \hfill \tbllink{infbreak_comb.csv}
+\end{minipage} \hspace{6mm} 
+\begin{minipage}{0.24\textwidth}
+\small The market-based measure can be used to calculate expected inflation over the five years starting five years from now. \input{text/inf_exp_mkts_55.txt}
+\end{minipage}
+
 \newpage
 \subsection*{\color{black!70} \seriffont Import/Export Price Index}
 \begin{minipage}{0.76\textwidth}
