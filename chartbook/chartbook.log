@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2021.4.19)  19 MAY 2021 20:03
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2021.4.19)  20 MAY 2021 20:02
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -2532,6 +2532,9 @@ Package pgfplots info on input line 542: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/gdpjobslvl.csv}
 
+NOTE: coordinate (2021-04-01,) has been dropped because of a coordinate filter. 
+(see also unbounded coords=jump). 
+
 Overfull \hbox (1.77997pt too wide) in paragraph at lines 545--545
  [][][]\TU/Lato(0)/m/n/7 240[]
  []
@@ -2577,14 +2580,16 @@ Package pgfplots info on input line 594: dateplot: setting 'date ZERO={2021-05-3
 Package pgfplots info on input line 594: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/gdpjobslvl.csv}
- [6] (./text/gdp_gr.txt)
+
+NOTE: coordinate (2021-04-01,) has been dropped because of a coordinate filter. 
+(see also unbounded coords=jump). 
+[6] (./text/gdp_gr.txt)
 Package pgfplots info on input line 616: dateplot: setting 'date ZERO={2021-05-3
 0}' for this axis.
 Package pgfplots info on input line 616: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
 PGFPlots: reading {data/gdp.csv}
-
-(./data/gdp.txt) [7] (./text/gdp_exp_basic.txt)
+ (./data/gdp.txt) [7] (./text/gdp_exp_basic.txt)
 Package pgfplots info on input line 647: dateplot: setting 'date ZERO={2021-05-3
 0}' for this axis.
 Package pgfplots info on input line 647: Using 'lua backend=false' for axis: x c
@@ -2593,7 +2598,8 @@ PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
- (./text/gdi_growth_comp.txt)
+
+(./text/gdi_growth_comp.txt)
 Package pgfplots info on input line 670: dateplot: setting 'date ZERO={2021-05-3
 0}' for this axis.
 Package pgfplots info on input line 670: Using 'lua backend=false' for axis: x c
@@ -2602,8 +2608,7 @@ PGFPlots: reading {data/gdi.csv}
 PGFPlots: reading {data/gdi.csv}
 PGFPlots: reading {data/gdi.csv}
 PGFPlots: reading {data/gdi.csv}
-
-[8
+ [8
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/gdpva_growth.txt)
@@ -2617,7 +2622,8 @@ PGFPlots: reading {data/gdpva.csv}
 PGFPlots: reading {data/gdpva.csv}
  [9
 Missing character: There is no ; (U+003B) in font nullfont!
-] (./text/gdpjobsch.txt)
+]
+(./text/gdpjobsch.txt)
 Package pgfplots info on input line 725: dateplot: setting 'date ZERO={2021-05-3
 0}' for this axis.
 Package pgfplots info on input line 725: Using 'lua backend=false' for axis: x c
@@ -7827,7 +7833,7 @@ NOTE: coordinate (2021-02-15,) has been dropped because of a coordinate filter.
 (see also unbounded coords=jump). 
 PGFPlots: reading {data/infumich.csv}
 (./text/infbreak_node.txt) (./text/infumich_node.txt)
-Overfull \hbox (8.84686pt too wide) in paragraph at lines 5923--5938
+Overfull \hbox (8.90428pt too wide) in paragraph at lines 5923--5938
 |  [] 
  []
 
@@ -8229,14 +8235,14 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 51348 strings out of 478903
+ 51350 strings out of 478903
  932081,2848258 words of node,token memory allocated
  597 words of node memory still in use:
    5 hlist, 1 vlist, 3 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 70 glue_spec
 , 10 attribute_list, 2 write, 3 pdf_action nodes
    avail lists: 1:5,2:140646,3:139701,4:4378,5:1173,6:869,7:11761,8:29,9:6695,10
 :27,11:593
- 63537 multiletter control sequences out of 65536+600000
+ 63539 multiletter control sequences out of 65536+600000
  120 fonts using 33168527 bytes
  122i,22n,117p,2546b,3892s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/TTF/Lato-Italic.ttf></usr/share/texmf-dist/fonts/opentype/publ
@@ -8247,7 +8253,7 @@ ts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></usr/share/fonts
 /fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy6.pfb>
-Output written on chartbook.pdf (126 pages, 2414800 bytes).
+Output written on chartbook.pdf (126 pages, 2414940 bytes).
 
 PDF statistics: 1271 PDF objects out of 1440 (max. 8388607)
  1091 compressed objects within 11 object streams
