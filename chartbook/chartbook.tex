@@ -5088,9 +5088,8 @@ Among newly-employed workers, some were looking for work or otherwise considered
 	\thinline{lime!90!green}{date}{SERVNSA}{data/hours.csv}
 	\stdline{green!90!blue!70!black}{date}{SERVSA}{data/hours.csv}
 	\stdline{orange}{date}{PNS}{data/hours.csv}
-	\thinline{red!10!white}{date}{PTECONSA}{data/hours.csv}
 	\thinline{red!90!black}{date}{PTECONSA}{data/hours.csv}
-	\stdnode{1.05cm}{9.5cm}{\scriptsize \color{blue}\textbf{Total (LFS)}}
+	\stdnode{1.35cm}{9.5cm}{\scriptsize \color{blue}\textbf{Total, Actual (LFS)}}
 	\stdnode{1.45cm}{6.2cm}{{\scriptsize \color{orange}\textbf{Production \&}}\\{\scriptsize \color{orange}\textbf{Non-Supervisory}}\\{\scriptsize \color{orange}\textbf{(CES)}}}
 	\stdnode{1.5cm}{2.15cm}{{\scriptsize \color{red!90!black}\textbf{Part Time}}\\{\scriptsize \color{red!90!black}\textbf{Economic Reasons}}\\{\scriptsize \color{red!90!black}\textbf{(LFS)}}}
 	\stdnode{4.45cm}{7.8cm}{{\scriptsize \color{green!90!blue!70!black}\textbf{Services}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{Occupations}}\\{\scriptsize \color{green!90!blue!70!black}\textbf{(LFS)}}}
@@ -5098,8 +5097,21 @@ Among newly-employed workers, some were looking for work or otherwise considered
 \end{tikzpicture}\\
 \footnotesize{Source: BLS} \hfill \tbllink{hours.csv}
 \end{minipage}
-\vspace{1mm}
+\vspace{3mm}
 
+\begin{minipage}{0.76\textwidth}
+\normalsize \textbf{Hours Worked, Various Measures}\\
+\footnotesize{\textit{average hours per week, seasonally adjusted}}\\
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+	{\renewcommand{\arraystretch}{1.55}
+		\begin{tabular}{p{52mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
+		   R{6.7mm}}
+			 \input data/hoursworked_table.tex \hline
+		\end{tabular}}\vspace{-2mm}
+		
+\footnotesize{Source: Bureau of Labor Statistics; Author}
+\end{minipage}
+\newpage 
 \begin{minipage}{0.76\textwidth}
 \small BLS also \href{https://www.bls.gov/lpc/}{report} a quarterly index tracking aggregate hours worked in nonfarm businesses (see\cbox{cyan!80!blue}). \input{text/tot_hours.txt}
 \vspace{2mm}
