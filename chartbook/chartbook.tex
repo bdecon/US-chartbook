@@ -394,7 +394,7 @@ Contents not reliable
 \normalsize \textbf{Expenditure Types}\\
 \footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40}, 
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50}, 
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=7.0cm]
 	\rbars
@@ -1578,7 +1578,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \normalsize \textbf{Consumer Spending Growth}\\
 \footnotesize{\textit{annual growth, per capita real personal consumption expenditures, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -15, -10, -5, 0, 5, 10}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -15, -10, -5, 0, 5, 10, 15, 20, 25}, 
 		yticklabel style={text width=1.4em}, 
 		xticklabel={`\short{\year}}, clip=false, height=6.2cm, width=12.2cm]
 	\rbars
@@ -2258,7 +2258,7 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \normalsize \textbf{House Price Index}\\
 \footnotesize{\textit{seasonally adjusted index, one-year percent change}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10, 15}, 
 		yticklabel style={text width=1.5em}, clip=false,
 		xticklabel={`\short{\year}}, width=12.1cm]
 	\rebars
