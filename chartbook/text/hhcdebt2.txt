@@ -12,12 +12,12 @@
 		yticklabel style={font=\small, xshift=-4pt},
 		every axis plot/.append style={bar shift=0pt, fill},
 		nodes near coords style={/pgf/number format/.cd,fixed zerofill,precision=1, assume math mode}]
-		\addplot[gray] coordinates {(-10.8, 1)};
-		\addplot[gray] coordinates {(-6.03, 2)};
-		\addplot[red] coordinates {(-1.35, 3)};
-		\addplot[gray] coordinates {(-1.11, 4)};
-		\addplot[green!80!blue] coordinates {(-1.03, 5)};
-		\addplot[blue!60!cyan] coordinates {(-0.9, 6)};
+		\addplot[gray] coordinates {(-11.39, 1)};
+		\addplot[gray] coordinates {(-6.44, 2)};
+		\addplot[red] coordinates {(-1.38, 3)};
+		\addplot[gray] coordinates {(-1.13, 4)};
+		\addplot[green!80!blue] coordinates {(-1.09, 5)};
+		\addplot[blue!60!cyan] coordinates {(-0.96, 6)};
 	\end{axis}
 \end{tikzpicture}
 \hfill
@@ -31,13 +31,13 @@
 	\rebars
 	\stdline{blue!60!cyan}{date}{Auto Loan}{data/hhcdebt.csv}
     \node[label={0:{\scriptsize 7.0}}, circle, blue!60!cyan, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-01-01},{7.0433}){};
+        (axis cs:{2021-01-01},{6.9878}){};
 	\stdline{green!80!blue}{date}{Student Loan}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 8.1}}, circle, green!80!blue, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-01-01},{8.0728}){};
+    \node[label={0:{\scriptsize 8.0}}, circle, green!80!blue, fill, inner sep=1.5pt] at 
+        (axis cs:{2021-01-01},{8.0092}){};
 	\stdline{red}{date}{Credit Card}{data/hhcdebt.csv}
     \node[label={0:{\scriptsize 3.9}}, circle, red, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-01-01},{3.9243}){};
+        (axis cs:{2021-01-01},{3.8933}){};
 	\stdnode{4.2cm}{1.85cm}{\scriptsize \color{blue!60!cyan}{auto}}
 	\stdnode{1.2cm}{0.9cm}{\scriptsize \color{green!80!blue}{student}}
 	\stdnode{3.8cm}{0.82cm}{\scriptsize \color{red}{credit card}}
