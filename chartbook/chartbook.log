@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2021.4.19)  8 JUN 2021 21:06
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020/Arch Linux)  (format=lualatex 2021.4.19)  9 JUN 2021 12:31
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -5600,12 +5600,12 @@ Underfull \hbox (badness 1365) in paragraph at lines 4106--4106
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 4106--4106
- [][][]\TU/Lato(0)/m/n/7 Pro-duc-tion[]
+ [][][]\TU/Lato(0)/m/n/7 Sales & re-lated[]
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 4106--4106
- [][][]\TU/Lato(0)/m/n/7 Sales & re-lated[]
+ [][][]\TU/Lato(0)/m/n/7 Pro-duc-tion[]
  []
 
 
@@ -5634,18 +5634,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 4106--4106
  []
 
 
-Underfull \hbox (badness 6412) in paragraph at lines 4106--4106
- [][][]\TU/Lato(0)/m/n/7 Com-mu-nity & so-cial ser-vice[]
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 4106--4106
  [][][]\TU/Lato(0)/m/n/7 Pro-tec-tive ser-vice[]
- []
-
-
-Underfull \hbox (badness 4328) in paragraph at lines 4106--4106
- [][][]\TU/Lato(0)/m/n/7 Life, phys-i-cal, & so-cial sci-ence[]
  []
 
 
@@ -5654,13 +5644,23 @@ Underfull \hbox (badness 1371) in paragraph at lines 4106--4106
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4106--4106
- [][][]\TU/Lato(0)/m/n/7 Man-age-ment[]
+Underfull \hbox (badness 6412) in paragraph at lines 4106--4106
+ [][][]\TU/Lato(0)/m/n/7 Com-mu-nity & so-cial ser-vice[]
+ []
+
+
+Underfull \hbox (badness 4328) in paragraph at lines 4106--4106
+ [][][]\TU/Lato(0)/m/n/7 Life, phys-i-cal, & so-cial sci-ence[]
  []
 
 
 Underfull \hbox (badness 1769) in paragraph at lines 4106--4106
  [][][]\TU/Lato(0)/m/n/7 In-stal-la-tion, main-te-nance, & re-pair[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4106--4106
+ [][][]\TU/Lato(0)/m/n/7 Man-age-ment[]
  []
 
 
@@ -6071,7 +6071,7 @@ PGFPlots: reading {data/nilf.csv}
 PGFPlots: reading {data/nilf.csv}
 PGFPlots: reading {data/nilf.csv}
 (./text/nilf_nodes.txt)
-Overfull \hbox (8.73373pt too wide) in paragraph at lines 4836--4860
+Overfull \hbox (9.39076pt too wide) in paragraph at lines 4836--4860
 |  [] 
  []
 
@@ -6092,7 +6092,7 @@ Package pgfplots info on input line 4898: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/disflow.csv}
  (./text/disflow_node.txt)
-Overfull \hbox (6.91556pt too wide) in paragraph at lines 4893--4905
+Overfull \hbox (7.443pt too wide) in paragraph at lines 4893--4905
 |  [] 
  []
 
@@ -7439,17 +7439,7 @@ Underfull \hbox (badness 1533) in paragraph at lines 5440--5440
  \TU/Lato(0)/m/n/8 hos-pi-tal-ity[]
  []
 
-(./text/cps_ltdate.txt) (./text/union_ind.txt)
-Underfull \hbox (badness 1454) in paragraph at lines 5445--5446
-\TU/Lato(0)/m/n/9 cent, and trade, trans-porta-tion,
- []
-
-
-Underfull \hbox (badness 1199) in paragraph at lines 5445--5446
-\TU/Lato(0)/m/n/9 2020, and 7.3 per-cent in April
- []
-
-[110
+(./text/cps_ltdate.txt) (./text/union_ind.txt) [110
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/sp500.txt)
 Package pgfplots info on input line 5461: dateplot: setting 'date ZERO={2021-06-
@@ -7463,7 +7453,8 @@ Package pgfplots info on input line 5471: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/sp500_recent.csv}
 PGFPlots: reading {data/sp500_recent.csv}
- (./text/sp500rr3.txt)
+
+(./text/sp500rr3.txt)
 Package pgfplots info on input line 5489: dateplot: setting 'date ZERO={2021-06-
 15}' for this axis.
 Package pgfplots info on input line 5489: Using 'lua backend=false' for axis: x 
@@ -8199,14 +8190,14 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 51348 strings out of 478903
- 932084,2848258 words of node,token memory allocated
+ 51344 strings out of 478903
+ 932088,2848258 words of node,token memory allocated
  597 words of node memory still in use:
    5 hlist, 1 vlist, 3 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 70 glue_spec
 , 10 attribute_list, 2 write, 3 pdf_action nodes
-   avail lists: 1:2,2:140646,3:139701,4:4378,5:1173,6:869,7:11761,8:30,9:6695,10
+   avail lists: 1:2,2:140646,3:139703,4:4378,5:1173,6:869,7:11761,8:30,9:6695,10
 :27,11:593
- 63536 multiletter control sequences out of 65536+600000
+ 63532 multiletter control sequences out of 65536+600000
  120 fonts using 33168527 bytes
  122i,22n,117p,2546b,3896s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/fonts/TTF/Lato-Italic.ttf></usr/share/texmf-dist/fonts/opentype/publ
@@ -8217,7 +8208,7 @@ ts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></usr/share/fonts
 /fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy6.pfb>
-Output written on chartbook.pdf (127 pages, 2417239 bytes).
+Output written on chartbook.pdf (127 pages, 2417343 bytes).
 
 PDF statistics: 1277 PDF objects out of 1440 (max. 8388607)
  1096 compressed objects within 11 object streams
