@@ -2082,7 +2082,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small Changes in net worth come mostly from changes in the value of assets (see\cbox{cyan!40!white}), but also from saving of income, and decisions about how much to spend.
+\small Changes in net worth come mostly from changes in the value of assets and other holding gains (see\cbox{cyan!40!white}), but also from saving of income, and decisions about how much to spend.
 
 Each period, households spend a portion of their income. The saved portion of income, after consumer spending and spending to cover depreciation of households assets, is considered net investment and increases net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. 
 
@@ -2094,7 +2094,7 @@ Separately, changes in data sources or from natural disasters are identified as 
 \normalsize{\textbf{Net Worth Growth}}\\
 \footnotesize{\textit{contribution to one-year percent change in net worth, nominal}}\\
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15, 20, 25}, height=5.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
 		legend style={at={(0.96, 1.13)}}]
 	\rbars
@@ -2911,7 +2911,7 @@ When thinking about the longer-term trends in these data, it's important to note
 	\input{text/rs_ns3m_node.txt}
 	\input{text/rs_44x72_node.txt}
 	\stdnode{9.5cm}{1.0cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
-	\stdnode{7.8cm}{2.4cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
+	\stdnode{7.8cm}{2.3cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{marts.csv}
@@ -2992,7 +2992,7 @@ Over the past thirty years, welfare payments, including those made to businesses
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=7.0cm]
 	\rbars
-	\stdnode{4.6cm}{3.1cm}{\footnotesize \color{violet}Welfare}
+	\stdnode{4.5cm}{3.1cm}{\footnotesize \color{violet}Welfare}
 	\stdline{violet}{date}{Welfare}{data/govpi.csv}
 	\stdnode{1.3cm}{3.1cm}{\footnotesize \color{cyan!80!blue}Tax \& Social\\ \footnotesize \color{cyan!80!blue} Insurance\\ \footnotesize \color{cyan!80!blue} Contributions}
 	\stdline{cyan!80!blue}{date}{TaxSI}{data/govpi.csv}
@@ -3133,8 +3133,8 @@ Over the past thirty years, welfare payments, including those made to businesses
 	\input{text/tmb_rec_iit.txt}
 	\stdline{blue!40!cyan}{date}{Other}{data/tmb_rec.csv}
 	\input{text/tmb_rec_oth.txt}
-	\stdnode{2.1cm}{1.45cm}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
-	\stdnode{1.4cm}{2.95cm}{\footnotesize \color{blue!40!cyan}Other}
+	\stdnode{2.3cm}{1.25cm}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
+	\stdnode{1.6cm}{2.45cm}{\footnotesize \color{blue!40!cyan}Other}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Treasury} \hfill \tbllink{tmb_rec.csv}
@@ -4727,7 +4727,7 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{4.9cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{4.8cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
@@ -4745,8 +4745,8 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{5.55cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{3.8cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
+	\stdnode{5.55cm}{3.9cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{3.7cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
@@ -5592,7 +5592,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 	\recbars
 	\stdline{red}{date}{Ten-year}{data/real_rates.csv}
 	\stdline{violet}{date}{Five-year}{data/real_rates.csv}
-	\stdnode{0.9cm}{1.65cm}{\scriptsize \color{violet}\textbf{Five-year}}
+	\stdnode{0.9cm}{1.8cm}{\scriptsize \color{violet}\textbf{Five-year}}
 	\stdnode{2.6cm}{2.8cm}{\scriptsize \color{red}\textbf{Ten-year}}
 	\end{axis}
 \end{tikzpicture}\\
@@ -5942,8 +5942,8 @@ This section covers various measures of prices. Inflation--a general increase in
 	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
 	\input{text/infumich_node.txt}
-	\stdnode{2.2cm}{1.75cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
-	\stdnode{2.8cm}{3.5cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
+	\stdnode{2.2cm}{1.8cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
+	\stdnode{2.8cm}{3.7cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: FRED; U. of Michigan} \hfill \tbllink{infbreak.csv}
