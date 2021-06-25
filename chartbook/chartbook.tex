@@ -1833,7 +1833,7 @@ The middle fifth of households, which includes the 40th to 60th percentiles by t
 \normalsize \textbf{Contributions to Real Growth in Household and Nonprofit Assets}\\
 \footnotesize{\textit{contribution to one-year percent change in assets, adjusted by PCE price deflator}}\\
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10}, height=6.1cm, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15, 20, 25}, height=6.1cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em},
 			clip=false, legend cell align={left},
 		legend style={legend columns=2, at={(0.57, 0.24)}, fill=white}]
@@ -1933,9 +1933,9 @@ The middle fifth of households, which includes the 40th to 60th percentiles by t
 \normalsize \textbf{Net Worth and After-Tax Income Growth}\\
 \footnotesize{\textit{one-year percent change in net worth and after-tax income, adjusted by PCE price deflator}}\\
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10}, height=5.8cm, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, height=5.8cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, clip=false, 
-		legend style={at={(0.96, 1)}, fill=white}]
+		legend style={at={(0.92, 1.01)}, fill=white}]
 	\rbars
 	\sbar{cyan!40!white}{date}{NW}{data/rdpi_nw.csv}
 	\stdline{blue!50!violet}{date}{DPI}{data/rdpi_nw.csv}
@@ -3377,7 +3377,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \normalsize \textbf{US Imports and Exports, Monthly}\\
 \footnotesize{\textit{billions of USD, seasonally adjusted}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={100, 150, 200, 250}, 
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={100, 150, 200, 250, 300}, 
 		enlarge y limits={0.05}, clip=false, 
 		yticklabel style={text width=1.3em},
 		xticklabel={`\short{\year}}, height=5.6cm, width=6.3cm]
@@ -3386,8 +3386,8 @@ The current account balance can be decomposed into the balance on trade in goods
 	\input{text/explt.txt}
 	\stdline{blue!80!violet}{Period}{IMP}{data/tradelt.csv}
 	\input{text/implt.txt}
-	\stdnode{3.0cm}{2.5cm}{\footnotesize \color{green!80!blue}Exports}
-	\stdnode{0.9cm}{3.0cm}{\footnotesize \color{blue!80!violet}Imports}
+	\stdnode{3.0cm}{2.4cm}{\footnotesize \color{green!80!blue}Exports}
+	\stdnode{0.9cm}{2.9cm}{\footnotesize \color{blue!80!violet}Imports}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tradelt.csv}
@@ -3510,7 +3510,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \small The US Census Bureau \href{https://www.census.gov/foreign-trade/data/index.html}{report} monthly data on US trade in goods, including by partner country. \input{text/trade_partner_sh.txt} 
 \vspace{2mm}
 
-\normalsize \textbf{US Trade in Goods} \hspace{12mm} \input{text/trade_date.txt} \hspace{20mm} \input{text/trade_date2.txt}\\
+\normalsize \textbf{US Trade in Goods} \hspace{14mm} \input{text/trade_date.txt} \hspace{24mm} \input{text/trade_date2.txt}\\
 \footnotesize{\textit{census basis, millions of USD,}}\\
 \footnotesize{\textit{not seasonally adjusted}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
@@ -4727,7 +4727,7 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{4.8cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{4.7cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
@@ -4745,8 +4745,8 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{5.55cm}{3.9cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{3.7cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
+	\stdnode{5.5cm}{3.8cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{3.6cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
