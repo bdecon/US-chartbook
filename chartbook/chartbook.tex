@@ -113,7 +113,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-07-15},
+		xmax={2021-07-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -131,7 +131,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-07-15},
+		xmax={2021-07-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -143,7 +143,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-07-15},
+		xmax={2021-07-30},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}},
@@ -153,7 +153,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-07-15},
+		xmax={2021-07-30},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}},
@@ -208,7 +208,7 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2021-07-15}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rebars}{
 		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
@@ -216,17 +216,17 @@
 		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2021-07-15}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\recbars}{
 		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
 			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2021-07-15}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rbar}{
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2021-07-15}, \pgfkeysvalueof{/pgfplots/ymax});}
+			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 	
 	\newfontfamily\seriffont{SourceSerifPro}	
 	
@@ -2638,7 +2638,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \normalsize \textbf{Inventories to Sales Ratio}\\
 \footnotesize{\textit{total business}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={1.2, 1.3, 1.4, 1.5, 1.6}, 
+	\begin{axis}[\shdateaxisticks ytick={1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8}, 
 		yticklabel style={text width=1.2em}, legend style={at={(0.6, 0.98)}},
 		xticklabel={`\short{\year}}, width=7.3cm]
 	\rbars
@@ -3449,7 +3449,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \footnotesize{\textit{percentage point contribution to real GDP growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10},
-		yticklabel style={text width=1.2em},
+		yticklabel style={text width=1.4em},
 		height=8.0cm,
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.91, 1.01)}, fill=white}]
@@ -5722,23 +5722,23 @@ This measure is at times described as \textit{inverted}, which means the short-t
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{\color{black!70} \seriffont Money and Monetary Policy}
-\small The Federal Reserve \href{https://www.federalreserve.gov/releases/h6/current/default.htm}{report} the weekly average \textbf{money stock}, broadly, as M2, which includes cash and deposits such as savings accounts and checking accounts. \input{text/m2imf2.txt}
+\small The Federal Reserve \href{https://www.federalreserve.gov/releases/h6/current/default.htm}{publish} data on the \textbf{money supply}. A broad measure of the amount of money, called M2, includes cash and deposits such as savings accounts and checking accounts, as well as time deposits smaller than \$100,000, and retail accounts in money market funds. \input{text/m2lvl.txt}
 
-A large increase in the amount of money held by individuals and institutions can be the result of a higher rate of saving, a larger government sector financial deficit, an increase in the money supply, a change in preferences for liquidity, or something else. \input{text/m2imf.txt}
+A large increase in the amount of money held by individuals and institutions can be the result of a higher rate of saving, a larger government sector financial deficit, an increase in the money supply, a change in preferences for liquidity, or something else. \input{text/m2chg.txt}
 \vspace{2mm}
 
-\normalsize \textbf{M2 and Institutional Money Funds}\\
-\footnotesize{\textit{one-year percent change, monthly average}}\\
+\normalsize \textbf{M2 money stock}\\
+\footnotesize{\textit{one-year percent change}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15, 20, 25, 30}, 
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, width=12.1cm, height=5.6cm]
 	\rbars
-	\thickline{green!80!blue}{date}{value}{data/M2imf.csv}
-	\input{text/m2imf_node.txt}
+	\thickline{green!80!blue}{date}{value}{data/m2.csv}
+	\input{text/m2_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve} \hfill \tbllink{M2imf.csv}
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{m2.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
