@@ -1,4 +1,4 @@
-\noindent \normalsize \hspace{5mm} Total Change, \small 2018 Q1--`21 Q1 \normalsize \hspace{18mm} Consumer Debt Trends \footnotesize 
+\noindent \normalsize \hspace{5mm} Total Change, \small 2018 Q2--`21 Q2 \normalsize \hspace{18mm} Consumer Debt Trends \footnotesize 
 \vspace{1mm}
 
 \hspace{2.1cm} \begin{tikzpicture}[trim axis left]
@@ -8,36 +8,36 @@
 		enlarge x limits=0.33, \bbar{x}{0},
         x tick style={draw=none},
         ytick={1,2,3,4,5,6},
-		yticklabels={Total,Mortgage,Credit Card,HE Revolving,Student Loan,Auto Loan},
+		yticklabels={Total,HE Revolving,Credit Card,Student Loan,Mortgage,Auto Loan},
 		yticklabel style={font=\small, xshift=-4pt},
 		every axis plot/.append style={bar shift=0pt, fill},
 		nodes near coords style={/pgf/number format/.cd,fixed zerofill,precision=1, assume math mode}]
-		\addplot[gray] coordinates {(-11.27, 1)};
-		\addplot[gray] coordinates {(-6.34, 2)};
-		\addplot[red] coordinates {(-1.38, 3)};
-		\addplot[gray] coordinates {(-1.13, 4)};
-		\addplot[green!80!blue] coordinates {(-1.08, 5)};
-		\addplot[blue!60!cyan] coordinates {(-0.95, 6)};
+		\addplot[gray] coordinates {(-2.97, 1)};
+		\addplot[gray] coordinates {(-1.0, 2)};
+		\addplot[red] coordinates {(-0.99, 3)};
+		\addplot[green!80!blue] coordinates {(-0.37, 4)};
+		\addplot[gray] coordinates {(-0.26, 5)};
+		\addplot[blue!60!cyan] coordinates {(-0.15, 6)};
 	\end{axis}
 \end{tikzpicture}
 \hfill
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={2, 4, 6, 8, 10}, 
 		clip=false, width=6.7cm, 
-		xtick={{1999-01-01}, {2005-01-01}, {2010-01-01}, {2015-01-01}, {2021-01-01}},
+		xtick={{1999-01-01}, {2005-01-01}, {2010-01-01}, {2015-01-01}, {2021-04-01}},
         minor xtick={}, 
-        xticklabels={`99, `05, `10, `15, `21 Q1}, enlarge y limits={lower, 0.2}, 
+        xticklabels={`99, `05, `10, `15, `21 Q2}, enlarge y limits={lower, 0.2}, 
         enlarge x limits={0.04}]
 	\rebars
 	\stdline{blue!60!cyan}{date}{Auto Loan}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 7.1}}, circle, blue!60!cyan, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-01-01},{7.0696}){};
+    \node[label={0:{\scriptsize 7.8}}, circle, blue!60!cyan, fill, inner sep=1.5pt] at 
+        (axis cs:{2021-04-01},{7.8071}){};
 	\stdline{green!80!blue}{date}{Student Loan}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 8.1}}, circle, green!80!blue, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-01-01},{8.1029}){};
+    \node[label={0:{\scriptsize 8.7}}, circle, green!80!blue, fill, inner sep=1.5pt] at 
+        (axis cs:{2021-04-01},{8.6623}){};
 	\stdline{red}{date}{Credit Card}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 3.9}}, circle, red, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-01-01},{3.9389}){};
+    \node[label={0:{\scriptsize 4.3}}, circle, red, fill, inner sep=1.5pt] at 
+        (axis cs:{2021-04-01},{4.3422}){};
 	\stdnode{4.2cm}{1.85cm}{\scriptsize \color{blue!60!cyan}{auto}}
 	\stdnode{1.2cm}{0.9cm}{\scriptsize \color{green!80!blue}{student}}
 	\stdnode{3.8cm}{0.82cm}{\scriptsize \color{red}{credit card}}
