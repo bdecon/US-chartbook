@@ -1503,7 +1503,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=6.8cm]
 	\rbars
-	\stdnode{4.1cm}{2.5cm}{\footnotesize \color{red}Goods}
+	\stdnode{4.0cm}{2.5cm}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
 	\stdnode{2.8cm}{3.95cm}{\footnotesize \color{blue!75!white}Services ex. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
@@ -2182,59 +2182,6 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{\color{black!70} \seriffont Housing}
-\normalsize \textbf{Owner-Occupied Housing Wealth} \hspace{10mm} \small \cbox{lime!70!green!80!white} Unit Price \hspace{3mm} \cbox{blue!50!violet} Inventory\\
-\footnotesize{\textit{contributions to one-year percent change in regional owner-occupied housing wealth}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
-		ymin = -15, ymax=25,
-		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}]
-	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\ctsbar{blue!50!violet}{date}{Midwest_Q}{data/val_ooh.csv}{1.9pt}
-	\ctsbar{lime!70!green!80!white}{date}{Midwest_P}{data/val_ooh.csv}{1.9pt}
-	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Midwest};
-	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
-		ymin = -15, ymax=25,
-		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}]
-	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\ctsbar{blue!50!violet}{date}{Northeast_Q}{data/val_ooh.csv}{1.9pt}
-	\ctsbar{lime!70!green!80!white}{date}{Northeast_P}{data/val_ooh.csv}{1.9pt}	
-	\node[right] at (axis cs:2001-05-01,23) {\footnotesize Northeast};
-	\end{axis}
-\end{tikzpicture}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
-		ymin = -15, ymax=25,
-		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}]
-	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\ctsbar{blue!50!violet}{date}{West_Q}{data/val_ooh.csv}{1.9pt}	
-	\ctsbar{lime!70!green!80!white}{date}{West_P}{data/val_ooh.csv}{1.9pt}
-	\node[right] at (axis cs:2001-05-01,23) {\footnotesize West};
-	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, 0, 10, 20}, 
-		ymin = -15, ymax=25,
-		xmin=2001-07-01, width=6.8cm, yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}]
-	\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-		(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-	\ctsbar{blue!50!violet}{date}{South_Q}{data/val_ooh.csv}{1.9pt}	
-	\ctsbar{lime!70!green!80!white}{date}{South_P}{data/val_ooh.csv}{1.9pt}	
-	\node[right] at (axis cs:2001-05-01,23) {\footnotesize South};
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve and Census Bureau} \hfill \tbllink{val_ooh.csv}
-\vspace{7mm}
-
 \small The Census Bureau \href{https://www.census.gov/construction/bps/}{tracks} the issuance of new residential building permits, which offer insight into planned residential construction. \input{text/permits.txt}
 \vspace{1mm}
 
@@ -2250,6 +2197,24 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{permits.csv}
+
+\vspace{5mm}
+
+\small \input{text/nhs.txt}
+\vspace{1mm}
+
+\normalsize{\textbf{New Home Sales}}\\
+\footnotesize{\textit{new single family homes sold, in thousands}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={400, 600, 800, 1000, 1200, 1400}, 
+		xticklabel={`\short{\year}}, clip=false, width=11.7cm, 
+		yticklabel style={text width=2.2em}]
+	\rbars
+	\stdline{green}{date}{VALUE}{data/nhs.csv}	
+	\input{text/nhs_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \hfill \tbllink{nhs.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -2301,24 +2266,6 @@ During the housing bubble that caused the great recession, housing prices reache
 \end{tikzpicture}\\
 \footnotesize{Source: FHFA; BLS} \hfill \tbllink{hpi_rent_ratio.csv} 
 
-\end{minipage}
-\newpage
-\begin{minipage}{0.76\textwidth}
-\small \input{text/nhs.txt}
-\vspace{1mm}
-
-\normalsize{\textbf{New Home Sales}}\\
-\footnotesize{\textit{new single family homes sold, in thousands}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={400, 600, 800, 1000, 1200, 1400}, 
-		xticklabel={`\short{\year}}, clip=false, width=11.7cm, 
-		yticklabel style={text width=2.2em}]
-	\rbars
-	\stdline{green}{date}{VALUE}{data/nhs.csv}	
-	\input{text/nhs_node.txt}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hfill \tbllink{nhs.csv}
 \end{minipage}
 \newpage
 \subsection*{\color{black!70} \seriffont Poverty}
@@ -2910,7 +2857,7 @@ When thinking about the longer-term trends in these data, it's important to note
 	\stdline{green!90!blue}{date}{44X72}{data/marts.csv}
 	\input{text/rs_ns3m_node.txt}
 	\input{text/rs_44x72_node.txt}
-	\stdnode{9.5cm}{1.0cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
+	\stdnode{9.4cm}{1.05cm}{\scriptsize \color{green!90!blue}\textbf{Total}}
 	\stdnode{7.8cm}{2.3cm}{\scriptsize \color{blue!70!black}\textbf{Nonstore}}
 	\end{axis}
 \end{tikzpicture}\\
@@ -3133,8 +3080,8 @@ Over the past thirty years, welfare payments, including those made to businesses
 	\input{text/tmb_rec_iit.txt}
 	\stdline{blue!40!cyan}{date}{Other}{data/tmb_rec.csv}
 	\input{text/tmb_rec_oth.txt}
-	\stdnode{2.3cm}{1.15cm}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
-	\stdnode{1.6cm}{2.3cm}{\footnotesize \color{blue!40!cyan}Other}
+	\stdnode{2.3cm}{1.1cm}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
+	\stdnode{1.6cm}{2.1cm}{\footnotesize \color{blue!40!cyan}Other}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Treasury} \hfill \tbllink{tmb_rec.csv}
@@ -4727,7 +4674,7 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{4.7cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{4.6cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
@@ -4746,7 +4693,7 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
 	\stdnode{5.5cm}{3.8cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{3.6cm}{0.78cm}{\footnotesize \color{green!90!blue}State}
+	\stdnode{3.55cm}{0.8cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
@@ -4924,7 +4871,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 	\stdline{red!85!violet}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
 	\stdnode{3.0cm}{2.95cm}{\footnotesize \color{cyan}\textbf{Hires}}
-	\stdnode{8.6cm}{3.4cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{8.5cm}{3.4cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
 	\stdnode{8.0cm}{1.65cm}{\footnotesize \color{red!85!violet}\textbf{Quits}}
 	\stdnode{2.4cm}{0.6cm}{\footnotesize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
@@ -4943,11 +4890,11 @@ Among newly-employed workers, some were looking for work or otherwise considered
 		xticklabel={`\short{\year}}, ymin=0.3, height=5.5cm, width=7.0cm]
 	\rebars
 	\thinline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
-	\stdnode{3.85cm}{3.28cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
+	\stdnode{3.8cm}{3.28cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
 	\scriptsize \color{red!50!purple}\textbf{\& Food Services}}
 	\input{text/quits_afs_node.txt}
 	\stdline{violet!90!black}{date}{TOT_QU}{data/quits.csv}
-	\stdnode{4.0cm}{0.7cm}{\scriptsize \color{violet}\textbf{Total nonfarm}}
+	\stdnode{4.0cm}{0.75cm}{\scriptsize \color{violet}\textbf{Total nonfarm}}
 	\input{text/quits_tot_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
