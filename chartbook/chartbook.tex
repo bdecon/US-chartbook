@@ -113,7 +113,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-08-30},
+		xmax={2021-09-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -131,7 +131,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-08-30},
+		xmax={2021-09-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -143,7 +143,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-08-30},
+		xmax={2021-09-15},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}},
@@ -153,7 +153,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-08-30},
+		xmax={2021-09-15},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}},
@@ -955,8 +955,8 @@ Among those living in \textbf{households}, roughly 74 million are children under
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
-	\stdnode{3.9cm}{3.3cm}{\scriptsize historical}
-	\stdnode{5.1cm}{3.3cm}{\scriptsize revised}
+	\stdnode{3.8cm}{3.3cm}{\scriptsize historical}
+	\stdnode{5.0cm}{3.3cm}{\scriptsize revised}
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
 	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
 	\stdline{black}{date}{pop}{data/hhform.csv}
@@ -2223,7 +2223,7 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \normalsize \textbf{House Price Index}\\
 \footnotesize{\textit{seasonally adjusted index, one-year percent change}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10, 15}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-10, -5, 0, 5, 10, 15, 20}, 
 		yticklabel style={text width=1.5em}, clip=false,
 		xticklabel={`\short{\year}}, width=12.1cm]
 	\rebars
@@ -3333,7 +3333,7 @@ The current account balance can be decomposed into the balance on trade in goods
 	\input{text/explt.txt}
 	\stdline{blue!80!violet}{Period}{IMP}{data/tradelt.csv}
 	\input{text/implt.txt}
-	\stdnode{3.0cm}{2.4cm}{\footnotesize \color{green!80!blue}Exports}
+	\stdnode{2.9cm}{2.3cm}{\footnotesize \color{green!80!blue}Exports}
 	\stdnode{0.9cm}{2.9cm}{\footnotesize \color{blue!80!violet}Imports}
 	\end{axis}
 \end{tikzpicture}\\
