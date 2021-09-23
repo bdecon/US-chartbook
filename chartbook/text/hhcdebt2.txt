@@ -8,16 +8,16 @@
 		enlarge x limits=0.33, \bbar{x}{0},
         x tick style={draw=none},
         ytick={1,2,3,4,5,6},
-		yticklabels={Total,HE Revolving,Credit Card,Student Loan,Mortgage,Auto Loan},
+		yticklabels={Total,HE Revolving,Credit Card,Student Loan,Auto Loan,Mortgage},
 		yticklabel style={font=\small, xshift=-4pt},
 		every axis plot/.append style={bar shift=0pt, fill},
 		nodes near coords style={/pgf/number format/.cd,fixed zerofill,precision=1, assume math mode}]
-		\addplot[gray] coordinates {(-2.97, 1)};
-		\addplot[gray] coordinates {(-1.0, 2)};
-		\addplot[red] coordinates {(-0.99, 3)};
-		\addplot[green!80!blue] coordinates {(-0.37, 4)};
-		\addplot[gray] coordinates {(-0.26, 5)};
-		\addplot[blue!60!cyan] coordinates {(-0.15, 6)};
+		\addplot[gray] coordinates {(-2.47, 1)};
+		\addplot[gray] coordinates {(-0.99, 2)};
+		\addplot[red] coordinates {(-0.96, 3)};
+		\addplot[green!80!blue] coordinates {(-0.32, 4)};
+		\addplot[blue!60!cyan] coordinates {(-0.11, 5)};
+		\addplot[gray] coordinates {(0.09, 6)};
 	\end{axis}
 \end{tikzpicture}
 \hfill
@@ -30,14 +30,14 @@
         enlarge x limits={0.04}]
 	\rebars
 	\stdline{blue!60!cyan}{date}{Auto Loan}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 7.8}}, circle, blue!60!cyan, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-04-01},{7.8071}){};
+    \node[label={0:{\scriptsize 7.9}}, circle, blue!60!cyan, fill, inner sep=1.5pt] at 
+        (axis cs:{2021-04-01},{7.8548}){};
 	\stdline{green!80!blue}{date}{Student Loan}{data/hhcdebt.csv}
     \node[label={0:{\scriptsize 8.7}}, circle, green!80!blue, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-04-01},{8.6623}){};
+        (axis cs:{2021-04-01},{8.7152}){};
 	\stdline{red}{date}{Credit Card}{data/hhcdebt.csv}
-    \node[label={0:{\scriptsize 4.3}}, circle, red, fill, inner sep=1.5pt] at 
-        (axis cs:{2021-04-01},{4.3422}){};
+    \node[label={0:{\scriptsize 4.4}}, circle, red, fill, inner sep=1.5pt] at 
+        (axis cs:{2021-04-01},{4.3687}){};
 	\stdnode{4.15cm}{1.85cm}{\scriptsize \color{blue!60!cyan}{auto}}
 	\stdnode{1.15cm}{0.9cm}{\scriptsize \color{green!80!blue}{student}}
 	\stdnode{3.75cm}{0.82cm}{\scriptsize \color{red}{credit card}}
