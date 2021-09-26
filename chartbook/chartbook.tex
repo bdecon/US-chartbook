@@ -2183,32 +2183,85 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsubsection*{\color{black!70} \seriffont Housing}
+\subsubsection*{\color{black!70} \seriffont Housing Construction}
 \small The Census Bureau \href{https://www.census.gov/construction/bps/}{tracks} the issuance of new residential building permits, which offer insight into planned residential construction. \input{text/permits.txt}
 \vspace{1mm}
 
-\normalsize{\textbf{Residential Construction}}\\
+\normalsize{\textbf{Residential Construction Permits}}\\
 \footnotesize{\textit{building permits issued, in thousands}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={500, 1000, 1500, 2000, 2500}, 
 		xticklabel={`\short{\year}}, clip=false, width=12.4cm, 
 		yticklabel style={text width=2.2em}]
-	\rbars	
-	\stdline{blue!30!cyan}{date}{ASTARTS}{data/permits.csv}	
-	\stdline{blue!70!green}{date}{APERMITS}{data/permits.csv}
+	\rbars		
+	\stdline{blue!70!green}{date}{APERMITS}{data/permits_total.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hfill \tbllink{permits.csv}
+\footnotesize{Source: Census Bureau} \hfill \tbllink{permits_total.csv}
 
-\vspace{5mm}
+\vspace{2mm}
 
+\small In addition to data on permits, the Census Bureau also report how many residential construction projects are started and completed. Not all permitted projects are built and the duration of construction can vary. \input{text/completions.txt}
+\vspace{1mm}
+
+\normalsize{\textbf{Residential Construction Completions}}\\
+\footnotesize{\textit{completed units, in thousands}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={500, 1000, 1500, 2000, 2500}, 
+		xticklabel={`\short{\year}}, clip=false, width=12.4cm, 
+		yticklabel style={text width=2.2em}]
+	\rbars	
+	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_total.csv}	
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census Bureau} \hfill \tbllink{permits_total.csv}
+\vspace{4mm}
+
+\small \input{text/permits_single.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Single-family units}\\
+\footnotesize{\textit{permits and completions, in thousands}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ytick={500, 1000, 1500}, 
+		yticklabel style={text width=2.1em}, legend style={at={(0.4, 1.0)}},
+		xticklabel={`\short{\year}}, width=12.4cm]
+	\rbars
+	\thinline{blue!40!cyan!80!white}{date}{ACOMPLETIONS}{data/permits_single.csv}
+	\stdline{blue!60!green}{date}{APERMITS}{data/permits_single.csv}
+	\legend{Completions, Permits}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census} \hfill \tbllink{permits_single.csv}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small \input{text/permits_multi.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Multi-family units}\\
+\footnotesize{\textit{permits and completions, in thousands}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ytick={0, 200, 400, 600, 800, 1000}, 
+		yticklabel style={text width=2.1em}, legend style={at={(0.4, 1.0)}},
+		xticklabel={`\short{\year}}, width=12.4cm]
+	\rbars
+	\thinline{blue!40!cyan!80!white}{date}{ACOMPLETIONS}{data/permits_multi.csv}
+	\stdline{blue!60!green}{date}{APERMITS}{data/permits_multi.csv}
+	\legend{Completions, Permits}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Census} \hfill \tbllink{permits_multi.csv}
+\vspace{6mm}
+
+\subsubsection*{\color{black!70} \seriffont Housing Sales}
 \small \input{text/nhs.txt}
 \vspace{1mm}
 
 \normalsize{\textbf{New Home Sales}}\\
 \footnotesize{\textit{new single family homes sold, in thousands}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={400, 600, 800, 1000, 1200, 1400}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 400, 600, 800, 1000, 1200, 1400}, 
 		xticklabel={`\short{\year}}, clip=false, width=11.7cm, 
 		yticklabel style={text width=2.2em}]
 	\rbars
@@ -2219,6 +2272,7 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \footnotesize{Source: Census Bureau} \hfill \tbllink{nhs.csv}
 \end{minipage}
 \newpage
+\subsubsection*{\color{black!70} \seriffont Housing Prices}
 \begin{minipage}{0.76\textwidth}
 \small The Federal Housing Finance Agency (FHFA) \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{housing price index} (see {\color{blue!40!cyan}\textbf{---}}) captures changes in the price of the same home. The index \input{text/fhfa.txt}
 
