@@ -113,7 +113,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-09-30},
+		xmax={2021-10-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -131,7 +131,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-09-30},
+		xmax={2021-10-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -143,7 +143,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-09-30},
+		xmax={2021-10-15},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}},
@@ -153,9 +153,19 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-09-30},
+		xmax={2021-10-15},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
+			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
+		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\tydateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2021-10-15},
+		max space between ticks=40,	    
+		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
@@ -451,7 +461,7 @@ Additionally some income does not get paid out to these groups. Taxes on imports
 	\stdline{yellow!60!orange}{date}{W271RC}{data/gdi_pc_comp.csv}
 	\stdnode{1.0cm}{1.4cm}{\footnotesize \color{yellow!60!orange}Profit}
 	\stdline{teal!60!white}{date}{A262RC}{data/gdi_pc_comp.csv}
-	\stdnode{4.25cm}{0.3cm}{\footnotesize \color{violet}Indirect Taxes}
+	\stdnode{4.2cm}{0.3cm}{\footnotesize \color{violet}Indirect Taxes}
 	\stdline{violet}{date}{indirect}{data/gdi_pc_comp.csv}
 	\end{axis}
 \end{tikzpicture}\\
@@ -2817,15 +2827,15 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.3\textwidth}
+\begin{minipage}{0.32\textwidth}
 \small \input{text/ip_comp.txt}
-\end{minipage} \hspace{5mm}
-\begin{minipage}{0.42\textwidth}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.44\textwidth}
 \normalsize \textbf{Industrial Production and Capacity}\\
 \footnotesize{\textit{As of \input{text/ip_ind_ldate.txt}\unskip, percent change since February 2020}}\\
-\hspace*{-5mm} \begin{tikzpicture}
+\hspace*{-4mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{3.3cm}{1.5ex}
-    	width=5.5cm, bar width=1.8ex, height=10.2cm,
+    	width=5.6cm, bar width=1.8ex, height=9.8cm,
     	enlarge y limits={abs=0.32cm}, enlarge x limits=0.22, \bbar{x}{0},
 		yticklabels from table={\ip}{name}, 
 		yticklabel style={font=\scriptsize},
@@ -2860,8 +2870,8 @@ When thinking about the longer-term trends in these data, it's important to note
 	\thinline{blue!40!cyan}{date}{Manufacturing}{data/tcu.csv}
 	\input{text/tcu_tot_node.txt}
 	\input{text/tcu_mfg_node.txt}
-	\stdnode{8.8cm}{2.9cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
-	\stdnode{7.4cm}{4.3cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
+	\stdnode{8.7cm}{2.95cm}{\scriptsize \color{blue!40!cyan}\textbf{Manufacturing}}
+	\stdnode{7.2cm}{4.2cm}{\scriptsize \color{blue!80!black}\textbf{Total index}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
@@ -2869,8 +2879,8 @@ When thinking about the longer-term trends in these data, it's important to note
 \newpage
 \subsubsection*{\color{black!70} \seriffont Energy Production and Use}
 \begin{minipage}{0.76\textwidth}
-\small The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{report} that US has seen a massive increase in \textbf{crude oil production} over the past six years. The infrastructure for much of this production was put in place when oil prices were higher, and the profitability of the sector depends on oil maintaining a certain price. A large portion of the increase in oil production comes from New Mexico, South Dakota, and Colorado. 
-\vspace{2mm}
+\small The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{report} a large increase in US \textbf{crude oil production}, from around five million barrels per day in 2007 to nearly 13 million barrels per day at the end of 2019. Much of the increase comes from Texas, New Mexico, North Dakota, and Colorado. \input{text/oil_prod.txt}
+\vspace{1mm}
 
 \normalsize \textbf{Crude Oil Production}\\
 \footnotesize{\textit{millions of barrels per day}}\\
@@ -2895,6 +2905,121 @@ When thinking about the longer-term trends in these data, it's important to note
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Energy Information Administration} \hfill \tbllink{oil_prod.csv}
+\vspace{8mm}
+
+\small Since 2011, annualized total US \textbf{electricity generation} has remained fairly constant at around four trillion kilowatt hours. \input{text/elec_prod.txt}
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{0.58\textwidth}
+\normalsize \textbf{Electricity Generation, Population, and Production}\\
+\footnotesize{\textit{cumulative percent change since 2011}}\\
+\hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \tydateaxisticks width=9.7cm, height=7.9cm,
+		xticklabel={`\short{\year}}, clip=false, 
+		yticklabel style={text width=1.6em}]
+	\rbar
+	\thickline{green!60!blue}{date}{gdp}{data/elec.csv}
+	\thickline{blue!90!black}{date}{pop}{data/elec.csv}
+	\thickline{red}{date}{elec}{data/elec.csv}
+	\thickline{orange}{date}{elecpop}{data/elec.csv}
+	\thickline{cyan}{date}{elecgdp}{data/elec.csv}
+	\input{text/elec_nodes.txt}
+	\stdnode{4.5cm}{5.0cm}{\footnotesize \color{green!60!blue}\textbf{GDP}}
+	\stdnode{4.0cm}{3.65cm}{\footnotesize \color{blue!90!black}\textbf{Population}}
+	\stdnode{4.8cm}{3.0cm}{\footnotesize \color{red}\textbf{Electricity}}
+	\stdnode{5.4cm}{1.75cm}{\footnotesize \color{orange}\textbf{Electricity per capita}}
+	\stdnode{4.9cm}{0.55cm}{\footnotesize \color{cyan}\textbf{Electricity / GDP}}	
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: EIA, BEA} \hfill \tbllink{elec.csv}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small \input{text/elec_prod2.txt}
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{1.0\textwidth}
+\normalsize \textbf{Electricity Generation by Source \hspace{31mm} Renewable Sources}\\
+\footnotesize{\textit{billion kilowatt hours, 12-month moving sum}}\\
+\hspace*{-4mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ymin=118, enlarge x limits={0.01},
+		width=8.5cm, height=7.0cm, ytick={0, 1000, 2000, 3000, 4000, 5000}, xticklabel={`\short{\year}},
+		yticklabel style={text width=1.8em}, legend cell align={left}, 
+		legend style={legend columns=3, at={(1, 1.15)}}]
+	\recbars
+	\addplot[stack plots=y, area style, draw=none, fill=brown] 
+		table [x=date, y=Coal, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=blue!40!cyan!60!white] 
+		table [x=date, y=Natural Gas, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=red!80!blue!70!white] 
+		table [x=date, y=Nuclear, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=green!75!blue] 
+		table [x=date, y=Renewables, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=orange!90!white] 
+		table [x=date, y=Petroleum and other, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\legend{Coal, Natural Gas, Nuclear, Renewables, Petroleum \& Oth.};
+	\end{axis}
+\end{tikzpicture} \hfill 
+\begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ymin=24, enlarge x limits={0.01},
+		width=8.4cm, height=7.0cm, ytick={0, 100, 200, 300, 400, 500, 600, 700, 800, 1000, 1100}, xticklabel={`\short{\year}},
+		yticklabel style={text width=1.3em}, legend cell align={left}, 
+		legend style={legend columns=3, at={(0.98, 1.15)}}]
+	\recbars
+	\addplot[stack plots=y, area style, draw=none, fill=cyan] 
+		table [x=date, y=Hydroelectric, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=brown!92!black] 
+		table [x=date, y=Biomass, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=orange] 
+		table [x=date, y=Geothermal, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=green!65!blue] 
+		table [x=date, y=Wind, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\addplot[stack plots=y, area style, draw=none, fill=yellow!70!orange] 
+		table [x=date, y=Solar, 
+		col sep=comma]{data/elec_prod.csv}\closedcycle;	
+	\legend{Hydroelectric, Biomass, Geothermal, Wind, Solar};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Energy Information Administration} \hfill \tbllink{elec_prod.csv}
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.76\textwidth}
+\small \input{text/elec_prod3.txt}
+\vspace{1mm}
+
+\small Retail sales of electricity by sector show a decrease in electricity sales to commercial and industrial sectors during the pandemic, offset in part by increased electricity sales to the residential sector. 
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{0.66\textwidth}
+\normalsize \textbf{Electricity Retail Sales by Sector}\\
+\footnotesize{\textit{billion kilowatt hours, 12-month moving sum}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ytick={800, 1000, 1200, 1400, 1600}, width=9.8cm, 
+		height=7.8cm, clip=false,
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}]
+	\recbars
+	\thickline{green!90!black}{date}{Residential}{data/elec_sales.csv}
+	\thickline{blue!80!cyan}{date}{Commercial}{data/elec_sales.csv}
+	\thickline{black!35!white}{date}{Industrial}{data/elec_sales.csv}
+	\stdnode{4.75cm}{3.85cm}{\footnotesize \color{blue!80!cyan}\textbf{Commercial}}
+	\stdnode{5.2cm}{5.25cm}{\footnotesize \color{green!90!black}\textbf{Residential}}
+	\stdnode{4.3cm}{0.5cm}{\footnotesize \color{black!35!white}\textbf{Industrial}}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Energy Information Administration} \hfill \tbllink{elec_sales.csv}
 \end{minipage}
 \newpage
 \subsection*{\color{darkgray} \seriffont Retail Sales}
@@ -4757,9 +4882,9 @@ In contrast during the peak of the business cycle, a much larger share of the un
 \vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
-\small In response to the COVID-19 pandemic, traditional state-run unemployment insurance was boosted by federal programs that expanded eligibility for benefits and increased the amount of benefit payments. Over the past few months, many of the new and continuing claims for unemployment insurance have been through the federal programs. 
+\small In response to the COVID-19 pandemic, traditional state-run unemployment insurance was boosted by federal programs that expanded eligibility for benefits and increased the amount of benefit payments. These programs were ended on September 6, 2020, reducing the income of millions of families. 
 
-\input{text/fed_uic.txt}
+%\input{text/fed_uic.txt}
 
 \end{minipage}
 \newpage
