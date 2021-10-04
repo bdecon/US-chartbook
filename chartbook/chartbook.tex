@@ -890,7 +890,7 @@ A sector runs a surplus in a given accounting period when its aggregate income i
 \normalsize \textbf{Total US Wealth to GDP Ratio}\\
 \footnotesize{\textit{total US wealth divided by GDP}}\\
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5}, ymin=0.15,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, ymin=0.15,
 		height=5.6cm,
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.68, 1.13)}}]
@@ -959,14 +959,14 @@ Among those living in \textbf{households}, roughly 74 million are children under
 \normalsize \textbf{Household Formation by Type}\\
 \footnotesize{\textit{one-year moving average of annual growth rates, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2, 3},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2, 3, 4},
 		xticklabel={`\short{\year}}, clip=false, height=5.7cm,
 		legend style={at={(0.58, 1.01)}, fill=white}]
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
-	\stdnode{3.8cm}{3.3cm}{\scriptsize historical}
-	\stdnode{5.0cm}{3.3cm}{\scriptsize revised}
+	\stdnode{3.7cm}{3.3cm}{\scriptsize historical}
+	\stdnode{4.9cm}{3.3cm}{\scriptsize revised}
 	\sbar{magenta!90!blue}{date}{Renter}{data/hhform.csv}
 	\sbar{yellow!60!orange}{date}{Owner}{data/hhform.csv}
 	\stdline{black}{date}{pop}{data/hhform.csv}
@@ -1246,7 +1246,7 @@ The Consumer Expenditure Survey provides data on typical income, spending, and s
 		nodes near coords,  
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, legend cell align={left},
-		legend style={at={(0.21, 1.01)}, legend columns=1, 
+		legend style={at={(0.21, 1.05)}, legend columns=1, 
 		fill=white, draw=none}]
   	\addplot[ybar, bar shift=-8pt, fill=green!80!blue, draw=none, area legend] 
   		table [y index=1] {\ceage};
@@ -1490,7 +1490,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=6.8cm]
 	\rbars
-	\stdnode{4.0cm}{3.0cm}{\footnotesize \color{green!60!blue}Housing and Utilities}
+	\stdnode{3.9cm}{3.0cm}{\footnotesize \color{green!60!blue}Housing and Utilities}
 	\stdline{green!60!blue}{date}{Housing}{data/pce_levels.csv}
 	\stdnode{1.55cm}{0.65cm}{\footnotesize \color{blue!80!black}Residential Investment}
 	\stdline{blue!80!black}{date}{ResInv}{data/pce_levels.csv}
@@ -1673,7 +1673,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 	\input{text/save_dist_node2.txt}
 	\stdnode{1.2cm}{3.7cm}{\footnotesize \color{blue!80!cyan!80!black}Top 20}
 	\stdnode{4.35cm}{2.1cm}{\footnotesize \color{red!80!black}60-80}
-	\stdnode{4.42cm}{1.42cm}{\footnotesize \color{green!80!blue!85!black}Middle 20}
+	\stdnode{4.3cm}{1.45cm}{\footnotesize \color{green!80!blue!85!black}Middle 20}
 	\stdnode{1.0cm}{0.72cm}{\footnotesize \color{red!20!orange!95!black}20-40}
 	\stdnode{4.0cm}{0.15cm}{\footnotesize \color{violet}Bottom 20}
 	\end{axis}
@@ -2148,8 +2148,8 @@ Separately, changes in data sources or from natural disasters are identified as 
 	\input{text/homeown_other_node.txt}
 	\input{text/homeown_hispanic_node.txt}
 	\input{text/homeown_black_node.txt}
-	\stdnode{4.35cm}{0.4cm}{\footnotesize \color{red!20!orange!95!black}Black}
-	\stdnode{4.4cm}{6.75cm}{\footnotesize \color{blue!80!cyan!80!black}White}
+	\stdnode{4.3cm}{0.4cm}{\footnotesize \color{red!20!orange!95!black}Black}
+	\stdnode{4.4cm}{6.6cm}{\footnotesize \color{blue!80!cyan!80!black}White}
 	\stdnode{4.7cm}{3.4cm}{\footnotesize \color{red!80!black}Other}
 	\stdnode{0.9cm}{5.1cm}{\footnotesize \color{violet!60!magenta}Total}
 	\stdnode{4.3cm}{1.92cm}{\footnotesize \color{green!80!blue!85!black}Hispanic}
@@ -3514,7 +3514,7 @@ The current account balance can be decomposed into the balance on trade in goods
 	\input{text/explt.txt}
 	\stdline{blue!80!violet}{Period}{IMP}{data/tradelt.csv}
 	\input{text/implt.txt}
-	\stdnode{2.9cm}{2.3cm}{\footnotesize \color{green!80!blue}Exports}
+	\stdnode{2.2cm}{1.3cm}{\footnotesize \color{green!80!blue}Exports}
 	\stdnode{0.9cm}{2.9cm}{\footnotesize \color{blue!80!violet}Imports}
 	\end{axis}
 \end{tikzpicture}\\
@@ -4855,8 +4855,8 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{4.6cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
-	\stdnode{3.5cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
+	\stdnode{4.5cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{3.4cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
@@ -4873,8 +4873,8 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{5.5cm}{3.8cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{3.55cm}{0.8cm}{\footnotesize \color{green!90!blue}State}
+	\stdnode{5.3cm}{3.8cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{3.4cm}{0.75cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
@@ -4976,8 +4976,8 @@ Age is not the only demographic factor affecting labor force participation. The 
 	\thickline{orange}{date}{Retired}{data/nilf.csv}
 	\thickline{cyan}{date}{School}{data/nilf.csv}
 	\input{text/nilf_nodes.txt}
-	\stdnode{4.4cm}{2.3cm}{\footnotesize \color{green!80!blue}\textbf{Disabled/Ill}}
-	\stdnode{3.4cm}{3.15cm}{\footnotesize \color{blue}\textbf{Discouraged}}
+	\stdnode{4.35cm}{2.3cm}{\footnotesize \color{green!80!blue}\textbf{Disabled/Ill}}
+	\stdnode{3.35cm}{3.15cm}{\footnotesize \color{blue}\textbf{Discouraged}}
 	\stdnode{4.35cm}{4.45cm}{\footnotesize \color{red}\textbf{Family/Care}}
 	\stdnode{5.0cm}{5.25cm}{\footnotesize \color{orange}\textbf{Retired}}
 	\stdnode{4.7cm}{0.62cm}{\footnotesize \color{cyan}\textbf{School}}	
@@ -5052,7 +5052,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 	\stdline{red!85!violet}{date}{Quits}{data/jolts.csv}
 	\stdline{blue!80!black}{date}{Openings}{data/jolts.csv}
 	\stdnode{3.0cm}{2.95cm}{\footnotesize \color{cyan}\textbf{Hires}}
-	\stdnode{8.5cm}{3.4cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
+	\stdnode{8.45cm}{3.4cm}{\footnotesize \color{blue!80!black}\textbf{Openings}}
 	\stdnode{8.0cm}{1.65cm}{\footnotesize \color{red!85!violet}\textbf{Quits}}
 	\stdnode{2.4cm}{0.6cm}{\footnotesize \color{orange!70!yellow}\textbf{Layoffs}}
 	\end{axis}
@@ -5071,7 +5071,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 		xticklabel={`\short{\year}}, ymin=0.3, height=5.5cm, width=7.0cm]
 	\rebars
 	\thinline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
-	\stdnode{3.8cm}{3.28cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
+	\stdnode{3.7cm}{3.28cm}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
 	\scriptsize \color{red!50!purple}\textbf{\& Food Services}}
 	\input{text/quits_afs_node.txt}
 	\stdline{violet!90!black}{date}{TOT_QU}{data/quits.csv}
@@ -5696,7 +5696,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 	\thickline{cyan!30!white}{date}{Value}{data/taylor.csv}
 	\stdline{blue!60!black}{date}{Fed Funds}{data/rates.csv}
 	\stdnode{2.5cm}{4.45cm}{\scriptsize \color{blue!60!black}\textbf{Fed Funds Rate}}
-	\stdnode{8.4cm}{1.65cm}{\scriptsize \color{cyan!50!white}\textbf{Modified Taylor Rule}}
+	\stdnode{8.3cm}{1.65cm}{\scriptsize \color{cyan!50!white}\textbf{Modified Taylor Rule}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve, Author's Calculations} \hfill \tbllink{rates.csv}
@@ -5720,7 +5720,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 	\recbars
 	\stdline{red}{date}{Ten-year}{data/real_rates.csv}
 	\stdline{violet}{date}{Five-year}{data/real_rates.csv}
-	\stdnode{0.9cm}{1.8cm}{\scriptsize \color{violet}\textbf{Five-year}}
+	\stdnode{0.85cm}{1.8cm}{\scriptsize \color{violet}\textbf{Five-year}}
 	\stdnode{2.6cm}{2.8cm}{\scriptsize \color{red}\textbf{Ten-year}}
 	\end{axis}
 \end{tikzpicture}\\
@@ -5744,7 +5744,7 @@ The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color
 	\rbars
 	\stdline{red!90}{date}{Ten-year}{data/rates.csv}
 	\stdline{blue!80}{date}{Two-year}{data/rates.csv}
-	\stdnode{6.0cm}{0.65cm}{\scriptsize \color{blue}\textbf{Two-year}}
+	\stdnode{5.9cm}{0.65cm}{\scriptsize \color{blue}\textbf{Two-year}}
 	\stdnode{8.68cm}{1.36cm}{\scriptsize \color{red!90}\textbf{Ten-year}}
 	\end{axis}
 \end{tikzpicture}\\
