@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.13.0 (TeX Live 2021/Arch Linux)  (format=lualatex 2021.8.7)  22 OCT 2021 20:00
+This is LuaHBTeX, Version 1.13.0 (TeX Live 2021/Arch Linux)  (format=lualatex 2021.8.7)  1 NOV 2021 13:53
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -3139,9 +3139,6 @@ Package pgfplots info on input line 552: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/gdpjobslvl.csv}
 
-NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
- (see also unbounded coords=jump). 
-
 Overfull \hbox (1.53635pt too wide) in paragraph at lines 555--555
  [][][]\TU/Lato(0)/m/n/7 240[]
  []
@@ -3166,6 +3163,11 @@ Overfull \hbox (1.53635pt too wide) in paragraph at lines 555--555
  [][][]\TU/Lato(0)/m/n/7 320[]
  []
 
+
+Overfull \hbox (1.53635pt too wide) in paragraph at lines 555--555
+ [][][]\TU/Lato(0)/m/n/7 340[]
+ []
+
 Package pgfplots info on input line 566: dateplot: setting 'date ZERO={2021-10-
 15}' for this axis.
 Package pgfplots info on input line 566: Using 'lua backend=false' for axis: x 
@@ -3187,16 +3189,14 @@ Package pgfplots info on input line 604: dateplot: setting 'date ZERO={2021-10-
 Package pgfplots info on input line 604: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/gdpjobslvl.csv}
-
-NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
- (see also unbounded coords=jump). 
-[6] (./text/gdp_gr.txt)
+ [6] (./text/gdp_gr.txt)
 Package pgfplots info on input line 626: dateplot: setting 'date ZERO={2021-10-
 15}' for this axis.
 Package pgfplots info on input line 626: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/gdp.csv}
- (./data/gdp.txt) [7] (./text/gdp_exp_basic.txt)
+
+(./data/gdp.txt) [7] (./text/gdp_exp_basic.txt)
 Package pgfplots info on input line 657: dateplot: setting 'date ZERO={2021-10-
 15}' for this axis.
 Package pgfplots info on input line 657: Using 'lua backend=false' for axis: x 
@@ -3205,8 +3205,7 @@ PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
-
-(./text/gdi_growth_comp.txt)
+ (./text/gdi_growth_comp.txt)
 Package pgfplots info on input line 680: dateplot: setting 'date ZERO={2021-10-
 15}' for this axis.
 Package pgfplots info on input line 680: Using 'lua backend=false' for axis: x 
@@ -3215,7 +3214,8 @@ PGFPlots: reading {data/gdi.csv}
 PGFPlots: reading {data/gdi.csv}
 PGFPlots: reading {data/gdi.csv}
 PGFPlots: reading {data/gdi.csv}
- [8
+
+[8
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/gdpva_growth.txt)
@@ -3229,8 +3229,7 @@ PGFPlots: reading {data/gdpva.csv}
 PGFPlots: reading {data/gdpva.csv}
  [9
 Missing character: There is no ; (U+003B) in font nullfont!
-]
-(./text/gdpjobsch.txt)
+] (./text/gdpjobsch.txt)
 Package pgfplots info on input line 735: dateplot: setting 'date ZERO={2021-10-
 15}' for this axis.
 Package pgfplots info on input line 735: Using 'lua backend=false' for axis: x 
@@ -3703,13 +3702,13 @@ Overfull \hbox (2.3576pt too wide) in paragraph at lines 1256--1256
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/pi_levels_basic.txt)
-Underfull \hbox (badness 4543) in paragraph at lines 1--1267
-\TU/Lato(0)/m/n/9 per-son; cap-i-tal and pro-pri-etor
+Underfull \hbox (badness 1210) in paragraph at lines 1--1267
+[]\TU/Lato(0)/m/n/9 In Septem-ber 2021, an-nu-al-ized
  []
 
 
-Underfull \hbox (badness 1769) in paragraph at lines 1--1267
-\TU/Lato(0)/m/n/9 in-come is $16,582 per per-son;
+Underfull \hbox (badness 7907) in paragraph at lines 1--1267
+\TU/Lato(0)/m/n/9 capita. La-bor in-come to-tals
  []
 
 Package pgfplots info on input line 1275: dateplot: setting 'date ZERO={1989-08
@@ -3744,13 +3743,17 @@ Package pgfplots info on input line 1343: Using 'lua backend=false' for axis: x
 PGFPlots: reading {data/rdpigrowth.csv}
 
 (./text/rdpi_node.txt)
+Overfull \hbox (0.51367pt too wide) in paragraph at lines 1338--1351
+|  [] 
+ []
+
 Package pgfplots info on input line 1367: Using 'lua backend=false' for plot 0 
 (type 'pgfplothandlerlineto'): LUA does not support stacked plots (yet).
 PGFPlots: reading {data/pearn_dist.csv}
 Package pgfplots info on input line 1370: Using 'lua backend=false' for plot 1 
 (type 'pgfplothandlerlineto'): LUA does not support stacked plots (yet).
 PGFPlots: reading {data/pearn_dist.csv}
- [27
+[27
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 Package pgfplots info on input line 1400: Using 'lua backend=false' for plot 0 
@@ -4120,7 +4123,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--1530
 
 
 Underfull \hbox (badness 4060) in paragraph at lines 1--1530
-\TU/Lato(0)/m/n/9 per per-son in 2021 Q2 (see []\TU/Lato(0)/b/n/9 ---[]\TU/Lato
+\TU/Lato(0)/m/n/9 per per-son in 2021 Q3 (see []\TU/Lato(0)/b/n/9 ---[]\TU/Lato
 (0)/m/n/9 ),
  []
 
@@ -4878,12 +4881,7 @@ PGFPlots: reading {data/businv_main.csv}
 PGFPlots: reading {data/businv_main.csv}
 PGFPlots: reading {data/businv_main.csv}
 PGFPlots: reading {data/businv_main.csv}
- (./text/businv_levels.txt
-Underfull \hbox (badness 2005) in paragraph at lines 1--2
-[]\TU/Lato(0)/m/n/9 In the the sec-ond quar-ter of 2021,
- []
-
-) [51] (./text/businv_sh.txt)
+ (./text/businv_levels.txt) [51] (./text/businv_sh.txt)
 Package pgfplots info on input line 2583: dateplot: setting 'date ZERO={1989-12
 -01}' for this axis.
 Package pgfplots info on input line 2583: Using 'lua backend=false' for axis: x
@@ -4899,16 +4897,16 @@ Package pgfplots info on input line 2607: Using 'lua backend=false' for axis: x
 PGFPlots: reading {data/businv.csv}
 PGFPlots: reading {data/businv.csv}
 PGFPlots: reading {data/businv.csv}
- (./data/businv.tex) [52
+(./data/businv.tex) [52
 Missing character: There is no ; (U+003B) in font nullfont!
-]
-(./text/dgno.txt) (./text/dgno.tex
+] (./text/dgno.txt) (./text/dgno.tex
 Package pgfplots info on input line 1: dateplot: setting 'date ZERO={2021-10-15
 }' for this axis.
 Package pgfplots info on input line 1: Using 'lua backend=false' for axis: x co
 ord trafo unsupported.
 PGFPlots: reading {data/dgno.csv}
- (./text/dgno_node.txt))
+
+(./text/dgno_node.txt))
 Package pgfplots info on input line 2656: dateplot: setting 'date ZERO={2021-10
 -15}' for this axis.
 Package pgfplots info on input line 2656: Using 'lua backend=false' for axis: x
@@ -4928,10 +4926,19 @@ Package pgfplots info on input line 2698: dateplot: setting 'date ZERO={2021-10
 Package pgfplots info on input line 2698: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/cprof2.csv}
+
+NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/cprof2.csv}
+NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/cprof2.csv}
+NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/cprof2.csv}
- [54
+NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
+[54
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/busdebtgdp.txt)
@@ -5300,7 +5307,7 @@ NOTE: coordinate (2021-05-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 NOTE: coordinate (2021-06-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
-NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+NOTE: coordinate (2021-08-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 PGFPlots: reading {data/elec.csv}
 NOTE: coordinate (2011-02-01,) has been dropped because of a coordinate filter.
@@ -5471,7 +5478,7 @@ NOTE: coordinate (2021-05-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 NOTE: coordinate (2021-06-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
-NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+NOTE: coordinate (2021-08-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 PGFPlots: reading {data/elec.csv}
 PGFPlots: reading {data/elec.csv}
@@ -5643,7 +5650,7 @@ NOTE: coordinate (2021-05-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 NOTE: coordinate (2021-06-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
-NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+NOTE: coordinate (2021-08-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 PGFPlots: reading {data/elec.csv}
 NOTE: coordinate (2011-02-01,) has been dropped because of a coordinate filter.
@@ -5814,10 +5821,10 @@ NOTE: coordinate (2021-05-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 NOTE: coordinate (2021-06-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
-NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+NOTE: coordinate (2021-08-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 (./text/elec_nodes.txt)
-Overfull \hbox (3.69229pt too wide) in paragraph at lines 2915--2936
+Overfull \hbox (7.75229pt too wide) in paragraph at lines 2915--2936
 |  [] 
  []
 
@@ -6026,21 +6033,25 @@ Package pgfplots info on input line 3221: dateplot: setting 'date ZERO={2021-10
 Package pgfplots info on input line 3221: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/fedgdp.csv}
+
+NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/fedgdp.csv}
 Package pgfplots info on input line 3236: dateplot: setting 'date ZERO={2021-10
 -15}' for this axis.
 Package pgfplots info on input line 3236: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/slggdp.csv}
+NOTE: coordinate (2021-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/slggdp.csv}
- (./text/tmb_rec.txt)
+(./text/tmb_rec.txt)
 Package pgfplots info on input line 3258: dateplot: setting 'date ZERO={2016-01
 -01}' for this axis.
 Package pgfplots info on input line 3258: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/tmb_rec.csv}
-
-(./text/tmb_rec_iit.txt)
+ (./text/tmb_rec_iit.txt)
 PGFPlots: reading {data/tmb_rec.csv}
  (./text/tmb_rec_oth.txt)
 Overfull \hbox (3.86899pt too wide) in paragraph at lines 3252--3269
@@ -6072,7 +6083,7 @@ Package pgfplots info on input line 3312: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/govnetinv.csv}
  (./text/govnetinv_node.txt)
-Overfull \hbox (1.65707pt too wide) in paragraph at lines 3307--3319
+Overfull \hbox (2.97527pt too wide) in paragraph at lines 3307--3319
 |  [] 
  []
 
@@ -7375,7 +7386,7 @@ Package pgfplots info on input line 4872: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/fed_uic.csv}
 
-NOTE: coordinate (2021-10-09,) has been dropped because of a coordinate filter.
+NOTE: coordinate (2021-10-16,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 PGFPlots: reading {data/ccsa.csv}
 [96] (./text/lfpr_text.txt) (./text/lfpr_text2.txt)
@@ -8698,24 +8709,15 @@ Package pgfplots info on input line 5411: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/eci.csv}
 PGFPlots: reading {data/eci.csv}
- (./text/eci_node.txt) (./text/eci_node2.txt) (./text/eci.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--5424
-\TU/Lato(0)/m/n/9 pri-vate in-dus-try wage and
+ (./text/eci_node.txt) (./text/eci_node2.txt)
+Overfull \hbox (2.26009pt too wide) in paragraph at lines 5405--5422
+|  [] 
  []
 
-
-Underfull \hbox (badness 4341) in paragraph at lines 1--5424
-\TU/Lato(0)/m/n/9 an in-crease of 3.0 per-cent
- []
-
-
-Underfull \hbox (badness 1655) in paragraph at lines 1--5424
-\TU/Lato(0)/m/n/9 of 2.8 per-cent in 2020 Q4.
- []
-
-
-Underfull \hbox (badness 2913) in paragraph at lines 1--5424
-\TU/Lato(0)/m/n/9 Pri-vate sec-tor ben-e-fit costs
+(./text/eci.txt)
+Underfull \hbox (badness 4467) in paragraph at lines 1--5424
+\TU/Lato(0)/m/n/9 costs (see []\TU/Lato(0)/b/n/9 ---[]\TU/Lato(0)/m/n/9 ) in-cre
+ased by
  []
 
 [107] (./text/atl_wgt.txt)
@@ -9147,7 +9149,7 @@ NOTE: coordinate (2021-10-11,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 PGFPlots: reading {data/infumich.csv}
 (./text/infbreak_node.txt) (./text/infumich_node.txt)
-Overfull \hbox (9.85669pt too wide) in paragraph at lines 6063--6078
+Overfull \hbox (10.12778pt too wide) in paragraph at lines 6063--6078
 |  [] 
  []
 
@@ -9560,16 +9562,16 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 51229 strings out of 478531
- 932076,2848258 words of node,token memory allocated
+ 51224 strings out of 478531
+ 932074,2848258 words of node,token memory allocated
  597 words of node memory still in use:
    5 hlist, 1 vlist, 3 rule, 2 glue, 3 kern, 1 glyph, 10 attribute, 70 glue_spec
 , 10 attribute_list, 2 write, 3 pdf_action nodes
-   avail lists: 1:3,2:140624,3:139701,4:4378,5:1173,6:869,7:11693,8:30,9:6695,10
-:27,11:595
- 63619 multiletter control sequences out of 65536+600000
+   avail lists: 1:2,2:140625,3:139701,4:4378,5:1173,6:869,7:11559,8:30,9:6695,10
+:27,11:587
+ 63614 multiletter control sequences out of 65536+600000
  120 fonts using 33167887 bytes
- 128i,22n,123p,2544b,3912s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 128i,22n,123p,2545b,3912s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/fonts/TTF/Lato-Italic.ttf></usr/share/texmf-dist/fonts/opentype/publ
 ic/fontawesome5/FontAwesome5Brands-Regular-400.otf></usr/share/texmf-dist/fonts/
 opentype/adobe/sourceserifpro/SourceSerifPro-Bold.otf></usr/share/texmf-dist/fon
@@ -9578,7 +9580,7 @@ ts/opentype/public/fontawesome5/FontAwesome5Free-Solid-900.otf></usr/share/fonts
 /fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy6.pfb>
-Output written on chartbook.pdf (127 pages, 2472798 bytes).
+Output written on chartbook.pdf (127 pages, 2474133 bytes).
 
 PDF statistics: 1281 PDF objects out of 1440 (max. 8388607)
  1100 compressed objects within 11 object streams
