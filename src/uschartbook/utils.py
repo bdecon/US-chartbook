@@ -695,7 +695,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     indef = 'an' if ((val[0] == '8') | (val[0:3] in ['11.', '11,', '18.', '18,'])) else 'a'
     neg = True if value < 0 else False
     insig = True if abv < threshold else False
-    plural = 's' if ((abv > 1) & (style[-3:] != 'end')) else ''
+    plural = 's' if ((abv > 1.045) & (style[-3:] != 'end')) else ''
     ptxtd = {None: '', 'percent': ' percent', 'pp': f' percentage point{plural}'}
     ptxt = ptxtd[ptype]
     
