@@ -113,7 +113,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-12-31},
+		xmax={2022-01-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -131,7 +131,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-12-31},
+		xmax={2022-01-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -143,7 +143,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-12-31},
+		xmax={2022-01-15},
 		max space between ticks=40,	    
 		xtick={{2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
@@ -153,7 +153,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-12-31},
+		xmax={2022-01-15},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
@@ -163,7 +163,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2021-12-31},
+		xmax={2022-01-15},
 		max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
@@ -501,17 +501,17 @@ Additionally some income does not get paid out to these groups. Taxes on imports
 \noindent \normalsize \textbf{Production Types}\\
 \footnotesize{\textit{per capita, thousands of \input{text/gdpva_ltdt.txt}dollars}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20}, 
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, 
 		yticklabel style={text width=1.0em}, ymin=1.2, xmin={1998-03-01},
 		xticklabel={`\short{\year}}, clip=false, height=6.1cm, width=6.4cm]
 	\rebars
-	\stdnode{3.75cm}{1.3cm}{\footnotesize \color{orange!80!white}Government}
+	\stdnode{3.75cm}{1.25cm}{\footnotesize \color{orange!80!white}Government}
 	\stdline{orange!80!white}{date}{Government}{data/gdpva_pc.csv}
 	\stdnode{0.95cm}{3.0cm}{\footnotesize \color{blue!90!white}Other Services}
 	\stdline{blue!90!white}{date}{Oth_Serv}{data/gdpva_pc.csv}
-	\stdnode{1.4cm}{2.05cm}{\footnotesize \color{red!90!white}FIRE+}
+	\stdnode{1.45cm}{2.0cm}{\footnotesize \color{red!90!white}FIRE+}
 	\stdline{red!90!white}{date}{FIRE}{data/gdpva_pc.csv}
-	\stdnode{3.25cm}{4.25cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
+	\stdnode{3.2cm}{4.25cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
 	\stdline{purple!70!blue}{date}{GoodsTTU}{data/gdpva_pc.csv}
 	\stdnode{2.1cm}{0.3cm}{\footnotesize See text for category descriptions}
 	\end{axis}
@@ -1437,7 +1437,7 @@ In 2020, aggregate pre-tax personal income decreased by 1.2 percent after adjust
 	\stdline{red!90!black}{Year}{Hispanic17}{data/epi_census_income2020.csv}
 	\stdline{red!90!black}{Year}{Hispanic13}{data/epi_census_income2020.csv}
 	\stdline{red!90!black}{Year}{Hispanic}{data/epi_census_income2020.csv}
-	\stdnode{4.7cm}{0.3cm}{\footnotesize \color{blue!80!black}Black}
+	\stdnode{4.7cm}{0.25cm}{\footnotesize \color{blue!80!black}Black}
 	\stdnode{4.3cm}{2.5cm}{\footnotesize \color{green!80!black}White}
 	\stdnode{4.0cm}{3.65cm}{\footnotesize \color{orange}Asian}
 	\stdnode{1.0cm}{1.15cm}{\footnotesize \color{red!90!black}Hispanic}
@@ -1472,7 +1472,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.0cm]
 	\rbars
-	\stdnode{4.3cm}{1.7cm}{\footnotesize \color{red}Goods}
+	\stdnode{4.3cm}{1.8cm}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
 	\stdnode{1.05cm}{2.9cm}{\footnotesize \color{orange}Services}
 	\stdline{orange}{date}{Services}{data/pce_levels.csv}
@@ -1518,7 +1518,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=6.8cm]
 	\rbars
-	\stdnode{4.0cm}{2.5cm}{\footnotesize \color{red}Goods}
+	\stdnode{3.95cm}{2.55cm}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
 	\stdnode{2.8cm}{3.95cm}{\footnotesize \color{blue!75!white}Services ex. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
@@ -1675,8 +1675,8 @@ Over the past 30 years, increased consumer spending represents the majority of e
 	\input{text/save_dist_node3.txt}
 	\input{text/save_dist_node2.txt}
 	\stdnode{1.2cm}{3.7cm}{\footnotesize \color{blue!80!cyan!80!black}Top 20}
-	\stdnode{4.35cm}{2.1cm}{\footnotesize \color{red!80!black}60-80}
-	\stdnode{4.3cm}{1.45cm}{\footnotesize \color{green!80!blue!85!black}Middle 20}
+	\stdnode{4.3cm}{2.1cm}{\footnotesize \color{red!80!black}60-80}
+	\stdnode{4.2cm}{1.5cm}{\footnotesize \color{green!80!blue!85!black}Middle 20}
 	\stdnode{1.0cm}{0.72cm}{\footnotesize \color{red!20!orange!95!black}20-40}
 	\stdnode{4.0cm}{0.15cm}{\footnotesize \color{violet}Bottom 20}
 	\end{axis}
@@ -1859,7 +1859,7 @@ The middle fifth of households, which includes the 40th to 60th percentiles by t
 		height=6.4cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em},
 			clip=false, legend cell align={left},
-		legend style={legend columns=2, at={(0.57, 1.05)}, fill=white}]
+		legend style={legend columns=2, at={(0.51, 1.01)}, fill=white}]
 	\rbars
 	\sbar{cyan!40!white}{date}{DEP}{data/hh_asset_growth.csv}	
 	\sbar{blue!55!cyan}{date}{DSL}{data/hh_asset_growth.csv}
@@ -1995,9 +1995,9 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 	\input{text/scfwealthmedian_node3.txt}
 	\input{text/scfwealthmedian_node4.txt}
 	\input{text/scfwealthmedian_node5.txt}
-	\stdnode{1.2cm}{4.2cm}{\footnotesize \color{blue!80!cyan!80!black}90-100}
+	\stdnode{1.1cm}{4.2cm}{\footnotesize \color{blue!80!cyan!80!black}90-100}
 	\stdnode{4.35cm}{2.65cm}{\footnotesize \color{red!80!black}75-89.9}
-	\stdnode{4.2cm}{1.7cm}{\footnotesize \color{green!80!blue!85!black}50-74.9}
+	\stdnode{4.2cm}{1.75cm}{\footnotesize \color{green!80!blue!85!black}50-74.9}
 	\stdnode{1.0cm}{0.7cm}{\footnotesize \color{red!20!orange!95!black}25-49.9}
 	\stdnode{4.2cm}{0.15cm}{\footnotesize \color{violet}Less than 25}
 	\end{axis}
@@ -3135,7 +3135,7 @@ Over the past thirty years, welfare payments, including those made to businesses
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=7.0cm]
 	\rbars
-	\stdnode{4.5cm}{3.1cm}{\footnotesize \color{violet}Welfare}
+	\stdnode{4.4cm}{3.1cm}{\footnotesize \color{violet}Welfare}
 	\stdline{violet}{date}{Welfare}{data/govpi.csv}
 	\stdnode{1.3cm}{3.1cm}{\footnotesize \color{cyan!80!blue}Tax \& Social\\ \footnotesize \color{cyan!80!blue} Insurance\\ \footnotesize \color{cyan!80!blue} Contributions}
 	\stdline{cyan!80!blue}{date}{TaxSI}{data/govpi.csv}
@@ -3529,8 +3529,8 @@ The current account balance can be decomposed into the balance on trade in goods
 	\input{text/explt.txt}
 	\stdline{blue!80!violet}{Period}{IMP}{data/tradelt.csv}
 	\input{text/implt.txt}
-	\stdnode{2.2cm}{1.3cm}{\footnotesize \color{green!80!blue}Exports}
-	\stdnode{0.9cm}{2.9cm}{\footnotesize \color{blue!80!violet}Imports}
+	\stdnode{2.3cm}{1.3cm}{\footnotesize \color{green!80!blue}Exports}
+	\stdnode{1.2cm}{2.9cm}{\footnotesize \color{blue!80!violet}Imports}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tradelt.csv}
@@ -4992,7 +4992,7 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{4.2cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{4.1cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{3.2cm}{0.65cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
@@ -5010,8 +5010,8 @@ In contrast during the peak of the business cycle, a much larger share of the un
 	\rbars
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{5.0cm}{3.8cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{3.1cm}{0.75cm}{\footnotesize \color{green!90!blue}State}
+	\stdnode{4.9cm}{3.8cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{3.0cm}{0.75cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
@@ -5553,7 +5553,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 	\stdline{cyan!40!blue}{date}{PrivateBe}{data/eci.csv}
 	\stdline{green!80!blue}{date}{PrivateWS}{data/eci.csv}
 	\input{text/eci_node.txt}
-	\stdnode{4.5cm}{1.6cm}{\scriptsize \color{green!80!blue}\textbf{Wages and Salaries}}
+	\stdnode{4.5cm}{1.75cm}{\scriptsize \color{green!80!blue}\textbf{Wages and Salaries}}
 	\stdnode{1.6cm}{3.0cm}{\scriptsize \color{cyan!40!blue}\textbf{Benefits}}
 	\input{text/eci_node2.txt}
 	\end{axis}
@@ -6217,8 +6217,8 @@ This section covers various measures of prices. Inflation--a general increase in
 	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
 	\input{text/infumich_node.txt}
-	\stdnode{2.3cm}{1.8cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
-	\stdnode{2.8cm}{3.6cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
+	\stdnode{2.2cm}{1.75cm}{\scriptsize \color{blue!70!black}\textbf{Market}}
+	\stdnode{2.8cm}{3.55cm}{\scriptsize \color{violet!60!magenta}\textbf{Survey}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: FRED; U. of Michigan} \hfill \tbllink{infbreak.csv}
