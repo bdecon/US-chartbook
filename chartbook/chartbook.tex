@@ -5232,9 +5232,9 @@ Among newly-employed workers, some were looking for work or otherwise considered
 \normalsize \textbf{Job Openings Per Unemployed Person}\\
 \footnotesize{\textit{job openings divided by total unemployment}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 0.5, 1.0, 1.5}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 0.5, 1.0, 1.5, 2.0}, 
 		yticklabel style={text width=1.3em}, xmin={2001-05-01},
-		ymin=0.05,
+		ymin=0.08, ymax=1.9,
 		xticklabel={`\short{\year}}, height=5.6cm, width=12.4cm, clip=false]
 	\rebars
 	\stdline{magenta!70!violet}{date}{unjo}{data/unjo.csv}
