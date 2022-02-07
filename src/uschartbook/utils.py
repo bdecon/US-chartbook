@@ -10,7 +10,7 @@ import sqlite3
 qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 
 
-def bea_api_nipa(table_list, bea_key):
+def bea_api_nipa(table_list, bea_key, freq='Q'):
     ''' Return tables in table list for years in range'''
 
     years = ','.join(map(str, range(1988, 2022)))
@@ -20,7 +20,7 @@ def bea_api_nipa(table_list, bea_key):
     for table in table_list:
         url = f'https://apps.bea.gov/api/data/?&UserID={bea_key}'\
               f'&method=GetData&datasetname=NIPA&TableName={table}'\
-              f'&Frequency=Q&Year={years}&ResultFormat=json'
+              f'&Frequency={freq}&Year={years}&ResultFormat=json'
 
         r = requests.get(url)
 
@@ -296,8 +296,12 @@ def series_info(s):
                 d[key + '_ft'] = d[key].strftime("%B %Y")
         d['last_3m'] = s.iloc[-3:].mean()
         d['prev_3m'] = s.iloc[-6:-3].mean()
+        d['change_3m_3m'] = (((d['last_3m'] / d['prev_3m'])**4) - 1) * 100
     elif obs_per_year == 1:
         dlm_txt = dlm.strftime("%Y")
+    elif obs_per_year > 100:
+    	dlm_txt = ''
+    	print("Observations per year error")
     else:
         print("Observations per year error")
         
@@ -406,93 +410,82 @@ def fred_df(series, start='1989'):
 
     return df.loc[start:]    
     
-def end_node(data, color, percent=True, date=False):
-    if percent == True:
-        pct = '\%'
-    else:
-        pct = ''
-    if date == True:
-        dt = data.index[-1].strftime('%b\\\\`%y:\\\\')
-    else:
-        dt = ''
-    latest = data.iloc[-1]
-    date = dtxt(data.index[-1])['datetime']
-    text = (f'\\node[label={{0:{{\scriptsize\\rowcolors{{1}}{{}}{{white!0}}\setlength{{\\tabcolsep}}{{0.2pt}}\\begin{{tabular}}{{l}}{dt}{latest:.1f}{pct}\end{{tabular}}}}}}, circle, anchor=north, '+
-            f'{color}, fill, inner sep=1.0pt] at '+
-            f'(axis cs:{date}, {latest:.3f}) {{}};')
-    
-    return text
-    
-    
-def end_node2(data, color, percent=True, date=False, offset=0):
-    if percent == True:
-        pct = '\%'
-    else:
-        pct = ''
-    if date == True:
-        dt = data.index[-1].strftime('%b\\\\`%y:\\\\')
-    else:
-        dt = ''
-    latest = data.iloc[-1]
-    offs = f'{offset}cm'
-    date = dtxt(data.index[-1])['datetime']
-    text = (f'\\node[label={{[yshift={offs}]0:{{\scriptsize\\rowcolors{{1}}{{}}{{white!0}}\setlength{{\\tabcolsep}}{{0.2pt}}\\begin{{tabular}}{{l}}{dt}{latest:.1f}{pct}\end{{tabular}}}}}}, circle, anchor=north, '+
-            f'{color}, fill, inner sep=1.0pt] at '+
-            f'(axis cs:{date}, {latest:.1f}) {{}};')
-    
-    return text
-    
 
-def end_node3(data, color, percent=True):
+def c_line(color):
+	'''Return (see ---) for a given color'''
+	return f'(see {{\color{{{color}}}\\textbf{{---}}}})'
+	
+	
+def c_box(color):
+	'''Return (see []) for a given color'''
+	return f'(see (see\cbox{{{color}}}))'
+    
+    
+def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
+             anchor=None, digits=1, full_year=False, dollar=False):
+    '''
+    Generate small dot and value text for end of line plot.
+    Input is pandas series and color. Output is tex code. 
+    Options allow for percent sign, date, y offset, or 
+    switching anchor south (text above node).
+    '''  
+    anchor_opt = ''
+    if anchor != None:
+        if anchor.lower() not in ['south', 'north']:
+            print('Anchor should be south or north')
+        else:
+            anchor_opt = f'anchor={anchor.lower()}, '
+        
+    pct = ''
     if percent == True:
         pct = '\%'
-    else:
-        pct = ''
-    latest = data.iloc[-1]
-    date = data.index[-1]
-    text = (f'\\node[label={{0:{{\scriptsize{latest:.1f}{pct}}}}}, circle, '+
-            f'{color}, fill, inner sep=1.0pt] at '+
-            f'(axis cs:{date}, {latest}) {{}};')
+        
+    dt = ''    
+    if date != None:
+        if date.lower() not in ['month', 'mon', 'm', 'year', 'yr', 'y', 
+        						'fy', 'day', 'd', 
+                                'quarter', 'qtr', 'q']:
+            print('Date should be month or quarter')
+        yr = series.index[-1].strftime('`%y')
+        if full_year == True:
+        	yr = series.index[-1].strftime('%Y')
+        qtr = series.index[-1].to_period('Q').strftime('Q%q')
+        mo = series.index[-1].strftime('%b')
+        day = series.index[-1].strftime('%d')
+        if date.lower() in ['month', 'mon', 'm']:
+            dt = f'\scriptsize {mo}\\\\ \scriptsize {yr}: \\\\ '
+        elif date.lower() in ['quarter', 'qtr', 'q']:
+            dt = f'\scriptsize {yr}\\\\ \scriptsize {qtr}: \\\\ '
+        elif date.lower() in ['year', 'yr', 'y']:
+            dt = f'\scriptsize {yr}: \\\\ '
+        elif date.lower() == 'fy':
+            dt = f'\scriptsize FY{yr} \\\\ '.replace('`', '')
+        elif date.lower() in ['d', 'day']:
+        	dt = f'\scriptsize {mo} {day}\\\\ \scriptsize {yr}: \\\\ '
+        	yr = series.index[-1].strftime('%Y')
+        
+    latest = series.iloc[-1]
+    vtxt = f'{latest:.1f}'
+    if digits == 2:
+    	vtxt = f'{latest:.2f}'
+    elif digits == 0:
+    	vtxt = f'{latest:.0f}'
+    elif digits == 'comma':
+    	vtxt = f'{latest:,.0f}'
+    	
+    dol = ''
+    if dollar == True:
+    	dol = '\$'
+    
+    offs = f'{offset}cm'
+    datetime = dtxt(series.index[-1])['datetime']
+    text = (f'\\node[label={{[yshift={offs}, {anchor_opt}'+
+            f'align=left]0:{{{dt}\scriptsize {dol}{vtxt}{pct}}}}}, circle, '+
+            f'{color}, fill, inner sep={size}pt] at '+
+            f'(axis cs:{datetime}, {latest}) {{}};')
     
     return text
     
-    
-def end_node4(data, color, percent=True, date=False):
-    if percent == True:
-        pct = '\%'
-    else:
-        pct = ''
-    if date == True:
-        dt = data.index[-1].strftime('%b\\\\`%y:\\\\')
-    else:
-        dt = ''
-    latest = data.iloc[-1]
-    date = dtxt(data.index[-1])['datetime']
-    text = (f'\\node[label={{0:{{\scriptsize\\rowcolors{{1}}{{}}{{white!0}}\setlength{{\\tabcolsep}}{{0.2pt}}\\begin{{tabular}}{{l}}{dt}{latest:.1f}{pct}\end{{tabular}}}}}}, circle, anchor=north, '+
-            f'{color}, fill, inner sep=1.0pt] at '+
-            f'(axis cs:{date}, {latest}) {{}};')
-    
-    return text
-    
-    
-def end_node5(data, color, percent=True, date=False):
-    if percent == True:
-        pct = '\%'
-    else:
-        pct = ''
-    if date == True:
-        dt = data.index[-1].strftime('%b\\\\`%y:\\\\')
-    else:
-        dt = ''
-    latest = data.iloc[-1]
-    date = dtxt(data.index[-1])['datetime']
-    text = (f'\\node[label={{0:{{\scriptsize\\rowcolors{{1}}{{}}{{white!0}}\setlength{{\\tabcolsep}}{{0.2pt}}\\begin{{tabular}}{{l}}{dt}{latest:.1f}{pct}\end{{tabular}}}}}}, circle, '+
-            f'{color}, fill, inner sep=1.0pt] at '+
-            f'(axis cs:{date}, {latest}) {{}};')
-    
-    return text
-    
-   
 
 def node_adjust(df, color_dict):
     '''Return offsets for node text'''
@@ -644,7 +637,7 @@ def compare_text(latest, previous, cutoffs):
     direction = 'above' if latest - previous > 0 else 'below'
     size = abs(latest - previous)
     if type(cutoffs) not in [list, tuple] or len(cutoffs) != 3:
-        print('Cutoffs should be list of four numeric values')
+        print('Cutoffs should be list of three numeric values')
         
     if size <= cutoffs[0]:
         text = 'in line with'
@@ -686,7 +679,7 @@ def jolts_codes(d, code_text, ind, value='i'):
     
 def value_text(value, style='increase', ptype='percent', adj=None, 
                time_str='', digits=1, threshold=0, num_txt=True,
-               casual=False, obj='singular'):
+               casual=False, obj='singular', dollar=False):
     '''
     RETURN TEXT STRING FOR SPECIFIED FLOAT VALUE
     
@@ -695,15 +688,16 @@ def value_text(value, style='increase', ptype='percent', adj=None,
            contribution_of, contribution_end
     ptype: percent, pp, None
     adj: sa, annual, annualized, saa, saar, total, average
-    time_pd: blank unless specified directly, for example "one-year"
+    time_str: blank unless specified directly, for example "one-year"
     num_txt: replace round numbers with text, for example: 9.0 -> nine
     casual: replaces certain words: decreased -> fell, for example
     obj: switch to "plural" if the object is plural, e.g. prices
     
     '''
     text = 'Error, options not available'
+    dol = '' if dollar == False else '\$'
     abv = abs(value)
-    val = f'{abv:.{digits}f}'
+    val = f'{dol}{abv:,.{digits}f}'
     numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
                '4.0': 'four', '5.0': 'five', 
                '6.0': 'six', '7.0': 'seven', 
@@ -714,7 +708,9 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     neg = True if value < 0 else False
     insig = True if abv < threshold else False
     plural = 's' if ((abv > 1.045) & (style[-3:] != 'end')) else ''
-    ptxtd = {None: '', 'percent': ' percent', 'pp': f' percentage point{plural}'}
+    ptxtd = {None: '', 'percent': ' percent', 'pp': f' percentage point{plural}',
+             'trillion': ' trillion', 'billion': ' billion', 'million': ' million', 
+             'thousand': ' thousand'}
     ptxt = ptxtd[ptype]
     
     if style in ['increase', 'increase_by']:
@@ -724,7 +720,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'saa': ' at a seasonally-adjusted and annualized rate of ', 
                  'saar': ' at a seasonally-adjusted annualized rate of ', 
                  'total': ' by a total of ', 
-                 'average': ' at an average rate of '}
+                 'average': ' at an average rate of ',
+                 'equivalent': ' by the equivalent of '}
         if style == 'increase':
             atxtd[None] = ' '
         atxt = atxtd[adj]
@@ -743,11 +740,12 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'total': ' in total',
                  'average': ' on an average basis'}
         atxt = atxtd[adj]
+        atxt2 = 'the equivalent of ' if adj == 'equivalent' else ''
         stxt = ('contributed', 'to') if neg == False else ('subtracted', 'from')
         ttxt = f' over the {time_str} period' if time_str != '' else ''
-        text = f'{stxt[0]} {val}{ptxt}{atxt}{ttxt}'
+        text = f'{stxt[0]} {atxt2}{val}{ptxt}{atxt}{ttxt}'
         if style == 'contribution_to':
-            text = f'{stxt[0]} {val}{ptxt} {stxt[1]}'
+            text = f'{stxt[0]} {atxt2}{val}{ptxt} {stxt[1]}'
         if insig == True:
             text = 'did not contribute'
             if style == 'contribution_to':
@@ -769,11 +767,12 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'total': f'a total {time_str}{stxt1} of',
                  'average': f'an average {time_str}{stxt1} of'}
         atxt = atxtd[adj]
-        text = f'{atxt} {val}{ptxt}'
+        atxt2 = 'the equivalent of ' if adj == 'equivalent' else ''
+        text = f'{atxt} {atxt2}{val}{ptxt}'
         if insig == True:
             text = 'virtually no change'
             if style[:3] == 'con':
-                text = 'virtually no contribition'
+                text = 'virtually no contribution'
             
     elif style in ['increase_end', 'contribution_end']:
         stxt = 'increase' if neg == False else 'decrease'
@@ -793,6 +792,20 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             text = 'virtually no change'
             if style[:3] == 'con':
                 text = 'virtually no contribution'
+                
+    elif style == 'above_below':
+        stxt = 'above' if neg == False else 'below'
+        text = f'{val}{ptxt} {stxt}'
+        if insig == True:
+            text = 'in line with'
+            
+    elif style in ['equivalent', 'eq']:
+    	atxt = ' of GDP' if adj in ['gdp', 'GDP'] else ''
+    	text = f'equivalent to {val}{ptxt}{atxt}'
+    	
+    elif style == 'added_lost':
+    	stxt = 'added' if neg == False else 'lost'
+    	text = f'{stxt} {val}{ptxt}'
     
     if casual == True:
         text = (text.replace('decreased', 'fell')
@@ -804,7 +817,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                     .replace('decrease', 'fall')
                     .replace('subtraction', 'reduction')
                     .replace('increase of', 'growth of')
-                    .replace('decrease of', 'fall of'))
+                    .replace('decrease of', 'fall of')
+                    .replace('added', 'gained'))
                     
     if obj == 'plural':
         text = (text.replace('was', 'were'))
