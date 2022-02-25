@@ -9,11 +9,16 @@ import sqlite3
 
 qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 
+numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
+           '4.0': 'four', '5.0': 'five', 
+           '6.0': 'six', '7.0': 'seven', 
+           '8.0': 'eight', '9.0': 'nine'}
+
 
 def bea_api_nipa(table_list, bea_key, freq='Q'):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(1988, 2022)))
+    years = ','.join(map(str, range(1988, 2023)))
 
     api_results = []
 
@@ -168,7 +173,14 @@ def growth_contrib_ann(df, srs):
 def weighted_average(df, variable):
     return np.average(df[variable], weights=df['BASICWGT'])
 
-    
+
+def m3rate(series):
+    '''Three-month / three-month growth rate'''
+    return ((((series.rolling(3).mean() / 
+               series.rolling(3).mean().shift(3)) 
+              ** 4) - 1) * 100).dropna(how='all')
+              
+                  
 def write_txt(filename, filetext):
     ''' Write label to txt file '''
     with open(filename, 'w') as text_file:
@@ -191,6 +203,7 @@ def dtxt(date):
 	     'mon4': date.strftime(f'`{date.strftime("%y")} {date.strftime("%b")}'),
 	     'mon5': date.strftime('%Y-%m'),
 	     'mon6': f'{date.strftime("%b")} `{date.strftime("%y")}',
+	     'mon7': f'{date.strftime("%b")} {date.strftime("%y")}',
 	     'day1': date.strftime('%B %-d, %Y'),
 	     'day2': date.strftime('%b %-d, %Y'),
 	     'day3': date.strftime('%d'),
@@ -418,11 +431,12 @@ def c_line(color):
 	
 def c_box(color):
 	'''Return (see []) for a given color'''
-	return f'(see (see\cbox{{{color}}}))'
+	return f'(see\cbox{{{color}}})'
     
     
 def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
-             anchor=None, digits=1, full_year=False, dollar=False):
+             anchor=None, digits=1, full_year=False, dollar=False,
+             colon=True, align='left'):
     '''
     Generate small dot and value text for end of line plot.
     Input is pandas series and color. Output is tex code. 
@@ -436,9 +450,9 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
         else:
             anchor_opt = f'anchor={anchor.lower()}, '
         
-    pct = ''
-    if percent == True:
-        pct = '\%'
+    col = ':' if colon == True else ''
+    
+    pct = '' if percent == False else '\%'
         
     dt = ''    
     if date != None:
@@ -453,15 +467,15 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
         mo = series.index[-1].strftime('%b')
         day = series.index[-1].strftime('%d')
         if date.lower() in ['month', 'mon', 'm']:
-            dt = f'\scriptsize {mo}\\\\ \scriptsize {yr}: \\\\ '
+            dt = f'\scriptsize {mo}\\\\ \scriptsize {yr}{col} \\\\ '
         elif date.lower() in ['quarter', 'qtr', 'q']:
-            dt = f'\scriptsize {yr}\\\\ \scriptsize {qtr}: \\\\ '
+            dt = f'\scriptsize {yr}\\\\ \scriptsize {qtr}{col} \\\\ '
         elif date.lower() in ['year', 'yr', 'y']:
-            dt = f'\scriptsize {yr}: \\\\ '
+            dt = f'\scriptsize {yr}{col} \\\\ '
         elif date.lower() == 'fy':
             dt = f'\scriptsize FY{yr} \\\\ '.replace('`', '')
         elif date.lower() in ['d', 'day']:
-        	dt = f'\scriptsize {mo} {day}\\\\ \scriptsize {yr}: \\\\ '
+        	dt = f'\scriptsize {mo} {day}\\\\ \scriptsize {yr}{col} \\\\ '
         	yr = series.index[-1].strftime('%Y')
         
     latest = series.iloc[-1]
@@ -476,11 +490,14 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
     dol = ''
     if dollar == True:
     	dol = '\$'
+    elif dollar == 'thousands':
+    	dol = '\$'
+    	vtxt = f'{latest * 1000:,.0f}'
     
     offs = f'{offset}cm'
     datetime = dtxt(series.index[-1])['datetime']
     text = (f'\\node[label={{[yshift={offs}, {anchor_opt}'+
-            f'align=left]0:{{{dt}\scriptsize {dol}{vtxt}{pct}}}}}, circle, '+
+            f'align={align}]0:{{{dt}\scriptsize {dol}{vtxt}{pct}}}}}, circle, '+
             f'{color}, fill, inner sep={size}pt] at '+
             f'(axis cs:{datetime}, {latest}) {{}};')
     
@@ -808,7 +825,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     	text = f'{stxt} {val}{ptxt}'
     
     if casual == True:
-        text = (text.replace('decreased', 'fell')
+        text = (text.replace('added', 'gained')
+        		    .replace('decreased', 'fell')
                     .replace('contributed', 'added')
                     .replace('increased', 'grew')
                     .replace('contribute', 'add')
@@ -817,8 +835,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                     .replace('decrease', 'fall')
                     .replace('subtraction', 'reduction')
                     .replace('increase of', 'growth of')
-                    .replace('decrease of', 'fall of')
-                    .replace('added', 'gained'))
+                    .replace('decrease of', 'fall of'))
                     
     if obj == 'plural':
         text = (text.replace('was', 'were'))
