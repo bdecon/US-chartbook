@@ -436,7 +436,7 @@ def c_box(color):
     
 def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
              anchor=None, digits=1, full_year=False, dollar=False,
-             colon=True, align='left'):
+             colon=True, align='left', loc='end'):
     '''
     Generate small dot and value text for end of line plot.
     Input is pandas series and color. Output is tex code. 
@@ -444,6 +444,12 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
     switching anchor south (text above node).
     '''  
     anchor_opt = ''
+    if loc == 'end':
+    	i = -1
+    elif loc == 'start':
+    	i = 0
+    	align='right'
+    	anchor_opt = 'anchor=east, '
     if anchor != None:
         if anchor.lower() not in ['south', 'north']:
             print('Anchor should be south or north')
@@ -460,12 +466,12 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
         						'fy', 'day', 'd', 
                                 'quarter', 'qtr', 'q']:
             print('Date should be month or quarter')
-        yr = series.index[-1].strftime('`%y')
+        yr = series.index[i].strftime('`%y')
         if full_year == True:
-        	yr = series.index[-1].strftime('%Y')
-        qtr = series.index[-1].to_period('Q').strftime('Q%q')
-        mo = series.index[-1].strftime('%b')
-        day = series.index[-1].strftime('%d')
+        	yr = series.index[i].strftime('%Y')
+        qtr = series.index[i].to_period('Q').strftime('Q%q')
+        mo = series.index[i].strftime('%b')
+        day = series.index[i].strftime('%d')
         if date.lower() in ['month', 'mon', 'm']:
             dt = f'\scriptsize {mo}\\\\ \scriptsize {yr}{col} \\\\ '
         elif date.lower() in ['quarter', 'qtr', 'q']:
@@ -476,31 +482,42 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
             dt = f'\scriptsize FY{yr} \\\\ '.replace('`', '')
         elif date.lower() in ['d', 'day']:
         	dt = f'\scriptsize {mo} {day}\\\\ \scriptsize {yr}{col} \\\\ '
-        	yr = series.index[-1].strftime('%Y')
+        	yr = series.index[i].strftime('%Y')
         
-    latest = series.iloc[-1]
-    vtxt = f'{latest:.1f}'
+    lt = series.iloc[i]
+    vtxt = f'{lt:.1f}'
     if digits == 2:
-    	vtxt = f'{latest:.2f}'
+    	vtxt = f'{lt:.2f}'
     elif digits == 0:
-    	vtxt = f'{latest:.0f}'
+    	vtxt = f'{lt:.0f}'
     elif digits == 'comma':
-    	vtxt = f'{latest:,.0f}'
+    	vtxt = f'{lt:,.0f}'
+    elif loc == 'start':
+    	vtxt = f'{vtxt} '
     	
     dol = ''
     if dollar == True:
     	dol = '\$'
     elif dollar == 'thousands':
     	dol = '\$'
-    	vtxt = f'{latest * 1000:,.0f}'
+    	vtxt = f'{lt * 1000:,.0f}'
     
+    if (offset == True) and (date != None):
+        vmax = series.max()
+        vmin = series.min()
+        vrng = vmax - vmin
+        offset = (-0.35 if lt > vmax - (vrng*0.1) 
+                  else 0.35 if lt < vmin + (vrng*0.1) 
+                  else 0)
+    elif (offset == True) and (date == None):
+        offset = 0
     offs = f'{offset}cm'
-    datetime = dtxt(series.index[-1])['datetime']
+    datetime = dtxt(series.index[i])['datetime']
     text = (f'\\node[label={{[yshift={offs}, {anchor_opt}'+
             f'align={align}]0:{{{dt}\scriptsize {dol}{vtxt}{pct}}}}}, circle, '+
             f'{color}, fill, inner sep={size}pt] at '+
-            f'(axis cs:{datetime}, {latest}) {{}};')
-    
+            f'(axis cs:{datetime}, {lt}) {{}};')
+
     return text
     
 
@@ -510,7 +527,7 @@ def node_adjust(df, color_dict):
     std = df.std().std()
     lt = df.iloc[-1]
     adj_list = lt[lt.sort_values().diff() < std]
-    d = {name: std/2 for name in adj_list.index}
+    d = {name: abs(std/2) for name in adj_list.index}
     return d
 
 
@@ -737,12 +754,15 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'saa': ' at a seasonally-adjusted and annualized rate of ', 
                  'saar': ' at a seasonally-adjusted annualized rate of ', 
                  'total': ' by a total of ', 
+                 'inflation': ' the inflation rate by ',
                  'average': ' at an average rate of ',
                  'equivalent': ' by the equivalent of '}
         if style == 'increase':
             atxtd[None] = ' '
         atxt = atxtd[adj]
         stxt = 'increased' if neg == False else 'decreased'
+        if adj == 'inflation':
+        	stxt = 'increased' if neg == False else 'reduced'
         ttxt = f' over the {time_str} period' if time_str != '' else ''
         text = f'{stxt}{atxt}{val}{ptxt}{ttxt}'
         if insig == True:
@@ -816,6 +836,9 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         if insig == True:
             text = 'in line with'
             
+    elif style == 'plain':
+    	text = f'{val}{ptxt}'
+    
     elif style in ['equivalent', 'eq']:
     	atxt = ' of GDP' if adj in ['gdp', 'GDP'] else ''
     	text = f'equivalent to {val}{ptxt}{atxt}'
@@ -829,7 +852,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         		    .replace('decreased', 'fell')
                     .replace('contributed', 'added')
                     .replace('increased', 'grew')
-                    .replace('contribute', 'add')
+                    .replace('contribute ', 'add ')
+                    .replace('subtract ', 'remove ')
                     .replace('a contribution', 'an addition')
                     .replace('contribution', 'addition')
                     .replace('decrease', 'fall')
