@@ -384,7 +384,7 @@ def bls_api(series, date_range, bls_key):
     return df
     
 
-def binned_wage(df, wage_var='WKEARN', percentile=0.1, 
+def binned_wage(df, wage_var='WKEARN', percentile=0.1, wgt_var='PWORWGT',
                 bins=np.arange(-25, 3000, 50)):
     '''
     Returns wage estimate based on linear interpolation through 
@@ -394,7 +394,7 @@ def binned_wage(df, wage_var='WKEARN', percentile=0.1,
     bins = list of bin start locations
     '''
     cdf = (df.groupby(pd.cut(df[wage_var], bins))
-             .PWORWGT.sum().cumsum() / df.PWORWGT.sum())
+             [wgt_var].sum().cumsum() / df[wgt_var].sum())
     
     return np.interp(percentile, cdf, bins[1:])
         
@@ -488,6 +488,8 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
     vtxt = f'{lt:.1f}'
     if digits == 2:
     	vtxt = f'{lt:.2f}'
+    elif digits == 3:
+    	vtxt = f'{lt:.3f}'
     elif digits == 0:
     	vtxt = f'{lt:.0f}'
     elif digits == 'comma':
@@ -524,11 +526,61 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
 def node_adjust(df, color_dict):
     '''Return offsets for node text'''
     df = df[color_dict.keys()]
-    std = df.std().std()
+    std = df.std().max()
     lt = df.iloc[-1]
     adj_list = lt[lt.sort_values().diff() < std]
     d = {name: abs(std/2) for name in adj_list.index}
     return d
+
+
+def node_adj(df):
+    '''
+    Return dict with adjustment values for end node
+    for each column in df.
+    '''
+    d = {name: 0 for name in df.columns}
+    r = df.iloc[-1].sort_values()
+    u = (df.max().max() - df.min().min()) / 16
+    if len(df.columns) >= 4:
+        if len(r.diff(3)[r.diff(3) < (u*3)]) > 0:
+            print('Too many nodes conflicting, '+
+                  'no results returned')
+            return d
+    if len(df.columns) >= 3:
+        t3 = r.diff(2)[r.diff(2) < (u*2)]
+        if len(t3) > 0:
+            print('Three conflicting nodes')
+            t2 = r.diff()[r.diff() < (u)]
+            if len(t2) == 2:
+                g1 = (((u) - t2[0]) / u) * 0.35
+                i = r.index[r.index.get_loc(t2.index[0]) - 1]
+                d[i] = - (g1)
+                g2 = (((u) - t2[1]) / u) * 0.35
+                d[t2.index[-1]] = (g2)
+            if len(t2) == 1:
+                g = ((u - t2[0]) / u) * 0.35
+                if t3.index[0] == t2.index[0]:
+                    d[t3.index[0]] = g
+                if t3.index[0] != t2.index[0]:
+                    bloc = r.index[r.index.get_loc(
+                        t2.index[0]) - 1]
+                    d[bloc] = - g
+            return d
+    if len(df.columns) >= 2:
+        t2 = r.diff()[r.diff() < (u)]
+        if len(t2) == 1:
+            g = ((u - t2[0]) / u) * 0.35
+            d[t2.index[0]] = (g/2)
+            d[r.index[r.index.get_loc(t2.index[0]) - 1]] = - (g/2)
+        if len(t2) == 2:
+            g1 = ((u - t2[0]) / u) * 0.35
+            d[t2.index[0]] = (g1/2)
+            d[r.index[r.index.get_loc(t2.index[0]) - 1]] = - (g1/2) 
+            g2 = ((u - t2[1]) / u) * 0.35
+            d[t2.index[1]] = (g2/2)
+            d[r.index[r.index.get_loc(t2.index[1]) - 1]] = - (g2/2)
+            print('two sets of conflicting nodes')
+        return d
 
 
 def val_inc_pp(val, threshold=0.1):
