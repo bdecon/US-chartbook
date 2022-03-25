@@ -14,6 +14,8 @@ numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three',
            '6.0': 'six', '7.0': 'seven', 
            '8.0': 'eight', '9.0': 'nine'}
 
+numbers2 = {0: 'no', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 
+           6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten'}
 
 def bea_api_nipa(table_list, bea_key, freq='Q'):
     ''' Return tables in table list for years in range'''

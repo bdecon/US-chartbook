@@ -142,7 +142,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2022-03-15},
+		xmax={2022-03-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -162,7 +162,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2022-03-15},
+		xmax={2022-03-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -173,7 +173,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2022-03-15},
+		xmax={2022-03-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
@@ -183,7 +183,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2022-03-15},   
+		xmin={2018-01-01}, xmax={2022-03-31},   
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
 		yticklabel style={text width=1.0em},
@@ -193,7 +193,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2022-03-15}, max space between ticks=40,	    
+		xmax={2022-03-31}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
@@ -301,6 +301,9 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/ccdebtbar.csv}\ccbar
 	\pgfplotstableread[header=true, col sep=comma]{data/gdp_rec.csv}\gdprec
 	\pgfplotstableread[header=true, col sep=comma]{data/educ_wage_bar.csv}\web
+	\pgfplotstableread[header=true, col sep=comma]{data/unemp_reason_mon.csv}\unrsn
+	\pgfplotstableread[header=true, col sep=comma]{data/inf_exp_ch.csv}\rych
+	\pgfplotstableread[header=true, col sep=comma]{data/inf_exp_ch2.csv}\rytch
 	
 	% Required for bar plots with individual bar colors for categories
 	\pgfplotsset{discard if not/.style 2 args={
@@ -729,7 +732,7 @@ The US population is increasing (see {\color{lime!90!green}\textbf{---}}), thoug
 \subsubsection*{Recessions}
 \vspace{-1mm}
 
-\small The long-term pattern in real GDP growth is often described as the business cycle. Periods of economic growth are interrupted every 7--12 years by an \textbf{economic recession}, a period where the amount of economic activity falls. Since 1989, there have been four recessions officially \href{https://www.nber.org/research/business-cycle-dating}{identified} by the National Bureau of Economic Research (NBER).
+\small The long-term pattern in real GDP growth is often described as the business cycle. Periods of economic growth are interrupted every 7--12 years by an \textbf{economic recession}, a period where the amount of economic activity falls. The National Bureau of Economic Research (NBER) \href{https://www.nber.org/research/business-cycle-dating}{identify} four recessions since 1989.
 
 \input{text/recessions.txt}
 \vspace{0.5mm}
@@ -1601,7 +1604,7 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \end{minipage} \hspace{8mm}
 \begin{minipage}{0.43\textwidth}
 \normalsize \textbf{Median (Middle Quintile Average)}\\
-\footnotesize{\textit{per capita, thousands of \input{text/pi_date.txt}\unskip \ US dollars}}
+\footnotesize{\textit{per householder, thousands of \input{text/pi_date.txt}\unskip \ US dollars}}
 \vspace{4.8cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
@@ -2092,20 +2095,20 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsubsection*{Saving}
-\small The portion of after-tax income that is not spent by households is considered \textbf{\href{https://www.bea.gov/index.php/help/glossary/personal-saving}{personal saving}}, from an economic accounting perspective. Personal saving as a share of disposable personal income is the \textit{personal saving rate}. Households use savings for investment and because income can be more volatile than expenses. However, economists also point out that aggregate personal saving is a direct reduction in corporate profits, as it represents income to persons that was at some point a business expense, but that does not get returned to businesses as revenue through consumer spending. 
+\subsubsection*{Personal Saving}
+\small The after-tax income that people do not spend is \href{https://www.bea.gov/index.php/help/glossary/personal-saving}{considered} \textbf{personal saving}, from an economic accounting perspective. Peoples' savings are invested through the financial system and become the current fixed investment or consumption activities of other groups in the economy. Savers generally receive a return from this investment.
 
 \input{text/psavert.txt}
 \vspace{1mm}
 
 \normalsize \textbf{Personal Saving Rate}\\
-\footnotesize{\textit{personal saving as a share of disposable personal income}}
-\vspace{3.4cm}
+\footnotesize{\textit{saving as a share of after-tax income, percent}}
+\vspace{3.1cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30}, enlarge y limits={0.01},
 		yticklabel style={text width=1.0em}, ymin=0, ymax=29.8,
-		xticklabel={`\short{\year}}, height=5.4cm, width=12.1cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.1cm, width=12.0cm, clip=false]
 	\rbars
 	\stdline{red}{date}{A072RC}{data/psavert.csv}
 	\input{text/psavert_node.txt}
@@ -2113,46 +2116,39 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{psavert.csv}
-\vspace{4mm}
+\vspace{2mm}
 
-\normalsize \textbf{Distribution of saving}
-\vspace{-1mm}
+\subsubsection*{Distribution of Saving}
+\small With such a wide distribution of after-tax income, \textbf{saving rates vary massively between households}. Some households dissave and others save more than two typical incomes. Saving by income quintile is calculated using the \href{https://www.bls.gov/cex/}{Consumer Expenditure Survey} (CE) as after-tax income minus spending (other than spending on pensions). The following chart shows the average saving of each group divided by the US median personal income, thus reporting saving, or dissaving, in terms of a typical annual US income. 
+\vspace{1mm}
 
-\small At any given point in time, \textbf{saving rates vary massively between households}; some households are dissaving and others are saving more than a typical income. The \href{https://www.bls.gov/cex/}{Consumer Expenditure Survey} (CE) provides data on consumer spending and income. Saving can be estimated from these data as after-tax income minus spending (other than spending on pensions). 
-\end{minipage}
-
-\begin{minipage}{0.4\textwidth}
+\begin{minipage}{0.55\textwidth}
 \normalsize \textbf{Saving Rate by Income Quintile}\\
-\footnotesize{\textit{share of median personal income, percent}}\\
-\hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{income quintile average saving, as share of \\ US median personal income, percent}}\\
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={-100, -50, 0, 50, 100, 150, 200, 250, 300}, 
-		enlarge y limits={0.1}, ymin=-55,
-		xticklabel={`\short{\year}}, yticklabel style={text width=1.36em}, 
-		height=7.3cm, width=6.8cm, clip=false]
+		enlarge y limits={0.02}, ymin=-70,
+		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em}, 
+		height=7.6cm, width=6.9cm, clip=false]
 	\rbars
 	\stdline{blue!80!cyan!80!black}{date}{DI_SAVE_RT_6}{data/save_dist.csv}
 	\stdline{red!80!black}{date}{DI_SAVE_RT_5}{data/save_dist.csv}
 	\stdline{green!80!blue!85!black}{date}{DI_SAVE_RT_4}{data/save_dist.csv}
 	\stdline{red!20!orange!95!black}{date}{DI_SAVE_RT_3}{data/save_dist.csv}
 	\stdline{violet}{date}{DI_SAVE_RT_2}{data/save_dist.csv}
-	\input{text/save_dist_node6.txt}
-	\input{text/save_dist_node5.txt}
-	\input{text/save_dist_node4.txt}
-	\input{text/save_dist_node3.txt}
-	\input{text/save_dist_node2.txt}
-	\stdnode{1.2cm}{3.7cm}{\footnotesize \color{blue!80!cyan!80!black}Top 20}
-	\stdnode{4.3cm}{2.1cm}{\footnotesize \color{red!80!black}60-80}
-	\stdnode{4.2cm}{1.5cm}{\footnotesize \color{green!80!blue!85!black}Middle 20}
-	\stdnode{1.0cm}{0.72cm}{\footnotesize \color{red!20!orange!95!black}20-40}
-	\stdnode{4.0cm}{0.15cm}{\footnotesize \color{violet}Bottom 20}
+	\input{text/save_dist_nodes.txt}
+	\absnode{{1991-06-01}}{264}{\footnotesize \color{blue!80!cyan!80!black}Top 20 Percent\\\footnotesize \color{blue!80!cyan!80!black}of Households\\\footnotesize \color{blue!80!cyan!80!black}by Income}
+	\absnode{{2010-10-01}}{100}{\footnotesize \color{red!80!black}Percentiles\\\footnotesize \color{red!80!black}\ \ \ \ 60--80}
+	\absnode{{2012-07-01}}{38}{\footnotesize \color{green!80!blue!85!black}40--60}
+	\absnode{{2009-04-01}}{-14}{\footnotesize \color{red!20!orange!95!black}20--40}
+	\absnode{{2009-10-01}}{-45}{\footnotesize \color{violet}Bottom 20}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Author's calculations from CE} \hfill \tbllink{save_dist.csv} 
-\end{minipage}\hspace{5.0mm}
-\begin{minipage}{0.325\textwidth}
-\small The bottom quintile, or fifth of households, by total money income, are estimated to dissave in \input{text/ce_year.txt}\unskip, equivalent to more than a third of a median salary (see {\color{violet}\textbf{---}}). This is a combination of people going into debt and retirees dissaving. Households in the top 20 percent of the population by income save more than two typical incomes, on average in \input{text/ce_year.txt} (see {\color{blue!80!cyan!80!black}\textbf{---}}). 
-
-The middle fifth of households, which includes the 40th to 60th percentiles by total money income, saves an amount equivalent to a fairly high portion of a median salary (see {\color{green!80!blue!85!black}\textbf{---}}). Relative to data from the Bureau of Economic Analysis, the CE data undercount income. Still, the distribution of saving rates is very wide.
+\end{minipage}\hfill
+\begin{minipage}{0.38\textwidth}
+\small \input{text/save_dist.txt}
+\end{minipage}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -3930,6 +3926,106 @@ Over the past thirty years, welfare payments, including those made to businesses
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\subsubsection*{Composition of Federal Government Spending}
+\small Over the long-term, there have been important shifts in the \textbf{composition of federal spending}. The ways federal spending varies from these long-term trends, in the short-term, are also important. 
+
+Over the long-term, Office of Management and Budget (OMB) data \href{https://www.whitehouse.gov/omb/historical-tables/}{show} \input{text/gov_exp_comp1.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Composition of Federal Government Outlays}\\
+\footnotesize{\textit{share of total, percent}}
+\vspace{1mm}
+
+\begin{minipage}{0.58\textwidth}
+\small {Since 1990, by Budget Enforcement Act Type}\\
+\vspace{5.0cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\shdateaxisticks, enlarge y limits=0.02, enlarge x limits={0.02}, 
+		yticklabel style={text width=1.5em}, ymin=0, ymax=100, xmin={1990-01-01}, 
+		xmax={2020-10-01}, clip=false,  ytick={0, 50, 100}, 
+		width=7.4cm, height=7.2cm, xticklabel={\year}, ]
+	\rbars
+	\abar{green!80!blue!68!black}{date}{National Defense}{data/gov_exp_omb.csv}
+	\abar{green!78!black}{date}{Non- defense}{data/gov_exp_omb.csv}
+	\abar{blue!65!black}{date}{MP Medicare}{data/gov_exp_omb.csv}	
+	\abar{cyan!50!blue!95!white}{date}{MP Social Security}{data/gov_exp_omb.csv}
+	\abar{cyan!95!white}{date}{Social Safety Net}{data/gov_exp_omb.csv}	
+	\abar{cyan!40!white}{date}{Other}{data/gov_exp_omb.csv}	
+	\abar{orange!80!yellow}{date}{Net Interest}{data/gov_exp_omb.csv}	
+	\absnode{{1990-01-01}}{{98}}{\footnotesize \color{white}\textbf{Interest}}
+	\absnode{{1989-05-01}}{{86.5}}{\footnotesize \color{black!90!white}\textbf{Other}}
+	\absnode{{1991-01-01}}{{78}}{\footnotesize \color{white}\textbf{Social Safety Net}}
+	\absnode{{1990-01-01}}{{62.5}}{\footnotesize \color{white}\textbf{Social Security}}
+	\absnode{{1995-01-01}}{{44.5}}{\footnotesize \color{white}\textbf{Medicare}}
+	\absnode{{1993-01-01}}{{30.5}}{\footnotesize \color{white}\textbf{Non-Defense}}
+	\absnode{{1990-01-01}}{{14}}{\footnotesize \color{white}\textbf{National Defense}}
+  	\node[rotate=90, anchor=west, shift={(0cm,0.5cm)}] at (axis cs:{1991-04-01},4){\scriptsize \color{green!80!blue!70!black} Discretionary};
+	\input{text/gov_exp_nodes.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Office of Management and Budget} \hfill \tbllink{gov_exp_omb.csv}
+\end{minipage} \hfill \begin{minipage}{0.335\textwidth}
+\small {Recent Monthly, by Type*}\\
+\vspace{5.0cm}
+
+\begin{tikzpicture}[overlay]
+	\begin{axis}[\ltdateaxisticks, enlarge y limits=0.02, enlarge x limits={0.01}, 
+		yticklabel style={text width=1.5em}, ymin=0, ymax=100, ytick=false,
+  		ymajorticks=false, clip=false,
+		width=4.7cm, height=7.2cm, xticklabel={`\short{\year}}, ]
+	\rbar
+	\abar{green!80!blue!68!black}{date}{National Defense}{data/gov_exp_mts.csv}
+	\abar{violet!50!black}{date}{Health}{data/gov_exp_mts.csv}
+	\abar{blue!65!black}{date}{Medicare}{data/gov_exp_mts.csv}	
+	\abar{cyan!50!blue!95!white}{date}{Social Security}{data/gov_exp_mts.csv}
+	\abar{brown}{date}{Income Security}{data/gov_exp_mts.csv}	
+	\abar{yellow!50!brown!55!white}{date}{Other}{data/gov_exp_mts.csv}	
+	\abar{orange!80!yellow}{date}{Net Interest}{data/gov_exp_mts.csv}	
+	\absnode{{2017-01-01}}{{100.9}}{\footnotesize \color{white}\textbf{Interest}}
+	\absnode{{2017-01-01}}{{91}}{\footnotesize \color{black!90!white}\textbf{Other*}}
+	\absnode{{2017-01-01}}{{76}}{\footnotesize \color{white}\textbf{Income Security}}
+	\absnode{{2017-01-01}}{{58}}{\footnotesize \color{white}\textbf{Social Security}}
+	\absnode{{2017-01-01}}{{40}}{\footnotesize \color{white}\textbf{Medicare}}
+	\absnode{{2017-01-01}}{{26}}{\footnotesize \color{white}\textbf{Health}}
+	\absnode{{2017-01-01}}{{11}}{\footnotesize \color{white}\textbf{National Defense}}
+	\input{text/gov_exp_nodes2.txt}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Treasury} \hfill \tbllink{gov_exp_mts.csv}
+\end{minipage}
+
+\footnotesize{* The two charts use different data sources with different categories and therefore do not match.}
+\vspace{3mm}
+
+\small The Treasury Bureau of Fiscal Service \href{https://www.fiscal.treasury.gov/reports-statements/mts/}{report} federal outlays by type on a monthly basis (see right chart above). The categories used in the Treasury monthly report are not the same as those used in the OMB data, so the two charts above should not be compared. The higher-frequency Treasury data, however, are helpful for showing short-term changes, and \textbf{recent changes in the composition of federal spending}. 
+
+\input{text/gov_exp_comp2.txt}
+
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small \input{text/gov_exp_comp3.txt}
+
+Within the ``other'' category, the biggest changes during the pandemic came from business and housing subsidies (commerce and housing credit) and transfers to state and local governments (general government). The category is described in the following table. 
+\vspace{2mm}
+
+\normalsize \textbf{Composition of Federal Government Outlays}\\
+\footnotesize{\textit{share of total, percent}\\
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{1.2pt} \color{black!90}
+{\renewcommand{\arraystretch}{1.55}
+\hspace*{-2mm} \begin{tabular}{p{58mm} R{9.0mm} R{9.0mm} R{9.0mm} R{9.0mm} R{9.0mm} R{9.0mm}}
+		\input data/gov_exp_comp.tex \hline
+	\end{tabular}
+}}
+		
+\vspace{-2mm}
+\footnotesize{Source: Treasury Bureau of Fiscal Service}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
 \subsubsection*{Government Jobs}
 \small Government workers provide public services to the population. As examples, federal government jobs include the Postal Service, state government jobs include teachers and social workers, and local governments employ firefighters and utilities workers. Additionally, government employment is traditionally a relatively-stable source of aggregate household income. Government jobs are also disproportionately likely to provide health insurance and retirement benefits.  
 \end{minipage}
@@ -4073,7 +4169,7 @@ Over the past thirty years, welfare payments, including those made to businesses
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Debt Sustainability}
-\small Changes in the ratio of federal government debt to GDP can be \href{https://www.imf.org/en/Publications/TNM/Issues/2016/12/31/A-Practical-Guide-to-Public-Debt-Dynamics-Fiscal-Sustainability-and-Cyclical-Adjustment-of-23498}{decomposed} to understand how various economic forces affect the sustainability of borrowing. Specifically, \textbf{debt sustainability} is affected not only by borrowing but also by changes in real interest rates and economic growth. 
+\small Changes in the ratio of federal government debt to GDP can be \href{https://www.imf.org/en/Publications/TNM/Issues/2016/12/31/A-Practical-Guide-to-Public-Debt-Dynamics-Fiscal-Sustainability-and-Cyclical-Adjustment-of-23498}{decomposed} to understand how various economic forces affect the trajectory of the debt relative to our ability to service it. Specifically, \textbf{debt sustainability} is affected not only by borrowing but also by changes in real interest rates and economic growth. 
 
 In a mechanical way, government debt is the result of the accumulation of past deficits. When the government spends more than it takes in through taxes, it borrows the difference, which adds to the debt. Importantly, some government spending is interest payments on the debt. The \textit{primary balance} measures the gap between spending excluding interest payments and revenue. Interest payments are a product of the interest rate and the existing debt. Higher real interest rates mean larger interest payments which increase deficits and, in turn, increase debt.
 
@@ -5685,45 +5781,68 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 \begin{minipage}{0.76\textwidth} 
 \subsubsection*{Reasons for Unemployment}
 \vspace{-0.5mm}
-\small There are multiple reasons for unemployment. Some unemployed lost a job, others left a job voluntarily. Some of those looking for a job had previously left the labor force, for example to take care of a child. Lastly, some unemployed are looking for their first job. 
+\small \input{text/unemp_rsn.txt}
 
-The composition of the unemployed is affected by economic conditions. During the trough of a business cycle, most unemployed are those who lost a job, for example from layoffs, or had a temporary job end (see\cbox{blue!60!purple}). During and after an economic downturn, it takes young people longer to find their first job. As a result, a higher portion of unemployed are new-entrants (see\cbox{red}) during the trough of a business cycle.
+People's reasons for unemployment reflect economic conditions. In an economic downturn, job losses increase the unemployment rate and workers who lose jobs are a large share of the unemployed. A downturn also makes it harder for young people to find their first job. In contrast, an economic boom reduces job losses and improves job-finding. 
 
-In contrast during the peak of the business cycle, a much larger share of the unemployed are re-entrants to the labor market, meaning they had previously stopped looking for work but are looking for a job again (see\cbox{orange!80!yellow}). Lastly, good economic conditions can give individuals the confidence to leave jobs they do not enjoy and look for a new job. The share of unemployed who left a job voluntarily (see\cbox{yellow}) is highest during the peak of the business cycle.
+Some categories of unemployment make up a bigger share of the total during an economic boom. An economic boom can entice people to re-enter the job market, and encourage workers to quit and look for a new job. 
+\vspace{1mm}
+%\input{text/unemp_reason.txt}
 
-\input{text/unemp_reason.txt}
-\end{minipage} 
-
-\begin{minipage}{0.99\textwidth} 
 \normalsize \textbf{Unemployment by Reason}\\
-\footnotesize{\textit{unemployed share of labor force, by reason for unemployment}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
-		width=16.5cm, enlarge x limits=0, 
-		height=5.6cm, ymin=0.7, legend cell align={left}, reverse legend,
-		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=0.7em}, 
-		legend style={fill=white, legend columns=1, at={(0.28, 0.99)}}]
-	\rbars
-	\ctsbar{blue!60!purple}{date}{Job Loser}{data/unemp_reason.csv}{1.2pt}
-	\ctsbar{yellow}{date}{Job Leaver}{data/unemp_reason.csv}{1.2pt}
-	\ctsbar{orange!80!yellow}{date}{Re-entrant}{data/unemp_reason.csv}{1.2pt}
-	\ctsbar{red}{date}{New entrant}{data/unemp_reason.csv}{1.2pt}
-	\legend{Job Loser, Job Leaver, Re-entrant, New Entrant};
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp_reason.csv}
-\vspace{2mm}
+\footnotesize{\textit{share of labor force, percent, annual average \hspace{36mm} recent data}}
+\vspace{3.6cm}
 
-\normalsize \textbf{Unemployment Reasons and Employed Not at Work}\\
+\hspace{3mm} \begin{tikzpicture}[overlay]
+	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=30pt}]
+	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
+		width=9.0cm, height=5.6cm, enlarge x limits=0.01, 
+		ymin=0.3, ymax=9.6, legend cell align={left}, xmin={1989-01-01}, xmax={2023-01-01},
+		xticklabel={\short{\year}}, clip=false, yticklabel style={text width=1.2em}, 
+		legend style={fill=white, legend columns=2, at={(0.56, 1.01)}}]
+	\rbars
+	\input{text/unemp_rsn_ltbar.txt}
+	\ctsbar{red!75!orange!70!white}{date}{Job Loser}{data/unemp_reason.csv}{5.4pt}
+	\ctsbar{purple!80!red!85!black}{date}{New entrant}{data/unemp_reason.csv}{5.4pt}
+	\ctsbar{blue!70!teal!70!gray!62!white}{date}{Re-entrant}{data/unemp_reason.csv}{5.4pt}
+	\ctsbar{blue!72!black}{date}{Job Leaver}{data/unemp_reason.csv}{5.4pt}
+	\legend{,Job Loser, New Entrant, Re-entrant, Job Leaver};
+	\nextgroupplot[\bbar{y}{0}, width=4.0cm, height=5.6cm, yticklabel style={text width=0.8em}, 
+		axis line style={draw=none}, xtick=data, clip=false,
+			xticklabel style={black!80, text width=1.7em, align=center}, 
+	 	enlarge y limits={0.06}, enlarge x limits={0.12}, ymin=0.1,
+	 	xticklabels from table={\unrsn}{date},
+	 	nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}]
+  	\addplot[ybar, bar shift=0pt, fill=none, draw=none, nodes near coords] 
+  		table [x expr=\coordindex, y index=7] {\unrsn};
+	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=red!75!orange!70!white] table [x expr=\coordindex, y=Job Loser]{\unrsn};
+	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=purple!80!red!85!black] table [x expr=\coordindex, y=New entrant]{\unrsn};
+	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=blue!70!teal!70!gray!62!white] table [x expr=\coordindex, y=Re-entrant]{\unrsn};
+	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=blue!72!black] table [x expr=\coordindex, y=Job Leaver]{\unrsn};
+	\input{text/unemp_rsn_ltval.txt}
+	\draw [dashed] (axis cs:{0.5},\pgfkeysvalueof{/pgfplots/ymin}) -- 
+		(axis cs:{0.5}, \pgfkeysvalueof{/pgfplots/ymax});
+	\end{groupplot}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp_reason.csv}
+\vspace{3mm}
+
+\small Many job losses are temporary, particularly during the COVID-19 recession. Other job separations are permanent. \input{text/unemp_rsn2.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Unemployment by Reason}\\
 \footnotesize{\textit{share of labor force, percent}}\\
-\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-	{\renewcommand{\arraystretch}{1.55}
-		\begin{tabular}{p{31mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
-		   R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm}}
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{1.2pt} \color{black!90}
+	{\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{p{36mm} R{9mm} R{9mm} R{9mm} R{9mm} R{9mm} 
+		   R{9mm} R{9mm} R{9mm} R{9mm}}
 			 \input data/unempreason_table.tex \hline
-		\end{tabular}}\vspace{-2mm}
+		\end{tabular}}\vspace{-1mm}
 		
-\footnotesize{Source: Bureau of Labor Statistics; Author}
+\footnotesize{Source: Bureau of Labor Statistics; Author}\\
+\footnotesize{* During the COVID-19 shutdowns some unemployed were incorrectly counted as employed but not at work.}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} 
@@ -7028,25 +7147,104 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. \input
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Real Interest Rates}
-\small Since the purchasing power of the dollar changes over time, inflation is important to money markets. A lender expecting the future purchasing power of the principal to be below its current purchasing power will charge a higher interest rate to make up for the difference. Interest rates that have been adjusted for expected inflation are referred to as real interest rates, and can offer insight into economic and financial conditions. Low real interest rates encourage borrowing and consumption and increased economic activity while high real interest rates discourage borrowing and encourage saving. 
+\small Lenders charger higher interest rates to compensate for expected inflation. Real interest rates, which are adjusted for expected inflation, can offer insight into economic and financial conditions. Low real interest rates encourage borrowing and consumption and increased economic activity while high real interest rates discourage borrowing and encourage saving. 
 
 \input{text/real_rates_basic.txt} 
-\vspace{1mm} 
+\vspace{2mm} 
 
-\normalsize \textbf{Real Interest Rates}\\
-\footnotesize{\textit{yield, inflation-indexed treasuries, percent}}\\
+\normalsize \textbf{Real Treasury Yields}\\
+\footnotesize{\textit{derived from inflation-indexed treasuries, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2, 3, 4}, 
-		xticklabel={`\short{\year}}, height=5.8cm, width=12.1cm, clip=false]
+		xticklabel={\year}, height=5.2cm, width=12.1cm, clip=false]
 	\recbars
-	\stdline{red}{date}{Ten-year}{data/real_rates.csv}
-	\stdline{violet}{date}{Five-year}{data/real_rates.csv}
-	\absnode{{2004-05-01}}{0.8}{\footnotesize \color{violet}\textbf{Five-year}}
-	\absnode{{2009-10-01}}{2.1}{\footnotesize \color{red}\textbf{Ten-year}}
+	\thickline{green!80!blue}{date}{Ten-year}{data/real_rates.csv}
+	\thickline{violet!50!blue!60!white}{date}{Five-year}{data/real_rates.csv}
+	\absnode{{2004-05-01}}{0.8}{\small \color{violet!50!blue!60!white}\textbf{Five-year}}
+	\absnode{{2009-10-01}}{2.2}{\small \color{green!80!blue}\textbf{Ten-year}}
 	\input{text/real_yield_nodes.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{real_rates.csv}
+\vspace{3mm}
+
+\small The Cleveland Fed calculates real yields using a model based on treasury yields, inflation, and financial-market- and survey-based information. The previous approach has limitations, as the market for treasury inflation-indexed securities is relatively small and can be influenced by monetary policy. The Cleveland Fed model estimates real yields across the term structure and avoids some limitations of the previous approach.
+
+\input{text/real_yield_model.txt}
+\vspace{2mm}
+
+\normalsize \textbf{Real Treasury Yields}\\
+\footnotesize{\textit{model-based, percent}}
+\vspace{3.2cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks  ytick={-6, -4, -2, 0, 2, 4, 6, 8},
+		yticklabel style={text width=1.4em}, enlarge y limits={0.08}, ymax=4.4,
+		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=12.0cm]
+	\rbars
+	\stdline{green!68!black}{date}{Real Rate 1-year}{data/real_rates2.csv}
+	\stdline{blue}{date}{Real Rate 10-year}{data/real_rates2.csv}
+	\absnode{{1995-01-01}}{5.0}{\small \color{blue}\textbf{Ten-year}}
+	\absnode{{2012-06-01}}{-2.5}{\small \color{green!68!black}\textbf{One-year}}
+	\input{text/real_yield_nodes2.txt}
+	\end{axis}
+\end{tikzpicture}
+\vspace{1mm}
+
+\footnotesize{Source: Federal Reserve of Bank of Cleveland}  \hfill \tbllink{real_rates2.csv}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth} 
+\small Changes in nominal treasury yields can be \textbf{decomposed into changes in expected inflation and changes in real yields}. Changes in real yields reflect changes in expected path of the federal funds rate and the economic outlook. Federal Reserve Bank of Cleveland models \href{https://www.clevelandfed.org/en/our-research/indicators-and-data/inflation-expectations.aspx}{identify} inflation expectations across the term structure, which can be used to identify changes in real yields. 
+
+\input{text/real_yield_model_ch.txt}
+\vspace{2mm}
+
+\normalsize \textbf{Recent Changes}\\
+\footnotesize{\textit{percentage points}}
+\vspace{4.1cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay]
+	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=62pt}]
+	\nextgroupplot[\bbar{y}{0}, width=5.6cm, height=5.6cm, 
+		axis line style={draw=none}, xtick=data, clip=false, ytick={0}, 
+		xticklabel style={black!90, font=\small, text width=1.5cm, align=center}, 
+	 	enlarge x limits={0.1}, transpose legend,
+	 	reverse legend,
+	 	xticklabels from table={\rych}{name}, enlarge y limits={lower, 0.3},
+	 	nodes near coords style={style={black!75, anchor=south,
+		 yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill,
+			precision=2, assume math mode}]
+  	\addplot[scatter, mark=*, only marks, mark options={fill=blue, 
+		draw=blue, scale=1.5}, nodes near coords] 
+  		table [x expr=\coordindex, y=Total] {\rych};
+	\addplot[ybar stacked, bar width=20pt, draw opacity=0, fill=black!12!white] table [x expr=\coordindex, y=IE]{\rych};
+	\addplot[ybar stacked, bar width=20pt, draw opacity=0, fill=lime!50!green!80!black] table [x expr=\coordindex, y=RY]{\rych};
+	\stdnode{1.6cm}{3.6cm}{\normalsize \color{black!90} \textbf{Three-month change}}
+	\input{text/inf_exp_ch_nodes.txt}
+	\nextgroupplot[\bbar{y}{0}, width=5.6cm, height=5.6cm, 
+		axis line style={draw=none}, xtick=data, clip=false, ytick={0}, 
+		xticklabel style={black!90, font=\small, text width=1.5cm, align=center}, 
+	 	enlarge x limits={0.1}, transpose legend, reverse legend,
+	 	xticklabels from table={\rytch}{name}, enlarge y limits={lower, 0.12},
+	 	nodes near coords style={style={black!75, anchor=south,
+		 yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill,
+			precision=2, assume math mode}, legend cell align={left}, 
+		legend style={legend columns=2, at={(0.48, 1.34)}}]
+  	\addplot[scatter, mark=*, only marks, mark options={fill=blue, 
+		draw=blue, scale=1.5}, nodes near coords] 
+  		table [x expr=\coordindex, y=Total] {\rytch};
+	\addplot[ybar stacked, bar width=20pt, draw opacity=0, fill=black!12!white] table [x expr=\coordindex, y=IE]{\rytch};
+	\addplot[ybar stacked, bar width=20pt, draw opacity=0, fill=lime!50!green!80!black] table [x expr=\coordindex, y=RY]{\rytch};
+	\stdnode{1.6cm}{4.0cm}{\normalsize \color{black!90} \textbf{Three-year change}}
+	\input{text/inf_exp_ch_nodes2.txt}
+	\legend{\ Total, \ Inflation Expectations,\ Real Yields};
+	\end{groupplot}
+\end{tikzpicture}
+\vspace{3mm}
+
+\footnotesize{Latest data from model as of: {\input{text/frbcle_ry_date.txt}}}\\
+\footnotesize{Source: Federal Reserve, Federal Reserve of Bank of Cleveland} \hfill \tbllink{inf_exp_ch.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -7094,7 +7292,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \normalsize \textbf{Treasury Yield Curve}\\
 \footnotesize{\textit{constant maturity yield, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}[trim axis right]
-	\begin{axis}[height=7.0cm, width=7.0cm,	xmajorgrids,
+	\begin{axis}[height=7.0cm, width=7.0cm,	xmajorgrids, ymax=3.75,
 		axis line style={draw=none}, nodes near coords style={style={black!80, fill=white,
 		 yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill, 
 		 precision=2, assume math mode}, legend style={at={(0.5, 0.92)}, legend columns=1},
@@ -7128,23 +7326,23 @@ The yield curve is normally upward sloping as investors expect to be compensated
 
 \normalsize \textbf{Treasury Yield Spreads}\\
 \footnotesize{\textit{percentage points}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-    \begin{groupplot}[group style={group size=2 by 1, horizontal sep=42pt,}]
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3}, 
-		enlarge y limits={0.1}, ymin=-0.65, ymax=2.3, enlarge y limits={0.02},  
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.2cm, clip=false]
+\hspace*{-3mm} \begin{tikzpicture}
+    \begin{groupplot}[group style={group size=2 by 1, horizontal sep=52pt,}]
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3}, ymin=-0.65, ymax=2.3,
+    	yticklabel style={text width=0.8em},
+     xticklabel={\year}, height=5.6cm, width=5.9cm, clip=false]
     \rbar
-	\thinline{blue}{date}{Ten-3M}{data/spread.csv}
+	\thinline{blue!70!cyan!80!white}{date}{Ten-3M}{data/spread.csv}
 	\node[text width=3.8cm, anchor=west] at (axis description cs: 0, 0.95) 
-		{\small \color{blue}\textbf{10-Year - 3-Month}};
+		{\small \color{blue!70!cyan!80!white}\textbf{10-Year - 3-Month}};
 	\input{text/spread_node.txt}
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3}, 
-		enlarge y limits={0.1}, ymin=-0.65, ymax=2.3, enlarge y limits={0.02}, 
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.2cm, clip=false]
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3}, ymin=-0.65, ymax=2.3,
+    	yticklabel style={text width=0.8em},
+     xticklabel={\year}, height=5.6cm, width=5.9cm, clip=false]
 	\rbar
-	\thinline{red!90!black}{date}{Ten-2Y}{data/spread.csv}
+	\thinline{red!60!violet!90!white}{date}{Ten-2Y}{data/spread.csv}
 	\node[text width=3.8cm, anchor=west] at (axis description cs: 0, 0.95) 
-		{\small \color{red!90!black}\textbf{10-Year - 2-Year}};
+		{\small \color{red!60!violet!90!white}\textbf{10-Year - 2-Year}};
 	\input{text/spread_node2.txt}
 	\end{groupplot}
 	\end{tikzpicture}\\
@@ -7356,7 +7554,7 @@ While the chartbook uses less-volatile 12-month inflation rates in most cases, t
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small Some items we buy have more-volatile prices than others. Food and energy, for example, are sometimes separated from the rest of the CPI basket, which is referred to as the \textit{core}, because swings in food and energy prices are somewhat common. 
+\small The prices of some items are more volatile than others. Food and energy prices, for example, are sometimes separated from the rest of the CPI basket, which is referred to as the \textit{core}, because swings in food and energy prices are larger and more frequent. 
 
 Core inflation includes core goods, core services other than shelter, and shelter. Core goods inflation was barely existent from 2013 through the start of the pandemic. Core goods prices are disproportionately affected by import prices and by changes in the quality of goods, for example from technological improvement. In contrast, domestic wage growth affects the prices for core services more than the other categories. Shelter prices are affected by housing supply and construction. 
 
@@ -7513,7 +7711,7 @@ The following section and table cover one-year inflation rates for different cat
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pce_pi.csv}
 \vspace{5mm}
 
-\small The Federal Reserve Bank of Dallas \href{https://www.dallasfed.org/research/pce}{publish} a variation of the PCE price index called the \textit{trimmed-mean} index. The most volatile categories in the current month's index are removed to smooth the data. Trimming outliers reduces the influence that the most extreme categories have on price growth. 
+\small The Federal Reserve Bank of Dallas \href{https://www.dallasfed.org/research/pce}{publish} a variation of the PCE price index called the trimmed-mean index. The most volatile categories in the current month's index are removed, or \textit{trimmed}, to smooth the data. As a result, the most extreme categories, which vary from month-to-month, do not affect inflation rates calculated using the trimmed-mean index. 
 
 \input{text/pce_tm_basic.txt}
 \vspace{1mm}
