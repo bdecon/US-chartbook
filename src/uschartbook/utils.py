@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import requests
 import json
+import io
 import os
 import re
 from datetime import datetime
@@ -16,6 +17,9 @@ numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three',
 
 numbers2 = {0: 'no', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 
            6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten'}
+           
+def to_date(ym):
+    return pd.to_datetime(f'{ym[0]}-{ym[1]}-01')
 
 def bea_api_nipa(table_list, bea_key, freq='Q'):
     ''' Return tables in table list for years in range'''
@@ -44,7 +48,7 @@ def bea_api_nipa(table_list, bea_key, freq='Q'):
 def bea_api_gdpstate(bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(2008, 2022)))
+    years = ','.join(map(str, range(2008, 2023)))
 
     api_results = []
 
@@ -70,7 +74,7 @@ def bea_api_gdpstate(bea_key):
     
 def bea_api_ita(ind_list, bea_key):
     ''' Return tables in table list for years in range'''
-    years = ','.join(map(str, range(1988, 2022)))
+    years = ','.join(map(str, range(1988, 2023)))
 
     api_results = []
 
@@ -118,7 +122,7 @@ def nipa_df(nipa_table, series_list):
     '''Returns dataframe from table and series list'''
     data = {}
     for code in series_list:
-    	lineno = [i['LineNumber'] for i in nipa_table if (i['SeriesCode'] == code) & (i['TimePeriod'] == '2016Q4')]
+    	lineno = [i['LineNumber'] for i in nipa_table if (i['SeriesCode'] == code) & (i['TimePeriod'] in ['2016Q4', '2016'])]
     	obs = [i['DataValue'] for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
     	index = [pd.to_datetime(i['TimePeriod']) for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
     	data[code] = (pd.Series(data=obs, index=index).sort_index().str.replace(',', '').astype(float))
@@ -740,7 +744,8 @@ def compare_text(latest, previous, cutoffs):
     
     
 def clean_fed_data(url):
-    raw_data = pd.read_csv(url)
+    s = requests.get(url).content
+    raw_data = pd.read_csv(io.StringIO(s.decode('utf-8')))
 
     d = {v: re.sub("\s+[\(\[].*?[\)\]]", "", i.split(';')[0]) 
          for i, v in raw_data.iloc[4, 1:].iteritems()}
@@ -798,7 +803,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     plural = 's' if ((abv > 1.045) & (style[-3:] != 'end')) else ''
     ptxtd = {None: '', 'percent': ' percent', 'pp': f' percentage point{plural}',
              'trillion': ' trillion', 'billion': ' billion', 'million': ' million', 
-             'thousand': ' thousand'}
+             'thousand': ' thousand', 'units': ' units'}
     ptxt = ptxtd[ptype]
     
     if style in ['increase', 'increase_by']:
@@ -899,7 +904,13 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     	
     elif style == 'added_lost':
     	stxt = 'added' if neg == False else 'lost'
-    	text = f'{stxt} {val}{ptxt}'
+    	atxtd = {None: '', 'average': 'an average of '}
+    	atxt = atxtd[adj]
+    	text = f'{stxt} {atxt}{val}{ptxt}'
+    	
+    elif style == 'added_lost_rev':
+    	stxt = 'added' if neg == False else 'lost'
+    	text = f'{val}{ptxt} {stxt}'
     
     if casual == True:
         text = (text.replace('added', 'gained')
