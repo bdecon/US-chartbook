@@ -826,6 +826,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         text = f'{stxt}{atxt}{val}{ptxt}{ttxt}'
         if insig == True:
             text = 'was virtually unchanged'
+            if obj == 'plural':
+                text = 'were unchanged'
             
     if style in ['contribution', 'contribution_to']:
         atxtd = {None: '', 'sa': ' on a seasonally-adjusted basis', 
