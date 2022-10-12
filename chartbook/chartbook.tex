@@ -1118,9 +1118,9 @@ A sector runs a surplus in a given accounting period when its income is higher t
 \footnotesize{\textit{total US wealth divided by GDP}}
 \vspace{3.4cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, ymin=0.15,
-		height=5.4cm, width=13.0cm, enlarge y limits={0.05}, ymax=5.1,
+		height=5.4cm, width=12.9cm, enlarge y limits={0.05}, ymax=5.1,
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
 	\sbar{cyan!35!white}{date}{Other}{data/wealthgdp.csv}
@@ -1396,7 +1396,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2, 3, 4},
-		xticklabel={`\short{\year}}, clip=false, height=5.8cm, 
+		xticklabel={`\short{\year}}, clip=false, height=5.8cm, width=12.9cm,
 		legend cell align=left, reverse legend, ymax=2.8,
 		legend style={at={(0.38, 0.99)}, legend columns=1}]
 	\rbars
@@ -2088,7 +2088,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
 	\absnode{{1998-07-01}}{25}{\footnotesize \color{blue!75!white}Services ex. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
-	\absnode{{1994-01-01}}{13.8}{\footnotesize \color{green!85!blue}Shelter}
+	\absnode{{1993-06-01}}{13.8}{\footnotesize \color{green!85!blue}Shelter}
 	\stdline{green!85!blue}{date}{SHELTER}{data/pce_levels.csv}
 	\end{axis}
 \end{tikzpicture}\\
@@ -2634,7 +2634,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 	\thickline{cyan!80!white}{date}{Next40}{data/dfa_nw_sh.csv}
 	\thickline{orange!50!yellow}{date}{Next9}{data/dfa_nw_sh.csv}
 	\absnode{{2009-05-01}}{5.5}{\footnotesize \color{blue!80!cyan} Bottom 50\%}
-	\absnode{{1993-11-01}}{26.5}{\footnotesize \color{red!50!orange} Top 1\%}
+	\absnode{{1993-11-01}}{26.2}{\footnotesize \color{red!50!orange} Top 1\%}
 	\absnode{{2012-01-01}}{42}{\footnotesize \color{orange!50!yellow} Next 9\%}
 	\absnode{{2012-08-01}}{28}{\footnotesize \color{cyan!80!white} Next 40\%}
 	\input{text/dfa_nw_sh_nodes.txt}
@@ -2862,7 +2862,7 @@ As seen during the collapse of the housing bubble, it is possible for someone to
 \begin{minipage}{0.31\textwidth}
 \small \input{text/homeeq.txt}
 \end{minipage}\hspace{7mm}
-\begin{minipage}{0.42\textwidth}
+\begin{minipage}{0.41\textwidth}
 \normalsize \textbf{Owners' Equity Share of Real Estate}\\
 \footnotesize{\textit{owners' equity as percent of real estate}}\\
 \hspace*{-2mm} \begin{tikzpicture}
@@ -4477,10 +4477,10 @@ The current account balance can be decomposed into the balance on trade in goods
 \footnotesize{\textit{share of GDP, percent \hspace{70mm} moving averages}}\\ 
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.48}
-		\begin{tabular}{p{32mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} 
-		   R{7.6mm} R{9.1mm} R{8.0mm} }
+		\begin{tabular}{p{32mm} R{8mm} R{8mm} R{8mm} R{8mm} R{8mm} 
+		   R{8mm} R{9.4mm} R{8.4mm} }
 			 \input data/cab.tex \hline
-		\end{tabular}}\vspace{-2mm}
+		\end{tabular}}
 		
 \footnotesize{Source: Bureau of Economic Analysis}
 \vspace{4mm}
