@@ -932,3 +932,139 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         text = (text.replace('was', 'were'))
     
     return(text)
+    
+    
+def gc_desc(lt, mu, sigma, also=False):
+    '''Describe contribution to growth of 3-5 categories'''
+    m, tot, sh = lt.mean(), lt.sum(), (lt / lt.sum()).sort_values()
+    
+    # Special case for offset adjective
+    co_sh2 = abs(lt.loc[sh.index[0]]) / abs(lt.loc[lt.index != sh.index[0]].sum())
+    
+    # Add word also to reduce repetitiveness
+    also_t = '' if also == False else 'also '
+    
+    # Describe overall growth (sum of contributions)
+    desc = 'growth' if tot > 0 else 'descrease'
+    adj = ('low ' if ((abs(tot) < (sigma / 2)) & (tot > 0)) 
+           else 'small ' if ((abs(tot) < abs(mu)) & (tot < 0)) 
+           else 'strong ' if (abs(tot) > (sigma*3)) else '')
+    overall = 'low/none' if ((adj == 'low ') | (adj == 'small ')) else 'not low'
+    desc = f'{adj}{desc}'
+    
+    # Identify supporting and conflicting categories and sort by size
+    conf = lt[lt < 0].index.to_list() if tot >= 0 else lt[lt > 0].index.to_list()
+    supp = lt[~lt.index.isin(conf)].index.to_list()
+    incdec = 'an increase in ' if tot >= 0 else 'a decrease in '
+    decinc = 'a decrease in ' if tot >= 0 else 'an increase in '
+    xl = lt[abs(lt) > (sigma * 2)]
+    xlincdec = 'a large increase in ' if tot >= 0 else 'a large decrease in '
+    xldecinc = 'a large decrease in ' if tot >= 0 else 'a large increase in '
+    lg = lt[abs(lt) > (sigma/2)]
+    sg = lt[(abs(lt) > (sigma/6)) | # Somewhat large or a large share
+            ((abs(lt) > (sigma/10)) & ((abs(lt) / lt.sum()) > 0.33))]
+    csg = [(c, i) for c, i in sg.items() if c in conf] if len(conf) > 0 else []
+    cxl = [(c, i) for c, i in xl.items() if c in conf] if len(xl) > 0 else []
+    ssg = [(c, i) for c, i in sg.items() if c in supp] if len(supp) > 0 else []
+    sxl = [(c, i) for c, i in xl.items() if c in supp] if len(xl) > 0 else []
+    # Determine supporting/conflicting type
+    if (len(csg) > 0) & (len(ssg) > 0):
+        sct = 'sc'
+    elif (len(csg) > 0) & (len(ssg) == 0):
+        sct = 'co'
+    elif (len(ssg) > 0) & (len(csg) == 0):
+        sct = 'su'
+
+    # Adjective for top category (conflicting and supporting)
+    sha_co = abs(sh.sort_values()).iloc[0]
+    sha_co2 = abs(sh.sort_values()).iloc[1]
+    sha_su = abs(sh.sort_values()).iloc[-1]
+    sha_su2 = abs(sh.sort_values()).iloc[-2]
+    co_adj = ('' if sha_co > 1.5 else 'largely ' if (sha_co >= 1) & (co_sh2 > 0.85) else 'partially ' 
+              if sha_co > 0.1 else 'slightly ')
+    su_adj = 'largely ' if (sha_su > 0.75) & (sha_su2 < 0.5) else ''    
+    co_l = (f'{decinc}{sh.index[0]}' if (co_adj == 'largely ' ) | 
+            (len(conf) == 1) | (len(csg) == 1)
+            else f'{decinc}{sh.index[0]} and {sh.index[1]}' 
+            if (len(conf) > 1) & (len(csg) > 1) else
+            f'{decinc}{sh.index[0]}, {sh.index[1]}, and {sh.index[2]}' 
+            if (len(conf) > 2) & (len(csg) > 2) else '')
+    su_l = (f'{incdec}{sh.index[-1]}' if (su_adj == 'largely ') | (len(lg) == 1)
+            else f'{incdec}{sh.index[-1]} and {sh.index[-2]}')
+    # Broad-based, category-driven, or conflicting 
+    ssr = (((lt - m)**2).sum() / m**2)
+    tsh = sh.iloc[-1]
+    t2sh = sh.iloc[-2:].sum()
+    t3sh = sh.iloc[-3:].sum()
+    o = sh.index[-1] if (tsh > 0.66) else False
+    same_sign = not min(lt) < 0 < max(lt)
+    bbdb, bbdb_t, su_t, co_t = '', '', '', ''
+    
+    # By growth type, determine broad-based, driven-by, or conflicting
+    if overall == 'not low':
+        if (len(conf) == 0) & (ssr < (sigma*2)) & (t2sh < 0.8) & (tsh < 0.55):
+            bbdb = 'bb1'
+            bbdb_t = 'broad-based'
+            su_t = ', with categories contributing relatively evenly. '
+            if (ssr < sigma) & (o == False) & (len(sxl) == 1):
+                su_t = ', with categories contributing relatively evenly, '
+                co_t = f'and {xlincdec}{sh.index[-1]}. '
+            elif (ssr < sigma) & (o == False) & (len(sxl) == 2):
+                su_t = ', with categories contributing relatively evenly, '
+                co_t = f'and {xlincdec}{sh.index[-1]} and {sh.index[-2]}. '
+            elif (ssr < sigma) & (o == False) & (len(sxl) == 3):
+                su_t = ', with categories contributing relatively evenly, '
+                co_t = f'and {xlincdec}{sh.index[-1]}, {sh.index[-2]}, and {sh.index[-3]}. '
+        elif (ssr < sigma * 2) & (t2sh < 0.95) & (tsh < 0.75):
+            bbdb = 'bb2'
+            bbdb_t = 'relatively broad-based'
+        elif (((ssr < sigma * 10) & (t2sh < 1.1) & (tsh < 0.8)) | 
+              ((same_sign == True) & (t2sh < 0.95))): 
+            bbdb = 'bb3'
+            bbdb_t = 'relatively broad-based'
+        elif (tsh > 0.75) & (t2sh < tsh + 0.5):
+            bbdb = 'db1'
+            incdec_t = xlincdec if sxl == 1 else incdec
+            bbdb_t = f'driven {su_adj}by {incdec_t}{sh.index[-1]}'
+            if (t2sh > tsh + 0.3):
+                su_t = f', and supported by {incdec}{sh.index[-2]}'
+        elif (t2sh > 0.75):
+            bbdb = 'db2'
+            incdec_t = xlincdec if sxl == 2 else incdec
+            bbdb_t = f'driven by {incdec_t}{sh.index[-1]} and {sh.index[-2]}'
+        elif (t3sh > 0.66):
+            bbdb = 'db3'
+            incdec_t = xlincdec if sxl == 3 else incdec
+            bbdb_t = f'driven by {incdec_t}{sh.index[-1]}, {sh.index[-2]}, and {sh.index[-3]}'
+    elif overall == 'low/none':
+        if len(sg) == 0: # All low-growth
+            bbdb = 'co1'
+            bbdb_t = 'the result of little change across several categories.'
+        elif (len(csg) > 0) & (len(ssg) > 0):
+            bbdb = 'co2'
+            bbdb_t = 'the result of conflicting changes in subcategories.'
+            su_t = f' The overall effect is {su_adj}the result of {su_l}'
+            co_t = f' that is {co_adj}offset by {co_l}.'
+        else: # One category is offset
+            bbdb = 'co3'
+            if (len(csg) == 0) & (len(ssg) > 0):
+                bbdb_t = (f'largely the result of {incdec}{sh.index[-1]}, and partially offset '+
+                          f'by {decinc}other categories.')
+            elif (len(ssg) == 0) & (len(csg) > 0):
+                bbdb_t = (f'the result of {decinc}several categories and partially offset '+
+                          f'by {incdec}{sh.index[-1]}.') 
+    
+    if bbdb in ['bb2', 'bb3']:
+        if sct == 'sc':
+            su_t = f'. The main contribution, {su_l}, '
+            co_t = f'is {co_adj}offset by {co_l}.'
+        elif sct == 'su':
+            su_t = f'. The main contribution is {su_l}.'
+            co_t = ''
+    
+    if bbdb in ['db1', 'db2', 'db3']:
+        co_t = '.'
+        if sct == 'sc':
+            co_t = f', and {co_adj}offset by {co_l}.'
+    text = f'{desc} is {also_t}{bbdb_t}{su_t}{co_t}'
+    return(text, bbdb)
