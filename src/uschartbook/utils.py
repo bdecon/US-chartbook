@@ -743,12 +743,15 @@ def compare_text(latest, previous, cutoffs):
     return text
     
     
-def clean_fed_data(url):
+def clean_fed_data(url, dtype='main'):
     s = requests.get(url).content
     raw_data = pd.read_csv(io.StringIO(s.decode('utf-8')))
 
     d = {v: re.sub("\s+[\(\[].*?[\)\]]", "", i.split(';')[0]) 
          for i, v in raw_data.iloc[4, 1:].iteritems()}
+    if dtype == 'full':
+        d = {v: re.sub("\s+[\(\[].*?[\)\]]", "", ''.join(i.split(';')[0:])) 
+             for i, v in raw_data.iloc[4, 1:].iteritems()}
 
     date_column = raw_data.loc[5:, 'Series Description']
     date_index = pd.to_datetime(date_column).rename('Date')
@@ -945,7 +948,7 @@ def gc_desc(lt, mu, sigma, also=False):
     also_t = '' if also == False else 'also '
     
     # Describe overall growth (sum of contributions)
-    desc = 'growth' if tot > 0 else 'descrease'
+    desc = 'growth' if tot > 0 else 'decrease'
     adj = ('low ' if ((abs(tot) < (sigma / 2)) & (tot > 0)) 
            else 'small ' if ((abs(tot) < abs(mu)) & (tot < 0)) 
            else 'strong ' if (abs(tot) > (sigma*3)) else '')

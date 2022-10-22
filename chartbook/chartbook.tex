@@ -530,9 +530,9 @@ Please be aware that this chartbook is an early-stage draft. Content is being ad
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The less-discussed \textbf{\href{https://www.bea.gov/help/glossary/income-approach}{income approach}} calculates the level of overall economic activity from the sum of income payments from production and certain expenses incurred in production. Income from production is the payout to labor and capital. Income for labor is referred to as ``compensation of employees, paid'' in the national accounts and includes wages and salaries as well supplements to wages and salaries such as employer-paid health insurance premiums and retirement account contributions. Income received as profit is referred to as the ``net operating surplus'' in national accounts and includes interest payments, rental profits, business proprietor profits, and corporate profits.
+\small The less-discussed \textbf{\href{https://www.bea.gov/help/glossary/income-approach}{income approach}} calculates economic activity from production income and certain production expenses. Production income is the payout to labor and capital. Labor income is referred to as ``compensation of employees, paid'' in the national accounts and includes wages and salaries as well supplements to wages and salaries such as employer-paid health insurance premiums and retirement account contributions. Capital income, or profit, is referred to as the ``net operating surplus'' in national accounts and includes interest payments, rental profits, business proprietor profits, and corporate profits.
 
-Additionally some income does not get paid out to these groups. Taxes on imports and production, such as tariffs, sales tax, property tax, and licensing fees are tracked separately. If the government provides subsidies, which are income payments for production that did not occur, they must be subtracted from income measures of production. Lastly, a growing portion of potential income goes toward replacing and maintaining buildings and equipment used in production. This expense is recorded as ``consumption of fixed capital'' in the national accounts and referred to as depreciation below.
+Some income does not get paid out to these groups. Taxes on imports and production, such as tariffs, sales tax, property tax, and licensing fees are tracked separately. Government subsidies, which are income payments for production that did not occur, must be subtracted from income measures of production. Lastly, a growing portion of potential income goes toward replacing and maintaining buildings and equipment used in production. This depreciation expense is recorded as ``consumption of fixed capital'' in the national accounts.
 
 The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domestic-product}{report} seasonally-adjusted and annualized \href{https://www.bea.gov/help/glossary/gross-domestic-income-gdi}{Gross Domestic Income} (GDI) \input{text/gdi_levels.txt}
 \end{minipage}
@@ -2039,7 +2039,7 @@ Two values are shown for 2013 and 2017 to mark revisions to the survey design (2
 \hypertarget{hhss}{}
 \small The previous subsection examines money coming into households while this section covers money leaving households. \href{https://www.bea.gov/data/consumer-spending/main}{Consumer spending} includes household purchases of goods and services, certain spending for households, such as Medicare and Medicaid, and estimates for services furnished without payment. As an example of a special estimate, homeowners are considered to rent their homes to themselves. 
 
-Over the past 30 years, increased consumer spending represents the majority of economic growth. Consumer spending usually increases when households have more income and falls when households have less income. This effect is visible in both the long-run and during the course of a business cycle, with consumer spending generally falling or slowing during a recession. During the COVID-19 pandemic, some categories of spending were lower as a result of business closures and restrictions.
+Over the past 30 years, increased consumer spending represents the majority of economic growth. Consumer spending usually increases when households have more income and falls when households have less income. This effect is visible in both the long-run and during the course of a business cycle, with consumer spending generally falling or slowing during a recession. Some categories of spending fell sharply during COVID-19 business closures and restrictions.
 
 \href{https://www.bea.gov/data/income-saving/personal-saving-rate}{Personal saving} occurs when households have income in excess of their expenses. Savings are invested, often providing additional income, and are used for future expenses, such as costs incurred during retirement.
 
@@ -2485,70 +2485,80 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Assets}
+\vspace{-1mm}
 
-\small \input{text/hhasset1.txt} 
-
-\input{text/hhasset2.txt} 
-
-\input{text/hhasset3.txt}
+\small \input{text/hhasset.txt} 
 \vspace{1mm}
 
 \normalsize \textbf{Selected Household and Nonprofit Assets}\\
-\footnotesize{\textit{share of GDP}}\\
-\hspace{2mm} \begin{tikzpicture}
+\footnotesize{\textit{share of GDP, percent}}
+\vspace{3.9cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300, 400, 500},
-		 ymin=20, height=5.6cm, width=12.7cm, reverse legend, 	
+		 ymin=16, ymax=475, height=5.9cm, width=12.3cm, 	
 		 yticklabel style={text width=1.2em}, 
-		 xticklabel={`\short{\year}}, clip=false, legend cell align={left},
-		 legend style={legend columns=1, at={(0.39, 1.0)}}]
+		 xticklabel={`\short{\year}}, clip=false]
 	\rbars
-	\sbar{green!60!teal}{date}{HRE}{data/hhassetsgdp.csv}
-	\sbar{cyan!40!white}{date}{DEP}{data/hhassetsgdp.csv}	
-	\sbar{blue!55!cyan}{date}{DSL}{data/hhassetsgdp.csv}
-	\sbar{blue!65!black}{date}{TEQ}{data/hhassetsgdp.csv}
-	\legend{Real Estate, Deposits, Debt Securities \& Loans, Business Equity};
+	\ctsbar{green!60!teal!95!black}{date}{HRE}{data/hhassetsgdp.csv}{2.3pt}
+	\node[text width=2.2cm, anchor=west, align=center] at 
+		({2002-01-01}, 80){\color{white}\textbf{Owner-Occupied Real Estate}};
+	\ctsbar{cyan!32!white}{date}{DEP}{data/hhassetsgdp.csv}{2.3pt}
+	\node[text width=2.2cm, anchor=west] at 
+		({2010-01-01}, 140){\color{black!80}\textbf{Deposits}};
+	\ctsbar{blue!58!cyan}{date}{DSL}{data/hhassetsgdp.csv}{2.3pt}
+	\ctsbar{blue!55!black}{date}{TEQ}{data/hhassetsgdp.csv}{2.3pt}
+	\node[text width=4.2cm, anchor=west] at 
+		({2008-01-01}, 226){\color{blue!15!cyan!90!white}\textbf{Debt Securities \& Loans}};
+	\node[text width=3.0cm, anchor=west] at 
+		({2015-01-01}, 350){\color{white}\textbf{Business Equity}};
+	\input{text/hhasset_nodes.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hhassetsgdp.csv}
 \vspace{3mm}
 
-\small \input{text/hhasset4.txt} 
+\small \input{text/hhasset2.txt} 
 \vspace{1mm}
 
 \normalsize \textbf{Contributions to Real Growth in Household and Nonprofit Assets}\\
-\footnotesize{\textit{contribution to one-year percent change in assets, adjusted by PCE price deflator}}\\
-\hspace*{-3mm} \begin{tikzpicture}
+\footnotesize{\textit{contribution to one-year percent change in assets, adjusted by PCE price deflator}}
+\vspace{5.2cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15, 20, 25}, 
-		height=6.3cm, width=12.7cm, enlarge y limits={0.02}, 
+		height=7.2cm, width=12.9cm, enlarge y limits={0.02}, ymax=14.5,
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em},
-			clip=false, legend cell align={left},
-		legend style={legend columns=2, at={(0.51, 1.01)}, fill=white}]
+			clip=false, legend cell align={left}, reverse legend,
+		legend style={legend columns=-1, at={(0.9, 0.99)}}]
 	\rbars
-	\sbar{cyan!40!white}{date}{DEP}{data/hh_asset_growth.csv}	
-	\sbar{blue!55!cyan}{date}{DSL}{data/hh_asset_growth.csv}
-	\sbar{green!60!teal}{date}{HRE}{data/hh_asset_growth.csv}
-	\sbar{blue!65!black}{date}{TEQ}{data/hh_asset_growth.csv}
+	\sbar{cyan!32!white}{date}{DEP}{data/hh_asset_growth.csv}	
+	\sbar{blue!58!cyan}{date}{DSL}{data/hh_asset_growth.csv}
+	\sbar{green!60!teal!95!black}{date}{HRE}{data/hh_asset_growth.csv}
+	\sbar{blue!55!black}{date}{TEQ}{data/hh_asset_growth.csv}
 	\legend{Deposits, Debt Securities \& Loans, Real Estate, Business Equity};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hh_asset_growth.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.77\textwidth}
+\begin{minipage}{0.76\textwidth}
 \normalsize \textbf{Household and Nonprofit Assets}\\
-\footnotesize{\textit{various measures: \hspace{25mm} trillions of USD \hspace{4mm} share of GDP \hspace{4mm} real annual growth rate}}\\
-\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-	{\renewcommand{\arraystretch}{1.55}
-		 \hspace*{-2mm} \begin{tabular}{p{2mm} p{46mm} R{11mm} R{9.5mm} R{9.5mm} R{8mm} 
-		   R{8mm} R{8mm} }
-			 \input data/hhasset.tex \hline
-	\end{tabular}}\vspace{-2mm}
+\footnotesize{\textit{various measures: \hspace{20mm} trillions of USD \hspace{7mm} share of GDP \hspace{5mm} real annual growth rate}}
+\vspace*{-3.5mm}
 
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}
-\end{minipage}
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.5pt} \color{black!90}
+	{\renewcommand{\arraystretch}{1.54}
+		 \hspace*{-1mm} \begin{tabular}{p{2mm} p{43mm} R{9.2mm} R{10.8mm} R{8.6mm}
+		  R{9.8mm} R{7.5mm} R{7.5mm} }
+			 \input data/hhasset.tex \hline
+	\end{tabular}}\vspace{-1.5mm}
+
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hhasset_table.csv}
 \vspace{7mm}
 
-\begin{minipage}{0.76\textwidth}
 \subsubsection*{Return on Assets}
 \small Asset prices rising faster than income can be viewed as a decrease in the expected rate of return on total household assets. This can be measured by disposable income as a share of household assets. \input{text/dpishta.txt} 
 \vspace{2mm}
@@ -2873,7 +2883,7 @@ In the chart, income invested at the historical-average rate (see\cbox{magenta!8
 \begin{minipage}{0.76\textwidth}
 \small Use caution when interpreting homeownership rates during the COVID-19 pandemic. Individuals who are renters or homeowners are captured by the measure, but when an individual moves in with family and stops being a head of household, they are dropped from the measure. Therefore when renters move in with family the homeownership rate increases. The 2020 spike in homeownership rates reflects renters moving in with family. 
 
-As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Trends in owners' equity as a share of the market value of real estate show substantial improvement since the lows following the collapse of the housing bubble, when millions of homes were in foreclosure. 
+As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Owners' equity in their homes has increased substantially since the collapse of the housing bubble. 
 \end{minipage}
 \vspace{1mm}
 
@@ -3207,9 +3217,9 @@ For purposes of program eligibility and economic data, poverty is defined by hav
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In \input{text/poverty_ltyear.txt}\unskip, students, caregivers, and the disabled had the highest rates of poverty. Those fully-employed have a low rate of poverty. 
+\small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In \input{text/poverty_ltyear.txt}\unskip, students, caregivers, and the disabled had the highest poverty rates. The poverty rate is low for the fully-employed. 
 
-By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty as they are not as likely to have labor income. After social benefits and taxes (disposable income, see\cbox{green!85!blue}), the elderly have much lower rates of poverty than other age cohorts. Higher survivorship for the wealthy also has the effect of reducing poverty in very old ages. Disposable income still leaves young adults and those just below social security and medicare age (late 50s and early 60s) vulnerable to poverty, relative to other ages.
+By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty, as they are not as likely to have labor income. However, after social benefits and taxes (disposable income, see\cbox{green!85!blue}), the elderly have much lower rates of poverty than other age cohorts. Even after transfers, young people and those just below social security and medicare age (late 50s and early 60s) remain particularly vulnerable to poverty, relative to other ages.
 \vspace{2mm}
 
 \normalsize \textbf{Amount of Poverty by Age} \small \hspace{6mm} \cbox{blue} Market Income \ \hspace{2mm} \cbox{green!85!blue} Disposable Income (SPM)\\
@@ -3591,19 +3601,18 @@ When thinking about the longer-term trends in these data, it's important to note
 \newpage
 \subsection*{Industrial Production}
 \hypertarget{busip}{}
-\begin{minipage}{0.495\textwidth}
+\begin{minipage}{0.52\textwidth}
 \small \input{text/indpro.txt} 
 \end{minipage}\hfill
-\begin{minipage}{0.445\textwidth}
+\begin{minipage}{0.42\textwidth}
 \normalsize \textbf{Industrial Production}
 \vspace*{-3mm} \small 
-
 
 \hspace*{-1mm}\begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={60, 80, 100}, 
 	enlarge y limits={0.01}, enlarge x limits={0}, legend cell align={left},
 	yticklabel style={text width=0.8em}, xticklabel={`\short{\year}}, 
-	clip=false, height=7.0cm, width=7.9cm, xmin={1989-12-01},
+	clip=false, height=6.8cm, width=7.8cm, xmin={1989-12-01},
 	legend style={fill=white, legend columns=1, at={(0.98, 0.33)}}]
 	\rbars
 	\node[right] at (axis description cs: -0.09,0.95) [fill=white]
@@ -3771,12 +3780,14 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 	\input{text/tcu_nodes.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau} \hfill \tbllink{tcu.csv}
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{tcu.csv}
 \end{minipage}
 \newpage
 \subsubsection*{Energy Production and Use}
 \begin{minipage}{0.76\textwidth}
-\small The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{report} a large increase in US \textbf{crude oil production}, from around five million barrels per day in 2007 to nearly 13 million barrels per day at the end of 2019. Much of the increase comes from Texas, New Mexico, North Dakota, and Colorado. \input{text/oil_prod.txt}
+\small This subsection looks at the energy sector, and covers oil production and electricity generation and sales. 
+
+The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{report} a large increase in US \textbf{crude oil production}, from around five million barrels per day in 2007 to nearly 13 million barrels per day at the end of 2019. Much of the increase comes from Texas, New Mexico, North Dakota, and Colorado. \input{text/oil_prod.txt}
 \vspace{1mm}
 
 \normalsize \textbf{Crude Oil Production}\\
@@ -3867,7 +3878,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \small \input{text/elec_prod3.txt}
 \vspace{3mm}
 
-\small The Energy Information Administration \href{https://www.eia.gov/electricity/monthly/}{report} the \textbf{retail sales of electricity} to each major sector. These data show a decrease in electricity sales to commercial and industrial sectors during the pandemic, offset in part by increased electricity sales to the residential sector. 
+\small The Energy Information Administration \href{https://www.eia.gov/electricity/monthly/}{report} the \textbf{retail sales of electricity} to each major sector. Electricity sales to the commercial and industrial sectors fell during the pandemic, and were partially offset by increased electricity sales to the residential sector. 
 \end{minipage}
 
 \begin{minipage}{0.415\textwidth}
@@ -4551,13 +4562,13 @@ The current account balance can be decomposed into the balance on trade in goods
 \hypertarget{extt}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Trade}
-\small \textbf{Goods and services trade} between the US and the rest of the world is \href{https://www.census.gov/foreign-trade/Press-Release/current\_press\_release/index.html}{reported} each month by the Census Bureau. US purchases of foreign goods and services are imports and foreign purchases of US goods and services are exports. Trade in goods includes consumer goods, industrial equipment, and agricultural products. Trade in services includes travel and tourism, business services, and charges for the use of intellectual property, among other services. 
+\small Each month, the Census Bureau \href{https://www.census.gov/foreign-trade/Press-Release/current\_press\_release/index.html}{report} \textbf{goods and services trade} between the US and the rest of the world. US purchases of foreign goods and services are classified as imports and foreign purchases of US goods and services are exports. The trade of goods includes consumer goods, industrial equipment, and agricultural products. Services trade includes travel and tourism, business services, and charges for the use of intellectual property, among other services. 
 \end{minipage}
 \vspace{1mm}
 
 \begin{minipage}{0.39\textwidth}
 \normalsize \textbf{US Imports and Exports, Monthly}\\
-\footnotesize{\textit{billions of USD, seasonally adjusted}}\\
+\footnotesize{\textit{billions of US dollars, seasonally adjusted}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks 
 		enlarge y limits={0.05}, clip=false, 
@@ -4575,7 +4586,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \vspace{0.1mm}
 
 \normalsize \textbf{Trade Balance, Monthly}\\
-\footnotesize{\textit{billions of USD, seasonally adjusted}}\\
+\footnotesize{\textit{billions of US dollars, seasonally adjusted}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks 
 		enlarge y limits={0.06}, clip=false, 
@@ -4845,9 +4856,9 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small Summarizing exchange rates using a trade-weighted index can be complicated by shifts in relative consumer prices between the US and trading partners. For example, the exchange rate between the US dollar and the Japanese yen has been relatively stable in nominal terms since the 1990s, but there has been less inflation in consumer prices in Japan than in the US. As a result, 100 yen buys more consumer goods in Japan than one dollar will buy in the US. 
+\small Shifts in relative consumer prices between the US and trading partners complicate analysis of exchange rates. For example, US dollar-Japanese yen exchange rate is relatively stable from 2000 to 2020, but Japan has less inflation in consumer prices over the period. At the end of the period, 100 yen buys more consumer goods in Japan than one dollar will buy in the US. 
 
-By incorporating the consumer price index in the US and in trading partners, again weighted by the amount of trade with each partner, it is possible to compare a basket of consumer goods across currencies. The measure is still affected by differences in the consumer basket between countries.  
+Real effective exchange rates incorporate the inflation rate in the US and in trading partners, and are again weighted by the amount of trade with each partner. The real effective exchange rate captures the basket of goods that can be purchased by unit of currency, as opposed to capturing the basket of other currencies that can be purchased. 
 \vspace{0.5mm}
 
 \begin{minipage}{0.59\textwidth}
@@ -7134,7 +7145,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Wage Growth Tracker}
-\small The Federal Reserve Bank of Atlanta \href{https://www.frbatlanta.org/chcs/wage-growth-tracker}{publish} a wage growth tracker that captures the distribution of changes in the wages of the same people over one year. This approach avoids some of the compositional changes that affect aggregate wage growth measures, though the sample used to calculate the data is affected by changes to respondents' employment status, and by survey response rates. 
+\small The Federal Reserve Bank of Atlanta \href{https://www.frbatlanta.org/chcs/wage-growth-tracker}{publish} a wage growth tracker that captures the distribution of one-year changes in the wages of the same people. This approach avoids some of the compositional changes that affect aggregate wage growth measures, though the sample used to calculate the data is affected by changes to respondents' employment status, and by survey response rates. 
 
 \input{text/atl_wgt.txt}
 \end{minipage}
@@ -7289,10 +7300,10 @@ One theory of what drives long-term trends, sometimes called the \textit{Kaldor-
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
-	\ctsbar{violet}{date}{Membership}{data/union.csv}{1.9pt}
+	\ctsbar{violet}{date}{Membership}{data/union.csv}{1.8pt}
 	\node[text width=3.0cm, anchor=west] at 
 		({1995-01-01}, 7){\color{white}\textbf{Union/Employee \\ Association Members}};
-	\ctsbar{magenta!70!purple}{date}{Diff}{data/union.csv}{1.9pt}	
+	\ctsbar{magenta!70!purple}{date}{Diff}{data/union.csv}{1.8pt}	
 	\node[text width=2.2cm, anchor=west] at 
 		({2010-02-01}, 15.4){\color{magenta!70!purple}\textbf{Covered Non-Members}};
 	\input{text/union_nodes.txt}
@@ -8098,9 +8109,9 @@ Core inflation includes core goods, core services other than shelter, and shelte
 \vspace{4mm}
 
 \subsubsection*{Relative Prices}
-\small Some categories of spending are a small part of the overall price basket used to calculate the CPI, but have seen large cumulative increases in prices. Additionally, the price basket is based on averages across individuals, with some individuals dedicating a much larger share of spending to certain categories and other individuals have no expenses in certain categories. For example, day care costs are paid generally only for a few years of a child's life and only some households contain day-care-age children. But within those households, day care is a large share of overall spending. 
+\small Some prices increase faster or slower than others. Additionally, the basket of goods used to calculate the CPI is based on average spending patterns across individuals. At a given point, individuals may dedicate a large share of spending to a certain categories or have no expenses at all in a category. For example, day care costs are paid generally only for a few years of a child's life and only some households contain day-care-age children. But within those households, day care is a large share of overall spending. 
 
-The following section and table cover one-year inflation rates for different categories of goods and services, including some smaller categories. The table also shows the cumulative change in prices for each category since February 2020, the last month of data before the COVID-19 pandemic shutdown in the US. Additionally, the weight that a category has in the overall index--the category's share of the basket of goods and services used to calculate the CPI--is included as the last column in the table. This weight comes from each category's share of overall consumer spending during the most recent reference period, and is updated by changes in prices since the reference period. 
+One-year inflation rates for different categories of goods and services, including some smaller categories, are captured in the following section and table. The table also shows cumulative price changes since February 2020, the last month of data before the COVID-19 pandemic shutdown in the US. Additionally, the weight that a category has in the overall index--the category's share of the basket of goods and services used to calculate the CPI--is included as the last column in the table. This weight comes from each category's share of overall consumer spending during the most recent reference period, and is updated by changes in prices since the reference period. 
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
