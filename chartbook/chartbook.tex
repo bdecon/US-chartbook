@@ -593,11 +593,11 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 		yticklabel style={text width=1.0em}, ymin=1.2, xmin={1998-03-01},
 		xticklabel={`\short{\year}}, clip=false, height=6.1cm, width=6.4cm]
 	\rebars
-	\stdnode{3.7cm}{1.2cm}{\footnotesize \color{orange!80!white}Government}
+	\stdnode{3.6cm}{1.18cm}{\footnotesize \color{orange!80!white}Government}
 	\stdline{orange!80!white}{date}{Government}{data/gdpva_pc.csv}
 	\stdnode{0.95cm}{2.7cm}{\footnotesize \color{blue!90!white}Other Services}
 	\stdline{blue!90!white}{date}{Oth_Serv}{data/gdpva_pc.csv}
-	\stdnode{1.5cm}{1.9cm}{\footnotesize \color{red!90!white}FIRE+}
+	\stdnode{1.6cm}{1.86cm}{\footnotesize \color{red!90!white}FIRE+}
 	\stdline{red!90!white}{date}{FIRE}{data/gdpva_pc.csv}
 	\stdnode{3.1cm}{4.25cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
 	\stdline{purple!70!blue}{date}{GoodsTTU}{data/gdpva_pc.csv}
@@ -1249,7 +1249,7 @@ Additionally, the change in private inventories (see\cbox{red}) at the end of th
 \section*{Households}
 \markright{\seriffont Households}
 \begin{minipage}{0.76\textwidth}
-\small This section covers the household sector of the economy. Households are the source of labor for production and savings for investment. Households are also the primary consumers in the economy. The core topics in the households section include demographics, personal and household income and outlays, consumer sentiment, residential investment, household balance sheets, home ownership, housing, and poverty.
+\small This section covers the household sector of the economy. Households are the source of labor for production and the source of saving for investment. Households are also the primary consumers in the economy. The core topics in the households section include demographics, personal and household income and outlays, consumer sentiment, residential investment, household balance sheets, home ownership, housing, and poverty.
 
 \hypertarget{hhdem}{}
 \subsection*{Demographics}
@@ -1268,7 +1268,7 @@ Additionally, the change in private inventories (see\cbox{red}) at the end of th
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks xmin=1990-01-01, xmax=2027-07-01,
 		xticklabel={`\short{\year}}, clip=false, clip mode=individual,
-		height=6.2cm, width=12.8cm, yticklabel style={text width=1.6em}]
+		height=6.1cm, width=12.8cm, yticklabel style={text width=1.6em}]
 	\rbars
 	\input{text/pop_est_projbar.txt}
 	\addplot[thick, mark=*, color=magenta!80!white] 
@@ -1784,7 +1784,7 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Bureau of Economic Analysis; Author} \hfill \tbllink{pi_levels.csv}
+\footnotesize{Source: Bureau of Economic Analysis, Author} \hfill \tbllink{pi_levels.csv}
 \end{minipage}
 \vspace{3mm}
 
@@ -1889,7 +1889,7 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \begin{minipage}{0.82\textwidth} 
 \normalsize \textbf{Personal Income} \hspace{32mm} \input{text/pinc_year1.txt} \hspace{32mm} \input{text/pinc_year2.txt}\\
 \footnotesize{\textit{number of recipients in thousands,}}\\
-\footnotesize{\textit{income amounts in \input{text/pinc_year1.txt}USD}}\\
+\footnotesize{\textit{income amounts in \input{text/pinc_year1.txt}US dollars}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{4.0pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.46}
 		\begin{tabular}{p{38mm} R{12mm} R{11mm} R{11mm} | R{13mm} R{11mm} R{11mm}}
@@ -2073,7 +2073,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \normalsize \textbf{Shelter Costs}\\
 \footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, ymin=0.6, 
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, ymin=0.4, 
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=6.8cm]
 	\rbars
@@ -2098,7 +2098,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \normalsize \textbf{Expenditure Types}\\
 \footnotesize{\textit{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, ymin=1.5, 
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25}, ymin=1.0, 
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=6.4cm, width=6.85cm]
 	\rbars
@@ -2453,7 +2453,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 	\absnode{{2010-07-01}}{25.5}{\color{green!60!blue!80!black}Fed G.19}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve; FRBNY} \hfill \tbllink{cc_dpi_monthly.csv} \tbllink{hhcdebt.csv}
+\footnotesize{Source: Federal Reserve, FRBNY} \hfill \tbllink{cc_dpi_monthly.csv} \tbllink{hhcdebt.csv}
 \end{minipage}
 \vspace{5mm}
 
@@ -2863,9 +2863,9 @@ In the chart, income invested at the historical-average rate (see\cbox{magenta!8
 	\input{text/homeown_other_node.txt}
 	\input{text/homeown_hispanic_node.txt}
 	\input{text/homeown_black_node.txt}
-	\stdnode{4.3cm}{0.4cm}{\footnotesize \color{red!20!orange!95!black}Black}
-	\stdnode{4.4cm}{6.6cm}{\footnotesize \color{blue!80!cyan!80!black}White}
-	\stdnode{4.7cm}{3.4cm}{\footnotesize \color{red!80!black}Other}
+	\stdnode{4.1cm}{0.4cm}{\footnotesize \color{red!20!orange!95!black}Black}
+	\stdnode{4.4cm}{6.5cm}{\footnotesize \color{blue!80!cyan!80!black}White}
+	\stdnode{4.5cm}{3.4cm}{\footnotesize \color{red!80!black}Other}
 	\stdnode{0.9cm}{5.1cm}{\footnotesize \color{violet!60!magenta}Total}
 	\stdnode{4.3cm}{1.92cm}{\footnotesize \color{green!80!blue!85!black}Hispanic}
 	\end{axis}
@@ -2883,7 +2883,7 @@ In the chart, income invested at the historical-average rate (see\cbox{magenta!8
 \begin{minipage}{0.76\textwidth}
 \small Use caution when interpreting homeownership rates during the COVID-19 pandemic. Individuals who are renters or homeowners are captured by the measure, but when an individual moves in with family and stops being a head of household, they are dropped from the measure. Therefore when renters move in with family the homeownership rate increases. The 2020 spike in homeownership rates reflects renters moving in with family. 
 
-As seen during the collapse of the housing bubble, it is possible for someone to be a homeowner but have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Owners' equity in their homes has increased substantially since the collapse of the housing bubble. 
+As seen during the collapse of the housing bubble, it is possible for a homeowner to have no equity in their home, for example if the market price of the home falls below the principal remaining on the mortgage. Owners' equity in their homes has increased substantially since the collapse of the housing bubble. 
 \end{minipage}
 \vspace{1mm}
 
@@ -3124,7 +3124,7 @@ During the housing bubble that caused the great recession, housing prices reache
 	\stdline{red}{date}{VALUE}{data/hpi_rent_ratio.csv}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: FHFA; BLS} \hfill \tbllink{hpi_rent_ratio.csv} 
+\footnotesize{Source: FHFA, BLS} \hfill \tbllink{hpi_rent_ratio.csv} 
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -3212,7 +3212,7 @@ For purposes of program eligibility and economic data, poverty is defined by hav
 \end{tikzpicture}
 \end{minipage}\vspace{-1mm}
 
-\footnotesize{Source: CPS ASEC; Author's Replication of Bruenig, see \href{https://github.com/bdecon/US-chartbook/blob/master/notebooks/CPS_ASEC.ipynb}{\faPython}}\hspace{44mm} \tbllink{poor.csv}\\
+\footnotesize{Source: CPS ASEC, Author's Replication of Bruenig, see \href{https://github.com/bdecon/US-chartbook/blob/master/notebooks/CPS_ASEC.ipynb}{\faPython}}\hspace{44mm} \tbllink{poor.csv}\\
 \footnotesize{OPM is the Official Poverty Measure, and SPM is the Supplemental Poverty Measure. See text for description.} 
 \end{minipage}
 \newpage
@@ -3474,7 +3474,9 @@ Net investment is important for many reasons. In the short run, the production a
 
 \begin{minipage}{0.76\textwidth}
 \subsection*{Inventories}
-\small Changes in private inventories are often grouped with investment in national accounts. For purposes of flow measures such as GDP, inventory changes capture a situation where goods were produced but not sold and therefore are not included in consumption or investment. This situation can allow a drop in spending that was not predicted to be obscured in GDP growth figures. However, the Bureau of Economic Analysis \href{https://apps.bea.gov/iTable/index_UD.cfm}{report} an inflation-adjusted ratio of inventories to sales in manufacturing and trade businesses (see {\color{blue!60!green}\textbf{---}}). 
+\small In the national accounts, \textbf{inventories} are the stock of goods held by firms. Inventories include goods for sale, as well as goods used in production and sales, and goods requiring further processing prior to sale. When economic activity is measured using spending on final goods, it must be adjusted for changes in inventories. For example, increased inventories mean goods were produced but not sold, and therefore are not captured in consumer spending or investment. 
+
+One tool for measuring changes in inventories is the inventories-to-sales ratio. The Bureau of Economic Analysis \href{https://apps.bea.gov/iTable/index_UD.cfm}{report} an inflation-adjusted ratio of inventories to sales in manufacturing and trade businesses (see {\color{blue!60!green}\textbf{---}}). 
 
 When thinking about the longer-term trends in these data, it's important to note that sales of businesses include services while inventories include only goods. Over the 30 years prior to COVID-19, sales shifted towards services, which reduced the inventories to sales ratio, all else equal. Following COVID-19, sales shifted back towards goods, increasing the inventories to sales ratio, all else equal, and affecting comparability of data over the period. 
 \end{minipage}
@@ -3761,7 +3763,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
-\small The Federal Reserve's monthly industrial production \href{https://www.federalreserve.gov/releases/g17/}{report} also measures the economy's total industrial capacity. The extent to which the economy is using its industrial capacity is called \textbf{capacity utilization}, and calculated as industrial production as a share of total industrial capacity. Long-term, capacity utilization has fallen as many US factories and industrial production facilities closed.
+\small The Federal Reserve also \href{https://www.federalreserve.gov/releases/g17/capnotes.htm}{report} the US industrial capacity, based on estimates of the maximum sustainable output. Industrial production as a share of total capacity is called \textbf{capacity utilization}. From 1995 to 2015, capacity utilization fell by around ten percentage points, to 75 percent, as many domestic industrial facilities reduced output or closed.
 
 \input{text/tcu.txt}
 \vspace{1mm}
@@ -3866,7 +3868,7 @@ The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd
 	\abar{cyan}{date}{Hydroelectric}{data/elec_prod.csv}
 	\abar{brown!92!black}{date}{Biomass}{data/elec_prod.csv}
 	\abar{orange}{date}{Geothermal}{data/elec_prod.csv}
-	\abar{green!65!blue}{date}{Wind}{data/elec_prod.csv}vv
+	\abar{green!65!blue}{date}{Wind}{data/elec_prod.csv}
 	\abar{yellow!70!orange}{date}{Solar}{data/elec_prod.csv}
 	\legend{Hydroelectric, Biomass, Geothermal, Wind, Solar};
 	\end{axis}
@@ -4553,7 +4555,7 @@ The current account balance can be decomposed into the balance on trade in goods
 	\sbar{violet!90!black}{date}{Equity}{data/fabz1.csv}
 	\sbar{black!30}{date}{Discrepancy}{data/fabz1.csv}	
 	\stdline{black}{date}{Saving}{data/fabz1.csv}
-	\legend{Assets, Liabilites, Equity, Statistical Discrepancy, Total};
+	\legend{Assets, Liabilities, Equity, Statistical Discrepancy, Total};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{fabz1.csv}
@@ -4566,24 +4568,23 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.39\textwidth}
+\begin{minipage}{0.37\textwidth}
 \normalsize \textbf{US Imports and Exports, Monthly}\\
 \footnotesize{\textit{billions of US dollars, seasonally adjusted}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks 
-		enlarge y limits={0.05}, clip=false, 
+		enlarge y limits={0.05}, clip=false, max space between ticks=30,
 		yticklabel style={text width=1.3em},
-		xticklabel={`\short{\year}}, height=6.6cm, width=6.4cm]
+		xticklabel={`\short{\year}}, height=6.4cm, width=6.0cm]
 	\rbar
 	\stdline{green!80!blue}{date}{EXP}{data/tradelt.csv}
-	\input{text/explt.txt}
 	\stdline{blue!80!violet}{date}{IMP}{data/tradelt.csv}
-	\input{text/implt.txt}
-	\absnode{{2017-01-01}}{190}{\footnotesize \color{green!80!blue}Exports}
-	\absnode{{2016-01-01}}{265}{\footnotesize \color{blue!80!violet}Imports}
+	\input{text/tradelt_nodes.txt}
+	\absnode{{2017-01-01}}{190}{\small \color{green!80!blue}Exports}
+	\absnode{{2015-04-01}}{265}{\small \color{blue!80!violet}Imports}
 	\end{axis}
 \end{tikzpicture}
-\vspace{0.1mm}
+\vspace{-2mm}
 
 \normalsize \textbf{Trade Balance, Monthly}\\
 \footnotesize{\textit{billions of US dollars, seasonally adjusted}}\\
@@ -4591,7 +4592,7 @@ The current account balance can be decomposed into the balance on trade in goods
 	\begin{axis}[\ltdateaxisticks 
 		enlarge y limits={0.06}, clip=false, 
 		yticklabel style={text width=2.0em},
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.4cm]
+		xticklabel={`\short{\year}}, height=5.2cm, width=6.0cm]
 	\rbar
 	\stdline{red}{date}{BAL}{data/tradelt.csv}
 	\input{text/ballt.txt}
@@ -4599,7 +4600,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tradelt.csv}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.32\textwidth}
+\begin{minipage}{0.34\textwidth}
 \small \input{text/tradeltlevels.txt}
 \end{minipage}
 \newpage
@@ -4608,20 +4609,19 @@ The current account balance can be decomposed into the balance on trade in goods
 \vspace{1mm}
 
 \normalsize \textbf{Imports and Exports, Nonpetroleum}\\
-\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}\vspace{3.4cm}
+\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}\vspace{2.8cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={8, 10, 12, 14}, enlarge y limits={0.01},
-		xticklabel={`\short{\year}}, clip=false, height=5.4cm, width=12.4cm, 
-		ymin=8, ymax=15,
-		yticklabel style={text width=1.0em},
-		legend style={legend columns=1, at={(0.28, 0.84)}}]
+		xticklabel={`\short{\year}}, clip=false, height=4.8cm, width=12.2cm, 
+		ymin=8, ymax=14.7, yticklabel style={text width=1.0em}]
 	\rbars
 	\thickline{green!60!teal!80!black}{date}{EX}{data/eximgdp.csv}
 	\thickline{blue!90!cyan}{date}{IM}{data/eximgdp.csv}
+	\absnode{{1995-06-01}}{13.2}{\small \color{blue!90!cyan}Imports}
+	\absnode{{2004-01-01}}{9.2}{\small \color{green!60!teal!80!black}Exports}\\
 	\input{text/np_im_node.txt}
 	\input{text/np_ex_node.txt}
-	\legend{Exports, Imports};
 	\end{axis}
 \end{tikzpicture}
 
@@ -4635,14 +4635,14 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \normalsize \textbf{International Trade}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth}}
-\vspace{6cm}
+\vspace{5.6cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,	 
-		yticklabel style={text width=1.4em},
-		height=8.0cm, ymax=7.75, enlarge y limits={0.02},
+		yticklabel style={text width=1.4em}, width=12.9cm,
+		height=7.6cm, ymax=7.75, enlarge y limits={0.02},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.91, 0.97)}, fill=white}]
+		legend style={at={(0.91, 0.98)}, fill=white}]
 	\rbars
 	\sbar{green!70!white}{date}{A253RY}{data/nx.csv}
 	\sbar{green!50!black}{date}{A646RY}{data/nx.csv}
@@ -4856,7 +4856,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small Shifts in relative consumer prices between the US and trading partners complicate analysis of exchange rates. For example, US dollar-Japanese yen exchange rate is relatively stable from 2000 to 2020, but Japan has less inflation in consumer prices over the period. At the end of the period, 100 yen buys more consumer goods in Japan than one dollar will buy in the US. 
+\small Shifts in relative consumer prices between the US and trading partners complicate analysis of exchange rates. For example, the US dollar-Japanese yen exchange rate is relatively stable from 2000 to 2020, but Japan has less inflation in consumer prices over the period. At the end of the period, 100 yen buys more consumer goods in Japan than one dollar will buy in the US. 
 
 Real effective exchange rates incorporate the inflation rate in the US and in trading partners, and are again weighted by the amount of trade with each partner. The real effective exchange rate captures the basket of goods that can be purchased by unit of currency, as opposed to capturing the basket of other currencies that can be purchased. 
 \vspace{0.5mm}
@@ -6276,7 +6276,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 			 \input data/unempreason_table.tex \hline
 		\end{tabular}}\vspace{-1mm}
 		
-\footnotesize{Source: Bureau of Labor Statistics; Author}\\
+\footnotesize{Source: Bureau of Labor Statistics, Author}\\
 \footnotesize{* During the COVID-19 shutdowns some unemployed were incorrectly counted as employed but not at work.}
 \end{minipage}
 \newpage
@@ -6870,7 +6870,7 @@ The current population survey asks whether individuals have the same employer as
 			 \input data/hoursworked_table.tex \hline
 		\end{tabular}}\vspace{-2mm}
 		
-\footnotesize{Source: Bureau of Labor Statistics; Author}
+\footnotesize{Source: Bureau of Labor Statistics, Author}
 \end{minipage}
 \newpage 
 \begin{minipage}{0.76\textwidth}
@@ -8003,7 +8003,7 @@ Researchers can then use the price index to calculate the rate of inflation. Per
 \footnotesize{Source: BLS, BEA, Federal Reserve Bank of Dallas}
 \vspace{2mm}
 
-\small In effect, the 12-month percent change in prices is smoothed, relative to the one-month change in prices, by including information on price changes that happened over the past year. While the chartbook uses less-volatile 12-month inflation rates in most cases, the \textbf{one-month rate} can be more useful for examining short-term trends, for example by eliminating the base effects from changes in prices a year ago. 
+\small In effect, the 12-month percent change in prices is smoothed, relative to the one-month change, by including information on price changes that happened over the past year. While the chartbook uses less-volatile 12-month inflation rates in most cases, the \textbf{one-month rate} can be more useful for examining short-term trends, for example by eliminating the base effects from changes in prices a year ago. 
 
 \input{text/cpi_monthly.txt}
 \vspace{1mm}
@@ -8155,7 +8155,7 @@ One-year inflation rates for different categories of goods and services, includi
 	\absnode{{2016-10-01}}{2.95}{\footnotesize \color{violet!60!magenta}\textbf{Survey}}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: FRED; U. of Michigan} \hfill \tbllink{infbreak.csv}
+\footnotesize{Source: FRED, U. of Michigan} \hfill \tbllink{infbreak.csv}
 \end{minipage} \hspace{6mm} 
 \begin{minipage}{0.33\textwidth}
 \small \input{text/inf_exp_cons.txt}
@@ -8395,10 +8395,6 @@ Two commodities that are important to the construction and manufacturing industr
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\hypertarget{prco}{}
-\subsection*{Commodity Prices}
-\vspace*{-1mm}
-
 \small \input{text/wti.txt}
 \vspace{0.5mm}
 
