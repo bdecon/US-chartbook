@@ -259,7 +259,7 @@ def cont_subt(value, style='main', digits=2):
             text = 'no contribition to'
         elif style == 'end':
             text = 'did not contribute'
-
+    print('cont_subt will be removed from a future version')
     return text 
 
 
@@ -404,6 +404,19 @@ def binned_wage(df, wage_var='WKEARN', percentile=0.1, wgt_var='PWORWGT',
     
     return np.interp(percentile, cdf, bins[1:])
         
+
+def median_age(df, wgt='PWSSWGT', percentile=0.5):
+    '''
+    Returns age associated with given percentile.
+    
+    Default is median (0.5).
+    '''
+    bins=np.arange(-1, 86, 1)
+    cdf = (df.groupby(pd.cut(df.AGE, bins))
+             [wgt].sum().cumsum() / df[wgt].sum())
+    
+    return np.interp(percentile, cdf, bins[1:])
+
     
 def cps_date():
     '''Returns latest month of available data'''
@@ -430,9 +443,12 @@ def fred_df(series, start='1989'):
     return df.loc[start:]    
     
 
-def c_line(color):
+def c_line(color, see=True, paren=True):
 	'''Return (see ---) for a given color'''
-	return f'(see {{\color{{{color}}}\\textbf{{---}}}})'
+	s = 'see ' if see == True else ''
+	p = ['(', ')'] if paren == True else ['', '']
+	cl = f'{p[0]}{s}{{\color{{{color}}}\\textbf{{---}}}}{p[1]}'
+	return cl
 	
 	
 def c_box(color):
@@ -604,7 +620,8 @@ def val_inc_pp(val, threshold=0.1):
         txt = f'decreased by a total of {abs(val):{format_string}} {pp}'
     else:
         txt = 'was virtually unchanged'
-        
+    
+    print('val_inc_pp will be removed from a future version')    
     return txt
     
     
@@ -722,6 +739,7 @@ def inc_dec_percent(n, how='main', annualized=False):
     	return (f'an increase of {abs(n):.1f} percent{atxt2}' if n >= 0.1 
         	else f'a decrease of {abs(n):.1f} percent{atxt2}' 
         	if n <= -0.1 else 'virtually no change')
+    print('inc_dec_percent will be removed from a future version')
         
         
 def compare_text(latest, previous, cutoffs):
