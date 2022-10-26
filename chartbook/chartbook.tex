@@ -780,7 +780,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \input{text/recessions.txt}
 \vspace{0.5mm}
 
-\normalsize \textbf{US Recessions Since 1989}
+\normalsize \textbf{US Recessions since 1989}
 \vspace{-4mm}
 
 \footnotesize \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{1.0pt} \color{black!90}
@@ -983,71 +983,174 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \section*{Financial Accounts}
 \markright{\seriffont Financial Accounts}
 \begin{minipage}{0.76\textwidth}
-\small The Federal Reserve \href{https://www.federalreserve.gov/releases/z1/}{report} transactions and levels for US assets and liabilities in the \textbf{financial accounts}. This section provides a high-level overview of the financial accounts, including liabilities, sectoral balances, wealth, and investment. 
+\small Economists are concerned with the level of assets and liabilities, at a given point in time, and by related transactions, such as the lending and borrowing, and saving and investment. Data on financing and investing activities provide insight into current economic conditions as well as the future economic outlook. This section provides a high-level overview of the US \textbf{financial accounts} and related measures, and covers liabilities, sectoral balances, wealth, and investment. 
 \hypertarget{of1}{}
 \subsection*{Liabilities}
-\small \textbf{Total liabilities} are the sum of debts and other financial obligations at a point in time. While the vast majority of US borrowing comes from US lending, meaning the net result on US balance sheets is zero, it is still useful to consider how total liabilities vary by major sector and over time. 
+\small The Federal Reserve US Financial Accounts \href{https://www.federalreserve.gov/releases/z1/}{cover} \textbf{liabilities}, both in levels and transactions. Using these accounts, we can summarize US financial obligations to others in a few different ways. 
 
-\input{text/liabsh.txt}
+\input{text/liab_overview.txt}
+\vspace{2mm}
+
+\normalsize \textbf{Liabilities}\\
+\footnotesize{\textit{share of GDP, percent \hspace{35mm} per capita, thousands of \input{text/liab_date.txt}US dollars}}
+\vspace{3.05cm}
+
+\begin{minipage}{0.47\textwidth}
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 100, 200, 300, 400}, 
+		yticklabel style={text width=1.4em}, ymin=19, ymax=380, xmin={1989-08-01},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=5.8cm]
+	\rbars
+	\thickline{blue!60!black}{date}{LA384104005.Q}{data/liabsh.csv}
+	\absnode{{2011-01-01}}{240}{\footnotesize \color{blue!60!black}Debt}
+	\thickline{cyan!88!blue}{date}{FL384190005.Q}{data/liabsh.csv}
+	\absnode{{2011-01-01}}{340}{\footnotesize \color{cyan!88!blue}Total}
+	\thickline{red!90!magenta}{date}{FL264090005.Q}{data/liabsh.csv}
+	\absnode{{2011-12-01}}{116}{\footnotesize \color{red!90!magenta}Foreign}
+	\input{text/liabsh_node1.txt}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.47\textwidth}
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 50, 100, 150, 200, 250, 300}, 
+		yticklabel style={text width=1.4em}, ymin=12, ymax=290, xmin={1989-08-01},
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=5.8cm]
+	\rbars
+	\thickline{blue!60!black}{date}{LA384104005.Q}{data/liabpc.csv}
+	\absnode{{2011-01-01}}{155}{\footnotesize \color{blue!60!black}Debt}
+	\thickline{cyan!88!blue}{date}{FL384190005.Q}{data/liabpc.csv}
+	\absnode{{2009-01-01}}{266}{\footnotesize \color{cyan!88!blue}Total}
+	\thickline{red!90!magenta}{date}{FL264090005.Q}{data/liabpc.csv}
+	\absnode{{2011-12-01}}{78}{\footnotesize \color{red!90!magenta}Foreign}
+	\input{text/liabpc_node.txt}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}
 \vspace{1mm}
 
+\footnotesize{\textit{share of GDP, percent}
+\vspace*{-5mm}
+
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+{\renewcommand{\arraystretch}{1.5}
+\hspace*{-1mm} \begin{tabular}{p{37.6mm} R{11.4mm} R{11.2mm} R{11.2mm} R{11.2mm} R{10.7mm} R{10.2mm}}
+		\input data/liabsh1.tex \hline
+	\end{tabular}}}
+\vspace{-1mm}
+
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabsh.csv} \ \tbllink{liabpc.csv}\\
+\footnotesize{Note: Domestic figures are for nonfinancial sectors and foreign financial claims on the US do not include US claims on the rest of the world.}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small \input{text/liabsh.txt}
+\vspace{2mm}
+
+\begin{minipage}{0.47\textwidth}
 \normalsize \textbf{Total Liabilities by Sector}\\
-\footnotesize{\textit{share of GDP, percent}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 25, 50, 75, 100, 125, 150, 175}, 
-		yticklabel style={text width=1.4em}, ymin=9,
-		xticklabel={`\short{\year}}, clip=false, height=6.4cm, width=12.2cm]
+\footnotesize{\textit{share of GDP, percent}}
+\vspace{4.6cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 25, 50, 75, 100, 125, 150, 175}, 
+		yticklabel style={text width=1.4em}, ymin=8, ymax=142, xmin={1989-08-01},
+		xticklabel={`\short{\year}}, clip=false, height=6.6cm, width=5.8cm]
 	\rbars
 	\thickline{blue!70!white}{date}{FL314190005.Q}{data/liabsh.csv}
-	\absnode{{2014-05-01}}{113}{\footnotesize \color{blue}Federal Gov.}
+	\absnode{{2011-01-01}}{119}{\footnotesize \color{blue}Federal\\ 
+	\footnotesize \color{blue}Gov.}
 	\thickline{cyan!60!white}{date}{FL214190005.Q}{data/liabsh.csv}
-	\absnode{{2011-05-01}}{39}{\footnotesize \color{cyan}State \& Local Gov.}
+	\absnode{{2011-01-01}}{40}{\footnotesize \color{cyan}State \&\\ 
+	\footnotesize \color{cyan}Local\\ 
+	\footnotesize \color{cyan}Gov.}
 	\thickline{orange!90!red}{date}{FL154190005.Q}{data/liabsh.csv}
-	\absnode{{2014-10-01}}{75}{\footnotesize \color{orange!90!red}Household}
-	\thickline{green!72!black}{date}{Business}{data/liabsh.csv}
-	\absnode{{1991-10-01}}{116}{\footnotesize \color{green!72!black}Private Business}
+	\absnode{{2011-12-01}}{74}{\footnotesize \color{orange!90!red}Household}
+	\thickline{green!72!black}{date}{FL144190005.Q}{data/liabsh.csv}
+	\absnode{{1990-10-01}}{136}{\footnotesize \color{green!72!black}Private\\
+		\footnotesize \color{green!72!black} Business}
 	\input{text/liabsh_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.47\textwidth}
+\normalsize \textbf{Debt by Sector}\\
+\footnotesize{\textit{share of GDP, percent, seasonally adjusted}}
+\vspace{4.6cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 25, 50, 75, 100, 125, 150, 175}, 
+		yticklabel style={text width=1.4em}, ymin=8, ymax=142, xmin={1989-12-01},
+		xticklabel={`\short{\year}}, clip=false, height=6.6cm, width=5.8cm]
+	\rbars
+	\thickline{blue!70!white}{date}{LA314104005.Q}{data/liabsh.csv}
+	\absnode{{2013-10-01}}{130}{\footnotesize \color{blue}Federal\\ 
+	\footnotesize \color{blue}Gov.}
+	\thickline{cyan!60!white}{date}{LA214104005.Q}{data/liabsh.csv}
+	\absnode{{2016-01-01}}{38}{\footnotesize \color{cyan}State \&\\ 
+	\footnotesize \color{cyan}Local Gov.}
+	\thickline{orange!90!red}{date}{LA154104005.Q}{data/liabsh.csv}
+	\absnode{{1993-04-01}}{100}{\footnotesize \color{orange!90!red}Household}
+	\thickline{green!72!black}{date}{LA144104005.Q}{data/liabsh.csv}
+	\absnode{{2012-12-01}}{67}{\footnotesize \color{green!72!black}Private\\
+		\footnotesize \color{green!72!black} Business}
+	\input{text/liabsh_node2.txt}
+	\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\vspace{5mm}
+
+\normalsize \textbf{Debt by Sector}\\
+\footnotesize{\textit{share of GDP, percent}
+\vspace*{-4mm}
+
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+{\renewcommand{\arraystretch}{1.5}
+\hspace*{-1mm} \begin{tabular}{p{37.6mm} R{11.4mm} R{11.2mm} R{11.2mm} R{11.2mm} R{10.7mm} R{10.2mm}}
+		\input data/liabsh2.tex \hline
+	\end{tabular}}}
+\vspace{-1.5mm}
+
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabsh.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\small Calculating each sector's contribution to the \textbf{total change in borrowing} can highlight economic risks. For example, the tech bubble of the late 1990s and early 2000s shows up as a large increase in corporate borrowing. The housing bubble from the 1990s to 2007 shows up as an increase in household borrowing. Government borrowing increased following the collapse of the housing bubble, in an effort to compensate for the massive fall in wage income. Keep in mind, however, that the vast majority of liabilities in the domestic economy are to other domestic parties.
-
-\input{text/liabgr.txt} 
+\small \textbf{Changes in debt levels} can highlight economic risks. For example, the tech bubble of the late 1990s and early 2000s shows up as a large increase in corporate borrowing. The housing bubble from the 1990s to 2007 shows up as an increase in mortgage debt. More recently, government borrowing increased following the great recession and in response to COVID-19. \input{text/liabgr.txt} 
 \vspace{2mm}
 
 \normalsize \textbf{Real Debt Growth}\\
-\footnotesize{\textit{contribution to one-year percent change in liabilities, adjusted by PCE price deflator}}\\
-\hspace*{-3mm} \begin{tikzpicture}
+\footnotesize{\textit{contribution to one-year percent change in debt, adjusted by PCE price deflator}}
+\vspace{3.2cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, 0, 2, 4, 6, 8, 10}, 
-		xmin = 1989-01-01, height=6.5cm, width=13.0cm, enlarge y limits={0.05}, 
+		ymax=9.6, height=5.2cm, width=13.0cm, enlarge y limits={0.05}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.0em}, clip=false, 
-		legend style={at={(0.95, 1.12)}}]
+		legend cell align={left}, reverse legend,
+		legend style={legend columns=-1, at={(0.98, 1.25)}}]
 	\rbars
-	\sbar{blue!70!white}{date}{FL314190005.Q}{data/liabgr.csv}
-	\sbar{cyan!52!white}{date}{FL214190005.Q}{data/liabgr.csv}
-	\sbar{orange!70!white}{date}{FL154190005.Q}{data/liabgr.csv}
-	\sbar{lime!70!white}{date}{FL104190005.Q}{data/liabgr.csv}
-	\sbar{green!72!black}{date}{FL114190005.Q}{data/liabgr.csv}
-	\legend{Fed. Gov.,State/Loc. Gov., Households, Corp bus., Non-corp. bus.};
+	\sbar{blue!70!white}{date}{FL314104005.Q}{data/liabgr.csv}
+	\sbar{cyan!60!white}{date}{FL214104005.Q}{data/liabgr.csv}
+	\sbar{orange!90!red}{date}{FL154104005.Q}{data/liabgr.csv}
+	\sbar{green!72!black}{date}{FL144104005.Q}{data/liabgr.csv}
+	\legend{Federal,State \& Local, Household, Business};
 	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabgr.csv}
+\end{tikzpicture}
+\vspace{3mm}
 
-\vspace{4mm}
+\footnotesize{\textit{contribution to one-year real growth \hspace{48mm} moving averages}}
+\vspace{-4mm}
 
-\normalsize \textbf{Real Debt Growth}\\
-\footnotesize{\textit{contribution to one-year real growth \hspace{48mm} moving averages}}\\ 
-\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.55}
-		 \begin{tabular}{p{38mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
-		   R{7.8mm} R{6.7mm} R{6.7mm} }
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{4.3pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.54}
+\hspace*{-1mm} \begin{tabular}{p{37mm} R{6.7mm} R{6.6mm} R{6.6mm} R{6.6mm} R{6.6mm} 
+		   R{8.0mm} R{6.6mm} R{6.6mm} }
 			 \input data/liabgr.tex \hline
-		\end{tabular}}	\vspace{-2mm}
+		\end{tabular}}	\vspace{-2.5mm}
 		
-\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabgr.csv}
 \end{minipage}
 \newpage
 \hypertarget{ofsb}{}
@@ -1739,14 +1842,14 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
   	\begin{axis}[ybar=16pt, \bbar{y}{0}, ytick={0, 20, 40, 60, 80, 100}, 
     	width=11.8cm, bar width=16pt, height=5.0cm, ymin=4.5, ymax=100,
     	enlarge x limits={abs=0.8cm}, enlarge y limits=0.02, 
-    	symbolic x coords={Under 25, 25-34, 35-44, 45-54, 55-64, 65-74, 75+},
+    	symbolic x coords={Under 25, 25--34, 35--44, 45--54, 55--64, 65--74, 75+},
     	xtick=data, yticklabel style={text width=0.7em}, 
 		xticklabels from table={\ceage}{name}, 
 		xticklabel style={black!70, font=\small}, clip=false,
 		nodes near coords,  
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, legend cell align={left},
-		legend style={at={(0.21, 1.06)}, legend columns=1, 
+		legend style={at={(0.92, 1.06)}, legend columns=1, 
 		fill=white, draw=none}]
   	\addplot[ybar, bar shift=-8pt, fill=green!80!blue, draw=none, area legend] 
   		table [y index=1] {\ceage};
@@ -1761,7 +1864,7 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \newpage
 \subsection*{Income to Persons}
 \begin{minipage}{0.3\textwidth}
-\small \textbf{Personal income} \href{https://www.bea.gov/data/income-saving/personal-income}{includes} labor income (see\cbox{green!75!black}), measured as compensation of employees, capital income (see\cbox{orange!40!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income (see\cbox{blue!80!white}), measured primarily as government social benefits less contributions to social insurance. 
+\small \textbf{Personal income} \href{https://www.bea.gov/data/income-saving/personal-income}{includes} labor income (see\cbox{green!75!black}), measured as compensation of employees, capital income (see\cbox{orange!40!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income (see\cbox{blue!80!white}), measured as government social benefits less contributions to social insurance. 
 
 \input{text/pi_levels_basic.txt}
 \end{minipage} \hspace{6mm}
@@ -5561,140 +5664,148 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \footnotesize{Source: Author's Calculations from CPS} \hspace{67mm} \tbllink{state_pa_epop_full.csv}
 \newpage
 \begin{minipage}{0.76\textwidth} 
-\small Employment rates vary over time, but also by age, gender, and education. Over the three months ending \input{text/cps_lfs_date.txt}\unskip, the employment rate for most age and education subgroups is lower than it was before the pandemic (the three months ending \input{text/cps_lfs_dateprepan.txt}\unskip).
+\small \input{text/empgroups.txt}
 \vspace{1mm}
 
-\textbf{Employment Rates} \small \hspace{10mm} \cbox{blue} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!50} \input{text/cps_lfs_dateprepan.txt}\\
-\footnotesize{\textit{employed share of age group, percent, three-month average}}\\
-\vspace{1mm}
+\textbf{Employment Rates} \small \hspace{10mm} \cbox{blue!85!violet} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!45} \input{text/cps_lfs_dateprepan.txt}\\
+\footnotesize{\textit{employed share of age group, percent, three-month average}}
+\vspace{3mm}
 
 \centerline{\small Total, Any Education}
+\vspace*{-3mm}
+
 \hspace{22mm} Men \hspace{54mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
+\hspace*{-5mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.6ex, height=5.6cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
-		yticklabels from table={\empt}{name}, xmin=2, xmax=100,
+    	width=6.1cm, bar width=1.7ex, height=6.0cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
+		yticklabels from table={\empt}{name}, xmin=2, xmax=94,
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=cyan!45, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\empt};
-  	\addplot[fill=blue, draw=none] 
+  	\addplot[fill=blue!85!violet, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\empt};
   	\end{axis}
 \end{tikzpicture} \hfill
 \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.6ex, height=5.6cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
-		yticklabels from table={\empt}{name}, xmin=2, xmax=100,
+    	width=6.1cm, bar width=1.7ex, height=6.0cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
+		yticklabels from table={\empt}{name}, xmin=2, xmax=94,
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=cyan!45, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\empt};
-  	\addplot[fill=blue, draw=none] 
+  	\addplot[fill=blue!85!violet, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\empt};
   	\end{axis}
-\end{tikzpicture}\\
-\vspace{1mm}
+\end{tikzpicture}
+\vspace{4mm}
 
 \centerline{\small High School Degree or Less}
+\vspace*{-3mm}
+
 \hspace{22mm} Men \hspace{54mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
+\hspace*{-5mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.6ex, height=4.6cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+    	width=6.1cm, bar width=1.7ex, height=4.8cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=cyan!45, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\emp};
-  	\addplot[fill=blue, draw=none] 
+  	\addplot[fill=blue!85!violet, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\emp};
   	\end{axis}
 \end{tikzpicture} \hfill
 \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.6ex, height=4.6cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+    	width=6.1cm, bar width=1.7ex, height=4.8cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=cyan!45, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\emp};
-  	\addplot[fill=blue, draw=none] 
+  	\addplot[fill=blue!85!violet, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\emp};
   	\end{axis}
-\end{tikzpicture}\\
-\vspace{1mm}
+\end{tikzpicture}
+\vspace{4mm}
 
 \centerline{\small Some College}
+\vspace*{-3mm}
+
 \hspace{22mm} Men \hspace{54mm} Women\\
-\noindent \hspace*{-4mm} \begin{tikzpicture}
+\hspace*{-5mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.6ex, height=4.6cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+    	width=6.1cm, bar width=1.7ex, height=4.8cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=cyan!45, draw=none] 
   		table [y expr=-\coordindex, x index=5] {\emp};
-  	\addplot[fill=blue, draw=none] 
+  	\addplot[fill=blue!85!violet, draw=none] 
   		table [y expr=-\coordindex, x index=6] {\emp};
   	\end{axis}
 \end{tikzpicture} \hfill
 \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.6ex, height=4.6cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+    	width=6.1cm, bar width=1.7ex, height=4.8cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=cyan!45, draw=none] 
   		table [y expr=-\coordindex, x index=7] {\emp};
-  	\addplot[fill=blue, draw=none] 
+  	\addplot[fill=blue!85!violet, draw=none] 
   		table [y expr=-\coordindex, x index=8] {\emp};
   	\end{axis}
 \end{tikzpicture}
-\vspace{1mm}
+\vspace{4mm}
 
 \centerline{\small Bachelor or Advanced Degree}
+\vspace*{-3mm}
+
 \hspace{22mm} Men \hspace{54mm} Women \\
-\hspace*{-4mm} \begin{tikzpicture}
+\hspace*{-5mm} \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.6ex, height=4.6cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+    	width=6.1cm, bar width=1.7ex, height=4.8cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=cyan!45, draw=none] 
   		table [y expr=-\coordindex, x index=9] {\emp};
-  	\addplot[fill=blue, draw=none] 
+  	\addplot[fill=blue!85!violet, draw=none] 
   		table [y expr=-\coordindex, x index=10] {\emp};
   	\end{axis}
 \end{tikzpicture} \hfill
 \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.6ex, height=4.6cm,
-    	enlarge y limits={abs=0.35cm}, enlarge x limits=0.05, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=100,
+    	width=6.1cm, bar width=1.7ex, height=4.8cm,
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
+		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!50, draw=none] 
+  	\addplot[fill=cyan!45, draw=none] 
   		table [y expr=-\coordindex, x index=11] {\emp};
-  	\addplot[fill=blue, draw=none] 
+  	\addplot[fill=blue!85!violet, draw=none] 
   		table [y expr=-\coordindex, x index=12] {\emp};
   	\end{axis}
 \end{tikzpicture}
-\vspace{-1mm}
+\vspace{-2mm}
 
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{empgroups.csv}
 \end{minipage}
@@ -6896,7 +7007,7 @@ The current population survey asks whether individuals have the same employer as
 \subsubsection*{Part-Time Work}
 \small Many people work fewer than 35 hours per week, and the reasons for doing so vary. The Bureau of Labor Statistics classify part-time workers who would prefer full-time work as involuntary or \textbf{part time for economic reasons}. This group is comprised of people who don't have enough hours because of slack business conditions or who are unable to find full-time work. 
 
-Voluntary part-time workers or those \textbf{part-time for non-economic reasons} do not want full-time jobs. The category includes those who work fewer hours for health, childcare, personal or family reasons, those who are retired or have a limit on earnings, and those with jobs where full-time is less than 35 hours per week. 
+Voluntary part-time workers, or those \textbf{part-time for non-economic reasons}, do not necessarily want more hours of work. The category includes those who work fewer hours for health, childcare, personal or family reasons, those who are retired or have a limit on earnings, and those with jobs where full-time is less than 35 hours per week. 
 \vspace{0.5mm}
 
 \begin{minipage}{0.56\textwidth}
@@ -6922,7 +7033,7 @@ Voluntary part-time workers or those \textbf{part-time for non-economic reasons}
 \vspace{1mm}
 
 \subsubsection*{More Than One Job}
-\small Multiple jobholding rates were fairly stable from 2000 to 2019. The household survey used to identify people with more than one job asks about a specific reference week. As a result, the multiple jobholding rate is not intending to capture people who rely on a patchwork of multiple jobs over time, but work at one job in the survey reference week. 
+\small Over a given period of time, some people work more than one job. The household survey identifying people with more than one job asks about employment during a specific reference week. Respondents who work more than one job during the reference week are considered multiple jobholders; those who work multiple jobs over a month or year, but work one job in the survey reference week, are not. 
 \vspace{0.5mm}
 
 \begin{minipage}{0.56\textwidth}
@@ -6952,11 +7063,11 @@ Voluntary part-time workers or those \textbf{part-time for non-economic reasons}
 \vspace{0.5mm}
 
 \begin{minipage}{0.56\textwidth}
-\normalsize \textbf{Self Employed}\\
+\normalsize \textbf{Self-Employed}\\
 \footnotesize{\textit{percent of labor force}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks clip=false,
-		enlarge y limits={0.18}, ymin=1.2,
+		enlarge y limits={0.02}, ymin=0.1,
 		xticklabel={`\short{\year}}, height=4.4cm, width=7.0cm]
 	\rbars
 	\stdline{purple}{date}{uninc}{data/selfemp.csv}
@@ -7576,8 +7687,8 @@ Lastly, the \href{https://www.ftserussell.com/products/indices/russell-us}{Russe
 \small The Chicago Board Options Exchange uses S\&P 500 options data to \href{http://www.cboe.com/vix}{identify} expectations of future volatility. \input{text/vixbasic.txt}
 \vspace{1mm}
 
-\normalsize \textbf{S\&P 500 Volatility Index}\\
-\footnotesize{\textit{index, monthly average shown}}\\
+\normalsize \textbf{CBOE Volatility Index}\\
+\footnotesize{\textit{index, monthly average and latest value}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 20, 40, 60}, 
 		xticklabel={`\short{\year}}, clip=false, ymin=4,
@@ -7684,18 +7795,18 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 \input{text/real_yield_model_ch.txt}
 \vspace{2mm}
 
-\normalsize \textbf{Recent Changes}\\
+\normalsize \textbf{Decomposition of Recent Changes in Treasury Yields}\\
 \footnotesize{\textit{percentage points}}
-\vspace{4.1cm}
+\vspace{4.2cm}
 
-\hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=62pt}]
-	\nextgroupplot[\bbar{y}{0}, width=5.6cm, height=5.6cm, 
+\hspace{2mm} \begin{tikzpicture}[overlay]
+	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=52pt}]
+	\nextgroupplot[\bbar{y}{0}, width=6.2cm, height=5.7cm, 
 		axis line style={draw=none}, xtick=data, clip=false, ytick={0}, 
 		xticklabel style={black!90, font=\small, text width=1.5cm, align=center}, 
-	 	enlarge x limits={0.1}, transpose legend,
-	 	reverse legend,
-	 	xticklabels from table={\rych}{name}, enlarge y limits={lower, 0.3},
+	 	enlarge x limits={0.15}, transpose legend,
+	 	reverse legend, xlabel near ticks, xlabel={Maturity},
+	 	xticklabels from table={\rych}{name}, enlarge y limits={lower, 0.18},
 	 	nodes near coords style={style={black!75, anchor=south,
 		 yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill,
 			precision=2, assume math mode}]
@@ -7703,31 +7814,32 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 		draw=blue, scale=1.5}, nodes near coords] 
   		table [x expr=\coordindex, y=Total] {\rych};
   	\addplot[opacity=0] coordinates {(1, 0)};
-	\addplot[ybar stacked, bar width=20pt, draw opacity=0, fill=black!12!white] table [x expr=\coordindex, y=IE]{\rych};
-	\addplot[ybar stacked, bar width=20pt, draw opacity=0, fill=lime!50!green!80!black] table [x expr=\coordindex, y=RY]{\rych};
-	\stdnode{1.6cm}{3.6cm}{\normalsize \color{black!90} \textbf{Three-month change}}
+	\addplot[ybar stacked, bar width=18pt, draw opacity=0, fill=black!15!white] table [x expr=\coordindex, y=IE]{\rych};
+	\addplot[ybar stacked, bar width=18pt, draw opacity=0, fill=lime!40!green!80!black] table [x expr=\coordindex, y=RY]{\rych};
+	\stdnode{1.35cm}{3.9cm}{\normalsize \color{black!80} \textbf{Change since \input{text/inf_exp_dt1.txt}}}
 	\input{text/inf_exp_ch_nodes.txt}
-	\nextgroupplot[\bbar{y}{0}, width=5.6cm, height=5.6cm, 
+	\nextgroupplot[\bbar{y}{0}, width=6.2cm, height=5.7cm, 
 		axis line style={draw=none}, xtick=data, clip=false, ytick={0}, 
 		xticklabel style={black!90, font=\small, text width=1.5cm, align=center}, 
-	 	enlarge x limits={0.1}, transpose legend, reverse legend,
-	 	xticklabels from table={\rytch}{name}, enlarge y limits={lower, 0.12},
+	 	enlarge x limits={0.15}, transpose legend, reverse legend,
+	 	xlabel near ticks, xlabel={Maturity},
+	 	xticklabels from table={\rytch}{name}, enlarge y limits={lower, 0.18},
 	 	nodes near coords style={style={black!75, anchor=south,
 		 yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill,
 			precision=2, assume math mode}, legend cell align={left}, 
-		legend style={legend columns=-1, at={(0.68, 1.34)}}]
+		legend style={legend columns=-1, at={(0.82, 1.22)}}]
   	\addplot[scatter, mark=*, only marks, mark options={fill=blue, 
 		draw=blue, scale=1.5}, nodes near coords] 
   		table [x expr=\coordindex, y=Total] {\rytch};
-	\addplot[ybar stacked, bar width=20pt, draw opacity=0, fill=black!12!white] table [x expr=\coordindex, y=IE]{\rytch};
+	\addplot[ybar stacked, bar width=18pt, draw opacity=0, fill=black!15!white] table [x expr=\coordindex, y=IE]{\rytch};
   	\addplot[opacity=0] coordinates {(1, 0)};
-	\addplot[ybar stacked, bar width=20pt, draw opacity=0, fill=lime!50!green!80!black] table [x expr=\coordindex, y=RY]{\rytch};
-	\stdnode{1.6cm}{4.0cm}{\normalsize \color{black!90} \textbf{Three-year change}}
+	\addplot[ybar stacked, bar width=18pt, draw opacity=0, fill=lime!40!green!80!black] table [x expr=\coordindex, y=RY]{\rytch};
+	\stdnode{1.35cm}{3.9cm}{\normalsize \color{black!80} \textbf{Change since \input{text/inf_exp_dt2.txt}}}
 	\input{text/inf_exp_ch_nodes2.txt}
 	\legend{\ Total,Inflation Expectations,,Real Yields};
 	\end{groupplot}
 \end{tikzpicture}
-\vspace{3mm}
+\vspace{7mm}
 
 \footnotesize{Latest data from model as of: {\input{text/frbcle_ry_date.txt}}}\\
 \footnotesize{Source: Federal Reserve, Federal Reserve of Bank of Cleveland} \hfill \tbllink{inf_exp_ch.csv}
@@ -8009,16 +8121,21 @@ Researchers can then use the price index to calculate the rate of inflation. Per
 \vspace{1mm}
 
 \normalsize \textbf{CPI One-Month Change}\\
-\footnotesize{\textit{monthly percent change, annualized}}\\
+\footnotesize{\textit{monthly percent change, annualized}}
+\vspace*{-4mm}
+
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
 		enlarge y limits={0.06}, enlarge x limits={0.02}, width=13.0cm, height=5.0cm,
-		yticklabel style={text width=1.0em}, ymax=16, ymin=-4, 
+		yticklabel style={text width=1.0em}, ymax=14.8, ymin=-3.6, clip=false,
 		nodes near coords,
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, xtick=data,
 		xticklabels from table={\cpimo}{label}]
 	\addplot[ybar, fill=blue, draw opacity=0] table [x=date, y=ALL_S, col sep=comma]{\cpimo};
+	\draw [black!40!white, dashed] (rel axis cs:0.365,0) -- 
+		(rel axis cs:0.365, 1.06);
+	\node[below right, align=left] at (rel axis cs:0.365, 1.16) {\color{black!40!white}\footnotesize {latest 12 months}};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi_monthly.csv}
@@ -8417,12 +8534,12 @@ Two commodities that are important to the construction and manufacturing industr
 
 \normalsize \textbf{Gasoline Price}\\
 \footnotesize{\textit{dollars per gallon, all grades}}
-\vspace{3.0cm}
+\vspace{2.6cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
-		enlarge y limits={0.25}, max space between ticks=20,	
-		yticklabel style={text width=1.2em}, width=12.2cm, height=4.6cm, ymin=0.9,
+		enlarge y limits={0.05}, max space between ticks=20,	
+		yticklabel style={text width=1.2em}, width=12.2cm, height=4.6cm, ymin=0.2,
 		xticklabel={`\short{\year}}, clip=false]
 	\rebars
 	\stdline{blue}{date}{Value}{data/gas_price.csv}

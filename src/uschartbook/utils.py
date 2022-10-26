@@ -766,10 +766,10 @@ def clean_fed_data(url, dtype='main'):
     raw_data = pd.read_csv(io.StringIO(s.decode('utf-8')))
 
     d = {v: re.sub("\s+[\(\[].*?[\)\]]", "", i.split(';')[0]) 
-         for i, v in raw_data.iloc[4, 1:].iteritems()}
+         for i, v in raw_data.iloc[4, 1:].items()}
     if dtype == 'full':
         d = {v: re.sub("\s+[\(\[].*?[\)\]]", "", ''.join(i.split(';')[0:])) 
-             for i, v in raw_data.iloc[4, 1:].iteritems()}
+             for i, v in raw_data.iloc[4, 1:].items()}
 
     date_column = raw_data.loc[5:, 'Series Description']
     date_index = pd.to_datetime(date_column).rename('Date')
@@ -1026,16 +1026,16 @@ def gc_desc(lt, mu, sigma, also=False):
         if (len(conf) == 0) & (ssr < (sigma*2)) & (t2sh < 0.8) & (tsh < 0.55):
             bbdb = 'bb1'
             bbdb_t = 'broad-based'
-            su_t = ', with categories contributing relatively evenly. '
+            su_t = ', with categories contributing relatively evenly.'
             if (ssr < sigma) & (o == False) & (len(sxl) == 1):
                 su_t = ', with categories contributing relatively evenly, '
                 co_t = f'and {xlincdec}{sh.index[-1]}. '
             elif (ssr < sigma) & (o == False) & (len(sxl) == 2):
                 su_t = ', with categories contributing relatively evenly, '
-                co_t = f'and {xlincdec}{sh.index[-1]} and {sh.index[-2]}. '
+                co_t = f'and {xlincdec}{sh.index[-1]} and {sh.index[-2]}.'
             elif (ssr < sigma) & (o == False) & (len(sxl) == 3):
                 su_t = ', with categories contributing relatively evenly, '
-                co_t = f'and {xlincdec}{sh.index[-1]}, {sh.index[-2]}, and {sh.index[-3]}. '
+                co_t = f'and {xlincdec}{sh.index[-1]}, {sh.index[-2]}, and {sh.index[-3]}.'
         elif (ssr < sigma * 2) & (t2sh < 0.95) & (tsh < 0.75):
             bbdb = 'bb2'
             bbdb_t = 'relatively broad-based'
@@ -1072,8 +1072,8 @@ def gc_desc(lt, mu, sigma, also=False):
                 bbdb_t = (f'largely the result of {incdec}{sh.index[-1]}, and partially offset '+
                           f'by {decinc}other categories.')
             elif (len(ssg) == 0) & (len(csg) > 0):
-                bbdb_t = (f'the result of {decinc}several categories and partially offset '+
-                          f'by {incdec}{sh.index[-1]}.') 
+                bbdb_t = (f'the result of {incdec}several categories that is partially offset '+
+                          f'by {co_l}.') 
     
     if bbdb in ['bb2', 'bb3']:
         if sct == 'sc':
