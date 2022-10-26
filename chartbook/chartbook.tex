@@ -886,14 +886,17 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \small The \textbf{production approach} calculates GDP as the sum of value added--gross output minus intermediate inputs--in each sector. The broad groupings discussed above are used to identify contributions from: goods-producing sectors combined with trade, transportation, and utilities (see\cbox{purple!70!blue}), finance, insurance, and real estate plus information (see\cbox{red!90!white}), other service-providing sectors (see\cbox{blue!90!white}), and government (see\cbox{orange!80!white}).
 
 \input{text/gdpva_growth.txt}
-\vspace{1mm}
+\vspace{2mm}
 
 \normalsize \textbf{Real GDP Growth by Industry Group}\\
-\footnotesize{\textit{percentage point contribution to GDP growth}}\\
-\hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{percentage point contribution to GDP growth}}
+\vspace{6.0cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30, 40},
-		height=9.6cm,  yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.74, 1.0)}, fill=white}]
+		height=8.0cm,  yticklabel style={text width=1.5em}, ymax=29, 
+		enlarge y limits=0.02,
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.78, 0.96)}, fill=white}]
 	\rbars
 	\draw [dashed] (axis cs:{2004-10-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
 		(axis cs:{2004-10-01},
@@ -909,7 +912,8 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 	\stdnode{4.1cm}{0.45cm}{\scriptsize annual data}
 	\legend{Government, Other Services, FIRE+, Goods and TTU};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva.csv}
 \end{minipage}
 \newpage
@@ -920,12 +924,16 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \vspace{1mm}
 
 \normalsize \textbf{Real GDP Growth by Household Inputs}\\
-\footnotesize{\textit{percentage point contribution to GDP growth}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30},
-		height=13.6cm,
+\footnotesize{\textit{percentage point contribution to GDP growth}}
+\vspace{7.8cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
+		ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30},
+		height=9.8cm, ymax=28.6, 
+		enlarge y limits=0.02,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.5em},
-		legend style={at={(0.84, 1.0)}, fill=white}]
+		legend style={at={(0.84, 0.98)}, fill=white}]
 	\rbars
 	\sbar{lime!90!green}{date}{pop_contr}{data/gdpjobs.csv}
 	\sbar{green!30!teal!90!black}{date}{epop_contr}{data/gdpjobs.csv}
@@ -933,7 +941,8 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 	\sbar{blue}{date}{hours_contr}{data/gdpjobs.csv}	
 	\legend{Population, Employment Rate, Productivity, Average Hours};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Author's Calculations} \hfill \tbllink{gdpjobs.csv}
 \end{minipage}
 \newpage
