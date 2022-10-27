@@ -451,9 +451,10 @@ def c_line(color, see=True, paren=True):
 	return cl
 	
 	
-def c_box(color):
+def c_box(color, see=True):
 	'''Return (see []) for a given color'''
-	return f'(see\cbox{{{color}}})'
+	s = 'see ' if see == True else '\hspace{-1mm}'
+	return f'({s}\cbox{{{color}}})'
     
     
 def end_node(series, color, percent=False, date=None, offset=0, size=1.0,

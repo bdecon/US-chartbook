@@ -3666,6 +3666,48 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\subsection*{Business Assets}
+\small \input{text/bus_assets.txt}
+\vspace{2mm}
+
+\normalsize \textbf{Business Assets}\\
+\footnotesize{\textit{by nonfinancial business type and asset type, as share of GDP, percent}}
+\vspace{3.2cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300}, 
+		ymin=8, ymax=300,
+		yticklabel style={text width=1.0em}, height=5.2cm, width=12.3cm,
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\ctsbar{orange!50!red!45!white}{date}{LM112010005}{data/bus_asset_sh.csv}{2.3pt}
+	\absnode{{1990-01-01}}{47}{\color{black!70!white} \textbf{Noncorporate Nonfinancial}}
+	\ctsbar{orange!55!red}{date}{FL114090005}{data/bus_asset_sh.csv}{2.3pt}
+	\absnode{{2013-09-01}}{68}{\color{orange!55!red} \textbf{Noncorp. Financial}}
+	\ctsbar{green!52!blue!55!white}{date}{LM102010005}{data/bus_asset_sh.csv}{2.3pt}
+	\absnode{{1993-01-01}}{132}{\color{white} \textbf{Corporate Nonfinancial}}
+	\ctsbar{green!70!yellow!70!lightgray!90!white}{date}{FL104090005}{data/bus_asset_sh.csv}{2.3pt}
+	\absnode{{2008-09-01}}{248}{\color{black!70!white} \textbf{Corporate Financial}}
+	\input{text/bus_asset_nodes.txt}
+	\end{axis}
+\end{tikzpicture}
+\vspace{4mm}
+
+\footnotesize{\textit{share of GDP, percent}
+\vspace*{-4mm}
+
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.5pt} \color{black!90}
+{\renewcommand{\arraystretch}{1.54}
+\hspace*{-1mm} \begin{tabular}{p{33.0mm} R{11.4mm} R{10.2mm} R{10.2mm} R{10.2mm} R{10.2mm} R{9.6mm} R{9.6mm}}
+		\input data/bus_asset.tex \hline
+	\end{tabular}}}
+\vspace{-2mm}
+
+\footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{bus_asset_sh.csv}\\
+\footnotesize{Notes: Includes only nonfinancial businesses. Tangible assets are market values or current replacement values.}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
 \subsection*{Business Debt}
 \small \input{text/busdebtgdp.txt} 
 \vspace{2mm}
@@ -6332,7 +6374,7 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 \end{tikzpicture}
 \vspace{-1mm}
 
-\footnotesize{Source: Author's calculations from CPS} \hfill \tbllink{unemp_grp.csv}
+\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{unemp_grp.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} 
@@ -7053,7 +7095,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks clip=false,
 		enlarge y limits={0.04}, 
-		xticklabel={`\short{\year}}, height=4.6cm, width=7.1cm]
+		xticklabel={`\short{\year}}, height=4.6cm, width=7.2cm]
 	\rebars
 	\thickline{cyan!50!blue}{date}{MJH}{data/mjh.csv}
 	\input{text/mjh_node.txt}
@@ -7675,24 +7717,42 @@ Lastly, the \href{https://www.ftserussell.com/products/indices/russell-us}{Russe
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Valuation}
-\small The \href{http://www.econ.yale.edu/~shiller/data.htm}{cyclically-adjusted price to earnings} (CAPE) ratio compares the current price of the S\&P 500 to the previous ten-years of total S\&P 500 returns, including dividends and buybacks (treated as dividends). Valuations often use recent or forecasted earnings. Robert Shiller's CAPE ratio covers a normal business cycle so that valuations are less-affected by the idiosyncrasies of current economic conditions. 
+\small The \href{http://www.econ.yale.edu/~shiller/data.htm}{cyclically-adjusted price to earnings} (CAPE) ratio compares the current price of the S\&P 500 to the previous ten-years of total S\&P 500 returns, including dividends and buybacks (treated as dividends). Valuations often use recent or forecasted earnings. Robert Shiller's CAPE ratio covers ten years (a normal business cycle) so that valuations are less-affected by the idiosyncrasies of current economic conditions. 
 
 \input{text/cape.txt}
 \vspace{1mm}
 
+\begin{minipage}{0.46\textwidth}
 \normalsize \textbf{Price to Earnings Ratio}\\
-\footnotesize{\textit{10-year total return PE ratio}}\\
+\footnotesize{\textit{ratio of market value to trailing 10-year returns}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 10, 20, 30, 40, 50, 60}, ymin=2.5,
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60}, ymin=3,
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
-		height=6.0cm, width=12.2cm]
+		height=5.2cm, width=5.9cm]
 	\rbars
 	\stdline{blue!80!cyan}{date}{TR CAPE}{data/catrpe.csv}
 	\input{text/cape_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Shiller} \hfill \tbllink{catrpe.csv}
+\end{minipage} \hfill
+\begin{minipage}{0.46\textwidth}
+\normalsize \textbf{Tobin's Q}\\
+\footnotesize{\textit{ratio of market value to replacement cost}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 50, 100, 150, 200}, ymin=10,
+		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
+		height=5.2cm, width=5.9cm]
+	\rbars
+	\stdline{green!70!black}{date}{value}{data/tobinq.csv}
+	\input{text/tobinq_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{tobinq.csv}
+\end{minipage}
 \vspace{1mm}
+
+\small A second measure, Tobin's Q, is the ratio of market value to replacement value. A ratio below 100 means the market value is below the replacement value and stocks may be undervalued. A ratio above 100 means the market value is above the replacement cost and stocks may be overvalued. \input{text/tobinq.txt} 
 
 \subsubsection*{Volatility}
 \small The Chicago Board Options Exchange uses S\&P 500 options data to \href{http://www.cboe.com/vix}{identify} expectations of future volatility. \input{text/vixbasic.txt}
