@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Arch Linux)  (format=lualatex 2022.5.15)  27 OCT 2022 08:23
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Arch Linux)  (format=lualatex 2022.5.15)  27 OCT 2022 08:49
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -1974,6 +1974,11 @@ Overfull \hbox (0.55463pt too wide) in paragraph at lines 484--484
  [][][]\TU/Lato(0)/m/n/7 70[]
  []
 
+
+Overfull \hbox (0.75763pt too wide) in paragraph at lines 484--484
+ [][][]\TU/Lato(0)/m/n/7 80[]
+ []
+
 (./text/gdp_ltdt.txt)
 Package pgfplots info on input line 501: dateplot: setting 'date ZERO={2022-10-
 31}' for this axis.
@@ -2040,9 +2045,6 @@ Package pgfplots info on input line 648: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/gdpjobslvl.csv}
 
-NOTE: coordinate (2022-07-01,) has been dropped because of a coordinate filter.
- (see also unbounded coords=jump). 
-
 Overfull \hbox (1.53635pt too wide) in paragraph at lines 651--651
  [][][]\TU/Lato(0)/m/n/7 240[]
  []
@@ -2103,10 +2105,7 @@ Package pgfplots info on input line 700: dateplot: setting 'date ZERO={2022-10-
 Package pgfplots info on input line 700: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/gdpjobslvl.csv}
-
-NOTE: coordinate (2022-07-01,) has been dropped because of a coordinate filter.
- (see also unbounded coords=jump). 
-[6] (./text/gdp_gr.txt)
+ [6] (./text/gdp_gr.txt)
 Package pgfplots info on input line 726: dateplot: setting 'date ZERO={2022-10-
 31}' for this axis.
 Package pgfplots info on input line 726: Using 'lua backend=false' for axis: x 
@@ -2120,14 +2119,14 @@ coord trafo unsupported.
 PGFPlots: reading {data/gdp_a.csv}
 Package pgfplots info on input line 760: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
-Package pgfplots info on input line 761: dateplot: setting 'date ZERO={2021-07-
+Package pgfplots info on input line 761: dateplot: setting 'date ZERO={2021-10-
 01}' for this axis.
- (./text/gdpnow_node.txt)
+
+(./text/gdpnow_node.txt)
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
 (Font)              scaled to size 7.0pt on input line 765.
-
-(./text/gdp_gr2.txt) (./text/gdpnow.txt) [7] (./text/recessions.txt)
-(./data/recession.tex)
+ (./text/gdp_gr2.txt) (./text/gdpnow.txt) [7]
+(./text/recessions.txt) (./data/recession.tex)
 Package pgfplots info on input line 810: dateplot: setting 'date ZERO={2022-10-
 31}' for this axis.
 Package pgfplots info on input line 810: Using 'lua backend=false' for axis: x 
@@ -2135,7 +2134,8 @@ coord trafo unsupported.
 PGFPlots: reading {data/sahm_bar.csv}
 PGFPlots: reading {data/sahm.csv}
 PGFPlots: reading {data/sahm_marks.csv}
- (./text/sahm_bar_node.txt) [8] (./text/gdp_exp_basic.txt)
+ (./text/sahm_bar_node.txt)
+[8] (./text/gdp_exp_basic.txt)
 Package pgfplots info on input line 847: dateplot: setting 'date ZERO={2022-10-
 31}' for this axis.
 Package pgfplots info on input line 847: Using 'lua backend=false' for axis: x 
@@ -5213,12 +5213,8 @@ PGFPlots: reading {data/businv_main.csv}
 PGFPlots: reading {data/businv_main.csv}
 PGFPlots: reading {data/businv_main.csv}
 PGFPlots: reading {data/businv_main.csv}
- (./text/businv_levels.txt
-Underfull \hbox (badness 2005) in paragraph at lines 1--2
-[]\TU/Lato(0)/m/n/9 In the the sec-ond quar-ter of 2022,
- []
-
-) [61] (./text/businv_sh.txt)
+ (./text/businv_levels.txt)
+[61] (./text/businv_sh.txt)
 Package pgfplots info on input line 3519: dateplot: setting 'date ZERO={1989-12
 -01}' for this axis.
 Package pgfplots info on input line 3519: Using 'lua backend=false' for axis: x
@@ -5237,17 +5233,13 @@ PGFPlots: reading {data/businv.csv}
  (./data/businv.tex) [62
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/dgno.txt)
-Underfull \hbox (badness 1024) in paragraph at lines 1--3570
-\TU/Lato(0)/m/n/9 taled $76 bil-lion in Au-gust 2022,
- []
-
 Package pgfplots info on input line 3578: dateplot: setting 'date ZERO={1993-05
 -01}' for this axis.
 Package pgfplots info on input line 3578: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/dgno.csv}
-(./text/dgno_node.txt)
-Overfull \hbox (4.15918pt too wide) in paragraph at lines 3572--3585
+ (./text/dgno_node.txt)
+Overfull \hbox (5.38858pt too wide) in paragraph at lines 3572--3585
 |  [] 
  []
 
@@ -5271,10 +5263,19 @@ Package pgfplots info on input line 3655: dateplot: setting 'date ZERO={2022-10
 Package pgfplots info on input line 3655: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/cprof2.csv}
+
+NOTE: coordinate (2022-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/cprof2.csv}
+NOTE: coordinate (2022-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/cprof2.csv}
+NOTE: coordinate (2022-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/cprof2.csv}
- [64
+NOTE: coordinate (2022-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
+[64
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/bus_assets.txt)
 Package pgfplots info on input line 3681: dateplot: setting 'date ZERO={2022-10
@@ -6405,21 +6406,25 @@ Package pgfplots info on input line 4295: dateplot: setting 'date ZERO={2022-10
 Package pgfplots info on input line 4295: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/fedgdp.csv}
+
+NOTE: coordinate (2022-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/fedgdp.csv}
 Package pgfplots info on input line 4306: dateplot: setting 'date ZERO={2022-10
 -31}' for this axis.
 Package pgfplots info on input line 4306: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/slggdp.csv}
+NOTE: coordinate (2022-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/slggdp.csv}
- (./text/tmb_rec.txt)
+(./text/tmb_rec.txt)
 Package pgfplots info on input line 4326: dateplot: setting 'date ZERO={2016-01
 -01}' for this axis.
 Package pgfplots info on input line 4326: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/tmb_rec.csv}
-
-(./text/tmb_rec_iit.txt)
+ (./text/tmb_rec_iit.txt)
 PGFPlots: reading {data/tmb_rec.csv}
  (./text/tmb_rec_oth.txt) [77
 Missing character: There is no ; (U+003B) in font nullfont!
@@ -6497,7 +6502,12 @@ Package pgfplots info on input line 4566: Using 'lua backend=false' for axis: x
 PGFPlots: reading {data/fedintexp.csv}
 PGFPlots: reading {data/fedintexp.csv}
 
-(./text/fedintexp_nodes.txt) (./text/fedintexp2.txt) [82
+(./text/fedintexp_nodes.txt)
+Overfull \hbox (2.24269pt too wide) in paragraph at lines 4561--4575
+|  [] 
+ []
+
+(./text/fedintexp2.txt) [82
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/debt_dynamics.txt)
 Package pgfplots info on input line 4602: dateplot: setting 'date ZERO={2022-10
@@ -11798,14 +11808,14 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 59423 strings out of 477762
- 932075,2848258 words of node,token memory allocated
+ 59424 strings out of 477762
+ 932081,2848258 words of node,token memory allocated
  590 words of node memory still in use:
    5 hlist, 1 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 3 glyph, 9 
 attribute, 64 glue_spec, 9 attribute_list, 2 write, 2 pdf_action nodes
-   avail lists: 1:12,2:144960,3:143696,4:4380,5:1187,6:871,7:11723,8:111,9:6699,
-10:26,11:567
- 69578 multiletter control sequences out of 65536+600000
+   avail lists: 1:14,2:144960,3:143696,4:4380,5:1187,6:871,7:11669,8:110,9:6699,
+10:26,11:565
+ 69579 multiletter control sequences out of 65536+600000
  115 fonts using 32951767 bytes
  115i,22n,111p,2554b,3924s stack positions out of 5000i,500n,10000p,200000b,80000s
 
@@ -11820,7 +11830,7 @@ warning  (pdf backend): unreferenced destination with name 'oegc'
 r.ttf></usr/share/fonts/TTF/Lato-Bold.ttf></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on chartbook.pdf (157 pages, 3217680 bytes).
+Output written on chartbook.pdf (157 pages, 3218628 bytes).
 
 PDF statistics: 1544 PDF objects out of 1728 (max. 8388607)
  1326 compressed objects within 14 object streams
