@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Arch Linux)  (format=lualatex 2022.5.15)  4 NOV 2022 09:19
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Arch Linux)  (format=lualatex 2022.11.4)  10 NOV 2022 23:37
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -2045,6 +2045,9 @@ Package pgfplots info on input line 648: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/gdpjobslvl.csv}
 
+NOTE: coordinate (2022-10-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
+
 Overfull \hbox (1.53635pt too wide) in paragraph at lines 651--651
  [][][]\TU/Lato(0)/m/n/7 240[]
  []
@@ -2105,14 +2108,16 @@ Package pgfplots info on input line 700: dateplot: setting 'date ZERO={2022-11-
 Package pgfplots info on input line 700: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/gdpjobslvl.csv}
- [6] (./text/gdp_gr.txt)
+
+NOTE: coordinate (2022-10-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
+[6] (./text/gdp_gr.txt)
 Package pgfplots info on input line 726: dateplot: setting 'date ZERO={2022-11-
 15}' for this axis.
 Package pgfplots info on input line 726: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/gdp.csv}
- (./text/gdpnow_node2.txt)
-(./text/nowcast_text.txt)
+ (./text/gdpnow_node2.txt) (./text/nowcast_text.txt)
 Package pgfplots info on input line 746: dateplot: setting 'date ZERO={2022-11-
 15}' for this axis.
 Package pgfplots info on input line 746: Using 'lua backend=false' for axis: x 
@@ -2122,11 +2127,12 @@ Package pgfplots info on input line 760: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 Package pgfplots info on input line 761: dateplot: setting 'date ZERO={2021-10-
 01}' for this axis.
- (./text/gdpnow_node.txt)
+
+(./text/gdpnow_node.txt)
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
 (Font)              scaled to size 7.0pt on input line 763.
- (./text/gdp_gr2.txt)
-(./text/gdpnow.txt) [7] (./text/recessions.txt) (./data/recession.tex)
+ (./text/gdp_gr2.txt) (./text/gdpnow.txt) [7]
+(./text/recessions.txt) (./data/recession.tex)
 Package pgfplots info on input line 808: dateplot: setting 'date ZERO={2022-11-
 15}' for this axis.
 Package pgfplots info on input line 808: Using 'lua backend=false' for axis: x 
@@ -2134,8 +2140,8 @@ coord trafo unsupported.
 PGFPlots: reading {data/sahm_bar.csv}
 PGFPlots: reading {data/sahm.csv}
 PGFPlots: reading {data/sahm_marks.csv}
-
-(./text/sahm_bar_node.txt) [8] (./text/gdp_exp_basic.txt)
+ (./text/sahm_bar_node.txt)
+[8] (./text/gdp_exp_basic.txt)
 Package pgfplots info on input line 845: dateplot: setting 'date ZERO={2022-11-
 15}' for this axis.
 Package pgfplots info on input line 845: Using 'lua backend=false' for axis: x 
@@ -2144,8 +2150,7 @@ PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
-
-(./text/gdi_growth_comp.txt)
+ (./text/gdi_growth_comp.txt)
 Package pgfplots info on input line 871: dateplot: setting 'date ZERO={2022-11-
 15}' for this axis.
 Package pgfplots info on input line 871: Using 'lua backend=false' for axis: x 
@@ -2556,7 +2561,7 @@ Underfull \hbox (badness 1694) in paragraph at lines 1688--1688
 LaTeX Font Info:    Font shape `TU/Lato(0)/b/n' will be
 (Font)              scaled to size 7.0pt on input line 1688.
 
-Overfull \hbox (0.9762pt too wide) in paragraph at lines 1674--1691
+Overfull \hbox (0.9752pt too wide) in paragraph at lines 1674--1691
 |  [] 
  []
 
@@ -7069,12 +7074,7 @@ lags/CAD.png><./data/flags/MXN.png><./data/flags/CNY.png><./data/flags/CHF.png><
 ZD.png><./data/flags/BRL.png><./data/flags/KRW.png><./data/flags/MYR.png><./data
 /flags/DKK.png><./data/flags/NOK.png><./data/flags/SEK.png><./data/flags/ZAR.png
 ><./data/flags/SGD.png><./data/flags/TWD.png>]
-(./text/cps_lfs0.txt)
-Underfull \hbox (badness 1502) in paragraph at lines 5055--5056
-\TU/Lato(0)/m/n/9 for US house-holds and is es-sen-tial
- []
-
-(./text/cps_lfs.txt)
+(./text/cps_lfs0.txt) (./text/cps_lfs.txt)
 Package pgfplots info on input line 5073: dateplot: setting 'date ZERO={2022-11
 -15}' for this axis.
 Package pgfplots info on input line 5073: Using 'lua backend=false' for axis: x
@@ -7083,7 +7083,8 @@ PGFPlots: reading {data/cps_lfs.csv}
 PGFPlots: reading {data/cps_lfs.csv}
 PGFPlots: reading {data/cps_lfs.csv}
 PGFPlots: reading {data/cps_lfs.csv}
- (./text/cps_lfs2.txt) (./text/cps_lfs3.txt)
+ (./text/cps_lfs2.txt)
+(./text/cps_lfs3.txt)
 Package pgfplots info on input line 5099: dateplot: setting 'date ZERO={2022-11
 -15}' for this axis.
 Package pgfplots info on input line 5099: Using 'lua backend=false' for axis: x
@@ -7353,7 +7354,7 @@ Overfull \hbox (5.11674pt too wide) in paragraph at lines 5594--5599
 
 [105] (./text/state_pa_emp_t3.txt) (./text/state_pa_emp.txt)
 (./data/pa_epop_map.pgf)
-Overfull \hbox (1.86345pt too wide) in paragraph at lines 5606--5612
+Overfull \hbox (2.27147pt too wide) in paragraph at lines 5606--5612
    [] 
  []
 
@@ -7382,7 +7383,7 @@ Package pgfplots info on input line 5644: Using 'lua backend=false' for plot 5
 Package pgfplots info on input line 5645: Using 'lua backend=false' for plot 6 
 (type 'pgfplothandlerdiscard'): LUA does not support xtick=data (yet).
 (./text/cps_lfs_date.txt)
-Overfull \hbox (122.65738pt too wide) in paragraph at lines 5617--5648
+Overfull \hbox (113.58942pt too wide) in paragraph at lines 5617--5648
 []|  [] 
  []
 
@@ -7475,13 +7476,13 @@ Package pgfplots info on input line 5855: Using 'lua backend=false' for plot 1
 Package pgfplots info on input line 5885: Using 'lua backend=false' for axis: s
 tacked plots unsupported (yet).
 
-Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Per-sonal care & ser-vice[]
+Underfull \hbox (badness 2790) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Of-fice & ad-min-is-tra-tive sup-port[]
  []
 
 
-Underfull \hbox (badness 2790) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Of-fice & ad-min-is-tra-tive sup-port[]
+Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Per-sonal care & ser-vice[]
  []
 
 
@@ -7496,27 +7497,7 @@ Underfull \hbox (badness 1137) in paragraph at lines 5891--5891
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Pro-tec-tive ser-vice[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Le-gal[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
  [][][]\TU/Lato(0)/m/n/7 Pro-duc-tion[]
- []
-
-
-Underfull \hbox (badness 6741) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Farm-ing, fish-ing, & forestry[]
- []
-
-
-Underfull \hbox (badness 1496) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 In-stal-la-tion, main-te-nance, & re-pair[]
  []
 
 
@@ -7525,8 +7506,23 @@ Underfull \hbox (badness 5203) in paragraph at lines 5891--5891
  []
 
 
-Underfull \hbox (badness 7832) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Con-struc-tion & ex-trac-tion[]
+Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Pro-tec-tive ser-vice[]
+ []
+
+
+Underfull \hbox (badness 6741) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Farm-ing, fish-ing, & forestry[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Le-gal[]
+ []
+
+
+Underfull \hbox (badness 1496) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 In-stal-la-tion, main-te-nance, & re-pair[]
  []
 
 
@@ -7535,18 +7531,23 @@ Underfull \hbox (badness 1137) in paragraph at lines 5891--5891
  []
 
 
+Underfull \hbox (badness 7832) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Con-struc-tion & ex-trac-tion[]
+ []
+
+
 Underfull \hbox (badness 6792) in paragraph at lines 5891--5891
  [][][]\TU/Lato(0)/m/n/7 Ar-chi-tec-ture & en-gi-neer-ing[]
  []
 
 
-Underfull \hbox (badness 3907) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Life, phys-i-cal, & so-cial sci-ence[]
+Underfull \hbox (badness 5878) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Com-mu-nity & so-cial ser-vice[]
  []
 
 
-Underfull \hbox (badness 5878) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Com-mu-nity & so-cial ser-vice[]
+Underfull \hbox (badness 3907) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Life, phys-i-cal, & so-cial sci-ence[]
  []
 
 
@@ -7560,13 +7561,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
  []
 
 
-Underfull \hbox (badness 3009) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Busi-ness & fi-nan-cial op-er-a-tions[]
+Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Man-age-ment[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5891--5891
- [][][]\TU/Lato(0)/m/n/7 Man-age-ment[]
+Underfull \hbox (badness 3009) in paragraph at lines 5891--5891
+ [][][]\TU/Lato(0)/m/n/7 Busi-ness & fi-nan-cial op-er-a-tions[]
  []
 
 
@@ -7575,7 +7576,7 @@ Underfull \hbox (badness 1769) in paragraph at lines 5891--5891
  []
 
 
-Overfull \hbox (2.50554pt too wide) in paragraph at lines 5868--5894
+Overfull \hbox (1.27849pt too wide) in paragraph at lines 5868--5894
 |  [] 
  []
 
@@ -7955,11 +7956,16 @@ Package pgfplots info on input line 6639: Using 'lua backend=false' for plot 0
 Package pgfplots info on input line 6641: Using 'lua backend=false' for plot 1 
 (type 'pgfplothandlerxbar'): LUA does not support xtick=data (yet).
  (./text/nilf_mo1.txt) (./text/nilf_mo2.txt)
-Overfull \hbox (1.55089pt too wide) in paragraph at lines 6625--6646
+Overfull \hbox (1.56688pt too wide) in paragraph at lines 6625--6646
 |  [] 
  []
 
-(./text/nilfbasic.txt) (./text/nilf_01.txt)
+(./text/nilfbasic.txt) (./text/nilf_01.txt
+Underfull \hbox (badness 1342) in paragraph at lines 1--2
+\TU/Lato(0)/m/n/9 force. Changes in the de-mo-
+ []
+
+)
 Package pgfplots info on input line 6666: dateplot: setting 'date ZERO={2022-11
 -15}' for this axis.
 Package pgfplots info on input line 6666: Using 'lua backend=false' for axis: x
@@ -7971,7 +7977,7 @@ PGFPlots: reading {data/nilf.csv}
 PGFPlots: reading {data/nilf.csv}
 PGFPlots: reading {data/nilf.csv}
  (./text/nilf_nodes.txt)
-Overfull \hbox (5.93924pt too wide) in paragraph at lines 6660--6684
+Overfull \hbox (6.53223pt too wide) in paragraph at lines 6660--6684
 |  [] 
  []
 
@@ -8031,7 +8037,7 @@ Overfull \hbox (0.55463pt too wide) in paragraph at lines 6724--6724
  []
 
 
-Overfull \hbox (3.12337pt too wide) in paragraph at lines 6698--6727
+Overfull \hbox (3.83366pt too wide) in paragraph at lines 6698--6727
 []|  []   [] 
  []
 
@@ -10397,7 +10403,7 @@ Package pgfplots info on input line 7731: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/catrpe.csv}
  (./text/cape_node.txt)
-Overfull \hbox (1.61705pt too wide) in paragraph at lines 7726--7738
+Overfull \hbox (1.91891pt too wide) in paragraph at lines 7726--7738
 |  [] 
  []
 
@@ -10587,7 +10593,7 @@ Underfull \hbox (badness 6944) in paragraph at lines 3--8151
 (./text/cpi_monthly.txt)
 Package pgfplots info on input line 8205: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
-Package pgfplots info on input line 8206: dateplot: setting 'date ZERO={2021-03
+Package pgfplots info on input line 8206: dateplot: setting 'date ZERO={2021-04
 -01}' for this axis.
  [148] (./text/cpi_main.txt)
 Package pgfplots info on input line 8229: dateplot: setting 'date ZERO={2022-11
@@ -10799,7 +10805,7 @@ NOTE: coordinate (2022-10-10,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 PGFPlots: reading {data/infumich.csv}
 (./text/infbreak_node.txt) (./text/infumich_node.txt)
-Overfull \hbox (2.40796pt too wide) in paragraph at lines 8331--8347
+Overfull \hbox (2.74881pt too wide) in paragraph at lines 8331--8347
 |  [] 
  []
 
@@ -11847,14 +11853,14 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 59436 strings out of 477762
- 932056,2848258 words of node,token memory allocated
+ 59444 strings out of 477762
+ 932058,2848258 words of node,token memory allocated
  590 words of node memory still in use:
    5 hlist, 1 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 3 glyph, 9 
 attribute, 64 glue_spec, 9 attribute_list, 2 write, 2 pdf_action nodes
-   avail lists: 1:15,2:144967,3:143704,4:4380,5:1187,6:871,7:11677,8:110,9:6699,
-10:26,11:565
- 69582 multiletter control sequences out of 65536+600000
+   avail lists: 1:15,2:144966,3:143704,4:4380,5:1187,6:871,7:11677,8:110,9:6699,
+10:26,11:579
+ 69590 multiletter control sequences out of 65536+600000
  115 fonts using 32951767 bytes
  115i,22n,111p,2554b,3924s stack positions out of 5000i,500n,10000p,200000b,80000s
 
@@ -11869,7 +11875,7 @@ warning  (pdf backend): unreferenced destination with name 'oegc'
 r.ttf></usr/share/fonts/TTF/Lato-Bold.ttf></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on chartbook.pdf (157 pages, 3217457 bytes).
+Output written on chartbook.pdf (157 pages, 3219100 bytes).
 
 PDF statistics: 1544 PDF objects out of 1728 (max. 8388607)
  1326 compressed objects within 14 object streams
