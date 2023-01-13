@@ -143,7 +143,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2022-11-30},
+		xmax={2023-01-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -163,7 +163,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2022-11-30},
+		xmax={2023-01-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -174,18 +174,18 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2022-11-30},
+		xmax={2023-01-15},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
-		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
+		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
 		
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2022-11-30},   
-		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
+		xmin={2018-01-01}, xmax={2023-01-15},   
+		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
 		yticklabel style={text width=1.0em},
 		height=3.8cm, width=6.4cm,
@@ -194,9 +194,9 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2022-11-30}, max space between ticks=40,	    
+		xmax={2023-01-15}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
-			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}},
+			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
 		
@@ -374,7 +374,7 @@ As a result of these shortcuts, it is unlikely that you will be completely satis
 
 %Please be aware that this chartbook is an early-stage draft. Content is being added, removed, and improved. In the meantime, the current draft contains many errors and is not particularly comprehensible without lots of patience. I'm correcting the errors as I find them and gradually editing the text for clarity. 
 %
-\textbf{Version 0.1 release planned for Winter 2022}
+\textbf{Version 0.1 release planned for Spring 2023}
 \end{minipage}
 \newpage
 \section*{\hyperlink{toc}{\faList} \ {Contents}}
@@ -6562,7 +6562,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 	\rbars
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{4.7cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{4.5cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
 	\stdnode{2.6cm}{0.85cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
@@ -8135,7 +8135,7 @@ A large increase in the amount of money held by individuals and institutions can
 
 \begin{minipage}{0.44\textwidth}
 \normalsize \textbf{Federal Reserve Balance Sheet}\\
-\footnotesize{\textit{total assets, trillion of USD}}\\
+\footnotesize{\textit{total assets, trillions of US dollars}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 
 		enlarge y limits={0.1}, ymin=0.7, ymax=8.4,
