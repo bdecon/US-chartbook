@@ -5432,72 +5432,72 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{nfp.csv}
 \end{minipage}
-\vspace{3mm}
-
-\small \input{text/nfp_ss.txt}
-
-\input{text/nfp_wg.txt}
-\vspace{1mm}
-
-\normalsize \textbf{Three-Year Change in Payrolls (\input{text/emp_3_dates.txt}\unskip)}\\
-\footnotesize{\textit{not seasonally adjusted, thousands of jobs}}
-\vspace{-1mm}
-
-\begin{minipage}{0.48\textwidth}
-\normalsize \ \ \ Major Sector
-\vspace*{-2mm}
-
-\hspace*{2mm} \begin{tikzpicture}
-  	\begin{axis}[
-    	width=6.0cm, height=4.7cm, ytick=false,
-  		ymajorticks=false, axis line style={draw=none}, x tick style={color=white},
-    	enlarge x limits={abs=0.7cm}, enlarge y limits=0.1, 
-    	%symbolic x coords={Government, Private Goods-Producing, Private Service-Providing},
-    	xticklabels={{,,Gov., Goods, Services}}, 
-		xticklabel style={black!80, font=\footnotesize, text width=1.1cm, align=center}, 
-		clip=false, nodes near coords,  
-		nodes near coords style={/pgf/number format/.cd, 
-			precision=0, assume math mode},
-		every axis plot/.append style={ybar, bar width=22pt, bar shift=0pt, fill, 
-		draw opacity=0}]
-	\input{text/emp_ss_bars.txt}
-   	\addplot[opacity=0] coordinates {(1, 0)};
-	\draw [dashed] (axis cs:{1.5},\pgfkeysvalueof{/pgfplots/ymin} - 200) -- 
-		(axis cs:{1.5}, \pgfkeysvalueof{/pgfplots/ymax} * 1.1);
-	\stdnode{2.0}{\pgfkeysvalueof{/pgfplots/ymax} * 1.15}{\footnotesize \color{black!70}Private: }
-  	\end{axis}
-\end{tikzpicture}
-\end{minipage} \hfill
-\begin{minipage}{0.47\textwidth}
-\normalsize \ \ \ Industry Wage Group*
-\vspace*{-1mm}
-
-\footnotesize \ \ \ \ \ {\color{black!70}Private}:
-\vspace*{-4mm}
-
-\begin{tikzpicture}
-  	\begin{axis}[ybar=20pt, 
-    	width=6.0cm, bar width=22pt, height=4.0cm, ytick=false,
-  		ymajorticks=false, axis line style={draw=none}, x tick style={color=white},
-    	enlarge x limits={abs=0.7cm}, enlarge y limits={rel=0.1, lower}, 
-    	symbolic x coords={Lowest Third, Middle Third, Highest Third},
-    	xtick=data, 
-		xticklabels from table={\jobt}{grps}, 
-		xticklabel style={black!80, font=\footnotesize, text width=1.1cm, align=center}, 
-		clip=false, nodes near coords,  
-		nodes near coords style={/pgf/number format/.cd, 
-			precision=0, assume math mode}]
-  	\addplot[ybar,fill=violet!70!magenta, draw=none] 
-  		table [y index=1] {\jobt};
-  	\end{axis}
-\end{tikzpicture}
-\end{minipage}
-\vspace*{-1mm}
-
-\footnotesize{*Wage groups are derived from 2019 average hourly earnings by 3-digit NAICS industry. \input{text/jobs_nowage_ch.txt}}
-\vspace*{-1mm}
-
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jobs_tercile.csv}
+%\vspace{3mm}
+%
+%\small \input{text/nfp_ss.txt}
+%
+%\input{text/nfp_wg.txt}
+%\vspace{1mm}
+%
+%\normalsize \textbf{Three-Year Change in Payrolls (\input{text/emp_3_dates.txt}\unskip)}\\
+%\footnotesize{\textit{not seasonally adjusted, thousands of jobs}}
+%\vspace{-1mm}
+%
+%\begin{minipage}{0.48\textwidth}
+%\normalsize \ \ \ Major Sector
+%\vspace*{-2mm}
+%
+%\hspace*{2mm} \begin{tikzpicture}
+%  	\begin{axis}[
+%    	width=6.0cm, height=4.7cm, ytick=false,
+%  		ymajorticks=false, axis line style={draw=none}, x tick style={color=white},
+%    	enlarge x limits={abs=0.7cm}, enlarge y limits=0.1, 
+%    	%symbolic x coords={Government, Private Goods-Producing, Private Service-Providing},
+%    	xticklabels={{,,Gov., Goods, Services}}, 
+%		xticklabel style={black!80, font=\footnotesize, text width=1.1cm, align=center}, 
+%		clip=false, nodes near coords,  
+%		nodes near coords style={/pgf/number format/.cd, 
+%			precision=0, assume math mode},
+%		every axis plot/.append style={ybar, bar width=22pt, bar shift=0pt, fill, 
+%		draw opacity=0}]
+%	\input{text/emp_ss_bars.txt}
+%   	\addplot[opacity=0] coordinates {(1, 0)};
+%	\draw [dashed] (axis cs:{1.5},\pgfkeysvalueof{/pgfplots/ymin} - 200) -- 
+%		(axis cs:{1.5}, \pgfkeysvalueof{/pgfplots/ymax} * 1.1);
+%	\stdnode{2.0}{\pgfkeysvalueof{/pgfplots/ymax} * 1.15}{\footnotesize \color{black!70}Private: }
+%  	\end{axis}
+%\end{tikzpicture}
+%\end{minipage} \hfill
+%\begin{minipage}{0.47\textwidth}
+%\normalsize \ \ \ Industry Wage Group*
+%\vspace*{-1mm}
+%
+%\footnotesize \ \ \ \ \ {\color{black!70}Private}:
+%\vspace*{-4mm}
+%
+%\begin{tikzpicture}
+%  	\begin{axis}[ybar=20pt, 
+%    	width=6.0cm, bar width=22pt, height=4.0cm, ytick=false,
+%  		ymajorticks=false, axis line style={draw=none}, x tick style={color=white},
+%    	enlarge x limits={abs=0.7cm}, enlarge y limits={rel=0.1, lower}, 
+%    	symbolic x coords={Lowest Third, Middle Third, Highest Third},
+%    	xtick=data, 
+%		xticklabels from table={\jobt}{grps}, 
+%		xticklabel style={black!80, font=\footnotesize, text width=1.1cm, align=center}, 
+%		clip=false, nodes near coords,  
+%		nodes near coords style={/pgf/number format/.cd, 
+%			precision=0, assume math mode}]
+%  	\addplot[ybar,fill=violet!70!magenta, draw=none] 
+%  		table [y index=1] {\jobt};
+%  	\end{axis}
+%\end{tikzpicture}
+%\end{minipage}
+%\vspace*{-1mm}
+%
+%\footnotesize{*Wage groups are derived from 2019 average hourly earnings by 3-digit NAICS industry. \input{text/jobs_nowage_ch.txt}}
+%\vspace*{-1mm}
+%
+%\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jobs_tercile.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
@@ -6527,9 +6527,9 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Jobless Claims}
-\small \input{text/icsa.txt}
+\small \input{text/icnsa.txt}
 
-\input{text/ccsa.txt}
+\input{text/ccnsa.txt}
 \end{minipage}
 \vspace{1mm}
 
@@ -6543,12 +6543,12 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 		xticklabel={`\short{\year}}, height=7.2cm, width=6.5cm]
 	\rbars
 	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
-	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
+	\stdline{cyan!80!blue}{date}{VALUE}{data/icnsa.csv}
 	\stdnode{3.5cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
 	\stdnode{2.6cm}{0.7cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
+\footnotesize{Source: Department of Labor} \hfill \tbllink{icnsa.csv}
 \end{minipage} \hspace{9mm}
 \begin{minipage}{0.35\textwidth}
 \normalsize \textbf{Continued UI Claims}\\
@@ -6561,12 +6561,12 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 		xticklabel={`\short{\year}}, height=7.2cm, width=6.5cm]
 	\rbars
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
-	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
+	\stdline{green!90!blue}{date}{VALUE}{data/ccnsa.csv}
 	\stdnode{4.4cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
 	\stdnode{2.5cm}{0.85cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
+\footnotesize{Source: Department of Labor} \hfill \tbllink{ccnsa.csv}
 \end{minipage}
 \vspace{1mm}
 
