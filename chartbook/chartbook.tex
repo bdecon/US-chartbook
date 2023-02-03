@@ -143,7 +143,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-01-15},
+		xmax={2023-02-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -163,7 +163,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-01-15},
+		xmax={2023-02-15},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -174,7 +174,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-01-15},
+		xmax={2023-02-15},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
@@ -184,7 +184,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2023-01-15},   
+		xmin={2018-01-01}, xmax={2023-02-15},   
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
 		yticklabel style={text width=1.0em},
@@ -194,7 +194,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-01-15}, max space between ticks=40,	    
+		xmax={2023-02-15s}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
@@ -596,11 +596,11 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 	\rebars
 	\stdnode{3.6cm}{1.18cm}{\footnotesize \color{orange!80!white}Government}
 	\stdline{orange!80!white}{date}{Government}{data/gdpva_pc.csv}
-	\stdnode{0.95cm}{2.7cm}{\footnotesize \color{blue!90!white}Other Services}
+	\stdnode{0.95cm}{2.68cm}{\footnotesize \color{blue!90!white}Other Services}
 	\stdline{blue!90!white}{date}{Oth_Serv}{data/gdpva_pc.csv}
-	\stdnode{1.6cm}{1.86cm}{\footnotesize \color{red!90!white}FIRE+}
+	\stdnode{1.62cm}{1.86cm}{\footnotesize \color{red!90!white}FIRE+}
 	\stdline{red!90!white}{date}{FIRE}{data/gdpva_pc.csv}
-	\stdnode{3.1cm}{4.25cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
+	\stdnode{3.0cm}{4.24cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
 	\stdline{purple!70!blue}{date}{GoodsTTU}{data/gdpva_pc.csv}
 	\stdnode{2.1cm}{0.3cm}{\footnotesize See text for category descriptions}
 	\end{axis}
@@ -1273,7 +1273,7 @@ Economic data use varying definitions of asset, for purposes of measuring invest
 
 Non-residential private fixed investment includes the construction and improvement of offices, warehouses, factories, and other commercial and industrial property (see\cbox{yellow!50!orange}), as well as purchases of equipment, software, and intellectual property products. 
 
-Additionally, the change in private inventories (see\cbox{red}) at the end of the accounting period, whether intentional or unintentional, affects GDP growth in the period. Inventory investment is grouped in the national accounts with gross private investment, but is not fixed investment.
+Additionally, the change in private inventories (see\cbox{red}), whether intentional or not, affects GDP. For example, an increase in inventories increases GDP, as inventories represent goods that were produced but not sold, and GDP measures production. Inventory investment is a component of gross private investment in the national accounts, but has a different interpretation from fixed investment.
 
 \input{text/inv_text.txt} 
 \vspace{2mm} 
@@ -1287,12 +1287,12 @@ Additionally, the change in private inventories (see\cbox{red}) at the end of th
 		yticklabel style={text width=1.4em}, height=7.2cm, 
 		reverse legend, legend cell align=left,
 		xticklabel={`\short{\year}}, clip=false, ymax=8.9,
-		legend style={at={(0.46, 0.99)}, legend columns=1}]
+		legend style={at={(0.44, 0.99)}, legend columns=1}]
 	\rbars
 	\sbar{yellow!50!orange}{date}{A008RY}{data/inv.csv}
 	\sbar{blue!90!black}{date}{A011RY}{data/inv.csv}
 	\sbar{red}{date}{A014RY}{data/inv.csv}
-	\legend{ \ Non-Residential, \ Residential, \ Change in Private Inventories};
+	\legend{ \ Non-Residential Fixed Investment, \ Residential Fixed Investment, \ Change in Private Inventories};
 	\end{axis}
 \end{tikzpicture}
 
@@ -1753,9 +1753,9 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 		yticklabel style={text width=0.9em},
 		xticklabel={`\short{\year}}, clip=false, height=6.8cm, width=7.8cm]
 	\rbars
-	\absnode{{1992-01-01}}{42}{\footnotesize \color{blue!75!black}Income}
+	\absnode{{1992-01-01}}{43}{\footnotesize \color{blue!75!black}Income}
 	\stdline{blue!75!black}{date}{DPI}{data/inc_out_save.csv}
-	\absnode{{2011-01-01}}{42}{\footnotesize \color{orange}Spending}
+	\absnode{{2011-01-01}}{44}{\footnotesize \color{orange}Spending}
 	\stdline{orange}{date}{PCE}{data/inc_out_save.csv}
 	\absnode{{2013-07-01}}{9}{\footnotesize \color{green!80!blue}Saving}
 	\stdline{green!80!blue}{date}{PSAVE}{data/inc_out_save.csv}
@@ -1777,7 +1777,7 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 	\rbars
 	\absnode{{2010-01-01}}{28}{\footnotesize \color{blue!50!cyan}Income}
 	\thickline{blue!50!cyan}{date}{INCAFTTX_4}{data/medincexp.csv}
-	\absnode{{2010-01-01}}{18}{\footnotesize \color{red!50!orange}Spending}
+	\absnode{{2010-01-01}}{18.5}{\footnotesize \color{red!50!orange}Spending}
 	\thickline{red!50!orange}{date}{ADJEXP_4}{data/medincexp.csv}
 	\absnode{{2012-10-01}}{7}{\footnotesize \color{green!50!blue}Saving}
 	\thickline{green!50!blue}{date}{DI_SAVE_4}{data/medincexp.csv}
@@ -2215,9 +2215,9 @@ Over the past 30 years, increased consumer spending represents the majority of e
 	\rbars
 	\absnode{{2009-01-01}}{16.0}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
-	\absnode{{1998-07-01}}{25}{\footnotesize \color{blue!75!white}Services ex. Shelter}
+	\absnode{{1998-01-01}}{25}{\footnotesize \color{blue!75!white}Services ex. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
-	\absnode{{1993-06-01}}{13.8}{\footnotesize \color{green!85!blue}Shelter}
+	\absnode{{1993-06-01}}{15}{\footnotesize \color{green!85!blue}Shelter}
 	\stdline{green!85!blue}{date}{SHELTER}{data/pce_levels.csv}
 	\end{axis}
 \end{tikzpicture}\\
@@ -2242,7 +2242,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \end{minipage}
 \newpage 
 \begin{minipage}{0.76\textwidth}
-\small Next, we examine the affect on GDP growth from changes in consumer spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing and utilities plus residential fixed investment). \input{text/pce1.txt}
+\small Next, we examine the effect on GDP growth from changes in consumer spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing and utilities plus residential fixed investment). \input{text/pce1.txt}
 \vspace{1mm}
 
 \normalsize \textbf{Consumer Spending and Residential Investment}\\
@@ -2933,7 +2933,7 @@ In the chart, income invested at the historical-average rate (see\cbox{magenta!8
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15, 20},
 		height=6.8cm, xticklabel={`\short{\year}}, legend cell align={left},
 		yticklabel style={text width=1.5em}, clip=false, ymax=18.1, reverse legend,
-		legend style={at={(0.55, 0.24)}, fill=white, legend columns=2}]
+		legend style={at={(0.54, 0.24)}, fill=white, legend columns=2}]
 	\rbars
 	\sbar{violet}{date}{INV}{data/nw_gr.csv}
 	\sbar{magenta!85!white}{date}{INC}{data/nw_gr.csv}
@@ -4085,7 +4085,7 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 	\absnode{{2012-01-01}}{48}{\footnotesize \color{cyan}\textbf{PCE}}
 	\end{axis}
 \end{tikzpicture} \hfill \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ymin=180,
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ymin=190,
 		enlarge y limits={0.12}, yticklabel style={text width=2.2em}, 
 		max space between ticks=20,	 
 		xticklabel={`\short{\year}}, height=4.8cm, width=5.7cm, clip=false]
@@ -4093,8 +4093,8 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 	\stdline{violet!60!blue}{date}{RealPC_Tot}{data/rs_sh.csv}
 	\thickline{green!80!olive}{date}{RealPC_ExAutoGas}{data/rs_sh.csv}
 	\input{text/rs_pc_nodes.txt}
-	\absnode{{1993-01-01}}{840}{\scriptsize \color{green!80!olive}\textbf{Ex. Auto}\\\scriptsize \color{green!80!olive}\textbf{\& Gas}}
-	\absnode{{2010-01-01}}{1880}{\scriptsize \color{violet!60!blue}\textbf{Total}}
+	\absnode{{1993-01-01}}{850}{\scriptsize \color{green!80!olive}\textbf{Ex. Auto}\\\scriptsize \color{green!80!olive}\textbf{\& Gas}}
+	\absnode{{2010-01-01}}{1920}{\scriptsize \color{violet!60!blue}\textbf{Total}}
 	\absnode{{1992-01-01}}{300}{\scriptsize \color{black!70}*Adjusted by PCE price index}
 	\end{axis}
 \end{tikzpicture}\\
@@ -4788,14 +4788,14 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \normalsize \textbf{International Trade}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth}}
-\vspace{5.6cm}
+\vspace{6.4cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,	 
 		yticklabel style={text width=1.4em}, width=12.9cm,
-		height=7.6cm, ymax=7.75, enlarge y limits={0.02},
+		height=8.4cm, ymax=7.75, enlarge y limits={0.02},
 		xticklabel={`\short{\year}}, clip=false, 
-		legend style={at={(0.91, 0.98)}, fill=white}]
+		legend style={legend columns=2, at={(0.49, 0.98)}, fill=white}]
 	\rbars
 	\sbar{green!70!white}{date}{A253RY}{data/nx.csv}
 	\sbar{green!50!black}{date}{A646RY}{data/nx.csv}
@@ -5201,7 +5201,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 5, 10}, 
 		xticklabel={\year}, 
-		legend style={fill=white, legend columns=1, at={(0.45, 0.99)},
+		legend style={fill=white, legend columns=1, at={(0.43, 0.99)},
 		legend cell align={left}}]
 	\rbars
 	\stdline{blue!40!cyan}{date}{MenEUE}{data/grosslf.csv}
@@ -5359,16 +5359,16 @@ People who are neither employed nor unemployed are considered \textit{outside of
 
 \hspace*{-2mm} \begin{tikzpicture}[overlay]
   	\begin{axis}[ybar=12pt, \bbar{y}{0}, 
-    	width=6.8cm, bar width=13pt, height=5.1cm, axis line style={draw=none}, 
+    	width=6.8cm, bar width=13pt, height=5.2cm, axis line style={draw=none}, 
     	x tick style={color=white}, ytick=false,
   		ymajorticks=false, 
-    	enlarge y limits={value=0.25, upper}, enlarge x limits={abs=0.6cm}, 
+    	enlarge y limits={value=0.18, upper}, enlarge x limits={abs=0.6cm}, 
     	xtick=data,	xticklabels from table={\emplt}{label},
 		xticklabel style={black!75, font=\footnotesize, text width=1.1cm, align=center}, 
 		clip=false, nodes near coords,  
 		nodes near coords style={/pgf/number format/.cd, 
 			precision=0, assume math mode}, legend cell align={left},
-		legend style={at={(0.7, 1.12)}, legend columns=-1, 
+		legend style={at={(0.7, 1.10)}, legend columns=-1, 
 		fill=white, draw=none}, legend image code/.code={
         \draw [#1] (0cm,-0.08cm) rectangle (0.22cm,0.14cm); },]
   	\addplot[ybar, bar shift=-7pt, fill=magenta, draw opacity=0] 
@@ -5604,14 +5604,14 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \end{minipage}
 
 \normalsize \textbf{Age 25 to 54 Employment Rate by State}\\
-\footnotesize{\textit{employed share of age 25 to 54 population, percent, not seasonally adjusted}}\\
+\footnotesize{\textit{employed share of age 25 to 54 population, percent, seasonally adjusted}}\\
 \vspace{-3mm}
 \hspace{-9mm} \input{data/pa_epop_map.pgf} \\
 \footnotesize{Source: Author's Calculations from CPS}
 \vspace{2mm}
 
 \normalsize \textbf{Employment Rate by State}\\
-\footnotesize{\textit{employed share of age 25 to 54 population, percent, not seasonally adjusted}}\\
+\footnotesize{\textit{employed share of age 25 to 54 population, percent, seasonally adjusted}}\\
 \vspace{-2mm}
 \begin{minipage}{0.23\textwidth}
 \hspace*{-3mm} \begin{tikzpicture}
@@ -6544,8 +6544,8 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 	\rbars
 	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
 	\stdline{cyan!80!blue}{date}{VALUE}{data/icsa.csv}
-	\stdnode{3.65cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
-	\stdnode{2.7cm}{0.7cm}{\footnotesize \color{cyan!80!blue}State}
+	\stdnode{3.5cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{2.6cm}{0.7cm}{\footnotesize \color{cyan!80!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv}
@@ -6562,8 +6562,8 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 	\rbars
 	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
 	\stdline{green!90!blue}{date}{VALUE}{data/ccsa.csv}
-	\stdnode{4.5cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{2.6cm}{0.85cm}{\footnotesize \color{green!90!blue}State}
+	\stdnode{4.4cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{2.5cm}{0.85cm}{\footnotesize \color{green!90!blue}State}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv}
@@ -6674,7 +6674,7 @@ Over the past two decades, the age composition of the population has lowered lab
 	\input{text/nilf_nodes.txt}
 	\absnode{{2013-01-1}}{-0.75}{\footnotesize \color{green!80!blue}\textbf{Disabled/Ill}}
 	\absnode{{2009-10-01}}{-0.2}{\footnotesize \color{blue}\textbf{Discouraged}}
-	\absnode{{2013-06-01}}{0.32}{\footnotesize \color{red}\textbf{Family/Care}}
+	\absnode{{2013-04-01}}{0.33}{\footnotesize \color{red}\textbf{Family/Care}}
 	\absnode{{2015-01-01}}{0.78}{\footnotesize \color{orange}\textbf{Retired}}
 	\absnode{{2016-01-01}}{-1.58}{\footnotesize \color{cyan}\textbf{School}}	
 	\absnode{{2017-08-01}}{-1.18}{\footnotesize \color{violet!80!purple}\textbf{Age/Sex}}	
@@ -7094,7 +7094,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \footnotesize{\textit{percent of workers, 3-month moving average}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\shdateaxisticks clip=false,
-		enlarge y limits={0.04}, 
+		enlarge y limits={0.05}, 
 		xticklabel={`\short{\year}}, height=4.6cm, width=7.2cm]
 	\rebars
 	\thickline{cyan!50!blue}{date}{MJH}{data/mjh.csv}
@@ -7999,16 +7999,16 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \footnotesize{\textit{percentage points}}\\
 \hspace*{-3mm} \begin{tikzpicture}
     \begin{groupplot}[group style={group size=2 by 1, horizontal sep=52pt,}]
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3}, ymin=-0.65, ymax=2.3,
-    	yticklabel style={text width=0.8em}, 
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-1, 0, 1, 2, 3}, ymin=-1.45, ymax=2.3,
+    	yticklabel style={text width=1.2em}, 
      xticklabel={`\short{\year}},  height=5.6cm, width=5.9cm, clip=false]
     \rbar
 	\thinline{blue!70!cyan!80!white}{date}{Ten-3M}{data/spread.csv}
 	\node[text width=3.8cm, anchor=west] at (axis description cs: 0, 0.95) 
 		{\small \color{blue!70!cyan!80!white}\textbf{10-Year - 3-Month}};
 	\input{text/spread_node.txt}
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3}, ymin=-0.65, ymax=2.3,
-    	yticklabel style={text width=0.8em},
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-1, 0, 1, 2, 3}, ymin=-1.45, ymax=2.3,
+    	yticklabel style={text width=1.2em},
      xticklabel={`\short{\year}}, height=5.6cm, width=5.9cm, clip=false]
 	\rbar
 	\thinline{red!60!violet!90!white}{date}{Ten-2Y}{data/spread.csv}
@@ -8104,7 +8104,9 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \end{minipage}
 \vspace{2mm}
 
-A large increase in the amount of money held by individuals and institutions can be the result of a higher rate of saving, a larger government sector financial deficit, an increase in the money supply, a change in preferences for liquidity, or something else. \input{text/m2chg.txt}
+A large increase in the amount of money held by individuals and institutions can be the result of a higher rate of saving, a larger government sector financial deficit, an increase in the money supply, a change in preferences for liquidity, or something else.
+
+\input{text/m2chg.txt}
 \vspace{2mm}
 
 \normalsize \textbf{M2 Money Stock Growth}\\
@@ -8195,10 +8197,10 @@ Researchers can then use the price index to calculate the rate of inflation. Per
 \footnotesize{\textit{monthly percent change, annualized}}
 \vspace*{-4mm}
 
-\hspace*{-3mm} \begin{tikzpicture}
+\hspace*{-3mm} \begin{tikzpicture} 
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
-		enlarge y limits={0.06}, enlarge x limits={0.02}, width=13.0cm, height=5.0cm,
-		yticklabel style={text width=1.0em}, ymax=14.8, ymin=-3.6, clip=false,
+		enlarge y limits={0.24}, enlarge x limits={0.02}, width=13.0cm, height=5.0cm,
+		yticklabel style={text width=1.0em}, clip=false,
 		nodes near coords,
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, xtick=data,
@@ -8206,7 +8208,7 @@ Researchers can then use the price index to calculate the rate of inflation. Per
 	\addplot[ybar, fill=blue, draw opacity=0] table [x=date, y=ALL_S, col sep=comma]{\cpimo};
 	\draw [black!40!white, dashed] (rel axis cs:0.365,0) -- 
 		(rel axis cs:0.365, 1.06);
-	\node[below right, align=left] at (rel axis cs:0.365, 1.16) {\color{black!40!white}\footnotesize {latest 12 months}};
+	\node[below right, align=left] at (rel axis cs:0.365, 1.08) {\color{black!40!white}\footnotesize {latest 12 months}};
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi_monthly.csv}
@@ -8318,6 +8320,23 @@ One-year inflation rates for different categories of goods and services, includi
 		
 \footnotesize{Source: Bureau of Labor Statistics}
 \end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small The following table provides the one-month percent change in prices for the same CPI categories seen above. 
+\end{minipage}
+\vspace{1.5mm}
+
+\normalsize \textbf{Selected CPI Categories, Monthly Rate}\\
+\footnotesize{\textit{one-month growth, seasonally adjusted, percent}\\
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.6pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{p{38mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} 
+		R{8.2mm} R{8.2mm}} % 
+			 \input data/cpi_comp_mo.tex \hline
+		\end{tabular}}}
+\vspace{-2mm}		
+		
+\footnotesize{Source: Bureau of Labor Statistics; *not seasonally adjusted}
 \newpage
 \hypertarget{prie}{}
 \begin{minipage}{0.76\textwidth}
@@ -8485,7 +8504,7 @@ Note that the all commodities index includes goods at various stages of producti
 \vspace{1mm}
 
 \normalsize \textbf{PPI One-Month Change}\\
-\footnotesize{\textit{monthly percent change, annualized}}
+\footnotesize{\textit{monthly percent change}}
 \vspace{2.9cm}
 
 \hspace*{4mm} \begin{tikzpicture}[overlay]
@@ -8495,7 +8514,7 @@ Note that the all commodities index includes goods at various stages of producti
 		nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, xtick=data,
-		xticklabels from table={\cpimo}{label}]
+		xticklabels from table={\ppimo}{label}]
 	\addplot[ybar, fill=green!80!blue, draw opacity=0] table [x=date, y=PPIACO, col sep=comma]{\ppimo};
 	\draw [black!40!white, dashed] (rel axis cs:0.365,0) -- 
 		(rel axis cs:0.365, 1);
@@ -8512,7 +8531,7 @@ Note that the all commodities index includes goods at various stages of producti
 		nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, xtick=data,
-		xticklabels from table={\cpimo}{label}]
+		xticklabels from table={\ppimo}{label}]
 	\addplot[ybar, fill=violet, draw opacity=0] table [x=date, y=PPIFDsa, col sep=comma]{\ppimo};
 	\draw [black!40!white, dashed] (rel axis cs:0.365,0) -- 
 		(rel axis cs:0.365, 1);
