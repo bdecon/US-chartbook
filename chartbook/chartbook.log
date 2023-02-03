@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Arch Linux)  (format=lualatex 2022.11.17)  2 FEB 2023 21:58
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Arch Linux)  (format=lualatex 2022.11.17)  3 FEB 2023 09:20
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -6490,7 +6490,12 @@ PGFPlots: reading {data/govjobs.csv}
 PGFPlots: reading {data/govjobs.csv}
 
 (./text/govjobs_node.txt) (./text/fedjobs_node.txt) (./text/stjobs_node.txt)
-(./text/locjobs_node.txt) (./text/govjobs.txt)
+(./text/locjobs_node.txt)
+Overfull \hbox (0.51695pt too wide) in paragraph at lines 4444--4467
+|  [] 
+ []
+
+(./text/govjobs.txt)
 Underfull \hbox (badness 1590) in paragraph at lines 5--4470
 \TU/Lato(0)/m/n/9 to-tal gov-ern-ment jobs. Of these,
  []
@@ -7318,18 +7323,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--2
  []
 
 
-Underfull \hbox (badness 7832) in paragraph at lines 1--2
-\TU/Lato(0)/m/n/9 low-ing 256,000 jobs added in
- []
-
-
-Underfull \hbox (badness 1377) in paragraph at lines 1--2
-\TU/Lato(0)/m/n/9 growth was 247,300 over these
- []
-
-
-Underfull \hbox (badness 4673) in paragraph at lines 1--2
-\TU/Lato(0)/m/n/9 av-er-age of 366,000 dur-ing the
+Underfull \hbox (badness 4291) in paragraph at lines 1--2
+\TU/Lato(0)/m/n/9 260,000 jobs added in De-cem-
  []
 
 )
@@ -7338,11 +7333,11 @@ Package pgfplots info on input line 5423: dateplot: setting 'date ZERO={2018-12
 Package pgfplots info on input line 5423: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/nfp.csv}
- (./text/nfp_lt_val.txt) (./text/nfp_ss.txt) (./text/nfp_wg.txt)
-(./text/emp_3_dates.txt) (./text/emp_ss_bars.txt)
-Package pgfplots info on input line 5489: Using 'lua backend=false' for axis: x
- coord trafo unsupported.
- (./text/jobs_nowage_ch.txt)
+ (./text/nfp_lt_val.txt)
+Overfull \hbox (2.70326pt too wide) in paragraph at lines 5418--5434
+|  [] 
+ []
+
 [102] (./text/emp_ind.txt) (./data/nfp.tex)
 Underfull \hbox (badness 10000) in paragraph at lines 5515--5522
 
@@ -7943,19 +7938,19 @@ Overfull \hbox (105.92596pt too wide) in paragraph at lines 6521--6526
    [] 
  []
 
-[115] (./text/icsa.txt) (./text/ccsa.txt)
+[115] (./text/icnsa.txt) (./text/ccnsa.txt)
 Package pgfplots info on input line 6543: dateplot: setting 'date ZERO={2018-01
 -01}' for this axis.
 Package pgfplots info on input line 6543: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/fed_uic.csv}
-PGFPlots: reading {data/icsa.csv}
+PGFPlots: reading {data/icnsa.csv}
 Package pgfplots info on input line 6561: dateplot: setting 'date ZERO={2018-01
 -01}' for this axis.
 Package pgfplots info on input line 6561: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/fed_uic.csv}
-PGFPlots: reading {data/ccsa.csv}
+PGFPlots: reading {data/ccnsa.csv}
  [116] (./text/lfpr_adj.txt)
 (./text/lfpr_text.txt)
 Package pgfplots info on input line 6596: dateplot: setting 'date ZERO={2023-02
@@ -8208,14 +8203,8 @@ PGFPlots: reading {data/sce_job_separation.csv}
 (./text/sce_job_sep_nodes.txt) [123
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/hours_tot.txt) (./text/hours_lfs2.txt) (./text/hours_ces.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--7002
-\TU/Lato(0)/m/n/9 non-supervisory work-ers (see []\TU/Lato(0)/b/n/9 ---[]\TU/La
-to(0)/m/n/9 ),
- []
-
-
-Underfull \hbox (badness 3884) in paragraph at lines 1--7002
-\TU/Lato(0)/m/n/9 worked 33.8 hours per week on
+Underfull \hbox (badness 2512) in paragraph at lines 1--7002
+\TU/Lato(0)/m/n/9 34.1 hours per week on av-er-age,
  []
 
 Package pgfplots info on input line 7009: dateplot: setting 'date ZERO={1989-12
@@ -8794,7 +8783,12 @@ Package pgfplots info on input line 7072: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/parttime.csv}
 PGFPlots: reading {data/parttime.csv}
- (./text/pt_nodes.txt) (./text/parttime.txt)
+ (./text/pt_nodes.txt) (./text/parttime.txt
+Underfull \hbox (badness 1577) in paragraph at lines 1--2
+\TU/Lato(0)/m/n/9 ple worked part-time for eco-
+ []
+
+)
 Package pgfplots info on input line 7098: dateplot: setting 'date ZERO={2023-02
 -15}' for this axis.
 Package pgfplots info on input line 7098: Using 'lua backend=false' for axis: x
@@ -9606,12 +9600,9 @@ NOTE: coordinate (2022-11-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 NOTE: coordinate (2022-12-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
-(./text/selfemp_nodes.txt) (./text/selfemp2.txt)
-Underfull \hbox (badness 1824) in paragraph at lines 1--7138
-\TU/Lato(0)/m/n/9 to-tal 6.8 mil-lion in De-cem-ber
- []
-
-[127] (./text/uwe_basic.txt)
+NOTE: coordinate (2023-01-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
+(./text/selfemp_nodes.txt) (./text/selfemp2.txt) [127] (./text/uwe_basic.txt)
 Package pgfplots info on input line 7158: dateplot: setting 'date ZERO={1988-12
 -15}' for this axis.
 Package pgfplots info on input line 7158: Using 'lua backend=false' for axis: x
@@ -10102,23 +10093,13 @@ Underfull \hbox (badness 3623) in paragraph at lines 7246--7246
  []
 
 
-Underfull \hbox (badness 2922) in paragraph at lines 7246--7246
- [][][]\TU/Lato(0)/m/n/8 Fi-nan-cial Ac-tiv-i-ties[]
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 7246--7246
  [][][]\TU/Lato(0)/m/n/8 Con-struc-tion[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7246--7246
- [][][]\TU/Lato(0)/m/n/8 In-for-ma-tion[]
- []
-
-
-Underfull \hbox (badness 4569) in paragraph at lines 7246--7246
- [][][]\TU/Lato(0)/m/n/8 Whole-sale Trade[]
+Underfull \hbox (badness 2922) in paragraph at lines 7246--7246
+ [][][]\TU/Lato(0)/m/n/8 Fi-nan-cial Ac-tiv-i-ties[]
  []
 
 
@@ -10128,17 +10109,27 @@ Underfull \hbox (badness 6412) in paragraph at lines 7246--7246
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 7246--7246
- [][][]\TU/Lato(0)/m/n/8 To-tal Pri-vate[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 7246--7246
  [][][]\TU/Lato(0)/m/n/8 Util-i-ties[]
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 7246--7246
+ [][][]\TU/Lato(0)/m/n/8 To-tal Pri-vate[]
+ []
+
+
+Underfull \hbox (badness 4569) in paragraph at lines 7246--7246
+ [][][]\TU/Lato(0)/m/n/8 Whole-sale Trade[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7246--7246
  [][][]\TU/Lato(0)/m/n/8 Re-tail Trade[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7246--7246
+ [][][]\TU/Lato(0)/m/n/8 In-for-ma-tion[]
  []
 
 [129
@@ -11910,14 +11901,14 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 59449 strings out of 477762
+ 59367 strings out of 477762
  932076,2848258 words of node,token memory allocated
  590 words of node memory still in use:
    5 hlist, 1 vlist, 2 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 3 glyph, 9 
 attribute, 64 glue_spec, 9 attribute_list, 2 write, 2 pdf_action nodes
    avail lists: 1:17,2:144966,3:143704,4:4380,5:1218,6:871,7:11655,8:111,9:6699,
 10:26,11:579
- 69588 multiletter control sequences out of 65536+600000
+ 69551 multiletter control sequences out of 65536+600000
  115 fonts using 32951767 bytes
  115i,22n,111p,2554b,3936s stack positions out of 5000i,500n,10000p,200000b,80000s
 
@@ -11932,10 +11923,10 @@ warning  (pdf backend): unreferenced destination with name 'oegc'
 r.ttf></usr/share/fonts/TTF/Lato-Bold.ttf></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on chartbook.pdf (158 pages, 3241470 bytes).
+Output written on chartbook.pdf (158 pages, 3239594 bytes).
 
-PDF statistics: 1550 PDF objects out of 1728 (max. 8388607)
- 1331 compressed objects within 14 object streams
+PDF statistics: 1549 PDF objects out of 1728 (max. 8388607)
+ 1330 compressed objects within 14 object streams
  212 named destinations out of 1000 (max. 131072)
  21 words of extra memory for PDF output out of 10000 (max. 100000000)
 
