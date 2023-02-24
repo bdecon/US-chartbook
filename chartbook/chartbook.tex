@@ -143,7 +143,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-02-15},
+		xmax={2023-03-01},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -163,7 +163,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-02-15},
+		xmax={2023-03-01},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -174,7 +174,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-02-15},
+		xmax={2023-03-01},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
@@ -184,7 +184,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2023-02-15},   
+		xmin={2018-01-01}, xmax={2023-03-01},   
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
 		yticklabel style={text width=1.0em},
@@ -194,7 +194,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-02-15s}, max space between ticks=40,	    
+		xmax={2023-03-01}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
@@ -741,7 +741,7 @@ A third measure of household inputs to production is the amount people work. As 
     \begin{groupplot}[group style={group size=2 by 1, 
     y descriptions at=edge left, horizontal sep=12pt,},]
     \nextgroupplot[\bbar{y}{0}, \shdateaxisticks 
-		yticklabel style={text width=1.0em}, ymin=-4.0, ymax=7.5,
+		yticklabel style={text width=1.0em}, ymin=-3.8, ymax=7.4,
 		ytick={-4, -2, 0, 2, 4, 6, 8},
 		xticklabel={\year}, clip=false, height=4.5cm, width=8.8cm]
 	\rbars
@@ -5304,9 +5304,11 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \normalsize \textbf{Gross Labor Income Growth}\\
 \footnotesize{\textit{percentage point contribution to gross labor income growth}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30, 40},
-		height=8.6cm,
-		xticklabel={`\short{\year}}, clip=false,  yticklabel style={text width=1.4em},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
+		ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30, 40}, height=8.6cm,
+		enlarge y limits={0.02}, 
+		xticklabel={`\short{\year}}, clip=false,  
+		yticklabel style={text width=1.4em},
 		legend style={at={(0.51, 1.0)}, fill=white}]
 	\rbars
 	\sbar{green!80!lime!90!white}{date}{wage}{data/gli.csv}
@@ -5334,12 +5336,12 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \begin{minipage}{0.47\textwidth}
 \normalsize \textbf{Employment Level}\\
 \footnotesize{\textit{millions, not seasonally adjusted}}
-\vspace{3.95cm}
+\vspace{4.15cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks 
 		enlarge y limits={0.08}, 
-		yticklabel style={text width=1.5em}, width=6.0cm, height=6.0cm,
+		yticklabel style={text width=1.5em}, width=6.0cm, height=6.2cm,
 		xticklabel={`\short{\year}}, ymin=10, clip=false]
 	\rbars
 	\stdline{magenta}{date}{EMP}{data/emp_ts.csv}
@@ -5355,20 +5357,21 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \begin{minipage}{0.45\textwidth}
 \normalsize \textbf{Monthly Change}\\
 \footnotesize{\textit{thousands, seasonally adjusted}}
-\vspace{3.42cm}
+\vspace{3.62cm}
 
 \hspace*{-2mm} \begin{tikzpicture}[overlay]
   	\begin{axis}[ybar=12pt, \bbar{y}{0}, 
-    	width=6.8cm, bar width=13pt, height=5.2cm, axis line style={draw=none}, 
+    	width=6.8cm, bar width=13pt, height=5.47cm, axis line style={draw=none}, 
     	x tick style={color=white}, ytick=false,
   		ymajorticks=false, 
-    	enlarge y limits={value=0.18, upper}, enlarge x limits={abs=0.6cm}, 
+    	enlarge y limits={value=0.15, upper}, enlarge x limits={abs=0.6cm}, 
     	xtick=data,	xticklabels from table={\emplt}{label},
-		xticklabel style={black!75, font=\footnotesize, text width=1.1cm, align=center}, 
+		xticklabel style={black!75, font=\footnotesize, 
+		text width=1.1cm, align=center}, 
 		clip=false, nodes near coords,  
 		nodes near coords style={/pgf/number format/.cd, 
 			precision=0, assume math mode}, legend cell align={left},
-		legend style={at={(0.7, 1.10)}, legend columns=-1, 
+		legend style={at={(0.7, 1.07)}, legend columns=-1, 
 		fill=white, draw=none}, legend image code/.code={
         \draw [#1] (0cm,-0.08cm) rectangle (0.22cm,0.14cm); },]
   	\addplot[ybar, bar shift=-7pt, fill=magenta, draw opacity=0] 
@@ -6975,13 +6978,13 @@ The current population survey asks whether individuals have the same employer as
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks  \bbar{y}{0}, 
 		enlarge y limits={0.05}, clip=false, max space between ticks=20,	
-		yticklabel style={text width=1.2em}, ymin=1, ymax=28,
+		yticklabel style={text width=1.2em}, ymin=1, ymax=26.5,
 		xticklabel={`\short{\year}}, height=6.2cm, width=6.5cm]
 	\rbar
 	\stdline{cyan}{date}{Losing}{data/sce_job_separation.csv}
 	\absnode{{2015-10-01}}{13}{\footnotesize \color{cyan}\textbf{Lose Job}}
 	\stdline{violet!50!blue}{date}{Leaving}{data/sce_job_separation.csv}
-	\absnode{{2013-10-01}}{25.3}{\footnotesize \color{violet!50!blue}\textbf{Voluntary}}
+	\absnode{{2013-06-01}}{25.8}{\footnotesize \color{violet!50!blue}\textbf{Voluntary}}
 	\input{text/sce_job_sep_nodes.txt}
 	\end{axis}
 \end{tikzpicture}\\
@@ -7121,7 +7124,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks clip=false,
 		enlarge y limits={0.02}, ymin=0.1,
-		xticklabel={`\short{\year}}, height=4.4cm, width=7.0cm]
+		xticklabel={`\short{\year}}, height=4.5cm, width=7.0cm]
 	\rbars
 	\stdline{purple}{date}{uninc}{data/selfemp.csv}
 	\stdline{green!80!black}{date}{inc}{data/selfemp.csv}
@@ -8194,7 +8197,7 @@ Researchers can then use the price index to calculate the rate of inflation. Per
 \vspace{1mm}
 
 \normalsize \textbf{CPI One-Month Change}\\
-\footnotesize{\textit{monthly percent change, annualized}}
+\footnotesize{\textit{percent change from previous month}}
 \vspace*{-4mm}
 
 \hspace*{-3mm} \begin{tikzpicture} 
