@@ -486,15 +486,16 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
     dt = ''    
     if date != None:
         if date.lower() not in ['month', 'mon', 'm', 'year', 'yr', 'y', 
-        						'fy', 'day', 'd', 
+        						'fy', 'day', 'd', 'ds', 'dayshort', 'short', 's',
                                 'quarter', 'qtr', 'q']:
-            print('Date should be month or quarter')
+            print('Date should be month or quarter or year or short')
         yr = series.index[i].strftime('`%y')
         if full_year == True:
         	yr = series.index[i].strftime('%Y')
         qtr = series.index[i].to_period('Q').strftime('Q%q')
         mo = series.index[i].strftime('%b')
         day = series.index[i].strftime('%d')
+        daysh = series.index[i].strftime('%-d')
         if date.lower() in ['month', 'mon', 'm']:
             dt = f'\scriptsize {mo}\\\\ \scriptsize {yr}{col} \\\\ '
         elif date.lower() in ['quarter', 'qtr', 'q']:
@@ -505,7 +506,8 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
             dt = f'\scriptsize FY{yr} \\\\ '.replace('`', '')
         elif date.lower() in ['d', 'day']:
         	dt = f'\scriptsize {mo} {day}\\\\ \scriptsize {yr}{col} \\\\ '
-        	yr = series.index[i].strftime('%Y')
+        elif date.lower() in ['ds', 'dayshort', 'short', 's']:  # Day short format
+        	dt = f'\scriptsize {mo} {daysh}{col}\\\\'
         
     lt = series.iloc[i]
     vtxt = f'{lt:.1f}'
