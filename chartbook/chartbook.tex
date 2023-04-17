@@ -22,6 +22,7 @@
 	\usepackage{xcolor}
 	\usepackage{array}
 	\usepackage{fontawesome5}
+	\usepackage{imakeidx}
 	\usepackage{titlesec}
 	\usepackage{fancyhdr}
 	\usepackage[colorlinks, linkcolor=blue, filecolor=blue, 
@@ -65,6 +66,9 @@
 	\rfoot{\hyperlink{toc}{\faList}}
 	\cfoot{\thepage}	
 	
+	% Index
+	\indexsetup{level=\section*,noclearpage}
+	\makeindex
 	
 	% Color square
 	\newcommand{\cbox}[1]{
@@ -143,7 +147,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-03-31},
+		xmax={2023-04-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -163,7 +167,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-03-31},
+		xmax={2023-04-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -174,7 +178,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-03-31},
+		xmax={2023-04-30},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
@@ -184,7 +188,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2023-03-31},   
+		xmin={2018-01-01}, xmax={2023-04-30},   
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
 		yticklabel style={text width=1.0em},
@@ -194,10 +198,16 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-03-31}, max space between ticks=40,	    
+		xmax={2023-04-30}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
+		
+	% Date (X) Axis Tick Marks, very short term monthly ticks
+	\newcommand{\shticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2023-04-30},
 		}
 		
 	% Settings for y label text in horizontal bar charts
@@ -309,6 +319,9 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/jobs_tercile.csv}\jobt
 	\pgfplotstableread[header=true, col sep=comma]{data/jobs_ss.csv}\jobss
 	\pgfplotstableread[header=true, col sep=comma]{data/emp_lt.csv}\emplt
+	\pgfplotstableread[header=true, col sep=comma]{data/icsa_mon.csv}\icsamon
+	\pgfplotstableread[header=true, col sep=comma]{data/ccsa_mon.csv}\ccsamon
+	\pgfplotstableread[header=true, col sep=comma]{data/uwe_cps_sh.csv}\uwecps
 	
 	% Required for bar plots with individual bar colors for categories
 	\pgfplotsset{discard if not/.style 2 args={
@@ -401,7 +414,6 @@ As a result of these shortcuts, it is unlikely that you will be completely satis
 \item {\hyperlink{hh}{Households}}
 \begin{description}
 \item {\hyperlink{hhdem}{Demographics}}
-\item {Income, Spending, and Saving}
 \item {\hyperlink{hhinc}{Income}}
 \item {\hyperlink{hhss}{Spending and Saving}}
 \item {\hyperlink{hhbs}{Balance Sheets}}
@@ -422,10 +434,6 @@ As a result of these shortcuts, it is unlikely that you will be completely satis
 \item Revenue
 \item {\hyperlink{govbs}{Balance Sheets}}
 \end{description}
-\end{description}
-\end{minipage} \hspace{10mm} 
-\begin{minipage}{0.4\textwidth}
-\begin{description}
 \item {\hyperlink{ext}{External Sector}}
 \begin{description}
 \item {\hyperlink{exbop}{Balance of Payments}}
@@ -434,6 +442,10 @@ As a result of these shortcuts, it is unlikely that you will be completely satis
 \item {\hyperlink{excf}{Capital Flows}}
 \item {\hyperlink{extfx}{Exchange Rates}}
 \end{description}
+\end{description}
+\end{minipage} \hspace{10mm} 
+\begin{minipage}{0.4\textwidth}
+\begin{description}
 \item {\hyperlink{lab}{Labor Markets}}
 \begin{description}
 \item {\hyperlink{labe}{Employment}}
@@ -461,17 +473,20 @@ As a result of these shortcuts, it is unlikely that you will be completely satis
 \item {\hyperlink{prex}{Import and Export Prices}}
 \item {\hyperlink{prco}{Commodities}}
 \end{description}
+\item {\hyperlink{index}{Index}}
 \end{description}
-\vspace{0.6cm}
+\vspace{4.6cm}
 \end{minipage}
 \newpage
 \section*{Overall Economic Activity}
 \markright{\seriffont Overall Economic Activity}
 \hypertarget{oea}{}
 \begin{minipage}{0.59\textwidth}
+\index{gross domestic product!overview}
 \small This analysis of the United States economy begins with the most popular measure of economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{Gross Domestic Product} (GDP). GDP estimates the production of goods and services in a given location during a given period of time. According to the Bureau of Economic Analysis, the seasonally-adjusted annualized value of goods and services produced in the US was \input{text/gdp1.txt}
 \end{minipage}\hfill
 \begin{minipage}{0.36\textwidth}
+\index{gross domestic product!per capita}
 \noindent \normalsize \textbf{GDP per capita}\\
 \footnotesize{\textit{in thousands of \input{text/gdp_ltdt.txt}dollars}}\\ 
 \hspace*{-2mm} \begin{tikzpicture}
@@ -489,7 +504,8 @@ As a result of these shortcuts, it is unlikely that you will be completely satis
 \hypertarget{oety}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Types of Economic Activity}
-\small GDP calculated using the \href{https://www.bea.gov/help/glossary/expenditures-approach}{expenditures approach} is the sum of major types of domestic spending on finished goods and services: consumer spending, private investment, and government spending and investment. To capture only domestic production, foreign spending on US produced goods and services is added, while imports (spending on non-US-produced goods and services) are subtracted.
+\index{gross domestic product!by type}
+\small GDP calculated using the \href{https://www.bea.gov/help/glossary/expenditures-approach}{expenditures approach} is the sum of major types of domestic spending on finished goods and services: consumer spending\index{consumer spending}, private investment, and government spending and investment. To capture only domestic production, foreign spending on US produced goods and services is added, while imports (spending on non-US-produced goods and services) are subtracted.
 \end{minipage}
 
 \begin{minipage}{0.37\textwidth}
@@ -531,6 +547,7 @@ As a result of these shortcuts, it is unlikely that you will be completely satis
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\index{gross domestic income}
 \small The less-discussed \textbf{\href{https://www.bea.gov/help/glossary/income-approach}{income approach}} calculates economic activity from production income and certain production expenses. Production income is the payout to labor and capital. Labor income is referred to as ``compensation of employees, paid'' in the national accounts and includes wages and salaries as well supplements to wages and salaries such as employer-paid health insurance premiums and retirement account contributions. Capital income, or profit, is referred to as the ``net operating surplus'' in national accounts and includes interest payments, rental profits, business proprietor profits, and corporate profits.
 
 Some income does not get paid out to these groups. Taxes on imports and production, such as tariffs, sales tax, property tax, and licensing fees are tracked separately. Government subsidies, which are income payments for production that did not occur, must be subtracted from income measures of production. Lastly, a growing portion of potential income goes toward replacing and maintaining buildings and equipment used in production. This depreciation expense is recorded as ``consumption of fixed capital'' in the national accounts.
@@ -580,6 +597,7 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\index{gross domestic product!by industry}
 \small The \textbf{production approach} to GDP identifies how individual industries contribute to domestic production by calculating the \href{https://www.bea.gov/help/glossary/value-added}{value added} by each industry during the production process. The value added by an industry or sector group is its sales or gross output minus any \href{https://www.bea.gov/help/glossary/intermediate-inputs}{intermediate inputs} used in production. The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gdp-industry}{report} GDP by industry, which is summarized briefly in this subsection by grouping the various private industries into broad categories. 
 
 \input{text/gdpva_sh.txt}
@@ -628,13 +646,14 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Household Inputs to Production}
+\index{gross domestic product!household inputs}
 \small It's useful to consider household inputs when analyzing economic output. For example, is the population growing? Are more people working? Are people working more hours? Is the economy more productive in its use of labor? These questions all add important context to discussion of economic activity.
 
-The US population is increasing (see {\color{lime!90!green}\textbf{---}}), though at a slower rate than in the past. Over the past 30 years, the US has added 80 million people, a total population growth rate of around 30 percent. For each person to maintain the same standard of living, GDP would need to increase by the same amount. 
+The US population \index{population}is increasing (see {\color{lime!90!green}\textbf{---}}), though at a slower rate than in the past. Over the past 30 years, the US has added 80 million people, a total population growth rate of around 30 percent. For each person to maintain the same standard of living, GDP would need to increase by the same amount. 
 
-GDP is produced by workers. The employment rate (see {\color{green!30!teal!90!black}\textbf{---}}) measures the share of the population that is working, and is affected by existing economic conditions. The rate nears 50 percent during the peak of economic expansions and falls during recessions. Demographics also affect this measure. Over the past 30 years, the aging of the population has gradually reduced the employment rate.
+GDP is produced by workers. The employment rate (see {\color{green!30!teal!90!black}\textbf{---}}) \index{employment!employment rate}measures the share of the population that is working, and is affected by existing economic conditions. The rate nears 50 percent during the peak of economic expansions and falls during recessions. Demographics also affect this measure. Over the past 30 years, the aging of the population has gradually reduced the employment rate.
 
-A third measure of household inputs to production is the amount people work. As with the employment rate, hours of work are influenced by existing economic conditions. Workers' average weekly hours of work (see {\color{blue}\textbf{---}}) increase during an economic expansion, as more work is available. Average hours fall during a recession, when demand for goods and services is relatively low.
+A third measure of household inputs to production is the amount people work. As with the employment rate, hours of work \index{employment!hours of work}are influenced by existing economic conditions. Workers' average weekly hours of work (see {\color{blue}\textbf{---}}) increase during an economic expansion, as more work is available. Average hours fall during a recession, when demand for goods and services is relatively low.
 \end{minipage}
 \vspace{2mm}
 
@@ -706,11 +725,11 @@ A third measure of household inputs to production is the amount people work. As 
 \end{minipage}
 \newpage
 \hypertarget{oegr}{}
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{gross domestic product!GDPNow}
 \subsection*{Economic Growth}
 \small Economists are concerned with changes in economic activity, or economic growth. This subsection discusses economic growth, recessions, and their contributors.
 
-\subsubsection*{Real GDP Growth}
+\subsubsection*{Real GDP Growth} \index{gross domestic product!growth}
 \vspace{-1mm}
 
 \small \input{text/gdp_gr.txt} 
@@ -775,6 +794,8 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \vspace{-1mm}
 
 \small The long-term pattern in economic growth is often described as the business cycle. Typically, periods of economic growth lasting 7--12 years are interrupted by an \textbf{economic recession}, a period where economic activity decreases. The National Bureau of Economic Research (NBER) \href{https://www.nber.org/research/business-cycle-dating}{identifies} four recessions since 1989.
+\index{unemployment!unemployment rate}
+\index{recession}
 
 \input{text/recessions.txt}
 \vspace{0.5mm}
@@ -793,6 +814,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \footnotesize{*Percentage point change from average unemployment rate during three years prior to recession to peak unemployment rate. **Months from recession start until unemployment rate returns to pre-recession three-year average.}
 \vspace{5mm}
 
+\index{Sahm rule}
 \small The most-reliable indication that the US has entered a recession (see\cbox{black!30}) was identified by \href{https://sites.google.com/site/claudiasahm/}{Claudia Sahm}, and is called the \textbf{Sahm rule}. The Sahm rule indicates the start of a recession (see \begin{tikzpicture} \node[line width=0.3mm, diamond, draw=red, scale=0.4, aspect=0.8] (d) at (0,0) {}; \end{tikzpicture}) when the three-month moving average unemployment rate rises by half a percentage point or more above its low during the previous twelve months (see {\color{blue!60!black}\textbf{---}}). In effect, the Sahm rule identifies increases in unemployment that are significant enough to cause or indicate a recession.  
 \vspace{1mm}
 
@@ -830,7 +852,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \end{minipage}
 \newpage
 \label{sec:oegc}
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{gross domestic product!contributions to growth} \index{gross domestic income!contributions to growth} \index{consumer spending}
 \subsection*{Components of Growth}
 \small The \textbf{expenditure approach} also gives insight into the sources of changes in overall economic activity. \input{text/gdp_exp_basic.txt}
 \vspace{1mm}
@@ -881,7 +903,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdi.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{value added}
 \small The \textbf{production approach} calculates GDP as the sum of value added--gross output minus intermediate inputs--in each sector. The broad groupings discussed above are used to identify contributions from: goods-producing sectors combined with trade, transportation, and utilities (see\cbox{purple!70!blue}), finance, insurance, and real estate plus information (see\cbox{red!90!white}), other service-providing sectors (see\cbox{blue!90!white}), and government (see\cbox{orange!80!white}).
 
 \input{text/gdpva_growth.txt}
@@ -917,6 +939,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\index{productivity}
 \small Changes to GDP can also be assigned to changes in \textbf{household inputs}: population (see\cbox{lime!90!green}), employment rates (see\cbox{green!30!teal!90!black}), average hours worked (see\cbox{blue}), and total economy productivity (see\cbox{cyan!60!white}). 
 
 \input{text/gdpjobsch.txt}
@@ -956,21 +979,19 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 	\vspace{-0.5mm}
 				
 \footnotesize{Source: Bureau of Economic Analysis and Author's Calculations}
-\newpage
+
+\newpage 
+\vspace{-4mm}
 
 \noindent \normalsize \textbf{Real GDP Growth by State}\\
 \footnotesize{\textit{percentage point change in real GDP}}\\
 \vspace{-2mm}
 \hspace{-8mm} \input{data/gdp_map.pgf} \\
-\footnotesize{Source: Bureau of Economic Analysis}\\
+\footnotesize{Source: Bureau of Economic Analysis}
 
-\vspace{2mm}
-
-\begin{minipage}{0.76\textwidth}
-
+\begin{minipage}{0.76\textwidth} \index{gross domestic product!by state}
 \small \input{text/gdp_state.txt} 
 \end{minipage}
-
 \vspace{2mm}
 
 \normalsize \textbf{Real GDP Growth by State}\\
@@ -978,22 +999,24 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 
 \vspace{-4.5mm}
 \hspace{-2mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.44}
+		{\renewcommand{\arraystretch}{1.42}
 		 \begin{tabular}{p{30mm} R{7mm} R{7mm} R{7mm} R{7mm} R{7mm} p{0mm} R{9mm} R{9mm} R{10mm} }
 		\input data/gdp_state_table.tex \hline
 		\end{tabular}}	\\
 
 \vspace{-3mm}	
 \footnotesize{Source: Bureau of Economic Analysis}
+\vspace{-5mm}
 
 \newpage
-\hypertarget{ofa}{}
-\section*{Financial Accounts}
-\markright{\seriffont Financial Accounts}
-\begin{minipage}{0.76\textwidth}
+\hypertarget{ofa}{} \vspace{-3mm}
+\section*{Financial Accounts} \markright{\seriffont Financial Accounts}
+\begin{minipage}{0.76\textwidth} \index{financial accounts} \index{flow of funds}
+\vspace{-3mm}
+
 \small Economists are concerned with the level of assets and liabilities, at a given point in time, and by related transactions, such as the lending and borrowing, and saving and investment. Data on financing and investing activities provide insight into current economic conditions as well as the future economic outlook. This section provides a high-level overview of the US \textbf{financial accounts} and related measures, and covers liabilities, sectoral balances, wealth, and investment. 
 \hypertarget{of1}{}
-\subsection*{Liabilities}
+\subsection*{Liabilities} \index{liabilities!overview} \index{liabilities!overview}
 \small The Federal Reserve US Financial Accounts \href{https://www.federalreserve.gov/releases/z1/}{cover} \textbf{liabilities}, both in levels and transactions. Using these accounts, we can summarize US financial obligations to others in a few different ways. 
 
 \input{text/liab_overview.txt}
@@ -1056,7 +1079,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \small \input{text/liabsh.txt}
 \vspace{2mm}
 
-\begin{minipage}{0.47\textwidth}
+\begin{minipage}{0.47\textwidth} \index{liabilities!by sector}
 \normalsize \textbf{Total Liabilities by Sector}\\
 \footnotesize{\textit{share of GDP, percent}}
 \vspace{4.6cm}
@@ -1083,7 +1106,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \end{tikzpicture}
 \end{minipage}
 \hfill
-\begin{minipage}{0.47\textwidth}
+\begin{minipage}{0.47\textwidth} \index{debt!by sector}
 \normalsize \textbf{Debt by Sector}\\
 \footnotesize{\textit{share of GDP, percent, seasonally adjusted}}
 \vspace{4.6cm}
@@ -1124,7 +1147,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis}  \hfill \tbllink{liabsh.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{debt!growth}
 \small \textbf{Changes in debt levels} can highlight economic risks. For example, the tech bubble of the late 1990s and early 2000s shows up as a large increase in corporate borrowing. The housing bubble from the 1990s to 2007 shows up as an increase in mortgage debt. More recently, government borrowing increased following the great recession and in response to COVID-19. \input{text/liabgr.txt} 
 \vspace{2mm}
 
@@ -1162,7 +1185,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \end{minipage}
 \newpage
 \hypertarget{ofsb}{}
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{sectoral balances} \index{financial balance by sector} \index{lending and borrowing}
 \subsection*{Sectoral Balances}
 \small The \textbf{sectoral financial balances} provide a high-level summary of US financial activities. This measure divides the world into three sectors: the US private sector (see\cbox{green!70!black}), the US government (see\cbox{yellow!70!orange}), and the rest of the world (see\cbox{blue!90!black}), then examines the net lending and borrowing between the groups. In any given period, one sector's borrowing is another sector's lending, and as such the total will always sum to zero. 
 
@@ -1220,14 +1243,14 @@ A sector runs a surplus in a given accounting period when its income is higher t
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsection*{Wealth}
+\subsection*{Wealth} \index{wealth!overview}
 \hypertarget{ofw}{}
-\small \textbf{Net wealth} is the sum of domestic tangible assets, such as land (excluding public land), structures, and equipment, minus foreign financial claims on these assets, plus domestic claims on foreign assets. \input{text/uswealth.txt}  
+\small \textbf{Wealth} or \textbf{net worth} is the sum of domestic tangible assets, such as land (excluding public land), structures, and equipment, minus foreign financial claims on these assets, plus domestic claims on foreign assets. \input{text/uswealth.txt}  
 
 \input{text/wealthgdp.txt}
 \vspace{1mm}
 
-\normalsize \textbf{Net Wealth to GDP Ratio}\\
+\normalsize \textbf{Wealth to GDP Ratio}\\
 \footnotesize{\textit{total US wealth divided by GDP}}
 \vspace{3.4cm}
 
@@ -1251,7 +1274,7 @@ A sector runs a surplus in a given accounting period when its income is higher t
 \small The tangible assets of each major domestic sector are shown below, along with the summary of financial claims between the rest of the world and the US.
 \vspace{1mm}
 
-\normalsize \textbf{Derivation of US Net Wealth}\\
+\normalsize \textbf{Derivation of US Wealth}\\
 \footnotesize{\textit{share of GDP, percentage points}}\\ 
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.5pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.65}
@@ -1265,7 +1288,7 @@ A sector runs a surplus in a given accounting period when its income is higher t
 \newpage
 \hypertarget{ofi}{}
 \begin{minipage}{0.76\textwidth}
-\subsection*{Investment}
+\subsection*{Investment} \index{investment!overview} \index{investment!fixed investment} \index{investment!inventory investment} \index{inventories}
 
 \small Investment is the exchange of a liquid asset, such as cash, for a less-liquid asset, such as a building. 
 
@@ -1299,7 +1322,7 @@ Additionally, the change in private inventories (see\cbox{red}), whether intenti
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inv.csv} 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{investment!net fixed investment}
 \subsubsection*{Net Fixed Investment}
 \vspace{-1.5mm}
 \small Gross investment in fixed assets covers both depreciation, the wearing down of existing assets, and new investment. Fixed investment less depreciation is referred to as \textbf{net fixed investment}, and positive net investment represents new or expanded investment. 
@@ -1357,7 +1380,7 @@ Additionally, the change in private inventories (see\cbox{red}), whether intenti
 \end{minipage}
 \newpage
 \hypertarget{hh}{}
-\section*{Households}
+\section*{Households} \index{households!overview}
 \markright{\seriffont Households}
 \begin{minipage}{0.76\textwidth}
 \small This section covers the household sector of the economy. Households are the source of labor for production and the source of saving for investment. Households are also the primary consumers in the economy. The core topics in the households section include demographics, personal and household income and outlays, consumer sentiment, residential investment, household balance sheets, home ownership, housing, and poverty.
@@ -1369,6 +1392,7 @@ Additionally, the change in private inventories (see\cbox{red}), whether intenti
 \small Demographics provide a foundation for examining the household sector. Demographics provide insight on the structure and characteristics of the population. The demographics subsection covers population, population growth, household formation and headship, age, life expectancy, and education.
 
 \subsubsection*{Population}
+\index{population}
 \small The Census Bureau provides \href{https://www.census.gov/programs-surveys/popest.html}{estimates} and \href{https://www.census.gov/programs-surveys/popproj.html}{projections} of the \textbf{US population}. Population levels and growth rates affect the economy and are critical pieces of information in determining and evaluating economic policies and outcomes. Population projections are based on assumptions, for example about the future level of net migration to the US, but are useful for thinking about future US demographics.
 
 \input{text/pop_est.txt}
@@ -1412,6 +1436,7 @@ Additionally, the change in private inventories (see\cbox{red}), whether intenti
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Population Growth}
+\index{population!growth}
 \small \input{text/pop_comp.txt}
 \vspace{1mm}
 
@@ -1461,7 +1486,7 @@ The Census Bureau further divides the population into those living in households
 Lastly, an important related concept, \textbf{households}, are \href{https://www.census.gov/housing/hvs/index.html}{measured} as occupied housing units. The number of households varies over time, separately from the population, as people make changes in their living arrangements. \input{text/hh_tot.txt} 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{households!household formation} \index{housing!homeownership} \index{housing!vacancies}
 \subsubsection*{Household Formation}
 \small Households are measured as \textbf{occupied housing units}, whether occupied by the owner or rented. \input{text/hhform_lvl.txt}Since 1989, the US has experienced the boom and bust of a major housing bubble. By 2016, the end result of the bubble bursting was a shortage of housing, as housing units per capita fell from 1995 to 2016. 
 \vspace{1mm}
@@ -1527,7 +1552,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \footnotesize{Source: Census Bureau, Housing Vacancies and Homeownership}  \hfill \tbllink{hhform.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{demographics!headship rate}
 \subsubsection*{Headship Rate}
 \small Individual decisions about starting a household or living with family are influenced by economic conditions. The ratio of households to people age 16 and older is referred to as the \href{https://www.federalreserve.gov/econres/notes/feds-notes/an-early-evaluation-of-the-effects-of-the-pandemic-on-living-arrangements-and-household-formation-20200807.htm}{aggregate headship} rate. 
 \end{minipage}
@@ -1550,7 +1575,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{headship.csv} 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{demographics!age}
 \subsubsection*{Age}
 \small In discussions on demographics, \textbf{aging} is often described as a serious headwind to economic growth in major advanced economies. The increased share of many countries' population that is of retirement age means a smaller share are working and borrowing and a larger share are receiving pension benefits and lending to the financial system. These trends can be overcome by a workforce that is more efficiently able to provide goods and services. In part due to a shorter life-expectancy in the US, this problem is more pronounced in Japan and western Europe, but is still an important issue for the US.
 
@@ -1612,7 +1637,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \small \input{text/cps_age.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{demographics!age}
 \small Mapping American Community Survey data to commuter zones gives insight on the \textbf{age of local areas}. \input{text/cps_u18.txt} 
 
 \input{text/cps_o64.txt}
@@ -1631,7 +1656,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \footnotesize{Source: American Community Survey, Dorn} \hspace{61mm} \tbllink{acs_cz_age.csv}
 \vspace{3.5mm}
 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{demographics!life expectancy} \index{population!life expectancy}
 \subsubsection*{Life expectancy}
 \vspace{-0.5mm}
 
@@ -1661,7 +1686,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \end{minipage}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{demographics!education}
 \subsubsection*{Education}
 \small Education is central in many discussions of the future of the US economy. Over the past few decades, college costs and college enrollment have both increased substantially. Households may be spending more on education as a response to changing job opportunities from globalization and other policy decisions. The end result is a much \textbf{more-educated population}, with much higher levels of student debt.
 \end{minipage}
@@ -1733,7 +1758,7 @@ Increased household spending on education may be a response to a weak labor mark
 \newpage
 \hypertarget{hhinc}{}
 \begin{minipage}{0.76\textwidth}
-\subsection*{Income, Spending, and Saving}
+\subsection*{Income, Spending, and Saving} \index{income!household} \index{spending!household} \index{saving!household} \index{households!income} \index{households!spending} \index{households!saving}
 \small The next subsections cover household and personal income, spending, and saving. This subsection offers an overview, with mean and median per capita measures. 
 
 \input{text/inc_out_save.txt}
@@ -1800,8 +1825,8 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Distribution by Income}
+\begin{minipage}{0.76\textwidth} \index{income!household} \index{households!income}
+\subsubsection*{Distribution by Income} 
 \small Income varies massively by household. While some spending is non-discretionary, spending increases with income. The bottom 40 percent of households, by total money income, have expenses exceeding after-tax income. This includes retirees who are dissaving and low-income families taking on debt to cover expenses. Meanwhile, the top ten percent of households save nearly half of their income.
 
 \input{text/ce_inc_pct.txt}
@@ -1835,8 +1860,8 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \footnotesize{Source: Consumer Expenditure Survey} \hfill \tbllink{ce_inc.csv}
 \end{minipage}
 
-\subsubsection*{Distribution by Age}
-\begin{minipage}{0.76\textwidth}
+\subsubsection*{Distribution by Age} \index{income!by age} 
+\begin{minipage}{0.76\textwidth} 
 \small Income and spending vary by age and tend to peak between ages 45 and 54. Saving, the difference between income and spending, also varies by age and generally peaks during ages 45 to 54. In 2019, the oldest and youngest age groups in the data have income near or below their expenses, resulting in low or negative saving rates. In contrast, during the pandemic in 2020, income was above average and spending was below average, and saving rates were positive and far above average.
 
 \input{text/ce_age.txt}
@@ -1870,8 +1895,8 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \footnotesize{Source: Consumer Expenditure Survey} \hfill \tbllink{ce_age.csv}
 \end{minipage}
 \newpage
-\subsection*{Income to Persons}
-\begin{minipage}{0.3\textwidth}
+\subsection*{Income to Persons} \index{income!personal}
+\begin{minipage}{0.3\textwidth} 
 \small \textbf{Personal income} \href{https://www.bea.gov/data/income-saving/personal-income}{includes} labor income (see\cbox{green!75!black}), measured as compensation of employees, capital income (see\cbox{orange!40!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and welfare income (see\cbox{blue!80!white}), measured as government social benefits less contributions to social insurance. 
 
 \input{text/pi_levels_basic.txt}
@@ -1911,7 +1936,7 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{income!personal}
 \normalsize \textbf{Personal Income}\\
 \footnotesize{\textit{percentage point contribution to real personal income growth}}
 \vspace{6.6cm}
@@ -1949,7 +1974,7 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{income!personal} \index{income!disposable personal} \index{income!distribution}
 \small \input{text/rdpigrowth.txt}
 \vspace{2mm}
 
@@ -1997,7 +2022,8 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \footnotesize{Source: Author's Calculations from CPS ASEC} \hfill \tbllink{pearn_dist.csv}
 \end{minipage}
 \newpage 
-\begin{minipage}{0.82\textwidth} 
+\vspace{-3mm}
+\begin{minipage}{0.82\textwidth} \index{income!personal}
 \normalsize \textbf{Personal Income} \hspace{32mm} \input{text/pinc_year1.txt} \hspace{32mm} \input{text/pinc_year2.txt}\\
 \footnotesize{\textit{number of recipients in thousands,}}\\
 \footnotesize{\textit{income amounts in \input{text/pinc_year1.txt}US dollars}}\\
@@ -2010,9 +2036,9 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 	
 \footnotesize{Source: Census Bureau, Bureau of Labor Statistics} \hfill \tbllink{pinc08.csv}
 \end{minipage}
-\vspace{1mm}
+\vspace{-1mm}
 
-\begin{minipage}{0.76\textwidth} 
+\begin{minipage}{0.76\textwidth} \index{income!personal}
 \subsubsection*{Contributions to Personal Income Growth}
 \small Annual data on personal income \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-08.html}{describe} the number of people receiving various categories of income and the average payment. As a result, it is possible to match changes in aggregate personal income from changes in payment amounts (see\cbox{blue!60!cyan}) and changes in who is receiving payments (see\cbox{green!90!blue}). 
 
@@ -2046,7 +2072,7 @@ The Consumer Expenditure Survey \href{https://www.bls.gov/cex/tables.htm}{provid
 \footnotesize{Source: Census Bureau, Bureau of Labor Statistics}  \hfill \tbllink{pinc_ch_contrib.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth} 
+\begin{minipage}{0.76\textwidth} \index{income!household} \index{households!income}
 \subsubsection*{Household Income}
 \small Given the variance in personal income, with many people receiving no income at all, individuals often live together and combine their income and expenses. This subsection covers household income, the combined income of all people in a given housing unit. 
 
@@ -2129,7 +2155,7 @@ As with personal income, household income is distributed very unevenly in the US
 Two values are shown for 2013 and 2017 to mark revisions to the survey design (2013) and the processing of survey data (2017). These data are not perfectly comparable over time. 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{income!household income by state}
 \small \input{text/med_hh_inc_state.txt}
 \end{minipage}
 \vspace{1mm}
@@ -2145,9 +2171,9 @@ Two values are shown for 2013 and 2017 to mark revisions to the survey design (2
 \footnotesize{Source: Census Bureau, American Community Survey} \hfill \tbllink{median_hh_inc_state.csv}
 \end{minipage}
 \newpage 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{households!spending} \index{spending!household}
 \subsection*{Household Spending and Saving}
-\hypertarget{hhss}{}
+\hypertarget{hhss}{} 
 \small The previous subsection examines money coming into households while this section covers money leaving households. \href{https://www.bea.gov/data/consumer-spending/main}{Consumer spending} includes household purchases of goods and services, certain spending for households, such as Medicare and Medicaid, and estimates for services furnished without payment. As an example of a special estimate, homeowners are considered to rent their homes to themselves. 
 
 Over the past 30 years, increased consumer spending represents the majority of economic growth. Consumer spending usually increases when households have more income and falls when households have less income. This effect is visible in both the long-run and during the course of a business cycle, with consumer spending generally falling or slowing during a recession. Some categories of spending fell sharply during COVID-19 business closures and restrictions.
@@ -2200,7 +2226,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \small \input{text/pce2_levels.txt}
 \end{minipage}
 \newpage 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{spending!household} \index{households!spending}
 \small The combined categories from the previous two charts cover spending on goods, spending on services other than shelter, and spending on housing, utilities, and residential construction. Including residential construction with other housing costs provides a more broad overview of household sector expenses. 
 \end{minipage}
 \vspace{2mm}
@@ -2241,7 +2267,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{spending!household} \index{investment!residential} \index{households!spending} \index{households!residential investment} \index{consumer spending}
 \small Next, we examine the effect on GDP growth from changes in consumer spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}, calculated as housing and utilities plus residential fixed investment). \input{text/pce1.txt}
 \vspace{1mm}
 
@@ -2285,7 +2311,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{spending!household} \index{consumer spending}
 \small \input{text/pcegrowth.txt}
 \vspace{1mm}
 
@@ -2332,7 +2358,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pcedecomp.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{saving!household} \index{households!saving}
 \subsubsection*{Personal Saving}
 \small The after-tax income that people do not spend is \href{https://www.bea.gov/index.php/help/glossary/personal-saving}{considered} \textbf{personal saving}, from an economic accounting perspective. Peoples' savings are invested through the financial system and become the current fixed investment or consumption activities of other groups in the economy. Savers generally receive a return from this investment.
 
@@ -2389,8 +2415,8 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \end{minipage}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Consumer Sentiment}
+\begin{minipage}{0.76\textwidth} \index{consumer sentiment}
+\subsubsection*{Consumer Sentiment} 
 \small The University of Michigan conducts a monthly \href{http://www.sca.isr.umich.edu/}{survey} of \textbf{consumer sentiment} (see {\color{violet!60!blue}\textbf{---}}). The survey asks about personal finances, business conditions, and buying conditions. An increase in consumer sentiment means individuals feel more confident about economic conditions and are more willing to make large purchases or take on debt. 
 
 \input{text/umichsoc.txt}
@@ -2444,7 +2470,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{Household Balance Sheets}
-\hypertarget{hhbs}{}
+\hypertarget{hhbs}{} \index{debt!household} \index{balance sheet!household} \index{households!balance sheets} \index{consumer credit}
 
 \subsubsection*{Liabilities}
 
@@ -2519,7 +2545,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Federal Reserve Bank of New York and Bureau of Economic Analysis} \hfill \tbllink{hhcdebt.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{debt!household} \index{households!debt}
 \small Trends in \textbf{household debt} over the past three years, measured in both the US Financial Accounts and the New York Fed Consumer Credit Panel, show mortgage debt increasing as a share of income while consumer credit comprises roughly the same share of income. 
 
 \input{text/hhcdebt4.txt} 
@@ -2541,7 +2567,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Minor discrepancies between the two data sources arise because the Financial Accounts include debt of nonprofit institutions and the Consumer Credit Panel does not include people without a social security number.}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{consumer credit} \index{debt!consumer credit}
 \subsubsection*{Consumer Credit}
 
 \small The Federal Reserve also \href{https://www.federalreserve.gov/releases/g19/current/default.htm}{report} consumer credit on a monthly basis. \input{text/cc_dpi.txt}
@@ -2568,8 +2594,8 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \end{minipage}
 \vspace{5mm}
 
-\subsubsection*{Financial Obligations}
-\begin{minipage}{0.29\textwidth}
+\subsubsection*{Financial Obligations} \index{households!financial obligations} \index{households!debt service ratio}
+\begin{minipage}{0.29\textwidth} 
 \small Payments to service debt, along with rent, auto lease payments, homeowner's insurance, and property tax are considered financial obligations. The Federal Reserve \href{https://www.federalreserve.gov/releases/housedebt/default.htm}{report} financial obligations as a share of disposable personal income. The ratio of debt service payments and financial obligations to income gives insight into the current aggregate financial burden facing households. 
 
 \input{text/for.txt} The financial obligations ratio peaked at 18.1 percent in 2007 Q4, during the housing bubble.
@@ -2594,8 +2620,8 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{for.csv} 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Assets}
+\begin{minipage}{0.76\textwidth} \index{assets!household} \index{households!assets}
+\subsubsection*{Assets} 
 \vspace{-1mm}
 
 \small \input{text/hhasset.txt} 
@@ -2655,7 +2681,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hh_asset_growth.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{assets!household} \index{households!assets}
 \normalsize \textbf{Household and Nonprofit Assets}\\
 \footnotesize{\textit{various measures: \hspace{20mm} trillions of USD \hspace{7mm} share of GDP \hspace{5mm} real annual growth rate}}
 \vspace*{-3.5mm}
@@ -2689,8 +2715,8 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{dpish.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Wealth/Net Worth}
+\begin{minipage}{0.76\textwidth} \index{wealth!household} \index{households!wealth} \index{racial wealth gap}
+\subsubsection*{Wealth}
 \small Wealth \href{https://www.federalreserve.gov/econres/notes/feds-notes/disparities-in-wealth-by-race-and-ethnicity-in-the-2019-survey-of-consumer-finances-20200928.htm}{varies} substantially by race and ethnicity. Net worth, measured as total assets minus total liabilities, captures the overall financial position--or wealth--of families. In 2019, white non-Hispanic families' average net worth was \$980,550, compared to \$142,330 for black non-Hispanic families, and \$165,540 for Hispanic families of any race. Additionally, the wealth of a typical (median) family is much lower than the average wealth of families, the result of a concentration of wealth among the wealthiest families.
 
 \normalsize \textbf{Racial Wealth Gap}\\
@@ -2758,7 +2784,7 @@ Over the past 30 years, increased consumer spending represents the majority of e
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{rdpi_nw.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.33\textwidth}
+\begin{minipage}{0.33\textwidth} \index{wealth!household} \index{households!wealth}
 \small \input{text/dfa_nw_sh.txt}
 \end{minipage}\hspace{7mm}
 \begin{minipage}{0.38\textwidth}
@@ -2823,7 +2849,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \small \input{text/income_wealthg2.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{wealth!household} \index{households!wealth} \index{racial wealth gap}
 \small The US history of slavery and inter-generational white wealth show up in current data from the Survey of Consumer Finances. The racial wealth gap discussed above cannot be explained by borrowing or access to credit. White families have substantially more financial assets including stocks and are much more likely to receive inheritance. Income for black families is also substantially lower--about half of white family income. Persistent structural inequalities are seen in income data, but are also evident from measures of wealth and assets.
 \vspace{1mm}
 
@@ -2919,7 +2945,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{scfracehave.csv} 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{wealth!household} \index{households!wealth}
 \small \textbf{Changes in net worth} come mostly from changes in the value of assets and other holding gains (see\cbox{cyan!40!white}), but also from saving of income, and decisions about how much to spend. Each period, households spend a portion of their income. The saved portion of income, after consumer spending and spending to cover depreciation of households assets, is considered net investment and increases net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. 
 
 In the chart, income invested at the historical-average rate (see\cbox{magenta!85!white}) is visually separated from investment that is above or below trend (see\cbox{violet}). The separation distinguishes changes in disposable personal income from changes in decisions about how to use that income. Separately, changes in data sources or from natural disasters are identified as other volume changes (see\cbox{cyan!70!blue}).
@@ -2949,7 +2975,7 @@ In the chart, income invested at the historical-average rate (see\cbox{magenta!8
 \small \input{text/nwcontrib.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{housing!homeownership} \index{households!homeownership}
 \hypertarget{hhh}{}
 \subsubsection*{Homeownership}
 \small The \textbf{homeownership rate} measures the percent of occupied housing units that are owner-occupied, as opposed to rented. In 2004, near to the peak of the housing bubble, the overall homeownership rate reached 69.2 percent. \input{text/homeown.txt}
@@ -3001,7 +3027,7 @@ As seen during the collapse of the housing bubble, it is possible for a homeowne
 \begin{minipage}{0.31\textwidth}
 \small \input{text/homeeq.txt}
 \end{minipage}\hspace{7mm}
-\begin{minipage}{0.41\textwidth}
+\begin{minipage}{0.41\textwidth} \index{housing!owner's equity}
 \normalsize \textbf{Owners' Equity Share of Real Estate}\\
 \footnotesize{\textit{owners' equity as percent of real estate}}\\
 \hspace*{-2mm} \begin{tikzpicture}
@@ -3018,8 +3044,8 @@ As seen during the collapse of the housing bubble, it is possible for a homeowne
 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Housing Construction}
+\begin{minipage}{0.76\textwidth} \index{housing!building permits} \index{building permits}
+\subsubsection*{Housing Construction} 
 \small The Census Bureau \href{https://www.census.gov/construction/bps/}{tracks} the issuance of \textbf{new residential building permits}, which offer insight into planned residential construction. \input{text/permits.txt}
 \vspace{1mm}
 
@@ -3072,7 +3098,7 @@ As seen during the collapse of the housing bubble, it is possible for a homeowne
 \footnotesize{Source: Census Bureau} \hfill \tbllink{permits_single.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{housing!building permits}
 \small \input{text/permits_multi.txt}
 \vspace{1mm}
 
@@ -3091,7 +3117,7 @@ As seen during the collapse of the housing bubble, it is possible for a homeowne
 \footnotesize{Source: Census Bureau} \hfill \tbllink{permits_multi.csv}
 \vspace{2mm}
 
-\subsubsection*{New Residential Sales}
+\subsubsection*{New Residential Sales} \index{housing!new home sales}
 \small \input{text/nhs.txt}
 \vspace{1mm}
 
@@ -3126,7 +3152,7 @@ As seen during the collapse of the housing bubble, it is possible for a homeowne
 \footnotesize{Source: Census Bureau, Bureau of Labor Statistics} \hfill \tbllink{nhs_rp.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{housing!supply}
 \small \input{text/nhs_s.txt}
 \vspace{1mm}
 
@@ -3146,7 +3172,7 @@ As seen during the collapse of the housing bubble, it is possible for a homeowne
 
 \small \input{text/nha_payment.txt}
 
-\begin{minipage}{0.575\textwidth}
+\begin{minipage}{0.575\textwidth} \index{housing!affordability}
 \normalsize{\textbf{New House Affordability}}\\
 \footnotesize{\textit{index, new house monthly principal and interest payment}}\\
 \footnotesize{\textit{relative to 1/3rd median usual full-time earnings,}}\\
@@ -3181,7 +3207,7 @@ As seen during the collapse of the housing bubble, it is possible for a homeowne
 \footnotesize{See also the more-comprehensive \href{https://www.atlantafed.org/center-for-housing-and-policy/data-and-tools/home-ownership-affordability-monitor}{Home Ownership Affordability Monitor} from the Federal Reserve Bank of Atlanta.}
 \end{minipage}
 \newpage
-\subsubsection*{Housing Prices}
+\subsubsection*{Housing Prices} \index{housing!prices} \index{prices!housing} \index{housing!price to rent ratio}
 \begin{minipage}{0.76\textwidth}
 \small The Federal Housing Finance Agency (FHFA) \textbf{house price index} \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{measures} changes in the price of the same home. The seasonally-adjusted index \input{text/fhfa.txt}
 
@@ -3238,7 +3264,7 @@ During the housing bubble that caused the great recession, housing prices reache
 \footnotesize{Source: FHFA, BLS} \hfill \tbllink{hpi_rent_ratio.csv} 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{poverty}
 \subsection*{Poverty}
 \hypertarget{hhpov}{}
 \small \input{text/poverty_main.txt}
@@ -3327,7 +3353,7 @@ For purposes of program eligibility and economic data, poverty is defined by hav
 \footnotesize{OPM is the Official Poverty Measure, and SPM is the Supplemental Poverty Measure. See text for description.} 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{poverty}
 \small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In \input{text/poverty_ltyear.txt}\unskip, students, caregivers, and the disabled had the highest poverty rates. The poverty rate is low for the fully-employed. 
 
 By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerable to poverty, as they are not as likely to have labor income. However, after social benefits and taxes (disposable income, see\cbox{green!85!blue}), the elderly have much lower rates of poverty than other age cohorts. Even after transfers, young people and those just below social security and medicare age (late 50s and early 60s) remain particularly vulnerable to poverty, relative to other ages.
@@ -3385,7 +3411,7 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 \footnotesize{Source: Census Bureau} \hfill \tbllink{poverty_opm_line.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{poverty}
 \small The Census Bureau \href{https://www.census.gov/library/publications/2021/demo/p60-275.html}{report} \textbf{the number of people taken out of poverty by various programs}, along with how many people are put in poverty by various expenses. In 2020, Social Security payments lift income above the poverty line for 26.5 million people, by far the most effective program for reducing poverty.
 
 Economic impact payments, for example from the CARES act, prevented 11.7 million people from being in poverty. Unemployment benefits removed 5.5 million people from poverty. Refundable tax credits, which often fail to reach the poorest people, would remove 5.3 million people from poverty if participation rates were 100 percent. 
@@ -3439,7 +3465,7 @@ Several elements add to the number of people in poverty, medical expenses are th
 \footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl20.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{poverty}
 \small Poverty can be geographically concentrated. In the United States, some regions have particularly high and persistent poverty rates. In 2020, one third of people in the US have income below \input{text/low_income_cz_cutoff.txt}\unskip. In some regions of the US, more than half of the population has income below this threshold. 
 
 \input{text/low_income_cz.txt}
@@ -3462,11 +3488,12 @@ Several elements add to the number of people in poverty, medical expenses are th
 \hypertarget{bus}{}
 \section*{Businesses}
 \markright{\seriffont Businesses}
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{businesses!overview} \index{businesses!depreciation}
 \small The factories, offices, and equipment that workers use to produce goods and services are all important to the economy. This section looks at the business sector, with data covering business investment, retail sales, industrial production, corporate profits, and the financial activities of private businesses. 
 
 \subsection*{Investment}
 \hypertarget{busin}{}
+\index{investment!business} \index{businesses!investment}
 \small Production by private businesses requires capital goods, such as buildings, equipment, and software. When businesses purchase such items, defined as having a useful life of more than one year, it is considered \href{https://www.bea.gov/help/glossary/nonresidential-fixed-investment}{fixed investment}, or investment in fixed assets. From an accounting perspective, these transactions are considered an exchange of assets (cash in exchange for capital goods) rather than an expense.
 
 Over time, these capital goods wear down, a process called consumption of fixed capital or depreciation. Depreciation is the expense related to capital goods from an accounting perspective. Businesses must decide whether to replace or add to the existing stock of capital goods, and their new purchases of capital goods and inventory investment are considered \href{https://www.bea.gov/help/glossary/gross-private-domestic-investment}{gross investment}. Accordingly, net investment is gross investment minus depreciation, and measures whether the stock of capital goods is expanding.
@@ -3501,7 +3528,7 @@ Net investment is important for many reasons. In the short run, the production a
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{businesses!inventories} \index{businesses!investment} \index{inventories}
 \small Note that gross investment includes fixed investment and inventory investment, or the \href{https://www.bea.gov/help/glossary/change-private-inventories-cipi}{change in private inventories}. Changes to private inventories capture the difference between sales and production. Reduced production of new inventory explains much of the overall reduction in gross investment during the COVID-19 pandemic. 
 \end{minipage}
 \newpage
@@ -3561,6 +3588,7 @@ Net investment is important for many reasons. In the short run, the production a
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
+\index{investment!business} \index{businesses!investment} \index{new orders, durable goods}
 \begin{minipage}{0.32\textwidth}
 \small Productive business investments also show up as \textbf{new orders for core capital goods}. The category excludes the more-volatile aircraft orders as well as defense-related orders, and is derived from the Census Bureau \href{https://www.census.gov/manufacturing/m3/index.html}{survey} of shipments, inventories, and orders.  
 
@@ -3583,8 +3611,8 @@ Net investment is important for many reasons. In the short run, the production a
 \end{minipage}
 \vspace{10mm}
 
-\begin{minipage}{0.76\textwidth}
-\subsection*{Inventories}
+\begin{minipage}{0.76\textwidth} \index{businesses!inventories} \index{inventories}
+\subsection*{Inventories} 
 \small In the national accounts, \textbf{inventories} are the stock of goods held by firms. Inventories include goods for sale, as well as goods used in production and sales, and goods requiring further processing prior to sale. When economic activity is measured using spending on final goods, it must be adjusted for changes in inventories. For example, increased inventories mean goods were produced but not sold, and therefore are not captured in consumer spending or investment. 
 
 One tool for measuring changes in inventories is the inventories-to-sales ratio. The Bureau of Economic Analysis \href{https://apps.bea.gov/iTable/index_UD.cfm}{report} an inflation-adjusted ratio of inventories to sales in manufacturing and trade businesses (see {\color{blue!60!green}\textbf{---}}). 
@@ -3613,7 +3641,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{minipage}
 \newpage 
 \hypertarget{buspr}{}
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{corporate profits} \index{businesses!corporate profits} \index{saving, corporate}
 \subsection*{Corporate Profits}
 \small The national accounts include detailed information on \textbf{aggregate \href{https://www.bea.gov/data/income-saving/corporate-profits}{corporate profits}}. \input{text/cprof.txt} 
 \vspace{1mm}
@@ -3664,7 +3692,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsection*{Business Assets}
+\subsection*{Business Assets} \index{assets!business} \index{businesses!assets}
 \small \input{text/bus_assets.txt}
 \vspace{2mm}
 
@@ -3705,7 +3733,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Notes: Includes only nonfinancial businesses. Tangible assets are market values or current replacement values.}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{debt!business} \index{businesses!debt}
 \subsection*{Business Debt}
 \small \input{text/busdebtgdp.txt} 
 \vspace{2mm}
@@ -3754,7 +3782,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{busdebtgdp2.csv}
 \end{minipage}
 \newpage
-\subsection*{Industrial Production}
+\subsection*{Industrial Production} \index{industrial production}
 \hypertarget{busip}{}
 \begin{minipage}{0.52\textwidth}
 \small \input{text/indpro.txt} 
@@ -3797,7 +3825,7 @@ When thinking about the longer-term trends in these data, it's important to note
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro_table.csv}}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{industrial production}
 \small Over the past 30 years, economic conditions and shifts in how production is organized have affected industrial growth. Much of the growth over the period is attributed to the production of materials, such as parts, chemicals, and energy, and to the production of business equipment and supplies. In contrast, there has been virtually no growth in domestic production of finished consumer goods, particularly from 2000 to 2020. 
 
 While the manufacturing industry dominated industrial growth in the 1990s, mining and utilities have played a relatively larger role since 2010. Manufacturing growth was relatively weak from 2013 to 2020, but increased starting in 2021. 
@@ -3887,7 +3915,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.32\textwidth}
+\begin{minipage}{0.32\textwidth} \index{industrial production}
 \small \input{text/ip_comp.txt}
 \end{minipage} \hspace{6mm}
 \begin{minipage}{0.44\textwidth}
@@ -3915,7 +3943,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \end{minipage}
 \vspace{2mm}
 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{industrial capacity}
 \small The Federal Reserve also \href{https://www.federalreserve.gov/releases/g17/capnotes.htm}{report} the US industrial capacity, based on estimates of the maximum sustainable output. Industrial production as a share of total capacity is called \textbf{capacity utilization}. From 1995 to 2015, capacity utilization fell by around ten percentage points, to 75 percent, as many domestic industrial facilities reduced output or closed.
 
 \input{text/tcu.txt}
@@ -3938,8 +3966,8 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{tcu.csv}
 \end{minipage}
 \newpage
-\subsubsection*{Energy Production and Use}
-\begin{minipage}{0.76\textwidth}
+\subsubsection*{Energy Production and Use} \vspace{-1mm}
+\begin{minipage}{0.76\textwidth} \index{energy} \index{oil!production}
 \small This subsection looks at the energy sector, and covers oil production and electricity generation and sales. 
 
 The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbblpd_m.htm}{report} a large increase in US \textbf{crude oil production}, from around five million barrels per day in 2007 to nearly 13 million barrels per day at the end of 2019. Much of the increase comes from Texas, New Mexico, North Dakota, and Colorado. \input{text/oil_prod.txt}
@@ -3960,13 +3988,13 @@ The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Energy Information Administration} \hfill \tbllink{oil_prod.csv}
-\vspace{8mm}
+\vspace{6mm}
 
 \small \input{text/elec_prod.txt}
 \end{minipage}
 \vspace{2mm}
 
-\begin{minipage}{0.6\textwidth}
+\begin{minipage}{0.6\textwidth} \index{electricity production}
 \normalsize \textbf{Electricity Generation, Population, and Production}\\
 \footnotesize{\textit{cumulative percent change since 2011}}\\
 \hspace*{-3mm} \begin{tikzpicture}
@@ -3990,7 +4018,7 @@ The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd
 \footnotesize{Source: EIA, BEA} \hfill \tbllink{elec.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{electricity production} \index{renewable energy}
 \small \input{text/elec_prod2.txt}
 \end{minipage}
 \vspace{2mm}
@@ -4060,8 +4088,8 @@ The Energy Information Administration \href{https://www.eia.gov/dnav/pet/pet_crd
 \end{minipage}
 \newpage
 \hypertarget{busrs}{}
-\begin{minipage}{0.76\textwidth}
-\subsection*{Retail Sales}
+\begin{minipage}{0.76\textwidth} \index{businesses!retail sales} \index{retail sales}
+\subsection*{Retail Sales} 
 \small The Census Bureau \href{https://www.census.gov/retail/index.html}{report} the monthly sales of retail businesses, restaurants, and bars. These retail trade figures can be a useful economic indicator. Retail trade includes brick and mortar stores as well as e-commerce and other nonstore sales to the general public. 
 
 \input{text/rs_sh.txt} During the first two months of the US COVID-19 pandemic, retail sales were a smaller portion of overall economic activity, as many businesses were closed. Since the initial reopening, retail sales have comprised a larger share of economic activity, in part as other activities, like transportation, have recovered less. 
@@ -4124,7 +4152,7 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 \footnotesize{Source: Census Bureau} \hfill \tbllink{marts.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{retail sales} \index{businesses!retail sales}
 \small Since 1992, the share of after-tax income spent at different \textbf{kinds of businesses} has diverged wildly. In large part, this is due to the growth of e-commerce, with online sales replacing brick and mortar sales. However, there have also been shifts in other consumer preferences and relative prices. 
 
 \input{text/rs_kb.txt} 
@@ -4149,7 +4177,7 @@ Lastly, some categories are more affected by changes in relative prices. Sales a
 \begin{minipage}{0.76\textwidth}
 \markright{\seriffont Government}
 \hypertarget{gov}{}
-\section*{Government}
+\section*{Government} \index{government!overview}
 \small Public institutions are collectively referred to as the \textit{public-sector} or the \textit{government}. In the United States, the government has the authority to spend, tax, and create money, as well as to regulate economic and financial activity. The government also enforces and determines the ownership of property. These activities are all extremely important to production and distribution in the economy.
 
 This chartbook section covers government sector statistics, including contributions to current economic activity, receipts and expenditures, assets and liabilities, and government jobs.
@@ -4181,8 +4209,7 @@ The value added in production by the government sector is composed primarily of 
 \small \input{text/govva.txt}
 \end{minipage}
 \newpage
-
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{income!government} \index{spending!government} \index{government!revenue} \index{government!outlays}
 \small Payments from the government to people include both the wages and salaries of government workers and transfer payments, also referred to as government social benefits or welfare. Welfare is critically important to society, yet the word is stigmatized in the US. It's worth noting that a huge portion of US welfare payments are not cash transfers to people but payments to businesses on behalf of people. For example, the US overpays for prescription drugs and medical services on behalf of people. Those over-payments benefit shareholders and doctors. The US also structures certain welfare payments as complex phased-in tax credits, paid the following year, which have very high private administrative costs (around ten percent goes to tax preparation services) and exclude the poorest people.
 
 Over the past thirty years, welfare payments, including those made to businesses, have mostly kept pace with consumer spending, while tax collection lagged behind income growth. Increased welfare payments on a per capita basis reflect price protections for the medical industry, as well as a larger share of the population receiving social security benefits. During the COVID-19 pandemic, consumer spending on services collapsed as businesses were closed, while government transfer payments to people hit record highs. As a result, estimates show seven million people taken out of poverty.
@@ -4241,8 +4268,8 @@ Over the past thirty years, welfare payments, including those made to businesses
 \small \input{text/govci.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Government Consumption and Investment}
+\begin{minipage}{0.76\textwidth} \index{investment!government} \index{spending!government} \index{government!outlays}
+\subsubsection*{Government Consumption and Investment}  
 \small \input{text/gov.txt}  
 \vspace{2mm}
 
@@ -4275,7 +4302,7 @@ Over the past thirty years, welfare payments, including those made to businesses
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{spending!government} \index{income!government} \index{government!outlays} \index{government!receipts}
 \small Government current expenditures include consumption and investment as well as transfers such as government social benefits to persons. Government spending provides services and income to people. Government current receipts come primarily from taxes. When government expenditures exceed receipts, it is referred to as a \textit{government deficit}, and corresponds to a private sector surplus. A large government deficit, relative to GDP, means the government is increasing current household income and corporate profits.
 
 \input{text/fedgdp.txt} 
@@ -4334,7 +4361,7 @@ Over the past thirty years, welfare payments, including those made to businesses
 \footnotesize{Source: Treasury} \hfill \tbllink{tmb_rec.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{spending!government} \index{government!outlays}
 \subsubsection*{Composition of Federal Government Spending}
 \small Over the long-term, there have been important shifts in the \textbf{composition of federal spending}. The ways federal spending varies from these long-term trends, in the short-term, are also important. 
 
@@ -4415,7 +4442,7 @@ Over the long-term, Office of Management and Budget (OMB) data \href{https://www
 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{spending!government} \index{government!outlays}
 \small \input{text/gov_exp_comp3.txt}
 
 Within the ``other'' category, the biggest changes during the pandemic came from business and housing subsidies (commerce and housing credit) and transfers to state and local governments (general government). The category is described in the following table. 
@@ -4436,6 +4463,7 @@ Within the ``other'' category, the biggest changes during the pandemic came from
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Government Jobs}
+\index{employment!government} \index{government!jobs}
 \small Government workers provide public services to the population. As examples, federal government jobs include the Postal Service, state government jobs include teachers and social workers, and local governments employ firefighters and utilities workers. Additionally, government employment is traditionally a relatively-stable source of aggregate household income. Government jobs are also disproportionately likely to provide health insurance and retirement benefits.  
 \end{minipage}
 \vspace{1mm}
@@ -4471,6 +4499,7 @@ Within the ``other'' category, the biggest changes during the pandemic came from
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Government Net Investment}
+\index{investment!government} \index{government! net investment}
 \small \input{text/govnetinv.txt}
 \vspace{1mm}
 
@@ -4490,7 +4519,7 @@ Within the ``other'' category, the biggest changes during the pandemic came from
 \end{minipage}
 \vspace{5mm}
 
-\subsection*{Government Balance Sheets}
+\subsection*{Government Balance Sheets} \index{balance sheet!government} \index{wealth!public} \index{government!balance sheet}
 
 \subsubsection*{Public Wealth}
 \hypertarget{govbs}{}
@@ -4522,7 +4551,7 @@ Within the ``other'' category, the biggest changes during the pandemic came from
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{govshnw.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{debt!government} \index{government!debt} \index{government!interest expense}
 \subsubsection*{Liabilities}
 \small \textbf{Treasury bonds are held by a mixture of investors}, including private domestic investors, overseas investors, the Federal Reserve, and government agencies and trusts (referred to as intragovernmental holdings). 
 
@@ -4576,7 +4605,7 @@ Within the ``other'' category, the biggest changes during the pandemic came from
 \small \input{text/fedintexp2.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{debt!government} \index{government!debt} \index{government!debt sustainability}
 \subsubsection*{Debt Sustainability}
 \small Changes in the ratio of federal government debt to GDP can be \href{https://www.imf.org/en/Publications/TNM/Issues/2016/12/31/A-Practical-Guide-to-Public-Debt-Dynamics-Fiscal-Sustainability-and-Cyclical-Adjustment-of-23498}{decomposed} to understand how various economic forces affect the trajectory of the debt relative to our ability to service it. Specifically, \textbf{debt sustainability} is affected not only by borrowing but also by changes in real interest rates and economic growth. 
 
@@ -4614,7 +4643,7 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsubsection*{Assets}
+\subsubsection*{Assets} \index{assets!government} \index{government!assets}
 \small US government assets include financial assets but are mostly comprised of the non-financial assets of state and local governments (SLG), such as buildings and equipment. Land is not included in US measures of government assets. 
 
 \input{text/govassets.txt}
@@ -4645,7 +4674,7 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 \small Transactions between the US and the rest of the world are recorded in the balance of payments as either current account transactions (which measure income) or capital and financial account transactions (which measure change in ownership of assets). This section discusses both types of transactions with a focus on the difference between payments from residents and payments to residents, referred to as the balance of payments. The section also covers trade in more detail and discusses trends in exchanges rates. 
 
 \hypertarget{exbop}{}
-\subsection*{Balance of Payments}
+\subsection*{Balance of Payments} \index{balance of payments} \index{current account balance}
 \small The \textbf{\href{https://www.bea.gov/help/glossary/balance-current-account-national-income-and-product-accounts}{current account balance}} captures international payments for goods and services as well as international transfers of money and net income received from ownership of foreign assets. It is the result of a set of payments to US residents, called current receipts, which are largely for exports of goods and services and returns on foreign assets, and a set of payments from US residents to the rest of the world, called current payments. Current payments are for goods and services imports, as well as transfers and payments for foreign ownership of US-based assets.
 
 The current account balance can be decomposed into the balance on trade in goods (see\cbox{yellow!60!lime!85!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets [see\cbox{blue!80!cyan}]), and secondary income (such as remittances and taxes [see\cbox{green!80!blue}]). 
@@ -4717,6 +4746,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \hypertarget{extt}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Trade}
+\index{trade!overview}
 \small Each month, the Census Bureau \href{https://www.census.gov/foreign-trade/Press-Release/current\_press\_release/index.html}{report} \textbf{goods and services trade} between the US and the rest of the world. US purchases of foreign goods and services are classified as imports and foreign purchases of US goods and services are exports. The trade of goods includes consumer goods, industrial equipment, and agricultural products. Services trade includes travel and tourism, business services, and charges for the use of intellectual property, among other services. 
 \end{minipage}
 \vspace{1mm}
@@ -4781,6 +4811,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{eximgdp.csv}
 
 \subsubsection*{Contribution to Overall Growth}
+\index{trade!contribution to GDP}
 \small The \textbf{trade balance} (exports of goods\hspace*{-0.5mm}\cbox{green!70!white} and services\hspace*{-0.5mm}\cbox{green!50!black} minus imports of goods\hspace*{-0.5mm}\cbox{cyan!70!white} and services\hspace*{-0.5mm}\cbox{blue!70!black}) acts as an adjustment to consumption and investment when calculating domestic production using the expenditure approach. A country with a positive trade balance, or trade surplus, produces more exports than its residents purchase in imports, therefore its trade balance is added to domestic purchases to calculate domestic production. The US runs a persistent trade deficit, which is instead subtracted from spending data to calculate domestic production. 
 
 \input{text/trade.txt} 
@@ -4809,6 +4840,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\index{trade!by type}
 \small Changes to the trade balance can come from many sources, such as changes in domestic or foreign preferences and income, changes in exchange rates, and changes in trade policy. The following table shows major categories of trade as a share of gross domestic product at various points over the past 30 years. 
 \vspace{1mm}
 
@@ -4824,8 +4856,8 @@ The current account balance can be decomposed into the balance on trade in goods
 \footnotesize{Source: Bureau of Economic Analysis}}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Import Penetration}
+\begin{minipage}{0.76\textwidth} \index{trade!import penetration} \index{trade!imports}
+\subsubsection*{Import Penetration} 
 \small Goods can be produced domestically, imported, or some combination of the two. The import share of the total US demand for goods, measured as US produced goods and imported goods less exported goods, is also referred to as \textbf{import penetration}. This measure has risen considerably over the past thirty years. The majority of the long-term increase has been concentrated in consumer goods, while the decrease since 2011 has come primarily from petroleum and related products. 
 
 \input{text/goodsimpsh.txt} 
@@ -4855,7 +4887,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{goodsimpsh.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{trade!by partner}
 \small The US Census Bureau \href{https://www.census.gov/foreign-trade/data/index.html}{report} monthly data on US trade in goods, including by partner country. \input{text/trade_partner_sh.txt} 
 \vspace{2mm}
 
@@ -4875,6 +4907,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \hypertarget{exiip}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{International Investment Position}
+\index{international investment position}
 \vspace{-0.5mm}
 \small The US \textbf{net international investment position} (IIP) measures the difference between residents' foreign assets and liabilities. The Bureau of Economic Analysis \href{https://www.bea.gov/data/intl-trade-investment/international-investment-position}{report} US IIP data on a quarterly basis beginning in 2006, while prior data are annual. 
 
@@ -4906,6 +4939,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \hypertarget{excf}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Capital Flows}
+\index{capital flows}
 \vspace{-0.5mm}
 \small The \href{https://home.treasury.gov/data/treasury-international-capital-tic-system}{purchases and sales} of US bonds by the rest of the world give insight into overall \textbf{capital flows} and appetite for different types of debt. During the 2000s, other countries were accumulating US corporate and government bonds, as the US was borrowing from the rest of the world and running a very wide trade deficit. In 2020, the rest of the world was a net purchaser of US government agency bonds but a net seller of treasuries. 
 
@@ -4932,6 +4966,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \hypertarget{extfx}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Exchange Rates}
+\index{exchange rates} \index{US dollar} \index {Canadian dollar} \index{Japanese yen} \index{British pounds} \index{euros}
 \small Changes in the strength or weakness of the US dollar (USD) can affect trade and financial flows. The dollar is said to be relatively strong when more units of foreign currency, for example Japanese yen (JPY), British pounds (GBP), euros (EUR), or Canadian dollars (CAD), are required to buy one USD.
 
 \input{text/selcurr_basic.txt}
@@ -5008,7 +5043,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{minipage}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{exchange rates} \index{US dollar}
 \small Shifts in relative consumer prices between the US and trading partners complicate analysis of exchange rates. For example, the US dollar-Japanese yen exchange rate is relatively stable from 2000 to 2020, but Japan has less inflation in consumer prices over the period. At the end of the period, 100 yen buys more consumer goods in Japan than one dollar will buy in the US. 
 
 Real effective exchange rates incorporate the inflation rate in the US and in trading partners, and are again weighted by the amount of trade with each partner. The real effective exchange rate captures the basket of goods that can be purchased by unit of currency, as opposed to capturing the basket of other currencies that can be purchased. 
@@ -5051,7 +5086,7 @@ Real effective exchange rates incorporate the inflation rate in the US and in tr
 \hypertarget{lab}{}
 \section*{Labor Markets}
 \markright{\seriffont Labor Markets}
-\begin{minipage}{0.34\textwidth}
+\begin{minipage}{0.34\textwidth} \index{employment!overview} \index{labor force participation}
 \small Labor is the primary source of income for US households and is essential to the production of goods and services. The portion of labor that is provided by a household member to others outside of the household or to other households is considered \textit{employment}. \input{text/cps_lfs0.txt}
 
 \input{text/cps_lfs.txt} Note that these values are not seasonally adjusted and include children, while BLS published values refer to those 16 or older.
@@ -5107,7 +5142,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_lfs2.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{labor force participation}
 \small The labor force status of the US population varies by age, sex, and over time. Because very few people receive capital income, the share of the population with labor income is particularly important to overall levels of economic activity. 
 \vspace{2mm}
 
@@ -5141,7 +5176,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsubsection*{Labor Force Status and Age}
+\subsubsection*{Labor Force Status and Age} \index{labor force participation!by age}
 \small There is a clear relationship between age and employment. Children are not permitted to work and many young people attend school full time. During ages 25 to 54, around 80 percent of the population is employed. The remaining 20 percent include caregivers and those unable to work due to disability or illness. Retirement becomes more likely as workers reach their 60s and 70s; less than 10 percent of people continue to work into their 80s. 
 \vspace{1mm}
 
@@ -5186,92 +5221,92 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations from CPS, Bruenig} \hfill \tbllink{lfs_age.csv} \tbllink{lfs_age_ch.csv}
 \end{minipage}
+%\newpage
+%\subsection*{Gross Labor Force Status Changes}
+%\begin{minipage}{0.76\textwidth}
+%\small The changes in labor force status described above are net changes, rather than gross changes. That is, the one-year change in unemployment is the result of some people staying unemployed, some becoming unemployed, and some no longer being unemployed, as well as other flows like deaths and people becoming working age. This section looks at six categories of gross changes, specifically the share of people with a given labor force status who move to a different status in the following month. 
+%\end{minipage}
+%\vspace{2mm}
+%
+%\normalsize \textbf{Gross Labor Force Flows}\\
+%\footnotesize{\textit{share of initial labor force status, percent}}
+%
+%\begin{minipage}{0.345\textwidth}
+%\small Employed to Unemployed\\
+%\hspace*{-2mm} \begin{tikzpicture}
+%	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 5, 10}, 
+%		xticklabel={\year}, 
+%		legend style={fill=white, legend columns=1, at={(0.43, 0.99)},
+%		legend cell align={left}}]
+%	\rbars
+%	\stdline{blue!40!cyan}{date}{MenEUE}{data/grosslf.csv}
+%	\stdline{green!55!black}{date}{WomenEUE}{data/grosslf.csv}
+%	\legend{Men, Women};
+%	\end{axis}
+%\end{tikzpicture}
+%\end{minipage} \hspace{8mm}
+%\begin{minipage}{0.345\textwidth}
+%\small Employed to Out of Labor Force\\
+%\hspace*{-2mm} \begin{tikzpicture}
+%	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
+%	ytick={0, 2, 4, 6}]
+%	\rbars
+%	\stdline{blue!40!cyan}{date}{MenENE}{data/grosslf.csv}
+%	\stdline{green!55!black}{date}{WomenENE}{data/grosslf.csv}
+%	\end{axis}
+%\end{tikzpicture}
+%\end{minipage}
+%\vspace{1mm}
+%
+%\begin{minipage}{0.345\textwidth}
+%\small Unemployed to Employed\\
+%\hspace*{-2mm} \begin{tikzpicture}
+%	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
+%	ytick={0, 10, 20, 30, 40}]
+%	\rbars
+%	\stdline{blue!40!cyan}{date}{MenUEU}{data/grosslf.csv}
+%	\stdline{green!55!black}{date}{WomenUEU}{data/grosslf.csv}
+%	\end{axis}
+%\end{tikzpicture}
+%\end{minipage} \hspace{8mm}
+%\begin{minipage}{0.345\textwidth}
+%\small Unemployed to Out of Labor Force\\
+%\hspace*{-2mm} \begin{tikzpicture}
+%	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
+%	ytick={0, 10, 20, 30, 40}]
+%	\rbars
+%	\stdline{blue!40!cyan}{date}{MenUNU}{data/grosslf.csv}
+%	\stdline{green!55!black}{date}{WomenUNU}{data/grosslf.csv}
+%	\end{axis}
+%\end{tikzpicture}
+%\end{minipage}
+%\vspace{1mm}
+%
+%\begin{minipage}{0.345\textwidth}
+%\small Out of Labor Force to Employed\\
+%\hspace*{-2mm} \begin{tikzpicture}
+%	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
+%	ytick={0, 2, 4, 6}]
+%	\rbars
+%	\stdline{blue!40!cyan}{date}{MenNEN}{data/grosslf.csv}
+%	\stdline{green!55!black}{date}{WomenNEN}{data/grosslf.csv}
+%	\end{axis}
+%\end{tikzpicture}
+%\end{minipage} \hspace{8mm}
+%\begin{minipage}{0.345\textwidth}
+%\small Out of Labor Force to Unemployed\\
+%\hspace*{-2mm} \begin{tikzpicture}
+%	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
+%	ytick={0, 1, 2, 3, 4, 5}]
+%	\rbars
+%	\stdline{blue!40!cyan}{date}{MenNUN}{data/grosslf.csv}
+%	\stdline{green!55!black}{date}{WomenNUN}{data/grosslf.csv}
+%	\end{axis}
+%\end{tikzpicture}
+%\end{minipage}\\
+%\footnotesize{Source: Bureau of Labor Statistics} \hspace{72mm} \tbllink{grosslf.csv}
 \newpage
-\subsection*{Gross Labor Force Status Changes}
-\begin{minipage}{0.76\textwidth}
-\small The changes in labor force status described above are net changes, rather than gross changes. That is, the one-year change in unemployment is the result of some people staying unemployed, some becoming unemployed, and some no longer being unemployed, as well as other flows like deaths and people becoming working age. This section looks at six categories of gross changes, specifically the share of people with a given labor force status who move to a different status in the following month. 
-\end{minipage}
-\vspace{2mm}
-
-\normalsize \textbf{Gross Labor Force Flows}\\
-\footnotesize{\textit{share of initial labor force status, percent}}
-
-\begin{minipage}{0.345\textwidth}
-\small Employed to Unemployed\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks ytick={0, 5, 10}, 
-		xticklabel={\year}, 
-		legend style={fill=white, legend columns=1, at={(0.43, 0.99)},
-		legend cell align={left}}]
-	\rbars
-	\stdline{blue!40!cyan}{date}{MenEUE}{data/grosslf.csv}
-	\stdline{green!55!black}{date}{WomenEUE}{data/grosslf.csv}
-	\legend{Men, Women};
-	\end{axis}
-\end{tikzpicture}
-\end{minipage} \hspace{8mm}
-\begin{minipage}{0.345\textwidth}
-\small Employed to Out of Labor Force\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
-	ytick={0, 2, 4, 6}]
-	\rbars
-	\stdline{blue!40!cyan}{date}{MenENE}{data/grosslf.csv}
-	\stdline{green!55!black}{date}{WomenENE}{data/grosslf.csv}
-	\end{axis}
-\end{tikzpicture}
-\end{minipage}
-\vspace{1mm}
-
-\begin{minipage}{0.345\textwidth}
-\small Unemployed to Employed\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
-	ytick={0, 10, 20, 30, 40}]
-	\rbars
-	\stdline{blue!40!cyan}{date}{MenUEU}{data/grosslf.csv}
-	\stdline{green!55!black}{date}{WomenUEU}{data/grosslf.csv}
-	\end{axis}
-\end{tikzpicture}
-\end{minipage} \hspace{8mm}
-\begin{minipage}{0.345\textwidth}
-\small Unemployed to Out of Labor Force\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
-	ytick={0, 10, 20, 30, 40}]
-	\rbars
-	\stdline{blue!40!cyan}{date}{MenUNU}{data/grosslf.csv}
-	\stdline{green!55!black}{date}{WomenUNU}{data/grosslf.csv}
-	\end{axis}
-\end{tikzpicture}
-\end{minipage}
-\vspace{1mm}
-
-\begin{minipage}{0.345\textwidth}
-\small Out of Labor Force to Employed\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
-	ytick={0, 2, 4, 6}]
-	\rbars
-	\stdline{blue!40!cyan}{date}{MenNEN}{data/grosslf.csv}
-	\stdline{green!55!black}{date}{WomenNEN}{data/grosslf.csv}
-	\end{axis}
-\end{tikzpicture}
-\end{minipage} \hspace{8mm}
-\begin{minipage}{0.345\textwidth}
-\small Out of Labor Force to Unemployed\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \lfdateaxisticks xticklabel={\year}, 
-	ytick={0, 1, 2, 3, 4, 5}]
-	\rbars
-	\stdline{blue!40!cyan}{date}{MenNUN}{data/grosslf.csv}
-	\stdline{green!55!black}{date}{WomenNUN}{data/grosslf.csv}
-	\end{axis}
-\end{tikzpicture}
-\end{minipage}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{72mm} \tbllink{grosslf.csv}
-\newpage
-\begin{minipage}{0.43\textwidth}
+\begin{minipage}{0.43\textwidth} \index{labor share of income} \index{compensation of employees}
 \normalsize \textbf{Labor Share of Income}\\
 \footnotesize{\textit{compensation of employees as share of}}\\
 \footnotesize{\textit{net domestic income, percent}}\\
@@ -5294,7 +5329,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \end{minipage}
 \vspace{3mm}
 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{income, gross labor income} \index{compensation of employees}
 \subsection*{Gross Labor Income}
 \small Wages (the unit price of labor) tend not to be cut in response to a short-term decrease in demand; businesses typically instead employ fewer workers and/or cut hours. As a result, wage data give only a partial picture of the labor income received by households.
 
@@ -5320,7 +5355,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{employment!overview}
 \hypertarget{labe}{}
 \subsection*{Employment}
 \small Employment is critical to production and as a source of income. This subsection covers payrolls and employment rates for different groups and places. Related topics, such as work arrangements, hours worked, and wages, are covered in later subsections. 
@@ -5371,8 +5406,8 @@ People who are neither employed nor unemployed are considered \textit{outside of
 		clip=false, nodes near coords,  
 		nodes near coords style={/pgf/number format/.cd, 
 			precision=0, assume math mode}, legend cell align={left},
-		legend style={at={(0.7, 1.07)}, legend columns=-1, 
-		fill=white, draw=none}, legend image code/.code={
+		legend style={at={(0.7, 1.1)}, legend columns=-1, 
+		fill=none, draw=none}, legend image code/.code={
         \draw [#1] (0cm,-0.08cm) rectangle (0.22cm,0.14cm); },]
   	\addplot[ybar, bar shift=-7pt, fill=magenta, draw opacity=0] 
   		table [x expr=\coordindex, y=EMPsa] {\emplt};
@@ -5409,7 +5444,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \footnotesize{Source: Bureau of Labor Statistics}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{employment!nonfarm payrolls} \index{payrolls}
 \subsubsection*{Payroll Employment}
 \small The Current Employment Statistics Program \href{https://www.bls.gov/ces/}{surveys} around 130,000 businesses and government agencies each month. Payroll data from this survey provide insight into the overall health of the economy by indicating the pace of job growth. The payroll data also reliably identify changes in employment in individual industries. 
 \vspace{1mm}
@@ -5503,7 +5538,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 %\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jobs_tercile.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{employment!by industry}
 \small The establishment survey \href{https://www.bls.gov/news.release/empsit.t17.htm}{provides} reliable industry-level estimates of payroll employment. Household surveys have a higher potential to misclassify industries and are considered less-reliable for industry-level estimates of payroll employment.
 
 \input{text/emp_ind.txt}
@@ -5532,8 +5567,8 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \small Summarizing employment changes by grouping industries can have the adverse effect of hiding changes within these industry groups. Additionally, industry groups can be vague or overly broad. The government and business chartbook sections contain more information on industry-level employment trends. 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Employment Rates}
+\begin{minipage}{0.76\textwidth} \index{employment!employment rate}
+\subsubsection*{Employment Rates} 
 \vspace{-0.5mm}
 \small The employed share of those ages 25 to 54 is an important measure of labor market utilization. In a tight labor market, the age group is employed at a very high rate. \input{text/epop_text.txt} 
 
@@ -5574,7 +5609,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \footnotesize \input{text/acs_ftfy.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth} 
+\begin{minipage}{0.76\textwidth} \index{employment!employment rate}
 \normalsize \textbf{Employment Rates of Largest Commuter Zones, \input{text/acs_ftfy_year.txt}}
 \vspace{-1mm}
 
@@ -5600,7 +5635,9 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \hspace{-8mm} \input{data/epop_map.pgf} \\
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{72mm} \tbllink{state_epop.csv}
 \newpage
-\begin{minipage}{0.76\textwidth} 
+\begin{minipage}{0.76\textwidth} \index{employment!employment rate} \index{employment!by state}
+\vspace*{-4mm}
+
 \small A tight local labor market will employ those ages 25 to 54 at a very high rate, barring any local labor supply constraints, for example availability or cost of child care or high rates of disability. \input{text/state_pa_emp_t3.txt}
 
 \input{text/state_pa_emp.txt}
@@ -5611,7 +5648,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \vspace{-3mm}
 \hspace{-9mm} \input{data/pa_epop_map.pgf} \\
 \footnotesize{Source: Author's Calculations from CPS}
-\vspace{2mm}
+\vspace{3mm}
 
 \normalsize \textbf{Employment Rate by State}\\
 \footnotesize{\textit{employed share of age 25 to 54 population, percent, seasonally adjusted}}\\
@@ -5625,7 +5662,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 			align=left, anchor=east}, nodes near coords align={above},    
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
-            ytick=data, tickwidth=0pt, xmin=57, xmax=92,
+            ytick=data, tickwidth=0pt, xmin=58, xmax=92,
             bar width=1.2ex, reverse legend, xmajorgrids, grid style={ultra thin, black!20},
             enlarge y limits={0.02}, enlarge x limits={0.02},
             legend cell align={left}, legend plot pos=left,
@@ -5659,7 +5696,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 			align=left, anchor=east}, nodes near coords align={above},    
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
-            ytick=data, tickwidth=0pt, xmin=57, xmax=92,
+            ytick=data, tickwidth=0pt, xmin=58, xmax=92,
             bar width=1.2ex, xmajorgrids, grid style={ultra thin, black!20},
             enlarge y limits={0.02}, enlarge x limits={0.02},
             width=4.6cm, height=10.7cm, 
@@ -5690,7 +5727,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 			align=left, anchor=east}, nodes near coords align={above},    
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
-            ytick=data, tickwidth=0pt, xmin=57, xmax=92,
+            ytick=data, tickwidth=0pt, xmin=58, xmax=92,
             bar width=1.2ex, xmajorgrids, grid style={ultra thin, black!20},
             enlarge y limits={0.02}, enlarge x limits={0.02},
             width=4.6cm, height=10.7cm, 
@@ -5716,7 +5753,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 
 \footnotesize{Source: Author's Calculations from CPS} \hspace{67mm} \tbllink{state_pa_epop_full.csv}
 \newpage
-\begin{minipage}{0.76\textwidth} 
+\begin{minipage}{0.76\textwidth} \index{employment!employment rate} \index{employment!by age} \index{employment!by education}
 \small \input{text/empgroups.txt}
 \vspace{1mm}
 
@@ -5862,42 +5899,43 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{empgroups.csv}
 \end{minipage}
-\newpage
-\subsubsection*{Changes in Employment by Occupation}
-\begin{minipage}{0.76\textwidth} 
-\small The COVID-19 pandemic changed the occupational composition of the US workforce. Business closures reduced the share of the US population that is employed in personal care and related services, administrative support, and sales. Many workers trained in these occupations lost or changed jobs and, additionally, some full-time workers became part-time. While employment increased in some occupations, such as healthcare support, the share of people employed full-time decreased in most occupational groups during the past three months, which end \input{text/cps_lfs_date.txt}\unskip, compared to the same three months prior to the pandemic (ending \input{text/cps_lfs_dateprepan.txt}\unskip).
-\vspace{2mm}
-
-\normalsize \textbf{Change in Occupational Employment, \input{text/cps_lfs_date.txt}}\\
-\footnotesize{\textit{change in share of population employed, latest three months vs pre-pandemic, percentage points}}\\
-\hspace*{-4mm}  \begin{tikzpicture}
-   \begin{axis}[clip=false, xbar stacked, \bbar{x}{0},
-            stack negative=separate, ymajorgrids=false,
-            yticklabels from table={\occ}{name},
-			y axis line style = { opacity = 0 },   
-		    x axis line style = { opacity = 0 }, 
-			yticklabel style={black, align=left, anchor=east},            
-            ytick=data, tickwidth = 0pt,
-            legend style={at={(-0.3, 1.05)},
-                anchor=north,legend columns=-1, draw=none},
-            legend cell align=left,
-            extra x ticks={0}, extra x tick style={
-                grid style={black}, xticklabel=\empty,},
-            enlarge y limits={0.02}, enlarge x limits={0.03},
-            width=8.6cm, height=12cm,
-            \barylab{5.0cm}{1.5ex}]
-            \addplot[fill=green!85!blue, draw opacity=0] table 
-            	[y expr=\coordindex, x=PT, col sep=semicolon] {\occ};
-            \addplot[fill=blue!60!cyan, draw opacity=0] table 
-            	[y expr=\coordindex, x=FT, col sep=semicolon] {\occ};
-            \legend{Part-time, Full-time}
-        \end{axis}
-    \end{tikzpicture}\\
-\footnotesize{Source: Author's Calculation from CPS} \hfill \tbllink{occs.csv}
-\end{minipage}
+%\newpage
+%\subsubsection*{Changes in Employment by Occupation}
+%\begin{minipage}{0.76\textwidth} 
+%\small The COVID-19 pandemic changed the occupational composition of the US workforce. Business closures reduced the share of the US population that is employed in personal care and related services, administrative support, and sales. Many workers trained in these occupations lost or changed jobs and, additionally, some full-time workers became part-time. While employment increased in some occupations, such as healthcare support, the share of people employed full-time decreased in most occupational groups during the past three months, which end \input{text/cps_lfs_date.txt}\unskip, compared to the same three months prior to the pandemic (ending \input{text/cps_lfs_dateprepan.txt}\unskip).
+%\vspace{2mm}
+%
+%\normalsize \textbf{Change in Occupational Employment, \input{text/cps_lfs_date.txt}}\\
+%\footnotesize{\textit{change in share of population employed, latest three months vs pre-pandemic, percentage points}}\\
+%\hspace*{-4mm}  \begin{tikzpicture}
+%   \begin{axis}[clip=false, xbar stacked, \bbar{x}{0},
+%            stack negative=separate, ymajorgrids=false,
+%            yticklabels from table={\occ}{name},
+%			y axis line style = { opacity = 0 },   
+%		    x axis line style = { opacity = 0 }, 
+%			yticklabel style={black, align=left, anchor=east},            
+%            ytick=data, tickwidth = 0pt,
+%            legend style={at={(-0.3, 1.05)},
+%                anchor=north,legend columns=-1, draw=none},
+%            legend cell align=left,
+%            extra x ticks={0}, extra x tick style={
+%                grid style={black}, xticklabel=\empty,},
+%            enlarge y limits={0.02}, enlarge x limits={0.03},
+%            width=8.6cm, height=12cm,
+%            \barylab{5.0cm}{1.5ex}]
+%            \addplot[fill=green!85!blue, draw opacity=0] table 
+%            	[y expr=\coordindex, x=PT, col sep=semicolon] {\occ};
+%            \addplot[fill=blue!60!cyan, draw opacity=0] table 
+%            	[y expr=\coordindex, x=FT, col sep=semicolon] {\occ};
+%            \legend{Part-time, Full-time}
+%        \end{axis}
+%    \end{tikzpicture}\\
+%\footnotesize{Source: Author's Calculation from CPS} \hfill \tbllink{occs.csv}
+%\end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} 
 \subsection*{Unemployment}
+\index{unemployment!overview}
 \hypertarget{labu}{}
 \vspace{-0.5mm}
 \small The headline unemployment rate, also known as the U3 unemployment rate, measures people who do not have a job but are looking for one or are on temporary layoff, as a share of the labor force (the employed and unemployed). \input{text/unemp1.txt}
@@ -5969,7 +6007,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{7.35cm} \tbllink{unemp.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{unemployment!unemployment rate} \index{unemployment!by race/ethnicity}
 \small Current Population Survey microdata are used to calculate unemployment by race and ethnicity over the latest six months, on average, and for the same six months before the COVID-19 pandemic. The groups used to produce these estimates separate those with a non-Hispanic ethnicity by race: white alone, black alone, Asian or Hawaiian/Pacific Islander alone, Native American/American Indian or Alaskan Native alone, or more than one race, from those with a Hispanic ethnicity and any race.  
 \end{minipage}
 \vspace{1.5mm}
@@ -6133,7 +6171,7 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 \end{tikzpicture}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth} 
+\begin{minipage}{0.76\textwidth} \index{unemployment!by race/ethnicity} \index{unemployment!unemployment rate}
 \normalsize \textbf{Unemployment Rate, Continued}
 \vspace{1mm}
 
@@ -6380,7 +6418,7 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{unemp_grp.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth} 
+\begin{minipage}{0.76\textwidth} \index{unemployment!by reason} \index{unemployment!unemployment rate}
 \subsubsection*{Reasons for Unemployment}
 \vspace{-0.5mm}
 \small \input{text/unemp_rsn.txt}
@@ -6446,7 +6484,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \footnotesize{* During the COVID-19 shutdowns some unemployed were incorrectly counted as employed but not at work.}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth} 
+\begin{minipage}{0.76\textwidth} \index{unemployment!duration}
 \subsubsection*{Duration of Unemployment}
 \small US unemployment benefits are available for a relatively short duration, compared with other advanced countries. Therefore, the long-term unemployed risk running out of unemployment benefits, causing a sharp reduction in income. Additionally, long periods of unemployment can make re-entering the labor market more challenging. 
 
@@ -6496,7 +6534,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unempdur.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{unemployment!by metro area}
 \subsubsection*{Unemployment by Metro Area}
 \vspace{-1mm}
 
@@ -6517,9 +6555,9 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \footnotesize{Source: Bureau of Labor Statistics; \ Full Table: \tbllink{msa_unemp_rate.csv} \\ \**Pct Ch is percent change in labor force from \input{text/unemp_map_date.txt}}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{unemployment!by state}
 \subsubsection*{Unemployment by State}
-\small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{report} the \textbf{state unemployment rate}--unemployed people as a share of the state labor force--each month, around two weeks after reporting the national unemployment rate. \input{text/state_unemp.txt}
+\small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{report} the \textbf{state unemployment rate}--unemployed people as a share of the state labor force--each month, around three weeks after reporting the national unemployment rate. \input{text/state_unemp.txt}
 
 \normalsize \textbf{Unemployment Rate by State}\\
 \footnotesize{\textit{unemployed share of labor force, percent, not seasonally adjusted}}\\
@@ -6528,60 +6566,83 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{72mm} \tbllink{state_unrate.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{insured unemployed} \index{unemployment!jobless claims} \index{jobless claims}
 \subsubsection*{Jobless Claims}
-\small \input{text/icnsa.txt}
-
-\input{text/ccnsa.txt}
+\small Each week, the Department of Labor \href{https://www.dol.gov/ui/data.pdf}{present} the unemployment insurance (UI) claims reported by state unemployment offices. An initial claim for UI is filed by an unemployed person, after a separation from an employer, to determine eligibility for benefits.
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.345\textwidth}
-\normalsize \textbf{New UI Claims}\\
-\footnotesize{\textit{initial claims per week, in millions,}}\\
-\footnotesize{\textit{not seasonally adjusted}}\\
+\begin{minipage}{0.42\textwidth}
+%\index{unemployment!initial claims}
+\normalsize \textbf{New Jobless Claims}\\
+\footnotesize{\textit{initial claims per week, thousands, seasonally adjusted}}
+
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, 
-		enlarge y limits={0.05}, ymin=0.25, xmin={2018-01-01},
-		xticklabel={`\short{\year}}, height=7.2cm, width=6.5cm]
-	\rbars
-	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
-	\stdline{cyan!80!blue}{date}{VALUE}{data/icnsa.csv}
-	\stdnode{3.5cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
-	\stdnode{2.6cm}{0.7cm}{\footnotesize \color{cyan!80!blue}State}
+	\begin{axis}[\shticks
+	\bbar{y}{0}, height=5.2cm, width=6.65cm, yticklabel style={text width=1.6em}, 
+		ymin=0, enlarge y limits={lower, 0.0}, enlarge x limits={0.01}, xtick=data,
+		minor xtick={{2022-01-01}, {2023-01-01}, {2024-01-01}},
+		clip=false, xticklabel style={align=center}, minor tick length=7pt, 
+		xticklabels from table={\icsamon}{label}, ]
+	\stdline{blue!0}{date}{icsa}{\icsamon}
+	%\stdline{black!12}{date}{V12M}{data/icsa.csv}
+	\stdline{orange!80!yellow}{date}{icsa}{data/icsa.csv}
+	\input{text/icsa_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Department of Labor} \hfill \tbllink{icnsa.csv}
-\end{minipage} \hspace{9mm}
-\begin{minipage}{0.35\textwidth}
-\normalsize \textbf{Continued UI Claims}\\
-\footnotesize{\textit{insured unemployed, in millions,}}\\
-\footnotesize{\textit{not seasonally adjusted}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 5, 10, 15, 20}, 
-		enlarge y limits={0.05}, ymin=1, xmin={2018-01-01},
-		yticklabel style={text width=1.0em},
-		xticklabel={`\short{\year}}, height=7.2cm, width=6.5cm]
-	\rbars
-	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
-	\stdline{green!90!blue}{date}{VALUE}{data/ccnsa.csv}
-	\stdnode{4.4cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
-	\stdnode{2.5cm}{0.85cm}{\footnotesize \color{green!90!blue}State}
-	\end{axis}
-\end{tikzpicture}\\
-\footnotesize{Source: Department of Labor} \hfill \tbllink{ccnsa.csv}
+\footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv} \hspace{1mm}
+\end{minipage} \hspace{4mm} \begin{minipage}{0.3\textwidth}
+\small \input{text/icsa.txt}
+
+Initial claims are considered a leading indicator of labor market conditions. An increase in jobless claims suggests a deterioration in economic conditions. 
 \end{minipage}
 \vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
-\small In response to the COVID-19 pandemic, traditional state-run unemployment insurance was temporarily boosted by federal programs that expanded eligibility for benefits and increased the amount of benefit payments. These programs were ended on September 6, 2021, reducing the income of millions of families. 
+\small The Labor Department additionally report continued claims for UI, also referred to as insured unemployment. Insured unemployment is the number of people receiving UI benefits during a given week. 
+\end{minipage}
+\vspace{0.5mm}
 
-%\input{text/fed_uic.txt}
+\begin{minipage}{0.42\textwidth}
+%\index{unemployment!initial claims}
+\normalsize \textbf{Insured Unemployed}\\
+\footnotesize{\textit{continuing claims, thousands, seasonally adjusted}}
 
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shticks
+	\bbar{y}{0}, height=5.4cm, width=6.5cm, yticklabel style={text width=2.2em}, 
+		ymin=0, enlarge y limits={lower, 0.0}, enlarge x limits={0.01}, xtick=data,
+		minor xtick={{2022-01-01}, {2023-01-01}, {2024-01-01}},
+		clip=false, xticklabel style={align=center}, minor tick length=7pt, 
+		xticklabels from table={\ccsamon}{label}, ]
+	\stdline{blue!0}{date}{ccsa}{\ccsamon}
+	%\stdline{black!12}{date}{V12M}{data/icsa.csv}
+	\stdline{green!75!black}{date}{ccsa}{data/ccsa.csv}
+	\input{text/ccsa_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv} \hspace{1mm}
+\end{minipage} \hspace{4mm} \begin{minipage}{0.3\textwidth}
+\small \input{text/ccsa.txt}
+
+\input{text/ccsa_alt.txt}
+\end{minipage}
+\vspace{5mm}
+
+\begin{minipage}{0.76\textwidth}
+\normalsize \textbf{Jobless Claims}\\
+\footnotesize{\textit{thousands per week \hspace{52mm} period averages}}\\
+\noindent \hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{4.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.6}
+		 \begin{tabular}{p{32mm} R{10mm} R{10mm} R{10mm} R{10mm} R{8mm} R{8mm} R{8mm} }
+			 \input data/jobless_claims.tex \hline
+		\end{tabular}}\vspace{-2mm}
+		
+\footnotesize{Source: Department of Labor}
 \end{minipage}
 \newpage
 \hypertarget{labp}{}
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{labor force participation!overview}
 \subsubsection*{Labor Force Participation}
 \small People who currently have a job, are looking for a job, or are on temporary layoff are all considered labor force participants. The share of the US population that participates in the labor force at a given point in time, or the \textbf{labor force participation rate}, is affected by many factors, including demographics and short- and long-term economic conditions.
 
@@ -6617,14 +6678,14 @@ Over the past two decades, the age composition of the population has lowered lab
 \footnotesize{Sources: BLS (Latest: \input{text/lfpr_blsdate.txt}\unskip); CPS (Latest: \input{text/lfpr_cpsdate.txt}\unskip)} \hfill \tbllink{lfpr.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} 
 \subsubsection*{Reasons for Labor Force Non-Participation}
 \vspace{-0.5mm}
 
 \small The Current Population Survey (CPS) asks those who are not employed or looking for work about their major activities and \textbf{reasons for not participating in the labor market}. \href{https://www.frbatlanta.org/chcs/human-capital-currents/2015/0612-measuring-labor-market-status-using-basic-data.aspx}{Answers} vary by age in intuitive ways, and are influenced by labor market conditions. 
 \end{minipage}
 
-\begin{minipage}{0.28\textwidth}
+\begin{minipage}{0.28\textwidth} \index{labor force participation!nonparticipants}
 \normalsize \textbf{Nonparticipants}\\
 \footnotesize{\textit{share of age 16+ population, percent}}\\
 \hspace*{-4mm} \begin{tikzpicture}
@@ -6688,7 +6749,7 @@ Over the past two decades, the age composition of the population has lowered lab
 \footnotesize Series in the chart are adjusted so that the distribution of the age 18--64 population by age and sex is constant and equal to its March 2001 value. The total effect of this adjustment on labor force participation is included separately in the chart, as \color{violet!80!purple}\textbf{Age/Sex}.
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth}  \index{labor force participation!nonparticipants}
 \small Young people's participation in the labor market, by working or looking for work, is affected by trends in educational attainment and by economic conditions. \input{text/young_nilf.txt}
 \vspace{2mm}
 
@@ -6731,7 +6792,7 @@ Over the past two decades, the age composition of the population has lowered lab
 
 \newpage
 \hypertarget{labf}{}
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{employment!jobfinding rate} \index{labor force participation!nonparticipants}
 \subsection*{Labor Force Flows}
 \small The current population survey interviews households up to eight times over 16 months, allowing insight into the labor force status of the same individual over time, and in particular, into \textbf{flows between employment, unemployment, and other categories}. The Bureau of Labor Statistics \href{https://www.bls.gov/cps/cps_flows.htm}{publish} many monthly indicators based on labor force flows, and others can be calculated directly from the public use data.
 
@@ -6776,7 +6837,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{disflow.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{job openings} \index{employment!quits} \index{employment!hires} \index{employment!layoffs} \index{JOLTS}
 \subsubsection*{Job Openings and Labor Turnover Survey}
 \small Some types of \textbf{turnover} in the labor market are healthy and mean people are better able find a new job if they do not like the one they have. Additionally, the job prospects outside of a firm affect the bargaining power of the workers inside of the firm. The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/pdf/jolts.pdf}{report} the number of job openings, hires, and separations in several industry groups on a monthly basis. Separations include layoffs, voluntarily leaving a job (\textit{quits}), and other separations such as retirements, transfers to other locations, or separations due to death or disability. 
 
@@ -6837,7 +6898,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 \input{text/quits_afs.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{job openings} \index{employment!quits} \index{JOLTS}
 \small A high ratio of job openings to unemployed indicates a tight labor market, for example from low levels of unemployment, or if completing a new hire is taking more time. \input{text/unjo.txt}
 \vspace{1mm}
 
@@ -6940,7 +7001,7 @@ Among newly-employed workers, some were looking for work or otherwise considered
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{openings_ind.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{employment!job switching} \index{employment!separations}
 \subsubsection*{Job Switching}
 \small Job switching is important for getting people into the jobs where they are most productive. Individuals boost labor productivity by switching to a more productive industry or moving from a less-productive firm to a more-productive firm. 
 
@@ -6993,7 +7054,7 @@ The current population survey asks whether individuals have the same employer as
 \end{minipage}
 \newpage
 \hypertarget{labh}{}
-\subsection*{Hours Worked}
+\subsection*{Hours Worked} \index{employment!hours worked}
 \begin{minipage}{0.33\textwidth}
 \small The Bureau of Labor Statistics (BLS) report \textbf{hours worked per week} in both Current Employment Statistics (CES) and Labor Force Statistics (LFS).
 
@@ -7039,7 +7100,7 @@ The current population survey asks whether individuals have the same employer as
 \footnotesize{Source: Bureau of Labor Statistics, Author}
 \end{minipage}
 \newpage 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{employment!hours worked}
 \small BLS also \href{https://www.bls.gov/lpc/}{report} a quarterly index tracking aggregate hours worked in nonfarm businesses (see\cbox{cyan!80!blue}). \input{text/tot_hours.txt}
 \vspace{2mm}
 
@@ -7061,6 +7122,7 @@ The current population survey asks whether individuals have the same employer as
 \hypertarget{labns}{}
 \small Many workers do not have standard work arrangements, either by choice or as the result of not being able to find standard work arrangements. Many workers are employed part-time, part-year, or both. Some workers have more than one job. Additionally, a portion of the workforce is considered self-employed. 
 \subsubsection*{Part-Time Work}
+\index{employment!part-time}
 \small \input{text/pt_tot.txt} The Bureau of Labor Statistics classify part-time workers who would prefer full-time work as involuntary or \textbf{part time for economic reasons}. This group is comprised of people who don't have enough hours because of slack business conditions or who are unable to find full-time work. 
 
 Voluntary part-time workers, or those \textbf{part-time for non-economic reasons}, do not necessarily want more hours of work. The category includes those who work fewer hours for health, childcare, personal or family reasons, those who are retired or have a limit on earnings, and those with jobs where full-time is less than 35 hours per week. 
@@ -7089,6 +7151,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \vspace{1mm}
 
 \subsubsection*{More Than One Job}
+\index{employment!multiple jobs}
 \small Over a given period of time, some people work more than one job. The household survey identifying people with more than one job asks about employment during a specific reference week. Respondents who work more than one job during the reference week are considered multiple jobholders; those who work multiple jobs over a month or year, but work one job in the survey reference week, are not. 
 \vspace{0.5mm}
 
@@ -7113,6 +7176,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Self-Employment}
+\index{employment!self-employment}
 \small Workers are considered \textbf{self-employed} if they work for profit or fees in their own business, profession, trade, or farm. Some self-employed have incorporated their business, and are similar to wage and salary workers in that they are paid by their business. Self-employment can offer more flexibility than traditional jobs, in some cases, but can also be less stable. The category includes people who work for profit but do not make any profits, for example. 
 
 \input{text/selfemp1.txt}
@@ -7141,61 +7205,116 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \end{minipage}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsection*{Wages}
-\hypertarget{labw}{}
-\small The \textbf{usual wages of full-time workers} can be measured at various points in the income distribution using the Current Population Survey. BLS report these data by decile and quartile, with the most commonly used measure being the median usual weekly earnings.
+\vspace{-9mm}
 
-\input{text/uwe_basic.txt}
-\vspace{3mm}
+\begin{minipage}{0.76\textwidth} \index{usual weekly earnings} \index{wages} \index{median wage}
+\subsection*{Wages} \hypertarget{labw}{}
+\small Wages are an important indicator and are closely monitored by economists. Wages are the majority of income in the economy and the main cost for businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
 
-\normalsize \textbf{Weekly Earnings, First Decile}\\
-\footnotesize{\textit{full-time, wage and salary earners, age 16+}} \hspace{10mm} \small 	
-	\colorline{lime!65!green!90!black}{ \ CPS} \hspace{3mm} \colorline{blue!65!black}{ \ BLS}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={200, 300, 400, 500, 600}, 
-		enlarge y limits={0.05},
-		clip=false, width=6.35cm, height=5.2cm, xmin=1988-12-15, 
-		yticklabel style={text width=1.5em}, 
-		xtick={{1989-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
-        minor xtick={}, xticklabels={`89, `00, `10, `20}]
+This subsection covers several wage measures. First, the distribution of usual weekly earnings provides the median, or typical, full-time wage, and insight into wage growth for low-wage workers and other groups. Next, the section discusses average hourly earnings, including by industry, and employee and benefit costs. Finally, we measure the wages of the same individuals, over time. 
+
+\subsubsection*{Usual Weekly Earnings}
+\small The Bureau of Labor Statistics (BLS) \href{https://www.bls.gov/webapps/legacy/cpswktab5.htm}{report} the \textbf{usual wages of full-time workers} at various points in the income distribution, including by decile and by quartile. The most commonly used of these measures is the median usual weekly earnings, which represents the middle wage; half of wages are above and half are below.
+
+\input{text/uwe_median.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Median Usual Weekly Earnings}\\
+\footnotesize{\textit{one-year growth, percent, full-time, wage and salary earners, age 16+}}
+\vspace{2.8cm}
+
+\hspace*{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+		enlarge y limits={0.05}, xticklabel={`\short{\year}}, ymax=10.2,
+		clip=false, width=12.7cm, height=4.8cm, xmin=1989-07-01, 
+		legend style={at={(0.44, 1.05)}, legend columns=1}, 
+		legend cell align={left}]
 	\rbars
-	\stdline{lime!65!green!90!black}{date}{All}{data/uwe_bd.csv}
-	\stdline{blue!65!black}{date}{p10uwe}{data/uwe_bls.csv}
-	\node[right] at (axis cs:1989-06-01,515) {\footnotesize Levels, USD};
+	\thickline{cyan!60!white}{date}{p50uwe}{data/uwe_bls_gr.csv}
+	\thinline{violet!80!blue}{date}{p50_3M_gr}{data/uwe_cps.csv}
+    \legend{BLS (quarterly), CPS (3-month moving average)}	
 	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10}, enlarge y limits={0.05},
-		clip=false, width=6.5cm, height=5.2cm, xmin=1989-12-15,
-		xtick={{1990-01-01}, {2000-01-01}, {2010-01-01}, {2020-01-01}},
-        minor xtick={}, xticklabels={`90, `00, `10, `20}]
-	\rbars
-	\stdline{lime!65!green!90!black}{date}{All}{data/uwe_bd_gr.csv}
-	\stdline{blue!65!black}{date}{p10uwe}{data/uwe_bls_gr.csv}
-	\node[right] at (axis cs:1990-01-01,10.8) {\footnotesize One-year growth, percent};
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics, Author's Calculations} \hfill \tbllink{uwe_bls_gr.csv} \ \ \tbllink{uwe_cps.csv}
+\vspace{2mm}
+
+\small The primary source for BLS quarterly estimates of usual weekly earnings is the \href{https://www.census.gov/data/datasets/time-series/demo/cps/cps-basic.html}{Current Population Survey} (CPS). Using the CPS, more-volatile monthly estimates can be calculated before the next BLS quarterly estimate is available. 
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.35\textwidth}
+\small \input{text/uwe_median_cps.txt}
+\end{minipage} \hspace{6mm} \begin{minipage}{0.35\textwidth}
+\normalsize \textbf{Median Usual Weekly Earnings}\\
+\footnotesize{\textit{one-year growth, percent}}
+\vspace*{-2mm}
+
+\hspace*{-3mm} \begin{tikzpicture} 
+	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
+		enlarge y limits={0.16}, enlarge x limits={0.01}, 
+		width=6.6cm, height=5.0cm, 
+		yticklabel style={text width=1.0em}, 
+		minor xtick={{2023-01-01}, {2024-01-01}},
+		xticklabel style={align=center}, minor tick length=7pt, 
+		nodes near coords style={black, /pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}, xtick=data,
+		xticklabels from table={\uwecps}{label}]
+	\addplot[thick, draw opacity=0] table [x=date, y=FILL, col sep=comma]{\uwecps};
+	\addplot[ybar, bar width=50.0pt, fill=cyan!30!white, draw=cyan!90!blue] table [x=date, y=p50uwe, col sep=comma]{data/uwe_bls_sh.csv};
+	\addplot[ybar, bar width=9.6pt, fill=violet!80!blue, draw opacity=0, nodes near coords] table [x=date, y=p50_gr, col sep=comma]{data/uwe_cps_shift.csv};
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics, Author's Calculations} \hfill \tbllink{uwe_bd.csv}*
-\vspace{5mm}
+\footnotesize{Source: BLS, Author} \hfill \tbllink{uwe_cps.csv}
+
+\end{minipage}
+\newpage
+\vspace{-8mm}
+
+\begin{minipage}{0.76\textwidth} \index{usual weekly earnings} \index{wages} \index{first decile wage}
+\small The income distribution also tells us the earnings of low-wage workers, represented here by the first decile. Only ten percent of workers earn less than the first decile wage. \input{text/uwe_p10_basic.txt}
+\vspace{1mm}
+
+\normalsize \textbf{First Decile Usual Weekly Earnings}\\
+\footnotesize{\textit{one-year growth, percent, full-time, wage and salary earners, age 16+}}
+\vspace{2.6cm}
+
+\hspace*{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+		enlarge y limits={0.05}, xticklabel={`\short{\year}}, ymax=9.8,
+		clip=false, width=12.7cm, height=4.6cm, xmin=1990-01-01, reverse legend,
+		legend style={at={(0.72, 1.02)}, legend columns=-1}, 
+		legend cell align={left}]
+	\rbars
+	\thinline{lime!65!green!90!black}{date}{p10_3M_gr}{data/uwe_cps.csv}
+	\thickline{blue!65!black}{date}{p10uwe}{data/uwe_bls_gr.csv}
+    \legend{CPS (3-month moving average), BLS (quarterly)}	
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics, Author's Calculations} \hfill \tbllink{uwe_bls_gr.csv} \ \ \tbllink{uwe_cps.csv}
+\vspace{2mm}
+
+\small The following tables present the BLS published estimates for usual weekly earnings of full-time wage and salary earnings. The first table presents the earnings in levels, and the second table shows the one-year percent change.
+\vspace{2mm}
 
 \normalsize \textbf{Usual Weekly Earnings}\\
 \footnotesize{\textit{full-time, wage and salary earners, age 16+, nominal USD}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.55}
+		{\renewcommand{\arraystretch}{1.54}
 		 \begin{tabular}{p{19mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} 
 		   R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm}}
 			 \input data/wage_dist_bls2.tex \hline
 		\end{tabular}}
-\vspace{-2mm}
+\vspace{-3mm}
 		
 \footnotesize{Source: Bureau of Labor Statistics}
-\vspace{4mm}
+\vspace{3mm}
 
 \normalsize \textbf{Weekly Earnings Growth}\\
 \footnotesize{\textit{full-time, wage and salary earners, age 16+, one-year growth, percent}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-	{\renewcommand{\arraystretch}{1.55}
+	{\renewcommand{\arraystretch}{1.54}
 		\begin{tabular}{p{19mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} 
 		   R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm}}
 			 \input data/wage_dist_bls.tex \hline
@@ -7204,7 +7323,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \footnotesize{Source: Bureau of Labor Statistics}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{average hourly earnings} \index{wages}
 \subsubsection*{Nominal Hourly Wages}
 \small \input{text/ahe_summary.txt}
 \vspace{2mm}
@@ -7252,6 +7371,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\index{wages}
 \small The US has increasingly invested in education, boosting productivity and earnings. To examine the return on investment, this section discusses the relationship between \textbf{wages and education}, over the long-term and in recent data. 
 
 \input{text/educ_wage1.txt}
@@ -7282,7 +7402,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \footnotesize{Source: Author's Calculations from Current Population Survey} \hfill \tbllink{educ_wage.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{wages} \index{employment cost index}
 \subsubsection*{Employment Cost Index}
 \small The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/eci.nr0.htm}{report} the overall hourly labor costs faced by employers, using an index that is not influenced by short-term changes in the industry and occupation composition of the US workforce. Employer costs are reported separately for total compensation, wages and salaries, and benefits.
 
@@ -7310,7 +7430,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 \small \input{text/eci.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{wages} \index{wage growth tracker} \index{zero wage change}
 \subsubsection*{Wage Growth Tracker}
 \small The Federal Reserve Bank of Atlanta \href{https://www.frbatlanta.org/chcs/wage-growth-tracker}{publish} a wage growth tracker that captures the distribution of one-year changes in the wages of the same people. This approach avoids some of the compositional changes that affect aggregate wage growth measures, though the sample used to calculate the data is affected by changes to respondents' employment status, and by survey response rates. 
 
@@ -7373,7 +7493,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsection*{Labor Productivity}
+\subsection*{Labor Productivity}\index{productivity}
 \hypertarget{labprod}{}
 \small Labor productivity is \href{https://www.bls.gov/news.release/prod2.nr0.htm}{reported} by the Bureau of Labor Statistics and measured as \textbf{real output per hour of work}. The measure captures the rate at which people, with all of the resources and equipment and infrastructure available to them, are able to work together to produce goods and services. Labor productivity growth means real wages can increase without putting upward pressure on inflation. Alternatively, an increase in productivity means a society can meet its material needs with less work.
 \vspace{1mm}
@@ -7417,7 +7537,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lprod.csv}
 \vspace{1.5mm}
 
-\small In the short-term, productivity growth is affected by changes in the composition of the workforce, and by and volatility in both the number of hours worked and in production. In the longer-term, the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, affects productivity growth. Such investment allows more goods and services to be produced by the same hours of work. Yet efforts to stimulate business investment directly through reducing corporate income taxes do not seem to have worked. 
+\small In the short-term, productivity growth is affected by changes in the composition of the workforce, and by volatility in both the number of hours worked and in production. In the longer-term, the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, affects productivity growth. Such investment allows more goods and services to be produced by the same hours of work. Yet efforts to stimulate business investment directly through reducing corporate income taxes do not seem to have worked. 
 
 One theory of what drives long-term trends, sometimes called the \textit{Kaldor-Verdoorn Law}, states that demand, and the capacity to meet that demand, determine productivity growth. An economy facing real resource constraints, where demand for goods and services exceeds the capacity to provide these services, is more likely to find ways to produce goods and services more efficiently. As one example, businesses invest more in labor-saving technologies when faced with a tight labor market. 
 \end{minipage}
@@ -7453,6 +7573,7 @@ One theory of what drives long-term trends, sometimes called the \textit{Kaldor-
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsection*{Union Membership}
+\index{unions}
 \hypertarget{labun}{}
 \small Membership in \textbf{unions and employee associations} has diminished in the United States over the past fifty years. Unionized jobs typically offer higher wages and better benefits and union membership tends to increase wages and benefits even in nonunion jobs. Many researchers argue that lower union membership increases income inequality. 
 
@@ -7528,6 +7649,7 @@ One theory of what drives long-term trends, sometimes called the \textit{Kaldor-
 \small The US equity and capital markets provide funding for borrowers' activities and provide a source of income and capital gains to lenders. This section discusses equity markets, interest rates and bond markets, and money and monetary policy. 
 \hypertarget{capeq}{}
 \subsection*{Equity Markets}
+\index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq} \index{Russell 3000}
 \small Equity markets, or \textbf{stock markets}, provide a method for businesses to raise capital by selling shares, which represent ownership claims on the business. Equity markets also provide a place for people to buy and sell existing shares. Investors purchase shares in hopes that the price will go up, allowing them to sell the shares at a higher price and receive capital gains, or to gain access to a stream of dividends, which are payments from businesses to shareholders. 
 
 In the US, there are several stock market indices that track the share price of a basket of companies. These measures are weighted by the market capitalization of the companies in the basket, which is the share price multiplied by the number of shares. Market capitalization measures the market value of the company. Note that stock market indices do not provide information about dividends, and the dividend yield varies substantially between companies and between the baskets or groups of companies used in stock market indices.
@@ -7630,6 +7752,7 @@ In the US, there are several stock market indices that track the share price of 
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\index{equity markets}
 \small The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color{green!80!blue!90!black}\textbf{---}}) is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. \input{text/eq_sp500.txt}
 
 The \href{https://www.nasdaq.com/market-activity/index/comp}{Nasdaq} composite index (see {\color{blue}\textbf{---}}) includes nearly all companies listed on the Nasdaq stock exchange, and is heavily-weighted towards large tech companies. \input{text/eq_nasdaq.txt}
@@ -7679,7 +7802,7 @@ Lastly, the \href{https://www.ftserussell.com/products/indices/russell-us}{Russe
 \footnotesize{Source: Shiller, Baker, Author's Calculations} \hfill \tbllink{sp500rr.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{equity markets} \index{S\&P 500}
 \small One component of total returns is \textbf{dividend payments to shareholders}. The dividend payments per share over the previous four quarters divided by the share price is the dividend yield. The S\&P 500 dividend yield has averaged around two percent, over the past few decades.
 
 \input{text/sp500div.txt}
@@ -7719,6 +7842,7 @@ Lastly, the \href{https://www.ftserussell.com/products/indices/russell-us}{Russe
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\index{equity markets!valuation} \index{S\&P 500}
 \subsubsection*{Valuation}
 \small The \href{http://www.econ.yale.edu/~shiller/data.htm}{cyclically-adjusted price to earnings} (CAPE) ratio compares the current price of the S\&P 500 to the previous ten-years of total S\&P 500 returns, including dividends and buybacks (treated as dividends). Valuations often use recent or forecasted earnings. Robert Shiller's CAPE ratio covers ten years (a normal business cycle) so that valuations are less-affected by the idiosyncrasies of current economic conditions. 
 
@@ -7739,7 +7863,7 @@ Lastly, the \href{https://www.ftserussell.com/products/indices/russell-us}{Russe
 \end{tikzpicture}\\
 \footnotesize{Source: Shiller} \hfill \tbllink{catrpe.csv}
 \end{minipage} \hfill
-\begin{minipage}{0.46\textwidth}
+\begin{minipage}{0.46\textwidth} \index{Tobin's Q}
 \normalsize \textbf{Tobin's Q}\\
 \footnotesize{\textit{ratio of market value to replacement cost}}\\
 \hspace*{-2mm} \begin{tikzpicture}
@@ -7757,7 +7881,7 @@ Lastly, the \href{https://www.ftserussell.com/products/indices/russell-us}{Russe
 
 \small A second measure, Tobin's Q, is the ratio of market value to replacement value. A ratio below 100 means the market value is below the replacement value and stocks may be undervalued. A ratio above 100 means the market value is above the replacement cost and stocks may be overvalued. \input{text/tobinq.txt} 
 
-\subsubsection*{Volatility}
+\subsubsection*{Volatility} \index{equity markets!volatility} \index{VIX}
 \small The Chicago Board Options Exchange uses S\&P 500 options data to \href{http://www.cboe.com/vix}{identify} expectations of future volatility. \input{text/vixbasic.txt}
 \vspace{1mm}
 
@@ -7776,14 +7900,14 @@ Lastly, the \href{https://www.ftserussell.com/products/indices/russell-us}{Russe
 \footnotesize{Source: Chicago Board Options Exchange} \hfill \tbllink{vix.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{interest rates!Fed funds rate} \index{Federal Reserve} \index{Taylor rule}
 \subsection*{Interest Rates}
 \hypertarget{capint}{}
 \small The US Federal Reserve System (Fed) has a congressional \href{https://www.federalreserve.gov/faqs/money_12848.htm}{mandate} to promote price stability and maximum employment. In practice, a Fed committee (the FOMC) determines the \textbf{federal funds rate}, which aims to influence interest rates in the broader economy. There are several channels through which interest rates affect broader economic activity, for example, lower interest rates stimulate investment in capital goods and the production of these capital goods employs people, who in turn spend their wages on other goods and services. Through its influence on interest rates, the Fed's monetary policy can aim to be neutral or to stimulate or slow the economy.
 
 The FOMC cut \href{https://www.federalreserve.gov/releases/h15/}{interest rates} three times in 2019, for a total reduction of 75 basis points. Responding to the economic shock of the coronavirus, the FOMC cut rates twice in March 2020, by 150 basis points, bringing the lower bound of the federal funds rate range to zero. With at near zero, the Fed adopted several additional measures to increase liquidity in the global financial system.
 
-In March 2022, the FOMC raised the base interest rate by 25 basis points. In May 2022, the FOMC raised the base interest rate by another 25 basis points. In June, July, September and November 2022, the FOMC raised rates by 75 basis points, in each meeting, followed by a 50 basis point increase in December, and a 25 basis point increase in February 2023. \input{text/rates_ff.txt}
+In March 2022, the FOMC raised the base interest rate by 25 basis points. In May 2022, the FOMC raised the base interest rate by another 25 basis points. In June, July, September and November 2022, the FOMC raised rates by 75 basis points, in each meeting, followed by a 50 basis point increase in December, and a 25 basis point increase in February and March 2023. \input{text/rates_ff.txt}
 \vspace{2mm}
 
 \normalsize \textbf{Effective Federal Funds Rate}\\
@@ -7816,6 +7940,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Real Interest Rates}
+\index{interest rates!real}
 \small Lenders charger higher interest rates to compensate for expected inflation. Real interest rates, which are adjusted for expected inflation, can offer insight into economic and financial conditions. Low real interest rates encourage borrowing and consumption and increased economic activity while high real interest rates discourage borrowing and encourage saving. 
 
 \input{text/real_rates_basic.txt} 
@@ -7864,6 +7989,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} 
+\index{interest rates!real}
 \small Changes in nominal treasury yields can be \textbf{decomposed into changes in expected inflation and changes in real yields}. Changes in real yields reflect changes in expected path of the federal funds rate and the economic outlook. Federal Reserve Bank of Cleveland models \href{https://www.clevelandfed.org/en/our-research/indicators-and-data/inflation-expectations.aspx}{identify} inflation expectations across the term structure, which can be used to identify changes in real yields. 
 
 \input{text/real_yield_model_ch.txt}
@@ -7890,7 +8016,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
   	\addplot[opacity=0] coordinates {(1, 0)};
 	\addplot[ybar stacked, bar width=18pt, draw opacity=0, fill=black!15!white] table [x expr=\coordindex, y=IE]{\rych};
 	\addplot[ybar stacked, bar width=18pt, draw opacity=0, fill=lime!40!green!80!black] table [x expr=\coordindex, y=RY]{\rych};
-	\stdnode{1.35cm}{3.9cm}{\normalsize \color{black!80} \textbf{Change since \input{text/inf_exp_dt1.txt}}}
+	\stdnode{1.45cm}{3.9cm}{\normalsize \color{black!80} \textbf{Change since \input{text/inf_exp_dt1.txt}}}
 	\input{text/inf_exp_ch_nodes.txt}
 	\nextgroupplot[\bbar{y}{0}, width=6.2cm, height=5.7cm, 
 		axis line style={draw=none}, xtick=data, clip=false, ytick={0}, 
@@ -7908,7 +8034,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 	\addplot[ybar stacked, bar width=18pt, draw opacity=0, fill=black!15!white] table [x expr=\coordindex, y=IE]{\rytch};
   	\addplot[opacity=0] coordinates {(1, 0)};
 	\addplot[ybar stacked, bar width=18pt, draw opacity=0, fill=lime!40!green!80!black] table [x expr=\coordindex, y=RY]{\rytch};
-	\stdnode{1.35cm}{3.9cm}{\normalsize \color{black!80} \textbf{Change since \input{text/inf_exp_dt2.txt}}}
+	\stdnode{1.45cm}{3.9cm}{\normalsize \color{black!80} \textbf{Change since \input{text/inf_exp_dt2.txt}}}
 	\input{text/inf_exp_ch_nodes2.txt}
 	\legend{\ Total,Inflation Expectations,,Real Yields};
 	\end{groupplot}
@@ -7921,6 +8047,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 \newpage
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Government Bonds}
+\index{interest rates!treasuries}
 \small \input{text/rates_basic.txt} 
 \vspace{1mm}
 
@@ -7955,22 +8082,22 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 \footnotesize{Source: Federal Reserve}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{interest rates!treasuries} 
 \small The \textbf{Treasury yield curve} \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{shows} the interest rates on different maturities of US Treasury bonds and bills, at a given point in time. The yield curve summarizes the term structure of interest rates, how much it costs to borrow for different periods of time, and has traditionally been considered an indicator of how markets view short-term economic conditions relative to longer-term conditions. 
 
 The yield curve is normally upward sloping as investors expect to be compensated for lending for a longer period of time. The shape of the yield curve changes over time and is affected by several factors, including the term premium, the monetary policy of the Federal Reserve, and expectations about future inflation. The curve can become steeper, for example, if interest rates or inflation is expected to be higher in the future. 
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.39\textwidth}
+\begin{minipage}{0.43\textwidth} \index{yield curve}
 \normalsize \textbf{Treasury Yield Curve}\\
 \footnotesize{\textit{constant maturity yield, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}[trim axis right]
-	\begin{axis}[height=7.0cm, width=7.0cm,	xmajorgrids, ymax=8.2, ymin=0.25,
+	\begin{axis}[height=7.2cm, width=7.7cm,	xmajorgrids, ymax=8.1, ymin=0.35,
 		axis line style={draw=none}, nodes near coords style={style={black!80, fill=white,
 		 yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill, 
 		 precision=2, assume math mode}, legend style={at={(0.5, 0.92)}, legend columns=1},
-		xtick=data, xticklabels={1M, 3M, 1Y, 2Y, 5Y, 10Y, 20Y, 30Y}, legend cell align={left},
+		xtick=data, xticklabels={1M, 3M, 6M, 1Y, 2Y, 5Y, 10Y, 20Y, 30Y}, legend cell align={left},
 		reverse legend, xticklabel style={black!70, font=\small\bfseries}, 
 		enlarge y limits={0.08}, enlarge x limits={0.02}, \bbar{y}{0}]
 	\addplot[thick, mark=*, color=blue!65!black!30] 
@@ -7985,7 +8112,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} 
 \end{minipage} \hspace{4mm}
-\begin{minipage}{0.33\textwidth}
+\begin{minipage}{0.29\textwidth}
 \small The yield curve can also become \textit{inverted} when yields on shorter-term debt are higher than yields on longer-term debt. An inverted yield curve can be a sign of worsening economic conditions. For example, short term rates may exceed longer-term rates if the Federal Reserve is expected to lower interest rates in the future, or if inflation is expected to fall due to weakened economic conditions. 
 
 \input{text/yc_inversion.txt}
@@ -8023,8 +8150,8 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{spread.csv} 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\subsubsection*{Corporate Bonds}
+\begin{minipage}{0.76\textwidth} \index{interest rates!corporate bonds} \index{debt!corporate bonds}
+\subsubsection*{Corporate Bonds}  
 \vspace{-0.5mm}
 
 \small The US Treasury \href{https://www.treasury.gov/resource-center/economic-policy/corp-bond-yield/Pages/Corp-Yield-Bond-Curve-Papers.aspx}{publish} a yield curve for \textbf{corporate bonds} based on the market-weighted average of bonds rated AAA, AA, and A. \input{text/hqcb.txt}
@@ -8063,7 +8190,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \end{minipage}
 \vspace{1mm}
 
-\subsubsection*{Mortgage Rates}
+\subsubsection*{Mortgage Rates} \index{interest rates!mortgages}
 \vspace{-0.5mm}
 
 \small The \textbf{mortgage rate} \href{https://www.freddiemac.com/pmms/pmms30}{available} to homebuyers can affect housing markets, which in turn can affect demand for construction materials and for consumer goods. \input{text/mortgage.txt} 
@@ -8086,7 +8213,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \newpage
 \hypertarget{capmm}{}
 \begin{minipage}{0.76\textwidth}
-\subsection*{Money and Monetary Policy}
+\subsection*{Money and Monetary Policy} \index{money supply}
 \small The Federal Reserve \href{https://www.federalreserve.gov/releases/h6/current/default.htm}{publish} data on the \textbf{money supply}. A broad measure of the amount of money, called M2, includes cash and deposits such as savings accounts and checking accounts, as well as time deposits smaller than \$100,000, and retail accounts in money market funds. 
 
 \begin{minipage}{0.48\textwidth}
@@ -8130,7 +8257,7 @@ A large increase in the amount of money held by individuals and institutions can
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
-\subsubsection*{Fed Asset Purchases}
+\subsubsection*{Fed Asset Purchases} \index{Federal Reserve} \index{assets!Federal Reserve}
 \small During periods where the Fed funds rate is at or near zero the Fed has engaged in \textbf{large scale asset purchases} in an effort to further improve financial market conditions. These asset purchases show up on the Fed balance sheet, which is \href{https://www.federalreserve.gov/releases/h41/current/default.htm}{reported} weekly. 
 
 \input{text/fed_assets1.txt}
@@ -8138,7 +8265,7 @@ A large increase in the amount of money held by individuals and institutions can
 \input{text/fed_assets2.txt}
 \end{minipage}
 
-\begin{minipage}{0.44\textwidth}
+\begin{minipage}{0.44\textwidth} \index{balance sheet!Federal Reserve}
 \normalsize \textbf{Federal Reserve Balance Sheet}\\
 \footnotesize{\textit{total assets, trillions of US dollars}}\\
 \hspace*{-2mm} \begin{tikzpicture}
@@ -8169,20 +8296,25 @@ A large increase in the amount of money held by individuals and institutions can
 \vspace{-2mm}
 \footnotesize{Source: Federal Reserve}
 \end{minipage}
-\newpage
-\hypertarget{pr}{}
+\newpage 
+\hypertarget{pr}{} \markright{\seriffont Prices} \index{prices!consumer price index}
+\begin{minipage}{0.76\textwidth} 
 \section*{Prices}
-\markright{\seriffont Prices}
-\begin{minipage}{0.76\textwidth}
-\small Changes in prices affect the amount of goods and services that can be purchased by a fixed income. When measuring changes in prices, researchers consider both the quantity that can be purchased by a unit of currency, and also changes in item quality. To understand the overall change in prices paid or charged by a certain group, such as consumers or manufacturers, researchers create a representative ``basket'' of the goods and services relevant to the group, and track the changes in the basket, and the price of the basket, over time. The end result of these methods is a price index.
+\vspace*{-2mm}
 
-Researchers can then use the price index to calculate the rate of inflation. Perhaps the most common way of measuring inflation is to calculate the 12-month percent change in the index values. This measures how prices in a given month compare to prices during the same month, one year prior. 
+\small The price of goods and services determine how much can be purchased by a fixed income. Researchers are interested in the prices of specific goods, as well as changes in overall purchasing power, more generally.
+
+To understand the overall change in prices paid or charged by a group, such as consumers or manufacturers, researchers create a representative ``basket'' of the goods and services relevant to the group, and track the changes in the basket, and the price of the basket, over time. The end result of these methods is a price index. Researchers can then use the price index to calculate the rate of inflation.
+
+Inflation is typically calculated as the 12-month percent change in the price index. This annual inflation rate measures how prices in a given month compare to prices during the same month, one year prior. 
 \vspace{1mm}
 
 \normalsize \textbf{Price Growth, Various Measures}\\
-\footnotesize{\textit{one-year growth, percent}}\\
+\footnotesize{\textit{one-year growth, percent}}
+\vspace*{-4mm}
+
 \hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-	{\renewcommand{\arraystretch}{1.6}
+	{\renewcommand{\arraystretch}{1.5}
 		\begin{tabular}{p{30mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} 
 		   R{9.2mm} R{8.5mm}}
 			 \input data/prices_12m.tex \hline
@@ -8193,7 +8325,7 @@ Researchers can then use the price index to calculate the rate of inflation. Per
 
 \small In effect, the 12-month percent change in prices is smoothed, relative to the one-month change, by including information on price changes that happened over the past year. While the chartbook uses less-volatile 12-month inflation rates in most cases, the \textbf{one-month rate} can be more useful for examining short-term trends, for example by eliminating the base effects from changes in prices a year ago. 
 
-\input{text/cpi_monthly.txt}
+\input{text/cpi_monthly.txt} The Cleveland Fed \href{https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting}{nowcasts} current inflation by combining recent inflation data with current oil and gasoline prices. \input{text/cpinow.txt}
 \vspace{1mm}
 
 \normalsize \textbf{CPI One-Month Change}\\
@@ -8202,24 +8334,31 @@ Researchers can then use the price index to calculate the rate of inflation. Per
 
 \hspace*{-3mm} \begin{tikzpicture} 
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
-		enlarge y limits={0.24}, enlarge x limits={0.02}, width=13.0cm, height=5.0cm,
+		enlarge y limits={0.24}, enlarge x limits={0.02}, 
+		width=13.0cm, height=4.7cm,
 		yticklabel style={text width=1.0em}, clip=false,
-		nodes near coords,
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, xtick=data,
 		xticklabels from table={\cpimo}{label}]
-	\addplot[ybar, fill=blue, draw opacity=0] table [x=date, y=ALL_S, col sep=comma]{\cpimo};
-	\draw [black!40!white, dashed] (rel axis cs:0.365,0) -- 
-		(rel axis cs:0.365, 1.06);
-	\node[below right, align=left] at (rel axis cs:0.365, 1.08) {\color{black!40!white}\footnotesize {latest 12 months}};
+	\addplot[thick, draw opacity=0] table [x=date, y=FILL, col sep=comma]{\cpimo};
+	\addplot[ybar, fill=blue, draw opacity=0, nodes near coords] table [x=date, y=ALL_S, col sep=comma]{\cpimo};
+	\draw [black!40!white, dashed] (rel axis cs:0.35,0) -- 
+		(rel axis cs:0.35, 1.06);
+	\node[below right, align=left] at (rel axis cs:0.35, 1.08) {\color{black!40!white}\footnotesize {latest 12 months}};
+	\draw [black!40!white, dashed] (rel axis cs:0.96,0) -- 
+		(rel axis cs:0.96, 1.06);
+	\node[below right, align=left] at (rel axis cs:0.96, 1.08) {\color{black!40!white}\footnotesize {now-}};
+	\node[below right, align=left] at (rel axis cs:0.96, 1.02) {\color{black!40!white}\footnotesize {cast}};
+	\input{text/cpinow_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi_monthly.csv}
+\footnotesize{Source: Bureau of Labor Statistics, Federal Reserve Bank of Cleveland} \hfill \tbllink{cpi_monthly.csv}
 \end{minipage}
 \newpage
 \hypertarget{prin}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Consumer Price Index}
+\index{prices!consumer price index}
 \small \input{text/cpi_main.txt}
 \vspace{1mm}
 
@@ -8275,6 +8414,7 @@ Researchers can then use the price index to calculate the rate of inflation. Per
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
+\index{prices!consumer price index}
 \small The prices of some items are more volatile than others. Food and energy prices, for example, are sometimes separated from the rest of the CPI basket, which is referred to as the \textit{core}, because swings in food and energy prices are larger and more frequent. 
 
 Core inflation includes core goods, core services other than shelter, and shelter. Core goods inflation was barely existent from 2013 through the start of the pandemic. Core goods prices are disproportionately affected by import prices and by changes in the quality of goods, for example from technological improvement. In contrast, domestic wage growth affects the prices for core services more than the other categories. Shelter prices are affected by housing supply and construction. 
@@ -8286,15 +8426,15 @@ Core inflation includes core goods, core services other than shelter, and shelte
 \footnotesize{\textit{contribution to one-year change in CPI-U, percentage points}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \tydateaxisticks ytick={-4, -2, 0, 2, 4, 6, 8}, 
-		height=6.2cm, width=12.9cm, enlarge x limits={0.01}, 
+		height=6.2cm, width=11.8cm, enlarge x limits={0.01}, 
 		yticklabel style={text width=1.2em},
         xticklabel={`\short{\year}}, legend cell align={left},
-		legend style={legend columns=2, at={(0.53, 0.995)}}]
+		legend style={legend columns=2, at={(0.54, 0.99)}}]
 	\rbars
-	\ctsbar{blue!85!black}{date}{core_goods}{data/cpi_decomp.csv}{2.4pt}
-	\ctsbar{green!60!black}{date}{core_services}{data/cpi_decomp.csv}{2.4pt}
-	\ctsbar{cyan!50!white}{date}{shelter}{data/cpi_decomp.csv}{2.4pt}
-	\ctsbar{orange!80!red}{date}{food_energy}{data/cpi_decomp.csv}{2.4pt}
+	\ctsbar{blue!85!black}{date}{core_goods}{data/cpi_decomp.csv}{2.0pt}
+	\ctsbar{green!60!black}{date}{core_services}{data/cpi_decomp.csv}{2.0pt}
+	\ctsbar{cyan!50!white}{date}{shelter}{data/cpi_decomp.csv}{2.0pt}
+	\ctsbar{orange!80!red}{date}{food_energy}{data/cpi_decomp.csv}{2.0pt}
 	\legend{Core Goods, Core Services ex. Shelter, Shelter, Food \& Energy};
 	\end{axis}
 \end{tikzpicture}\\
@@ -8307,7 +8447,9 @@ Core inflation includes core goods, core services other than shelter, and shelte
 One-year inflation rates for different categories of goods and services, including some smaller categories, are captured in the following section and table. The table also shows cumulative price changes since February 2020, the last month of data before the COVID-19 pandemic shutdown in the US. Additionally, the weight that a category has in the overall index--the category's share of the basket of goods and services used to calculate the CPI--is included as the last column in the table. This weight comes from each category's share of overall consumer spending during the most recent reference period, and is updated by changes in prices since the reference period. 
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\vspace{-6mm}
+
+\begin{minipage}{0.76\textwidth} \index{prices!consumer price index}
 \small \input{text/cpicomp2.txt}
 \vspace{1.5mm}
 
@@ -8324,26 +8466,28 @@ One-year inflation rates for different categories of goods and services, includi
 \footnotesize{Source: Bureau of Labor Statistics}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\small The following table provides the one-month percent change in prices for the same CPI categories seen above. 
+\begin{minipage}{0.76\textwidth} \index{prices!consumer price index}
+\vspace*{-3mm}
+\small \input{text/cpi_monthly_rel.txt}
 \end{minipage}
-\vspace{1.5mm}
+\vspace{1mm}
 
 \normalsize \textbf{Selected CPI Categories, Monthly Rate}\\
 \footnotesize{\textit{one-month growth, seasonally adjusted, percent}\\
 \hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.6pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.5}
+		{\renewcommand{\arraystretch}{1.39}
 \begin{tabular}{p{38mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} 
 		R{8.2mm} R{8.2mm}} % 
 			 \input data/cpi_comp_mo.tex \hline
 		\end{tabular}}}
 \vspace{-2mm}		
 		
-\footnotesize{Source: Bureau of Labor Statistics; *not seasonally adjusted}
+\footnotesize{Source: Bureau of Labor Statistics; *not seasonally adjusted
 \newpage
 \hypertarget{prie}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Inflation Expectations}
+\index{inflation expectations}
 \vspace{-1mm}
 
 \small Researchers gain insight on expected changes in prices through regular \textbf{surveys of consumers} and through \textbf{market data}. One market-based measure is known as the \href{https://fred.stlouisfed.org/series/T5YIE}{inflation breakeven} and is calculated as the difference between the yield on a nominal treasury bond and the yield on a treasury inflation-protected bond of the same maturity. This difference represents the amount of inflation markets have priced in, on average, for the maturity of the bond.
@@ -8424,6 +8568,7 @@ One-year inflation rates for different categories of goods and services, includi
 \hypertarget{prpce}{}
 \begin{minipage}{0.76\textwidth}
 \subsection*{PCE Price Index}
+\index{prices!PCE price index}
 \small The Personal Consumption Expenditure (PCE) price index from the Bureau of Economic Analysis \href{https://www.bea.gov/data/personal-consumption-expenditures-price-index}{captures} both changes in the price of goods and services as well as monthly changes in consumer behavior. The index is additionally updated over time to the latest methodology. 
 
 \input{text/pce_inf_basic.txt}
@@ -8475,6 +8620,7 @@ One-year inflation rates for different categories of goods and services, includi
 \begin{minipage}{0.76\textwidth}
 \hypertarget{prp}{}
 \subsection*{Producer Prices}
+\index{prices!producer price index}
 
 \small \input{text/ppi_main.txt}
 
@@ -8551,6 +8697,7 @@ Note that the all commodities index includes goods at various stages of producti
 \hypertarget{prex}{}
 \subsection*{Import and Export Prices}
 \small \input{text/mxpi.txt}
+\index{prices!import and export price index}
 \vspace{1mm}
 
 \normalsize \textbf{Import/Export Price Index}\\
@@ -8582,6 +8729,7 @@ Note that the all commodities index includes goods at various stages of producti
 \small Certain commodities have macroeconomic significance. An example is oil, which is a major input to production and transportation with a particularly volatile price history. Commodity prices are also important as a signal to domestic mining operations, for example. 
 
 Two commodities that are important to the construction and manufacturing industries are lumber and steel. \input{text/ppi_commodities.txt} 
+\index{prices!lumber} \index{prices!steel}
 \vspace{2mm}
 
 \normalsize \textbf{Steel \hspace{5.5cm} Lumber}\\
@@ -8604,7 +8752,7 @@ Two commodities that are important to the construction and manufacturing industr
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{ppi_commodities.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{prices!oil} \index{oil!price} \index{crude oil}
 \small \input{text/wti.txt}
 \vspace{0.5mm}
 
@@ -8623,6 +8771,7 @@ Two commodities that are important to the construction and manufacturing industr
 \vspace{2mm}
 
 \small \input{text/gas_price.txt}
+\index{prices!gasoline}
 \vspace{0.5mm}
 
 \normalsize \textbf{Gasoline Price}\\
@@ -8644,6 +8793,7 @@ Two commodities that are important to the construction and manufacturing industr
 \vspace{2mm}
 
 \small \input{text/gold.txt}
+\index{prices!gold}
 \vspace{0.5mm}
 
 \normalsize \textbf{Gold Price}\\
@@ -8660,8 +8810,15 @@ Two commodities that are important to the construction and manufacturing industr
 \footnotesize{Source: London Bullion Market Association} \hfill \tbllink{gold.csv}
 \end{minipage}
 \newpage
+\markright{\seriffont Acknowledgments}
 \begin{minipage}{0.76\textwidth}
-\subsection*{Acknowledgments}
-\small Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, Rebecca Watts, Dean Baker, Matt Bruenig, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Ben Zipperer, Alberto Rodelgo, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Andrew Paciorek, David Dorn, Skanda Amarnath, Ernie Tedeschi, Brad Setser, and Vikas Sharma.
+\section*{Acknowledgments}
+\small This chartbook benefits from particularly helpful feedback from Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, and Rebecca Watts. 
+
+Additionally, the chartbook benefits from other researchers who have shared their work in the public domain or provided me with guidance, including: Dean Baker, Matt Bruenig, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Ben Zipperer, Alberto Rodelgo, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Andrew Paciorek, David Dorn, Skanda Amarnath, Ernie Tedeschi, Brad Setser, and Vikas Sharma.
 \end{minipage}
+\newpage
+\markright{\seriffont Index}
+\hypertarget{index}{}
+\printindex
 \end{document}

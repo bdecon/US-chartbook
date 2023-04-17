@@ -815,6 +815,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     dol = '' if dollar == False else '\$'
     abv = abs(value)
     val = f'{dol}{abv:,.{digits}f}'
+    val2 = f'{dol}{value:,.{digits}f}'
     numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
                '4.0': 'four', '5.0': 'five', 
                '6.0': 'six', '7.0': 'seven', 
@@ -834,6 +835,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         atxtd = {None: ' by ', 'sa': ' at a seasonally-adjusted rate of ', 
                  'annual': ' at an annual rate of ', 
                  'annualized': ' at an annualized rate of ', 
+                 'average_annualized': ' at an average annualized rate of ',
+                 'avg_ann': ' at an average annualized rate of ',
                  'saa': ' at a seasonally-adjusted and annualized rate of ', 
                  'saar': ' at a seasonally-adjusted annualized rate of ', 
                  'total': ' by a total of ', 
@@ -857,6 +860,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         atxtd = {None: '', 'sa': ' on a seasonally-adjusted basis', 
                  'annual': ' on an annual basis', 
                  'annualized': ' on an annualized-basis', 
+                 'average_annualized': ' on an average annualized basis ',
+                 'avg_ann': ' on an average and annualized rate basis ',
                  'saa': ' on a seasonally-adjusted and annualized basis', 
                  'saar': ' on a seasonally-adjusted annualized basis', 
                  'total': ' in total',
@@ -884,6 +889,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         atxtd = {None: f'{stxt2} of', 'sa': f'a seasonally-adjusted {time_str}{stxt1} of', 
                  'annual': f'an annual {time_str}{stxt1} of', 
                  'annualized': f'an annualized {time_str}{stxt1} of', 
+                 'average_annualized': f' an average annualized {time_str}{stxt1} of',
+                 'avg_ann': f' an average annualized {time_str}{stxt1} of',
                  'saa': f'a seasonally-adjusted and annualized {time_str}{stxt1} of', 
                  'saar': f'a seasonally-adjusted annualized {time_str}{stxt1} of', 
                  'total': f'a total {time_str}{stxt1} of',
@@ -903,6 +910,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         atxtd = {None: f'{indef} ', 'sa': 'a seasonally-adjusted ', 
                  'annual': 'an annual ', 
                  'annualized': 'an annualized ', 
+                 'average_annualized': ' an average annualized ',
+                 'avg_ann': ' an average and annualized ',
                  'saa': 'a seasonally-adjusted and annualized ', 
                  'saar': 'a seasonally-adjusted annualized ', 
                  'total': 'a total ',
@@ -922,7 +931,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             text = 'in line with'
             
     elif style == 'plain':
-    	text = f'{val}{ptxt}'
+    	text = f'{val2}{ptxt}'
     
     elif style in ['equivalent', 'eq']:
     	atxt = ' of GDP' if adj in ['gdp', 'GDP'] else ''

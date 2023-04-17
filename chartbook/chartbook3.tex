@@ -1,0 +1,878 @@
+% % % % % % % % % % % % % % 
+%
+%	U.S. Chartbook
+%	Brian W. Dew (brianwdew@gmail.com)
+%	Updated: December 15, 2019
+%	GitHub repo contains to do list (issues)
+%   https://github.com/bdecon/US-chartbook
+%
+% % % % % % % % % % % % % %
+\PassOptionsToPackage{table}{xcolor}
+\documentclass{report}
+
+%
+% % % % % % Packages % % % % % % % % % 
+%
+	
+	\usepackage[letterpaper, margin=1.18in]{geometry}
+	\usepackage{microtype}
+	\usepackage[default]{lato}
+	\usepackage{pgfplots, pgfplotstable}
+	\usepackage[eulergreek]{sansmath}
+	\usepackage{xcolor}
+	\usepackage{array}
+	\usepackage{fontawesome5}
+	\usepackage{titlesec}
+	\usepackage{imakeidx}
+	\usepackage{fancyhdr}
+	\usepackage[colorlinks, linkcolor=blue, filecolor=blue, 
+		citecolor=blue, urlcolor=blue, linktoc=all, 
+		pdfencoding=auto]{hyperref}
+	\usetikzlibrary{pgfplots.dateplot, pgfplots.fillbetween, patterns,
+	                pgfplots.groupplots, shapes.geometric}
+
+%
+% % % % % Document Settings % % % % % % % 
+%
+
+	% Paragraph spacing
+	\usepackage{parskip}
+	\setlength\parindent{0pt}
+	\setlength{\parskip}{8pt}
+	\makeatletter
+		\newcommand{\@minipagerestore}{\setlength{\parskip}{8pt}}
+	\makeatother
+	
+	% Section and Subsection Headings
+	\titleformat{\section}
+  		{\color{darkgray} \LARGE \seriffont \bfseries}
+  		{\thesection}{1em}{}
+	\titleformat{\subsection}
+  		{\color{black!70} \seriffont \bfseries \large}
+  		{\thesection}{1em}{}
+	\titleformat{\subsubsection}
+  		{\color{black!70} \seriffont \bfseries \normalsize}
+  		{\thesection}{1em}{}		
+%
+% % % % % Graph Settings % % % % % % % 
+%
+	
+	% Header and footer
+	
+	\pagestyle{fancy}
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhead[R]{\rightmark}
+	\rfoot{\hyperlink{toc}{\faList}}
+	\cfoot{\thepage}	
+	
+	
+	% Index
+	\indexsetup{level=\section*,noclearpage}
+	\makeindex
+	
+	% Color square
+	\newcommand{\cbox}[1]{
+		\begin{tikzpicture} \draw [#1, line width=6](0,0) -- (.2,0);  
+		\end{tikzpicture}}
+	\newcommand{\colorline}[2]{
+		\begin{tikzpicture} \draw [#1, line width=1.8](0,0.2) -- +(0.6,0) node[right, black!80] {#2}; 
+		\end{tikzpicture}}
+		
+	% Table link
+	\newcommand{\tbllink}[1]{\href{https://raw.githubusercontent.com/bdecon/US-chartbook/master/chartbook/data/#1}{\faTable}}
+	
+	% Last two digits of year
+	\makeatletter
+	\newcommand*\short[1]{\expandafter\@gobbletwo\number\numexpr#1\relax}
+	\makeatother	
+	
+	% Column width and alignment
+	\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}	
+	\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+	
+	% Style for date plots
+	\pgfplotsset{compat=newest, 
+		scaled y ticks=false,
+		axis line style={black!20}, 
+		xtick style={black!20}, ytick style={draw=none},
+		every tick label/.style={black!50, font=\scriptsize,
+			/pgf/number format/assume math mode=true},
+		width=12.8cm, height=4.8cm, 
+		xticklabel style={align=left}, 
+		yticklabel style={text width=0.9em, align=right},       
+		axis x line*=bottom, x axis line style={black!50},
+	    axis y line=left, y axis line style={opacity=0},
+	    ymajorgrids, grid style={very thin, black!10},	        
+	    every node near coord/.style={/pgf/number format/fixed,
+	    	font=\scriptsize, style={black!70}},
+	    legend style={legend columns=-1, draw=none, fill=none,
+	    	/tikz/every even column/.append style={column sep=0.3cm}}}
+	    	
+	
+	% stacked diverging bar
+	\newcommand{\sbar}[4]{
+		\addplot[ybar stacked, bar width=2.4pt, draw opacity=0, fill=#1] 
+			table [x=#2, y=#3, col sep=comma]{#4};}
+
+	% stacked diverging bar area legend
+	\newcommand{\sbaral}[4]{
+		\addplot[ybar stacked, bar width=2.4pt, draw opacity=0, fill=#1, area legend] 
+			table [x=#2, y=#3, col sep=comma]{#4};}
+			
+	% thin stacked diverging bar
+	\newcommand{\tsbar}[4]{
+		\addplot[ybar stacked, bar width=2.2pt, draw opacity=0, fill=#1] 
+			table [x=#2, y=#3, col sep=comma]{#4};}
+			
+	% custom width stacked diverging bar
+	\newcommand{\ctsbar}[5]{
+		\addplot[ybar stacked, bar width=#5, draw opacity=0, fill=#1] 
+			table [x=#2, y=#3, col sep=comma]{#4};}
+			
+	% area plot segment
+	\newcommand{\abar}[4]{
+		\addplot[stack plots=y, area style, draw=none, fill=#1] 
+			table [x=#2, y=#3, col sep=comma]{#4}\closedcycle;}
+					
+	% text node
+	\newcommand{\stdnode}[3]{\node[below, align=left, shift=({#1,#2})]{#3};}	
+	
+	% text node located by data	 
+	\newcommand{\absnode}[3]{\node[below right, align=left] at (axis cs: #1,#2) {#3};}   
+	
+	% multiline text node located by data	 
+	\newcommand{\absnodeml}[4]{\node[below right, align=left, text width=#4cm] 
+		at (axis cs: #1,#2) {#3};}       
+		        
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\dateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2023-03-31},
+		max space between ticks=40,	    
+		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
+			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
+			{2002-01-01}, {2004-01-01}, {2006-01-01},
+			{2008-01-01}, {2010-01-01}, {2012-01-01}, {2014-01-01},
+		    {2016-01-01}, {2018-01-01}, {2020-01-01}, {2022-01-01}, 
+		    {2024-01-01}, {2026-01-01}},
+		minor xtick={{1989-01-01}, {1991-01-01}, {1993-01-01},
+			{1995-01-01}, {1997-01-01}, {1999-01-01}, 
+			{2001-01-01}, {2003-01-01}, {2005-01-01}, {2007-01-01},
+		    {2009-01-01}, {2011-01-01}, {2013-01-01}, {2015-01-01},
+		    {2017-01-01}, {2019-01-01}, {2021-01-01}, {2023-01-01}, 
+		    {2025-01-01}, {2027-01-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
+		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\shdateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2023-03-31},
+		max space between ticks=40,	    
+		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
+			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
+		minor xtick={},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
+		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\ltdateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2023-03-31},
+		max space between ticks=40,	    
+		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
+		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
+		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\lfdateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmin={2018-01-01}, xmax={2023-03-31},   
+		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
+		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
+		yticklabel style={text width=1.0em},
+		height=3.8cm, width=6.4cm,
+		}
+		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\tydateaxisticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2023-03-31}, max space between ticks=40,	    
+		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
+			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		}
+		
+	% Date (X) Axis Tick Marks, very short term monthly ticks
+	\newcommand{\shticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2023-03-31},
+		}
+		
+	% Settings for y label text in horizontal bar charts
+	\newcommand{\barylab}[2]{yticklabel style={text width=#1, align=right, 
+		style={black!70}, text height=#2},}
+	
+	% Solid bars at significant  x or y values
+	\newcommand{\bbar}[2]{extra #1 ticks = {{#2}}, extra #1 tick labels = ,
+		extra #1 tick style = {grid=major, grid style={thick, black!25}},}
+		
+	% Dashed line at significant  x or y values
+	\newcommand{\dbar}[2]{extra #1 ticks = {{#2}}, extra #1 tick labels = ,
+		extra #1 tick style = {grid=major, grid style={dashed, thick, black!50}},}
+		
+	% Standard line
+	\newcommand{\stdline}[4]{\addplot[very thick, no markers, color=#1] 
+		table [x=#2, y=#3, col sep=comma] {#4};	}
+		
+	% Thin line
+	\newcommand{\thinline}[4]{\addplot[no markers, color=#1] 
+		table [x=#2, y=#3, col sep=comma] {#4};	}
+		
+	% Dashed line
+	\newcommand{\dashline}[4]{\addplot[very thick, dashed, no markers, color=#1] 
+		table [x=#2, y=#3, col sep=comma] {#4};	}
+		
+	% Thicker line
+	\newcommand{\thickline}[4]{\addplot[ultra thick, no markers, color=#1] 
+		table [x=#2, y=#3, col sep=comma] {#4};	}
+		
+	% Style for bar plots legend symbol		
+	\pgfplotsset{/pgfplots/area legend/.style={/pgfplots/legend image code/.code={
+		\fill[##1] (0cm, -0.1cm) rectangle (0.6cm, 0.1cm);}},}		
+		
+	% Additional bar plot settings
+	\newcommand{\barplotnogrid}{xbar=0pt, axis line style={draw=none},
+	    yticklabel style={align=left, anchor=east},
+      		xmajorticks=false, ymajorgrids=false,   
+	    ytick=data, tickwidth=0pt, area legend, reverse legend,
+	    nodes near coords align={horizontal},}  
+		
+	% Recession bars		
+	\newcommand{\rbars}{
+		\fill[color=black!10] (axis cs:{1990-07-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{1991-03-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			
+	\newcommand{\rebars}{
+		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			
+	\newcommand{\recbars}{
+		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+			
+	\newcommand{\rbar}{
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
+			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+	
+	\newfontfamily\seriffont{RobotoSlab}	
+	
+	\pgfplotstableread[header=true, col sep=comma]{data/cpi_comp.csv}\cpi
+	\pgfplotstableread[header=true, col sep=semicolon]{data/ip_comp.csv}\ip
+	\pgfplotstableread[header=true, col sep=comma]{data/rs_comp.csv}\rs
+	\pgfplotstableread[header=true, col sep=comma]{data/ahe_ind.csv}\ahe
+	\pgfplotstableread[header=true, col sep=comma]{data/poor.csv}\poor
+	\pgfplotstableread[header=true, col sep=comma]{data/poor2.csv}\pvrt
+	\pgfplotstableread[header=true, col sep=comma]{data/spmtbl20.csv}\spm
+	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
+	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
+	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
+	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups.csv}\unemp
+	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups2.csv}\unempt
+	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups3.csv}\unemptt
+	\pgfplotstableread[header=true, col sep=semicolon]{data/cps_educ.csv}\edsh
+	\pgfplotstableread[header=true, col sep=comma]{data/cps_educ_tot.csv}\edtot
+	\pgfplotstableread[header=true, col sep=comma]{data/cps_age.csv}\agesh
+	\pgfplotstableread[header=true, col sep=semicolon]{data/union_ind.csv}\unmem
+	\pgfplotstableread[header=true, col sep=semicolon]{data/quits_ind.csv}\quits
+	\pgfplotstableread[header=true, col sep=semicolon]{data/state_pa_epop.csv}\paepop
+	\pgfplotstableread[header=true, col sep=semicolon]{data/state_pa_epop2.csv}\paepopt
+	\pgfplotstableread[header=true, col sep=semicolon]{data/state_pa_epop3.csv}\paepoptt
+	\pgfplotstableread[header=true, col sep=semicolon]{data/openings_ind.csv}\opens
+	\pgfplotstableread[header=true, col sep=comma]{data/nilf_comp.csv}\nilf
+	\pgfplotstableread[header=true, col sep=comma]{data/pinc.csv}\pinc
+	\pgfplotstableread[header=true, col sep=comma]{data/unemp_grp.csv}\ungrp
+	\pgfplotstableread[header=true, col sep=comma]{data/unemp_grpsh.csv}\ungrpsh
+	\pgfplotstableread[header=true, col sep=comma]{data/ce_age.csv}\ceage
+	\pgfplotstableread[header=true, col sep=comma]{data/ce_inc.csv}\ceinc
+	\pgfplotstableread[header=true, col sep=comma]{data/cpi_monthly.csv}\cpimo
+	\pgfplotstableread[header=true, col sep=comma]{data/ppi_monthly.csv}\ppimo
+	\pgfplotstableread[header=true, col sep=comma]{data/ccdebtbar.csv}\ccbar
+	\pgfplotstableread[header=true, col sep=comma]{data/gdp_rec.csv}\gdprec
+	\pgfplotstableread[header=true, col sep=comma]{data/educ_wage_bar.csv}\web
+	\pgfplotstableread[header=true, col sep=comma]{data/unemp_reason_mon.csv}\unrsn
+	\pgfplotstableread[header=true, col sep=comma]{data/inf_exp_ch.csv}\rych
+	\pgfplotstableread[header=true, col sep=comma]{data/inf_exp_ch2.csv}\rytch
+	\pgfplotstableread[header=true, col sep=comma]{data/jobs_tercile.csv}\jobt
+	\pgfplotstableread[header=true, col sep=comma]{data/jobs_ss.csv}\jobss
+	\pgfplotstableread[header=true, col sep=comma]{data/emp_lt.csv}\emplt
+	\pgfplotstableread[header=true, col sep=comma]{data/icsa_mon.csv}\icsamon
+	\pgfplotstableread[header=true, col sep=comma]{data/ccsa_mon.csv}\ccsamon
+	\pgfplotstableread[header=true, col sep=comma]{data/uwe_cps_sh.csv}\uwecps
+	
+	% Required for bar plots with individual bar colors for categories
+	\pgfplotsset{discard if not/.style 2 args={
+        x filter/.code={
+            \edef\tempa{\thisrow{#1}}
+            \edef\tempb{#2}
+            \ifx\tempa\tempb
+            \else
+                \def\pgfmathresult{inf}
+            \fi}}}	
+	
+% % % % % % % %
+%
+%  Begin Document
+%
+% % % % % % % %		
+\begin{document}
+\chapter*{
+		\textcolor{blue!70}{\rule[-1pt]{6pt}{20pt}}
+		\textcolor{green!70!blue}{\rule[-1pt]{6pt}{32pt}} \ \color{darkgray} US Chartbook}
+\vspace*{-16mm}
+
+\footnotesize \hspace{11mm} v0.0; Last updated: \today \normalsize 
+
+\vspace{5mm}
+
+\small \textit{Open source notes on the United States economy}
+
+\vspace{4mm}
+
+\thispagestyle{empty}
+
+\begin{minipage}{0.36\textwidth}
+\subsection*{ {\color{red} \faExclamationTriangle} \seriffont Warning}
+
+\small {\color{red} \textbf{Early stage draft!}} \\
+This early draft contains many errors! 
+\vfill
+
+\end{minipage} \hspace{18mm}
+\begin{minipage}{0.36\textwidth}
+\subsection*{{\color{gray} \faUser} Contact}
+
+\textbf{Brian Dew} \  \\
+\small {\color{gray} \faEnvelope} \ brian.w.dew@gmail.com \ \\
+{\color{gray} \faTwitter} \ @bd\_econ \ \\
+{\color{gray} \faGithub} \ \ \href{https://github.com/bdecon/US-chartbook}{bdecon/US-chartbook}
+\end{minipage}
+\vspace{5mm}
+
+\begin{minipage}{0.76\textwidth}
+\subsection*{\textcolor{blue!70}{\rule[-0.5pt]{3pt}{7.5pt}}
+		\textcolor{green!70!blue}{\rule[-0.5pt]{3pt}{12pt}} \ About the Chartbook}
+\vspace{2mm}
+
+\small \textit{I like a place with a lot of items on a menu. Because you know they do them all beautifully.} \textbf{Will Ferrell}
+
+\vspace{2mm}
+
+This chartbook offers a big menu of US economic and social indicators. To keep the data fresh and cover a wide-variety of topics, shortcuts are made on the back end. Most of the text is generated by simple scripts. Likewise, the charts are standardized with each other in ways that reduce how well they represent a topic. 
+
+As a result of these shortcuts, it is unlikely that you will be completely satisfied with the content of the chartbook. To sweeten the deal, I've added links to the data and \href{https://github.com/bdecon/US-chartbook}{source code}. Hopefully the end result can inspire and facilitate further exploration of topics of interest.
+
+%Please be aware that this chartbook is an early-stage draft. Content is being added, removed, and improved. In the meantime, the current draft contains many errors and is not particularly comprehensible without lots of patience. I'm correcting the errors as I find them and gradually editing the text for clarity. 
+%
+\textbf{Version 0.1 release planned for Spring 2023}
+\end{minipage}
+\newpage
+\section*{\hyperlink{toc}{\faList} \ {Contents}}
+\markright{\seriffont Contents}
+\hypertarget{toc}{}
+\vspace{3mm}
+\small
+
+\begin{minipage}{0.4\textwidth}
+\begin{description}
+\item {\hyperlink{oea}{Overall Economic Activity}}
+\begin{description}
+\item {\hyperlink{oety}{Types of Activity}}
+\item {\hyperlink{oegr}{Economic Growth}}
+\item {\hyperlink{oegc}{Components of Growth}}
+\end{description}
+\item {\hyperlink{ofa}{Overall Financial Activity}}
+\begin{description}
+\item {\hyperlink{ofl}{Liabilities}}
+\item {\hyperlink{ofsb}{Sectoral Balances}}
+\item {\hyperlink{ofw}{Wealth}}
+\item {\hyperlink{ofi}{Investment}}
+\end{description}
+\item {\hyperlink{hh}{Households}}
+\begin{description}
+\item {\hyperlink{hhdem}{Demographics}}
+\item {\hyperlink{hhinc}{Income}}
+\item {\hyperlink{hhss}{Spending and Saving}}
+\item {\hyperlink{hhbs}{Balance Sheets}}
+\item {\hyperlink{hhh}{Housing}}
+\item {\hyperlink{hhpov}{Poverty}}
+\end{description}
+\item {\hyperlink{bus}{Businesses}}
+\begin{description}
+\item {\hyperlink{busin}{Investment}}
+\item {\hyperlink{buspr}{Corporate Profits}}
+\item {Balance Sheets}
+\item {\hyperlink{busip}{Industrial Production}}
+\item {\hyperlink{busrs}{Retail Sales}}
+\end{description}
+\item {\hyperlink{gov}{Government}}
+\begin{description}
+\item Spending and Investment
+\item Revenue
+\item {\hyperlink{govbs}{Balance Sheets}}
+\end{description}
+\item {\hyperlink{ext}{External Sector}}
+\begin{description}
+\item {\hyperlink{exbop}{Balance of Payments}}
+\item {\hyperlink{extt}{Trade}}
+\item {\hyperlink{exiip}{International Investment Position}}
+\item {\hyperlink{excf}{Capital Flows}}
+\item {\hyperlink{extfx}{Exchange Rates}}
+\end{description}
+\end{description}
+\end{minipage} \hspace{10mm} 
+\begin{minipage}{0.4\textwidth}
+\begin{description}
+\item {\hyperlink{lab}{Labor Markets}}
+\begin{description}
+\item {\hyperlink{labe}{Employment}}
+\item {\hyperlink{labu}{Unemployment}}
+\item {\hyperlink{labp}{Participation}}
+\item {\hyperlink{labf}{Labor Force Flows}}
+\item {\hyperlink{labh}{Hours}}
+\item {\hyperlink{labns}{Nonstandard Work Arrangements}}
+\item {\hyperlink{labw}{Wages}}
+\item {\hyperlink{labprod}{Productivity}}
+\item {\hyperlink{labun}{Union Membership}}
+\end{description}
+\item {\hyperlink{cap}{Capital Markets}}
+\begin{description}
+\item {\hyperlink{capeq}{Equity Markets}}
+\item {\hyperlink{capint}{Interest Rates}}
+\item {\hyperlink{capmm}{Money and Monetary Policy}}
+\end{description}
+\item {\hyperlink{pr}{Prices}}
+\begin{description}
+\item {\hyperlink{prin}{Consumer Price Index}}
+\item {\hyperlink{prie}{Inflation Expectations}}
+\item {\hyperlink{prpce}{PCE Price Index}}
+\item {\hyperlink{prp}{Producer Prices}}
+\item {\hyperlink{prex}{Import and Export Prices}}
+\item {\hyperlink{prco}{Commodities}}
+\end{description}
+\item {\hyperlink{index}{Index}}
+\end{description}
+\vspace{4.6cm}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{Jobless Claims}
+\small Each week, the Department of Labor \href{https://www.dol.gov/ui/data.pdf}{present} the unemployment insurance (UI) claims reported by state unemployment offices. An initial claim for UI is filed by an unemployed person, after a separation from an employer, to determine eligibility for benefits.
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.42\textwidth}
+%\index{unemployment!initial claims}
+\normalsize \textbf{New Jobless Claims}\\
+\footnotesize{\textit{initial claims per week, thousands, seasonally adjusted}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shticks
+	\bbar{y}{0}, height=5.2cm, width=6.65cm, yticklabel style={text width=1.6em}, 
+		ymin=0, enlarge y limits={lower, 0.0}, enlarge x limits={0.01}, xtick=data,
+		minor xtick={{2022-01-01}, {2023-01-01}, {2024-01-01}},
+		clip=false, xticklabel style={align=center}, minor tick length=7pt, 
+		xticklabels from table={\icsamon}{label}, ]
+	\stdline{blue!0}{date}{icsa}{\icsamon}
+	%\stdline{black!12}{date}{V12M}{data/icsa.csv}
+	\stdline{orange!80!yellow}{date}{icsa}{data/icsa.csv}
+	\input{text/icsa_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{icsa.csv} \hspace{1mm}
+\end{minipage} \hspace{4mm} \begin{minipage}{0.3\textwidth}
+\small \input{text/icsa.txt}
+
+Initial claims are considered a leading indicator of labor market conditions. An increase in jobless claims suggests a deterioration in economic conditions. 
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.76\textwidth}
+\small The Labor Department additionally report continued claims for UI, also referred to as insured unemployment. Insured unemployment is the number of people receiving UI benefits during a given week. 
+\end{minipage}
+\vspace{0.5mm}
+
+\begin{minipage}{0.42\textwidth}
+%\index{unemployment!initial claims}
+\normalsize \textbf{Insured Unemployed}\\
+\footnotesize{\textit{continuing claims, thousands, seasonally adjusted}}
+
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\shticks
+	\bbar{y}{0}, height=5.4cm, width=6.5cm, yticklabel style={text width=2.2em}, 
+		ymin=0, enlarge y limits={lower, 0.0}, enlarge x limits={0.01}, xtick=data,
+		minor xtick={{2022-01-01}, {2023-01-01}, {2024-01-01}},
+		clip=false, xticklabel style={align=center}, minor tick length=7pt, 
+		xticklabels from table={\ccsamon}{label}, ]
+	\stdline{blue!0}{date}{ccsa}{\ccsamon}
+	%\stdline{black!12}{date}{V12M}{data/icsa.csv}
+	\stdline{green!75!black}{date}{ccsa}{data/ccsa.csv}
+	\input{text/ccsa_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{ccsa.csv} \hspace{1mm}
+\end{minipage} \hspace{4mm} \begin{minipage}{0.3\textwidth}
+\small \input{text/ccsa.txt}
+
+\input{text/ccsa_alt.txt}
+\end{minipage}
+\vspace{5mm}
+
+\begin{minipage}{0.76\textwidth}
+\normalsize \textbf{Jobless Claims}\\
+\footnotesize{\textit{thousands per week \hspace{52mm} period averages}}\\
+\noindent \hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{4.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.6}
+		 \begin{tabular}{p{32mm} R{10mm} R{10mm} R{10mm} R{10mm} R{8mm} R{8mm} R{8mm} }
+			 \input data/jobless_claims.tex \hline
+		\end{tabular}}\vspace{-2mm}
+		
+\footnotesize{Source: Department of Labor}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{Jobless Claims}
+\small Each week, the Department of Labor \href{https://www.dol.gov/ui/data.pdf}{present} the unemployment insurance (UI) claims reported by state unemployment offices. Initial claims are filed by an unemployed person, after a separation from an employer, to determine eligibility for benefits. Initial claims are considered a leading indicator of labor market conditions.
+
+\input{text/icnsa.txt}
+
+\input{text/ccnsa.txt}
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.345\textwidth}
+\normalsize \textbf{New UI Claims}\\
+\footnotesize{\textit{initial claims per week, in millions,}}\\
+\footnotesize{\textit{not seasonally adjusted}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 1, 2, 3, 4, 5, 6}, 
+		enlarge y limits={0.05}, ymin=0.25, xmin={2018-01-01},
+		xticklabel={`\short{\year}}, height=7.2cm, width=6.5cm]
+	\rbars
+	\thinline{blue!50!purple!80!black}{date}{pua_ic}{data/fed_uic.csv}
+	\stdline{cyan!80!blue}{date}{VALUE}{data/icnsa.csv}
+	\stdnode{3.4cm}{0.35cm}{\footnotesize \color{blue!50!purple!80!black}PUA}
+	\stdnode{2.45cm}{0.7cm}{\footnotesize \color{cyan!80!blue}State}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{icnsa.csv}
+\end{minipage} \hspace{9mm}
+\begin{minipage}{0.35\textwidth}
+\normalsize \textbf{Continued UI Claims}\\
+\footnotesize{\textit{insured unemployed, in millions,}}\\
+\footnotesize{\textit{not seasonally adjusted}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks ytick={0, 5, 10, 15, 20}, 
+		enlarge y limits={0.05}, ymin=1, xmin={2018-01-01},
+		yticklabel style={text width=1.0em},
+		xticklabel={`\short{\year}}, height=7.2cm, width=6.5cm]
+	\rbars
+	\thinline{green!50!blue}{date}{fed_cc}{data/fed_uic.csv}
+	\stdline{green!90!blue}{date}{VALUE}{data/ccnsa.csv}
+	\stdnode{4.3cm}{4.0cm}{\footnotesize \color{green!50!blue}PUA+\\ \footnotesize \color{green!50!blue}PEUC}
+	\stdnode{2.4cm}{0.85cm}{\footnotesize \color{green!90!blue}State}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Department of Labor} \hfill \tbllink{ccnsa.csv}
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.76\textwidth}
+\small In response to the COVID-19 pandemic, traditional state-run unemployment insurance was temporarily boosted by federal programs that expanded eligibility for benefits and increased the amount of benefit payments. These programs were ended on September 6, 2021. 
+
+%\input{text/fed_uic.txt}
+
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\small The \textbf{Treasury yield curve} \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{shows} the interest rates on different maturities of US Treasury bonds and bills, at a given point in time. The yield curve summarizes the term structure of interest rates, how much it costs to borrow for different periods of time, and has traditionally been considered an indicator of how markets view short-term economic conditions relative to longer-term conditions. 
+
+The yield curve is normally upward sloping as investors expect to be compensated for lending for a longer period of time. The shape of the yield curve changes over time and is affected by several factors, including the term premium, the monetary policy of the Federal Reserve, and expectations about future inflation. The curve can become steeper, for example, if interest rates or inflation is expected to be higher in the future. 
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.43\textwidth}
+\index{treasuries!yield curve}
+\normalsize \textbf{Treasury Yield Curve}\\
+\footnotesize{\textit{constant maturity yield, percent}}\\
+\hspace*{-2mm} \begin{tikzpicture}[trim axis right]
+	\begin{axis}[height=7.2cm, width=7.7cm,	xmajorgrids, ymax=8.1, ymin=0.35,
+		axis line style={draw=none}, nodes near coords style={style={black!80, fill=white,
+		 yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill, 
+		 precision=2, assume math mode}, legend style={at={(0.5, 0.92)}, 
+		 legend columns=1},
+		xtick=data, xticklabels={1M, 3M, 6M, 1Y, 2Y, 5Y, 10Y, 20Y, 30Y}, 
+		legend cell align={left},
+		reverse legend, xticklabel style={black!70, font=\small\bfseries}, 
+		enlarge y limits={0.08}, enlarge x limits={0.02}, \bbar{y}{0}]
+	\addplot[thick, mark=*, color=blue!65!black!30] 
+		table [x=number, y=fiveyear, col sep=comma] {data/yc.csv};
+	\addplot[thick, mark=*, color=blue!65!black!60] 
+		table [x=number, y=oneyear, col sep=comma] {data/yc.csv};			
+	\addplot[ultra thick, mark=*, nodes near coords, 
+    		color=blue!60!black] table [x=number, y=value, col sep=comma] {data/yc.csv};
+    \input{text/yc_date.txt}
+    \legend{Five Years Ago, One Year Ago, Most Recent}	
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} 
+\end{minipage} \hspace{4mm}
+\begin{minipage}{0.29\textwidth}
+\small The yield curve can also become \textit{inverted} when yields on shorter-term debt are higher than yields on longer-term debt. An inverted yield curve can be a sign of worsening economic conditions. For example, short term rates may exceed longer-term rates if the Federal Reserve is expected to lower interest rates in the future, or if inflation is expected to fall due to weakened economic conditions. 
+
+\input{text/yc_inversion.txt}
+\end{minipage}
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth}
+\index{treasuries!yield spread}
+\small Another measure of the term structure of interest rates is the \textit{spread} between treasuries with different maturities. \textbf{Treasury yield spreads} can be used to track changes in the term structure over time.
+
+\input{text/spread_basic.txt}
+\vspace{2mm}
+
+\normalsize \textbf{Treasury Yield Spreads}\\
+\footnotesize{\textit{percentage points}}\\
+\hspace*{-3mm} \begin{tikzpicture}
+    \begin{groupplot}[group style={group size=2 by 1, horizontal sep=52pt,}]
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-1, 0, 1, 2, 3}, ymin=-1.45, ymax=2.3,
+    	yticklabel style={text width=1.2em}, 
+     xticklabel={`\short{\year}},  height=5.6cm, width=5.9cm, clip=false]
+    \rbar
+	\thinline{blue!70!cyan!80!white}{date}{Ten-3M}{data/spread.csv}
+	\node[text width=3.8cm, anchor=west] at (axis description cs: 0, 0.95) 
+		{\small \color{blue!70!cyan!80!white}\textbf{10-Year - 3-Month}};
+	\input{text/spread_node.txt}
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-1, 0, 1, 2, 3}, ymin=-1.45, ymax=2.3,
+    	yticklabel style={text width=1.2em},
+     xticklabel={`\short{\year}}, height=5.6cm, width=5.9cm, clip=false]
+	\rbar
+	\thinline{red!60!violet!90!white}{date}{Ten-2Y}{data/spread.csv}
+	\node[text width=3.8cm, anchor=west] at (axis description cs: 0, 0.95) 
+		{\small \color{red!60!violet!90!white}\textbf{10-Year - 2-Year}};
+	\input{text/spread_node2.txt}
+	\end{groupplot}
+	\end{tikzpicture}\\
+\footnotesize{Source: Federal Reserve} \hfill \tbllink{spread.csv} 
+\end{minipage}
+\newpage 
+\hypertarget{pr}{} \markright{\seriffont Prices} \index{prices!consumer price index}
+\begin{minipage}{0.76\textwidth} 
+\section*{Prices}
+\vspace*{-2mm}
+
+\small The price of goods and services determine how much can be purchased by a fixed income. Researchers are interested in the prices of specific goods, as well as changes in overall purchasing power, more generally.
+
+To understand the overall change in prices paid or charged by a group, such as consumers or manufacturers, researchers create a representative ``basket'' of the goods and services relevant to the group, and track the changes in the basket, and the price of the basket, over time. The end result of these methods is a price index. Researchers can then use the price index to calculate the rate of inflation.
+
+Inflation is typically calculated as the 12-month percent change in the price index. This annual inflation rate measures how prices in a given month compare to prices during the same month, one year prior. 
+\vspace{1mm}
+
+\normalsize \textbf{Price Growth, Various Measures}\\
+\footnotesize{\textit{one-year growth, percent}}
+\vspace*{-4mm}
+
+\hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+	{\renewcommand{\arraystretch}{1.5}
+		\begin{tabular}{p{30mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} 
+		   R{9.2mm} R{8.5mm}}
+			 \input data/prices_12m.tex \hline
+		\end{tabular}}\vspace{-1mm}
+		
+\footnotesize{Source: BLS, BEA, Federal Reserve Bank of Dallas}
+\vspace{2mm}
+
+\small In effect, the 12-month percent change in prices is smoothed, relative to the one-month change, by including information on price changes that happened over the past year. While the chartbook uses less-volatile 12-month inflation rates in most cases, the \textbf{one-month rate} can be more useful for examining short-term trends, for example by eliminating the base effects from changes in prices a year ago. 
+
+\input{text/cpi_monthly.txt} The Cleveland Fed \href{https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting}{nowcasts} current inflation by combining recent inflation data with current oil and gasoline prices. \input{text/cpinow.txt}
+\vspace{1mm}
+
+\normalsize \textbf{CPI One-Month Change}\\
+\footnotesize{\textit{percent change from previous month}}
+\vspace*{-4mm}
+
+\hspace*{-3mm} \begin{tikzpicture} 
+	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
+		enlarge y limits={0.24}, enlarge x limits={0.02}, 
+		width=13.0cm, height=4.7cm,
+		yticklabel style={text width=1.0em}, clip=false,
+		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}, xtick=data,
+		xticklabels from table={\cpimo}{label}]
+	\addplot[thick, draw opacity=0] table [x=date, y=FILL, col sep=comma]{\cpimo};
+	\addplot[ybar, fill=blue, draw opacity=0, nodes near coords] table [x=date, y=ALL_S, col sep=comma]{\cpimo};
+	\draw [black!40!white, dashed] (rel axis cs:0.35,0) -- 
+		(rel axis cs:0.35, 1.06);
+	\node[below right, align=left] at (rel axis cs:0.35, 1.08) {\color{black!40!white}\footnotesize {latest 12 months}};
+	\draw [black!40!white, dashed] (rel axis cs:0.96,0) -- 
+		(rel axis cs:0.96, 1.06);
+	\node[below right, align=left] at (rel axis cs:0.96, 1.08) {\color{black!40!white}\footnotesize {now-}};
+	\node[below right, align=left] at (rel axis cs:0.96, 1.02) {\color{black!40!white}\footnotesize {cast}};
+	\input{text/cpinow_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics, Federal Reserve Bank of Cleveland} \hfill \tbllink{cpi_monthly.csv}
+\end{minipage}
+\newpage
+\vspace{-9mm}
+
+\begin{minipage}{0.76\textwidth} \index{usual weekly earnings} \index{wages} \index{median wage}
+\subsection*{Wages} \hypertarget{labw}{}
+\small Wages are an important indicator and are closely monitored by economists. Wages are the majority of income in the economy and the main cost for businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
+
+This subsection covers several wage measures. First, the distribution of usual weekly earnings provides the median, or typical, full-time wage, and insight into wage growth for low-wage workers and other groups. Next, the section discusses average hourly earnings, including by industry, and employee and benefit costs. Finally, we measure the wages of the same individuals, over time. 
+
+\subsubsection*{Usual Weekly Earnings}
+\small The Bureau of Labor Statistics (BLS) \href{https://www.bls.gov/webapps/legacy/cpswktab5.htm}{report} the \textbf{usual wages of full-time workers} at various points in the income distribution, including by decile and by quartile. The most commonly used of these measures is the median usual weekly earnings, which represents the middle wage; half of wages are above and half are below.
+
+\input{text/uwe_median.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Median Usual Weekly Earnings}\\
+\footnotesize{\textit{one-year growth, percent, full-time, wage and salary earners, age 16+}}
+\vspace{2.8cm}
+
+\hspace*{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+		enlarge y limits={0.05}, xticklabel={`\short{\year}}, ymax=10.2,
+		clip=false, width=12.7cm, height=4.8cm, xmin=1989-07-01, 
+		legend style={at={(0.44, 1.05)}, legend columns=1}, 
+		legend cell align={left}]
+	\rbars
+	\thickline{cyan!60!white}{date}{p50uwe}{data/uwe_bls_gr.csv}
+	\thinline{violet!80!blue}{date}{p50_3M_gr}{data/uwe_cps.csv}
+    \legend{BLS (quarterly), CPS (3-month moving average)}	
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics, Author's Calculations} \hfill \tbllink{uwe_bls_gr.csv} \ \ \tbllink{uwe_cps.csv}
+\vspace{2mm}
+
+\small The primary source for BLS quarterly estimates of usual weekly earnings is the \href{https://www.census.gov/data/datasets/time-series/demo/cps/cps-basic.html}{Current Population Survey} (CPS). Using the CPS, more-volatile monthly estimates can be calculated before the next BLS quarterly estimate is available. 
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.35\textwidth}
+\small \input{text/uwe_median_cps.txt}
+\end{minipage} \hspace{6mm} \begin{minipage}{0.35\textwidth}
+\normalsize \textbf{Median Usual Weekly Earnings}\\
+\footnotesize{\textit{one-year growth, percent}}
+\vspace*{-2mm}
+
+\hspace*{-3mm} \begin{tikzpicture} 
+	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
+		enlarge y limits={0.16}, enlarge x limits={0.01}, 
+		width=6.6cm, height=5.0cm, 
+		yticklabel style={text width=1.0em}, 
+		minor xtick={{2023-01-01}, {2024-01-01}},
+		xticklabel style={align=center}, minor tick length=7pt, 
+		nodes near coords style={black, /pgf/number format/.cd, fixed zerofill,
+			precision=1, assume math mode}, xtick=data,
+		xticklabels from table={\uwecps}{label}]
+	\addplot[thick, draw opacity=0] table [x=date, y=FILL, col sep=comma]{\uwecps};
+	\addplot[ybar, bar width=50.0pt, fill=cyan!30!white, draw=cyan!90!blue] table [x=date, y=p50uwe, col sep=comma]{data/uwe_bls_sh.csv};
+	\addplot[ybar, bar width=9.6pt, fill=violet!80!blue, draw opacity=0, nodes near coords] table [x=date, y=p50_gr, col sep=comma]{data/uwe_cps_shift.csv};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: BLS, Author} \hfill \tbllink{uwe_cps.csv}
+
+\end{minipage}
+\newpage
+\vspace{-8mm}
+
+\begin{minipage}{0.76\textwidth} \index{usual weekly earnings} \index{wages} \index{first decile wage}
+\small The income distribution also tells us the earnings of low-wage workers, represented here by the first decile. Only ten percent of workers earn less than the first decile wage. \input{text/uwe_p10_basic.txt}
+\vspace{1mm}
+
+\normalsize \textbf{First Decile Usual Weekly Earnings}\\
+\footnotesize{\textit{one-year growth, percent, full-time, wage and salary earners, age 16+}}
+\vspace{2.6cm}
+
+\hspace*{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
+		enlarge y limits={0.05}, xticklabel={`\short{\year}}, ymax=9.8,
+		clip=false, width=12.7cm, height=4.6cm, xmin=1990-01-01, reverse legend,
+		legend style={at={(0.72, 1.02)}, legend columns=-1}, 
+		legend cell align={left}]
+	\rbars
+	\thinline{lime!65!green!90!black}{date}{p10_3M_gr}{data/uwe_cps.csv}
+	\thickline{blue!65!black}{date}{p10uwe}{data/uwe_bls_gr.csv}
+    \legend{CPS (3-month moving average), BLS (quarterly)}	
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics, Author's Calculations} \hfill \tbllink{uwe_bls_gr.csv} \ \ \tbllink{uwe_cps.csv}
+\vspace{2mm}
+
+\small The following tables present the BLS published estimates for usual weekly earnings of full-time wage and salary earnings. The first table presents the earnings in levels, and the second table shows the one-year percent change.
+\vspace{2mm}
+
+\normalsize \textbf{Usual Weekly Earnings}\\
+\footnotesize{\textit{full-time, wage and salary earners, age 16+, nominal USD}}\\
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.54}
+		 \begin{tabular}{p{19mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} 
+		   R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm}}
+			 \input data/wage_dist_bls2.tex \hline
+		\end{tabular}}
+\vspace{-3mm}
+		
+\footnotesize{Source: Bureau of Labor Statistics}
+\vspace{3mm}
+
+\normalsize \textbf{Weekly Earnings Growth}\\
+\footnotesize{\textit{full-time, wage and salary earners, age 16+, one-year growth, percent}}\\
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+	{\renewcommand{\arraystretch}{1.54}
+		\begin{tabular}{p{19mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm} 
+		   R{8.8mm} R{8.8mm} R{8.8mm} R{8.8mm}}
+			 \input data/wage_dist_bls.tex \hline
+		\end{tabular}}\vspace{-2mm}
+				
+\footnotesize{Source: Bureau of Labor Statistics}
+\end{minipage}
+\newpage
+\vspace{-10mm}
+
+\begin{minipage}{0.76\textwidth} \index{prices!consumer price index}
+\small \input{text/cpi_monthly_rel.txt}
+\end{minipage}
+\vspace{1mm}
+
+\normalsize \textbf{Selected CPI Categories, Monthly Rate}\\
+\footnotesize{\textit{one-month growth, seasonally adjusted, percent}\\
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.6pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{p{38mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} 
+		R{8.2mm} R{8.2mm}} % 
+			 \input data/cpi_comp_mo.tex \hline
+		\end{tabular}}}
+\vspace{-2mm}		
+		
+\footnotesize{Source: Bureau of Labor Statistics; *not seasonally adjusted}\newpage
+\printindex
+\end{document}
