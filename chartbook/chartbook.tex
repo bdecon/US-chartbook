@@ -437,7 +437,7 @@ As a result of these shortcuts, it is unlikely that you will be completely satis
 \item {\hyperlink{ext}{External Sector}}
 \begin{description}
 \item {\hyperlink{exbop}{Balance of Payments}}
-\item {\hyperlink{extt}{Trade}}
+\item {\hyperlink{extt}{International Trade}}
 \item {\hyperlink{exiip}{International Investment Position}}
 \item {\hyperlink{excf}{Capital Flows}}
 \item {\hyperlink{extfx}{Exchange Rates}}
@@ -4743,48 +4743,61 @@ The current account balance can be decomposed into the balance on trade in goods
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{fabz1.csv}
 \end{minipage}
 \newpage
+\vspace*{-8mm}
 \hypertarget{extt}{}
 \begin{minipage}{0.76\textwidth}
-\subsection*{Trade}
+\subsection*{International Trade}
 \index{trade!overview}
 \small Each month, the Census Bureau \href{https://www.census.gov/foreign-trade/Press-Release/current\_press\_release/index.html}{report} \textbf{goods and services trade} between the US and the rest of the world. US purchases of foreign goods and services are classified as imports and foreign purchases of US goods and services are exports. The trade of goods includes consumer goods, industrial equipment, and agricultural products. Services trade includes travel and tourism, business services, and charges for the use of intellectual property, among other services. 
 \end{minipage}
-\vspace{1mm}
+\vspace*{-1mm}
 
-\begin{minipage}{0.37\textwidth}
-\normalsize \textbf{US Imports and Exports, Monthly}\\
+\begin{minipage}{0.325\textwidth}
+\normalsize \textbf{US Imports and Exports}\\
 \footnotesize{\textit{billions of US dollars, seasonally adjusted}}\\
-\hspace*{-2mm} \begin{tikzpicture}
+\hspace*{-3mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks 
 		enlarge y limits={0.05}, clip=false, max space between ticks=30,
 		yticklabel style={text width=1.3em},
-		xticklabel={`\short{\year}}, height=6.4cm, width=6.0cm]
+		xticklabel={`\short{\year}}, height=5.8cm, width=5.4cm]
 	\rbar
 	\stdline{green!80!blue}{date}{EXP}{data/tradelt.csv}
 	\stdline{blue!80!violet}{date}{IMP}{data/tradelt.csv}
 	\input{text/tradelt_nodes.txt}
 	\absnode{{2017-01-01}}{190}{\small \color{green!80!blue}Exports}
-	\absnode{{2015-04-01}}{265}{\small \color{blue!80!violet}Imports}
+	\absnode{{2015-02-01}}{265}{\small \color{blue!80!violet}Imports}
 	\end{axis}
 \end{tikzpicture}
-\vspace{-2mm}
 
-\normalsize \textbf{Trade Balance, Monthly}\\
-\footnotesize{\textit{billions of US dollars, seasonally adjusted}}\\
-\hspace*{-3mm} \begin{tikzpicture}
+\normalsize \textbf{Trade Balance}\footnotesize\\
+\hspace*{-5mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks 
 		enlarge y limits={0.06}, clip=false, 
 		yticklabel style={text width=2.0em},
-		xticklabel={`\short{\year}}, height=5.2cm, width=6.0cm]
+		xticklabel={`\short{\year}}, height=4.5cm, width=5.4cm]
 	\rbar
 	\stdline{red}{date}{BAL}{data/tradelt.csv}
 	\input{text/ballt.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{tradelt.csv}
-\end{minipage} \hspace{6mm}
-\begin{minipage}{0.34\textwidth}
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.39\textwidth}
 \small \input{text/tradeltlevels.txt}
+\end{minipage}
+\vspace{3mm}
+
+\begin{minipage}{0.76\textwidth}
+\normalsize \textbf{International Trade}\\
+\footnotesize{\textit{millions of US dollars, seasonally adjusted}\\
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.6pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{p{22mm} R{14mm} R{14mm} R{14mm} R{14mm} R{14mm} R{14mm}} % 
+			 \input data/trade_mo_summary.tex \hline
+		\end{tabular}}}
+\vspace{-1mm}		
+		
+\footnotesize{Source: Census Bureau} \hfill \tbllink{trade_mo_summary.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth}
