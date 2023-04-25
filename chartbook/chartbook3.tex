@@ -287,7 +287,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/ahe_ind.csv}\ahe
 	\pgfplotstableread[header=true, col sep=comma]{data/poor.csv}\poor
 	\pgfplotstableread[header=true, col sep=comma]{data/poor2.csv}\pvrt
-	\pgfplotstableread[header=true, col sep=comma]{data/spmtbl20.csv}\spm
+	\pgfplotstableread[header=true, col sep=comma]{data/spmtbl21.csv}\spm
 	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
@@ -930,6 +930,232 @@ This subsection covers several wage measures. First, the distribution of usual w
 \vspace{-1mm}		
 		
 \footnotesize{Source: Census Bureau} \hfill \tbllink{pinc08.csv}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth}
+\subsection*{Union Membership}
+\index{unions}
+\hypertarget{labun}{}
+\small Membership in \textbf{unions and employee associations} has diminished in the United States over the past fifty years. Unionized jobs typically offer higher wages and better benefits and union membership tends to increase wages and benefits even in nonunion jobs. Many researchers argue that lower union membership increases income inequality. 
+
+\input{text/union.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Union Membership and Coverage}\\
+\footnotesize{\textit{union or employee association share of jobs, percent, one-year moving average}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15, 20}, ymin=1,
+		height=5.2cm, width=12.2cm, enlarge y limits={0.09},
+		yticklabel style={text width=1.0em}, 
+		xticklabel={`\short{\year}}, clip=false]
+	\rbars
+	\ctsbar{violet}{date}{Membership}{data/union.csv}{1.8pt}
+	\node[text width=3.0cm, anchor=west] at 
+		({1995-01-01}, 7){\color{white}\textbf{Union/Employee \\ Association Members}};
+	\ctsbar{magenta!70!purple}{date}{Diff}{data/union.csv}{1.8pt}	
+	\node[text width=2.2cm, anchor=west] at 
+		({2010-02-01}, 15.4){\color{magenta!70!purple}\textbf{Covered Non-Members}};
+	\input{text/union_nodes.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations from Current Population Survey} \hfill \tbllink{union.csv}
+\end{minipage}
+\vspace{3mm}
+
+\begin{minipage}{0.43\textwidth}
+\normalsize \textbf{Union Membership Rate by Industry}\\
+\footnotesize{\textit{union or employee association member, percent}}\\
+\hspace*{-3mm} \begin{tikzpicture}
+	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
+            yticklabels from table={\unmem}{name},
+			y axis line style={opacity=0}, 
+		    x axis line style={opacity=0}, 
+			yticklabel style={black, font=\footnotesize, 
+			align=left, anchor=east},  
+			nodes near coords align={above},    
+			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
+				precision=1, assume math mode},  
+            ytick=data, tickwidth=0pt, xmin=0,
+            bar width=2.2ex, 
+            extra x ticks={0}, extra x tick style={
+                grid style={black}, xticklabel=\empty,},
+            enlarge y limits={0.08}, enlarge x limits={0.02},
+            width=5.75cm, height=8.2cm, legend style={at={(1.0, 1.07)}},
+            \barylab{2.15cm}{1.5ex}]
+	\addplot[xbar stacked, bar shift=0pt, fill=none, draw=none] 
+		table [y expr=-\coordindex, x index=1] {\unmem};
+	\addplot[xbar stacked, bar shift=0pt, fill=violet!60!blue!90, draw=none] 
+		table [y expr=-\coordindex, x index=2] {\unmem};	
+	\addplot[only marks, mark=square*, mark options={fill=white, 
+		draw=magenta, scale=1.4}] 
+		table [y expr=-\coordindex, x index=4] {\unmem};	        
+	\addplot[only marks, mark=diamond*, mark options={fill=orange!75!yellow!90!white, 
+		draw=magenta, scale=2.4}] 
+		table [y expr=-\coordindex, x index=3] {\unmem};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=3] {\unmem};
+	\legend{, 30-year range,\input{text/union_yrdt.txt},\input{text/union_ltdt.txt}}%
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Author's Calculations from CPS} \hspace{12mm} \tbllink{union_ind.csv}
+\end{minipage}\hspace{4mm}
+\begin{minipage}{0.3\textwidth}
+\small Union membership rates vary substantially by industry. \input{text/union_ind.txt}
+\end{minipage}
+\newpage
+\vspace*{-6mm}
+\begin{minipage}{0.76\textwidth} \index{employment!employment rate}
+\subsubsection*{Employment Rates} 
+\vspace{-0.5mm}
+\small The \textbf{employment rate}, or the employment-population ratio, is the share of a group that is employed. Employment rates can provide useful insight into macroeconomic conditions. A high employment rate means available labor are being utilized in the productive process. All else equal, higher employment results in both increased supply, as the result of more labor being used for production, and increased demand, as the result of higher levels of income.
+
+Economists are interested in both the overall employment rate and in the employment rates for individual groups of people. The overall employment rate provides insight into the overall utilization of labor of a society and is affected by demographic and macroeconomic factors. Employment rates for individual groups can tell us about macroeconomic conditions and even tell us about differences in local economic conditions. 
+
+\input{text/epop_text2.txt} 
+\vspace{1mm}
+
+\normalsize \textbf{Employment Rate, Age 16 and Older}\\
+\footnotesize{\textit{employed share of age 16 and older population, percent, seasonally adjusted}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ytick={50, 55, 60, 65, 70}, 
+		yticklabel style={text width=1.0em}, 
+		width=12.2cm, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
+	\rbars
+	\stdline{green!60!black}{date}{EPOP}{data/epop.csv}
+	\input{text/epop_node2.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}
+\vspace{3mm} \index{employment!prime-age}
+
+\small Importantly, a larger share of the US population is of retirement age, reducing the overall US employment rate. To examine macroeconomic conditions separate from demographic developments, BLS \href{LNS12300060}{report} the employment rate for a more-narrow age group, specifically, those age 25 to 54. This group has the highest employment rate and are sometimes considered the ``prime'' age for labor market purposes. 
+
+The \textbf{age 25 to 54 employment rate} is an important measure of labor market utilization. In a tight labor market, the age group is employed at a very high rate. \input{text/epop_text.txt} 
+\vspace{1mm}
+
+\normalsize \textbf{Employment Rate, Age 25 to 54}\\
+\footnotesize{\textit{employed share of age 25 to 54 population, percent, seasonally adjusted}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ytick={70, 75, 80}, 
+		yticklabel style={text width=1.0em}, 
+		width=12.2cm, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
+	\rbars
+	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
+	\input{text/epop_node.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}
+\end{minipage}
+\newpage
+\vspace*{-6mm}
+\index{employment!with disability}
+\begin{minipage}{0.76\textwidth} 
+\small Next, BLS also \href{https://data.bls.gov/timeseries/LNU02374597}{report} the \textbf{employment rate for people with disabilities}. People with disabilities may be limited in their ability to participate in labor markets and can also face discrimination during hiring. Labor market prospects for the group are also affected by economic conditions. A tight labor market pushes businesses to accommodate disabilities and to discriminate less in hiring.
+
+In June 2008, the Current Population Survey (CPS), started to ask respondents age 16 and older whether they have difficulty with any of the following: hearing, seeing (even while wearing glasses), walking or climbing stairs, concentrating, remembering, making decisions, dressing or bathing, or running errands alone. In the latest data, covering March 2023, around XX.X million people or XX.X percent of those age 16 and older report at least one such disability. The rate of disability is relatively stable over time, and averages XX.X percent since 2008. 
+
+
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.43\textwidth} 
+\normalsize \textbf{Employment Rate, with Disability}\\
+\footnotesize{\textit{employed share of age group, persons with disabilities,}}\\
+\footnotesize{\textit{percent, not seasonally adjusted}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ymin=3, 
+		yticklabel style={text width=1.0em}, xmin={2007-10-01},
+		width=7.0cm, enlarge y limits={0.08},
+		xticklabel={`\short{\year}}, clip=false, height=6.4cm]
+	\recbars
+	\stdline{red}{date}{bls}{data/dis_emp_rate.csv}
+	\stdline{cyan}{date}{cps}{data/dis_emp_rate.csv}
+	\absnode{{2012-07-01}}{16}{\footnotesize \color{red}\textbf{Age 16 and older}}
+	\absnode{{2010-07-01}}{36}{\footnotesize \color{cyan}\textbf{Age 25 to 54}}
+	\input{text/dis_emp_nodes.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics; Author} \hfill \tbllink{dis_emp_rate.csv}
+
+
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth} \index{employment!employment rate}
+\small The monthly jobs report describes employment at a given point in time, by asking about activities during a specific week of the previous month. To instead examine activities over a period of time, annual data on weeks worked per year and hours worked per week can be combined to identify the \textit{fully-employed}, or \textit{full-time, full-year workers}, who usually work 35 hours per week or more for 50 weeks per year or more. The Census Bureau \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-01.html#par_textimage_14}{report} \input{text/asec_ftfy_tot.txt}
+
+Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}The top ten and bottom ten commuter zones by fully-employed rate are listed below.
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.55\textwidth}
+\normalsize \textbf{Commuter Zone Fully-Employed Rate}\\
+\footnotesize{\textit{full-time, full-year worker share of population, \input{text/acs_ftfy_year.txt}}}\\
+\vspace*{-6mm}
+
+\hspace{-11mm} \input{data/acs_emp_map.pgf}
+
+\vspace{-4mm}
+\footnotesize{Source: American Community Survey, Dorn, Author's Calculations}
+\end{minipage} \hspace{3mm}
+\begin{minipage}{0.24\textwidth}
+\vspace{-1mm}
+
+\footnotesize \input{text/acs_ftfy.txt}
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth} \index{poverty}
+\small The Census Bureau \href{https://www.census.gov/library/publications/2021/demo/p60-275.html}{report} \textbf{the number of people taken out of poverty by various programs}, along with how many people are put in poverty by various expenses. In 2021, Social Security payments lift income above the poverty line for 26.3 million people, by far the most effective program for reducing poverty.
+
+The third round of pandemic-related economic stimulus payments prevented 8.9 million people from being in poverty. Unemployment benefits removed 2.3 million people from poverty. Refundable tax credits, which include the expanded child tax credit, remove 9.6 million people from poverty, including 4.9 million children.
+
+Several elements add to the number of people in poverty. Medical expenses are the most significant, and cause the disposable income of 4.6 million people to fall below the poverty line. Work expenses additionally put 2.2 million people in poverty.
+
+\vspace{5mm}
+
+\normalsize \textbf{Effect of Individual Elements on Poverty Headcount}\\
+\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2021}}\\
+\vspace{0.5mm}
+\hspace*{-12mm}  \begin{tikzpicture}
+	\begin{axis}[clip=false,
+            xbar stacked, \bbar{x}{0},
+            xmin=-31, xmax=7.5, ymin=-0.5, ymax=17.5,
+            stack negative=separate, ymajorgrids=false,
+            yticklabels from table={\spm}{name},
+			y axis line style={opacity=0},   
+		    x axis line style={opacity=0}, 
+			yticklabel style={black, align=left, anchor=east},            
+            ytick=data, tickwidth=0pt,
+            legend style={
+                at={(0.0, 1.05)},
+                anchor=north,legend
+                columns=-1, draw=none},
+            legend cell align=left, extra x ticks={0},
+            extra x tick style={
+                grid style={black},
+                xticklabel=\empty},
+            enlarge y limits={0.02}, enlarge x limits={0.02},
+            width=10.4cm, height=10.0cm,
+            \barylab{3.8cm}{1.5ex}]
+            \addplot[fill=green!75!blue!75!black, draw opacity=0] table 
+            	[y expr=\coordindex, x=kids, col sep=comma] {\spm};
+            \addplot[fill=cyan!95!blue!70!white, draw opacity=0] table 
+            	[y expr=\coordindex, x=adults, col sep=comma] {\spm};
+            \addplot[fill=blue!80!purple, draw opacity=0] table 
+            	[y expr=\coordindex, x=elderly, col sep=comma] {\spm};
+            \legend{Under 18, 18 to 64, 65 or older}
+        \end{axis}
+        \begin{axis}[xmin=-31, xmax=7.5, ymin=-0.5, 
+            ymax=17.5, enlarge y limits={0.02}, enlarge x limits={0.02}, xticklabels=\empty,
+            width=10.4cm, height=10.0cm, ymajorgrids=false, yticklabels=\empty,
+			y axis line style={opacity=0}, x axis line style={opacity=0}, ]
+            \addplot[scatter, no marks, draw=none, nodes near coords*={\Label},
+            	nodes near coords align={horizontal},
+        		visualization depends on={value \thisrow{label} \as \Label}] table 		
+        		[x=xloc,y=yloc,col sep=comma] {data/spmtbl21.csv};
+        \end{axis}
+    \end{tikzpicture}\\
+\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl21.csv}
 \end{minipage}
 \newpage
 \printindex
