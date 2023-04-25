@@ -1104,58 +1104,42 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \footnotesize \input{text/acs_ftfy.txt}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth} \index{poverty}
-\small The Census Bureau \href{https://www.census.gov/library/publications/2021/demo/p60-275.html}{report} \textbf{the number of people taken out of poverty by various programs}, along with how many people are put in poverty by various expenses. In 2021, Social Security payments lift income above the poverty line for 26.3 million people, by far the most effective program for reducing poverty.
+\vspace*{-6mm}
+\begin{minipage}{0.76\textwidth}
+\index{prices!consumer price index}
+\small The prices of some items are more volatile than others. Food and energy prices, for example, are sometimes separated from the rest of the CPI basket, which is referred to as the \textit{core}, because swings in food and energy prices are larger and more frequent. 
 
-The third round of pandemic-related economic stimulus payments prevented 8.9 million people from being in poverty. Unemployment benefits removed 2.3 million people from poverty. Refundable tax credits, which include the expanded child tax credit, remove 9.6 million people from poverty, including 4.9 million children.
+Core inflation includes core goods, core services other than shelter, and shelter. Core goods inflation was barely existent from 2013 through the start of the pandemic. Core goods prices are disproportionately affected by import prices and by changes in the quality of goods, for example from technological improvement. In contrast, domestic wage growth affects the prices for core services more than the other categories. Shelter prices are affected by housing supply and construction. 
 
-Several elements add to the number of people in poverty. Medical expenses are the most significant, and cause the disposable income of 4.6 million people to fall below the poverty line. Work expenses additionally put 2.2 million people in poverty.
+\input{text/cpi_decomp.txt}
+\vspace{1mm}
 
-\vspace{5mm}
+\normalsize \textbf{CPI Decomposition}\\
+\footnotesize{\textit{contribution to one-year change in CPI-U, percentage points}}
+\vspace{4.5cm}
 
-\normalsize \textbf{Effect of Individual Elements on Poverty Headcount}\\
-\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2021}}\\
-\vspace{0.5mm}
-\hspace*{-12mm}  \begin{tikzpicture}
-	\begin{axis}[clip=false,
-            xbar stacked, \bbar{x}{0},
-            xmin=-31, xmax=7.5, ymin=-0.5, ymax=17.5,
-            stack negative=separate, ymajorgrids=false,
-            yticklabels from table={\spm}{name},
-			y axis line style={opacity=0},   
-		    x axis line style={opacity=0}, 
-			yticklabel style={black, align=left, anchor=east},            
-            ytick=data, tickwidth=0pt,
-            legend style={
-                at={(0.0, 1.05)},
-                anchor=north,legend
-                columns=-1, draw=none},
-            legend cell align=left, extra x ticks={0},
-            extra x tick style={
-                grid style={black},
-                xticklabel=\empty},
-            enlarge y limits={0.02}, enlarge x limits={0.02},
-            width=10.4cm, height=10.0cm,
-            \barylab{3.8cm}{1.5ex}]
-            \addplot[fill=green!75!blue!75!black, draw opacity=0] table 
-            	[y expr=\coordindex, x=kids, col sep=comma] {\spm};
-            \addplot[fill=cyan!95!blue!70!white, draw opacity=0] table 
-            	[y expr=\coordindex, x=adults, col sep=comma] {\spm};
-            \addplot[fill=blue!80!purple, draw opacity=0] table 
-            	[y expr=\coordindex, x=elderly, col sep=comma] {\spm};
-            \legend{Under 18, 18 to 64, 65 or older}
-        \end{axis}
-        \begin{axis}[xmin=-31, xmax=7.5, ymin=-0.5, 
-            ymax=17.5, enlarge y limits={0.02}, enlarge x limits={0.02}, xticklabels=\empty,
-            width=10.4cm, height=10.0cm, ymajorgrids=false, yticklabels=\empty,
-			y axis line style={opacity=0}, x axis line style={opacity=0}, ]
-            \addplot[scatter, no marks, draw=none, nodes near coords*={\Label},
-            	nodes near coords align={horizontal},
-        		visualization depends on={value \thisrow{label} \as \Label}] table 		
-        		[x=xloc,y=yloc,col sep=comma] {data/spmtbl21.csv};
-        \end{axis}
-    \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl21.csv}
+\hspace{3mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \tydateaxisticks ytick={-4, -2, 0, 2, 4, 6, 8}, 
+		height=6.5cm, width=12.9cm, ymax=7.5, enlarge x limits={0.01}, 
+		yticklabel style={text width=1.2em}, clip=false,
+        xticklabel={`\short{\year}}, legend cell align={left},
+		legend style={legend columns=2, at={(0.53, 0.98)}}]
+	\rbar
+	\ctsbar{blue!85!black}{date}{core_goods}{data/cpi_decomp.csv}{2.4pt}
+	\ctsbar{green!60!black}{date}{core_services}{data/cpi_decomp.csv}{2.4pt}
+	\ctsbar{cyan!50!white}{date}{shelter}{data/cpi_decomp.csv}{2.4pt}
+	\ctsbar{orange!80!red}{date}{food_energy}{data/cpi_decomp.csv}{2.4pt}
+	\legend{Core Goods, Core Services ex. Shelter, Shelter, Food \& Energy};
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics, Author's Calculations} \hfill \tbllink{cpi_decomp.csv}
+\vspace{2mm}
+
+\subsubsection*{Relative Prices}
+\small Some prices increase faster or slower than others. Additionally, the basket of goods used to calculate the CPI is based on average spending patterns across individuals. At a given point, individuals may dedicate a large share of spending to a certain categories or have no expenses at all in a category. For example, day care costs are paid generally only for a few years of a child's life and only some households contain day-care-age children. But within those households, day care is a large share of overall spending. 
+
+One-year inflation rates for different categories of goods and services, including some smaller categories, are captured in the following section and table. The table also shows cumulative price changes since February 2020, the last month of data before the COVID-19 pandemic shutdown in the US. Additionally, the weight that a category has in the overall index--the category's share of the basket of goods and services used to calculate the CPI--is included as the last column in the table. This weight comes from each category's share of overall consumer spending during the most recent reference period, and is updated by changes in prices since the reference period. 
 \end{minipage}
 \newpage
 \printindex

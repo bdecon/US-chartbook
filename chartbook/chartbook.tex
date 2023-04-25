@@ -4789,7 +4789,7 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \begin{minipage}{0.76\textwidth}
 \normalsize \textbf{International Trade}\\
-\footnotesize{\textit{millions of US dollars, seasonally adjusted}\\
+\footnotesize{\textit{millions of US dollars, seasonally adjusted \hspace{26mm} monthly average}\\
 \hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.6pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.6}
 \begin{tabular}{p{22mm} R{14mm} R{14mm} R{14mm} R{14mm} R{14mm} R{14mm}} % 
@@ -7951,7 +7951,7 @@ The FOMC cut \href{https://www.federalreserve.gov/releases/h15/}{interest rates}
 In March 2022, the FOMC raised the base interest rate by 25 basis points. In May 2022, the FOMC raised the base interest rate by another 25 basis points. In June, July, September and November 2022, the FOMC raised rates by 75 basis points, in each meeting, followed by a 50 basis point increase in December, and a 25 basis point increase in February and March 2023. \input{text/rates_ff.txt}
 \vspace{2mm}
 
-\normalsize \textbf{Effective Federal Funds Rate}\\
+\normalsize \textbf{Federal Funds Rate}\\
 \footnotesize{\textit{percent, monthly average except for latest value }}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
@@ -7969,7 +7969,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 		(axis description cs: 0.925, 0.9){\scriptsize \color{purple}\textbf{SEP}};
 	\input{text/rates_ff_proj_node.txt}
 	\input{text/rates_ff_proj_date.txt}
-	\absnode{{1992-01-01}}{7.5}{\footnotesize \color{blue!60!black}\textbf{Fed Funds Rate}}
+	\absnode{{1992-01-01}}{7.8}{\footnotesize \color{blue!60!black}\textbf{Effective}\\\footnotesize \color{blue!60!black}\textbf{Fed Funds Rate}}
 	\absnode{{2015-06-01}}{-1.8}{\scriptsize \color{cyan!80!white}\textbf{Modified}\\\scriptsize \color{cyan!80!white}\textbf{Taylor Rule}}
 	\end{axis}
 \end{tikzpicture}\\
@@ -8454,6 +8454,7 @@ Inflation is typically calculated as the 12-month percent change in the price in
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{cpi_comp.csv}
 \end{minipage}
 \newpage
+\vspace*{-6mm}
 \begin{minipage}{0.76\textwidth}
 \index{prices!consumer price index}
 \small The prices of some items are more volatile than others. Food and energy prices, for example, are sometimes separated from the rest of the CPI basket, which is referred to as the \textit{core}, because swings in food and energy prices are larger and more frequent. 
@@ -8464,23 +8465,26 @@ Core inflation includes core goods, core services other than shelter, and shelte
 \vspace{1mm}
 
 \normalsize \textbf{CPI Decomposition}\\
-\footnotesize{\textit{contribution to one-year change in CPI-U, percentage points}}\\
-\hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{contribution to one-year change in CPI-U, percentage points}}
+\vspace{4.5cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \tydateaxisticks ytick={-4, -2, 0, 2, 4, 6, 8}, 
-		height=6.2cm, width=11.8cm, enlarge x limits={0.01}, 
-		yticklabel style={text width=1.2em},
+		height=6.5cm, width=12.9cm, ymax=7.5, enlarge x limits={0.01}, 
+		yticklabel style={text width=1.2em}, clip=false,
         xticklabel={`\short{\year}}, legend cell align={left},
-		legend style={legend columns=2, at={(0.54, 0.99)}}]
-	\rbars
-	\ctsbar{blue!85!black}{date}{core_goods}{data/cpi_decomp.csv}{2.0pt}
-	\ctsbar{green!60!black}{date}{core_services}{data/cpi_decomp.csv}{2.0pt}
-	\ctsbar{cyan!50!white}{date}{shelter}{data/cpi_decomp.csv}{2.0pt}
-	\ctsbar{orange!80!red}{date}{food_energy}{data/cpi_decomp.csv}{2.0pt}
+		legend style={legend columns=2, at={(0.53, 0.98)}}]
+	\rbar
+	\ctsbar{blue!85!black}{date}{core_goods}{data/cpi_decomp.csv}{2.4pt}
+	\ctsbar{green!60!black}{date}{core_services}{data/cpi_decomp.csv}{2.4pt}
+	\ctsbar{cyan!50!white}{date}{shelter}{data/cpi_decomp.csv}{2.4pt}
+	\ctsbar{orange!80!red}{date}{food_energy}{data/cpi_decomp.csv}{2.4pt}
 	\legend{Core Goods, Core Services ex. Shelter, Shelter, Food \& Energy};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics, Author's Calculations} \hfill \tbllink{cpi_decomp.csv}
-\vspace{4mm}
+\vspace{2mm}
 
 \subsubsection*{Relative Prices}
 \small Some prices increase faster or slower than others. Additionally, the basket of goods used to calculate the CPI is based on average spending patterns across individuals. At a given point, individuals may dedicate a large share of spending to a certain categories or have no expenses at all in a category. For example, day care costs are paid generally only for a few years of a child's life and only some households contain day-care-age children. But within those households, day care is a large share of overall spending. 
