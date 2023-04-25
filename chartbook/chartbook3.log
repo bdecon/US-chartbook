@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Arch Linux)  (format=lualatex 2022.11.17)  18 APR 2023 18:19
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Arch Linux)  (format=lualatex 2022.11.17)  25 APR 2023 19:11
  restricted system commands enabled.
 **chartbook3.tex
 (./chartbook3.tex
@@ -1731,7 +1731,7 @@ PGFPlots: reading {data/rs_comp.csv}
 PGFPlots: reading {data/ahe_ind.csv}
 PGFPlots: reading {data/poor.csv}
 PGFPlots: reading {data/poor2.csv}
-PGFPlots: reading {data/spmtbl20.csv}
+PGFPlots: reading {data/spmtbl21.csv}
 PGFPlots: reading {data/occs.csv}
 PGFPlots: reading {data/empgroups.csv}
 PGFPlots: reading {data/empgroups2.csv}
@@ -2037,18 +2037,21 @@ PGFPlots: reading {data/icsa.csv}
  (./text/icsa_node.txt)
 LaTeX Font Info:    Font shape `TU/Lato(0)/m/n' will be
 (Font)              scaled to size 7.0pt on input line 504.
- (./text/icsa.txt)
+
+Overfull \hbox (5.33432pt too wide) in paragraph at lines 493--507
+[]|  [] 
+ []
+
+(./text/icsa.txt)
 Package pgfplots info on input line 530: dateplot: setting 'date ZERO={2023-03-
 31}' for this axis.
 Package pgfplots info on input line 530: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/ccsa.csv}
-
-(./text/ccsa_node.txt) (./text/ccsa.txt) (./text/ccsa_alt.txt)
+ (./text/ccsa_node.txt) (./text/ccsa.txt) (./text/ccsa_alt.txt)
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 550.
-
-(./data/jobless_claims.tex) [3] (./text/icnsa.txt) (./text/ccnsa.txt)
+ (./data/jobless_claims.tex) [3] (./text/icnsa.txt) (./text/ccnsa.txt)
 Package pgfplots info on input line 574: dateplot: setting 'date ZERO={2018-01-
 01}' for this axis.
 Package pgfplots info on input line 574: Using 'lua backend=false' for axis: x 
@@ -2061,7 +2064,8 @@ Package pgfplots info on input line 592: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/fed_uic.csv}
 PGFPlots: reading {data/ccnsa.csv}
- [4]
+
+[4]
 Package pgfplots info on input line 633: Using 'lua backend=false' for plot 0 (
 type 'pgfplothandlerlineto'): LUA does not support xtick=data (yet).
 PGFPlots: reading {data/yc.csv}
@@ -2071,8 +2075,7 @@ PGFPlots: reading {data/yc.csv}
 Package pgfplots info on input line 637: Using 'lua backend=false' for plot 2 (
 type 'pgfplothandlerlineto'): LUA does not support xtick=data (yet).
 PGFPlots: reading {data/yc.csv}
-
-(./text/yc_date.txt) (./text/yc_inversion.txt) (./text/spread_basic.txt)
+ (./text/yc_date.txt) (./text/yc_inversion.txt) (./text/spread_basic.txt)
 Package pgfplots info on input line 664: dateplot: setting 'date ZERO={2023-03-
 31}' for this axis.
 Package pgfplots info on input line 664: Using 'lua backend=false' for axis: x 
@@ -2343,22 +2346,203 @@ Package pgfplots info on input line 909: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 PGFPlots: reading {data/tradelt.csv}
 (./text/ballt.txt) (./text/tradeltlevels.txt) (./data/trade_mo_summary.tex)
-[11] (./chartbook3.ind) [12] (./chartbook3.aux)
+[11] (./text/union.txt)
+Package pgfplots info on input line 950: dateplot: setting 'date ZERO={2023-03-
+31}' for this axis.
+Package pgfplots info on input line 950: Using 'lua backend=false' for axis: x 
+coord trafo unsupported.
+PGFPlots: reading {data/union.csv}
+PGFPlots: reading {data/union.csv}
+ (./text/union_nodes.txt)
+LaTeX Font Info:    Font shape `TU/Lato(0)/b/n' will be
+(Font)              scaled to size 8.0pt on input line 959.
+Package pgfplots info on input line 986: Using 'lua backend=false' for plot 0 (
+type 'pgfplothandlerxbar'): LUA does not support stacked plots (yet).
+Package pgfplots info on input line 986: Using 'lua backend=false' for plot 0 (
+type 'pgfplothandlerxbar'): LUA does not support xtick=data (yet).
+Package pgfplots info on input line 988: Using 'lua backend=false' for plot 1 (
+type 'pgfplothandlerxbar'): LUA does not support stacked plots (yet).
+Package pgfplots info on input line 988: Using 'lua backend=false' for plot 1 (
+type 'pgfplothandlerxbar'): LUA does not support xtick=data (yet).
+Package pgfplots info on input line 991: Using 'lua backend=false' for plot 2 (
+type 'pgfplothandlerdiscard'): LUA does not support xtick=data (yet).
+Package pgfplots info on input line 994: Using 'lua backend=false' for plot 3 (
+type 'pgfplothandlerdiscard'): LUA does not support xtick=data (yet).
+Package pgfplots info on input line 995: Using 'lua backend=false' for plot 4 (
+type 'pgfplothandlerdiscard'): LUA does not support xtick=data (yet).
+ (./text/union_yrdt.txt)
+(./text/union_ltdt.txt) (./text/union_ind.txt) [12] (./text/epop_text2.txt)
+Package pgfplots info on input line 1022: dateplot: setting 'date ZERO={2023-03
+-31}' for this axis.
+Package pgfplots info on input line 1022: Using 'lua backend=false' for axis: x
+ coord trafo unsupported.
+PGFPlots: reading {data/epop.csv}
+
+(./text/epop_node2.txt) (./text/epop_text.txt)
+Package pgfplots info on input line 1042: dateplot: setting 'date ZERO={2023-03
+-31}' for this axis.
+Package pgfplots info on input line 1042: Using 'lua backend=false' for axis: x
+ coord trafo unsupported.
+PGFPlots: reading {data/epop.csv}
+ (./text/epop_node.txt) [13]
+Package pgfplots info on input line 1070: dateplot: setting 'date ZERO={2007-10
+-01}' for this axis.
+Package pgfplots info on input line 1070: Using 'lua backend=false' for axis: x
+ coord trafo unsupported.
+PGFPlots: reading {data/dis_emp_rate.csv}
+PGFPlots: reading {data/dis_emp_rate.csv}
+
+(./text/dis_emp_nodes.txt) [14] (./text/asec_ftfy_tot.txt)
+(./text/acs_ftfy_text.txt) (./text/acs_ftfy_year.txt) (./data/acs_emp_map.pgf
+luaotfload | aux : font no 96 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 97 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 98 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 99 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: Font family 'Lato(1)' created for font 'Lato' with
+(fontspec)             options [Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"Lato:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"Lato/B:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"Lato/I:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"Lato/BI:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
+)
+Overfull \hbox (3.60994pt too wide) in paragraph at lines 1096--1097
+[]  [] 
+ []
+
+(./text/acs_ftfy.txt
+LaTeX Font Info:    Font shape `TU/Lato(0)/b/n' will be
+(Font)              scaled to size 7.0pt on input line 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--12
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 13--1105
+
+ []
+
+[15]
+Package pgfplots info on input line 1139: Using 'lua backend=false' for axis: s
+tacked plots unsupported (yet).
+
+Underfull \hbox (badness 5161) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Med-i-cal ex-penses[]
+ []
+
+
+Underfull \hbox (badness 7814) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Work ex-penses[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 FICA[]
+ []
+
+
+Underfull \hbox (badness 4072) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Fed-eral in-come tax[]
+ []
+
+
+Underfull \hbox (badness 4479) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Child sup-port paid[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1147
+ [][][]  \TU/Lato(0)/b/n/7 Ad-di-tions:[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 WIC[]
+ []
+
+
+Underfull \hbox (badness 1454) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Work-ers’ com-pen-sa-tion[]
+ []
+
+
+Underfull \hbox (badness 6047) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Util-ity as-sis-tance[]
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 TANF/gen-eral as-sis-tance[]
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Child sup-port re-ceived[]
+ []
+
+
+Underfull \hbox (badness 4954) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Hous-ing sub-si-dies[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 SSI[]
+ []
+
+
+Underfull \hbox (badness 1430) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 SNAP and school lunch[]
+ []
+
+
+Underfull \hbox (badness 1895) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 Re-fund-able tax cred-its[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1147
+ [][][]\TU/Lato(0)/m/n/7 So-cial Se-cu-rity[]
+ []
+
+Package pgfplots info on input line 1155: Using 'lua backend=false' for plot 0 
+(type 'pgfplothandlerlineto'): LUA does not support 'visualization depends on' 
+(yet).
+PGFPlots: reading {data/spmtbl21.csv}
+[16] (./chartbook3.ind) [17] (./chartbook3.aux)
 Package rerunfilecheck Info: File `chartbook3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 )
 
 Here is how much of LuaTeX's memory you used:
- 44234 strings out of 477762
- 195459,1977958 words of node,token memory allocated
+ 44758 strings out of 477762
+ 596511,2373549 words of node,token memory allocated
  551 words of node memory still in use:
    5 hlist, 1 vlist, 1 rule, 1 local_par, 4 glue, 4 kern, 1 penalty, 3 glyph, 9 
 attribute, 58 glue_spec, 9 attribute_list, 2 write, 2 pdf_action nodes
-   avail lists: 1:16,2:12436,3:9331,4:1011,5:1284,6:616,7:10906,8:111,9:4644,10:
-14,11:396
- 62850 multiletter control sequences out of 65536+600000
- 88 fonts using 21862975 bytes
- 115i,20n,111p,2115b,2493s stack positions out of 5000i,500n,10000p,200000b,80000s
+   avail lists: 1:14,2:71665,3:71459,4:1158,5:1284,6:616,7:10906,8:111,9:4644,10
+:17,11:440
+ 63192 multiletter control sequences out of 65536+600000
+ 102 fonts using 28659631 bytes
+ 115i,20n,111p,2115b,3823s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 warning  (pdf backend): unreferenced destination with name 'index'
 
@@ -2381,8 +2565,6 @@ warning  (pdf backend): unreferenced destination with name 'capint'
 warning  (pdf backend): unreferenced destination with name 'capeq'
 
 warning  (pdf backend): unreferenced destination with name 'cap'
-
-warning  (pdf backend): unreferenced destination with name 'labun'
 
 warning  (pdf backend): unreferenced destination with name 'labprod'
 
@@ -2461,10 +2643,10 @@ warning  (pdf backend): unreferenced destination with name 'oea'
 </usr/share/texmf-dist/fonts/opentype/public/fontawesome5/FontAwesome5Free-Solid
 -900.otf></usr/share/fonts/TTF/Lato-Italic.ttf></usr/share/fonts/TTF/Lato-Regula
 r.ttf></usr/share/fonts/TTF/Lato-Bold.ttf>
-Output written on chartbook3.pdf (12 pages, 167148 bytes).
+Output written on chartbook3.pdf (17 pages, 403482 bytes).
 
-PDF statistics: 281 PDF objects out of 1000 (max. 8388607)
- 243 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 131072)
+PDF statistics: 328 PDF objects out of 1000 (max. 8388607)
+ 285 compressed objects within 3 object streams
+ 71 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

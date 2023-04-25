@@ -286,7 +286,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/ahe_ind.csv}\ahe
 	\pgfplotstableread[header=true, col sep=comma]{data/poor.csv}\poor
 	\pgfplotstableread[header=true, col sep=comma]{data/poor2.csv}\pvrt
-	\pgfplotstableread[header=true, col sep=comma]{data/spmtbl20.csv}\spm
+	\pgfplotstableread[header=true, col sep=comma]{data/spmtbl21.csv}\spm
 	\pgfplotstableread[header=true, col sep=semicolon]{data/occs.csv}\occ
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
 	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
@@ -2946,7 +2946,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{wealth!household} \index{households!wealth}
-\small \textbf{Changes in net worth} come mostly from changes in the value of assets and other holding gains (see\cbox{cyan!40!white}), but also from saving of income, and decisions about how much to spend. Each period, households spend a portion of their income. The saved portion of income, after consumer spending and spending to cover depreciation of households assets, is considered net investment and increases net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. 
+\small \textbf{Changes in household net worth} come mostly from changes in the value of assets and other holding gains (see\cbox{cyan!40!white}), but also from saving of income, and decisions about how much to spend. Each period, households spend a portion of their income. The saved portion of income, after consumer spending and spending to cover depreciation of households assets, is considered net investment and increases net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. 
 
 In the chart, income invested at the historical-average rate (see\cbox{magenta!85!white}) is visually separated from investment that is above or below trend (see\cbox{violet}). The separation distinguishes changes in disposable personal income from changes in decisions about how to use that income. Separately, changes in data sources or from natural disasters are identified as other volume changes (see\cbox{cyan!70!blue}).
 \vspace{2mm}
@@ -3412,21 +3412,21 @@ By age, market income (see\cbox{blue}) leaves the elderly particularly vulnerabl
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{poverty}
-\small The Census Bureau \href{https://www.census.gov/library/publications/2021/demo/p60-275.html}{report} \textbf{the number of people taken out of poverty by various programs}, along with how many people are put in poverty by various expenses. In 2020, Social Security payments lift income above the poverty line for 26.5 million people, by far the most effective program for reducing poverty.
+\small The Census Bureau \href{https://www.census.gov/library/publications/2021/demo/p60-275.html}{report} \textbf{the number of people taken out of poverty by various programs}, along with how many people are put in poverty by various expenses. In 2021, Social Security payments lift income above the poverty line for 26.3 million people, by far the most effective program for reducing poverty.
 
-Economic impact payments, for example from the CARES act, prevented 11.7 million people from being in poverty. Unemployment benefits removed 5.5 million people from poverty. Refundable tax credits, which often fail to reach the poorest people, would remove 5.3 million people from poverty if participation rates were 100 percent. 
+The third round of pandemic-related economic stimulus payments prevented 8.9 million people from being in poverty. Unemployment benefits removed 2.3 million people from poverty. Refundable tax credits, which include the expanded child tax credit, remove 9.6 million people from poverty, including 4.9 million children.
 
-Several elements add to the number of people in poverty, medical expenses are the most significant, and cause the disposable income of five million people to fall below the poverty line. Work expenses additionally put two and a half million people in poverty.
+Several elements add to the number of people in poverty. Medical expenses are the most significant, and cause the disposable income of 4.6 million people to fall below the poverty line. Work expenses additionally put 2.2 million people in poverty.
 
 \vspace{5mm}
 
 \normalsize \textbf{Effect of Individual Elements on Poverty Headcount}\\
-\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2020}}\\
+\footnotesize{\textit{individual element effect on number of people in poverty, millions, 2021}}\\
 \vspace{0.5mm}
 \hspace*{-12mm}  \begin{tikzpicture}
 	\begin{axis}[clip=false,
             xbar stacked, \bbar{x}{0},
-            xmin=-31, xmax=7.5, ymin=-0.5, ymax=19.5,
+            xmin=-31, xmax=7.5, ymin=-0.5, ymax=17.5,
             stack negative=separate, ymajorgrids=false,
             yticklabels from table={\spm}{name},
 			y axis line style={opacity=0},   
@@ -3442,7 +3442,7 @@ Several elements add to the number of people in poverty, medical expenses are th
                 grid style={black},
                 xticklabel=\empty},
             enlarge y limits={0.02}, enlarge x limits={0.02},
-            width=10.4cm, height=11.6cm,
+            width=10.4cm, height=10.0cm,
             \barylab{3.8cm}{1.5ex}]
             \addplot[fill=green!75!blue!75!black, draw opacity=0] table 
             	[y expr=\coordindex, x=kids, col sep=comma] {\spm};
@@ -3453,16 +3453,16 @@ Several elements add to the number of people in poverty, medical expenses are th
             \legend{Under 18, 18 to 64, 65 or older}
         \end{axis}
         \begin{axis}[xmin=-31, xmax=7.5, ymin=-0.5, 
-            ymax=19.5, enlarge y limits={0.02}, enlarge x limits={0.02}, xticklabels=\empty,
-            width=10.4cm, height=11.6cm, ymajorgrids=false, yticklabels=\empty,
+            ymax=17.5, enlarge y limits={0.02}, enlarge x limits={0.02}, xticklabels=\empty,
+            width=10.4cm, height=10.0cm, ymajorgrids=false, yticklabels=\empty,
 			y axis line style={opacity=0}, x axis line style={opacity=0}, ]
             \addplot[scatter, no marks, draw=none, nodes near coords*={\Label},
             	nodes near coords align={horizontal},
         		visualization depends on={value \thisrow{label} \as \Label}] table 		
-        		[x=xloc,y=yloc,col sep=comma] {data/spmtbl20.csv};
+        		[x=xloc,y=yloc,col sep=comma] {data/spmtbl21.csv};
         \end{axis}
     \end{tikzpicture}\\
-\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl20.csv}
+\footnotesize{Source: Census Bureau Supplemental Poverty Measure} \hfill \tbllink{spmtbl21.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{poverty}
@@ -5580,36 +5580,63 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \small Summarizing employment changes by grouping industries can have the adverse effect of hiding changes within these industry groups. Additionally, industry groups can be vague or overly broad. The government and business chartbook sections contain more information on industry-level employment trends. 
 \end{minipage}
 \newpage
+\vspace*{-6mm}
 \begin{minipage}{0.76\textwidth} \index{employment!employment rate}
 \subsubsection*{Employment Rates} 
 \vspace{-0.5mm}
-\small The employed share of those ages 25 to 54 is an important measure of labor market utilization. In a tight labor market, the age group is employed at a very high rate. \input{text/epop_text.txt} 
+\small The \textbf{employment rate}, or the employment-population ratio, is the share of a group that is employed. Employment rates can provide useful insight into macroeconomic conditions. A high employment rate means available labor are being utilized in the productive process. All else equal, higher employment results in both increased supply, as the result of more labor being used for production, and increased demand, as the result of higher levels of income.
 
-\normalsize \textbf{Age 25 to 54 Employment Rate}\\
-\footnotesize{\textit{employed share of age 25 to 54 population}}\\
+Economists are interested in both the overall employment rate and in the employment rates for individual groups of people. The overall employment rate provides insight into the overall utilization of labor of a society and is affected by demographic and macroeconomic factors. Employment rates for individual groups can tell us about macroeconomic conditions and even tell us about differences in local economic conditions. 
+
+\input{text/epop_text2.txt} 
+\vspace{1mm}
+
+\normalsize \textbf{Employment Rate, Age 16 and Older}\\
+\footnotesize{\textit{employed share of age 16 and older population, percent, seasonally adjusted}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={70, 75, 80}, 
+	\begin{axis}[\dateaxisticks ytick={50, 55, 60, 65, 70}, 
 		yticklabel style={text width=1.0em}, 
-		width=12.2cm, enlarge y limits={0.04},
-		xticklabel={`\short{\year}}, clip=false, height=4.6cm]
+		width=12.2cm, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
+	\rbars
+	\stdline{green!60!black}{date}{EPOP}{data/epop.csv}
+	\input{text/epop_node2.txt}
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}
+\vspace{3mm} \index{employment!prime-age}
+
+\small Importantly, a larger share of the US population is of retirement age, reducing the overall US employment rate. To examine macroeconomic conditions separate from demographic developments, BLS \href{LNS12300060}{report} the employment rate for a more-narrow age group, specifically, those age 25 to 54. This group has the highest employment rate and are sometimes considered the ``prime'' age for labor market purposes. 
+
+The \textbf{age 25 to 54 employment rate} is an important measure of labor market utilization. In a tight labor market, the age group is employed at a very high rate. \input{text/epop_text.txt} 
+\vspace{1mm}
+
+\normalsize \textbf{Employment Rate, Age 25 to 54}\\
+\footnotesize{\textit{employed share of age 25 to 54 population, percent, seasonally adjusted}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\dateaxisticks ytick={70, 75, 80}, 
+		yticklabel style={text width=1.0em}, 
+		width=12.2cm, enlarge y limits={0.1},
+		xticklabel={`\short{\year}}, clip=false, height=4.8cm]
 	\rbars
 	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
 	\input{text/epop_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}
-\vspace{1.5mm}
-
+\end{minipage}
+\newpage
+\begin{minipage}{0.76\textwidth} \index{employment!employment rate}
 \small The monthly jobs report describes employment at a given point in time, by asking about activities during a specific week of the previous month. To instead examine activities over a period of time, annual data on weeks worked per year and hours worked per week can be combined to identify the \textit{fully-employed}, or \textit{full-time, full-year workers}, who usually work 35 hours per week or more for 50 weeks per year or more. The Census Bureau \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-01.html#par_textimage_14}{report} \input{text/asec_ftfy_tot.txt}
 
 Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}The top ten and bottom ten commuter zones by fully-employed rate are listed below.
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.52\textwidth}
+\begin{minipage}{0.55\textwidth}
 \normalsize \textbf{Commuter Zone Fully-Employed Rate}\\
 \footnotesize{\textit{full-time, full-year worker share of population, \input{text/acs_ftfy_year.txt}}}\\
-\vspace{1mm}
+\vspace*{-6mm}
 
 \hspace{-11mm} \input{data/acs_emp_map.pgf}
 
@@ -5946,6 +5973,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 %\footnotesize{Source: Author's Calculation from CPS} \hfill \tbllink{occs.csv}
 %\end{minipage}
 \newpage
+\vspace*{-7mm}
 \begin{minipage}{0.76\textwidth} 
 \subsection*{Unemployment}
 \index{unemployment!overview}
@@ -5987,12 +6015,12 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 
 \normalsize \textbf{Unemployment Rate}\\
 \footnotesize{\textit{unemployed share of labor force, percent, seasonally adjusted}}
-\vspace{2.9cm}
+\vspace{3.3cm}
 
 \hspace*{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10, 15, 20}, 
 		enlarge y limits={0.1}, yticklabel style={text width=1.0em},
-		xticklabel={`\short{\year}}, clip=false, height=4.9cm, ymin=1.4, ymax=17,
+		xticklabel={`\short{\year}}, clip=false, height=5.4cm, ymin=1.4, ymax=17,
 		legend style={fill=white, at={(0.52, 1.01)}}]
 	\rbars
 	\stdline{green!50!teal!60!black}{date}{Black}{data/unemp.csv}
@@ -6015,7 +6043,7 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 		   R{7.7mm} R{7.7mm} R{7.7mm} R{12.8mm} R{11.2mm}}
 			 \input data/unemp1.tex \hline
 		\end{tabular}}
-\vspace{-3mm}
+\vspace{-2mm}
 
 \footnotesize{Source: Bureau of Labor Statistics} \hspace{7.35cm} \tbllink{unemp.csv}
 \end{minipage}
