@@ -48,7 +48,7 @@ def bea_api_nipa(table_list, bea_key, freq='Q'):
 def bea_api_gdpstate(bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(2008, 2023)))
+    years = ','.join(map(str, range(2008, 2024)))
 
     api_results = []
 
@@ -74,7 +74,7 @@ def bea_api_gdpstate(bea_key):
     
 def bea_api_ita(ind_list, bea_key):
     ''' Return tables in table list for years in range'''
-    years = ','.join(map(str, range(1988, 2023)))
+    years = ','.join(map(str, range(1988, 2024)))
 
     api_results = []
 
