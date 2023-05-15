@@ -147,7 +147,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-05-15},
+		xmax={2023-05-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -167,7 +167,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-05-15},
+		xmax={2023-05-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -178,7 +178,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-05-15},
+		xmax={2023-05-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
@@ -188,7 +188,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2023-05-15},   
+		xmin={2018-01-01}, xmax={2023-05-31},   
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
 		yticklabel style={text width=1.0em},
@@ -198,7 +198,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-05-15}, max space between ticks=40,	    
+		xmax={2023-05-31}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
@@ -207,7 +207,7 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-05-15},
+		xmax={2023-05-31},
 		}
 		
 	% Settings for y label text in horizontal bar charts
@@ -5973,7 +5973,8 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 %\footnotesize{Source: Author's Calculation from CPS} \hfill \tbllink{occs.csv}
 %\end{minipage}
 \newpage
-\vspace*{-7mm}
+\vspace*{-10mm}
+
 \begin{minipage}{0.76\textwidth} 
 \subsection*{Unemployment}
 \index{unemployment!overview}
@@ -6035,10 +6036,10 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 
 \normalsize \textbf{Unemployment Measures}\\
 \footnotesize{\textit{seasonally adjusted, percent}}
-\vspace{-3mm}
+\vspace{-4mm}
 
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
-	{\renewcommand{\arraystretch}{1.52} \hspace*{-1mm}
+	{\renewcommand{\arraystretch}{1.49} \hspace*{-1mm}
 	\begin{tabular}{p{32mm} R{7.7mm} R{7.7mm} R{7.7mm} R{7.7mm}
 		   R{7.7mm} R{7.7mm} R{7.7mm} R{12.8mm} R{11.2mm}}
 			 \input data/unemp1.tex \hline
@@ -7969,7 +7970,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 		(axis description cs: 0.925, 0.9){\scriptsize \color{purple}\textbf{SEP}};
 	\input{text/rates_ff_proj_node.txt}
 	\input{text/rates_ff_proj_date.txt}
-	\absnode{{1992-01-01}}{8.0}{\footnotesize \color{blue!60!black}\textbf{Effective}\\\footnotesize \color{blue!60!black}\textbf{Fed Funds Rate}}
+	\absnode{{1992-01-01}}{8.2}{\footnotesize \color{blue!60!black}\textbf{Effective}\\\footnotesize \color{blue!60!black}\textbf{Fed Funds Rate}}
 	\absnode{{2015-06-01}}{-1.8}{\scriptsize \color{cyan!80!white}\textbf{Modified}\\\scriptsize \color{cyan!80!white}\textbf{Taylor Rule}}
 	\end{axis}
 \end{tikzpicture}\\
@@ -8170,7 +8171,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \footnotesize{\textit{percentage points}}\\
 \hspace*{-3mm} \begin{tikzpicture}
     \begin{groupplot}[group style={group size=2 by 1, horizontal sep=52pt,}]
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-1, 0, 1, 2, 3}, ymin=-1.8, ymax=2.3,
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-1, 0, 1, 2, 3}, ymin=-1.9, ymax=2.3,
     	yticklabel style={text width=1.2em}, 
      xticklabel={`\short{\year}},  height=5.6cm, width=5.9cm, clip=false]
     \rbar
@@ -8178,7 +8179,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 	\node[text width=3.8cm, anchor=west] at (axis description cs: 0, 0.95) 
 		{\small \color{blue!70!cyan!80!white}\textbf{10-Year - 3-Month}};
 	\input{text/spread_node.txt}
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-1, 0, 1, 2, 3}, ymin=-1.45, ymax=2.3,
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-1, 0, 1, 2, 3}, ymin=-1.9, ymax=2.3,
     	yticklabel style={text width=1.2em},
      xticklabel={`\short{\year}}, height=5.6cm, width=5.9cm, clip=false]
 	\rbar
