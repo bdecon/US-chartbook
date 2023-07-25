@@ -158,7 +158,27 @@ def nipa_series_codes(nipa_table):
 def growth_rate(series):
 	''' Return the annualized quarterly growth rate in percent'''
 	return ((((series.pct_change() + 1) ** 4) - 1) * 100)
+
+
+def growth_rate_monthly(series):
+	''' Return the annualized growth rate in percent for a monthly series'''
+	return ((((series.pct_change() + 1) ** 12) - 1) * 100)
 	
+
+def cagr(s, freq='Q'):
+    '''
+    Return compound annual growth rate for series
+    '''
+    if freq == 'Q':
+        p = 4
+    elif freq == 'M':
+        p = 12
+    elif freq == 'A':
+        p = 1
+    n = len(s) - 1
+    r = ((s.iloc[-1] / s.iloc[0])**(p/n) - 1) * 100
+    return r
+		
     
 def growth_contrib(df, srs):
     '''Calculate df column contribution to srs growth'''
@@ -606,6 +626,13 @@ def node_adj(df):
             d[r.index[r.index.get_loc(t2.index[1]) - 1]] = - (g2/2)
             print('two sets of conflicting nodes')
         return d
+    if len(df.columns) == 1:
+        name = r.index[0]
+        if df[name].iloc[-1] > (df[name].max() - u):
+            d[name] = -0.35
+        if df[name].iloc[-1] < (df[name].min() + u):
+            d[name] = 0.35
+        return d
 
 
 def val_inc_pp(val, threshold=0.1):
@@ -796,19 +823,21 @@ def jolts_codes(d, code_text, ind, value='i'):
     
 def value_text(value, style='increase', ptype='percent', adj=None, 
                time_str='', digits=1, threshold=0, num_txt=True,
-               casual=False, obj='singular', dollar=False):
+               casual=False, obj='singular', dollar=False, 
+               round_adj=False):
     '''
     RETURN TEXT STRING FOR SPECIFIED FLOAT VALUE
     
     OPTIONS
     style: increase, increase_of, contribution, contribution to,
            contribution_of, contribution_end
-    ptype: percent, pp, None
+    ptype: percent, pp, None, million, etc
     adj: sa, annual, annualized, saa, saar, total, average
     time_str: blank unless specified directly, for example "one-year"
     num_txt: replace round numbers with text, for example: 9.0 -> nine
     casual: replaces certain words: decreased -> fell, for example
     obj: switch to "plural" if the object is plural, e.g. prices
+    round_adj: adds "nearly" to values below the rounded value
     
     '''
     text = 'Error, options not available'
@@ -821,15 +850,18 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                '6.0': 'six', '7.0': 'seven', 
                '8.0': 'eight', '9.0': 'nine'}
     if (num_txt == True) & (val in numbers.keys()):
-        val = numbers[val]
+        val = numbers[val] 
     indef = 'an' if ((val[0] == '8') | (val[0:3] in ['11.', '11,', '18.', '18,'])) else 'a'
     neg = True if value < 0 else False
     insig = True if abv < threshold else False
     plural = 's' if ((abv > 1.045) & (style[-3:] != 'end')) else ''
-    ptxtd = {None: '', 'percent': ' percent', 'pp': f' percentage point{plural}',
+    ptxtd = {None: '', 'none': '', 'None': '', '': '', 'percent': ' percent', 
+             'pp': f' percentage point{plural}',
              'trillion': ' trillion', 'billion': ' billion', 'million': ' million', 
              'thousand': ' thousand', 'units': ' units'}
     ptxt = ptxtd[ptype]
+    rnd_adj = ('' if ((round_adj == False) | (abv >= round(abv, digits))) 
+    		   else 'nearly ' if casual == False else 'almost ')
     
     if style in ['increase', 'increase_by']:
         atxtd = {None: ' by ', 'sa': ' at a seasonally-adjusted rate of ', 
@@ -931,7 +963,15 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             text = 'in line with'
             
     elif style == 'plain':
-    	text = f'{val2}{ptxt}'
+    	val3 = val
+    	pn = '' if neg == False else 'negative '
+    	# Handle rounded values
+    	num_abv = {k[0]: v for k, v in numbers.items()}
+    	if (num_txt == True) & (val in num_abv.keys()):
+        	val3 = num_abv[val] 
+        	if float(val) > value:
+        		rnd_adj = 'nearly ' if casual == False else 'almost '
+    	text = f'{rnd_adj}{pn}{val3}{ptxt}'
     
     elif style in ['equivalent', 'eq']:
     	atxt = ' of GDP' if adj in ['gdp', 'GDP'] else ''
