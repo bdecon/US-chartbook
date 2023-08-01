@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Arch Linux)  (format=lualatex 2023.7.18)  28 JUL 2023 12:21
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Arch Linux)  (format=lualatex 2023.7.18)  31 JUL 2023 20:32
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -2306,8 +2306,16 @@ Package pgfplots info on input line 837: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 Package pgfplots info on input line 838: dateplot: setting 'date ZERO={2022-07-
 01}' for this axis.
- (./text/gdpnow_node.txt) (./text/gdp_gr2.txt)
-(./text/gdpnow.txt) [8] (./text/recessions.txt) (./data/recession.tex)
+ (./text/gdpnow_node.txt)
+LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
+(Font)              scaled to size 7.0pt on input line 840.
+
+Overfull \hbox (22.56337pt too wide) in paragraph at lines 815--844
+|  [] 
+ []
+
+(./text/gdp_gr2.txt) (./text/gdpnow.txt) [8] (./text/recessions.txt)
+(./data/recession.tex)
 Package pgfplots info on input line 888: dateplot: setting 'date ZERO={2023-07-
 31}' for this axis.
 Package pgfplots info on input line 888: Using 'lua backend=false' for axis: x 
@@ -2315,8 +2323,7 @@ coord trafo unsupported.
 PGFPlots: reading {data/sahm_bar.csv}
 PGFPlots: reading {data/sahm.csv}
 PGFPlots: reading {data/sahm_marks.csv}
-
-(./text/sahm_bar_node.txt) [9] (./text/gdp_exp_basic.txt)
+ (./text/sahm_bar_node.txt) [9] (./text/gdp_exp_basic.txt)
 Package pgfplots info on input line 925: dateplot: setting 'date ZERO={2023-07-
 31}' for this axis.
 Package pgfplots info on input line 925: Using 'lua backend=false' for axis: x 
@@ -2325,8 +2332,7 @@ PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
 PGFPlots: reading {data/comp.csv}
-
-(./text/gdi_growth_comp.txt)
+ (./text/gdi_growth_comp.txt)
 Package pgfplots info on input line 951: dateplot: setting 'date ZERO={2023-07-
 31}' for this axis.
 Package pgfplots info on input line 951: Using 'lua backend=false' for axis: x 
@@ -2361,13 +2367,13 @@ PGFPlots: reading {data/gdpjobs.csv}
  [12
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./data/gdptable.tex) [13] (./data/gdp_map.pgf
-luaotfload | aux : font no 102 (nil) does not define feature smcp for script lat
-n with language dflt
 luaotfload | aux : font no 103 (nil) does not define feature smcp for script lat
 n with language dflt
 luaotfload | aux : font no 104 (nil) does not define feature smcp for script lat
 n with language dflt
 luaotfload | aux : font no 105 (nil) does not define feature smcp for script lat
+n with language dflt
+luaotfload | aux : font no 106 (nil) does not define feature smcp for script lat
 n with language dflt
 
 Package fontspec Info: Font family 'Lato(1)' created for font 'Lato' with
@@ -5541,8 +5547,6 @@ PGFPlots: reading {data/indprogr.csv}
 PGFPlots: reading {data/indprogr.csv}
 PGFPlots: reading {data/indprogr.csv}
 PGFPlots: reading {data/indprogr.csv}
-LaTeX Font Info:    Font shape `TU/Lato(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 3919.
 Package pgfplots info on input line 3927: dateplot: setting 'date ZERO={2023-07
 -31}' for this axis.
 Package pgfplots info on input line 3927: Using 'lua backend=false' for axis: x
@@ -11023,7 +11027,7 @@ NOTE: coordinate (2023-07-04,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 PGFPlots: reading {data/infumich.csv}
 (./text/infbreak_node.txt) (./text/infumich_node.txt)
-Overfull \hbox (2.8128pt too wide) in paragraph at lines 8645--8661
+Overfull \hbox (2.99153pt too wide) in paragraph at lines 8645--8661
 |  [] 
  []
 
@@ -12113,14 +12117,14 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 60286 strings out of 478285
- 932069,3417909 words of node,token memory allocated
+ 60292 strings out of 478285
+ 932065,3417909 words of node,token memory allocated
  628 words of node memory still in use:
    6 hlist, 1 vlist, 2 rule, 1 local_par, 4 glue, 3 kern, 1 penalty, 3 glyph, 10
  attribute, 70 glue_spec, 10 attribute_list, 2 write, 2 pdf_action nodes
-   avail lists: 1:13,2:144940,3:143710,4:4380,5:1281,6:852,7:12438,8:2,9:6655,10
+   avail lists: 1:15,2:144940,3:143710,4:4380,5:1281,6:852,7:12438,8:2,9:6655,10
 :26,11:684
- 69770 multiletter control sequences out of 65536+600000
+ 69776 multiletter control sequences out of 65536+600000
  119 fonts using 33196247 bytes
  115i,22n,111p,2554b,3969s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/opentype/google/roboto/RobotoSlab-Regular.otf></usr
@@ -12131,7 +12135,7 @@ Here is how much of LuaTeX's memory you used:
 r.ttf></usr/share/fonts/TTF/Lato-Bold.ttf></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on chartbook.pdf (162 pages, 3296565 bytes).
+Output written on chartbook.pdf (162 pages, 3297156 bytes).
 
 PDF statistics: 1871 PDF objects out of 2073 (max. 8388607)
  1645 compressed objects within 17 object streams
