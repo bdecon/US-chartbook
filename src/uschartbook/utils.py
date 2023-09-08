@@ -188,11 +188,13 @@ def growth_contrib(df, srs):
     return c.round(2)
     
     
-def growth_contrib_ann(df, srs):
+def growth_contrib_ann(df, srs, freq='Q'):
     '''Calculate df column contribution to srs growth'''
-    dft = df.diff(4)
+    freq_d = {'Q': 4, 'M': 12, 'A': 1}
+    freq_n = freq_d[freq]
+    dft = df.diff(freq_n)
     dft = dft.div(dft[srs], axis=0)
-    c = dft.multiply(df[srs].pct_change(4) * 100, axis=0)
+    c = dft.multiply(df[srs].pct_change(freq_n) * 100, axis=0)
     return c.round(2)
 
 
@@ -222,6 +224,7 @@ def dtxt(date):
 	     'qtr2': f'the {qtrs[date.quarter]} quarter of {date.year}',
 	     'qtr3': f'Q{date.quarter}',
 	     'qtr4': f'`{date.strftime("%y")} Q{date.quarter}',
+	     'qtr5': f'the {qtrs[date.quarter]} quarter',
 	     'year': f'{date.year}',
 	     'mon1': date.strftime('%B %Y'),
 	     'mon2': date.strftime('%b %Y'),
@@ -230,6 +233,7 @@ def dtxt(date):
 	     'mon5': date.strftime('%Y-%m'),
 	     'mon6': f'{date.strftime("%b")} `{date.strftime("%y")}',
 	     'mon7': f'{date.strftime("%b")} {date.strftime("%y")}',
+	     'mon8': f'{date.strftime("%b")} \n {date.strftime("%Y")}',
 	     'day1': date.strftime('%B %-d, %Y'),
 	     'day2': date.strftime('%b %-d, %Y'),
 	     'day3': date.strftime('%d'),
@@ -359,6 +363,7 @@ def series_info(s):
 
 def three_year_growth(data, series):
     '''Annualized growth rate over past three years'''
+    print('three_year_growth() to be removed in future version')
     return ((data[series].pct_change(36).iloc[-1] + 1)**(1/3)-1) * 100
 
 
@@ -477,9 +482,9 @@ def c_box(color, see=True):
 	return f'({s}\cbox{{{color}}})'
     
     
-def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
+def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
              anchor=None, digits=1, full_year=False, dollar=False,
-             colon=True, align='left', loc='end'):
+             colon=True, align='left', loc='end', size=1.0):
     '''
     Generate small dot and value text for end of line plot.
     Input is pandas series and color. Output is tex code. 
@@ -507,11 +512,13 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
     if date != None:
         if date.lower() not in ['month', 'mon', 'm', 'year', 'yr', 'y', 
         						'fy', 'day', 'd', 'ds', 'dayshort', 'short', 's',
-                                'quarter', 'qtr', 'q']:
+                                'quarter', 'qtr', 'q', 'qtrshort', 'qshort', 'qs']:
             print('Date should be month or quarter or year or short')
         yr = series.index[i].strftime('`%y')
         if full_year == True:
         	yr = series.index[i].strftime('%Y')
+        if date.lower() in ['qtrshort', 'qshort', 'qs']:
+            yr = series.index[i].strftime('%y')
         qtr = series.index[i].to_period('Q').strftime('Q%q')
         mo = series.index[i].strftime('%b')
         day = series.index[i].strftime('%d')
@@ -520,6 +527,8 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
             dt = f'\scriptsize {mo}\\\\ \scriptsize {yr}{col} \\\\ '
         elif date.lower() in ['quarter', 'qtr', 'q']:
             dt = f'\scriptsize {yr}\\\\ \scriptsize {qtr}{col} \\\\ '
+        elif date.lower() in ['qtrshort', 'qshort', 'qs']:
+            dt = f'\scriptsize {yr} \scriptsize {qtr}{col} \\\\ '
         elif date.lower() in ['year', 'yr', 'y']:
             dt = f'\scriptsize {yr}{col} \\\\ '
         elif date.lower() == 'fy':
@@ -559,8 +568,9 @@ def end_node(series, color, percent=False, date=None, offset=0, size=1.0,
     elif (offset == True) and (date == None):
         offset = 0
     offs = f'{offset}cm'
+    offx = f'{xoffset}cm'
     datetime = dtxt(series.index[i])['datetime']
-    text = (f'\\node[label={{[yshift={offs}, {anchor_opt}'+
+    text = (f'\\node[label={{[yshift={offs}, xshift={offx}, {anchor_opt}'+
             f'align={align}]0:{{{dt}\scriptsize {dol}{vtxt}{pct}}}}}, circle, '+
             f'{color}, fill, inner sep={size}pt] at '+
             f'(axis cs:{datetime}, {lt}) {{}};')
@@ -773,7 +783,11 @@ def inc_dec_percent(n, how='main', annualized=False):
         
         
 def compare_text(latest, previous, cutoffs):
-    '''Simple text based on difference between two numbers'''
+    '''
+    Simple text based on difference between two numbers.
+    Cutoffs should be list of three numbers that provide scale for 
+    how significant the difference is. 
+    '''
     direction = 'above' if latest - previous > 0 else 'below'
     size = abs(latest - previous)
     if type(cutoffs) not in [list, tuple] or len(cutoffs) != 3:
@@ -829,7 +843,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     RETURN TEXT STRING FOR SPECIFIED FLOAT VALUE
     
     OPTIONS
-    style: increase, increase_of, contribution, contribution to,
+    style: increase, increase_of, contribution, contribution_to,
            contribution_of, contribution_end
     ptype: percent, pp, None, million, etc
     adj: sa, annual, annualized, saa, saar, total, average
@@ -848,7 +862,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
                '4.0': 'four', '5.0': 'five', 
                '6.0': 'six', '7.0': 'seven', 
-               '8.0': 'eight', '9.0': 'nine'}
+               '8.0': 'eight', '9.0': 'nine',
+               '10.0': 'ten'}
     if (num_txt == True) & (val in numbers.keys()):
         val = numbers[val] 
     indef = 'an' if ((val[0] == '8') | (val[0:3] in ['11.', '11,', '18.', '18,'])) else 'a'
@@ -856,7 +871,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     insig = True if abv < threshold else False
     plural = 's' if ((abv > 1.045) & (style[-3:] != 'end')) else ''
     ptxtd = {None: '', 'none': '', 'None': '', '': '', 'percent': ' percent', 
-             'pp': f' percentage point{plural}',
+             'pp': f' percentage point{plural}', 'point': f' point{plural}',
              'trillion': ' trillion', 'billion': ' billion', 'million': ' million', 
              'thousand': ' thousand', 'units': ' units'}
     ptxt = ptxtd[ptype]
@@ -998,6 +1013,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                     .replace('contribution', 'addition')
                     .replace('decrease', 'fall')
                     .replace('subtraction', 'reduction')
+                    .replace('an increase of', 'growth of')
                     .replace('increase of', 'growth of')
                     .replace('decrease of', 'fall of'))
                     
