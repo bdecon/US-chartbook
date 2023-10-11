@@ -32,7 +32,7 @@ def bea_api_nipa(table_list, bea_key, freq='Q'):
         url = f'https://apps.bea.gov/api/data/?&UserID={bea_key}'\
               f'&method=GetData&datasetname=NIPA&TableName={table}'\
               f'&Frequency={freq}&Year={years}&ResultFormat=json'
-
+              
         r = requests.get(url)
 
         name, date = (r.json()['BEAAPI']['Results']['Notes'][0]['NoteText']
@@ -122,7 +122,7 @@ def nipa_df(nipa_table, series_list):
     '''Returns dataframe from table and series list'''
     data = {}
     for code in series_list:
-    	lineno = [i['LineNumber'] for i in nipa_table if (i['SeriesCode'] == code) & (i['TimePeriod'] in ['2016Q4', '2016'])]
+    	lineno = [i['LineNumber'] for i in nipa_table if (i['SeriesCode'] == code) & (i['TimePeriod'] in ['2016Q4', '2016', '1998Q4'])]
     	obs = [i['DataValue'] for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
     	index = [pd.to_datetime(i['TimePeriod']) for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
     	data[code] = (pd.Series(data=obs, index=index).sort_index().str.replace(',', '').astype(float))
@@ -238,7 +238,8 @@ def dtxt(date):
 	     'day2': date.strftime('%b %-d, %Y'),
 	     'day3': date.strftime('%d'),
 	     'day4': date.strftime('%B %-d'),
-	     'datetime': date.strftime('%Y-%m-%d')}	
+	     'datetime': date.strftime('%Y-%m-%d'),	
+	     'datetime2': date.strftime('%Y-%m-%d').replace('-08-', '-8-').replace('-09-', '-9-')}	
 	return d
 	
 
@@ -478,7 +479,7 @@ def c_line(color, see=True, paren=True):
 	
 def c_box(color, see=True):
 	'''Return (see []) for a given color'''
-	s = 'see ' if see == True else '\hspace{-1mm}'
+	s = 'see' if see == True else '\hspace{-1mm}'
 	return f'({s}\cbox{{{color}}})'
     
     
@@ -521,7 +522,7 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
             yr = series.index[i].strftime('%y')
         qtr = series.index[i].to_period('Q').strftime('Q%q')
         mo = series.index[i].strftime('%b')
-        day = series.index[i].strftime('%d')
+        day = series.index[i].strftime('%-d')
         daysh = series.index[i].strftime('%-d')
         if date.lower() in ['month', 'mon', 'm']:
             dt = f'\scriptsize {mo}\\\\ \scriptsize {yr}{col} \\\\ '
@@ -878,7 +879,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     rnd_adj = ('' if ((round_adj == False) | (abv >= round(abv, digits))) 
     		   else 'nearly ' if casual == False else 'almost ')
     
-    if style in ['increase', 'increase_by']:
+    if style in ['increase', 'increase_by', 'gain', 'return']:
         atxtd = {None: ' by ', 'sa': ' at a seasonally-adjusted rate of ', 
                  'annual': ' at an annual rate of ', 
                  'annualized': ' at an annualized rate of ', 
@@ -890,10 +891,16 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'inflation': ' the inflation rate by ',
                  'average': ' at an average rate of ',
                  'equivalent': ' by the equivalent of '}
-        if style == 'increase':
+        if style != 'increase_by':
             atxtd[None] = ' '
+        if style in ['gain', 'return']:
+        	atxtd['total'] = ' a total of '
         atxt = atxtd[adj]
         stxt = 'increased' if neg == False else 'decreased'
+        if style == 'gain':
+        	stxt = 'gained' if neg == False else 'lost'
+        if style == 'return':
+        	stxt = 'returned' if neg == False else 'lost'
         if adj == 'inflation':
         	stxt = 'increased' if neg == False else 'reduced'
         ttxt = f' over the {time_str} period' if time_str != '' else ''
@@ -925,12 +932,18 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             if style == 'contribution_to':
                 text = 'did not contribute to'
             
-    elif style in ['increase_of', 'contribution_of']:
+    elif style in ['increase_of', 'contribution_of', 'return_of']:
         stxt1 = 'increase' if neg == False else 'decrease'
         stxt2 = 'an increase' if neg == False else 'a decrease'
         if style == 'contribution_of':
             stxt1 = 'contribution' if neg == False else 'subtraction'
-            stxt2 = 'a contribution' if neg == False else 'a subtraction'            
+            stxt2 = 'a contribution' if neg == False else 'a subtraction'    
+        if style == 'return_of':
+            stxt1 = 'return' if neg == False else 'loss'
+            stxt2 = 'a return' if neg == False else 'a loss'   
+        if style == 'gain_of':
+            stxt1 = 'gain' if neg == False else 'loss'
+            stxt2 = 'a gain' if neg == False else 'a loss'             
         if time_str != '':
             stxt2 = f'a {time_str}{stxt1}'
         atxtd = {None: f'{stxt2} of', 'sa': f'a seasonally-adjusted {time_str}{stxt1} of', 
