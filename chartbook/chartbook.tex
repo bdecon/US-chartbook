@@ -330,6 +330,11 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/ccsa_mon.csv}\ccsamon
 	\pgfplotstableread[header=true, col sep=comma]{data/uwe_cps_sh.csv}\uwecps
 	\pgfplotstableread[header=true, col sep=comma]{data/treas_recent_mon.csv}\treasmon
+	%\pgfplotstableread[header=true, col sep=comma]{data/gdp_rec2.csv}\gdprecs
+	%\pgfplotstableread[header=true, col sep=comma]{data/treas_recent_mon2.csv}\treasrd
+	%\pgfplotstableread[header=true, col sep=comma]{data/lprod_rec.csv}\lprodrec	
+	%\pgfplotstableread[header=true, col sep=comma]{data/pa_epop_rec.csv}\paepoprec
+	%\pgfplotstableread[header=true, col sep=comma]{data/ahe_monthly.csv}\ahemo	
 	
 	% Required for bar plots with individual bar colors for categories
 	\pgfplotsset{discard if not/.style 2 args={
@@ -392,8 +397,6 @@ This chartbook offers a big menu of US economic and social indicators. To keep t
 
 As a result of these shortcuts, the chartbook is neither a source of reliable economic analysis nor a substitute for careful research. Instead, the chartbook curates samples from a variety of sources and provides links to the related data and \href{https://github.com/bdecon/US-chartbook}{source code}. The goal is to inspire and facilitate further exploration.
 
-%Please be aware that this chartbook is an early-stage draft. Content is being added, removed, and improved. In the meantime, the current draft contains many errors and is not particularly comprehensible without lots of patience. I'm correcting the errors as I find them and gradually editing the text for clarity. 
-%
 \textbf{Version 0.1 release planned for October 2023}
 \end{minipage}
 \newpage
@@ -861,10 +864,14 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 	\rbars
 	\tsbar{red!95!black}{date}{A191RL}{data/gdp.csv}
 	\input{text/gdpnow_node2.txt}
-	\absnode{{1991-04-01}}{30}{\scriptsize \color{black!60} Early `90s\\ \scriptsize \color{black!60}  recession}
-	\absnode{{2001-12-01}}{30}{\scriptsize \color{black!60} Early `00s\\ \scriptsize \color{black!60}  recession}
-	\absnode{{2009-07-01}}{30}{\scriptsize \color{black!60} Great\\ \scriptsize \color{black!60}  recession}
-	\node[below left, align=right] at (axis cs: {2020-01-01},30) {\scriptsize \color{black!60} COVID-19\\ \scriptsize \color{black!60}  recession};
+	\absnode{{1991-04-01}}{30}{\scriptsize \color{black!60} Early `90s\\ 
+		\scriptsize \color{black!60}  recession}
+	\absnode{{2001-12-01}}{30}{\scriptsize \color{black!60} Early `00s\\ 
+		\scriptsize \color{black!60}  recession}
+	\absnode{{2009-07-01}}{30}{\scriptsize \color{black!60} Great\\ \scriptsize 
+		\color{black!60}  recession}
+	\node[below left, align=right] at (axis cs: {2020-01-01},30) 
+		{\scriptsize \color{black!60} COVID-19\\ \scriptsize \color{black!60}  recession};
 	\end{axis}
 \end{tikzpicture}
 \vspace{-3.5mm}
@@ -1007,8 +1014,6 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \small This subsection examines how different activities contribute to economic growth. The percent change in real GDP is decomposed, using the categories from previous subsections, to show each category's importance to the overall increase or decrease. 
 
 First, an overview of contributions to economic growth since 2019. This is followed by an examination of longer-term trends and recent developments for each approach to calculating overall economic activity. Subsequent sections of the chartbook dig deeper into the contributions from subcategories, such as consumer spending on goods. 
-
-%As an \href{https://www.bea.gov/help/faq/80}{example}, \input{text/gdp_contr_example.txt}
 \end{minipage}
 \vspace{1mm}
 
@@ -8168,11 +8173,12 @@ Among newly-employed workers, some considered unemployed the month prior, while 
 \footnotesize{\textit{job openings, hires, quits, and layoffs per month, in millions}}
 \vspace{4.0cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12, 14}, 
 		yticklabel style={text width=1.2em}, xmin={2001-01-01},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		enlarge y limits={0.06}, ymin=0.6, ymax=11.4, clip=false,
-		xticklabel={`\short{\year}}, height=6.0cm, width=12.4cm]
+		xticklabel={`\short{\year}}, height=6.0cm, width=12.8cm]
 	\rbars
 	\stdline{orange!75!yellow}{date}{Layoffs}{data/jolts.csv}
 	\stdline{cyan}{date}{Hires}{data/jolts.csv}
@@ -8195,10 +8201,13 @@ Among newly-employed workers, some considered unemployed the month prior, while 
 
 \begin{minipage}{0.4\textwidth}
 \normalsize \textbf{Quits Rate}\\
-\footnotesize{\textit{voluntary separations as share of workforce}}\\
-\hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{voluntary separations as share of workforce}}
+\vspace{3.6cm}
+
+\hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6}, clip=false,
-		xticklabel={`\short{\year}}, ymin=0.3, height=5.6cm, width=6.7cm]
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		xticklabel={`\short{\year}}, ymin=0.3, height=5.7cm, width=7.2cm]
 	\rebars
 	\thinline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
 	\absnode{{2010-10-01}}{6}{\scriptsize \color{red!50!purple}\textbf{Accommodations}\\
@@ -8208,7 +8217,8 @@ Among newly-employed workers, some considered unemployed the month prior, while 
 	\absnode{{2013-01-01}}{1.6}{\scriptsize \color{violet}\textbf{Total nonfarm}}
 	\input{text/quits_tot_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{quits.csv}
 \end{minipage}
 \hspace{6mm}
@@ -8223,45 +8233,52 @@ Among newly-employed workers, some considered unemployed the month prior, while 
 \vspace{1mm}
 
 \normalsize \textbf{Job Openings Per Unemployed Person}\\
-\footnotesize{\textit{job openings divided by total unemployment}}\\
-\hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{job openings divided by total unemployment}}
+\vspace{2.4cm}
+
+\hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 0.5, 1.0, 1.5, 2.0}, 
 		yticklabel style={text width=1.3em}, 
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		ymin=0.08, ymax=1.9,
-		xticklabel={`\short{\year}}, height=4.4cm, width=12.4cm, clip=false]
+		xticklabel={`\short{\year}}, height=4.4cm, width=12.8cm, clip=false]
 	\rebars
 	\thickline{violet}{date}{unjo}{data/unjo.csv}
 	\input{text/unjo_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unjo.csv}
 \end{minipage}
 \vspace{5mm}
 
-\begin{minipage}{0.42\textwidth}
+\begin{minipage}{0.41\textwidth}
 \noindent \normalsize \textbf{Monthly Quits Rate by Industry}\\
 \footnotesize{\textit{share of employment, percent}}\\
 \vspace{11.4cm}
 
 \hspace{20mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
+	\begin{axis}[clip=false,
+            \barylab{2.4cm}{1.2ex}, stack negative=separate, ymajorgrids=false,
             yticklabels from table={\quits}{name},
 			y axis line style={opacity=0}, x axis line style={opacity=0}, 
-			yticklabel style={black, font=\scriptsize, 
-			align=left, anchor=east}, nodes near coords align={above},    
+			yticklabel style={font={\scriptsize}, style={black!90!white},
+				align=right, anchor=east}, nodes near coords align={above},    
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
             ytick=data, tickwidth=0pt, xmin=0, bar width=1.8ex, 
             enlarge y limits={0.02}, enlarge x limits={0.02}, legend cell align={left}, 
-            width=6.0cm, height=12.8cm, legend style={legend columns=2, at={(0.94, 1.09)}},
-            \barylab{2.4cm}{1.2ex}]
+            width=5.8cm, height=12.8cm, legend style={legend columns=2, at={(0.94, 1.09)}}]
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\quits};
-	\addplot[xbar stacked, bar shift=0pt, fill=cyan!65!blue!30!white, draw=cyan!65!blue!30!white, area legend] 
+	\addplot[xbar stacked, bar shift=0pt, fill=cyan!65!blue!30!white, 
+		draw=cyan!65!blue!30!white, area legend] 
 		table [y expr=-\coordindex, x index=2] {\quits};	
-	\addplot[xbar stacked, bar shift=0pt, fill=blue!90!purple!85!white, draw=cyan!65!blue!30!white, area legend] 
+	\addplot[xbar stacked, bar shift=0pt, fill=blue!90!purple!85!white,
+	 	draw=cyan!65!blue!30!white, area legend] 
 		table [y expr=-\coordindex, x index=3] {\quits};
-	\addplot[xbar stacked, bar shift=0pt, fill=cyan!65!blue!30!white, draw=cyan!65!blue!30!white, area legend] 
+	\addplot[xbar stacked, bar shift=0pt, fill=cyan!65!blue!30!white, 
+		draw=cyan!65!blue!30!white, area legend] 
 		table [y expr=-\coordindex, x index=4] {\quits};
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=5] {\quits};	
@@ -8278,31 +8295,35 @@ Among newly-employed workers, some considered unemployed the month prior, while 
 \vspace{2mm}
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{quits_ind.csv}
-\end{minipage}\hspace{12mm}
-\begin{minipage}{0.42\textwidth}
+\end{minipage}\hspace{11mm}
+\begin{minipage}{0.41\textwidth}
 \noindent \normalsize \textbf{Monthly Job Openings Rate by Industry}\\
 \footnotesize{\textit{share of employment, percent}}\\
 \vspace{11.4cm}
 
 \hspace{20mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[clip=false, stack negative=separate, ymajorgrids=false,
+	\begin{axis}[clip=false,
+            \barylab{2.4cm}{1.2ex}, stack negative=separate, ymajorgrids=false,
             yticklabels from table={\opens}{name},
 			y axis line style={opacity=0}, x axis line style={opacity=0}, 
-			yticklabel style={black, font=\scriptsize, align=left, anchor=east},  
+			yticklabel style={font=\scriptsize, style={black!90!white},
+				align=right, anchor=east},  
 			nodes near coords align={above},    
 			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
 				precision=1, assume math mode},  
             ytick=data, tickwidth=0pt, xmin=0,bar width=1.8ex, 
             enlarge y limits={0.02}, enlarge x limits={0.02}, legend cell align={left}, 
-            width=6.0cm, height=12.8cm, legend style={legend columns=2, at={(0.94, 1.09)}},
-            \barylab{2.4cm}{1.2ex}]
+            width=5.8cm, height=12.8cm, legend style={legend columns=2, at={(0.94, 1.09)}}]
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\opens};
-	\addplot[xbar stacked, bar shift=0pt, fill=brown!28!white, draw=brown!28!white, area legend] 
+	\addplot[xbar stacked, bar shift=0pt, fill=brown!28!white, 
+		draw=brown!28!white, area legend] 
 		table [y expr=-\coordindex, x index=2] {\opens};	
-	\addplot[xbar stacked, bar shift=0pt, fill=orange!80!yellow, draw=brown!28!white, area legend] 
+	\addplot[xbar stacked, bar shift=0pt, fill=orange!80!yellow, 
+		draw=brown!28!white, area legend] 
 		table [y expr=-\coordindex, x index=3] {\opens};
-	\addplot[xbar stacked, bar shift=0pt, fill=brown!28!white, draw=brown!28!white, area legend] 
+	\addplot[xbar stacked, bar shift=0pt, fill=brown!28!white, 
+		draw=brown!28!white, area legend] 
 		table [y expr=-\coordindex, x index=4] {\opens};
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=5] {\opens};	
@@ -8312,7 +8333,8 @@ Among newly-employed workers, some considered unemployed the month prior, while 
 	\addplot[only marks, mark=diamond*, mark options={fill=white, 
 		draw=violet!70!black, scale=1.8}] 
 		table [y expr=-\coordindex, x index=6] {\opens};
-	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=6] {\opens};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, 
+		only marks, mark=none] table[y=y, x index=6] {\opens};
 	\legend{, \ 2000-- range, \ March 2020-- range,, , \ 3-month avg., \ \input{text/jolts_ltdate.txt}}
 	\end{axis}
 \end{tikzpicture}
@@ -8328,49 +8350,57 @@ Among newly-employed workers, some considered unemployed the month prior, while 
 The current population survey asks whether individuals have the same employer as they did the previous month. The rate at which people say they have \textbf{changed employers} had fallen to below two percent after the great recession, from an average of around three percent during the late 1990s. 
 
 \input{text/jobswitch.txt} 
-\vspace{1mm}
+\vspace{0.5mm}
 
 \normalsize \textbf{New Employer}\\
-\footnotesize{\textit{percent of workforce, seasonally adjusted}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\dateaxisticks ytick={1.5, 2, 2.5, 3, 3.5, 4}, 
-		enlarge y limits={0.05}, clip=false, legend cell align={left},
+\footnotesize{\textit{percent of workforce, seasonally adjusted}}
+\vspace{3.7cm}
+
+\hspace{2mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\dateaxisticks 
+		enlarge y limits={0.28}, clip=false, legend cell align={left},
 		legend style={at={(0.38, 0.32)}}, legend columns=1, 
-		yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}, height=5.4cm, width=12.2cm]
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		xticklabel={`\short{\year}}, height=5.8cm, width=12.7cm]
 	\rebars
 	\stdline{green!90!blue}{date}{Monthly}{data/jobswitch.csv}
 	\thickline{blue!80!black}{date}{MA3}{data/jobswitch.csv}
 	\input{text/jobswitch_node.txt}
-	\legend{Monthly, 3-month moving average};
+	\legend{Monthly, 3-Month Moving Average};
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{jobswitch.csv} 
 \vspace{5mm}
 
 \small The monthly Survey of Consumer Expectations from the Federal Reserve Bank of New York asks people how likely they are to either \href{https://www.newyorkfed.org/microeconomics/sce#/jobsep-1}{lose or leave a job}. \textbf{Expected separations} are specifically the average perceived probability, or likelihood, of separating from a job in the next 12 months. 
+\end{minipage}
+\vspace{0.5mm}
 
-\begin{minipage}{0.42\textwidth}
+\begin{minipage}{0.34\textwidth}
 \small \input{text/sce_job_sep.txt}
-\end{minipage}\hfill
-\begin{minipage}{0.52\textwidth}
+\end{minipage}\hspace{6mm}
+\begin{minipage}{0.38\textwidth}
 \normalsize \textbf{Expected Separations}\\
-\footnotesize{\textit{mean probability of separation, percent}}\\
-\hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{mean probability of separation, percent}}
+\vspace{4.0cm}
+
+\hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\ltdateaxisticks  \bbar{y}{0}, 
 		enlarge y limits={0.05}, clip=false, max space between ticks=20,	
-		yticklabel style={text width=1.2em}, ymin=1, ymax=26.5,
-		xticklabel={`\short{\year}}, height=6.2cm, width=6.5cm]
+		yticklabel style={text width=1.0em}, ymin=1, ymax=25.5,
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		xticklabel={`\short{\year}}, height=6.1cm, width=6.7cm]
 	\rbar
 	\stdline{cyan}{date}{Losing}{data/sce_job_separation.csv}
 	\absnode{{2015-10-01}}{13}{\footnotesize \color{cyan}\textbf{Lose Job}}
 	\stdline{violet!50!blue}{date}{Leaving}{data/sce_job_separation.csv}
-	\absnode{{2013-06-01}}{25.8}{\footnotesize \color{violet!50!blue}\textbf{Voluntary}}
+	\absnode{{2013-06-01}}{25.6}{\footnotesize \color{violet!50!blue}\textbf{Voluntary}}
 	\input{text/sce_job_sep_nodes.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve Bank of New York} \hfill \tbllink{sce_job_separation.csv} 
-\end{minipage}
 \end{minipage}
 \newpage
 \hypertarget{labh}{\label{labh}}
@@ -8617,7 +8647,8 @@ This subsection covers several wage measures. First, the distribution of usual w
 		enlarge y limits={0.12}, xticklabel={`\short{\year}}, ymax=9.8,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		clip=false, width=12.9cm, height=4.9cm, xmin=1990-01-01, reverse legend,
-		legend style={at={(0.72, 1.01)}, legend columns=-1}, yticklabel style={text width=1.0em},
+		legend style={at={(0.72, 1.01)}, legend columns=-1}, 
+		yticklabel style={text width=1.0em},
 		legend cell align={left}]
 	\rbars
 	\thinline{lime!65!green!90!black}{date}{p10_3M_gr}{data/uwe_cps.csv}
