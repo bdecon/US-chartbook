@@ -485,7 +485,7 @@ def c_box(color, see=True):
     
 def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
              anchor=None, digits=1, full_year=False, dollar=False,
-             colon=True, align='left', loc='end', size=1.0):
+             colon=True, align='left', loc='end', size=1.0, italic=False):
     '''
     Generate small dot and value text for end of line plot.
     Input is pandas series and color. Output is tex code. 
@@ -558,6 +558,10 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
     elif dollar == 'thousands':
     	dol = '\$'
     	vtxt = f'{lt * 1000:,.0f}'
+    	
+    it = ''
+    if italic == True:
+    	it = '\\textit'
     
     if (offset == True) and (date != None):
         vmax = series.max()
@@ -572,7 +576,7 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
     offx = f'{xoffset}cm'
     datetime = dtxt(series.index[i])['datetime']
     text = (f'\\node[label={{[yshift={offs}, xshift={offx}, {anchor_opt}'+
-            f'align={align}]0:{{{dt}\scriptsize {dol}{vtxt}{pct}}}}}, circle, '+
+            f'align={align}]0:{{{dt}\scriptsize {it}{dol}{vtxt}{pct}}}}}, circle, '+
             f'{color}, fill, inner sep={size}pt] at '+
             f'(axis cs:{datetime}, {lt}) {{}};')
 
