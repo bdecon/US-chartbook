@@ -161,7 +161,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-01},
+		xmax={2023-11-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -181,7 +181,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-01},
+		xmax={2023-11-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -192,7 +192,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-01},
+		xmax={2023-11-30},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
 		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
@@ -202,7 +202,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2023-11-01},   
+		xmin={2018-01-01}, xmax={2023-11-30},   
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
 		yticklabel style={text width=1.0em},
@@ -212,7 +212,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-01}, max space between ticks=40,	    
+		xmax={2023-11-30}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
@@ -221,7 +221,7 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-01},
+		xmax={2023-11-30},
 		}
 		
 	% Settings for y label text in horizontal bar charts
@@ -342,6 +342,7 @@
 	%\pgfplotstableread[header=true, col sep=comma]{data/lprod_rec.csv}\lprodrec	
 	%\pgfplotstableread[header=true, col sep=comma]{data/pa_epop_rec.csv}\paepoprec
 	\pgfplotstableread[header=true, col sep=comma]{data/ahe_monthly.csv}\ahemo	
+	\pgfplotstableread[header=true, col sep=comma]{data/indprogr_rec.csv}\ipmo
 	
 	% Required for bar plots with individual bar colors for categories
 	\pgfplotsset{discard if not/.style 2 args={
@@ -404,7 +405,7 @@ This chartbook offers a big menu of US economic and social indicators. To keep t
 
 As a result of these shortcuts, the chartbook is neither a source of reliable economic analysis nor a substitute for careful research. Instead, the chartbook curates samples from a variety of sources and provides links to the related data and \href{https://github.com/bdecon/US-chartbook}{source code}. The goal is to inspire and facilitate further exploration.
 
-\textbf{Version 0.1 release planned for October 2023}
+\textbf{Version 0.1 release planned for November 2023}
 \end{minipage}
 \newpage
 \section*{\hyperlink{toc}{\faList} \ {Contents}}
@@ -2143,6 +2144,8 @@ Increased household spending on education may be a response to a weak labor mark
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{cps_educ.csv}
 \end{minipage}
 \newpage
+\vspace*{-10mm}
+
 \hypertarget{hhinc}{\label{hhinc}}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Income, Spending, and Saving} \index{income!household} \index{spending!household} \index{saving!household} \index{households!income} \index{households!spending} \index{households!saving}
@@ -2154,7 +2157,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 
 \input{text/ce_med_inc.txt}
 \end{minipage}
-\vspace{2mm}
+\vspace{1mm}
 
 \begin{minipage}{0.425\textwidth}
 \normalsize \textbf{Average Income, Spending, and Saving}\\
@@ -2163,12 +2166,12 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60, 70, 80}, 
-		ymin=0, ymax=68,
+		ymin=0, ymax=76,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.0em},
-		xticklabel={`\short{\year}}, clip=false, height=7.6cm, width=7.8cm]
+		xticklabel={`\short{\year}}, clip=false, height=7.5cm, width=7.8cm]
 	\rbars
-	\absnode{{1992-01-01}}{49}{\footnotesize \color{blue!75!black}After-Tax \\ \color{blue!75!black} Income}
+	\absnode{{1992-01-01}}{49.6}{\footnotesize \color{blue!75!black}After-Tax \\ \color{blue!75!black} Income}
 	\stdline{blue!75!black}{date}{DPI}{data/inc_out_save.csv}
 	\absnode{{2011-01-01}}{44.5}{\footnotesize \color{orange} Consumer\\ \footnotesize \color{orange}Spending}
 	\stdline{orange}{date}{PCE}{data/inc_out_save.csv}
@@ -2179,23 +2182,23 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inc_out_save.csv}
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.42\textwidth}
+\begin{minipage}{0.43\textwidth}
 \normalsize \textbf{Median (Middle Quintile Average)}\\
 \footnotesize{\textit{per householder, thousands of \input{text/pi_date.txt}\unskip \ US dollars}}
 \vspace{5.5cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50, 60, 70, 80}, 
-		ymin=0, ymax=68,
+		ymin=0, ymax=76,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.0em},
-		xticklabel={`\short{\year}}, clip=false, height=7.6cm, width=7.8cm]
+		xticklabel={`\short{\year}}, clip=false, height=7.5cm, width=7.8cm]
 	\rbars
-	\absnode{{2009-10-01}}{34}{\footnotesize \color{blue!50!cyan}After-Tax\\ \color{blue!50!cyan}Income}
+	\absnode{{2009-10-01}}{35}{\footnotesize \color{blue!50!cyan}After-Tax\\ \color{blue!50!cyan}Income}
 	\thickline{blue!50!cyan}{date}{INCAFTTX_4}{data/medincexp.csv}
 	\absnode{{2012-01-01}}{19.2}{\footnotesize \color{red!50!orange}Consumer \\ \footnotesize \color{red!50!orange}Spending}
 	\thickline{red!50!orange}{date}{ADJEXP_4}{data/medincexp.csv}
-	\absnode{{1993-01-01}}{10}{\footnotesize \color{green!50!blue}Personal \\ \footnotesize \color{green!50!blue}Saving}
+	\absnode{{1993-01-01}}{11}{\footnotesize \color{green!50!blue}Personal \\ \footnotesize \color{green!50!blue}Saving}
 	\thickline{green!50!blue}{date}{DI_SAVE_4}{data/medincexp.csv}
 	\end{axis}
 \end{tikzpicture}
@@ -2212,7 +2215,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 		 \begin{tabular}{p{33mm} R{13mm} R{12mm} R{12mm} R{12mm} R{12mm} R{12mm}}
 			 \input data/inc_out_save_levels.tex \hline
 		\end{tabular}}
-		\vspace{-2mm}
+		\vspace{-2.8mm}
 		
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
@@ -4631,29 +4634,32 @@ The following table provides more details on the size of nonfinancial business l
 \footnotesize{Notes: Includes only nonfinancial businesses. Tangible assets are market values or current replacement values.}
 \end{minipage}
 \newpage
+\vspace*{-10mm}
+
 \subsection*{Industrial Production} \index{industrial production}
 \hypertarget{busip}{\label{busip}}
-\begin{minipage}{0.52\textwidth}
+\begin{minipage}{0.47\textwidth}
 \small \input{text/indpro.txt} 
 \end{minipage}\hfill
-\begin{minipage}{0.42\textwidth}
-\normalsize \textbf{Industrial Production}
-\vspace*{-3mm} \small 
+\begin{minipage}{0.48\textwidth}
+\normalsize \textbf{Industrial Production}\\
+\footnotesize{\textit{index, 2012=100}}
+\vspace{5.0cm}
 
-\hspace*{-1mm}\begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks legend cell align={left},
-	yticklabel style={text width=1.4em}, xticklabel={`\short{\year}}, 
-	clip=false, height=6.8cm, width=7.6cm,
+\hspace{4mm}\begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{100}, \shdateaxisticks legend cell align={left},
+	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
+	max space between ticks=20,
+	clip=false, height=7.0cm, width=8.6cm, enlarge y limits=0.24,
 	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-	legend style={fill=white, legend columns=1, at={(0.98, 0.33)}}]
+	legend style={fill=white, legend columns=1, at={(0.99, 0.32)}}]
 	\rbars
-	\node[right] at (axis description cs: -0.09,0.95) [fill=white]
-		{\footnotesize{\textit{index, 2012=100}}};
-	\thinline{red}{date}{Manufacturing}{data/indpro.csv}
-	\thinline{blue!80!black}{date}{Total index}{data/indpro.csv}
+	\stdline{red!70!white}{date}{Manufacturing}{data/indpro.csv}
+	\thinline{blue!70!black}{date}{Total index}{data/indpro.csv}
 	\legend{Manufacturing, Total Index};
 \end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro.csv}
 \end{minipage}
 \vspace{2mm} 
@@ -4665,7 +4671,7 @@ The following table provides more details on the size of nonfinancial business l
 \vspace*{-7mm}
 
 \hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.48}
+		{\renewcommand{\arraystretch}{1.46}
 		 \begin{tabular}{p{42mm} R{6.6mm} R{6.6mm} R{6.6mm} R{6.6mm} | 
 		 R{6.8mm} R{6.6mm} R{6.6mm} R{6.6mm} }
 			 \input data/indpro.tex \hline
@@ -4674,26 +4680,31 @@ The following table provides more details on the size of nonfinancial business l
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro_table.csv}}
 \end{minipage}
 \newpage
+\vspace*{-10mm}
+
 \begin{minipage}{0.76\textwidth} \index{industrial production}
 \small Over the past 30 years, economic conditions and shifts in how production is organized have affected industrial growth. Much of the growth over the period is attributed to the production of materials, such as parts, chemicals, and energy, and to the production of business equipment and supplies. In contrast, there has been virtually no growth in domestic production of finished consumer goods, particularly from 2000 to 2020. 
 
 While the manufacturing industry dominated industrial growth in the 1990s, mining and utilities have played a relatively larger role since 2010. Manufacturing growth was relatively weak from 2013 to 2020, but increased starting in 2021. 
-\vspace{1mm}
+\vspace{0.5mm}
 
 \normalsize \textbf{Contributions to Industrial Production Growth}\\
 \footnotesize{\textit{percentage point contribution to one-year growth, quarterly average}}
-\vspace{2.6cm}
+\vspace{3.1cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
-		xticklabel={`\short{\year}}, clip=false, height=4.6cm, ymax=8.8,
+		xticklabel={`\short{\year}}, clip=false, height=4.5cm, ymax=8.8,
 		reverse legend,
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.5em}, legend cell align={left},
 		legend style={legend columns=1, at={(0.49, 0.57)}}]
 	\rbars
-	\node[right] at (axis description cs: 0.85,1.21) {\scriptsize \color{black!50} \textit{see below}};
-	\node[right] at (axis description cs: 0.0,0.95) {\normalsize Market Group};
-	\coordinate (c1) at ({2017-12-31},-15.5);
+	\node[right] at (axis description cs: 0.91,1.21) 
+		{\scriptsize \color{black!50} \textit{see below}};
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.1) 
+		{\small \textbf{Market Group}};
+	\coordinate (c1) at (rel axis cs:0.93,0);
   	\coordinate (c2) at (rel axis cs:1,1.16);
 	\draw [black!25!white, dashed] (c1) rectangle (c2);
 	\sbar{violet!70!purple!90!black}{date}{Consumer goods}{data/indprogr.csv}
@@ -4703,16 +4714,18 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 	\legend{Final Consumer Goods, Business Equipment \& Supplies, Non-Energy Materials, Energy Materials};
 	\end{axis}
 \end{tikzpicture}
-\vspace{3.4cm}
+\vspace{3.6cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
-		xticklabel={`\short{\year}}, clip=false, height=4.6cm, reverse legend,
+		xticklabel={`\short{\year}}, clip=false, height=4.5cm, reverse legend,
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.5em}, legend cell align={left}, ymax=8.8,
 		legend style={legend columns=1, at={(0.44, 0.56)}}]
 	\rbars
-	\node[right] at (axis description cs: 0.0,0.95) {\normalsize Industry Group};
-	\coordinate (c1) at ({2017-12-31},-15.5);
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.1) 
+		{\small \textbf{Industry Group}};
+	\coordinate (c1) at (rel axis cs:0.93,0);
   	\coordinate (c2) at (rel axis cs:1,1.18);
 	\draw [black!25!white, dashed] (c1) rectangle (c2);
 	\sbar{blue!62!black}{date}{Durable manufacturing}{data/indprogr.csv}
@@ -4722,43 +4735,43 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 	\legend{Durable Manufacturing, Nondurable Manufacturing, Mining, Utilities};
 	\end{axis}
 \end{tikzpicture}
-\vspace{1mm}
+\vspace{0.5mm}
 
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}
 \vspace{2mm}
 
 \small \input{text/indpro_rec.txt}
-\vspace{1mm}
+\vspace{0.5mm}
 
 \normalsize \textbf{Recent Data in Detail}
-\vspace*{-4mm}
+\vspace*{-1mm} 
 
-\noindent \hspace*{-5mm} \begin{tikzpicture} 
+\hspace*{-3mm} \begin{tikzpicture} 
 	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks max space between ticks=20,
-		clip=false, width=6.7cm, height=6.0cm, yticklabel style={text width=1.28em}, 
-		yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
-		ymin=-16.0, ymax=14.8,
-		minor xtick={}, enlarge y limits=0.01,  enlarge x limits={0.01}] 
-	\rbar
-	\node[right] at (axis description cs: 0.0,0.95) {\normalsize Market Group};
-	\ctsbar{violet!70!purple!90!black}{date}{Consumer goods}{data/indprogr_rec.csv}{2.5pt} 
-	\ctsbar{magenta}{date}{ENS}{data/indprogr_rec.csv}{2.5pt} 
-	\ctsbar{orange!75!yellow}{date}{Non-energy materials}{data/indprogr_rec.csv}{2.5pt} 
-	\ctsbar{blue!70!violet}{date}{Energy materials}{data/indprogr_rec.csv}{2.5pt} 
+		clip=false, width=6.7cm, height=4.4cm, 
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		yticklabel style={text width=1.2em}, xtick=data, 
+		xticklabels from table={\ipmo}{label}, 
+		enlarge y limits=0.18, enlarge x limits=0.04] 
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.02) 
+		{\small \textbf{Market Group}};
+	\ctsbar{violet!70!purple!90!black}{date}{Consumer goods}{\ipmo}{4pt} 
+	\ctsbar{magenta}{date}{ENS}{\ipmo}{4pt} 
+	\ctsbar{orange!75!yellow}{date}{Non-energy materials}{\ipmo}{4pt} 
+	\ctsbar{blue!70!violet}{date}{Energy materials}{\ipmo}{4pt} 
 	\end{axis}
 \end{tikzpicture} \hfill 
-\begin{tikzpicture} \begin{axis}[\ltdateaxisticks 
+\begin{tikzpicture} \begin{axis}[\bbar{y}{0}, \ltdateaxisticks 
 	clip=false, width=6.7cm, max space between ticks=20,	 
-	height=6.0cm, yticklabel style={text width=1.28em}, 
-	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
-	ymin=-16.0, ymax=14.8,
-	minor xtick={}, enlarge y limits=0.01,  enlarge x limits={0.01}] 
-	\rbar
-	\node[right] at (axis description cs: 0.0,0.95) {\normalsize Industry Group};
-	\ctsbar{blue!62!black}{date}{Durable manufacturing}{data/indprogr_rec.csv}{2.5pt} 
-	\ctsbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{data/indprogr_rec.csv}{2.5pt} 
-	\ctsbar{orange!30!yellow}{date}{Mining}{data/indprogr_rec.csv}{2.5pt} 
-	\ctsbar{green!70!blue}{date}{Electric and gas utilities}{data/indprogr_rec.csv}{2.5pt}
+	height=4.4cm, xtick=data, xticklabels from table={\ipmo}{label},
+	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+	yticklabel style={text width=1.2em}, enlarge y limits=0.18, enlarge x limits=0.04] 
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.02) 
+		{\small \textbf{Industry Group}};
+	\ctsbar{blue!62!black}{date}{Durable manufacturing}{\ipmo}{4pt} 
+	\ctsbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{\ipmo}{4pt} 
+	\ctsbar{orange!30!yellow}{date}{Mining}{\ipmo}{4pt} 
+	\ctsbar{green!70!blue}{date}{Electric and gas utilities}{\ipmo}{4pt}
 	\end{axis} 
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}
@@ -4770,11 +4783,11 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \begin{minipage}{0.44\textwidth}
 \normalsize \textbf{Industrial Production and Capacity}\\
 \footnotesize{\textit{As of \input{text/ip_ind_ldate.txt}\unskip, percent change since February 2020}}
-\vspace{8.85cm}
+\vspace{8.8cm}
 
 \hspace{2.8cm} \begin{tikzpicture}[overlay]
   	\begin{axis}[\barplotnogrid axis y line=left, \bbar{x}{0}, \barylab{3.3cm}{1.6ex}
-    	width=5.0cm, bar width=1.7ex, height=10.4cm,
+    	width=5.0cm, bar width=1.9ex, height=10.7cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.02, 
 		yticklabels from table={\ip}{name}, 
 		yticklabel style={style={black!90}, font=\scriptsize, text width=8em, xshift=-18pt}, 
@@ -4808,14 +4821,14 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 
 \normalsize \textbf{Capacity Utilization}\\
 \footnotesize{\textit{industrial production as a share of total capacity, percent, seasonally adjusted}}
-\vspace{3.8cm}
+\vspace{3.7cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
 		yticklabel style={text width=1.0em}, max space between ticks=30, 
 		enlarge y limits=0.1, 
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		width=12.6cm, height=5.8cm, clip=false, xticklabel={`\short{\year}}]
+		width=12.7cm, height=5.8cm, clip=false, xticklabel={`\short{\year}}]
 	\rbars
 	\stdline{blue!80!black}{date}{Total index}{data/tcu.csv}
 	\thinline{blue!40!cyan}{date}{Manufacturing}{data/tcu.csv}
@@ -5278,8 +5291,9 @@ Over the past thirty years, total spending on government social benefits has mos
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
-\vspace*{-9mm} \hypertarget{govre}{\label{govre}}
+\vspace*{-10mm} 
 
+\hypertarget{govre}{\label{govre}}
 \begin{minipage}{0.76\textwidth} \index{spending!government} \index{income!government} \index{government!outlays} \index{government!receipts}
 \subsection*{Government Receipts and Expenditures} 
 \small Government current expenditures include consumption and investment as well as transfers such as government social benefits to persons. Government spending provides services and income to people. Government current receipts come primarily from taxes. When government expenditures exceed receipts, it is referred to as a \textit{government deficit}, and corresponds to a private sector surplus. A large government deficit, relative to GDP, means the government is increasing current household income and corporate profits.
@@ -5291,32 +5305,32 @@ Over the past thirty years, total spending on government social benefits has mos
 
 \normalsize \textbf{Government Receipts and Expenditures}\\
 \footnotesize{\textit{current account, share of GDP, percent}}
-\vspace{6.15cm}
+\vspace{5.9cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ymin=2, ymax=42,
-		clip=false, width=6.8cm, height=8.2cm, xticklabel={`\short{\year}}, 
+		clip=false, width=6.8cm, height=8.0cm, xticklabel={`\short{\year}}, 
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.0em}]
 	\rbars
 	\stdline{blue!70!cyan}{date}{W005RC}{data/fedgdp.csv}
 	\stdline{violet!90!black}{date}{W013RC}{data/fedgdp.csv}
 	\node[right, align=left, shift=({rel axis cs:0.02,0.94}), 
-	draw=black!30!white, fill=white, inner sep=5.0]
+	draw=black!30!white, fill=white, inner sep=4.0]
 		{\normalsize \color{black!80!white}\textbf{Federal}};
 	\end{axis}
 \end{tikzpicture}
 \hspace{6.05cm}
 \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ymin=2, ymax=42,
-		clip=false, width=6.8cm, height=8.2cm, xticklabel={`\short{\year}}, 
+		clip=false, width=6.8cm, height=8.0cm, xticklabel={`\short{\year}}, 
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.0em}, legend style={at={(0.98, 1.11)}}]
 	\rbars
 	\stdline{blue!70!cyan}{date}{W023RC}{data/slggdp.csv}
 	\stdline{violet!90!black}{date}{W024RC}{data/slggdp.csv}
 	\node[right, align=left, shift=({rel axis cs:0.02,0.94}), 
-	draw=black!30!white, fill=white, inner sep=5.0]
+	draw=black!30!white, fill=white, inner sep=4.0]
 		{\normalsize \color{black!80!white}\textbf{State \& Local}};
 	\legend{Receipts, Expenditures};
 	\end{axis}
@@ -5335,7 +5349,7 @@ Over the past thirty years, total spending on government social benefits has mos
 		\end{tabular}}\vspace{-2mm}
 		
 \footnotesize{Source: Bureau of Economic Analysis}
-\end{minipage}  
+\end{minipage} 
 \newpage
 \vspace*{-10mm}
 
@@ -5899,14 +5913,16 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 \end{tikzpicture}
 
 \footnotesize{Source: Treasury} \hfill \tbllink{pubdebt.csv}
-\vspace{0.51mm}
+\vspace{3mm}
 
 \subsubsection*{Interest Expense}
 \small The ratio of public debt to GDP increased during the COVID-19 response, while the typical interest income from holding public debt fell because of lower interest rates. Treasuries and other government debt securities provide a safe asset for the balance sheets domestic households and businesses, and for foreign investors. The Federal Reserve has also absorbed some of the newly issued treasuries. 
+\end{minipage}
+\vspace{1mm}
 
-\begin{minipage}{0.46\textwidth}
+\begin{minipage}{0.36\textwidth}
 \small \input{text/fedintexp.txt}
-\end{minipage} \hfill \begin{minipage}{0.48\textwidth}
+\end{minipage} \hspace{6mm} \begin{minipage}{0.36\textwidth}
 \normalsize \textbf{Federal Interest Outlays}\\
 \footnotesize{\textit{share of GDP, percent}}\\
 \hspace*{-2mm} \begin{tikzpicture}
@@ -5915,18 +5931,13 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 		xmin={1990-03-01}, enlarge y limits={0.16},
 		xticklabel={`\short{\year}}, height=5.4cm, width=6.4cm]
 	\rbars
-	\dashline{orange}{date}{Adj}{data/fedintexp.csv}
 	\thickline{magenta}{date}{Tot}{data/fedintexp.csv}
-	\absnode{{2011-01-01}}{0.75}{\footnotesize \color{orange}Less Fed\\\footnotesize \color{orange}Remittances}
-	\input{text/fedintexp_nodes.txt}
+	\input{text/fedintexp_node.txt}
 	\end{axis}
 \end{tikzpicture}\\
-\footnotesize{Source: OMB, Fed, Author} \hfill \tbllink{fedintexp.csv}
+\footnotesize{Source: OMB%, Fed, Author
+} \hfill \tbllink{fedintexp.csv}
 \end{minipage} 
-\vspace{1mm}
-
-\small \input{text/fedintexp2.txt}
-\end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{debt!government} \index{government!debt} \index{government!debt sustainability}
 \subsubsection*{Debt Sustainability}
@@ -6155,24 +6166,25 @@ The current account balance can be decomposed into the balance on trade in goods
 \footnotesize{Source: Census Bureau} \hfill \tbllink{trade_mo_summary.csv}
 \end{minipage}
 \newpage
-\vspace{-9mm}
+\vspace{-10mm}
 
 \begin{minipage}{0.76\textwidth} \index{trade!nonpetroleum}
 \small \input{text/exim.txt}
 \vspace{1mm}
 
 \normalsize \textbf{Imports and Exports, Nonpetroleum}\\
-\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}\vspace{3.45cm}
+\footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}\vspace{4.0cm}
 
-\hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\dateaxisticks enlarge y limits={0.24},
-		xticklabel={`\short{\year}}, clip=false, height=5.5cm, width=12.6cm, 
+\hspace{2.5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks enlarge y limits={0.01}, ymin=0, ymax=16,
+		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=12.7cm, 
+		max space between ticks=20,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.0em}]
 	\rbars
 	\thickline{green!60!teal!80!black}{date}{EX}{data/eximgdp.csv}
 	\thickline{blue!90!cyan}{date}{IM}{data/eximgdp.csv}
-	\absnode{{1995-06-01}}{13.2}{\small \color{blue!90!cyan}Imports}
+	\absnode{{1995-01-01}}{13.4}{\small \color{blue!90!cyan}Imports}
 	\absnode{{2004-01-01}}{9.2}{\small \color{green!60!teal!80!black}Exports}\\
 	\input{text/np_im_node.txt}
 	\input{text/np_ex_node.txt}
@@ -6180,6 +6192,7 @@ The current account balance can be decomposed into the balance on trade in goods
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{eximgdp.csv}
+\vspace{2mm}
 
 \subsubsection*{Contribution to Overall Growth}
 \index{trade!contribution to GDP}
@@ -6190,12 +6203,12 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \normalsize \textbf{International Trade}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth}}
-\vspace{6.4cm}
+\vspace{5.2cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,	 
-		yticklabel style={text width=1.0em}, width=12.9cm,
-		height=8.4cm, ymax=7.75, enlarge y limits={0.02},
+		yticklabel style={text width=1.0em}, width=13.1cm,
+		height=7.2cm, ymax=7.75, enlarge y limits={0.02},
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={legend columns=2, at={(0.49, 0.98)}, fill=white}]
@@ -6218,9 +6231,9 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \normalsize \textbf{Exports and Imports by Type}\\
 \footnotesize{\textit{percentage point share of GDP \hspace{38mm} period averages}\\ 
-\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.58}
-\hspace*{-1mm} \begin{tabular}{p{42mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} 
+\hspace*{-2mm} \begin{tabular}{p{43.5mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} R{7.1mm} 
 		   R{7.1mm} R{7.1mm} R{7.1mm} }
 			 \input data/exim.tex \hline
 		\end{tabular}}\vspace{-2mm}
@@ -7485,19 +7498,19 @@ In June 2008, the Current Population Survey (CPS), started to ask respondents ag
 \begin{minipage}{0.37\textwidth} 
 \begin{tikzpicture}
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.1cm}{1.5ex}
-    	width=4.3cm, bar width=1.7ex, height=6.9cm,
+    	width=4.3cm, bar width=2.4ex, height=6.9cm,
     	enlarge y limits={abs=0.42cm}, enlarge x limits=0.03, \bbar{x}{0},
 		yticklabels from table={\ungrpsh}{name}, xmin=0.2, 
 		yticklabel style={font=\footnotesize}, clip=false, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=green!80!blue, draw=none] 
-  		table [y expr=-\coordindex, x index=3] {\ungrpsh};
+%  	\addplot[fill=green!80!blue, draw=none] 
+%  		table [y expr=-\coordindex, x index=3] {\ungrpsh};
   	\addplot[fill=blue!40!magenta, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\ungrpsh};
   	\addplot[fill=orange!75!yellow, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\ungrpsh};
-  	\stdnode{2.2cm}{0.8cm}{{\color{green!75!blue} \faSquare}:  \footnotesize Share of\\ \footnotesize Labor Force}
+%  	\stdnode{2.2cm}{0.8cm}{{\color{green!75!blue} \faSquare}:  \footnotesize Share of\\ \footnotesize Labor Force}
   	\end{axis}
 \end{tikzpicture}
 \end{minipage}
@@ -9527,18 +9540,18 @@ The \href{https://finance.yahoo.com/quote/\%5EDJI/}{Dow Jones} (see {\color{red}
 \footnotesize{\textit{trailing period annualized real return}}
 \vspace{3.5cm}
 
-\hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15}, 
 		yticklabel style={text width=1.0em}, 
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		xticklabel={`\short{\year}}, clip=false, height=5.5cm, width=12.4cm,
+		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=12.8cm,
 		enlarge y limits={0.1}, legend style={at={(0.98, 1.12)}, fill=white}]
 	\rbars
 	\thickline{blue}{date}{r10}{data/sp500rr.csv}
 	\thickline{green!80!blue}{date}{r20}{data/sp500rr.csv}
 	\thickline{orange}{date}{r15}{data/sp500rr.csv}
 	\input{text/sp500rr_nodes.txt}
-	\legend{10-year, 15-year, 20-year};
+	\legend{10-Year, 15-Year, 20-Year};
 	\end{axis}
 \end{tikzpicture}
 
@@ -9552,17 +9565,20 @@ The \href{https://finance.yahoo.com/quote/\%5EDJI/}{Dow Jones} (see {\color{red}
 \vspace{1mm}
 
 \normalsize \textbf{S\&P 500 Dividend Yield}\\
-\footnotesize{\textit{annual dividend per share divided by share price, percent}}\\
-\hspace*{-2mm} \begin{tikzpicture}
+\footnotesize{\textit{annual dividend per share divided by share price, percent}}
+\vspace{2.9cm}
+
+\hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ymin=0.2,
 		xticklabel={`\short{\year}}, clip=false, 		
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		height=5.0cm, width=12.5cm]
+		height=5.0cm, width=12.8cm]
 	\rbars
 	\thickline{green!80!black}{date}{DY}{data/sp500dy.csv}
 	\input{text/sp500dy_node.txt}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Shiller} \hfill \tbllink{sp500dy.csv}
 \end{minipage}
 \newpage
