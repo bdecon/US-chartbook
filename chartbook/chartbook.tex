@@ -704,7 +704,6 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 
 \begin{minipage}{0.76\textwidth} \index{productivity} \index{gross domestic product!household inputs to production}
 \subsubsection*{Household Inputs to Production}
-\index{gross domestic product!household inputs}
 \small It's useful to consider household inputs when analyzing economic output. For example, is the population growing? Are more people working? Are people working more hours? Is the economy more productive in its use of labor? These household inputs are summarized below and covered in more depth in subsequent chartbook sections.
 
 \input{text/gdpjobspop.txt}To maintain a constant standard of living, real GDP would need to increase by the same amount. 
@@ -860,8 +859,9 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \vspace{-1mm}
 
 \small \input{text/gdp_gr.txt} 
-\vspace{1mm}
+\end{minipage}
 
+\begin{minipage}{0.77\textwidth}
 \normalsize \textbf{Real Gross Domestic Product Growth}\\
 \footnotesize{\textit{quarterly growth at seasonally adjusted annual rate, percent}}
 \vspace{-5mm}
@@ -869,7 +869,8 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30}, 
 		yticklabel style={text width=1.4em}, ymax=27,
-		xticklabel={`\short{\year}}, clip=false, height=6.1cm]
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		xticklabel={`\short{\year}}, clip=false, height=6.1cm, width=13.0cm]
 	\rbars
 	\tsbar{red!95!black}{date}{A191RL}{data/gdp.csv}
 	\input{text/gdpnow_node2.txt}
@@ -883,26 +884,26 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 		{\scriptsize \color{black!60} COVID-19\\ \scriptsize \color{black!60}  recession};
 	\end{axis}
 \end{tikzpicture}
-\vspace{-3.5mm}
+\vspace*{-1mm}
 
 \footnotesize{\textit{annual growth, percent \hspace{59mm} recent quarterly \hspace{4mm} \input{text/nowcast_text.txt}}}\\
-\hspace*{-2.5mm} 
-\begin{tikzpicture}
+\hspace*{-2.5mm} \begin{tikzpicture}
     \begin{groupplot}[group style={group size=2 by 1, 
     y descriptions at=edge left, horizontal sep=12pt,},]
     \nextgroupplot[\bbar{y}{0}, \shdateaxisticks 
 		yticklabel style={text width=1.0em}, ymin=-3.8, ymax=7.4,
-		ytick={-4, -2, 0, 2, 4, 6, 8},
-		xticklabel={\year}, clip=false, height=4.3cm, width=9.6cm]
+		ytick={-4, -2, 0, 2, 4, 6, 8}, enlarge x limits=0.02,
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		xticklabel={\year}, clip=false, height=4.3cm, width=9.9cm]
 	\rbars
-	\ctsbar{red!95!black}{date}{A191RL}{data/gdp_a.csv}{6.6pt}
+	\ctsbar{red!95!black}{date}{A191RL}{data/gdp_a.csv}{6.5pt}
     \nextgroupplot[ybar=24pt, \bbar{y}{0}, date coordinates in=x, 
     	xtick=data,	xticklabels from table={\gdprec}{Quarter},
 		clip=false, height=4.3cm, width=4.6cm, xtick style={draw=none},
 		xticklabel style={black!75, yshift=10pt},
-		enlarge y limits={0.06}, enlarge x limits={0.14},
+		enlarge y limits={0.06}, enlarge x limits={0.12},
 		yticklabel style={text width=1.2em}, ymin=-3.8, ymax=7.5,
-		ytick={-4, -2, 0, 2, 4, 6, 8},
+		ytick={-4, -2, 0, 2, 4, 6, 8}, xticklabel style={align=center, yshift=-2pt}, 
 		visualization depends on=abs(\thisrow{A191RL})/\thisrow{A191RL}*4 \as \myshift,
     	every node near coord/.append style = {yshift={\myshift}},
 		axis line style={draw=none}, nodes near coords,
@@ -912,8 +913,10 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 	\input{text/gdpnow_node.txt}
 	\end{groupplot}
 \end{tikzpicture}
-\vspace*{-7mm}
+\end{minipage}
+\vspace*{-2.5mm}
 
+\begin{minipage}{0.76\textwidth}
 \footnotesize{Source: Bureau of Economic Analysis, Federal Reserve Bank of Atlanta} \hfill \tbllink{gdp.csv}
 \vspace{1mm}
 
@@ -954,11 +957,12 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \normalsize \textbf{The Sahm Rule}\\
 \footnotesize{\textit{three-month moving average of unemployment rate, }}\\
 \footnotesize{\textit{percentage points above one-year low}}
-\vspace{36mm}
+\vspace{3.6cm}
 
-\hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
 		enlarge y limits={0.1}, ymax=6.5, 
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		xticklabel={`\short{\year}}, width=13.0cm, height=5.7cm,
 		clip=false]
 	\fill[color=black!30] (axis cs:{1990-07-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
@@ -6662,7 +6666,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \footnotesize{Source: Author's Calculations from CPS, Bruenig} \hfill \tbllink{lfs_age.csv} \tbllink{lfs_age_ch.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth} \index{income, gross labor income} \index{compensation of employees} \index{gross labor income}
+\begin{minipage}{0.76\textwidth} \index{income!gross labor income} \index{compensation of employees} \index{gross labor income}
 \subsubsection*{Gross Labor Income}
 \small Businesses do not usually cut wages in response to an economic downturn, and will instead typically employ fewer workers and/or cut hours. As a result, wage data give only a partial picture of the labor income received by households.
 
@@ -7414,6 +7418,7 @@ In June 2008, the Current Population Survey (CPS), started to ask respondents ag
 \footnotesize{Source: BLS} \hfill \tbllink{unemp2.csv} 
 \end{minipage}
 
+\index{unemployment!unemployment rate}
 \begin{minipage}{0.76\textwidth}
 \small \input{text/unemp3.txt}
 \vspace{1mm}
@@ -8763,13 +8768,105 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \small \input{text/selfemp2.txt}
 \end{minipage}
 \newpage
-\vspace*{-10mm}
+\vspace*{-11mm}
 
 \begin{minipage}{0.76\textwidth} \index{usual weekly earnings} \index{wages} \index{median wage}
 \subsection*{Wages} \hypertarget{labw}{\label{labw}}
-\small Wages are an important indicator and are closely monitored by economists. Wages are the majority of income in the economy and the main cost for businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
+\small Economists consider wages to be an important economic indicator. Wages are the majority of personal income and the main expense of businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
 
-This subsection covers several wage measures. First, the distribution of usual weekly earnings provides the median, or typical, full-time wage, and insight into wage growth for low-wage workers and other groups. Next, the section discusses average hourly earnings, including by industry, and employee and benefit costs. Finally, we measure the wages of the same individuals, over time. 
+The US measures wages in several ways. As two examples, average hourly earnings comes from the monthly establishment, and usual weekly earnings are derived from three combined months of household surveys. This subsection first provides an overview of wage measures and recent results, and then discusses individual measures. 
+\vspace{1mm}
+
+\subsubsection*{Overview}
+\vspace*{-1mm}
+
+\small The various US wage measures each have advantages; average hourly earnings from the payroll survey are timely and cover detailed industry groups, while median earnings from the household survey are unaffected by outliers and cover demographic groups. 
+
+Likewise, wage measures come with caveats. For example, both average and median wages are \href{https://www.dallasfed.org/research/economics/2022/0215}{subject to} \textit{composition effects} during and after a recession. Low-wage workers are more likely to lose a job during a recession, and therefore move out of (and later into) the sample of a wage survey. This drives up the central tendency of wages during a recession and drives down the central tendency after a recession. 
+\end{minipage}
+
+\begin{minipage}{0.385\textwidth}
+\small Illustrating the composition effect, several measures show nominal one-year wage growth of three to four percent during 2018 and 2019. During the COVID-19 recession in 2020, average hourly earnings (AHE) growth (see \color{magenta}{---}\color{black}) jumps to eight percent, while wage growth is stable when tracked (WGT) at the level of individuals (see \color{blue}\textbf{- -}\color{black}), or calculated from the industry- and occupation-adjusted employment cost index (ECI, see \color{violet}\textbf{---}\color{black}).
+
+In the latest data, \input{text/wage_rec_summary.txt}
+\end{minipage} \hspace{4mm} \begin{minipage}{0.335\textwidth}
+\normalsize \textbf{Wage Growth Measures}\\
+\footnotesize{\textit{nominal one-year percent change}}
+\vspace{3.3cm}
+
+\hspace{2mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\ltdateaxisticks  \bbar{y}{0}, 
+		enlarge y limits={0.1}, clip=false, max space between ticks=20,	
+		yticklabel style={text width=1.0em}, 
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		xticklabel={`\short{\year}}, height=5.4cm, width=6.6cm]
+	\rbar
+	\thickline{violet}{date}{WS}{data/eci_growth_recent.csv}
+	\node[below, align=center] at (axis cs:{2020-9-01}, 2.65) 
+		{\color{violet}\footnotesize {ECI}};
+	\thinline{magenta}{date}{AHE}{data/ahe_growth_recent.csv}
+	\node[right, align=left] at (axis cs:{2021-04-01}, 1.2) 
+		{\color{magenta}\footnotesize {AHE}};
+	\dashline{blue}{date}{WGT}{data/wgt_growth_recent.csv}
+	\node[above, align=center] at (axis cs:{2023-03-01}, 6.5) 
+		{\color{blue}\footnotesize {WGT}};
+	%\thinline{cyan}{date}{COE}{data/coe_growth_recent.csv}
+	%\node[right, align=left] at (axis cs:{2021-02-01}, 9.1) 
+	%	{\color{cyan}\footnotesize {NIPA}};
+	%\draw [black!40!white] (axis cs:{2020-05-15},8.4) -- 
+	%		(axis cs:{2019-10-01}, 8.9);
+	\draw [black!40!white] (axis cs:{2020-03-15},7) -- 
+			(axis cs:{2019-10-01}, 6.9);
+	\node[left, align=right] at (axis cs:{2019-11-01}, 7.0) 
+		{\color{black!60!white}\scriptsize Composition \\ 
+		 \color{black!60!white}\scriptsize Effect };
+	\end{axis}
+\end{tikzpicture}
+\vspace{1mm}
+
+%\footnotesize{Notes: \color{magenta}{AHE}\color{black!90}: Average hourly earnings of employees on nonfarm payrolls; \color{blue}{WGT}\color{black!90}: Matched-observation median hourly earnings from Current Population Survey, three-month moving average; \color{cyan}{NIPA}\color{black!90}: Aggregate wages and salaries from national accounts divided by nonfarm payrolls, three-month moving average; \color{violet}{ECI}\color{black!90}: Employment cost index, quarterly}\\
+\footnotesize{Source: BEA, BLS, Author} \hfill \tbllink{wages_yy_monthly.csv} \  \tbllink{wages_yy_quarterly.csv} 
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.76\textwidth}
+\small The following tables consolidate recent wage growth rates from different measures. In addition to measures discussed above, the table includes average wages and salaries per worker, calculated as national accounts aggregate wages and salaries divided by the number of employees on nonfarm payrolls. 
+\vspace{0.5mm}
+
+\normalsize \textbf{Wage Growth Measures}\\
+\footnotesize{\textit{nominal one-year percent change}}
+\vspace*{-8mm}
+
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.2pt} \color{black!90}
+{\renewcommand{\arraystretch}{1.5}
+\hspace{-1mm} \begin{tabular}{p{48.5mm} R{7.0mm} R{7.0mm} R{7.0mm} R{7.0mm} R{7.0mm} 
+		R{7.0mm} R{7.0mm} R{7.0mm} }
+\input data/wages_yy_monthly.tex \hline
+	\end{tabular}}
+	\vspace{-1.5mm}
+				
+\footnotesize{Source: BLS, BEA, Federal Reserve Bank of Atlanta, Author} \hfill \tbllink{wages_yy_monthly.csv} 
+\end{minipage}
+\newpage
+\vspace*{-10mm}
+
+\begin{minipage}{0.76\textwidth}
+\small The second wage growth summary table captures quarterly measures, such as the ECI discussed above, which is particularly high-quality. Lastly, unit labor costs measure the cost a business pays to produce one unit of output. 
+\vspace{0.5mm}
+
+\normalsize \textbf{Wage Growth Measures}\\
+\footnotesize{\textit{nominal one-year percent change}}
+\vspace*{-8mm}
+
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+{\renewcommand{\arraystretch}{1.5}
+\hspace{-1mm} \begin{tabular}{p{42mm} R{7.2mm} R{7.2mm} R{7.2mm} R{7.2mm} R{7.2mm} 
+		R{7.2mm} R{7.2mm} R{7.2mm} }
+\input data/wages_yy_quarterly.tex \hline
+	\end{tabular}}
+	\vspace{-2.5mm}
+				
+\footnotesize{Source: BLS} \hfill  \tbllink{wages_yy_quarterly.csv} 
 \vspace{1mm}
 
 \subsubsection*{Usual Weekly Earnings}
@@ -8782,14 +8879,14 @@ This subsection covers several wage measures. First, the distribution of usual w
 
 \normalsize \textbf{Median Usual Weekly Earnings}\\
 \footnotesize{\textit{one-year growth, percent, full-time, wage and salary earners, age 16+}}
-\vspace{4.2cm}
+\vspace{3.6cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20, 
 		enlarge y limits={0.07}, yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, ymax=11.0,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		clip=false, width=12.7cm, height=6.2cm, 
+		clip=false, width=12.7cm, height=5.6cm, 
 		legend style={at={(0.51, 0.99)}, legend columns=1}, 
 		legend cell align={left}]
 	\rbars
@@ -8891,8 +8988,12 @@ This subsection covers several wage measures. First, the distribution of usual w
 \footnotesize{Source: Bureau of Labor Statistics}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth}
-\index{wages}
+\vspace*{-10mm}
+
+\begin{minipage}{0.76\textwidth} \index{wages}
+\normalsize{Wages and Education}
+\vspace*{-1mm}
+
 \small The US has increasingly invested in education, boosting productivity and earnings. This subsection discusses the relationship between \textbf{wages and education}, over the long-term and in recent data. 
 
 \input{text/educ_wage1.txt}\input{text/lprod_rw_educ.txt}
@@ -8903,13 +9004,13 @@ Not only is the long-term increase in median wages low, but some of the increase
 \normalsize \textbf{Real Earnings by Level of Education}\\
 \footnotesize{\textit{median usual weekly earnings, full-time wage and salary workers age 25 to 54}}\\
 \footnotesize{\textit{\input{text/rw_cpsdate.txt}dollars, adjusted using regional CPI-U, three-month moving average}}
-\vspace{6.1cm}
+\vspace{4.3cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\dateaxisticks enlarge y limits={0.18}, 
-		yticklabel style={text width=2.2em},
+	\begin{axis}[\dateaxisticks enlarge y limits={0.18}, ymax=1650,
+		yticklabel style={text width=2.2em}, max space between ticks=20,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		xticklabel={`\short{\year}}, clip=false, height=8.2cm, width=12.0cm]
+		xticklabel={`\short{\year}}, clip=false, height=6.3cm, width=12.0cm]
 	\rbars
 	\thickline{blue!90!cyan}{date}{LTHS/HS}{data/educ_wage.csv}
 	\thickline{green!80!blue}{date}{COLL/ADV}{data/educ_wage.csv}
@@ -8917,14 +9018,43 @@ Not only is the long-term increase in median wages low, but some of the increase
 	\thickline{orange!80!yellow!85!red}{date}{Total}{data/educ_wage.csv}
 	\stdnode{2.0cm}{0.05cm}{\footnotesize \color{blue!90!cyan}High School Degree \\
 	 \color{blue!90!cyan} or Less}
-	\stdnode{1.6cm}{5.0cm}{\footnotesize \color{green!80!blue}Bachelor or \\\footnotesize \color{green!80!blue}Advanced\\\footnotesize \color{green!80!blue}Degree}
-	\stdnode{4.6cm}{1.3cm}{\footnotesize \color{cyan}Some College}
-	\stdnode{7.3cm}{2.6cm}{\footnotesize \color{orange!80!yellow!85!red}Total,\\\footnotesize \color{orange!80!yellow!85!red}Any Education}
+	\stdnode{1.6cm}{4.1cm}{\footnotesize \color{green!80!blue}Bachelor or \\\footnotesize \color{green!80!blue}Advanced\\\footnotesize \color{green!80!blue}Degree}
+	\stdnode{4.6cm}{1.05cm}{\footnotesize \color{cyan}Some College}
+	\stdnode{7.3cm}{2.2cm}{\footnotesize \color{orange!80!yellow!85!red}Total,\\\footnotesize \color{orange!80!yellow!85!red}Any Education}
 	\input{text/educ_wage_nodes.txt}
 	\end{axis}
 \end{tikzpicture}
 
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{educ_wage.csv}
+\vspace{3mm}
+
+\normalsize{Gender Wage Gap}
+\vspace*{-1mm}
+
+\small Men are paid significantly more than women, both in general, and for a given job. The US \textbf{gender wage gap} has narrowed but is large and persistent. The US is not \href{https://iwpr.org/gender-and-racial-wage-gaps-marginally-improve-in-2022-but-pay-equity-still-decades-away/}{expected} to achieve gender pay equality until 2053. 
+\end{minipage}
+
+\begin{minipage}{0.46\textwidth}
+\normalsize \textbf{Gender Wage Gap}\\
+\footnotesize{\textit{women's median wage as a share of men's}}
+\vspace{3.6cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{1}, \shdateaxisticks 
+		enlarge y limits={0.08}, xticklabel={`\short{\year}}, ymax=0.98,
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		clip=false, width=8.1cm, height=5.6cm, 
+		yticklabel style={text width=1.5em}]
+	\rbars
+	\thickline{red}{date}{GWG}{data/gwg.csv}
+	\input{text/gwg_node.txt}
+	\absnode{{1991-01-01}}{1}{\footnotesize \color{gray} \textit{Pay equality}}
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{gwg.csv}
+\end{minipage} \hspace{5mm} \begin{minipage}{0.26\textwidth}
+\small \input{text/gwg.txt}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{average hourly earnings} \index{wages}
