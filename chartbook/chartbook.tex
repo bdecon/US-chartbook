@@ -649,7 +649,7 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
-\vspace*{-8mm}
+\vspace*{-9mm}
 
 \begin{minipage}{0.76\textwidth}
 \index{gross domestic product!by industry}
@@ -664,7 +664,7 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \footnotesize{\textit{per capita, thousands of \input{text/gdpva_ltdt.txt}dollars}}\\
 \noindent \hspace*{-1mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25, 30}, 
-		yticklabel style={text width=1.0em}, ymin=1.5, xmin={1998-01-01},
+		yticklabel style={text width=1.0em}, ymin=1.5, ymax=28.5, xmin={1998-01-01},
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		xticklabel={`\short{\year}}, clip=false, height=6.5cm, width=6.8cm]
 	\rebars
@@ -687,15 +687,14 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
-
 \normalsize \textbf{Production, by Type}\\
 \footnotesize{\textit{per capita, annualized, \input{text/gdpva_ltdt.txt}dollars}}\\
-\hspace{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
+\hspace{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.7pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{38mm} R{12.8mm} R{12.8mm} R{12.8mm} R{12.8mm} R{12.8mm}}
 			\input data/gdpva_pc.tex \hline
 		\end{tabular}}
-\vspace{-2mm}
+\vspace{-3mm}
 
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
@@ -6682,13 +6681,13 @@ People who are neither employed nor unemployed are considered \textit{outside of
 		enlarge y limits={0.03}, tick label style={inner sep=0pt},
 		xticklabel={`\short{\year}}, clip=false,  
 		yticklabel style={text width=1.4em}, max space between ticks=20, 
-		legend style={at={(0.89, 1.29)}}]
+		legend style={at={(0.97, 1.29)}}]
 	\rbars
 	\sbar{cyan!20!white}{date}{wage}{data/gli.csv}
 	\sbar{teal!60!blue!45!white}{date}{work}{data/gli.csv}
 	\input{text/gli_hbar2.txt}
 	\stdline{black}{date}{sum}{data/gli.csv}
-	\legend{Wages, Hours of Work, Total};
+	\legend{Average Wage, Hours of Work, Total};
 	\end{axis}
 \end{tikzpicture}
 
@@ -6701,7 +6700,7 @@ Among measures of overall economic activity, gross labor income has the added be
 
 \input{text/gli_nfp.txt}
 \end{minipage}
-\vspace{0.5mm}
+\vspace*{-1mm}
 
 \begin{minipage}{0.46\textwidth}
 \normalsize \textbf{Gross Labor Income Growth}\\
@@ -8770,7 +8769,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \newpage
 \vspace*{-11mm}
 
-\begin{minipage}{0.76\textwidth} \index{usual weekly earnings} \index{wages} \index{median wage}
+\begin{minipage}{0.76\textwidth} \index{wages} \index{wages!composition effect}
 \subsection*{Wages} \hypertarget{labw}{\label{labw}}
 \small Economists consider wages to be an important economic indicator. Wages are the majority of personal income and the main expense of businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
 
@@ -8848,7 +8847,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \footnotesize{Source: BLS, BEA, Federal Reserve Bank of Atlanta, Author} \hfill \tbllink{wages_yy_monthly.csv} 
 \end{minipage}
 \newpage
-\vspace*{-10mm}
+\vspace*{-10mm} \index{usual weekly earnings} \index{wages} \index{median wage}
 
 \begin{minipage}{0.76\textwidth}
 \small The second wage growth summary table captures quarterly measures, such as the ECI discussed above, which is particularly high-quality. Lastly, unit labor costs measure the cost a business pays to produce one unit of output. 
@@ -9028,7 +9027,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{educ_wage.csv}
 \vspace{3mm}
 
-\normalsize{Gender Wage Gap}
+\normalsize{Gender Wage Gap} \index{wages!gender wage gap}
 \vspace*{-1mm}
 
 \small Men are paid significantly more than women, both in general, and for a given job. The US \textbf{gender wage gap} has narrowed but is large and persistent. The US is not \href{https://iwpr.org/gender-and-racial-wage-gaps-marginally-improve-in-2022-but-pay-equity-still-decades-away/}{expected} to achieve gender pay equality until 2053. 

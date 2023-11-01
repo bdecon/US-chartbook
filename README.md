@@ -8,7 +8,7 @@
 
 Brian Dew, @bd_econ
 
-October 11, 2023
+October 31, 2023
 
 
 ----
@@ -19,7 +19,7 @@ The chartbook is a PDF document that I've put together to help analyze the US ec
 
 Importantly, the chartbook is open source, so people are welcome to use the source code for their own projects or suggest edits. If you find an error, and I'm sure there are many, please let me know. 
 
-I'm hoping to release version 0.1 of the chartbook in the next few weeks. Verson 0.1 is still a work-in-progress, but is the culmination of some work over the past few months to review and edit the draft into a format that might be useful for other people. 
+I'm hoping to release version 0.1 of the chartbook in the next few weeks. Verson 0.1 is still a work in progress, but is the culmination of some work over the past few months to review and edit the draft into a format that might be useful for other people. 
 
 ## To Do
 
