@@ -7341,7 +7341,6 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{empgroups.csv}
 \end{minipage}
 \newpage
-\vspace*{-6mm}
 \index{employment!with disability}
 \begin{minipage}{0.76\textwidth} 
 \small BLS also \href{https://data.bls.gov/timeseries/LNU02374597}{report} the \textbf{employment rate for people with disabilities}. People with disabilities may be limited in their ability to participate in labor markets and can also face discrimination during hiring. Labor market prospects for the group are also affected by economic conditions. A tight labor market pushes businesses to accommodate disabilities and to discriminate less in hiring.
@@ -7349,23 +7348,24 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 In June 2008, the Current Population Survey (CPS), started to ask respondents age 16 and older whether they have difficulty with any of the following: hearing, seeing (even while wearing glasses), walking or climbing stairs, concentrating, remembering, making decisions, dressing or bathing, or running errands alone. \input{text/dis_rate.txt} 
 \end{minipage}
 
-\begin{minipage}{0.43\textwidth} 
+\begin{minipage}{0.44\textwidth} 
 \normalsize \textbf{Employment Rate, with Disability}\\
 \footnotesize{\textit{employed share of age group, persons with disabilities,}}\\
 \footnotesize{\textit{percent, not seasonally adjusted}}
-\vspace{5.6cm}
+\vspace{5.8cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ymin=0, 
-		max space between ticks=30,
+\hspace{2mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ymin=1.9, 
+		max space between ticks=20,
 		yticklabel style={text width=1.0em}, xmin={2007-11-01},
-		width=7.0cm, enlarge y limits={0},
-		xticklabel={`\short{\year}}, clip=false, height=7.6cm]
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		width=7.6cm, enlarge y limits={0.06},
+		xticklabel={`\short{\year}}, clip=false, height=7.8cm]
 	\recbars
 	\stdline{red}{date}{BLS}{data/dis_emp_rate_bls.csv}
 	\stdline{blue}{date}{Age1664}{data/dis_emp_rate_cps.csv}
-	\absnode{{2012-03-01}}{16}{\footnotesize \color{red}\textbf{Age 16 and older}}
-	\absnode{{2014-07-01}}{26}{\footnotesize \color{blue}\textbf{Age 16 to 64}}
+	\absnode{{2011-01-01}}{15.2}{\footnotesize \color{red}\textbf{Age 16 and older}}
+	\absnode{{2013-01-01}}{33.2}{\footnotesize \color{blue}\textbf{Age 16 to 64}}
 	\input{text/dis_emp_node_bls.txt}
 	\input{text/dis_emp_nodes_cps.txt}
 	\end{axis}
@@ -7373,7 +7373,7 @@ In June 2008, the Current Population Survey (CPS), started to ask respondents ag
 
 \footnotesize{Source: Bureau of Labor Statistics; Author} \hfill \tbllink{dis_emp_rate_bls.csv} \ \ \tbllink{dis_emp_rate_cps.csv}
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.29\textwidth} 
+\begin{minipage}{0.278\textwidth} 
 \small \input{text/dis_rate_bls.txt} 
 
 \input{text/dis_rate_cps.txt} 
