@@ -787,7 +787,7 @@ def inc_dec_percent(n, how='main', annualized=False):
     print('inc_dec_percent will be removed from a future version')
         
         
-def compare_text(latest, previous, cutoffs):
+def compare_text(latest, previous, cutoffs, plain=False):
     '''
     Simple text based on difference between two numbers.
     Cutoffs should be list of three numbers that provide scale for 
@@ -807,6 +807,9 @@ def compare_text(latest, previous, cutoffs):
     else:
         text = f'far {direction}'
     
+    if plain == True:
+        text = direction
+        
     return text
     
     
