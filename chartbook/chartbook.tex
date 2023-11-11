@@ -19,6 +19,7 @@
 	\usepackage[default]{lato}
 	\usepackage{pgfplots, pgfplotstable}
 	\usepackage[eulergreek]{sansmath}
+	\usepackage{amssymb}
 	\usepackage{xcolor}
 	\usepackage{array}
 	\usepackage{fontawesome5}
@@ -54,6 +55,11 @@
 	\titleformat{\subsubsection}
   		{\color{black!70} \seriffont \bfseries \normalsize}
   		{\thesection}{1em}{}		
+
+  	% References remove numbering
+	\makeatletter
+		\renewcommand\@biblabel[1]{}
+	\makeatother
 %
 % % % % % Graph Settings % % % % % % % 
 %
@@ -201,8 +207,9 @@
 		date coordinates in=x, axis line style={draw=none},
 		xmax={2023-11-30},
 		max space between ticks=40,	    
-		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, {2018-01-01}, 
-		    {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
+		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
+			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
+			{2022-01-01}, {2023-01-01}, {2024-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		}
@@ -211,7 +218,8 @@
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xmin={2018-01-01}, xmax={2023-11-30},   
-		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
+		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
+			{2022-01-01}, {2023-01-01}, {2024-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
 		yticklabel style={text width=1.0em},
 		height=3.8cm, width=6.4cm,
@@ -221,8 +229,9 @@
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xmax={2023-11-30}, max space between ticks=40,	    
-		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
-			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
+		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01},
+		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
+		 {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
 		
@@ -230,6 +239,13 @@
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xmax={2023-11-30},
+		}
+
+	% Date (X) Axis Tick Marks, no tick marks, just formatting
+	\newcommand{\empticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xticklabels=\empty, xtick style={draw=none},
+		xmax={2023-11-30}, enlarge x limits={0.01},
 		}
 		
 	% Settings for y label text in horizontal bar charts
@@ -273,53 +289,38 @@
 		
 	% Recession bars		
 	\newcommand{\rbars}{
-		\fill[color=black!10] (axis cs:{1990-07-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{1991-03-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+		\fill[color=black!10] (axis cs:{1990-07-01},\pgfkeysvalueof{/pgfplots/ymin})
+			rectangle (axis cs:{1991-03-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin})
+			rectangle (axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin})
+			rectangle (axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin})
+			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rebars}{
-		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) 
+			rectangle (axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) 
+			rectangle (axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) 
+			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\recbars}{
-		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin})
+			rectangle (axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) 
+			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 			
 	\newcommand{\rbar}{
-		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) rectangle 
-			(axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
+		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) 
+			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 	
 	\newfontfamily\seriffont{RobotoSlab}	
 	
-	\pgfplotstableread[header=true, col sep=comma]{data/empgroups.csv}\emp
-	\pgfplotstableread[header=true, col sep=comma]{data/empgroups2.csv}\empt
 	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups.csv}\unemp
 	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups2.csv}\unempt
 	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups3.csv}\unemptt
-	\pgfplotstableread[header=true, col sep=semicolon]{data/state_pa_epop.csv}\paepop
-	\pgfplotstableread[header=true, col sep=semicolon]{data/state_pa_epop2.csv}\paepopt
-	\pgfplotstableread[header=true, col sep=semicolon]{data/state_pa_epop3.csv}\paepoptt
-	\pgfplotstableread[header=true, col sep=comma]{data/unemp_grp.csv}\ungrp
-	\pgfplotstableread[header=true, col sep=comma]{data/unemp_grpsh.csv}\ungrpsh
-	\pgfplotstableread[header=true, col sep=comma]{data/cpi_monthly.csv}\cpimo
-	\pgfplotstableread[header=true, col sep=comma]{data/ppi_monthly.csv}\ppimo
-	\pgfplotstableread[header=true, col sep=comma]{data/ccdebtbar.csv}\ccbar
-	\pgfplotstableread[header=true, col sep=comma]{data/gdp_rec.csv}\gdprec
-	\pgfplotstableread[header=true, col sep=comma]{data/educ_wage_bar.csv}\web
-	\pgfplotstableread[header=true, col sep=comma]{data/unemp_reason_mon.csv}\unrsn
-	\pgfplotstableread[header=true, col sep=comma]{data/jobs_ss.csv}\jobss
-	\pgfplotstableread[header=true, col sep=comma]{data/uwe_cps_sh.csv}\uwecps
 	%\pgfplotstableread[header=true, col sep=comma]{data/gdp_rec2.csv}\gdprecs
 	%\pgfplotstableread[header=true, col sep=comma]{data/treas_recent_mon2.csv}\treasrd
 	%\pgfplotstableread[header=true, col sep=comma]{data/lprod_rec.csv}\lprodrec	
@@ -387,7 +388,7 @@ This chartbook offers a big menu of US economic and social indicators. To keep t
 
 As a result of these shortcuts, the chartbook is neither a source of reliable economic analysis nor a substitute for careful research. Instead, the chartbook curates samples from a variety of sources and provides links to the related data and \href{https://github.com/bdecon/US-chartbook}{source code}. The goal is to inspire and facilitate further exploration.
 
-\textbf{Version 0.1 release planned for November 2023}
+\textbf{Version 0.1 release planned for mid November 2023}
 \end{minipage}
 \newpage
 \section*{\hyperlink{toc}{\faList} \ {Contents}}
@@ -396,7 +397,7 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 \vspace{3mm}
 \normalsize
 
-\hspace*{-3mm}\begin{minipage}{0.46\textwidth}
+\hspace*{-3mm}\begin{minipage}[t]{0.45\textwidth}
 \setlength{\parskip}{2.4pt}
 \begin{description}
 \tocentry{oea}{\cbox{gray} Overall Economic Activity}
@@ -416,7 +417,7 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 \end{description}
 \vspace{3mm}
 
-\tocentry{hh}{\cbox{red} Households}
+\tocentry{hh}{\cbox{red!90!black} Households}
 \begin{description}[labelindent=-2mm]
 \tocentsm{hhdem}{Demographics}
 \tocentsm{hhinc}{Income}
@@ -427,7 +428,7 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 \end{description}
 \vspace{3mm}
 
-\tocentry{bus}{\cbox{blue} Businesses}
+\tocentry{bus}{\cbox{blue!90!white} Businesses}
 \begin{description}[labelindent=-2mm]
 \tocentsm{busin}{Investment}
 \tocentsm{buspr}{Corporate Profits}
@@ -451,13 +452,13 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 \begin{description}[labelindent=-2mm]
 \tocentsm{exbop}{Balance of Payments}
 \tocentsm{extt}{International Trade}
-\tocentsm{exiip}{International Investment Position}
+\tocentsm{exiip}{International Investment}
 \tocentsm{excf}{Capital Flows}
 \tocentsm{extfx}{Exchange Rates}
 \end{description}
 \end{description}
 \end{minipage} \hspace{2mm} 
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}[t]{0.48\textwidth}
 \setlength{\parskip}{2.4pt}
 \begin{description}
 \tocentry{lab}{\cbox{cyan} Labor Markets}
@@ -467,14 +468,14 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 \tocentsm{labp}{Participation}
 \tocentsm{labf}{Labor Force Flows}
 \tocentsm{labh}{Hours}
-\tocentsm{labns}{Nonstandard Work Arrangements}
+\tocentsm{labns}{Nonstandard Arrangements}
 \tocentsm{labw}{Wages}
 \tocentsm{labprod}{Productivity}
 \tocentsm{labun}{Union Membership}
 \end{description}
 \vspace{3mm}
 
-\tocentry{cap}{\cbox{orange} Capital Markets}
+\tocentry{cap}{\cbox{orange!80!yellow} Capital Markets}
 \begin{description}[labelindent=-2mm]
 \tocentsm{capeq}{Equity Markets}
 \tocentsm{capint}{Interest Rates}
@@ -482,7 +483,7 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 \end{description}
 \vspace{3mm}
 
-\tocentry{pr}{\cbox{purple} Prices}
+\tocentry{pr}{\cbox{purple!60!magenta} Prices}
 \begin{description}[labelindent=-2mm]
 \tocentsm{prin}{Consumer Price Index}
 \tocentsm{prie}{Inflation Expectations}
@@ -493,9 +494,10 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 \end{description}
 \vspace{3mm}
 
+\tocentry{references}{References}
+
 \tocentry{index}{Index}
 \end{description}
-\vspace{6.72cm}
 \end{minipage}
 
 \vfill
@@ -513,7 +515,7 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 
 \begin{minipage}{0.59\textwidth}
 \index{gross domestic product!overview}
-\small This analysis of the United States economy begins with the most popular measure of overall economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{gross domestic product} (GDP). GDP is the value of goods and services produced in the US each quarter. According to the Bureau of Economic Analysis, the seasonally-adjusted annualized value of goods and services produced in the US was \input{text/gdp1.txt}
+\small This analysis of the United States economy begins with the most popular measure of overall economic activity, \href{https://www.bea.gov/data/gdp/gross-domestic-product}{gross domestic product} (GDP). GDP is the value of goods and services produced in the US in a given time period. According to the Bureau of Economic Analysis, the seasonally-adjusted annualized US GDP was \input{text/gdp1.txt}
 \end{minipage}\hfill
 \begin{minipage}{0.36\textwidth}
 \index{gross domestic product!per capita}
@@ -524,8 +526,7 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 \hspace{2mm} \begin{tikzpicture}[overlay]
     \begin{axis}[\shdateaxisticks clip=false, height=5.4cm, width=6.2cm,
     	yticklabel style={text width=1.0em},
-        xticklabel={`\short{\year}}, %enlarge y limits={lower, 0.1}, 
-        enlarge x limits={0.02}, tick label style={inner sep=0pt},]
+        xticklabel={`\short{\year}}, enlarge x limits={0.02}]
     \rbars
     \stdline{red!95!black}{date}{value}{data/gdppc.csv}
 	\input{text/gdp_pc_node.txt}
@@ -550,7 +551,6 @@ As a result of these shortcuts, the chartbook is neither a source of reliable ec
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40, 50}, 
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=7.2cm, width=7.1cm,
-		tick label style={inner sep=0pt},
         enlarge y limits={0.08, lower}]
 	\rbars
 	\stdnode{1.1cm}{4.4cm}{\footnotesize \color{yellow!45!orange}Consumer\\ \color{yellow!45!orange}Spending}
@@ -603,7 +603,7 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \footnotesize{\textit{per capita, thousands of \input{text/gdi_ltdt.txt}dollars}}\\
 \noindent \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 10, 20, 30, 40}, 
-		yticklabel style={text width=1.0em}, tick label style={inner sep=0pt},
+		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=7.3cm, width=6.8cm,
         enlarge y limits={0.06, lower}]
 	\rbars
@@ -796,7 +796,7 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 	\begin{axis}[\bbar{y}{100},\shdateaxisticks 
 		ytick={60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160}, 
 		yticklabel style={text width=1.5em}, 
-		enlarge y limits={0.03}, tick label style={inner sep=0pt}, 
+		enlarge y limits={0.03}, 
 		xticklabel={`\short{\year}}, height=7.5cm, width=7.0cm, clip=false]
 	\rbars
 	\thinline{violet}{date}{LPROD_BLS_idx}{data/gdpjobslvl.csv}
@@ -868,7 +868,8 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \vspace*{-1mm}
 
 \footnotesize{\textit{annual growth, percent \hspace{59mm} recent quarterly \hspace{4mm} \input{text/nowcast_text.txt}}}\\
-\hspace*{-2.5mm} \begin{tikzpicture}
+\hspace*{-2.5mm} \begin{tikzpicture} 	
+	\pgfplotstableread[col sep=comma]{data/gdp_rec.csv}\gdprec
     \begin{groupplot}[group style={group size=2 by 1, 
     y descriptions at=edge left, horizontal sep=12pt,},]
     \nextgroupplot[\bbar{y}{0}, \shdateaxisticks 
@@ -959,6 +960,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 	\addplot[only marks, mark=diamond*, mark options={fill=white, 
 		draw=red, scale=1.6}] table [x=date, y=Intersect, col sep=comma] {data/sahm_marks.csv};	
 	\input{text/sahm_bar_node.txt}
+	\input{text/sahm_node.txt}
 	\end{axis}
 \end{tikzpicture}
 
@@ -986,7 +988,6 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 		\dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30},
 		yticklabel style={text width=1.4em}, height=5.2cm, ymax=27.8,
 		xticklabel={`\short{\year}}, clip=false, 
-		tick label style={inner sep=0pt},
 		legend style={at={(0.29, 0.97)}, fill=white}]
 	\rbars
 	\sbar{red!80!white}{date}{A191RL}{data/ngdp_gr.csv}
@@ -1484,8 +1485,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ymin=15, ymax=492,
 		height=5.1cm, width=12.4cm, max space between ticks=20, 
-		enlarge y limits={0.05}, tick label style={inner sep=0pt},
-		yticklabel style={text width=1.5em},
+		enlarge y limits={0.05}, yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
 	\sbar{cyan!35!white}{date}{Other}{data/wealthgdp.csv}
@@ -1705,7 +1705,7 @@ Each of these categories of investment is discussed further in the chartbook sec
 \end{minipage}
 \newpage
 \hypertarget{hh}{\label{hh}}
-\section*{\bcbox{red}Households} \index{households!overview}
+\section*{\bcbox{red!90!black}Households} \index{households!overview}
 \thispagestyle{sectpage}
 \begin{minipage}{0.76\textwidth}
 \small This section covers the household sector of the economy. Households are the source of labor for production and the source of saving for investment. Households are also the primary consumers in the economy. The core topics in the households section include demographics, personal and household income and outlays, consumer sentiment, residential investment, household balance sheets, home ownership, housing, and poverty.
@@ -1759,7 +1759,7 @@ Each of these categories of investment is discussed further in the chartbook sec
 \footnotesize{Source: Census Bureau}
 \end{minipage}
 \newpage
-\markright{\footnotesize \color{red}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Households}
+\markright{\footnotesize \color{red!90!black}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Households}
 \begin{minipage}{0.76\textwidth} \index{demographics!population} \index{demographics!population growth}
 \subsubsection*{Population Growth}
 \index{population!growth}
@@ -1928,7 +1928,6 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 		xticklabel={`\short{\year}}, clip=false, 
 		yticklabel style={text width=1em}, xmin={1986-10-01},
 		height=6.1cm, width=7.0cm, 
-		tick label style={inner sep=0pt},
         enlarge y limits={0.1, lower}]
 	\rbars
 	\stdline{blue!60!cyan}{date}{ALL}{data/median_age.csv}
@@ -2264,33 +2263,34 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \footnotesize{Source: Census Consumer Expenditure Surveys} \hfill \tbllink{ce_age.csv} \ 
 \end{minipage}
 \newpage
-\vspace*{-8mm}
+\vspace*{-10mm}
 
 \begin{minipage}{0.76\textwidth} 
 \subsection*{Personal Income} \index{income!personal}
 \vspace{-0.5mm}
 
-\small \textbf{Personal income}, or pre-tax income, \href{https://www.bea.gov/data/income-saving/personal-income}{includes} labor income (see\cbox{green!65!black}), measured as compensation of employees, capital income (see\cbox{orange!40!yellow}), measured as the sum of proprietor income, rental income, and dividend and interest income, and net government social benefits (see\cbox{blue!80!white}), measured as government social benefits less contributions to social insurance. 
+\small \textbf{Personal income}, or pre-tax income, can be \href{https://www.bea.gov/data/income-saving/personal-income}{grouped} into three major categories: labor income, capital income, and net government benefits. Labor income (see\cbox{green!55!blue!72!black}) encompasses wages and salaries and other job benefits, and is measured as compensation of employees in the national accounts. Capital income (see\cbox{yellow!85!orange!88!white}) sums proprietor, rental, dividend, and interest income. Net government social benefits (see\cbox{cyan!90!blue!90!white}) are measured as government social benefits less contributions to social insurance. 
 \vspace{1mm}
 
 \normalsize \textbf{Personal Income}\\
 \footnotesize{\textit{real per capita pre-tax income, thousands of \input{text/pi_date.txt}\unskip \ US dollars}}
-\vspace{3.8cm}
+\vspace{3.6cm}
 
-\hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
-		xticklabel={`\short{\year}}, clip=false, ymin=3, ymax=66.2,
-		yticklabel style={text width=1.0em}, width=12.9cm, height=5.8cm]
+\hspace{2mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=18,
+		xticklabel={`\short{\year}}, clip=false, ymin=3, ymax=76,
+		yticklabel style={text width=1.0em}, width=12.7cm, height=5.6cm]
 	\rbars
-	\ctsbar{green!65!black}{date}{LABOR}{data/pi_levels.csv}{0.8pt}
-	\ctsbar{orange!40!yellow!80!white}{date}{CAPITAL}{data/pi_levels.csv}{0.8pt}
-	\ctsbar{blue!80!white}{date}{TRANSFER}{data/pi_levels.csv}{0.8pt}
-	\node[right, align=left, shift=({rel axis cs:0.23,0.23}), fill=white, inner sep=0.5ex]
-		{\small Labor Income};	
-	\node[right, align=left, shift=({rel axis cs:0.34,0.59})]
+	\ctsbar{green!55!blue!72!black}{date}{LABOR}{data/pi_levels.csv}{0.8pt}
+	\ctsbar{yellow!85!orange!88!white}{date}{CAPITAL}{data/pi_levels.csv}{0.8pt}
+	\ctsbar{cyan!90!blue!90!white}{date}{TRANSFER}{data/pi_levels.csv}{0.8pt}
+	\node[right, align=left, shift=({rel axis cs:0.23,0.23})]
+		{\small \color{white} \textbf{Labor Income}};	
+	\node[right, align=left, shift=({rel axis cs:0.32,0.52})]
 		{\small Capital Income};	
-	\node[right, align=left, shift=({rel axis cs:0.11,0.73})]
-		{\small \color{blue!80!white} Net Government \\ \small \color{blue!80!white} Benefits};	
+	\node[right, align=left, shift=({rel axis cs:0.11,0.66})]
+		{\small \color{cyan!90!blue!90!white} Net Government \\ \small \color{cyan!90!blue!90!white} Benefits};
+	\input{text/pi_level_nodes.txt}	
 	\end{axis}
 \end{tikzpicture}
 
@@ -2305,7 +2305,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \vspace{-4mm}
 
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.6pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.56}
+		{\renewcommand{\arraystretch}{1.54}
 		 \begin{tabular}{p{46mm} R{11.4mm} R{11.4mm} R{11.4mm} R{11.4mm} R{11.4mm}}
 			 \input data/pi_levels.tex \hline
 		\end{tabular}}\vspace{-2mm}
@@ -2326,9 +2326,9 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 		xticklabel={`\short{\year}}, clip=false, yticklabel style={text width=1.4em}, 
 		legend style={at={(0.66, 0.99)}, legend columns=2}]
 	\rbars
-	\sbar{green!65!black}{date}{A033RC}{data/pi.csv}
-	\sbar{orange!40!yellow}{date}{CAPITAL}{data/pi.csv}
-	\sbar{blue!80!white}{date}{TRANSFER}{data/pi.csv}
+	\sbar{green!55!blue!72!black}{date}{A033RC}{data/pi.csv}
+	\sbar{yellow!85!orange!88!white}{date}{CAPITAL}{data/pi.csv}
+	\sbar{cyan!90!blue!90!white}{date}{TRANSFER}{data/pi.csv}
 	\legend{Labor Income, Capital Income$^1$, Net Government Benefits$^2$};
 	\stdnode{3.4cm}{1.1cm}{\scriptsize $^1$ Includes proprietor, rent, and asset income\\ \scriptsize $^2$ Current transfer receipts minus contributions\\\scriptsize \ \ \ \ to government social insurance}
 	\end{axis}
@@ -2847,18 +2847,16 @@ Over the last three decades, the expansion of consumer spending has been a prima
 
 \normalsize \textbf{Consumer Sentiment Index Components}\\
 \footnotesize{\textit{index, 1966=100}}
-\vspace*{-1.5mm}
+\vspace{3.1cm}
 
-\hspace*{-2mm} \begin{tikzpicture}
+\hspace{4mm} \begin{tikzpicture}[overlay]
     \begin{groupplot}[group style={group size=1 by 2, 
-    x descriptions at=edge bottom, vertical sep=6pt,},]
+    	x descriptions at=edge bottom, vertical sep=6pt}, xmin={1989-01-01}, 
+    	enlarge x limits={0.01}, yticklabel style={text width=1.6em}, clip=false,
+    	height=5.0cm, width=12.4cm]
     \nextgroupplot[\bbar{y}{0}, date coordinates in=x, axis line style={draw=black},
-    	xticklabels=\empty, xtick style={draw=none}, 
-		max space between ticks=20,	xmin={1989-01-01}, 
-		tick label style={inner sep=0pt},
-		enlarge y limits={0.32}, enlarge x limits={0.01},  
-		yticklabel style={text width=1.6em},
-		clip=false, height=5.0cm, width=12.4cm]
+    	xticklabels=\empty, xtick style={draw=none}, max space between ticks=20, 
+		tick label style={inner sep=0pt}, enlarge y limits={0.32}]
 			\rbars
 			\stdline{blue!50!cyan}{date}{ICC}{data/umichsoc_ice.csv}
 			\input{text/icc_node.txt}
@@ -2866,9 +2864,7 @@ Over the last three decades, the expansion of consumer spending has been a prima
 				draw=black!30!white, fill=white, inner sep=3.0]
 				{\small \color{black!80!white}\textbf{Current Conditions}};
     \nextgroupplot[\bbar{y}{0}, \dateaxisticks 
-		yticklabel style={text width=1.6em}, enlarge y limits={0.38}, 
-		enlarge x limits={0.01}, xmin={1989-01-01}, max space between ticks=20,	
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=12.4cm]
+		enlarge y limits={0.38}, xticklabel={`\short{\year}}, max space between ticks=20]
         	\rbars
 			\stdline{green!60!black}{date}{ICE}{data/umichsoc_ice.csv}
 			\input{text/ice_node.txt}
@@ -2876,7 +2872,9 @@ Over the last three decades, the expansion of consumer spending has been a prima
 				draw=black!30!white, fill=white, inner sep=3.0]
 				{\small \color{black!80!white}\textbf{Expected Conditions}};
     \end{groupplot}
-\end{tikzpicture}\\
+\end{tikzpicture}
+\vspace{3.6cm}
+
 \footnotesize{Source: University of Michigan} \hfill \tbllink{umichsoc_ice.csv}
 \end{minipage}
 \newpage
@@ -3160,7 +3158,6 @@ In the US financial accounts, the combined household and nonprofit sectors hold 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
 		enlarge y limits={0.2}, height=5.4cm, width=12.7cm, 
-		xticklabel style={align=center, yshift=-3pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
@@ -3189,8 +3186,7 @@ In the US financial accounts, the combined household and nonprofit sectors hold 
 \begin{axis}[clip=false,
     \bbar{y}{0}, \shdateaxisticks ymin=9, width=5.4cm, height=5.3cm, bar width=22pt,
     yticklabel style={text width=1.6em}, max space between ticks=20,
-    xticklabel={`\short{\year}}, 
-	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
+    xticklabel={`\short{\year}}, ]
 	\rbars
 	\thickline{green!60!black}{date}{Net Worth}{data/hh_avg_pc_wealth.csv}
 	\input{text/hh_avg_pc_wealth_node.txt}
@@ -3201,7 +3197,7 @@ In the US financial accounts, the combined household and nonprofit sectors hold 
 \end{tikzpicture} \end{minipage} \hspace{1mm} \begin{minipage}{0.42\textwidth}
 \begin{tikzpicture}\pgfplotstableread[col sep=comma]{data/wealth_dist.csv}\datatable
 \begin{axis}[clip=false,
-    xticklabels from table={\datatable}{pct}, xlabel={Decile},
+    xticklabels from table={\datatable}{pct}, xlabel={Percentiles},
     xtick=data, width=7.5cm, height=4.0cm, bar width=9pt,
     yticklabel style={text width=1.0em}, max space between ticks=20,
 	xticklabel style={align=center, yshift=-12pt, text width=1.3em,
@@ -3482,9 +3478,9 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \newpage
 \begin{minipage}{0.76\textwidth} \index{wealth!household} \index{households!wealth}
 \subsubsection*{Changes in Wealth}
-\small \textbf{Changes in household net worth} come mostly from changes in the value of assets and other holding gains (see\cbox{cyan!40!white}), but also from saving of income, and decisions about how much to spend. Each period, households spend a portion of their income. The saved portion of income, after consumer spending and spending to cover depreciation of households assets, is considered net investment and increases net worth. Since 1989, household net investment has averaged 10 percent of disposable personal income. 
+\small \textbf{Household wealth growth} is largely determined by capital gains (see\cbox{cyan!40!white}), but is also the result of new saving. The portion of aggregate household income that isn't consumed by the household sector becomes net investment in the economy and adds to household wealth. Since 1989, household net investment averages 10 percent of after-tax income.
 
-In the chart, income invested at the historical-average rate (see\cbox{magenta!85!white}) is visually separated from investment that is above or below trend (see\cbox{violet}). The separation distinguishes changes in disposable personal income from changes in decisions about how to use that income. Separately, changes in data sources or from natural disasters are identified as other volume changes (see\cbox{cyan!70!blue}).
+In the following chart, income invested at the historical-average rate (see\cbox{magenta!85!white}) is shown separately from investment that is above or below trend (see\cbox{violet}). The separation distinguishes changes in disposable personal income from changes in decisions about how to use that income. Separately, changes in data sources or from natural disasters are identified as other volume changes (see\cbox{cyan!70!blue}).
 \vspace{2mm}
 
 \normalsize{\textbf{Net Worth Growth}}\\
@@ -3495,13 +3491,13 @@ In the chart, income invested at the historical-average rate (see\cbox{magenta!8
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15, 20},
 		height=6.8cm, xticklabel={`\short{\year}}, legend cell align={left},
 		yticklabel style={text width=1.5em}, clip=false, ymax=18.1, reverse legend,
-		legend style={at={(0.54, 0.24)}, fill=white, legend columns=2}]
+		legend style={at={(0.52, 0.24)}, fill=white, legend columns=2}]
 	\rbars
 	\sbar{violet}{date}{INV}{data/nw_gr.csv}
 	\sbar{magenta!85!white}{date}{INC}{data/nw_gr.csv}
 	\sbar{cyan!70!blue}{date}{OVC}{data/nw_gr.csv}		
 	\sbar{cyan!40!white}{date}{RV}{data/nw_gr.csv}
-	\legend{ \ Rate of Investment, \ Income, \ Other Volume Changes, \ Holding Gains};
+	\legend{ \ Saving Rate Changes, \ Regular Saving, \ Other Changes, \ Holding Gains};
 	\end{axis}
 \end{tikzpicture}
 
@@ -3668,8 +3664,7 @@ In the chart, income invested at the historical-average rate (see\cbox{magenta!8
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
 		yticklabel style={text width=1.5em}, legend style={at={(0.48, 1.0)}}, 
-		ymin=72, xticklabel style={align=center, yshift=-2pt}, 
-		tick label style={inner sep=0pt}, clip=false, enlarge y limits=0.11,
+		ymin=72, clip=false, enlarge y limits=0.11,
 		xticklabel={`\short{\year}}, height=4.6cm, width=12.8cm]
 	\rbars
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits_multi.csv}
@@ -3711,9 +3706,7 @@ In the chart, income invested at the historical-average rate (see\cbox{magenta!8
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks enlarge y limits=0.22, ymax=470,
-		max space between ticks=20, xticklabel style={align=center, yshift=-2pt}, 
-		tick label style={inner sep=0pt},
-		yticklabel style={text width=1.6em}, 
+		max space between ticks=20, yticklabel style={text width=1.6em}, 
 		xticklabel={`\short{\year}}, height=4.8cm, width=11.8cm, clip=false]
 	\rbars
 	\thinline{violet}{date}{MEDIAN}{data/nhs_rp.csv}	
@@ -4111,7 +4104,8 @@ By age, market income (see\cbox{blue!80!cyan}) leaves older people particularly 
 \vspace*{-9mm}
 
 \hypertarget{bus}{\label{bus}}
-\section*{\bcbox{blue}Businesses}
+\section*{\bcbox{blue!90!white}Businesses}
+\thispagestyle{sectpage}
 \vspace*{-2mm}
 
 \begin{minipage}{0.76\textwidth} \index{businesses!overview} \index{businesses!depreciation}
@@ -4120,11 +4114,11 @@ By age, market income (see\cbox{blue!80!cyan}) leaves older people particularly 
 \subsection*{Investment}
 \hypertarget{busin}{\label{busin}}
 \index{investment!business} \index{businesses!investment}
-\small Production by private businesses requires capital goods, such as buildings, equipment, and software. When businesses purchase such items, defined as having a useful life of more than one year, it is considered \href{https://www.bea.gov/help/glossary/nonresidential-fixed-investment}{fixed investment}, or investment in fixed assets. From an accounting perspective, these transactions are considered an exchange of assets (cash in exchange for capital goods) rather than an expense.
+\small Private business production relies on capital goods, such as buildings, equipment, and software. These items, with a useful life exceeding one year, are categorized as \href{https://www.bea.gov/help/glossary/nonresidential-fixed-investment}{fixed investment}, or investment in fixed assets. From an accounting perspective, these transactions are considered an exchange of assets--cash in exchange for capital goods--rather than expenses.
 
-Over time, these capital goods wear down, a process called consumption of fixed capital or depreciation. Depreciation is the expense related to capital goods from an accounting perspective. Businesses must decide whether to replace or add to the existing stock of capital goods, and their new purchases of capital goods and inventory investment are considered \href{https://www.bea.gov/help/glossary/gross-private-domestic-investment}{gross investment}. Accordingly, net investment is gross investment minus depreciation, and measures whether the stock of capital goods is expanding.
+Over time, capital goods deteriorate, a process known as consumption of fixed capital or depreciation. From an accounting standpoint, depreciation represents the cost associated with the use of capital goods. Businesses must decide whether to replace or add to the existing stock of capital goods, and their new purchases of capital goods and inventory investment are considered \href{https://www.bea.gov/help/glossary/gross-private-domestic-investment}{gross investment}. Net investment, which is gross investment minus depreciation, measures whether the stock of capital goods is expanding.
 
-Net investment is important for many reasons. In the short run, the production and installation of capital goods adds directly to GDP and increases the level of economic activity. In the long run, \textbf{investments in fixed assets make workers more productive}, as they allow businesses to produce more goods and services with the same hours of work. 
+Net investment is important for many reasons. In the short run, the production and installation of capital goods adds directly to GDP and boosts economic activity. In the long run, \textbf{investments in fixed assets make workers more productive}, as they allow businesses to produce more goods and services with the same hours of work. 
 \end{minipage}
 \vspace{1mm}
 
@@ -4161,7 +4155,7 @@ Net investment is important for many reasons. In the short run, the production a
 \small Note that gross investment includes fixed investment and inventory investment, or the \href{https://www.bea.gov/help/glossary/change-private-inventories-cipi}{change in private inventories}. Changes to private inventories capture the difference between sales and production. Reduced production of new inventory explains much of the overall reduction in gross investment during the COVID-19 pandemic. 
 \end{minipage}
 \newpage
-\markright{\footnotesize \color{blue}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Businesses} 
+\markright{\footnotesize \color{blue!90!white}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Businesses} 
 \begin{minipage}{0.33\textwidth}
 \small \input{text/businv_sh.txt}
 \end{minipage} \hspace{5mm}
@@ -4354,8 +4348,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \hspace{4mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
 	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
-	clip=false, height=4.4cm, width=6.0cm, enlarge y limits=0.24, ymin=54, 
-	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
+	clip=false, height=4.4cm, width=6.0cm, enlarge y limits=0.24, ymin=54]
 	\rbars
 	\thickline{cyan}{date}{Noncorporate Liabilities}{data/bus_bs_gva_sh.csv}
 	\stdline{blue!80!black}{date}{Corporate Liabilities}{data/bus_bs_gva_sh.csv}
@@ -4372,8 +4365,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
 	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
-	clip=false, height=4.4cm, width=6.0cm, enlarge y limits=0.14, ymin=24, 
-	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
+	clip=false, height=4.4cm, width=6.0cm, enlarge y limits=0.14, ymin=24]
 	\rbars
 	\thickline{magenta}{date}{Noncorporate Debt}{data/bus_bs_gva_sh.csv}
 	\stdline{violet}{date}{Corporate Debt}{data/bus_bs_gva_sh.csv}
@@ -4392,8 +4384,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \hspace{4mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
 	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
-	clip=false, height=4.4cm, width=6.0cm, enlarge y limits=0.24, ymin=128, 
-	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
+	clip=false, height=4.4cm, width=6.0cm, enlarge y limits=0.24, ymin=128]
 	\rbars
 	\thickline{lime!50!green!80!black}{date}{Noncorporate Assets}{data/bus_bs_gva_sh.csv}
 	\stdline{green!50!black}{date}{Corporate Assets}{data/bus_bs_gva_sh.csv}
@@ -4410,8 +4401,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
 	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
-	clip=false, height=4.4cm, width=6.0cm, enlarge y limits=0.14, ymin=46, 
-	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
+	clip=false, height=4.4cm, width=6.0cm, enlarge y limits=0.14, ymin=46]
 	\rbars
 	\thickline{orange}{date}{Noncorporate Net Worth}{data/bus_bs_gva_sh.csv}
 	\stdline{red}{date}{Corporate Net Worth}{data/bus_bs_gva_sh.csv}
@@ -4441,8 +4431,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \hspace{3mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[\shdateaxisticks max space between ticks=15,
 	yticklabel style={text width=1.0em}, xticklabel={`\short{\year}}, 
-	clip=false, height=4.6cm, width=7.5cm, 
-	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
+	clip=false, height=4.6cm, width=7.5cm]
 	\rbars
 	\thickline{orange!65!yellow}{date}{Corporate}{data/bus_bs_da.csv}
 	\thickline{blue!70!black!75!white}{date}{Noncorporate}{data/bus_bs_da.csv}
@@ -4472,8 +4461,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \hspace{5mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=30,
 	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
-	clip=false, height=7.8cm, width=6.9cm, ymin=6, ymax=114,
-	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
+	clip=false, height=7.8cm, width=6.9cm, ymin=6, ymax=114]
 	\rbars
 	\stdline{red}{date}{Corporate Debt}{data/bus_bs_sh.csv}
 	\addplot[ultra thick, densely dashed, no markers, color=red!60!orange] 
@@ -4556,9 +4544,7 @@ The following table provides more details on the size of nonfinancial business l
 \vspace{3.1cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=30,
-		xticklabel style={align=center, yshift=-2pt}, 
-		tick label style={inner sep=0pt}, ymin=2, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=30, ymin=2, 
 		yticklabel style={text width=1.6em}, height=5.2cm,
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
@@ -4661,7 +4647,7 @@ The following table provides more details on the size of nonfinancial business l
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indpro_table.csv}}
 \end{minipage}
 \newpage
-\vspace*{-10mm}
+\vspace*{-11mm}
 
 \begin{minipage}{0.76\textwidth} \index{industrial production}
 \small Over the past 30 years, economic conditions and shifts in how production is organized have affected industrial growth. Much of the growth over the period is attributed to the production of materials, such as parts, chemicals, and energy, and to the production of business equipment and supplies. In contrast, there has been virtually no growth in domestic production of finished consumer goods, particularly from 2000 to 2020. 
@@ -4671,11 +4657,11 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 
 \normalsize \textbf{Contributions to Industrial Production Growth}\\
 \footnotesize{\textit{percentage point contribution to one-year growth, quarterly average}}
-\vspace{3.1cm}
+\vspace{3.0cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
-		xticklabel={`\short{\year}}, clip=false, height=4.5cm, ymax=8.8,
+		xticklabel={`\short{\year}}, clip=false, height=4.4cm, ymax=8.8,
 		reverse legend,
 		yticklabel style={text width=1.5em}, legend cell align={left},
 		legend style={legend columns=1, at={(0.49, 0.57)}}]
@@ -4694,11 +4680,11 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 	\legend{Final Consumer Goods, Business Equipment \& Supplies, Non-Energy Materials, Energy Materials};
 	\end{axis}
 \end{tikzpicture}
-\vspace{3.6cm}
+\vspace{3.3cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10},
-		xticklabel={`\short{\year}}, clip=false, height=4.5cm, reverse legend,
+		xticklabel={`\short{\year}}, clip=false, height=4.4cm, reverse legend,
 		yticklabel style={text width=1.5em}, legend cell align={left}, ymax=8.8,
 		legend style={legend columns=1, at={(0.44, 0.56)}}]
 	\rbars
@@ -4717,39 +4703,42 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \vspace{0.5mm}
 
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr.csv}
-\vspace{2mm}
+\vspace{1.5mm}
 
 \small \input{text/indpro_rec.txt}
-\vspace{0.5mm}
 
 \normalsize \textbf{Recent Data in Detail}
 \vspace*{-1mm} 
 
-\hspace*{-3mm} \begin{tikzpicture} \pgfplotstableread[col sep=comma]{data/indprogr_rec.csv}\ipmo
-	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks max space between ticks=20,
-		clip=false, width=6.7cm, height=4.4cm, 
+\hspace*{-4mm} \begin{tikzpicture} \pgfplotstableread[col sep=comma]{data/indprogr_rec.csv}\ipmo
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
+		date coordinates in=x, axis line style={draw=none},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		clip=false, width=6.9cm, height=5.0cm, 
 		yticklabel style={text width=1.2em}, xtick=data, 
 		xticklabels from table={\ipmo}{label}, 
-		enlarge y limits=0.18, enlarge x limits=0.04] 
-	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.02) 
+		enlarge y limits=0.14, enlarge x limits=0.03] 
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.03) 
 		{\small \textbf{Market Group}};
-	\ctsbar{violet!70!purple!90!black}{date}{Consumer goods}{\ipmo}{4pt} 
-	\ctsbar{magenta}{date}{ENS}{\ipmo}{4pt} 
-	\ctsbar{orange!75!yellow}{date}{Non-energy materials}{\ipmo}{4pt} 
-	\ctsbar{blue!70!violet}{date}{Energy materials}{\ipmo}{4pt} 
+	\ctsbar{violet!70!purple!90!black}{date}{Consumer goods}{\ipmo}{4.8pt} 
+	\ctsbar{magenta}{date}{ENS}{\ipmo}{4.8pt} 
+	\ctsbar{orange!75!yellow}{date}{Non-energy materials}{\ipmo}{4.8pt} 
+	\ctsbar{blue!70!violet}{date}{Energy materials}{\ipmo}{4.8pt} 
 	\end{axis}
 \end{tikzpicture} \hfill 
 \begin{tikzpicture} \pgfplotstableread[col sep=comma]{data/indprogr_rec.csv}\ipmo
-	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks 
-	clip=false, width=6.7cm, max space between ticks=20,	 
-	height=4.4cm, xtick=data, xticklabels from table={\ipmo}{label},
-	yticklabel style={text width=1.2em}, enlarge y limits=0.18, enlarge x limits=0.04] 
-	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.02) 
+	\begin{axis}[\bbar{y}{0}, 
+		date coordinates in=x, axis line style={draw=none},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		clip=false, width=6.9cm, max space between ticks=20,	 
+		height=5.0cm, xtick=data, xticklabels from table={\ipmo}{label},
+		yticklabel style={text width=1.2em}, enlarge y limits=0.14, enlarge x limits=0.03] 
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.03) 
 		{\small \textbf{Industry Group}};
-	\ctsbar{blue!62!black}{date}{Durable manufacturing}{\ipmo}{4pt} 
-	\ctsbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{\ipmo}{4pt} 
-	\ctsbar{orange!30!yellow}{date}{Mining}{\ipmo}{4pt} 
-	\ctsbar{green!70!blue}{date}{Electric and gas utilities}{\ipmo}{4pt}
+	\ctsbar{blue!62!black}{date}{Durable manufacturing}{\ipmo}{4.8pt} 
+	\ctsbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{\ipmo}{4.8pt} 
+	\ctsbar{orange!30!yellow}{date}{Mining}{\ipmo}{4.8pt} 
+	\ctsbar{green!70!blue}{date}{Electric and gas utilities}{\ipmo}{4.8pt}
 	\end{axis} 
 \end{tikzpicture}\\
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{indprogr_rec.csv}
@@ -5464,8 +5453,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=30, 
 		ymin=0.02, ymax=3.5,
 		clip=false, enlarge y limits={0.02}, 
-		xticklabel style={white, align=center, yshift=-2pt}, 
-		tick label style={inner sep=0pt},
+		xticklabel style={white, align=center}, 
 		height=3.6cm, width=6.6cm, xticklabel={`\short{\year}}]
 	\rbars
 	\stdline{blue!90!black}{date}{B245RC}{data/slg_gov_rec_type.csv}
@@ -5479,9 +5467,8 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=30, 
-		ymin=0.02, ymax=3.5,
-		clip=false, enlarge y limits={0.02}, 
-		xticklabel style={white, align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		ymin=0.02, ymax=3.5, clip=false, enlarge y limits={0.02}, 
+		xticklabel style={white, align=center}, 
 		height=3.6cm, width=6.6cm, xticklabel={`\short{\year}}]
 	\rbars
 	\stdline{blue!70!cyan}{date}{B248RC}{data/slg_gov_rec_type.csv}
@@ -5747,7 +5734,6 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\shdateaxisticks \bbar{y}{0}, clip=false, 
 		xticklabel={`\short{\year}}, height=8.8cm, width=6.2cm, 
-		tick label style={inner sep=0pt},
 		ymin=0.35, ymax=7.6]
 	\rbars
 	\stdline{blue!50!cyan}{date}{govjobs}{data/govjobs.csv}
@@ -6002,19 +5988,17 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{govnetinv.csv}
 \end{minipage}
 \newpage
-\vspace*{-9mm}
-
 \hypertarget{ext}{\label{ext}}
 \section*{\bcbox{violet}International Transactions}
 \thispagestyle{sectpage}
 \begin{minipage}{0.76\textwidth}
-\small Transactions between US residents and the rest of the world are recorded as either current account transactions (which measure nonfinancial transactions that have economic value) or financial account transactions (which measure financial transactions, such as lending and borrowing). This section discusses both types of transactions with a focus on the difference between payments from residents and payments to residents, referred to as the balance of payments. The section also covers trade in more detail and discusses trends in exchanges rates. 
+\small Transactions between US residents and the rest of the world are recorded in two main categories: the current account, which tracks nonfinancial transactions with economic value, and the financial account, which records financial transactions like lending and borrowing. This section delves into both accounts, with a focus on the balance of payments, the difference between payments from residents and payments to residents. The section also covers international trade and discusses trends in exchanges rates.
 
 \hypertarget{exbop}{\label{exbop}}
 \subsection*{Balance of Payments} \index{balance of payments} \index{current account balance}
-\small The \textbf{\href{https://www.bea.gov/help/glossary/balance-current-account-national-income-and-product-accounts}{current account balance}} captures international payments for goods and services as well as international transfers of money and net income received from ownership of foreign assets. It is the result of a set of payments to US residents, called current receipts, which are largely for exports of goods and services and returns on foreign assets, and a set of payments from US residents to the rest of the world, called current payments. Current payments are for goods and services imports, as well as transfers and payments for foreign ownership of US-based assets.
+\small The \textbf{\href{https://www.bea.gov/help/glossary/balance-current-account-national-income-and-product-accounts}{current account balance}} reflects international transactions for goods and services, transfers such as remittances, and ownership income from foreign assets. It comprises current receipts--payments to US residents primarily for exports of goods and returns on foreign assets--and current payments--payments from US residents to the rest of the world for imports, returns on foreign investment in the US, and transfers such as remittances. 
 
-The current account balance can be decomposed into the balance on trade in goods (see\cbox{yellow!60!lime!85!white}), the balance on trade in services (see\cbox{cyan!50!white}), the balance on primary income (such as wages or income from assets, see\cbox{blue!80!cyan}), and secondary income (such as remittances and taxes, see\cbox{green!80!blue}). 
+This balance is further broken down into four components: the trade balance for goods (see\cbox{yellow!60!lime!85!white}), the trade balance for services (see\cbox{cyan!50!white}), the primary income balance (covering wages and asset income, see\cbox{blue!80!cyan}), and the secondary income balance (including remittances and taxes, see\cbox{green!80!blue}).  
 
 \input{text/cab.txt} 
 \vspace{1mm}
@@ -6242,22 +6226,142 @@ The current account balance can be decomposed into the balance on trade in goods
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{goodsimpsh.csv}
 \end{minipage}
 \newpage
+\vspace*{-10mm}
+
 \begin{minipage}{0.76\textwidth} \index{trade!by partner}
 \subsubsection*{Trade by Partner} 
 \small The US Census Bureau \href{https://www.census.gov/foreign-trade/data/index.html}{report} monthly data on US trade in goods, including by partner country. \input{text/trade_partner_sh.txt} 
-\vspace{2mm}
+\vspace{1.5mm}
 
-\normalsize \textbf{US Trade in Goods} \hspace{12mm} \input{text/trade_date.txt} \hspace{22mm} \input{text/trade_date2.txt}\\
+\normalsize \textbf{US Trade in Goods} \hspace{12mm} \input{text/trade_date.txt} \hspace{16mm} \input{text/trade_date2.txt}\\
 \footnotesize{\textit{census basis, millions of USD,}}\\
 \footnotesize{\textit{not seasonally adjusted}}\\
-\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
-	{\renewcommand{\arraystretch}{1.54}
-		\begin{tabular}{p{30mm} R{12mm} R{12mm} R{12mm} R{15mm} R{12mm} R{12mm}}
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.2pt} \color{black!90}
+	{\renewcommand{\arraystretch}{1.5}
+\hspace*{-2mm} \begin{tabular}{p{28mm} R{12mm} R{12mm} R{12mm} R{14.5mm} R{12mm} R{12mm}}
 			 \input data/trade_partner.tex \hline
-		\end{tabular}}
-	\vspace{-2mm}		
+		\end{tabular}}	
+\vspace*{-2mm}	
 	
 \footnotesize{Source: Census Bureau}
+\vspace{0.5mm}
+
+\small \input{text/trade_partner_ch.txt}
+
+Trade data have large seasonal differences, and can swing from one month to the next. The following subsection uses 12-month moving sums to smooth the data and highlight longer-term trends.
+\end{minipage}
+\newpage
+\vspace*{-9mm} \index{trade!by partner} \index{trade!balance on goods}
+
+\begin{minipage}{0.79\textwidth}
+\small \input{text/trade_parter_imp_exp.txt}
+\vspace{1mm}
+
+\normalsize \textbf{Goods Trade by Partner}\\
+\footnotesize{\textit{share of GDP, percent, 12-month moving sum}}
+\vspace{3.35cm}
+
+\hspace{1mm} \begin{tikzpicture}[overlay] 
+	\pgfplotstableread[header=true, col sep=comma]{data/trade_partner_goods.csv}\tgoods
+    \begin{groupplot}[group style={group size=3 by 2, 
+    	y descriptions at=edge left, 
+    	horizontal sep=14pt, vertical sep=26pt},
+    	yticklabel style={text width=1.0em}, xmin={1989-12-01}, 
+    	ymin=-2, ymax=2.7, clip=false, height=5.0cm, width=5.3cm,
+    	title style={at={(0.02,0.9)}, anchor=south west, font=\bfseries, 
+    	draw=black!30!white, fill=white, inner sep=3.2pt}]
+    \nextgroupplot[title={China}, \bbar{y}{0}, \shdateaxisticks
+    	xticklabel={`\short{\year}},
+    	max space between ticks=20, enlarge y limits=0.075]
+	\rbars
+	\stdline{orange!80!yellow}{date}{Imports China}{\tgoods}
+	\dashline{violet}{date}{Exports China}{\tgoods}
+	\stdline{blue!90!purple}{date}{Balance China}{\tgoods}
+    \nextgroupplot[title={European Union}, \bbar{y}{0}, \shdateaxisticks
+    	xticklabel={`\short{\year}},
+    	max space between ticks=20, enlarge y limits=0.075]
+	\rbars
+	\stdline{orange!80!yellow}{date}{Imports EU}{\tgoods}
+	\dashline{violet}{date}{Exports EU}{\tgoods}
+	\stdline{blue!90!purple}{date}{Balance EU}{\tgoods} 
+    \nextgroupplot[title={Mexico}, \bbar{y}{0}, \shdateaxisticks
+    	xticklabel={`\short{\year}},
+    	max space between ticks=20, enlarge y limits=0.075,
+		legend cell align={left}, 
+		legend style={legend columns=-1, at={(0.96, 1.3)}} ]
+	\rbars
+	\stdline{orange!80!yellow}{date}{Imports Mexico}{\tgoods}
+	\dashline{violet}{date}{Exports Mexico}{\tgoods}
+	\stdline{blue!90!purple}{date}{Balance Mexico}{\tgoods}  
+	\legend{Imports, Exports, Balance};
+    \nextgroupplot[title={Canada}, \bbar{y}{0}, \shdateaxisticks
+    	xticklabel={`\short{\year}},
+    	max space between ticks=20, enlarge y limits=0.075]
+	\rbars
+	\stdline{orange!80!yellow}{date}{Imports Canada}{\tgoods}
+	\dashline{violet}{date}{Exports Canada}{\tgoods}
+	\stdline{blue!90!purple}{date}{Balance Canada}{\tgoods}
+    \nextgroupplot[title={Japan}, \bbar{y}{0}, \shdateaxisticks
+    	xticklabel={`\short{\year}},
+    	max space between ticks=20, enlarge y limits=0.075]
+	\rbars
+	\stdline{orange!80!yellow}{date}{Imports Japan}{\tgoods}
+	\dashline{violet}{date}{Exports Japan}{\tgoods}
+	\stdline{blue!90!purple}{date}{Balance Japan}{\tgoods}
+    \nextgroupplot[title={South and Central America}, \bbar{y}{0}, \shdateaxisticks
+    	xticklabel={`\short{\year}},
+    	max space between ticks=20, enlarge y limits=0.075]
+	\rbars
+	\stdline{orange!80!yellow}{date}{Imports SA}{\tgoods}
+	\dashline{violet}{date}{Exports SA}{\tgoods}
+	\stdline{blue!90!purple}{date}{Balance SA}{\tgoods}
+	\end{groupplot}
+\end{tikzpicture} 
+\vspace{4.4cm}
+
+\footnotesize{Source: Census Bureau} \hfill \tbllink{trade_partner_goods.csv}
+\vspace{2mm}
+
+\small The trade balance, exports minus imports, has particular economic significance, and the breakdown by trading partner is no less interesting. \input{text/trade_parter_bal1.txt}
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.44\textwidth}
+\normalsize \textbf{Trade Balance on Goods by Partner}\\
+\footnotesize{\textit{share of GDP, percent, 12-month moving sum}}
+\vspace{3.3cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay] 
+	\pgfplotstableread[header=true, col sep=comma]{data/trade_bal_partner.csv}\tbal
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks yticklabel style={text width=1.6em}, 
+		max space between ticks=20, xticklabel={`\short{\year}}, 
+		clip=false, height=5.4cm, width=7.6cm, enlarge y limits=0.06]
+	\rbars
+	\addplot[ultra thick, no markers, color=green!90!blue] 
+		table [x=date, y=Canada] {\tbal};	
+	\addplot[ultra thick, densely dashed, no markers, color=violet] 
+		table [x=date, y=Mexico] {\tbal};	
+	\addplot[very thick, no markers, color=blue!70!black] 
+		table [x=date, y=European Union] {\tbal};
+	\addplot[ultra thick, no markers, color=cyan!80!white] 
+		table [x=date, y=Asia ex. China] {\tbal};
+	\addplot[thick, no markers, color=darkgray] 
+		table [x=date, y=China] {\tbal};
+	\absnode{{2014-06-01}}{0.22}{\footnotesize \color{green!90!blue} \textbf{Canada}}
+	\absnode{{1993-11-01}}{0.24}{\footnotesize \color{violet} \textbf{Mexico}}
+	\absnode{{2015-01-01}}{-0.55}{\footnotesize \color{blue!70!black} EU}
+	\absnode{{1991-01-01}}{-1.35}{\footnotesize \color{cyan!80!white} \textbf{Asia,} \\ 
+		\footnotesize \color{cyan!80!white} \textbf{excl.} \\
+		\footnotesize \color{cyan!80!white} \textbf{China} }
+	\absnode{{2010-12-01}}{-1.65}{\footnotesize \color{darkgray} China}
+	\input{text/trade_bal_partner_nodes.txt}
+	\end{axis}
+\end{tikzpicture} 
+
+\footnotesize{Source: Census Bureau} \hfill \tbllink{trade_bal_partner.csv}
+\end{minipage} \hspace{6mm}
+\begin{minipage}{0.3\textwidth}
+\small \input{text/trade_parter_bal2.txt}
 \end{minipage}
 \newpage
 \hypertarget{exiip}{\label{exiip}}
@@ -6364,19 +6468,16 @@ The current account balance can be decomposed into the balance on trade in goods
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 \begin{groupplot}[group style={group size=1 by 2, 
-    x descriptions at=edge bottom, vertical sep=8pt,},]
+    x descriptions at=edge bottom, vertical sep=8pt}, clip=false, width=5.9cm, height=4.6cm,
+    yticklabel style={text width=1.5em}, enlarge y limits={0.1}]
 	\nextgroupplot[\bbar{y}{100}, \dateaxisticks ytick={90, 100, 110, 120, 130}, 
-		yticklabel style={text width=1.5em}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, width=5.9cm, height=4.6cm,
-		clip=false, xticklabels=\empty, xtick style={draw=none},]
+		xticklabels=\empty, xtick style={draw=none}]
 	\recbars
 	\stdline{blue!70!black}{date}{JRXWTFB_N.B}{data/fx_idx.csv}
 	\absnode{{2016-06-01}}{108}{\footnotesize \color{blue!70!black}Broad}
 	\input{text/twd_node.txt}
 \nextgroupplot[\bbar{y}{100}, \dateaxisticks ytick={80, 100, 120, 140}, 
-		yticklabel style={text width=1.5em}, enlarge y limits={0.1},
-		xticklabel={`\short{\year}}, width=5.9cm, height=4.6cm,
-		clip=false]
+		xticklabel={`\short{\year}}]
 	\recbars
 	\stdline{violet!90!blue}{date}{JRXWTFN_N.B}{data/fx_idx.csv}
 	\stdline{green!75!yellow!92!black}{date}{JRXWTFO_N.B}{data/fx_idx.csv}
@@ -6515,7 +6616,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \footnotesize{\textit{\input{text/cps_lfs_date.txt}\unskip, thousands of people, not seasonally adjusted}}\\
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.5}
-		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
+\hspace*{-1mm} \begin{tabular}{p{28.5mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
 		 				 R{10.6mm} R{10.4mm} R{10.4mm}}
 			 \input data/lfs_table1.tex \hline
 		\end{tabular}}
@@ -6531,7 +6632,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \footnotesize{\textit{Change from \input{text/cps_lfs_date2pr.txt}\unskip, thousands of people}}\\
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.5}
-		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
+\hspace*{-1mm} \begin{tabular}{p{28.5mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
 		 				 R{10.6mm} R{10.4mm} R{10.4mm}}
 			 \input data/lfs_table2.tex \hline
 		\end{tabular}}
@@ -6547,7 +6648,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \footnotesize{\textit{Change from \input{text/cps_lfs_datepr.txt}\unskip, thousands of people}}\\
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.5}
-		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
+\hspace*{-1mm} \begin{tabular}{p{28.5mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
 		 				 R{10.6mm} R{10.4mm} R{10.4mm}}
 			 \input data/lfs_table3.tex \hline
 		\end{tabular}}
@@ -6563,7 +6664,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \footnotesize{\textit{Change from \input{text/cps_lfs_date3pr.txt}\unskip, thousands of people}}\\
 \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.5}
-		 \begin{tabular}{p{27.8mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
+\hspace*{-1mm} \begin{tabular}{p{28.5mm} R{11.2mm} R{10.4mm} R{10.4mm} R{10.2mm} 
 		 				 R{10.6mm} R{10.4mm} R{10.4mm}}
 			 \input data/lfs_table4.tex \hline
 		\end{tabular}}
@@ -6632,8 +6733,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks height=4.5cm, ymax=9.7,
-		enlarge y limits={0.03}, tick label style={inner sep=0pt},
-		xticklabel={`\short{\year}}, clip=false,  
+		enlarge y limits={0.03}, xticklabel={`\short{\year}}, clip=false,  
 		yticklabel style={text width=1.4em}, max space between ticks=20, 
 		legend style={at={(0.97, 1.29)}}]
 	\rbars
@@ -6662,7 +6762,7 @@ Among measures of overall economic activity, gross labor income has the added be
 \vspace{4.0cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks tick label style={inner sep=0pt},
+	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks 
 		yticklabel style={text width=1em}, max space between ticks=30,	
 		legend cell align={left}, legend style={legend columns=1, at={(0.46, 0.98)}},
 		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=8.4cm]
@@ -6683,32 +6783,88 @@ Among measures of overall economic activity, gross labor income has the added be
 \input{text/gli_eci.txt}
 \end{minipage}
 \newpage
+\vspace*{-10mm}
+
 \begin{minipage}{0.76\textwidth}
-
 \subsubsection*{Labor Share of Income}
-\small The \textbf{labor share} (see {\color{blue!60!cyan}\textbf{---}}) measures the portion of overall income that is paid to workers. In the national accounts, labor share can be measured as compensation of employees as a share of net domestic income (NDI). Net domestic income, or gross domestic income minus depreciation, is used instead of gross domestic income because depreciation expenses are paid to neither labor nor capital. 
+\small The \textbf{labor share} measures the portion of available income that is paid to workers. Labor income is measured in the national accounts as employee compensation, and net income is measured as employee compensation plus the net operating surplus. Net income, or income after depreciation, is used instead of gross income because depreciation expenses are not available to labor or capital. 
 \end{minipage}
-\vspace{-3mm}
+\vspace{-1mm}
 
-\begin{minipage}{0.41\textwidth} \index{labor share of income} \index{compensation of employees}
-\normalsize \textbf{Labor Share of Income}\\
-\footnotesize{\textit{gross labor income share of NDI, percent}}\\
-\begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks max space between ticks=20, 
-		enlarge y limits={0.36}, tick label style={inner sep=0pt},
-		yticklabel style={text width=1em},
-		xticklabel={`\short{\year}}, height=4.8cm, width=7.0cm, clip=false]
+\begin{minipage}{0.37\textwidth} \index{labor share of income} \index{compensation of employees}
+\normalsize \textbf{Labor Share of Net Income}\\
+\footnotesize{\textit{percent, one-year moving average}}
+\vspace{3.6cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\shdateaxisticks max space between ticks=25, 
+		enlarge y limits={0.14}, yticklabel style={text width=1em},
+		xticklabel={`\short{\year}}, height=5.6cm, width=6.3cm, clip=false]
 	\rbars
-	\stdline{blue!60!cyan}{date}{Share}{data/laborshare.csv}
+	\thickline{blue!50!cyan}{date}{Share}{data/laborshare.csv}
+	\thickline{green!60!blue}{date}{Corp_Share}{data/laborshare.csv}
 	\input{text/laborshare_node.txt}
+	\absnode{{2010-06-01}}{79.4}{\footnotesize \color{green!60!blue}Corporate \\
+		 \footnotesize \color{green!60!blue} \ Sector}
+	\absnode{{1992-01-01}}{69.8}{\footnotesize \color{blue!50!cyan}Domestic \\
+		 \footnotesize \color{blue!50!cyan}Income}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{laborshare.csv} \ \ 
 \end{minipage}\hspace{5mm}
-\begin{minipage}{0.31\textwidth}
+\begin{minipage}{0.35\textwidth}
 \vspace*{-1mm}
 
-\small \input{text/laborshare.txt}
+\small \input{text/laborshare.txt} 
+\end{minipage}
+\vspace{2mm}
+
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{Productivity-Pay Gap}
+\small When analyzing the fall in labor share of income, it's useful to consider the \textbf{gap between labor productivity and pay}. Behind long-term output growth is productivity growth and population growth. \input{text/payprod.txt}
+\vspace{0.5mm}
+
+\normalsize \textbf{Productivity-Pay Gap}
+\vspace{3.9cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=20mm}]
+	\nextgroupplot[\bbar{y}{100}, \shdateaxisticks max space between ticks=20, 
+		enlarge y limits={0.04}, yticklabel style={text width=1.5em},
+		xticklabel={`\short{\year}}, height=5.2cm, width=7.8cm, clip=false]
+		\rbars
+		\thickline{cyan!90!white}{date}{Productivity}{data/payprod.csv}
+		\stdline{blue!80!black}{date}{Average}{data/payprod.csv}
+		\absnode{{2009-10-01}}{161}{\footnotesize \color{cyan!90!white}Net Labor \\
+		 	\footnotesize \color{cyan!90!white}Productivity}
+		\absnode{{2010-01-01}}{118}{\footnotesize \color{blue!80!black}Wages \& Salaries\\
+		 	\footnotesize \color{blue!80!black}(Average)}
+		\node[below, align=left, shift=({rel axis cs:0.23,1.2}), fill=white, 
+			draw=black!30!white, inner sep=3.0]
+			{\small \textbf{Index, 1989=100} \footnotesize};
+	\nextgroupplot[\barplotnogrid axis y line=left, \bbar{x}{0},
+        width=4.6cm, height=5.6cm, clip=false,
+        ytick={0,1,2.4}, yticklabels=\empty, 
+        enlarge x limits={0.01}, enlarge y limits={abs=0.5}, 
+        every axis plot/.append style={
+          xbar, bar width=4.2ex, bar shift=0pt, fill}]
+		\addplot[white!0] coordinates {(-0.28, 0)};
+		\addplot[white!0] coordinates {(0.94, 0)};
+		\input{text/payprod_bars.txt}
+		\absnode{-1.14}{1.7}{\footnotesize \color{black!60} wage growth:}
+		\draw [dashed] (-1.1,1.7) -- (\pgfkeysvalueof{/pgfplots/xmax}, 1.7);
+		\node[below, align=left, shift=({rel axis cs:0.23,1.16}), fill=white, 
+			draw=black!30!white, inner sep=3.0]
+			{\small \textbf{Annual Growth Since 1989} \footnotesize};
+	\end{groupplot}
+\end{tikzpicture}
+
+\footnotesize{Source: BEA, BLS, Author} \hfill \tbllink{payprod.csv}\\
+\footnotesize{Net Labor Productivity is Net Domestic Product divided by total hours worked from the CPS. Average wages and salaries is from the ECI, and covers all civilian workers. Median usual weekly earnings from the CPS cover full-time civilian wage and salary workers.}
+\vspace{1mm}
+
+\small More-complete \href{https://www.epi.org/productivity-pay-gap/}{analysis} finds that the productivity-pay gap emerged around 1979; between World War II and 1979, employee compensation kept pace with productivity growth. Researchers argue that the post-1979 gap is tied to policies that weaken unions and reduce bargaining power for the typical worker. 
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{employment!overview}
@@ -6908,18 +7064,17 @@ Among measures of overall economic activity, gross labor income has the added be
 
 \begin{minipage}{0.83\textwidth}
 \normalsize \textbf{Nonfarm Payrolls by Industry Group}\\
-\footnotesize{\textit{thousands \hspace{37mm}seasonally adjusted \hspace{27mm} not seasonally adjusted}}\\
-\vspace{-5mm}
+\footnotesize{\textit{in thousands\hspace{35mm}seasonally adjusted \hspace{29mm} not seas. adjusted}}
+\vspace{-6mm}
 
-\hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.6pt} \color{black!90}
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.6pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.55}
 		 \begin{tabular}{p{45mm} R{12.8mm} R{10.8mm} R{10.6mm} R{10.6mm} 
 		   | R{12.0mm} R{10.6mm}}
 			 \input data/nfp.tex \hline
-		\end{tabular}
-		}	\\
-		
-\vspace{-2mm}
+		\end{tabular}}
+\vspace{-3mm}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{ces_data.csv}
 \end{minipage}
 \vspace{3mm}
@@ -7040,24 +7195,27 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \vspace{3mm}
 
 \normalsize \textbf{Employment Rate by State}\\
-\footnotesize{\textit{employed share of age 25 to 54 population, percent, seasonally adjusted, three-month moving average}}\\
+\footnotesize{\textit{employed share of age 25 to 54 population, percent, seasonally adjusted, three-month moving average}}
 \vspace{-2mm}
-\begin{minipage}{0.23\textwidth}
+
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{axis}[clip=false,
-            \barylab{0.5cm}{1.0ex}, stack negative=separate, ymajorgrids=false,
-            yticklabels from table={\paepop}{name},
-			y axis line style={opacity=0}, x axis line style={opacity=0}, 
-			yticklabel style={style={black!90}, font=\scriptsize}, 
-			nodes near coords align={above},    
-			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
-				precision=1, assume math mode},  
-            ytick=data, tickwidth=0pt, xmin=62.6, xmax=90.5,
-            bar width=1.2ex, reverse legend, xmajorgrids, 
-            grid style={ultra thin, black!20},
-            enlarge y limits={0.02}, enlarge x limits={0.02},
-            legend cell align={left}, legend plot pos=left,
-            width=4.6cm, height=10.7cm, legend style={legend columns=3, anchor=west, 
+	\pgfplotstableread[col sep=semicolon]{data/state_pa_epop.csv}\paepop
+	\pgfplotstableread[col sep=semicolon]{data/state_pa_epop2.csv}\paepopt
+	\pgfplotstableread[col sep=semicolon]{data/state_pa_epop3.csv}\paepoptt
+\begin{groupplot}[group style={group size=3 by 1, horizontal sep=12mm},
+		width=4.6cm, height=10.7cm, y axis line style={opacity=0}, 
+		x axis line style={opacity=0},  ymajorgrids=false, clip=false,
+		yticklabel style={style={black!90}, font=\scriptsize}, 
+		nodes near coords align={above},    
+		nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
+			precision=1, assume math mode},  
+        ytick=data, tickwidth=0pt, xmin=62.6, xmax=90.5,
+        xmajorgrids, grid style={ultra thin, black!20},
+        enlarge y limits={0.02}, enlarge x limits={0.02},]
+\nextgroupplot[\barylab{0.5cm}{1.0ex}, stack negative=separate,
+            yticklabels from table={\paepop}{name}, bar width=1.2ex, 
+			reverse legend, legend cell align={left}, legend plot pos=left,
+            legend style={legend columns=3, anchor=west, 
             at={(-0.1, 1.05)}}]
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\paepop};
@@ -7072,25 +7230,11 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 	\addplot[only marks, mark=diamond*, mark options={fill=white, 
 		draw=magenta, scale=1.6}] 
 		table [y expr=-\coordindex, x index=6] {\paepop};
-	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=6] {\paepop};
+	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, 
+		only marks, mark=none] table[y=y, x index=6] {\paepop};
 	\legend{, 1989-- range, April 2020-- range,, ,\input{text/cps_lfs_date.txt}, };
-	\end{axis}
-\end{tikzpicture}\end{minipage} \hspace{1.5mm}
-\begin{minipage}{0.25\textwidth}
-\vspace{2.5mm}
-\begin{tikzpicture}
-	\begin{axis}[clip=false, 
-            \barylab{0.5cm}{1.0ex}, stack negative=separate, ymajorgrids=false,
-            yticklabels from table={\paepopt}{name},
-			y axis line style={opacity=0}, x axis line style={opacity=0}, 
-			yticklabel style={style={black!90}, font=\scriptsize}, 
-			nodes near coords align={above},    
-			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
-				precision=1, assume math mode},  
-            ytick=data, tickwidth=0pt, xmin=62.6, xmax=90.5,
-            bar width=1.2ex, xmajorgrids, grid style={ultra thin, black!20},
-            enlarge y limits={0.02}, enlarge x limits={0.02},
-            width=4.6cm, height=10.7cm]
+	\nextgroupplot[\barylab{0.5cm}{1.0ex}, stack negative=separate, bar width=1.2ex, 
+            yticklabels from table={\paepopt}{name}]
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\paepopt};
 	\addplot[xbar stacked, bar shift=0pt, fill=cyan!45, draw=cyan!45] 
@@ -7105,23 +7249,8 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 		draw=magenta, scale=1.6}] 
 		table [y expr=-\coordindex, x index=6] {\paepopt};
 	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, only marks, mark=none] table[y=y, x index=6] {\paepopt};
-	\end{axis}
-\end{tikzpicture}\end{minipage}\hspace{2mm}
-\begin{minipage}{0.25\textwidth}
-\vspace{2.5mm}
-\begin{tikzpicture}
-	\begin{axis}[clip=false, 
-            \barylab{0.5cm}{1.0ex}, stack negative=separate, ymajorgrids=false,
-            yticklabels from table={\paepoptt}{name},
-			y axis line style={opacity=0}, x axis line style={opacity=0}, 
-			yticklabel style={style={black!90}, font=\scriptsize}, 
-			nodes near coords align={above},    
-			nodes near coords style={/pgf/number format/.cd,fixed zerofill, 
-				precision=1, assume math mode},  
-            ytick=data, tickwidth=0pt, xmin=62.6, xmax=90.5,
-            bar width=1.2ex, xmajorgrids, grid style={ultra thin, black!20},
-            enlarge y limits={0.02}, enlarge x limits={0.02},
-            width=4.6cm, height=10.7cm]
+	\nextgroupplot[\barylab{0.5cm}{1.0ex}, stack negative=separate, bar width=1.2ex, 
+            yticklabels from table={\paepoptt}{name}]
 	\addplot[xbar stacked, bar shift=0pt, fill=black!3!white, draw=none] 
 		table [y expr=-\coordindex, x index=1] {\paepoptt};
 	\addplot[xbar stacked, bar shift=0pt, fill=cyan!45, draw=cyan!45] 
@@ -7137,155 +7266,95 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 		table [y expr=-\coordindex, x index=6] {\paepoptt};
 	\addplot [nodes near coords={\pgfmathprintnumber{\pgfkeysvalueof{/data point/x}}}, 
 		only marks, mark=none] table[y=y, x index=6] {\paepoptt};
-	\end{axis}
-\end{tikzpicture}\end{minipage}
-\vspace{1mm}
+	\end{groupplot}
+\end{tikzpicture}
+\vspace{-1mm}
 
 \footnotesize{Source: Author's Calculations from CPS} \hspace{67mm} \tbllink{state_pa_epop_full.csv}
 \newpage
+\vspace*{-11mm}
+
 \begin{minipage}{0.76\textwidth} \index{employment!employment rate} \index{employment!by age} \index{employment!by education}
 \small \input{text/empgroups.txt}
 \vspace{1mm}
 
-\textbf{Employment Rates} \small \hspace{10mm} \cbox{blue!85!violet} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!45} \input{text/cps_lfs_dateprepan.txt}\\
+\textbf{Employment Rates} \small \hspace{10mm} \cbox{blue!85!violet!90!black} \input{text/cps_lfs_date.txt} \hspace{4mm} \cbox{cyan!60} \input{text/cps_lfs_dateprepan.txt}\\
 \footnotesize{\textit{employed share of age group, percent, three-month average}}
-\vspace{3mm}
+\vspace*{-1mm}
 
-\centerline{\small Total, Any Education}
-\vspace*{-3mm}
-
-\hspace{22mm} Men \hspace{54mm} Women\\
-\hspace*{-5mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.7ex, height=6.0cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
-		yticklabels from table={\empt}{name}, xmin=2, xmax=94,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
+\hspace*{-4mm} \begin{tikzpicture}
+	\pgfplotstableread[col sep=comma]{data/empgroups.csv}\emp
+	\pgfplotstableread[col sep=comma]{data/empgroups2.csv}\empt
+  \begin{groupplot}[group style={group size=2 by 4, vertical sep=32pt,
+  		horizontal sep=18mm}, xbar=0pt, axis y line=left, 
+    	width=6.1cm, axis line style={draw=none},
+	    yticklabel style={align=left, anchor=east, font=\footnotesize},
+      		xmajorticks=false, ymajorgrids=false,   
+      	every axis title/.style={above right,at={(0.29,1)}},
+    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, xmin=2, xmax=94,
+		ytick=data, tickwidth=0pt, area legend, reverse legend,
+		nodes near coords align={horizontal}, nodes near coords,
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!45, draw=none] 
+  \nextgroupplot[title={Men}, \barylab{1.0cm}{1.5ex}
+    	height=5.9cm, \bbar{x}{0}, bar width=1.6ex, yticklabels from table={\empt}{name}]
+  	\addplot[fill=cyan!60, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\empt};
-  	\addplot[fill=blue!85!violet, draw=none] 
+  	\addplot[fill=blue!85!violet!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\empt};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.7ex, height=6.0cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
-		yticklabels from table={\empt}{name}, xmin=2, xmax=94,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!45, draw=none] 
+  \nextgroupplot[title={Women}, \barylab{1.0cm}{1.5ex}
+    	height=5.9cm, \bbar{x}{0}, bar width=1.6ex, yticklabels from table={\empt}{name}]
+  	\addplot[fill=cyan!60, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\empt};
-  	\addplot[fill=blue!85!violet, draw=none] 
+  	\addplot[fill=blue!85!violet!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\empt};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{4mm}
-
-\centerline{\small High School Degree or Less}
-\vspace*{-3mm}
-
-\hspace{22mm} Men \hspace{54mm} Women\\
-\hspace*{-5mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.7ex, height=4.8cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!45, draw=none] 
+  \nextgroupplot[title={Men}, \barylab{1.0cm}{1.5ex}
+    	height=4.7cm, \bbar{x}{0}, bar width=1.6ex, yticklabels from table={\emp}{name}]
+  	\addplot[fill=cyan!60, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\emp};
-  	\addplot[fill=blue!85!violet, draw=none] 
+  	\addplot[fill=blue!85!violet!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\emp};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.7ex, height=4.8cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!45, draw=none] 
+  \nextgroupplot[title={Women}, \barylab{1.0cm}{1.5ex}
+    	height=4.7cm, \bbar{x}{0}, bar width=1.6ex, yticklabels from table={\emp}{name}]
+  	\addplot[fill=cyan!60, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\emp};
-  	\addplot[fill=blue!85!violet, draw=none] 
+  	\addplot[fill=blue!85!violet!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\emp};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{4mm}
-
-\centerline{\small Some College}
-\vspace*{-3mm}
-
-\hspace{22mm} Men \hspace{54mm} Women\\
-\hspace*{-5mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.7ex, height=4.8cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!45, draw=none] 
+  \nextgroupplot[title={Men}, \barylab{1.0cm}{1.5ex}
+    	height=4.7cm, \bbar{x}{0}, bar width=1.6ex, yticklabels from table={\emp}{name}]
+  	\addplot[fill=cyan!60, draw=none] 
   		table [y expr=-\coordindex, x index=5] {\emp};
-  	\addplot[fill=blue!85!violet, draw=none] 
+  	\addplot[fill=blue!85!violet!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=6] {\emp};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.7ex, height=4.8cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!45, draw=none] 
+  \nextgroupplot[title={Women}, \barylab{1.0cm}{1.5ex}
+    	height=4.7cm, \bbar{x}{0}, bar width=1.6ex, yticklabels from table={\emp}{name}]
+  	\addplot[fill=cyan!60, draw=none] 
   		table [y expr=-\coordindex, x index=7] {\emp};
-  	\addplot[fill=blue!85!violet, draw=none] 
+  	\addplot[fill=blue!85!violet!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=8] {\emp};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{4mm}
-
-\centerline{\small Bachelor or Advanced Degree}
-\vspace*{-3mm}
-
-\hspace{22mm} Men \hspace{54mm} Women \\
-\hspace*{-5mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.7ex, height=4.8cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!45, draw=none] 
+  \nextgroupplot[title={Men}, \barylab{1.0cm}{1.5ex}
+    	height=4.7cm, \bbar{x}{0}, bar width=1.6ex, yticklabels from table={\emp}{name}]
+  	\addplot[fill=cyan!60, draw=none] 
   		table [y expr=-\coordindex, x index=9] {\emp};
-  	\addplot[fill=blue!85!violet, draw=none] 
+  	\addplot[fill=blue!85!violet!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=10] {\emp};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=6.1cm, bar width=1.7ex, height=4.8cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.04, \bbar{x}{0},
-		yticklabels from table={\emp}{name}, xmin=2, xmax=94,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!45, draw=none] 
+  \nextgroupplot[title={Women}, \barylab{1.0cm}{1.5ex}
+    	height=4.7cm, \bbar{x}{0}, bar width=1.6ex, yticklabels from table={\emp}{name}]
+  	\addplot[fill=cyan!60, draw=none] 
   		table [y expr=-\coordindex, x index=11] {\emp};
-  	\addplot[fill=blue!85!violet, draw=none] 
+  	\addplot[fill=blue!85!violet!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=12] {\emp};
-  	\end{axis}
+  \end{groupplot}
+  \node (title) at ($(group c1r1.center)!0.5!(group c2r1.center)+(0,2.7cm)$) 
+  	{\small Total, Any Education};
+  \node (title) at ($(group c1r2.center)!0.5!(group c2r2.center)+(0,2.1cm)$) 
+  	{\small High School Degree or Less};
+  \node (title) at ($(group c1r3.center)!0.5!(group c2r3.center)+(0,2.1cm)$) 
+  	{\small Some College};
+  \node (title) at ($(group c1r4.center)!0.5!(group c2r4.center)+(0,2.1cm)$) 
+  	{\small Bachelor or Advanced Degree};
 \end{tikzpicture}
-\vspace{-2mm}
+\vspace*{-2mm}
 
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{empgroups.csv}
 \end{minipage}
@@ -7347,9 +7416,8 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
-		yticklabel style={text width=1.0em}, tick label style={inner sep=0pt},
-		enlarge y limits={0.1}, ymin=0.9, ymax=18.4, 
-		xticklabel style={align=center, yshift=-2pt}, 
+		yticklabel style={text width=1.0em}, 
+		enlarge y limits={0.1}, ymin=1.4, ymax=18.4, 
 		xticklabel={`\short{\year}}, height=4.7cm, width=7.9cm, clip=false]
 	\rbars
 	\stdline{blue}{date}{U6}{data/unemp2.csv}
@@ -7360,7 +7428,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 	\input{text/u6_node.txt}
 	\end{axis}
 \end{tikzpicture}
-\vspace{-1mm}
+\vspace{-0.5mm}
 
 \footnotesize{Source: BLS} \hfill \tbllink{unemp2.csv} 
 \end{minipage}
@@ -7377,8 +7445,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20, 
 		enlarge y limits={0.1}, 
-		yticklabel style={text width=1.0em}, tick label style={inner sep=0pt},
-		xticklabel style={align=center, yshift=-2pt}, 
+		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.4cm, ymin=1.4, ymax=17,
 		legend style={fill=white, at={(0.52, 1.0)}}]
 	\rbars
@@ -7432,7 +7499,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 \vspace{-1.5mm}
 
 \begin{minipage}{0.37\textwidth} 
-\hspace*{-3mm} \begin{tikzpicture}
+\hspace*{-3mm} \begin{tikzpicture} 	\pgfplotstableread[col sep=comma]{data/unemp_grp.csv}\ungrp
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.1cm}{1.5ex}
     	width=4.3cm, bar width=2.4ex, height=6.9cm,
     	enlarge y limits={abs=0.42cm}, enlarge x limits=0.03, \bbar{x}{0},
@@ -7448,7 +7515,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 \end{tikzpicture}
 \end{minipage} \hspace{2mm}
 \begin{minipage}{0.37\textwidth} 
-\begin{tikzpicture}
+\begin{tikzpicture} \pgfplotstableread[col sep=comma]{data/unemp_grpsh.csv}\ungrpsh
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.1cm}{1.5ex}
     	width=4.3cm, bar width=2.4ex, height=6.9cm,
     	enlarge y limits={abs=0.42cm}, enlarge x limits=0.03, \bbar{x}{0},
@@ -7829,11 +7896,11 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \footnotesize{\textit{share of labor force, percent, annual average \hspace{36mm} recent data}}
 \vspace{3.6cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{2mm} \begin{tikzpicture}[overlay] 
+	\pgfplotstableread[col sep=comma]{data/unemp_reason_mon.csv}\unrsn
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=30pt}]
 	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
-		width=9.2cm, height=5.6cm, enlarge x limits=0.01, tick label style={inner sep=0pt},
-		xticklabel style={align=center, yshift=-2pt}, 
+		width=9.2cm, height=5.6cm, enlarge x limits=0.01, 
 		ymin=0.3, ymax=9.6, legend cell align={left}, xmin={1989-01-01}, xmax={2023-01-01},
 		xticklabel={\short{\year}}, clip=false, yticklabel style={text width=1.2em}, 
 		legend style={fill=white, legend columns=2, at={(0.56, 1.01)}}]
@@ -7844,10 +7911,11 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 	\ctsbar{blue!70!teal!70!gray!62!white}{date}{Re-entrant}{data/unemp_reason.csv}{5.4pt}
 	\ctsbar{blue!72!black}{date}{Job Leaver}{data/unemp_reason.csv}{5.4pt}
 	\legend{,Job Loser, New Entrant, Re-entrant, Job Leaver};
-	\nextgroupplot[\bbar{y}{0}, width=4.0cm, height=5.6cm, yticklabel style={text width=0.8em}, 
+	\nextgroupplot[\bbar{y}{0}, width=4.0cm, height=5.6cm, 
+		yticklabel style={text width=0.8em}, 
 		axis line style={draw=none}, xtick=data, clip=false,
 			xticklabel style={black!80, text width=1.7em, align=center}, 
-tick label style={inner sep=0pt},
+			tick label style={inner sep=0pt},
 		xticklabel style={align=center, yshift=-2pt}, 
 	 	enlarge y limits={0.06}, enlarge x limits={0.12}, ymin=0.1,
 	 	xticklabels from table={\unrsn}{date},
@@ -7855,10 +7923,14 @@ tick label style={inner sep=0pt},
 			precision=1, assume math mode}]
   	\addplot[ybar, bar shift=0pt, fill=none, draw=none, nodes near coords] 
   		table [x expr=\coordindex, y index=7] {\unrsn};
-	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=red!75!orange!70!white] table [x expr=\coordindex, y=Job Loser]{\unrsn};
-	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=purple!80!red!85!black] table [x expr=\coordindex, y=New entrant]{\unrsn};
-	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=blue!70!teal!70!gray!62!white] table [x expr=\coordindex, y=Re-entrant]{\unrsn};
-	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=blue!72!black] table [x expr=\coordindex, y=Job Leaver]{\unrsn};
+	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=red!75!orange!70!white]
+		table [x expr=\coordindex, y=Job Loser]{\unrsn};
+	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=purple!80!red!85!black]
+		table [x expr=\coordindex, y=New entrant]{\unrsn};
+	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, 
+		fill=blue!70!teal!70!gray!62!white] table [x expr=\coordindex, y=Re-entrant]{\unrsn};
+	\addplot[ybar stacked, bar width=9.6pt, draw opacity=0, fill=blue!72!black] 
+		table [x expr=\coordindex, y=Job Leaver]{\unrsn};
 	\input{text/unemp_rsn_ltval.txt}
 	\draw [dashed] (axis cs:{0.5},\pgfkeysvalueof{/pgfplots/ymin}) -- 
 		(axis cs:{0.5}, \pgfkeysvalueof{/pgfplots/ymax});
@@ -8580,6 +8652,8 @@ R{8.1mm} R{8.1mm} R{8.1mm} R{8.1mm}}
 \end{minipage}
 \newpage 
 \begin{minipage}{0.76\textwidth} \index{employment!hours worked}
+\normalsize Aggregate Hours Worked
+
 \small BLS also \href{https://www.bls.gov/lpc/}{report} a quarterly index tracking aggregate hours worked in nonfarm businesses (see\cbox{cyan!80!blue}). \input{text/tot_hours.txt}
 \vspace{2mm}
 
@@ -8748,7 +8822,6 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \end{tikzpicture}
 \vspace{1mm}
 
-%\footnotesize{Notes: \color{magenta}{AHE}\color{black!90}: Average hourly earnings of employees on nonfarm payrolls; \color{blue}{WGT}\color{black!90}: Matched-observation median hourly earnings from Current Population Survey, three-month moving average; \color{cyan}{NIPA}\color{black!90}: Aggregate wages and salaries from national accounts divided by nonfarm payrolls, three-month moving average; \color{violet}{ECI}\color{black!90}: Employment cost index, quarterly}\\
 \footnotesize{Source: BEA, BLS, Author} \hfill \tbllink{wages_yy_monthly.csv} \  \tbllink{wages_yy_quarterly.csv} 
 \end{minipage}
 \vspace{1mm}
@@ -8832,7 +8905,8 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \footnotesize{\textit{one-year growth, percent}}
 \vspace{2.55cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{2mm} \begin{tikzpicture}[overlay] 	
+	\pgfplotstableread[col sep=comma]{data/uwe_cps_sh.csv}\uwecps
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
 		enlarge y limits={0.16}, enlarge x limits={0.02}, 
 		width=6.7cm, height=4.6cm, tick label style={inner sep=0pt},
@@ -9213,9 +9287,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 \hspace{1mm} \begin{tikzpicture}[overlay]\pgfplotstableread[col sep=comma]{data/eci_qq.csv}\eci
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
 		max space between ticks=18, xticklabel={`\short{\year}}, 
-		clip=false, height=4.3cm, width=13.0cm, enlarge y limits=0.08, ymin=0.35,
-		xticklabel style={align=center, yshift=-2pt},
-		tick label style={inner sep=0pt}]
+		clip=false, height=4.3cm, width=13.0cm, enlarge y limits=0.08, ymin=0.35]
 	\rbars
 	\addplot[ultra thick, no markers, color=blue!80!purple!80!white] 
 		table [x=date, y=IndexWS_ALL_NSA, col sep=comma] {data/eci_yy.csv};	
@@ -9319,9 +9391,7 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks clip=false, max space between ticks=15, 
-		enlarge y limits={0.2}, tick label style={inner sep=0pt},
-		xticklabel style={align=center, yshift=-2pt}, 
-		xticklabel={`\short{\year}}, height=4.2cm, width=7.0cm]
+		enlarge y limits={0.2}, xticklabel={`\short{\year}}, height=4.2cm, width=7.0cm]
 	\rbars
 	\stdline{blue!80!black}{date}{ST}{data/prod_st_lt.csv}
 	\thickline{orange!80!yellow}{date}{LT}{data/prod_st_lt.csv}
@@ -9463,10 +9533,10 @@ One theory of what drives long-term trends, sometimes called the \textit{Kaldor-
 \small Union membership rates vary substantially by industry. \input{text/union_ind.txt}
 \end{minipage}
 \newpage
-\vspace*{-9mm}
+\vspace*{-10mm}
 
 \hypertarget{cap}{\label{cap}}
-\section*{\bcbox{orange}Financial Markets}
+\section*{\bcbox{orange!80!yellow}Financial Markets}
 \vspace*{-3mm}
 
 \thispagestyle{sectpage}
@@ -9482,90 +9552,68 @@ In the US, several stock market indices track the share price of a basket of com
 \vspace{1mm}
 
 \normalsize \textbf{Stock Market Indices}\\
-\footnotesize{\textit{adjusted close, index value, in thousands \hspace{30mm} 2018--onward, in detail}}\\
+\footnotesize{\textit{adjusted close, index value, in thousands \hspace{29mm} 2018--onward, in detail}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{groupplot}[group style={group name=equities, group size=2 by 4, 
-    x descriptions at=edge bottom, horizontal sep=26pt, vertical sep=7pt},]
-	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks ytick={0, 1, 2, 3, 4, 5}, 
+    	x descriptions at=edge bottom, horizontal sep=26pt, vertical sep=7pt},
+    	height=4.3cm, clip=false, xticklabels=\empty, xtick style={draw=none},
+    	date coordinates in=x, axis line style={draw=none},
+    	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
+	\nextgroupplot[\bbar{y}{0}, \empticks ytick={0, 1, 2, 3, 4, 5}, 
 		enlarge y limits={value=0.16,upper}, ymin=0, yticklabel style={text width=1.2em}, 
-    	tick label style={inner sep=0pt},
-		height=4.3cm, width=8.2cm, clip=false, xmin={1989-01-01},
-		xticklabels=\empty, xtick style={draw=none},]
+		width=8.2cm, xmin={1989-01-01}]
 	\rbars
 	\coordinate (c1) at ({2017-12-31},2);
   	\coordinate (c2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (c1) rectangle (c2);
 	\thickline{green!80!blue!90!black}{date}{GSPC}{data/equity_indices.csv}
-	\node[below, align=left, shift=({rel axis cs:0.13,0.98}),
-	draw=black!30!white, fill=white, inner sep=3.0]
-		{\small \color{black!80!white} \textbf{S\&P 500}};
-	\nextgroupplot[\ltdateaxisticks ytick={2, 3, 4, 5}, 
-		enlarge y limits={0.18}, 
-		height=4.3cm, width=5.8cm, clip=false, tick label style={inner sep=0pt},
-		xticklabels=\empty, xtick style={draw=none}]
+	\input{text/GSPC_ch_node.txt}
+	\nextgroupplot[\empticks ytick={2, 3, 4, 5}, enlarge y limits={0.18}, width=5.8cm]
 	\rbar
 	\thickline{black!30}{date}{GSPC_MA}{data/equity_indices_lt.csv}
 	\thinline{green!80!blue!90!black}{date}{GSPC_close}{data/equity_indices_lt.csv}
 	\absnodeml{{2021-01-01}}{3.35}{\scriptsize 
-		\color{black!40!white}\textbf{One-year moving average}}{1.3}
-	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks 
-		enlarge y limits={value=0.16,upper}, ymin=0, yticklabel style={text width=1.2em}, 
-    	tick label style={inner sep=0pt}, height=4.3cm, width=8.2cm, 
-    	clip=false, xmin={1989-01-01},
-		xticklabels=\empty, xtick style={draw=none}]
+		\color{black!60}One-year moving average}{1.3}
+	\nextgroupplot[\bbar{y}{0}, \empticks enlarge y limits={value=0.16,upper}, ymin=0, 
+		yticklabel style={text width=1.2em}, width=8.2cm, xmin={1989-01-01}]
 	\rbars
 	\coordinate (d1) at ({2017-12-31},6);
   	\coordinate (d2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (d1) rectangle (d2);
 	\thickline{blue}{date}{IXIC}{data/equity_indices.csv}
-	\node[below, align=left, shift=({rel axis cs:0.12,0.98}), fill=white, 
-	draw=black!30!white, inner sep=3.0]
-		{\small \color{black!80!white}\textbf{Nasdaq}};
-	\nextgroupplot[\ltdateaxisticks 
-		enlarge y limits={0.18}, 
-		yticklabel style={text width=1.0em}, 
-    	tick label style={inner sep=0pt},
-		height=4.3cm, width=5.8cm, clip=false, 
-		xticklabels=\empty, xtick style={draw=none}]
+	\input{text/IXIC_ch_node.txt}
+	\nextgroupplot[\empticks enlarge y limits={0.18}, yticklabel style={text width=1.0em},
+		 width=5.8cm]
 	\rbar
 	\thickline{black!30}{date}{IXIC_MA}{data/equity_indices_lt.csv}
 	\thinline{blue}{date}{IXIC_close}{data/equity_indices_lt.csv}
-	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks 
+	\nextgroupplot[\bbar{y}{0}, \empticks 
 		enlarge y limits={value=0.16,upper}, ymin=0, 
-		yticklabel style={text width=1.0em}, xmin={1989-01-01},
-		height=4.3cm, width=8.2cm, clip=false, tick label style={inner sep=0pt},
-		xticklabels=\empty, xtick style={draw=none}]
+		yticklabel style={text width=1.0em}, xmin={1989-01-01}, width=8.2cm]
 	\rbars
 	\coordinate (e1) at ({2017-12-31},18);
   	\coordinate (e2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (e1) rectangle (e2);
 	\thickline{red}{date}{DJI}{data/equity_indices.csv}
-	\node[below, align=left, shift=({rel axis cs:0.12,0.98}), fill=white, inner sep=3.0,
-		draw=black!30!white]
-		{\small \color{black!80!white}\textbf{Dow 30}};
-	\nextgroupplot[\ltdateaxisticks 
-		enlarge y limits={0.18}, 
-		yticklabel style={text width=1.0em}, 
-    	tick label style={inner sep=0pt}, height=4.3cm, width=5.8cm, clip=false, 
-		xticklabels=\empty, xtick style={draw=none}]
+	\input{text/DJI_ch_node.txt}
+	\nextgroupplot[\empticks enlarge y limits={0.18}, yticklabel style={text width=1.0em},
+		 width=5.8cm]
 	\rbar
 	\thickline{black!30}{date}{DJI_MA}{data/equity_indices_lt.csv}
 	\thinline{red}{date}{DJI_close}{data/equity_indices_lt.csv}
-	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks 
+	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks xtick style={draw=black!20},
 		enlarge y limits={value=0.16,upper}, ymin=0, xmin={1989-01-01},
-		xticklabel={`\short{\year}}, height=4.1cm, width=8.2cm, clip=false]
+		xticklabel style={yshift=2pt}, 
+		xticklabel={`\short{\year}}, width=8.2cm]
 	\rbars
 	\coordinate (f1) at ({2017-12-31},1);
   	\coordinate (f2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (f1) rectangle (f2);
 	\thickline{violet}{date}{RUT}{data/equity_indices.csv}
-	\node[below, align=left, shift=({rel axis cs:0.18,0.98}), fill=white, inner sep=3.0,
-		draw=black!30!white]
-		{\small \color{black!80!white}\textbf{Russell 3000}};
-	\nextgroupplot[\ltdateaxisticks 
-		enlarge y limits={0.18}, 
-		yticklabel style={text width=1.2em}, 
-		xticklabel={`\short{\year}}, height=4.3cm, width=5.8cm, clip=false]
+	\input{text/RUT_ch_node.txt}
+	\nextgroupplot[\ltdateaxisticks enlarge y limits={0.18}, xtick style={draw=black!20},
+		xticklabel style={yshift=2pt}, 
+		yticklabel style={text width=1.2em}, xticklabel={`\short{\year}}, width=5.8cm]
 	\rbar
 	\thickline{black!30}{date}{RUT_MA}{data/equity_indices_lt.csv}
 	\thinline{violet}{date}{RUT_close}{data/equity_indices_lt.csv}
@@ -9582,14 +9630,11 @@ In the US, several stock market indices track the share price of a basket of com
 \footnotesize{Source: Yahoo! Finance} \hfill \tbllink{equity_indices.csv} 
 \end{minipage}
 \newpage
-\markright{\footnotesize \color{orange}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Financial Markets}
-\vspace*{-9mm}
+\vspace*{-11mm} \markright{\footnotesize \color{orange!80!yellow}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Financial Markets}
 
 \begin{minipage}{0.76\textwidth}
 \index{equity markets}
-\small The \href{https://us.spindices.com/indices/equity/sp-500}{S\&P 500} (see {\color{green!80!blue!90!black}\textbf{---}}) is a market-cap-weighted stock market index based on 500 large companies listed on US exchanges. \input{text/eq_sp500.txt} The \href{https://www.nasdaq.com/market-activity/index/comp}{Nasdaq} composite index (see {\color{blue}\textbf{---}}) includes nearly all companies listed on the Nasdaq stock exchange, and is heavily-weighted towards large tech companies. \input{text/eq_nasdaq.txt}
-
-The \href{https://finance.yahoo.com/quote/\%5EDJI/}{Dow Jones} (see {\color{red}\textbf{---}})  industrial average is an index based on 30 large and prominent companies listed on US exchanges. The measure is used as a proxy for the performance of the largest companies, and \input{text/eq_dow.txt} Lastly, the \href{https://www.ftserussell.com/products/indices/russell-us}{Russell 3000} (see {\color{violet}\textbf{---}}) is a broad measure of the US stock market that seeks to be a benchmark of the performance of the overall market. \input{text/eq_russell.txt}
+\small \input{text/equities_ch_summary.txt}
 
 \normalsize \textbf{Stock Market Indices}\\
 \footnotesize{\ \textit{\hspace{18mm} adjusted close \hspace{32mm} annual index returns, including dividends}
@@ -9604,7 +9649,7 @@ The \href{https://finance.yahoo.com/quote/\%5EDJI/}{Dow Jones} (see {\color{red}
 		
 \vspace{-2mm}
 \footnotesize{Source: Yahoo! Finance}
-\vspace{1mm}
+\vspace{-1mm}
 
 \subsubsection*{Sector Returns}
 \small The S\&P 500 companies are broadly categorized into 11 industrial sectors, which are tracked independently. \input{text/sp500sector_comp.txt}
@@ -9953,22 +9998,19 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \footnotesize{\textit{percentage points}}
 \vspace{3.3cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
-    \begin{groupplot}[group style={group size=2 by 1, horizontal sep=48pt,}]
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-2, -1, 0, 1, 2, 3}, 
-    	ymin=-2.2, ymax=3.1,
-    	yticklabel style={text width=1.0em}, 
-     xticklabel={`\short{\year}},  height=5.4cm, width=6.1cm, clip=false]
+\hspace{1mm} \begin{tikzpicture}[overlay]
+    \begin{groupplot}[group style={group size=2 by 1, horizontal sep=48pt,},
+    	ytick={-2, -1, 0, 1, 2, 3}, 
+    	ymin=-2.2, ymax=3.1, yticklabel style={text width=1.0em}, 
+     height=5.4cm, width=6.2cm, clip=false]
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks xticklabel={`\short{\year}}]
     \rbar
 	\thinline{blue!70!cyan!80!white}{date}{Ten-3M}{data/spread.csv}
 	\node[below, align=left, shift=({rel axis cs:0.36,0.98}), 
 	draw=black!30!white, fill=white, inner sep=4.0]
 		{\small \color{black!80!white}\textbf{10-Year - 3-Month}};
 	\input{text/spread_node.txt}
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks ytick={-2, -1, 0, 1, 2, 3}, 
-    ymin=-2.2, ymax=3.1,
-    	yticklabel style={text width=1.0em},
-     xticklabel={`\short{\year}}, height=5.4cm, width=6.1cm, clip=false]
+    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks xticklabel={`\short{\year}}]
 	\rbar
 	\thinline{red!60!violet!90!white}{date}{Ten-2Y}{data/spread.csv}
 	\node[below, align=left, shift=({rel axis cs:0.34,0.98}), 
@@ -10260,14 +10302,14 @@ A large increase in the amount of money held by individuals and institutions can
 \newpage 
 \hypertarget{pr}{\label{pr}} \thispagestyle{sectpage} \index{prices!consumer price index}
 \begin{minipage}{0.76\textwidth} 
-\section*{\bcbox{purple}Prices}
+\section*{\bcbox{purple!60!magenta}Prices}
 \vspace*{-2mm}
 
-\small The price of goods and services determine how much can be purchased by a fixed income. Researchers are interested in the prices of specific goods, as well as changes in overall purchasing power, more generally.
+\small The price of goods and services determine how much can be purchased by a fixed income. Researchers are interested in the prices of specific goods, as well as changes in purchasing power, more generally.
 
-To understand the overall change in prices paid or charged by a group, such as consumers or manufacturers, researchers create a representative ``basket'' of the goods and services relevant to the group, and track the changes in the basket, and the price of the basket, over time. The end result of these methods is a price index. Researchers can then use the price index to calculate the rate of inflation.
+To summarize changes in purchasing power, researchers create a representative ``basket'' of relevant goods and services, and then track changes in the basket, and changes in the price of the basket, over time. The end result is a price index, which can be used to calculate the rate of inflation.
 
-Inflation is typically calculated as the 12-month percent change in the price index. This annual inflation rate measures how prices in a given month compare to prices during the same month, one year prior. 
+Inflation is typically calculated as the 12-month percent change in the price index. This annual inflation rate measures how prices in a given month compare to prices during the same month, one year prior. The 12-month inflation rate, based on various price indices, is presented in the following table. 
 \vspace{1mm}
 
 \normalsize \textbf{Price Growth, Various Measures}\\
@@ -10294,6 +10336,7 @@ Inflation is typically calculated as the 12-month percent change in the price in
 \vspace*{-4mm}
 
 \hspace*{-3mm} \begin{tikzpicture} 
+	\pgfplotstableread[col sep=comma]{data/cpi_monthly.csv}\cpimo
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
 		enlarge y limits={0.24}, enlarge x limits={0.02}, 
 		width=13.0cm, height=4.7cm,
@@ -10301,7 +10344,7 @@ Inflation is typically calculated as the 12-month percent change in the price in
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, xtick=data,
 		xticklabels from table={\cpimo}{label}]
-	\addplot[thick, draw opacity=0] table [x=date, y=FILL, col sep=comma]{\cpimo};
+	\addplot[thick, draw opacity=0] table [x=date, y=FILL]{\cpimo};
 	\addplot[ybar, fill=blue, draw opacity=0, nodes near coords] table [x=date, y=ALL_S, col sep=comma]{\cpimo};
 	\draw [black!40!white, dashed] (rel axis cs:0.35,0) -- 
 		(rel axis cs:0.35, 1.06);
@@ -10316,7 +10359,7 @@ Inflation is typically calculated as the 12-month percent change in the price in
 \footnotesize{Source: Bureau of Labor Statistics, Federal Reserve Bank of Cleveland} \hfill \tbllink{cpi_monthly.csv}
 \end{minipage}
 \newpage
-\markright{\footnotesize \color{purple}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Prices}
+\markright{\footnotesize \color{purple!60!magenta}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Prices}
 \hypertarget{prin}{\label{prin}}
 \begin{minipage}{0.76\textwidth}
 \subsection*{Consumer Price Index}
@@ -10633,16 +10676,16 @@ Note that the all commodities index includes goods at various stages of producti
 \footnotesize{\textit{change from previous month, percent}}
 \vspace{3.3cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{2mm} \begin{tikzpicture}[overlay] 
+	\pgfplotstableread[col sep=comma]{data/ppi_monthly.csv}\ppimo
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
 		enlarge y limits={0.28}, enlarge x limits={0.02}, width=12.8cm, height=4.8cm,
 		yticklabel style={text width=1.0em}, clip=false,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+		nodes near coords, nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, xtick=data,
 		xticklabels from table={\ppimo}{label}]
-	\addplot[ybar, fill=green!80!blue, draw opacity=0] table [x=date, y=PPIACO, col sep=comma]{\ppimo};
+	\addplot[ybar, fill=green!80!blue, draw opacity=0] table [x=date, y=PPIACO]{\ppimo};
 	\draw [black!40!white, dashed] (rel axis cs:0.365,0) -- 
 		(rel axis cs:0.365, 1);
 	\node[below right, align=left] at (rel axis cs:0.365, 1.05) {\color{black!40!white}\footnotesize {latest 12 months}};
@@ -10652,15 +10695,15 @@ Note that the all commodities index includes goods at various stages of producti
 \vspace{3.75cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
+	\pgfplotstableread[col sep=comma]{data/ppi_monthly.csv}\ppimo
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
 		enlarge y limits={0.28}, enlarge x limits={0.02}, width=12.8cm, height=4.8cm,
 		yticklabel style={text width=1.0em}, clip=false,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
+		nodes near coords, nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, xtick=data,
 		xticklabels from table={\ppimo}{label}]
-	\addplot[ybar, fill=violet, draw opacity=0] table [x=date, y=PPIFDsa, col sep=comma]{\ppimo};
+	\addplot[ybar, fill=violet, draw opacity=0] table [x=date, y=PPIFDsa]{\ppimo};
 	\draw [black!40!white, dashed] (rel axis cs:0.365,0) -- 
 		(rel axis cs:0.365, 1);
 	\node[below right, align=left] at (rel axis cs:0.365, 1.05) {\color{black!40!white}\footnotesize {latest 12 months}};
@@ -10686,11 +10729,9 @@ Note that the all commodities index includes goods at various stages of producti
 \vspace{3.2cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks yticklabel style={text width=1.5em},
 		xticklabel={`\short{\year}}, clip=false, max space between ticks=20,
-		legend style={at={(0.98, 1.14)}},
-		yticklabel style={text width=1.5em},
-		height=5.6cm, width=12.6cm]
+		legend style={at={(0.98, 1.14)}}, height=5.6cm, width=12.6cm]
 	\rbars
 	\thickline{cyan!58!white}{date}{Imports}{data/mxpi.csv}
 	\stdline{blue!90!black}{date}{Exports}{data/mxpi.csv}
@@ -10768,9 +10809,8 @@ Two important commodities for the construction and manufacturing industries are 
 \vspace{2.6cm}
 
 \hspace{1mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
-		enlarge y limits={0.05}, max space between ticks=20,	
-		width=12.5cm, height=4.7cm, ymin=0.2,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks enlarge y limits={0.05}, 
+		max space between ticks=20,	width=12.5cm, height=4.7cm, ymin=0.2,
 		xticklabel={`\short{\year}}, clip=false]
 	\rebars
 	\stdline{blue}{date}{Value}{data/gas_price.csv}
@@ -10807,10 +10847,35 @@ Two important commodities for the construction and manufacturing industries are 
 \thispagestyle{sectpage}
 \begin{minipage}{0.76\textwidth}
 \section*{Acknowledgments}
-\small This chartbook benefits from particularly helpful feedback from Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, and Rebecca Watts. 
+\small This chartbook benefits from particularly helpful feedback on earlier versions from Gabriel Mathy, Iordan Koulov, Lara Merling, Kevin Cashman, and Rebecca Watts. 
 
-Additionally, the chartbook benefits from other researchers who have shared their work in the public domain or provided me with guidance, including: Dean Baker, Matt Bruenig, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Ben Zipperer, Alberto Rodelgo, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Andrew Paciorek, David Dorn, Skanda Amarnath, Ernie Tedeschi, Brad Setser, Joseph Politano, and Vikas Sharma.
+Additionally, the chartbook benefits immensely from other researchers who have shared their work in the public domain or provided me with guidance, including: Dean Baker, Matt Bruenig, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Ben Zipperer, Alberto Rodelgo, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Andrew Paciorek, David Dorn, Skanda Amarnath, Ernie Tedeschi, Brad Setser, Joseph Politano, Arin Dube, Valerie Wilson, Mike Konczal, J.W. Mason, and Vikas Sharma.
 \end{minipage}
+\newpage
+\thispagestyle{sectpage}
+\hypertarget{references}{\label{references}}
+\section*{References}
+
+\begingroup
+\renewcommand{\chapter}[2]{}
+\begin{thebibliography}{14}
+\hspace*{-2mm}\begin{minipage}[t]{0.47\textwidth}
+\input{text/reference_group_1.txt}
+\end{minipage}\hspace{8mm}
+\begin{minipage}[t]{0.47\textwidth}
+\input{text/reference_group_2.txt}
+\end{minipage}
+\newpage
+\markright{\seriffont References}
+\hspace*{-2mm}\begin{minipage}[t]{0.47\textwidth}
+\input{text/reference_group_3.txt}
+\end{minipage}\hspace{8mm}
+\begin{minipage}[t]{0.47\textwidth}
+\vspace{0pt}
+\input{text/reference_group_4.txt}
+\end{minipage}
+\end{thebibliography}
+\endgroup
 \newpage
 \markright{\seriffont Index}
 \hypertarget{index}{\label{index}}
