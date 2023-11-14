@@ -96,6 +96,14 @@
 		\begin{tikzpicture} \draw [#1, line width=1.8](0,0.2) -- +(0.6,0) 
 			node[right, black!80] {#2}; 
 		\end{tikzpicture}}
+	\newcommand{\colordashline}[2]{
+		\begin{tikzpicture} \draw [densely dashed, #1, line width=1.8](0,0.2) -- +(0.5,0) 
+			node[right, black!80] {#2}; 
+		\end{tikzpicture}}
+	\newcommand{\scolorline}[2]{
+		\begin{tikzpicture} \draw [#1, line width=2.0](0,0.2) -- +(0.3,0) 
+			node[right, black!80] {#2}; 
+		\end{tikzpicture}}
 		
 	% Table link
 	\newcommand{\tbllink}[1]{\href{https://raw.githubusercontent.com/bdecon/US-chartbook/master/chartbook/data/#1}{\faTable}}
@@ -2562,17 +2570,17 @@ Two values are shown for 2013 and 2017 to mark revisions to the survey design (2
 \begin{minipage}{0.76\textwidth} \index{households!spending} \index{spending!household}
 \subsection*{Household Spending and Saving}
 \hypertarget{hhss}{\label{hhss}} 
-\small The preceding subsection focused on household income, whereas this section addresses household expenditures. \href{https://www.bea.gov/data/consumer-spending/main}{Consumer spending} encompasses household outlays on goods and services, including government-provided benefits like Medicare and Medicaid, and imputed services such as the assumed rental value of owner-occupied housing.
+\small The preceding subsection focused on household income, whereas this subsection covers household \textbf{spending and saving}. \href{https://www.bea.gov/data/consumer-spending/main}{Consumer spending} encompasses household outlays on goods and services, including government-provided benefits like Medicare and Medicaid, and imputed services such as the assumed rental value of owner-occupied housing.
 
-Over the last three decades, the expansion of consumer spending has been a primary driver of economic growth. Consumer spending usually increases when households have more income and falls when households have less income. This effect is visible in both the long-run and during the course of a business cycle, with consumer spending generally falling or slowing during a recession. Some categories of spending fell sharply during COVID-19 business closures and restrictions.
-
-\href{https://www.bea.gov/data/income-saving/personal-saving-rate}{Personal saving} occurs when households have income in excess of their expenses. Savings are invested, often providing additional income, and are used for future expenses, such as costs incurred during retirement.
+\href{https://www.bea.gov/data/income-saving/personal-saving-rate}{Personal saving} occurs when households have income in excess of their expenses. Savings are invested, often providing additional income, and are used for future expenses, such as costs incurred during retirement. Both topics are covered in more depth below.
 \vspace{1mm}
 
-\subsubsection*{Spending}
+\subsubsection*{Consumer Spending}
 \vspace{-1mm}
 
-\small \textbf{Consumer spending} is comprised of two broad expenditure types: goods and services. Spending on goods includes durable goods (goods with a useful life of at least three years), such as cars, furniture, or recreational goods, and nondurable goods, such as groceries, clothing, and gasoline. Spending on services includes housing, health care, restaurants and bars, transportation services, financial services, and other services. 
+\small Over the last three decades, the expansion of \textbf{consumer spending} has been a primary driver of economic growth. Consumer spending usually increases when households have more income and falls when households have less income. This effect is visible in both the long-run and during the course of a business cycle, with consumer spending generally falling or slowing during a recession. Some categories of spending fell sharply during COVID-19 business closures and restrictions.
+
+Consumer spending is comprised of two broad expenditure types: goods and services. Spending on goods includes durable goods (goods with a useful life of at least three years), such as cars, furniture, or recreational goods, and nondurable goods, such as groceries, clothing, and gasoline. Spending on services includes housing, health care, restaurants and bars, transportation services, financial services, and other services. 
 \end{minipage}
 
 \begin{minipage}{0.38\textwidth}
@@ -2623,7 +2631,10 @@ Over the last three decades, the expansion of consumer spending has been a prima
 \end{minipage}
 \newpage 
 \begin{minipage}{0.76\textwidth} \index{spending!household} \index{households!spending}
-\small The combined categories from the previous two charts cover spending on goods, spending on services other than shelter, and spending on housing, utilities, and residential construction. Including residential construction with other housing costs provides a more broad overview of household sector expenses. 
+\normalsize Consumer Spending and Residential Fixed Investment
+\vspace{-0.5mm}
+
+\small The previous two charts cover spending on goods, spending on services other than shelter, and spending on housing, utilities, and residential fixed investment. Investment is not typically grouped with spending, as investment is a form of saving. Spending reduces a household's cash balance, while investment exchanges cash for another asset. The two categories are grouped in the following charts to provide a more broad overview of what households are doing with their income. 
 \end{minipage}
 \vspace{1mm}
 
@@ -2641,8 +2652,10 @@ Over the last three decades, the expansion of consumer spending has been a prima
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
 	\absnode{{1996-06-01}}{25.5}{\footnotesize \color{blue!75!white}Services Excl. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
-	\absnode{{1993-01-01}}{14.6}{\footnotesize \color{green!85!blue}Shelter}
+	\absnode{{1992-09-01}}{14.6}{\footnotesize \color{green!85!blue}Shelter*}
 	\stdline{green!85!blue}{date}{SHELTER}{data/pce_levels.csv}
+	\node[text width=6.4cm, anchor=west] at 
+		({1989-01-01}, 2){*includes residential fixed investment};
 	\end{axis}
 \end{tikzpicture}
 
@@ -2665,17 +2678,22 @@ Over the last three decades, the expansion of consumer spending has been a prima
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage 
+\vspace*{-10mm}
+
 \begin{minipage}{0.76\textwidth} \index{spending!household} \index{investment!residential} \index{households!spending} \index{households!residential investment} \index{consumer spending}
+\normalsize Contributions to Economic Growth
+\vspace{-1mm}
+
 \small Next, we examine the effect on GDP growth from changes in consumer spending on goods (see\cbox{red}), services excluding housing and utilities (see\cbox{blue!75!white}), and shelter (see\cbox{green!85!blue}), calculated as housing and utilities plus residential fixed investment. \input{text/pce1.txt}
 \vspace{1mm}
 
 \normalsize \textbf{Consumer Spending and Residential Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth, one-year moving average}}
-\vspace{4.4cm}
+\vspace{4.2cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
-		xticklabel={`\short{\year}}, clip=false, height=6.4cm, reverse legend,
+		xticklabel={`\short{\year}}, clip=false, height=6.2cm, reverse legend,
 		legend cell align=left, ymax=9.2, max space between ticks=20,
 		yticklabel style={text width=1.0em}, 
 		legend style={at={(0.46, 0.99)}, legend columns=1}]
@@ -2699,7 +2717,7 @@ Over the last three decades, the expansion of consumer spending has been a prima
 \normalsize \textbf{Consumer Spending and Residential Investment}\\
 \footnotesize{\textit{percentage point contribution to real GDP growth \hspace{34mm} moving averages}}\\
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.6pt} \color{black!90}
-	{\renewcommand{\arraystretch}{1.56}
+	{\renewcommand{\arraystretch}{1.52}
 \hspace*{-2mm} \begin{tabular}{p{2.0mm} p{40mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} 
 					R{7.2mm} R{7.2mm} R{7.2mm}}
 		\input data/pce.tex \hline
@@ -2709,53 +2727,184 @@ Over the last three decades, the expansion of consumer spending has been a prima
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage 
-\vspace*{-9mm}
+\vspace*{-11mm}
 
 \begin{minipage}{0.76\textwidth} \index{spending!household} \index{consumer spending}
-\small \input{text/pcegrowth.txt}
-\vspace{1mm}
+\normalsize Consumer Spending Growth
+\vspace{-1mm}
+
+\small While the previous charts are inflation- and population-adjusted, actual transactions in the economy are not. The following charts consider changes in all three factors: real per capita consumer spending (see\cbox{blue!80!green!70!white}), inflation (see\cbox{orange!90!yellow!70!white}), and population growth (see\cbox{cyan!80!white}). 
+
+\input{text/npce_gr_decomp.txt}
+\vspace{0.5mm}
 
 \normalsize \textbf{Consumer Spending Growth}\\
-\footnotesize{\textit{annual growth, per capita real personal consumption expenditures, percent}}
-\vspace{4.6cm}
+\footnotesize{\textit{contributions to annual growth, percent}}
+\vspace{3.3cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks  enlarge y limits={0.03}, ymax=19,
-		yticklabel style={text width=1.4em}, max space between ticks=20,
-		xticklabel={`\short{\year}}, clip=false, height=6.6cm, width=12.6cm]
+	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		clip=false, ymax=10.4, xmin={1989-12-31}, enlarge x limits=0.04,
+		yticklabel style={text width=1.0em}, max space between ticks=15,
+    	xtick=data, bar shift=5.0pt, enlarge y limits=0.12,
+    	xticklabel={ \pgfmathparse{int(mod(\tick,2))} 
+    		\ifnum\pgfmathresult=0 `\short{\year}  \fi},
+		clip=false, height=5.3cm, width=12.8cm, reverse legend,
+		legend style={at={(0.75, 1.01)}, legend columns=-1}, 
+		legend cell align={left}]
 	\rbars
-	\stdline{green!70!olive!60!black}{date}{rpcepop}{data/pcegrowth.csv}
-	\input{text/pcegrowth_node.txt}
+	\ctsbar{cyan!80!white}{date}{POP_CONTR}{data/npcedecomp.csv}{7.0pt}
+	\ctsbar{orange!90!yellow!70!white}{date}{INFL_CONTR}{data/npcedecomp.csv}{7.0pt}
+	\ctsbar{blue!80!green!70!white}{date}{REALPC}{data/npcedecomp.csv}{7.0pt}
+	\thickline{black}{date}{NOMINAL}{data/npce_gr.csv}
+	\legend{Population, Inflation, Real Per Capita, Nominal}
+	\input{text/npce_gr_node.txt}
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Bureau of Economic Analysis}  \hfill \tbllink{pcegrowth.csv}
-\vspace{4mm}
+\footnotesize{Source: Bureau of Economic Analysis}  \hfill \tbllink{npcedecomp.csv}
+\end{minipage}
+\vspace{1mm}
 
-\small Changes to consumer spending (see {\color{black}\textbf{---}}) are largely the result of changes to income (see\cbox{cyan!28!white}) and changes to the rate at which income is saved (see\cbox{green!72!blue!90!white}). Changes to other outlays (see\cbox{blue!92!violet}) reflect changes in interest payments, fines and fees, and charitable giving. 
+\begin{minipage}{0.31\textwidth}
+\small Next, recent growth is calculated as the latest three months growth from the previous three (3M/3M). This measure reflects newer data than annual growth rates and is steadier than monthly rates. 
+
+\input{text/rpcpce_3m_decomp.txt} 
+\end{minipage} \hspace{5mm} \begin{minipage}{0.43\textwidth}
+\normalsize \textbf{Recent Growth}\\
+\footnotesize{\textit{last 3 months growth from prev. 3 months, annualized}}
+\vspace{3.1cm}
+
+\begin{tikzpicture}[overlay]
+	\pgfplotstableread[col sep=comma]{data/npcedecomp3m.csv}\datatable
+\hspace{3mm} \begin{axis}[\bbar{y}{0}, max space between ticks=16,
+		date coordinates in=x, axis line style={draw=none},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		clip=false, width=7.3cm, height=4.4cm, 
+		yticklabel style={text width=1.4em}, xtick=data, 
+		xticklabels from table={\datatable}{label}, 
+		enlarge y limits=0.08, enlarge x limits=0.03, reverse legend,
+		legend style={at={(1.06, 1.29)}, legend columns=3}, 
+		legend cell align={left}] 
+	\ctsbar{cyan!80!white}{date}{POP_CONTR}{\datatable}{6.0pt} 
+	\ctsbar{orange!90!yellow!70!white}{date}{INFL_CONTR}{\datatable}{6.0pt} 
+	\ctsbar{blue!80!green!70!white}{date}{REAL_PC}{\datatable}{6.0pt} 
+	\thickline{black}{date}{SPENDING}{\datatable}
+	\input{text/npce_decomp3m_node.txt}
+	\node[right, align=left, shift=({rel axis cs:-0.03,1.06})]
+		{\normalsize \textbf{---} \footnotesize Nominal };
+	\legend{Population, Inflation, Real Per Capita,}
+	\end{axis}
+\end{tikzpicture}
+\vspace{2.5mm}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{14mm} \tbllink{exp_inc_save_mon.csv}
+\end{minipage}
+\vspace{2.5mm}
+
+\begin{minipage}{0.76\textwidth}
+\small Real per capita consumer spending is the core of consumer spending. Recent growth rates can be an important economic indicator, and are presented below, as both 12-month growth (12M) and the last three months growth from the prior three (3M/3M). 
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.31\textwidth}
+\small \input{text/rpcpce_ltgr.txt}
+\end{minipage} \hspace{5mm} \begin{minipage}{0.41\textwidth}
+\normalsize \textbf{Recent Real Per Capita Growth}\\
+\footnotesize{\textit{real per capita consumer spending growth, percent}}
+\vspace{2.3cm}
+
+\hspace{2mm} \begin{tikzpicture}[overlay]
+	\pgfplotstableread[col sep=comma]{data/npcegr.csv}\datatable
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
+		date coordinates in=x, axis line style={draw=none},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		clip=false, width=7.3cm, height=4.2cm, 
+		yticklabel style={text width=1.0em}, xtick=data, 
+		xticklabels from table={\datatable}{label}, 
+		enlarge y limits=0.38, enlarge x limits=0.03, 
+		legend style={at={(0.65, 1.07)}, legend columns=2}, 
+		legend cell align={left}]
+	\thickline{blue!50!black}{date}{RPC12M}{\datatable}
+	\stdline{blue!40!cyan!90!white}{date}{RPC3M}{\datatable}
+	\input{text/npcegr_nodes.txt}
+	\legend{12M, 3M/3M}
+	\end{axis}
+\end{tikzpicture}
+\vspace{2.5mm}
+
+\footnotesize{Source: Bureau of Economic Analysis}  \hfill \tbllink{npcegr.csv}
+\end{minipage}
+\newpage
+\vspace*{-10mm}
+
+\begin{minipage}{0.76\textwidth}
+\normalsize Sources of Consumer Spending Growth
+\vspace{-1mm}
+
+\small Researchers typically decompose changes in spending based on categories of spending, but we can also view \textbf{spending as the result of income and saving}. Ultimately, spending comes from income. Income, however, is more volatile than spending, and households use saving to smooth their consumption across spikes in income and across their lifespan. 
+
+To see this pattern, the following charts show the contribution to changes in real per capita consumer spending (see {\color{black}\textbf{---}}) from changes in income (see\cbox{cyan!28!white}), changes in personal saving (see\cbox{green!72!blue!90!white}), and changes in other outlays (see\cbox{blue!92!violet}) such as interest payments, fines, fees, and charitable giving. Changes in spending and other outlays are negations in this approach, as increased saving means reduced spending. In the charts below, a \textit{reduction} in saving or other outlays positively contributes to spending. 
 
 \input{text/pcedecomp.txt}
 \vspace{1mm} 
 
-\normalsize \textbf{Contributions to Consumer Spending}\\
+\normalsize \textbf{Contributions to Consumer Spending Growth}\\
 \footnotesize{\textit{percentage point contribution to real per capita PCE growth, one-year moving average}}
-\vspace{6.0cm}
+\vspace{5.2cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-20, -10, 0, 10, 20},
-		xticklabel={`\short{\year}}, clip=false, height=8.0cm, width=13.0cm, 
+		xticklabel={`\short{\year}}, clip=false, height=7.2cm, width=13.0cm, 
 		yticklabel style={text width=1.4em}, ymax=19, enlarge y limits={0.03},
-		legend style={at={(0.64, 0.96)}, fill=white}]
+		legend style={at={(0.74, 0.96)}, fill=white}]
 	\rbars
-	\sbar{cyan!28!white}{date}{A067RC}{data/pcedecomp.csv}
+	\sbar{cyan!28!white}{date}{INCOME}{data/pcedecomp.csv}
 	\sbar{green!72!blue!90!white}{date}{SAVING}{data/pcedecomp.csv}
 	\sbar{blue!92!violet}{date}{OTHER}{data/pcedecomp.csv}
-	\stdline{black}{date}{DPCERC}{data/pcedecomp.csv}
-	\legend{Income, Saving, Other Outlays, Total};
+	\stdline{black}{date}{SPENDING}{data/pcedecomp.csv}
+	\legend{Income, Saving (-)*, Other Outlays (-)*, Spending};
+	\node[text width=9.4cm, anchor=west, fill=white] at 
+		({1989-01-01}, -16){*Saving and other outlays are negations, i.e. increased saving is a negative contribution to spending.};
 	\end{axis}
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pcedecomp.csv}
+\end{minipage}
+\vspace{2.5mm}
+
+\begin{minipage}{0.305\textwidth}
+\small \input{text/exp_inc_save_mon.txt}
+\end{minipage} \hspace{6mm} \begin{minipage}{0.43\textwidth}
+\normalsize \textbf{Recent Contributions}\\
+\footnotesize{\textit{last 3 months growth from prev. 3 months, annualized}}
+\vspace{4.15cm}
+
+\begin{tikzpicture}[overlay]
+	\pgfplotstableread[col sep=comma]{data/exp_inc_save_mon.csv}\datatable
+\hspace{3mm} \begin{axis}[\bbar{y}{0}, max space between ticks=20,
+		date coordinates in=x, axis line style={draw=none},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		clip=false, width=7.2cm, height=5.8cm, 
+		yticklabel style={text width=1.4em}, xtick=data, 
+		xticklabels from table={\datatable}{label}, 
+		enlarge y limits=0.18, enlarge x limits=0.03,
+		legend style={at={(1.05, 1.09)}, legend columns=3}, 
+		legend cell align={left}] 
+	\ctsbar{cyan!28!white}{date}{INCOME}{\datatable}{6.0pt} 
+	\ctsbar{green!72!blue!90!white}{date}{SAVING}{\datatable}{6.0pt} 
+	\ctsbar{blue!92!violet}{date}{OTHER}{\datatable}{6.0pt} 
+	\thickline{black}{date}{SPENDING}{\datatable}
+	\input{text/exp_inc_save_mon_node.txt}
+	\node[right, align=left, shift=({rel axis cs:0.03,0.93})]
+		{\normalsize \textbf{---} \footnotesize Spending};
+	\legend{Income, Saving (-), Other Outlays (-)}
+	\end{axis}
+\end{tikzpicture}
+\vspace{3mm}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{14mm} \tbllink{exp_inc_save_mon.csv}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{saving!household} \index{households!saving}
@@ -2884,9 +3033,9 @@ Over the last three decades, the expansion of consumer spending has been a prima
 \subsection*{Household Balance Sheets}
 \index{debt!household} \index{balance sheet!household} \index{households!balance sheets} \index{consumer credit}
 
-\small The vast majority of US wealth is found on private household balance sheets. Households own residential real estate and consumer durable goods, but also own equity in businesses, directly and indirectly, and hold financial claims on businesses and on the public sector. This subsection discusses household debt, assets, and net worth.
+\small The vast majority of US wealth is found on private \textbf{household balance sheets}. Households own residential real estate and consumer durable goods, but also own equity in businesses, directly and indirectly, and hold financial claims on businesses and on the public sector. This subsection discusses household debt, assets, and net worth.
 
-In the US financial accounts, the combined household and nonprofit sectors hold a total of \input{text/hh_bs_overview1.txt}
+According to the US financial accounts, the combined household and nonprofit sectors have \input{text/hh_bs_overview1.txt}
 \end{minipage}
 
 \begin{minipage}{0.33\textwidth}
@@ -2918,7 +3067,7 @@ In the US financial accounts, the combined household and nonprofit sectors hold 
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Liabilities}
 
-\small Household liabilities have a significant impact on consumer behavior and can signal potential economic risks. The primary form of household debt is home mortgages, but there has been a substantial increase in consumer debt as well. This subsection examines household debt using two data sources: the financial accounts, and the Federal Reserve Bank of New York's Consumer Credit Panel.
+\small textbf{Household liabilities} affect consumer behavior and can signal potential economic risks. The primary form of household debt is home mortgages, but there has been a substantial increase in consumer debt as well. This subsection examines household debt using two data sources: the financial accounts, and the Federal Reserve Bank of New York's Consumer Credit Panel.
 
 \input{text/hhdebt1.txt} 
 
@@ -3016,7 +3165,7 @@ In the US financial accounts, the combined household and nonprofit sectors hold 
 \begin{minipage}{0.76\textwidth} \index{consumer credit} \index{debt!consumer credit}
 \subsubsection*{Consumer Credit}
 
-\small The Federal Reserve also \href{https://www.federalreserve.gov/releases/g19/current/default.htm}{report} consumer credit on a monthly basis. \input{text/cc_dpi.txt}
+\small The Federal Reserve also \href{https://www.federalreserve.gov/releases/g19/current/default.htm}{report} \textbf{consumer credit} on a monthly basis. \input{text/cc_dpi.txt}
 
 \input{text/cc_dpi_2.txt}
 
@@ -3281,7 +3430,7 @@ In the US financial accounts, the combined household and nonprofit sectors hold 
 
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Wealth and Income}
-\small While wealth can be a source of income, wealth does not correspond perfectly to income. For example, early-career professionals with student debt may have a negative net worth and a high income. That said, data on family income by wealth percentile show that income tends to increase with wealth. 
+\small While wealth can be a source of income, wealth does not correspond perfectly to income. For example, early-career professionals with student debt may have a negative net worth and a high income. Despite corner cases, data on \textbf{family income by wealth percentile} clearly shows that income tends to increase with wealth. 
 
 Additionally, the before-tax income of the wealthiest ten percent of families (see {\color{blue!80!cyan!80!black}\textbf{---}}) has \href{https://www.federalreserve.gov/econres/scf/dataviz/scf/chart/#series:Before_Tax_Income;demographic:nwcat;population:1,2,3,4,5;units:median}{increased} substantially more than the income of other groups. \input{text/income_wealthg1.txt} 
 \end{minipage}
@@ -3326,7 +3475,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \subsubsection*{Wealth and Race}
 \vspace*{-0.5mm}
 
-\small In the US, levels of wealth \href{https://www.federalreserve.gov/econres/notes/feds-notes/disparities-in-wealth-by-race-and-ethnicity-in-the-2019-survey-of-consumer-finances-20200928.htm}{vary} substantially by race and ethnicity. \input{text/scfracialwealthgap.txt}
+\small In the US, \textbf{wealth \href{https://www.federalreserve.gov/econres/notes/feds-notes/disparities-in-wealth-by-race-and-ethnicity-in-the-2019-survey-of-consumer-finances-20200928.htm}{varies} substantially by race and ethnicity}. \input{text/scfracialwealthgap.txt}
 \vspace{0.5mm}
 
 \normalsize \textbf{Racial Wealth Gap}\\
@@ -3372,7 +3521,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \footnotesize{Source: Federal Reserve, Survey of Consumer Finances}
 \vspace{1.5mm}
 
-\small White families have substantially more financial assets including stocks and are much more likely to receive inheritance and in vivo transfers. Income for black families is also substantially lower--about half of white family income. Persistent structural inequalities are seen in income data, but are also evident from measures of wealth and assets.
+\small White families have substantially more financial assets, including stocks, and are much more likely to receive inheritance and in vivo transfers. Income for black families is also substantially lower--about half of white family income. Persistent structural inequalities are seen in income data, but are also evident from measures of wealth and assets.
 \vspace{0.5mm}
 
 \normalsize \textbf{Measures of Wealth and Income by Race or Ethnicity}\\
@@ -4155,11 +4304,13 @@ Net investment is important for many reasons. In the short run, the production a
 \small Note that gross investment includes fixed investment and inventory investment, or the \href{https://www.bea.gov/help/glossary/change-private-inventories-cipi}{change in private inventories}. Changes to private inventories capture the difference between sales and production. Reduced production of new inventory explains much of the overall reduction in gross investment during the COVID-19 pandemic. 
 \end{minipage}
 \newpage
+\vspace*{-9mm}
+
 \markright{\footnotesize \color{blue!90!white}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Businesses} 
-\begin{minipage}{0.33\textwidth}
+\begin{minipage}{0.295\textwidth}
 \small \input{text/businv_sh.txt}
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.38\textwidth}
+\begin{minipage}{0.425\textwidth}
 \normalsize \textbf{Gross Fixed Investment by Type}\\
 \footnotesize{\textit{share of GDP, percent}}
 \vspace{2.7cm}
@@ -4167,7 +4318,7 @@ Net investment is important for many reasons. In the short run, the production a
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
 	    enlarge y limits=0.09,
-		clip=false, ymin=0.5, xticklabel={`\short{\year}}, height=4.8cm, width=7.0cm]
+		clip=false, ymin=0.5, xticklabel={`\short{\year}}, height=4.8cm, width=7.7cm]
 	\rbars
 	\stdline{yellow!50!orange}{date}{B009RC}{data/businvsh.csv}
 	\stdline{cyan!60!white}{date}{Y033RC}{data/businvsh.csv}
@@ -4181,21 +4332,23 @@ Net investment is important for many reasons. In the short run, the production a
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businvsh.csv}
 \end{minipage}
+\vspace*{-1mm}
 
 \begin{minipage}{0.76\textwidth}
 \subsubsection*{Contribution to Growth}
-\vspace{-0.5mm}
-\small \input{text/businv.txt} 
-\vspace{1mm}
+\vspace{-1mm}
+
+\small Business fixed investment plays an \textbf{outsized role in GDP growth}. \input{text/businv.txt} 
+\vspace{0.5mm}
 
 \normalsize \textbf{Business Gross Fixed Investment}\\
-\footnotesize{\textit{percentage point contribution to real GDP growth}}
-\vspace{3.5cm}
+\footnotesize{\textit{contribution to real GDP growth, percentage points, annualized}}
+\vspace{3.0cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
-		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
-		legend style={at={(0.72, 1.0)}, fill=white}]
+		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=13.05cm,
+		legend style={at={(0.72, 1.01)}, fill=white, inner sep=0.1}]
 	\rbars
 	\sbar{yellow!50!orange}{date}{A009RY}{data/businv.csv}
 	\sbar{cyan!60!white}{date}{Y033RY}{data/businv.csv}
@@ -4205,12 +4358,12 @@ Net investment is important for many reasons. In the short run, the production a
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{businv.csv}
-\vspace{2mm}
+\vspace{1.5mm}
 
 \normalsize \textbf{Business Gross Fixed Investment}\\
-\footnotesize{\textit{percentage point contribution to real GDP growth \hspace{32mm} moving averages}}\\ 
+\footnotesize{\textit{contribution to real GDP growth, percentage points, annualized \hspace{18mm} moving averages}}\\ 
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.6pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.56}
+		{\renewcommand{\arraystretch}{1.5}
 \hspace*{-2mm} \begin{tabular}{p{40.6mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
 		   R{7.6mm} R{6.7mm} R{6.7mm} }
 			 \input data/businv.tex \hline
@@ -4334,7 +4487,7 @@ When examining trends in the ratio, note that business sales include services, w
 \begin{minipage}{0.76\textwidth} \index{balance sheet!business} \index{businesses!balance sheet} \index{debt!business} \index{businesses!debt} \index{assets!business} \index{businesses!assets}
 \subsection*{Business Balance Sheets}
 
-\small Next, we look at the \textbf{balance sheets} of US private businesses. The Financial Accounts report assets, liabilities, and net worth for corporate and noncorporate businesses, each of which is discussed in this subsection. 
+\small Next, we look at the \textbf{balance sheets} of US private businesses. The Financial Accounts \href{https://www.federalreserve.gov/releases/z1/}{report} assets, liabilities, and net worth for corporate and noncorporate businesses, each of which is discussed in this subsection. 
 
 The following charts cover nonfinancial businesses and show the ratio of balance sheet components to sector production, measured as the gross value added by the sector. The gross value added is essentially the GDP of the sector. \input{text/bus_bs_gva.txt}
 \vspace{1mm}
@@ -6230,7 +6383,7 @@ This balance is further broken down into four components: the trade balance for 
 
 \begin{minipage}{0.76\textwidth} \index{trade!by partner}
 \subsubsection*{Trade by Partner} 
-\small The US Census Bureau \href{https://www.census.gov/foreign-trade/data/index.html}{report} monthly data on US trade in goods, including by partner country. \input{text/trade_partner_sh.txt} 
+\small The US Census Bureau \href{https://www.census.gov/foreign-trade/data/index.html}{report} monthly data on international \textbf{trade in goods by partner country}. \input{text/trade_partner_sh.txt} 
 \vspace{1.5mm}
 
 \normalsize \textbf{US Trade in Goods} \hspace{12mm} \input{text/trade_date.txt} \hspace{16mm} \input{text/trade_date2.txt}\\
@@ -6783,23 +6936,23 @@ Among measures of overall economic activity, gross labor income has the added be
 \input{text/gli_eci.txt}
 \end{minipage}
 \newpage
-\vspace*{-10mm}
+\vspace*{-11mm}
 
-\begin{minipage}{0.76\textwidth}
+\begin{minipage}{0.76\textwidth} \index{labor share of income} \index{compensation of employees} \index{income!labor share}
 \subsubsection*{Labor Share of Income}
 \small The \textbf{labor share} measures the portion of available income that is paid to workers. Labor income is measured in the national accounts as employee compensation, and net income is measured as employee compensation plus the net operating surplus. Net income, or income after depreciation, is used instead of gross income because depreciation expenses are not available to labor or capital. 
 \end{minipage}
 \vspace{-1mm}
 
-\begin{minipage}{0.37\textwidth} \index{labor share of income} \index{compensation of employees}
+\begin{minipage}{0.37\textwidth} 
 \normalsize \textbf{Labor Share of Net Income}\\
 \footnotesize{\textit{percent, one-year moving average}}
-\vspace{3.6cm}
+\vspace{3.5cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\shdateaxisticks max space between ticks=25, 
 		enlarge y limits={0.14}, yticklabel style={text width=1em},
-		xticklabel={`\short{\year}}, height=5.6cm, width=6.3cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.5cm, width=6.3cm, clip=false]
 	\rbars
 	\thickline{blue!50!cyan}{date}{Share}{data/laborshare.csv}
 	\thickline{green!60!blue}{date}{Corp_Share}{data/laborshare.csv}
@@ -6821,18 +6974,18 @@ Among measures of overall economic activity, gross labor income has the added be
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
-\subsubsection*{Productivity-Pay Gap}
+\subsubsection*{Productivity-Pay Gap} \index{productivity-pay gap}
 \small When analyzing the fall in labor share of income, it's useful to consider the \textbf{gap between labor productivity and pay}. Behind long-term output growth is productivity growth and population growth. \input{text/payprod.txt}
 \vspace{0.5mm}
 
 \normalsize \textbf{Productivity-Pay Gap}
-\vspace{3.9cm}
+\vspace{3.8cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=20mm}]
 	\nextgroupplot[\bbar{y}{100}, \shdateaxisticks max space between ticks=20, 
 		enlarge y limits={0.04}, yticklabel style={text width=1.5em},
-		xticklabel={`\short{\year}}, height=5.2cm, width=7.8cm, clip=false]
+		xticklabel={`\short{\year}}, height=5.1cm, width=7.8cm, clip=false]
 		\rbars
 		\thickline{cyan!90!white}{date}{Productivity}{data/payprod.csv}
 		\stdline{blue!80!black}{date}{Average}{data/payprod.csv}
@@ -6844,7 +6997,7 @@ Among measures of overall economic activity, gross labor income has the added be
 			draw=black!30!white, inner sep=3.0]
 			{\small \textbf{Index, 1989=100} \footnotesize};
 	\nextgroupplot[\barplotnogrid axis y line=left, \bbar{x}{0},
-        width=4.6cm, height=5.6cm, clip=false,
+        width=4.6cm, height=5.5cm, clip=false,
         ytick={0,1,2.4}, yticklabels=\empty, 
         enlarge x limits={0.01}, enlarge y limits={abs=0.5}, 
         every axis plot/.append style={
@@ -6861,7 +7014,7 @@ Among measures of overall economic activity, gross labor income has the added be
 \end{tikzpicture}
 
 \footnotesize{Source: BEA, BLS, Author} \hfill \tbllink{payprod.csv}\\
-\footnotesize{Net Labor Productivity is Net Domestic Product divided by total hours worked from the CPS. Average wages and salaries is from the ECI, and covers all civilian workers. Median usual weekly earnings from the CPS cover full-time civilian wage and salary workers.}
+\footnotesize{Data notes: Net labor productivity is real net domestic product divided by total hours worked from the CPS. Average wages and salaries is from the ECI, and covers all civilian workers. Median usual weekly earnings from the CPS cover full-time civilian wage and salary workers. Average wages are deflated using the PCE price index and median wages are deflated with the CPI.}
 \vspace{1mm}
 
 \small More-complete \href{https://www.epi.org/productivity-pay-gap/}{analysis} finds that the productivity-pay gap emerged around 1979; between World War II and 1979, employee compensation kept pace with productivity growth. Researchers argue that the post-1979 gap is tied to policies that weaken unions and reduce bargaining power for the typical worker. 
@@ -8651,22 +8804,68 @@ R{8.1mm} R{8.1mm} R{8.1mm} R{8.1mm}}
 \footnotesize{Source: Bureau of Labor Statistics, Author} \hfill \tbllink{hours.csv}
 \end{minipage}
 \newpage 
+\vspace*{-11mm}
+
 \begin{minipage}{0.76\textwidth} \index{employment!hours worked}
 \normalsize Aggregate Hours Worked
 
-\small BLS also \href{https://www.bls.gov/lpc/}{report} a quarterly index tracking aggregate hours worked in nonfarm businesses (see\cbox{cyan!80!blue}). \input{text/tot_hours.txt}
+\small In addition to tracking the average hours that people work, economists are interested in \textbf{aggregate hours worked}, which combine the average workweek with the number of workers. The aggregate hours worked represent the total labor input of a sector. This subsection examines three measures of total hours worked per week.
+
+First, the Bureau of Labor Statistics (BLS) \href{https://www.bls.gov/lpc/}{publish} a quarterly index of aggregate hours worked in nonfarm businesses (see\unskip\scolorline{green!95!blue}{}\hspace{-2.5mm}). The official productivity figures in the Productivity and Costs (LPC) report use this measure, \input{text/agg_hrs_lpc.txt}  
+
+Next, The establishment survey (CES) can be used to calculate aggregate hours worked as average hours worked multiplied by the total number of workers. Aggregate hours for private production and nonsupervisory workers calculated using this method \input{text/agg_hrs_ces.txt} (see \color{blue!80!black}\textbf{---}\normalcolor). 
+\end{minipage}
+
+\begin{minipage}{0.44\textwidth}
+\normalsize \textbf{Aggregate Hours Worked Per Week}\\
+\footnotesize{\textit{indexes, 2010=100}}
+\vspace{4.4cm}
+
+\hspace{4mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{100}, \shdateaxisticks yticklabel style={text width=1.4em}, 
+		max space between ticks=30, xticklabel={`\short{\year}}, 
+		clip=false, height=6.4cm, width=7.9cm, enlarge y limits=0.14, reverse legend,
+		legend style={at={(0.86, 1.02)}, legend columns=1}, 
+		legend cell align={left}]
+	\rbars
+	\addplot[line width=2.2pt, no markers, color=green!95!blue] 
+		table [x=date, y=LPC, col sep=comma] {data/agg_hrs_q.csv};	
+	\addplot[ultra thick, densely dashed, no markers, color=magenta] 
+		table [x=date, y=CPS, col sep=comma] {data/agg_hrs_m.csv};	
+	\addplot[no markers, color=blue!80!black] 
+		table [x=date, y=CES_PNS, col sep=comma] {data/agg_hrs_m.csv};	
+	\absnode{{1991-01-01}}{84}{\footnotesize \color{blue!80!black}CES}
+	\absnode{{2015-05-01}}{110}{\footnotesize \color{magenta}CPS}
+	\absnode{{1994-01-01}}{110}{\footnotesize \color{green!95!blue}\textbf{LPC}}
+	\legend{Nonfarm Businesses (LPC), All Workers (CPS), Production \& Nonsupervisory (CES)};
+	\end{axis}
+\end{tikzpicture} 
+
+\footnotesize{Source: Bureau of Labor Statistics, Author} \hfill \tbllink{agg_hrs_m.csv} \ \tbllink{agg_hrs_q.csv}
+\end{minipage}\hspace{5mm} \begin{minipage}{0.28\textwidth}
+\small Finally, the Current Population Survey (CPS) shows hours of all workers, including the public sector, \input{text/agg_hrs_cps.txt} (see\unskip\colordashline{magenta}{}\hspace{-2.5mm}). 
+
+Trends emerge when comparing between the aggregate hours measures. Production and nonsupervisory workers have most overall growth. In contrast, public sector hours have not kept up since the great recession, driving a wedge between hours for all workers and hours for private workers. This trend continued after the COVID-19 recession. 
+\end{minipage}
 \vspace{2mm}
 
-\normalsize \textbf{Aggregate Hours Worked}\\
-\footnotesize{\textit{nonfarm businesses, quarterly growth at seasonally adjusted annual rate, percent}}\\
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-50, -40, -30, -20, -10, 0, 10, 20, 30, 40}, 
-		yticklabel style={text width=1.5em}, width=12.8cm, height=7.2cm,
+\begin{minipage}{0.76\textwidth}
+\small Lastly, let's look at quarterly changes in aggregate hours worked (see\cbox{cyan!80!blue}). \input{text/tot_hours.txt}
+\vspace{0.5mm}
+
+\normalsize \textbf{Aggregate Hours Worked Growth}\\
+\footnotesize{\textit{nonfarm businesses, quarterly growth at seasonally adjusted annual rate, percent}}
+\vspace{5.2cm}
+
+\hspace{3mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20, ymax=20,
+		yticklabel style={text width=1.5em}, width=12.8cm, height=7.3cm,
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
 	\sbar{cyan!80!blue}{date}{hours}{data/lprod.csv}
 	\end{axis}
-\end{tikzpicture}\\
+\end{tikzpicture}
+
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lprod.csv}
 \end{minipage}
 \newpage
@@ -9113,7 +9312,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \end{tikzpicture}
 
 \footnotesize{Source: Bureau of Labor Statistics\input{text/real_ahe_nowsrc.txt}}\vspace*{-7mm} \hfill \tbllink{ahe.csv}
-\vspace{8mm}
+\vspace{2mm}
 
 \small While one-year wage growth rates are relatively less-volatile, the latest month of data only represents one-twelfth of the data that determines the rate. To help identify trends during recent months, the one-month growth rate is presented next. 
 \end{minipage}
@@ -9156,7 +9355,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \vspace{2mm}
 
 \footnotesize{Source: Bureau of Labor Statistics\input{text/real_ahe_nowsrc.txt}}\vspace*{-7mm} \hfill \tbllink{ahe_monthly.csv} 
-\vspace{8mm}
+\vspace{2mm}
 
 \small The average wage varies between \textbf{industry groups}. \input{text/ahe_comp.txt} 
 \vspace{0.5mm}
@@ -9205,7 +9404,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 
 \begin{minipage}{0.76\textwidth} \index{wages} \index{employment cost index}
 \subsubsection*{Employment Cost Index}
-\small The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/eci.nr0.htm}{report} the overall hourly labor costs faced by employers, using an index that is not influenced by short-term changes in the industry and occupation composition of the US workforce. Employer costs are reported separately for total compensation, wages and salaries, and benefits.
+\small The Bureau of Labor Statistics \href{https://www.bls.gov/news.release/eci.nr0.htm}{report} the overall hourly labor costs faced by employers, using an index that is not influenced by short-term changes in the industry and occupation composition of the US workforce. This \textbf{Employment Cost Index} (ECI) covers total compensation, wages and salaries, and benefits.
 
 Benefits include health insurance, retirement, vacation, sick leave, and transportation benefits. Benefits access and participation vary, even within the same firm. The benefits costs in the index are averages \href{https://www.bls.gov/opub/mlr/cwc/benefit-cost-concepts-and-the-limitations-of-ecec-measurement.pdf}{computed} across all workers, including the workers who do not have benefits. 
 \end{minipage}
@@ -9284,7 +9483,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 \footnotesize{\textit{nominal wages and salaries, all civilian workers, annualized quarterly growth, percent}}
 \vspace{2.2cm}
 
-\hspace{1mm} \begin{tikzpicture}[overlay]\pgfplotstableread[col sep=comma]{data/eci_qq.csv}\eci
+\hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
 		max space between ticks=18, xticklabel={`\short{\year}}, 
 		clip=false, height=4.3cm, width=13.0cm, enlarge y limits=0.08, ymin=0.35]
@@ -9629,7 +9828,7 @@ In the US, several stock market indices track the share price of a basket of com
 \end{tikzpicture}\\
 \footnotesize{Source: Yahoo! Finance} \hfill \tbllink{equity_indices.csv} 
 \end{minipage}
-\newpage
+\newpage \index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq} \index{Russell 3000} \index{S\&P 500!sector performance}
 \vspace*{-11mm} \markright{\footnotesize \color{orange!80!yellow}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Financial Markets}
 
 \begin{minipage}{0.76\textwidth}
@@ -9738,7 +9937,7 @@ In the US, several stock market indices track the share price of a basket of com
 
 Investors like that share buybacks allow flexibility on the timing of tax payments. Dividends generate tax liabilities when the dividend is issued; share buybacks generate tax liabilities when the shares are sold. Additionally, corporations may prefer share buybacks over higher dividends because cutting dividends in the future would be viewed negatively. 
 
-The financial accounts track the \textbf{total payout from corporate equities}, which includes dividends and share buybacks. \input{text/eq_payout.txt}
+The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track} the \textbf{total payout from corporate equities}, which includes dividends and share buybacks. \input{text/eq_payout.txt}
 \vspace{1mm}
 
 \normalsize \textbf{Corporate Equity Payout}\\
@@ -10773,7 +10972,7 @@ Two important commodities for the construction and manufacturing industries are 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{ppi_commodities.csv}
 \end{minipage}
 \newpage
-\vspace*{-10mm}
+\vspace*{-11mm}
 
 \begin{minipage}{0.76\textwidth} \index{prices!oil} \index{oil!price} \index{crude oil}
 \normalsize Crude Oil
@@ -10783,12 +10982,12 @@ Two important commodities for the construction and manufacturing industries are 
 
 \normalsize \textbf{Oil Price}\\
 \footnotesize{\textit{USD, west Texas intermediate crude, monthly average and latest value}}
-\vspace{2.6cm}
+\vspace{2.9cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
-		yticklabel style={text width=1.5em}, width=12.3cm, height=4.7cm,
-		xticklabel={`\short{\year}}, ymin=7, enlarge y limits=0.2, clip=false]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=16,
+		yticklabel style={text width=1.5em}, width=12.3cm, height=4.95cm,
+		xticklabel={`\short{\year}}, ymin=7, clip=false]
 	\rbars
 	\stdline{red!80!purple}{date}{VALUE}{data/wti.csv}
 	\input{text/oil_node.txt}
@@ -10806,11 +11005,11 @@ Two important commodities for the construction and manufacturing industries are 
 
 \normalsize \textbf{Gasoline Price}\\
 \footnotesize{\textit{dollars per gallon, all grades}}
-\vspace{2.6cm}
+\vspace{2.4cm}
 
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks enlarge y limits={0.05}, 
-		max space between ticks=20,	width=12.5cm, height=4.7cm, ymin=0.2,
+		max space between ticks=20,	width=12.5cm, height=4.5cm, ymin=0.2, ymax=4.8,
 		xticklabel={`\short{\year}}, clip=false]
 	\rebars
 	\stdline{blue}{date}{Value}{data/gas_price.csv}
@@ -10829,12 +11028,12 @@ Two important commodities for the construction and manufacturing industries are 
 
 \normalsize \textbf{Gold Price}\\
 \footnotesize{\textit{USD, monthly average and latest value}}
-\vspace{2.6cm}
+\vspace{2.4cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
 		clip=false, yticklabel style={text width=2.4em}, 
-		xticklabel={`\short{\year}}, ymin=95, width=12.0cm, height=4.7cm]
+		xticklabel={`\short{\year}}, ymin=95, width=12.0cm, height=4.5cm]
 	\rbars
 	\stdline{orange!50!yellow}{date}{AM}{data/gold.csv}
 	\input{text/gold_node.txt}

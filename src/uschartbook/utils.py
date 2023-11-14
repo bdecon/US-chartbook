@@ -180,11 +180,13 @@ def cagr(s, freq='Q'):
     return r
 		
     
-def growth_contrib(df, srs):
+def growth_contrib(df, srs, freq='Q'):
     '''Calculate df column contribution to srs growth'''
+    freq_d = {'Q': 4, 'M': 12, 'A': 1}
+    freq_n = freq_d[freq]
     dft = df.diff()
     dft = dft.div(dft[srs], axis=0)
-    c = dft.multiply((((df[srs].pct_change() + 1) ** 4) - 1) * 100, axis=0)
+    c = dft.multiply((((df[srs].pct_change() + 1) ** freq_n) - 1) * 100, axis=0)
     return c.round(2)
     
     
@@ -1177,3 +1179,49 @@ def gc_desc(lt, mu, sigma, also=False):
             co_t = f', and {co_adj}offset by {co_l}.'
     text = f'{desc} is {also_t}{bbdb_t}{su_t}{co_t}'
     return(text, bbdb)
+    
+    
+def date_list(s):
+    '''
+    Returns less-repetitive dates for the last three 
+    dates in a the index of a pandas dataframe or series
+    '''
+    def rem_yr(dt):
+        return re.sub(r'\b\d{4}\b\s*', '', dt).rstrip()
+    dates = s.index[-3:].to_list()
+    dates.reverse()
+    years = [dt.year for dt in dates]
+    fmt = ('qtr1' if (dates[0] - dates[1]) > pd.Timedelta(days=32) 
+           else 'mon1')
+    dts = [dtxt(dt)[fmt] for dt in dates]
+    if years[0] == years[1] and years[1] == years[2]:
+        return [dts[0], rem_yr(dts[1]), rem_yr(dts[2])]
+    elif years[0] == years[1] and years[1] != years[2]:
+        return [dts[0], rem_yr(dts[1]), dts[2]]
+    else:
+        return dts
+    
+
+def prval_comp(s, digits=1):
+    '''
+    Provides some text describing the previous two values
+    '''
+    d1, d2 = date_list(s)[1:]
+    v1, v2 = s.iloc[-2], s.iloc[-3]
+    vt1, vt2 = value_text(abs(v1), 'plain', digits=digits), value_text(abs(v2), 'plain', digits=digits)
+    def desc_val(value, is_combined=False):
+        vt = value_text(abs(value), 'plain', digits=digits)
+        if value > 0.1:
+            return ("increases" if is_combined else "an increase") + f" of {vt}"
+        elif value < -0.1:
+            return ("decreases" if is_combined else "a decrease") + f" of {vt}"
+        else:
+            return "virtually no change"
+
+    if (v1 * v2 > 0) & (abs(v1) > 0.1) & (abs(v2) > 0.1):  # Both values same sign
+        if vt1 == vt2:
+            return f"{desc_val(v1, is_combined=True)} in both {d1} and {d2}"
+        else:
+            return f"{desc_val(v1, is_combined=True)} in {d1} and {vt2} in {d2}"
+    else:
+        return f"{desc_val(v1)} in {d1}, and {desc_val(v2)} in {d2}"
