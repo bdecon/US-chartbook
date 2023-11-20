@@ -145,6 +145,18 @@ def gdpstate_df(table):
         
     return pd.DataFrame(data)
         
+
+def bea_retrieve_annual(table_name, bea_key):
+    '''
+    Retrieve and store annual data table
+    '''
+    api_result2 = bea_api_nipa([table_name], bea_key, freq='A')
+    res = list(api_result2[0])
+    res[0] = f'{table_name}A'
+
+    api_result = [tuple(res)]
+    bea_to_db(api_result)
+
     
 def nipa_series_codes(nipa_table):
     '''Return series codes and names from table code, e.g. T20100'''
@@ -198,6 +210,16 @@ def growth_contrib_ann(df, srs, freq='Q'):
     dft = dft.div(dft[srs], axis=0)
     c = dft.multiply(df[srs].pct_change(freq_n) * 100, axis=0)
     return c.round(2)
+
+
+def growth_contrib_3m3m(df, total_column):
+    '''
+    Return the contribution to total change (3M/3M) for each column
+    '''
+    ch = df.rolling(3).mean() - df.shift(3).rolling(3).mean()
+    prtot = df[total_column].shift(3).rolling(3).mean()
+    gr = ch.divide(prtot, axis=0)
+    return (((gr + 1) ** 4) - 1) * 100 # Annualized growth rate
 
 
 def weighted_average(df, variable):
@@ -1225,3 +1247,35 @@ def prval_comp(s, digits=1):
             return f"{desc_val(v1, is_combined=True)} in {d1} and {vt2} in {d2}"
     else:
         return f"{desc_val(v1)} in {d1}, and {desc_val(v2)} in {d2}"
+        
+        
+def selected_nodes(df, threshold=0.2, node_settings='right, align=left', 
+                   nowrow=False):
+    '''
+    Return latex nodes for stacked bar charts
+    '''
+    y_rng = (df[df > 0].sum(axis=1) - df[df < 0].sum(axis=1)).max()
+    text_height = (y_rng * 0.004)
+    zero = pd.Series({date: 0 for date, v in df.iterrows()})
+    zero.name = 'ZERO'
+    df = pd.concat([zero, df], axis=1)
+    pos = (df[df >= 0].cumsum(axis=1).shift(1, axis=1).ffill(axis=1) + 
+           df[df >= 0].divide(2) - text_height).drop('ZERO', axis=1)
+    neg = (df[df <= 0].cumsum(axis=1).shift(1, axis=1).ffill(axis=1) + 
+           df[df <= 0].divide(2) - text_height).drop('ZERO', axis=1)
+    y_locs = (pos).combine_first(neg)
+    df = df.drop('ZERO', axis=1)
+    nodes = []
+    for col in df.columns:
+        s = df[col]
+        for dt, val in s.items():
+            ndt = dtxt(dt + pd.DateOffset(months=1))['datetime2']
+            y_loc = y_locs.loc[dt, col]
+            if abs(val) > threshold:
+                tval = f'{val:.2f}'
+                if (nowrow == True) & (dt == df.index[-1]):
+                    tval = f'\\textit{{{tval}}}'
+                node = (f'\\node[{node_settings}] at (axis cs:{{{ndt}}},'+
+                        f'{y_loc:.3f}) {{\scriptsize {tval}}};')
+                nodes.append(node)
+    return '\n'.join(nodes)

@@ -8,7 +8,7 @@
 
 Brian Dew, @bd_econ
 
-October 31, 2023
+November 20, 2023
 
 
 ----
@@ -19,7 +19,7 @@ The chartbook is a PDF document that I've put together to help analyze the US ec
 
 Importantly, the chartbook is open source, so people are welcome to use the source code for their own projects or suggest edits. If you find an error, and I'm sure there are many, please let me know. 
 
-I'm hoping to release version 0.1 of the chartbook in the next few weeks. Verson 0.1 is still a work in progress, but is the culmination of some work over the past few months to review and edit the draft into a format that might be useful for other people. 
+The chartbook is currently in its first official release verson, 0.1, which is the culmination of some work over the past few months to review and edit the draft into a format that might be useful for other people. 
 
 ## To Do
 
@@ -27,14 +27,14 @@ See [list](https://github.com/bdecon/US-chartbook/issues) of open issues.
 
 ## Sections 
 
-- [ ] Summary and High-Frequency Indicators
-- [x] Overall Economic Activity
-- [x] Overall Financial Activity
-- [x] Household Sector and Demographics
-- [x] Business Sector
-- [x] Government 
-- [x] External Sector
-- [x] Labor Markets 
-- [x] Capital Markets 
-- [x] Prices
-- [ ] Sources / References / Acknowledgments 
+- Summary and High-Frequency Indicators
+- Overall Economic Activity
+- Overall Financial Activity
+- Household Sector and Demographics
+- Business Sector
+- Government 
+- External Sector
+- Labor Markets 
+- Capital Markets 
+- Prices
+- Sources / References / Acknowledgments 
