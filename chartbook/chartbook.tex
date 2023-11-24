@@ -995,7 +995,7 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \footnotesize{Source: Bureau of Economic Analysis, Federal Reserve Bank of Atlanta, and Author's Calculations. Growth is the quarterly annualized rate.}\end{minipage} \hspace{1mm} \begin{minipage}{0.07\textwidth}\hfill \tbllink{gdpjobslvl.csv} \vspace{4mm} \end{minipage}
 \newpage
 \hypertarget{oegr}{\label{oegr}} \hypertarget{gdpgr}{}
-\vspace*{-10mm}
+\vspace*{-11mm}
 
 \begin{minipage}{0.76\textwidth} \index{gross domestic product!GDPNow}
 \subsection*{Economic Growth}
@@ -1013,9 +1013,9 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \vspace{-5mm}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20, 30}, 
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20, 
 		yticklabel style={text width=1.4em}, ymax=27,
-		xticklabel={`\short{\year}}, clip=false, height=6.1cm, width=13.0cm]
+		xticklabel={`\short{\year}}, clip=false, height=6.6cm, width=13.0cm]
 	\rbars
 	\tsbar{red!95!black}{date}{A191RL}{data/gdp.csv}
 	\input{text/gdpnow_node2.txt}
@@ -1031,24 +1031,28 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \end{tikzpicture}
 \vspace*{-1mm}
 
-\footnotesize{\textit{annual growth, percent \hspace{59mm} recent quarterly \hspace{4mm} \input{text/nowcast_text.txt}}}\\
-\hspace*{-2.5mm} \begin{tikzpicture} 	
+\footnotesize{\textit{annual growth, percent \hspace{53mm} recent quarterly \hspace{9mm} \input{text/nowcast_text.txt}}}\\
+\hspace*{-2.0mm} \begin{tikzpicture} 	
 	\pgfplotstableread[col sep=comma]{data/gdp_rec.csv}\gdprec
     \begin{groupplot}[group style={group size=2 by 1, 
     y descriptions at=edge left, horizontal sep=12pt,},]
-    \nextgroupplot[\bbar{y}{0}, \shdateaxisticks 
-		yticklabel style={text width=1.0em}, ymin=-3.8, ymax=7.4,
-		ytick={-4, -2, 0, 2, 4, 6, 8}, enlarge x limits=0.02,
-		xticklabel={\year}, clip=false, height=4.3cm, width=9.9cm]
+    \nextgroupplot[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		max space between ticks=10, enlarge x limits=0.02,
+		yticklabel style={text width=1.0em}, 
+		clip=false, enlarge y limits=0.06, xtick=data, 
+		xticklabel={ \pgfmathparse{int(mod(\year,5))} 
+    		\ifnum\pgfmathresult=0 `\short{\year}  \fi},
+		ymin=-3.8, ymax=7.4, height=4.6cm, width=9.0cm]
 	\rbars
-	\ctsbar{red!95!black}{date}{A191RL}{data/gdp_a.csv}{6.5pt}
+	\ctsbar{red!95!black}{date}{A191RL}{data/gdp_a.csv}{5.5pt}
     \nextgroupplot[ybar=24pt, \bbar{y}{0}, date coordinates in=x, 
     	xtick=data,	xticklabels from table={\gdprec}{Quarter},
-		clip=false, height=4.3cm, width=4.6cm, xtick style={draw=none},
+		clip=false, height=4.6cm, width=5.4cm, xtick style={draw=none},
 		xticklabel style={black!75, yshift=10pt},
 		enlarge y limits={0.06}, enlarge x limits={0.12},
 		yticklabel style={text width=1.2em}, ymin=-3.8, ymax=7.5,
-		ytick={-4, -2, 0, 2, 4, 6, 8}, xticklabel style={align=center, yshift=-2pt}, 
+		max space between ticks=10, xticklabel style={align=center, yshift=-2pt}, 
 		visualization depends on=abs(\thisrow{A191RL})/\thisrow{A191RL}*4 \as \myshift,
     	every node near coord/.append style = {yshift={\myshift}},
 		axis line style={draw=none}, nodes near coords,
