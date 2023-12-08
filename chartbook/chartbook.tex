@@ -201,7 +201,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-30},
+		xmax={2023-12-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -213,7 +213,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-30},
+		xmax={2023-12-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -225,7 +225,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2023-11-30},   
+		xmin={2018-01-01}, xmax={2023-12-31},   
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
 			{2022-01-01}, {2023-01-01}, {2024-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
@@ -236,7 +236,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-30}, max space between ticks=40,	    
+		xmax={2023-12-31}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01},
 		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
 		 {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
@@ -246,7 +246,7 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-30},
+		xmax={2023-12-31},
 		}
 
 	% Date (X) Axis Tick Marks, no tick marks, just formatting
@@ -819,15 +819,19 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 		yticklabel style={text width=1.0em}, ymin=1.5, ymax=28.5, xmin={1998-01-01},
 		xticklabel={`\short{\year}}, clip=false, height=6.5cm, width=6.8cm]
 	\rebars
-	\stdnode{3.6cm}{1.26cm}{\footnotesize \color{orange!80!white}Government}
+	\stdnode{0.78cm}{1.15cm}{\footnotesize \color{orange!80!white}Government}
 	\stdline{orange!80!white}{date}{Government}{data/gdpva_pc.csv}
-	\stdnode{0.94cm}{2.9cm}{\footnotesize \color{blue!90!white}Other Services}
+	\stdnode{0.94cm}{2.7cm}{\footnotesize \color{blue!90!white}Other Services}
 	\stdline{blue!90!white}{date}{Oth_Serv}{data/gdpva_pc.csv}
-	\stdnode{1.62cm}{1.98cm}{\footnotesize \color{red!90!white}FIRE+}
+	\stdnode{1.62cm}{1.8cm}{\footnotesize \color{red!90!white}FIRE+}
 	\stdline{red!90!white}{date}{FIRE}{data/gdpva_pc.csv}
-	\stdnode{3.0cm}{4.56cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
+	\stdnode{3.0cm}{4.5cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
 	\stdline{purple!70!blue}{date}{GoodsTTU}{data/gdpva_pc.csv}
 	\stdnode{2.1cm}{0.3cm}{\footnotesize See text for category descriptions}
+	\draw [dashed] (axis cs:{2018-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
+		(axis cs:{2018-01-01},
+		\pgfkeysvalueof{/pgfplots/ymax});
+	\stdnode{4.5cm}{0.6cm}{\scriptsize revised}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{gdpva_pc.csv}\\
@@ -9669,7 +9673,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Bureau of Labor Statistics\input{text/real_ahe_nowsrc.txt}}\vspace*{-7mm} \hfill \tbllink{ahe.csv}
+\footnotesize{Source: Bureau of Labor Statistics\input{text/real_ahe_nowsrc.txt}} \hfill \tbllink{ahe.csv}
 \vspace{2mm}
 
 \small While one-year wage growth rates are relatively less-volatile, the latest month of data only represents one-twelfth of the data that determines the rate. To help identify trends during recent months, the one-month growth rate is presented next. 
@@ -9712,7 +9716,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \end{tikzpicture}
 \vspace{2mm}
 
-\footnotesize{Source: Bureau of Labor Statistics\input{text/real_ahe_nowsrc.txt}}\vspace*{-7mm} \hfill \tbllink{ahe_monthly.csv} 
+\footnotesize{Source: Bureau of Labor Statistics\input{text/real_ahe_nowsrc.txt}} \hfill \tbllink{ahe_monthly.csv} 
 \vspace{2mm}
 
 \small The average wage varies between \textbf{industry groups}. \input{text/ahe_comp.txt} 
