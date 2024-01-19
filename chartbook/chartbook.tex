@@ -180,7 +180,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-11-30},
+		xmax={2024-01-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -201,7 +201,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-12-31},
+		xmax={2024-01-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -213,7 +213,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-12-31},
+		xmax={2024-01-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -225,7 +225,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2023-12-31},   
+		xmin={2018-01-01}, xmax={2024-01-31},   
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
 			{2022-01-01}, {2023-01-01}, {2024-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
@@ -236,7 +236,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-12-31}, max space between ticks=40,	    
+		xmax={2024-01-31}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01},
 		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
 		 {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
@@ -246,14 +246,14 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2023-12-31},
+		xmax={2024-01-31},
 		}
 
 	% Date (X) Axis Tick Marks, no tick marks, just formatting
 	\newcommand{\empticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xticklabels=\empty, xtick style={draw=none},
-		xmax={2023-11-30}, enlarge x limits={0.01},
+		xmax={2024-01-31}, enlarge x limits={0.01},
 		}
 		
 	% Settings for y label text in horizontal bar charts
@@ -4986,7 +4986,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 		table [x=date, y=Noncorporate Liabilities, col sep=comma] {data/bus_bs_sh.csv};
 	\absnode{{1991-09-01}}{103}{\color{red!60!orange} \textbf{Corporate} \\ 
 		\color{red!60!orange} \textbf{Liabilities}}
-	\absnode{{2010-01-01}}{56}{\color{red} \textbf{Corporate} \\ \color{red} \textbf{Debt}}
+	\absnode{{2010-01-01}}{57.5}{\color{red} \textbf{Corporate} \\ \color{red} \textbf{Debt}}
 	\absnode{{1993-03-01}}{35}{\color{violet} \textbf{Noncorp.} \\
 		 \color{violet} \textbf{Liab.}}
 	\absnode{{2012-08-01}}{25}{\color{blue!70!black!60!white} \textbf{Noncorp.} 
@@ -5117,11 +5117,11 @@ The following table provides more details on the size of nonfinancial business l
 \footnotesize{Notes: Includes only nonfinancial businesses. Tangible assets are market values or current replacement values.}
 \end{minipage}
 \newpage
-\vspace*{-11mm}
+\vspace*{-12mm}
 
 \subsection*{Industrial Production} \index{industrial production}
 \hypertarget{busip}{\label{busip}}
-\begin{minipage}{0.47\textwidth}
+\begin{minipage}{0.475\textwidth}
 \small \input{text/indpro.txt} 
 \end{minipage}\hfill
 \begin{minipage}{0.48\textwidth}
@@ -5133,7 +5133,7 @@ The following table provides more details on the size of nonfinancial business l
 	\begin{axis}[\bbar{y}{100}, \shdateaxisticks legend cell align={left},
 	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
 	max space between ticks=20,
-	clip=false, height=7.0cm, width=8.6cm, enlarge y limits=0.24,
+	clip=false, height=7.0cm, width=8.5cm, enlarge y limits=0.24,
 	legend style={fill=white, legend columns=1, at={(0.99, 0.32)}}]
 	\rbars
 	\stdline{red!70!white}{date}{Manufacturing}{data/indpro.csv}
@@ -5644,10 +5644,14 @@ This chartbook section covers government contributions to current economic activ
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ymin=0.3, 
 		xticklabel={`\short{\year}}, clip=false, height=5.1cm, width=7.2cm]
 	\rebars
-	\absnode{{2002-01-01}}{3.7}{\footnotesize \color{blue!70!white}Federal}
+	\absnode{{2002-01-01}}{3.6}{\footnotesize \color{blue!70!white}Federal}
 	\stdline{blue!70!white}{date}{Federal}{data/gdpva_pc.csv}
-	\absnode{{2010-01-01}}{6.2}{\footnotesize \color{red}State \& Local}
+	\absnode{{2009-05-01}}{6.4}{\footnotesize \color{red}State \& Local}
 	\stdline{red}{date}{State and local}{data/gdpva_pc.csv}
+	\draw [dashed] (axis cs:{2018-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
+		(axis cs:{2018-01-01},
+		\pgfkeysvalueof{/pgfplots/ymax});
+	\stdnode{4.7cm}{0.6cm}{\scriptsize revised}
 	\end{axis}
 \end{tikzpicture}
 
@@ -7469,14 +7473,14 @@ Among measures of overall economic activity, gross labor income has the added be
 \footnotesize{Source: Bureau of Labor Statistics}
 \end{minipage}
 \newpage
-\vspace*{-10mm} \hypertarget{nfplt}{}
+\vspace*{-11mm} \hypertarget{nfplt}{}
 
 \begin{minipage}{0.76\textwidth} \index{employment!nonfarm payrolls} \index{payrolls}
 \subsubsection*{Payroll Employment}
 \small The Current Employment Statistics Program \href{https://www.bls.gov/ces/}{surveys} around 130,000 businesses and government agencies each month. Payroll data from this survey provide insight into the overall health of the economy by indicating the pace of job growth. The payroll data also reliably identify changes in employment in individual industries. 
 \end{minipage}
 
-\begin{minipage}{0.28\textwidth}
+\begin{minipage}{0.285\textwidth}
 \small \input{text/nfp_basic_text.txt}
 \end{minipage} \hspace{5mm}
 \begin{minipage}{0.44\textwidth}
@@ -9673,7 +9677,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Bureau of Labor Statistics\input{text/real_ahe_nowsrc.txt}} \hfill \tbllink{ahe.csv}
+\footnotesize Source: Bureau of Labor Statistics \hfill \tbllink{ahe.csv}
 \vspace{2mm}
 
 \small While one-year wage growth rates are relatively less-volatile, the latest month of data only represents one-twelfth of the data that determines the rate. To help identify trends during recent months, the one-month growth rate is presented next. 
@@ -9716,7 +9720,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \end{tikzpicture}
 \vspace{2mm}
 
-\footnotesize{Source: Bureau of Labor Statistics\input{text/real_ahe_nowsrc.txt}} \hfill \tbllink{ahe_monthly.csv} 
+\footnotesize Source: Bureau of Labor Statistics \hfill \tbllink{ahe_monthly.csv} 
 \vspace{2mm}
 
 \small The average wage varies between \textbf{industry groups}. \input{text/ahe_comp.txt} 
@@ -10233,8 +10237,8 @@ In the US, several stock market indices track the share price of a basket of com
   \vspace{-2mm}
   
 \footnotesize{Source: Yahoo! Finance} \hfill \tbllink{sp500_sector_raw.csv}
-\end{minipage} \hspace{6mm}
-\begin{minipage}{0.4\textwidth}
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.41\textwidth}
 \small \input{text/sp500sector_ch.txt}
 
 \input{text/sp500sector_ch2.txt}
@@ -10516,7 +10520,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \vspace{-2.5mm}
 
 \normalsize \textbf{Treasury Yield Curve}\\
-\footnotesize{\textit{constant maturity yield, percent, \textbf{September 20, 2023}}}\\
+\footnotesize{\textit{constant maturity yield, percent, \textbf{\input{text/yc_date.txt}}}}\\
 \hspace*{-2mm} \begin{tikzpicture}[trim axis right]
 	\begin{axis}[height=6.2cm, width=7.9cm, xmajorgrids, ymin=0.7,
 		axis line style={draw=none}, nodes near coords style={style={black!95, fill=white,
