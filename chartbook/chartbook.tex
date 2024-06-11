@@ -180,7 +180,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2024-01-31},
+		xmax={2024-06-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -201,7 +201,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2024-01-31},
+		xmax={2024-06-30},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}},
@@ -213,7 +213,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2024-01-31},
+		xmax={2024-06-30},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -225,7 +225,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2024-01-31},   
+		xmin={2018-01-01}, xmax={2024-06-30}, 
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
 			{2022-01-01}, {2023-01-01}, {2024-01-01}},
 		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
@@ -236,7 +236,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2024-01-31}, max space between ticks=40,	    
+		xmax={2024-06-30}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01},
 		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
 		 {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}},
@@ -246,14 +246,14 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2024-01-31},
+		xmax={2024-06-30},
 		}
 
 	% Date (X) Axis Tick Marks, no tick marks, just formatting
 	\newcommand{\empticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xticklabels=\empty, xtick style={draw=none},
-		xmax={2024-01-31}, enlarge x limits={0.01},
+		xmax={2024-06-30}, enlarge x limits={0.01},
 		}
 		
 	% Settings for y label text in horizontal bar charts
@@ -469,9 +469,6 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 			precision=1, assume math mode}]
 	%\input{text/lprod_rec_bar_node.txt}
 	\ctsbar{cyan!70!white}{date}{LPROD_gr}{\lprodrec}{11pt}
-	\node[align=left] at (rel axis cs:0.95, 1.02) {\color{black!55!white}\footnotesize {\textit{Est.}}};
-	\draw [black!30!white, dashed] (rel axis cs:0.89,0) -- 
-		(rel axis cs:0.89, 0.99);
 	\input{text/lprod_rec_node.txt}
 	\end{axis}
 \end{tikzpicture}
@@ -825,7 +822,7 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 	\stdline{blue!90!white}{date}{Oth_Serv}{data/gdpva_pc.csv}
 	\stdnode{1.62cm}{1.8cm}{\footnotesize \color{red!90!white}FIRE+}
 	\stdline{red!90!white}{date}{FIRE}{data/gdpva_pc.csv}
-	\stdnode{3.0cm}{4.5cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
+	\stdnode{3.0cm}{4.47cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
 	\stdline{purple!70!blue}{date}{GoodsTTU}{data/gdpva_pc.csv}
 	\stdnode{2.1cm}{0.3cm}{\footnotesize See text for category descriptions}
 	\draw [dashed] (axis cs:{2018-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
@@ -968,7 +965,7 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 		xticklabel={`\short{\year}}, height=7.5cm, width=7.0cm, clip=false]
 	\rbars
 	\thinline{violet}{date}{LPROD_BLS_idx}{data/gdpjobslvl.csv}
-	\absnode{{2009-07-01}}{152}{\footnotesize \color{violet}Nonfarm\\ \color{violet}Businesses\\\color{violet}(BLS)}
+	\absnode{{2009-07-01}}{153}{\footnotesize \color{violet}Nonfarm\\ \color{violet}Businesses\\\color{violet}(BLS)}
 	\thickline{cyan!70!white}{date}{LPROD_idx}{data/gdpjobslvl.csv}
 	\absnode{{2010-10-01}}{122}{\footnotesize \color{cyan!70!white}\textbf{Total}\\ \footnotesize \color{cyan!70!white}\textbf{Economy}\\\color{cyan!70!white}\textbf{(Author)}}
 	\input{text/gdpjobs_est_node.txt}
@@ -2030,7 +2027,7 @@ Each of these categories of investment is discussed further in the chartbook sec
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10}, ymin=0.2,
 		xticklabel={`\short{\year}}, clip=false, height=5.7cm, width=6.8cm]
 	\rbars
-	\absnode{{2009-06-01}}{6.8}{\footnotesize \color{purple}Net Fixed\\\footnotesize \color{purple}Investment}
+	\absnode{{2009-06-01}}{6.85}{\footnotesize \color{purple}Net Fixed\\\footnotesize \color{purple}Investment}
 	\stdline{purple}{date}{TOT}{data/z1_nfi.csv}
 	\absnode{{1990-01-01}}{3.6}{\footnotesize \color{blue!80!green!95!white}Consumer\\\footnotesize \color{blue!80!green!95!white}Durables}
 	\stdline{blue!80!green!95!white}{date}{DG}{data/z1_nfi.csv}
@@ -4984,10 +4981,10 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 	\stdline{blue!70!black!60!white}{date}{Noncorporate Debt}{data/bus_bs_sh.csv}
 	\addplot[ultra thick, densely dashed, no markers, color=violet] 
 		table [x=date, y=Noncorporate Liabilities, col sep=comma] {data/bus_bs_sh.csv};
-	\absnode{{1991-09-01}}{103}{\color{red!60!orange} \textbf{Corporate} \\ 
+	\absnode{{1991-06-01}}{103}{\color{red!60!orange} \textbf{Corporate} \\ 
 		\color{red!60!orange} \textbf{Liabilities}}
-	\absnode{{2010-01-01}}{57.5}{\color{red} \textbf{Corporate} \\ \color{red} \textbf{Debt}}
-	\absnode{{1993-03-01}}{35}{\color{violet} \textbf{Noncorp.} \\
+	\absnode{{2010-01-01}}{57.9}{\color{red} \textbf{Corporate} \\ \color{red} \textbf{Debt}}
+	\absnode{{1993-02-01}}{35}{\color{violet} \textbf{Noncorp.} \\
 		 \color{violet} \textbf{Liab.}}
 	\absnode{{2012-08-01}}{25}{\color{blue!70!black!60!white} \textbf{Noncorp.} 
 		\\ \ \ \ \color{blue!70!black!60!white} \textbf{Debt}}
@@ -5646,7 +5643,7 @@ This chartbook section covers government contributions to current economic activ
 	\rebars
 	\absnode{{2002-01-01}}{3.6}{\footnotesize \color{blue!70!white}Federal}
 	\stdline{blue!70!white}{date}{Federal}{data/gdpva_pc.csv}
-	\absnode{{2009-05-01}}{6.4}{\footnotesize \color{red}State \& Local}
+	\absnode{{2009-05-01}}{6.5}{\footnotesize \color{red}State \& Local}
 	\stdline{red}{date}{State and local}{data/gdpva_pc.csv}
 	\draw [dashed] (axis cs:{2018-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
 		(axis cs:{2018-01-01},
@@ -7144,7 +7141,7 @@ People who are neither employed nor unemployed are considered \textit{outside of
 \footnotesize{Source: Author's Calculations from CPS}
 \vspace{4mm}
 
-\small Changes in labor force status can highlight both secular and cyclical trends in the economy. The following table presents the net four-year change in labor force status, in number of people, from \input{text/cps_lfs_date2pr.txt}\unskip.
+\small Changes in labor force status can highlight both secular and cyclical trends in the economy. The following table presents the net five-year change in labor force status, in number of people, from \input{text/cps_lfs_date2pr.txt}\unskip.
 \vspace{1mm}
 
 \normalsize \textbf{Labor Force Changes}\\
@@ -7480,7 +7477,7 @@ Among measures of overall economic activity, gross labor income has the added be
 \small The Current Employment Statistics Program \href{https://www.bls.gov/ces/}{surveys} around 130,000 businesses and government agencies each month. Payroll data from this survey provide insight into the overall health of the economy by indicating the pace of job growth. The payroll data also reliably identify changes in employment in individual industries. 
 \end{minipage}
 
-\begin{minipage}{0.285\textwidth}
+\begin{minipage}{0.295\textwidth}
 \small \input{text/nfp_basic_text.txt}
 \end{minipage} \hspace{5mm}
 \begin{minipage}{0.44\textwidth}
@@ -7512,7 +7509,7 @@ Among measures of overall economic activity, gross labor income has the added be
 \input{text/nfp_wg.txt}
 \vspace{1mm}
 
-\normalsize \textbf{Four-Year Change in Payrolls (\input{text/emp_3_dates.txt}\unskip)}\\
+\normalsize \textbf{Five-Year Change in Payrolls (\input{text/emp_3_dates.txt}\unskip)}\\
 \footnotesize{\textit{not seasonally adjusted, thousands of jobs}}
 \vspace{-1mm}
 
@@ -7901,7 +7898,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 	\stdline{red}{date}{BLS}{data/dis_emp_rate_bls.csv}
 	\stdline{blue}{date}{Age1664}{data/dis_emp_rate_cps.csv}
 	\absnode{{2010-06-01}}{15.8}{\footnotesize \color{red}\textbf{Age 16 and older}}
-	\absnode{{2011-06-01}}{32}{\footnotesize \color{blue}\textbf{Age 16 to 64}}
+	\absnode{{2011-03-01}}{32}{\footnotesize \color{blue}\textbf{Age 16 to 64}}
 	\input{text/dis_emp_node_bls.txt}
 	\input{text/dis_emp_nodes_cps.txt}
 	\end{axis}
@@ -9614,6 +9611,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \small \input{text/gwg.txt}
 \end{minipage}
 \newpage
+\vspace*{-10mm}
 \begin{minipage}{0.76\textwidth} \index{average hourly earnings} \index{wages} \index{wages!average hourly earnings} 
 \subsubsection*{Average Hourly Earnings}
 \small Each month, the Bureau of Labor Statistics \href{https://www.bls.gov/news.release/empsit.nr0.htm}{report} wages of employees on private nonfarm payrolls. The earnings data are also available for industries and for major sectors. Industry- and sector-level earnings are reported for production and non-supervisory workers, who make up about four in every five workers. 
@@ -9646,7 +9644,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \begin{minipage}{0.31\textwidth}
 \small \input{text/real_ahe_summary.txt}
 \end{minipage}
-\vspace{4mm}
+\vspace{2mm}
 
 \begin{minipage}{0.76\textwidth} 
 \normalsize{Growth Rate}
@@ -9683,7 +9681,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \small While one-year wage growth rates are relatively less-volatile, the latest month of data only represents one-twelfth of the data that determines the rate. To help identify trends during recent months, the one-month growth rate is presented next. 
 \end{minipage}
 \newpage
-\vspace*{-10mm} \hypertarget{ahelt}{}
+\vspace*{-12mm} \hypertarget{ahelt}{}
 
 \begin{minipage}{0.76\textwidth}  \index{average hourly earnings} \index{wages} \index{wages!average hourly earnings} 
 \small Turning to \textbf{one-month growth}, \input{text/ahe_monthly_growth.txt}

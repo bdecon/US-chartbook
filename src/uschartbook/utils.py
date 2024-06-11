@@ -24,7 +24,7 @@ def to_date(ym):
 def bea_api_nipa(table_list, bea_key, freq='Q'):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(1988, 2024)))
+    years = ','.join(map(str, range(1988, 2025)))
 
     api_results = []
 
@@ -63,7 +63,7 @@ def bea_api_gdpstate(bea_key):
     name = 'GDP by State'
     
     date = (r.json()['BEAAPI']['Results']['Notes'][0]['NoteText']
-             .split('--')[0].split(': ')[1])
+             .split('-')[0].split(': ')[1])  ## Check for '--' instead of '-'
 
     date = datetime.strptime(date, '%B %d, %Y').strftime('%Y-%m-%d')
 
@@ -1107,6 +1107,8 @@ def gc_desc(lt, mu, sigma, also=False):
         sct = 'co'
     elif (len(ssg) > 0) & (len(csg) == 0):
         sct = 'su'
+    else:
+    	sct = 'su'
 
     # Adjective for top category (conflicting and supporting)
     sha_co = abs(sh.sort_values()).iloc[0]
