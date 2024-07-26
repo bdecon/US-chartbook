@@ -48,7 +48,7 @@ def bea_api_nipa(table_list, bea_key, freq='Q'):
 def bea_api_gdpstate(bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(2008, 2024)))
+    years = ','.join(map(str, range(2008, 2025)))
 
     api_results = []
 
@@ -74,7 +74,7 @@ def bea_api_gdpstate(bea_key):
     
 def bea_api_ita(ind_list, bea_key):
     ''' Return tables in table list for years in range'''
-    years = ','.join(map(str, range(1988, 2024)))
+    years = ','.join(map(str, range(1988, 2025)))
 
     api_results = []
 
@@ -491,6 +491,14 @@ def fred_df(series, start='1989'):
     df = pd.read_csv(url, index_col='DATE', parse_dates=True, na_values=['.'])
 
     return df.loc[start:]    
+    
+    
+def fred_df2(series, start='1989'):
+	url = f'https://fred.stlouisfed.org/data/{series}'
+	df = pd.read_html(url, parse_dates=True)[1].set_index('DATE')['VALUE']
+	df.index = pd.to_datetime(df.index)
+	
+	return df.loc[start:]
     
 
 def c_line(color, see=True, paren=True):
