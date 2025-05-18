@@ -24,7 +24,7 @@ def to_date(ym):
 def bea_api_nipa(table_list, bea_key, freq='Q'):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(1988, 2025)))
+    years = ','.join(map(str, range(1988, 2026)))
 
     api_results = []
 
@@ -48,7 +48,7 @@ def bea_api_nipa(table_list, bea_key, freq='Q'):
 def bea_api_gdpstate(bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(2008, 2025)))
+    years = ','.join(map(str, range(2008, 2026)))
 
     api_results = []
 
@@ -74,7 +74,7 @@ def bea_api_gdpstate(bea_key):
     
 def bea_api_ita(ind_list, bea_key):
     ''' Return tables in table list for years in range'''
-    years = ','.join(map(str, range(1988, 2025)))
+    years = ','.join(map(str, range(1988, 2026)))
 
     api_results = []
 
@@ -423,8 +423,10 @@ def bls_api(series, date_range, bls_key):
         p = requests.post(
             f'{url}{key}',
             headers={'Content-type': 'application/json'},
-            data=data).json()
-
+            data=data)
+        #print(p.status_code)
+        #print(p.text)
+        p = p.json()
         for s in p['Results']['series']:
             col = series[s['seriesID']]
             for r in s['data']:
@@ -449,7 +451,7 @@ def binned_wage(df, wage_var='WKEARN', percentile=0.1, wgt_var='PWORWGT',
     perc = percentile of interest (0.5 is median)
     bins = list of bin start locations
     '''
-    cdf = (df.groupby(pd.cut(df[wage_var], bins))
+    cdf = (df.groupby(pd.cut(df[wage_var], bins), observed=False)
              [wgt_var].sum().cumsum() / df[wgt_var].sum())
     
     return np.interp(percentile, cdf, bins[1:])
@@ -462,7 +464,7 @@ def median_age(df, wgt='PWSSWGT', percentile=0.5):
     Default is median (0.5).
     '''
     bins=np.arange(-1, 86, 1)
-    cdf = (df.groupby(pd.cut(df.AGE, bins))
+    cdf = (df.groupby(pd.cut(df.AGE, bins), observed=False)
              [wgt].sum().cumsum() / df[wgt].sum())
     
     return np.interp(percentile, cdf, bins[1:])
@@ -499,20 +501,26 @@ def fred_df2(series, start='1989'):
 	df.index = pd.to_datetime(df.index)
 	
 	return df.loc[start:]
+	
+	
+def fred_df3(series, start='1989'):
+    url = (f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}')
+    df = pd.read_csv(url, index_col='observation_date', parse_dates=True)[series]
+    return df.loc[start:]
     
 
 def c_line(color, see=True, paren=True):
 	'''Return (see ---) for a given color'''
 	s = 'see ' if see == True else ''
 	p = ['(', ')'] if paren == True else ['', '']
-	cl = f'{p[0]}{s}{{\color{{{color}}}\\textbf{{---}}}}{p[1]}'
+	cl = f'{p[0]}{s}{{\\color{{{color}}}\\textbf{{---}}}}{p[1]}'
 	return cl
 	
 	
 def c_box(color, see=True):
 	'''Return (see []) for a given color'''
-	s = 'see' if see == True else '\hspace{-1mm}'
-	return f'({s}\cbox{{{color}}})'
+	s = 'see' if see == True else '\\hspace{-1mm}'
+	return f'({s}\\cbox{{{color}}})'
     
     
 def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
@@ -539,7 +547,7 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
         
     col = ':' if colon == True else ''
     
-    pct = '' if percent == False else '\%'
+    pct = '' if percent == False else '\\%'
         
     dt = ''    
     if date != None:
@@ -557,19 +565,19 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
         day = series.index[i].strftime('%-d')
         daysh = series.index[i].strftime('%-d')
         if date.lower() in ['month', 'mon', 'm']:
-            dt = f'\scriptsize {mo}\\\\ \scriptsize {yr}{col} \\\\ '
+            dt = f'\\scriptsize {mo}\\\\ \\scriptsize {yr}{col} \\\\ '
         elif date.lower() in ['quarter', 'qtr', 'q']:
-            dt = f'\scriptsize {yr}\\\\ \scriptsize {qtr}{col} \\\\ '
+            dt = f'\\scriptsize {yr}\\\\ \\scriptsize {qtr}{col} \\\\ '
         elif date.lower() in ['qtrshort', 'qshort', 'qs']:
-            dt = f'\scriptsize {yr} \scriptsize {qtr}{col} \\\\ '
+            dt = f'\\scriptsize {yr} \\scriptsize {qtr}{col} \\\\ '
         elif date.lower() in ['year', 'yr', 'y']:
-            dt = f'\scriptsize {yr}{col} \\\\ '
+            dt = f'\\scriptsize {yr}{col} \\\\ '
         elif date.lower() == 'fy':
-            dt = f'\scriptsize FY{yr} \\\\ '.replace('`', '')
+            dt = f'\\scriptsize FY{yr} \\\\ '.replace('`', '')
         elif date.lower() in ['d', 'day']:
-        	dt = f'\scriptsize {mo} {day}\\\\ \scriptsize {yr}{col} \\\\ '
+        	dt = f'\\scriptsize {mo} {day}\\\\ \\scriptsize {yr}{col} \\\\ '
         elif date.lower() in ['ds', 'dayshort', 'short', 's']:  # Day short format
-        	dt = f'\scriptsize {mo} {daysh}{col}\\\\'
+        	dt = f'\\scriptsize {mo} {daysh}{col}\\\\'
         
     lt = series.iloc[i]
     vtxt = f'{lt:.1f}'
@@ -586,9 +594,9 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
     	
     dol = ''
     if dollar == True:
-    	dol = '\$'
+    	dol = '\\$'
     elif dollar == 'thousands':
-    	dol = '\$'
+    	dol = '\\$'
     	vtxt = f'{lt * 1000:,.0f}'
     	
     it = ''
@@ -608,7 +616,7 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
     offx = f'{xoffset}cm'
     datetime = dtxt(series.index[i])['datetime']
     text = (f'\\node[label={{[yshift={offs}, xshift={offx}, {anchor_opt}'+
-            f'align={align}]0:{{{dt}\scriptsize {it}{dol}{vtxt}{pct}}}}}, circle, '+
+            f'align={align}]0:{{{dt}\\scriptsize {it}{dol}{vtxt}{pct}}}}}, circle, '+
             f'{color}, fill, inner sep={size}pt] at '+
             f'(axis cs:{datetime}, {lt}) {{}};')
 
@@ -650,7 +658,7 @@ def node_adj(df):
                 g2 = (((u) - t2[1]) / u) * 0.35
                 d[t2.index[-1]] = (g2)
             if len(t2) == 1:
-                g = ((u - t2[0]) / u) * 0.35
+                g = ((u - t2.iloc[0]) / u) * 0.35
                 if t3.index[0] == t2.index[0]:
                     d[t3.index[0]] = g
                 if t3.index[0] != t2.index[0]:
@@ -661,7 +669,7 @@ def node_adj(df):
     if len(df.columns) >= 2:
         t2 = r.diff()[r.diff() < (u)]
         if len(t2) == 1:
-            g = ((u - t2[0]) / u) * 0.35
+            g = ((u - t2.iloc[0]) / u) * 0.35
             d[t2.index[0]] = (g/2)
             d[r.index[r.index.get_loc(t2.index[0]) - 1]] = - (g/2)
         if len(t2) == 2:
@@ -717,10 +725,8 @@ def cps_12mo(cps_dir, cps_dt, cols):
     if cps_month != 12:
         cps_year1 = cps_year - 1
         cps_year2 = cps_year
-        df = (pd.read_feather(cps_dir / f'cps{cps_year1}.ft', columns=cols)
-              .query('MONTH > @cps_month')
-              .append(pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
-                        .query('MONTH <= @cps_month')))
+        df = pd.concat([pd.read_feather(cps_dir / f'cps{yr}.ft', columns=cols)
+              .query('MONTH > @cps_month') for yr in [cps_year1, cps_year2]])
     else:
         df = pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
         
@@ -743,10 +749,10 @@ def cps_3mo(cps_dir, cps_dt, cols):
     if cps_month < 3:
         cps_year1 = cps_year - 1
         cps_year2 = cps_year
-        df = (pd.read_feather(cps_dir / f'cps{cps_year1}.ft', columns=cols)
-              .query('MONTH >= @cps_month3')
-              .append(pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
-                        .query('MONTH <= @cps_month')))
+        df = (pd.concat([pd.read_feather(cps_dir / f'cps{cps_year1}.ft',
+        	 columns=cols).query('MONTH >= @cps_month3'),
+             pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
+               .query('MONTH <= @cps_month')]))
     else:
         df = (pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
               .query('MONTH >= @cps_month3 and MONTH <= @cps_month'))
@@ -770,10 +776,10 @@ def cps_6mo(cps_dir, cps_dt, cols):
     if cps_month < 6:
         cps_year1 = cps_year - 1
         cps_year2 = cps_year
-        df = (pd.read_feather(cps_dir / f'cps{cps_year1}.ft', columns=cols)
-              .query('MONTH >= @cps_month6')
-              .append(pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
-                        .query('MONTH <= @cps_month')))
+        df = (pd.concat([pd.read_feather(cps_dir / f'cps{cps_year1}.ft',
+        	 columns=cols).query('MONTH >= @cps_month6'),
+        	 pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
+        	 .query('MONTH <= @cps_month')]))
     else:
         df = (pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
               .query('MONTH >= @cps_month6 and MONTH <= @cps_month'))
@@ -849,10 +855,10 @@ def clean_fed_data(url, dtype='main'):
     s = requests.get(url).content
     raw_data = pd.read_csv(io.StringIO(s.decode('utf-8')))
 
-    d = {v: re.sub("\s+[\(\[].*?[\)\]]", "", i.split(';')[0]) 
+    d = {v: re.sub("\\s+[\\(\\[].*?[\\)\\]]", "", i.split(';')[0]) 
          for i, v in raw_data.iloc[4, 1:].items()}
     if dtype == 'full':
-        d = {v: re.sub("\s+[\(\[].*?[\)\]]", "", ''.join(i.split(';')[0:])) 
+        d = {v: re.sub("\\s+[\\(\\[].*?[\\)\\]]", "", ''.join(i.split(';')[0:])) 
              for i, v in raw_data.iloc[4, 1:].items()}
 
     date_column = raw_data.loc[5:, 'Series Description']
@@ -878,7 +884,7 @@ def jolts_codes(d, code_text, ind, value='i'):
 def value_text(value, style='increase', ptype='percent', adj=None, 
                time_str='', digits=1, threshold=0, num_txt=True,
                casual=False, obj='singular', dollar=False, 
-               round_adj=False):
+               round_adj=False, trail_zero=True):
     '''
     RETURN TEXT STRING FOR SPECIFIED FLOAT VALUE
     
@@ -892,10 +898,11 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     casual: replaces certain words: decreased -> fell, for example
     obj: switch to "plural" if the object is plural, e.g. prices
     round_adj: adds "nearly" to values below the rounded value
+    trail_zero: allow trailing zero
     
     '''
     text = 'Error, options not available'
-    dol = '' if dollar == False else '\$'
+    dol = '' if dollar == False else '\\$'
     abv = abs(value)
     val = f'{dol}{abv:,.{digits}f}'
     val2 = f'{dol}{value:,.{digits}f}'
@@ -1071,6 +1078,9 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                     
     if obj == 'plural':
         text = (text.replace('was', 'were'))
+        
+    if trail_zero == False:
+    	text = text.replace('.0 ', ' ')
     
     return(text)
     
@@ -1286,6 +1296,6 @@ def selected_nodes(df, threshold=0.2, node_settings='right, align=left',
                 if (nowrow == True) & (dt == df.index[-1]):
                     tval = f'\\textit{{{tval}}}'
                 node = (f'\\node[{node_settings}] at (axis cs:{{{ndt}}},'+
-                        f'{y_loc:.3f}) {{\scriptsize {tval}}};')
+                        f'{y_loc:.3f}) {{\\scriptsize {tval}}};')
                 nodes.append(node)
     return '\n'.join(nodes)

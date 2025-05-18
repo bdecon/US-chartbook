@@ -8,18 +8,18 @@
 
 Brian Dew, @bd_econ
 
-November 20, 2023
+May 17, 2025
 
 
 ----
 
 ## Notes
 
-The chartbook is a PDF document that I've put together to help analyze the US economy. The goal is to bridge the gap between data resources like FRED and professional analysis such as the Article IV report. The chartbook is more-curated than FRED and has structure, descriptive text, and adds some context and analysis. At the same time, the chartbook intends to be more detailed, stable, and up to date than the Article IV. 
+The US chartbook is a set of notes describing social and economic developments in the US since 1989. The goal is to strike a balance between data resources like FRED and professional analysis such as the IMF Article IV report. The chartbook is more-curated than FRED and has structure, descriptive text, and adds some context and analysis. At the same time, the chartbook intends to be more detailed, stable, and up to date than the US Article IV report. 
 
-Importantly, the chartbook is open source, so people are welcome to use the source code for their own projects or suggest edits. If you find an error, and I'm sure there are many, please let me know. 
+Importantly, the chartbook is open source, so people are welcome to use it for their own projects or suggest edits. If you find an error, and I'm sure there are many, please let me know by e-mail or by creating an issue on GitHub. 
 
-The chartbook is currently in its first official release verson, 0.1. I hope other people find it useful. 
+The chartbook is currently in release verson, 0.1.5. I hope other people find it useful. 
 
 ## To Do
 
@@ -30,11 +30,11 @@ See [list](https://github.com/bdecon/US-chartbook/issues) of open issues.
 - Summary and High-Frequency Indicators
 - Overall Economic Activity
 - Overall Financial Activity
-- Household Sector and Demographics
-- Business Sector
+- Households and Demographics
+- Businesses
 - Government 
 - External Sector
 - Labor Markets 
-- Capital Markets 
+- Financial Markets 
 - Prices
 - Sources / References / Acknowledgments 
