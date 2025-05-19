@@ -863,7 +863,7 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \index{productivity} \index{gross domestic product!household inputs to production} \index{hours worked} \index{aggregate hours worked} \index{employment!employment rate} \index{demographics!population}
 \subsubsection*{Household Inputs to Production}
 \begin{minipage}{0.76\textwidth}
-\small It's useful to consider household inputs when analyzing economic output. For example, is the population growing? Are more people working? Are people working more hours? Is the economy more productive in its use of labor? These household inputs are summarized below and covered in more depth in subsequent chartbook sections.
+\small It is useful to consider household inputs when analyzing economic output. For example, is the population growing? Are more people working? Are people working more hours? Is the economy more productive in its use of labor? These household inputs are summarized below and covered in more depth in subsequent chartbook sections.
 
 \input{text/gdpjobspop.txt}To maintain a constant standard of living, real GDP would need to increase by the same amount. 
 
@@ -973,7 +973,7 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 		xticklabel={`\short{\year}}, height=7.5cm, width=7.0cm, clip=false]
 	\rbars
 	\thinline{violet}{date}{LPROD_BLS_idx}{data/gdpjobslvl.csv}
-	\absnode{{2009-07-01}}{153}{\footnotesize \color{violet}Nonfarm\\ \color{violet}Businesses\\\color{violet}(BLS)}
+	\absnode{{2009-07-01}}{155}{\footnotesize \color{violet}Nonfarm\\ \color{violet}Businesses\\\color{violet}(BLS)}
 	\thickline{cyan!70!white}{date}{LPROD_idx}{data/gdpjobslvl.csv}
 	\absnode{{2010-10-01}}{122}{\footnotesize \color{cyan!70!white}\textbf{Total}\\ \footnotesize \color{cyan!70!white}\textbf{Economy}\\\color{cyan!70!white}\textbf{(Author)}}
 	\input{text/gdpjobs_est_node.txt}
@@ -3004,9 +3004,9 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 		yticklabel style={text width=1.0em}, enlarge y limits={value=0.12, upper}, ymin=0,
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.2cm]
 	\rbars
-	\absnode{2005-07-01}{9.1}{\footnotesize \color{green!60!blue}Housing and Utilities}
+	\absnode{2005-07-01}{9.4}{\footnotesize \color{green!60!blue}Housing and Utilities}
 	\stdline{green!60!blue}{date}{Housing}{data/pce_levels.csv}
-	\absnode{2009-10-01}{5.8}{\footnotesize \color{blue!80!black}Residential \\ \footnotesize \color{blue!80!black} Investment}
+	\absnode{2009-10-01}{6.0}{\footnotesize \color{blue!80!black}Residential \\ \footnotesize \color{blue!80!black} Investment}
 	\stdline{blue!80!black}{date}{ResInv}{data/pce_levels.csv}
 	\end{axis}
 \end{tikzpicture}
@@ -3035,11 +3035,11 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 		yticklabel style={text width=1.0em}, max space between ticks=20,
 		xticklabel={`\short{\year}}, clip=false, height=6.5cm, width=7.2cm]
 	\rbars
-	\absnode{{2013-10-01}}{18.0}{\footnotesize \color{red}Goods}
+	\absnode{{2013-09-01}}{18.2}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
-	\absnode{{1996-06-01}}{26.5}{\footnotesize \color{blue!75!white}Services Excl. Shelter}
+	\absnode{{1996-05-01}}{26.8}{\footnotesize \color{blue!75!white}Services Excl. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
-	\absnode{{1992-09-01}}{15.4}{\footnotesize \color{green!85!blue}Shelter*}
+	\absnode{{1992-06-01}}{15.4}{\footnotesize \color{green!85!blue}Shelter*}
 	\stdline{green!85!blue}{date}{SHELTER}{data/pce_levels.csv}
 	\node[text width=6.4cm, anchor=west] at 
 		({1989-01-01}, 2){*includes residential fixed investment};
@@ -3518,7 +3518,7 @@ According to the US financial accounts, the combined household and nonprofit sec
 	\input{text/cc_nodes.txt}
 	\absnode{{2015-12-01}}{8.1}{\footnotesize \color{blue!60!cyan}{Auto} \\ \footnotesize \color{blue!60!cyan}{Loans}}
 	\absnode{{2001-10-01}}{2.8}{\footnotesize \color{green!80!blue!90!black}{Student} \\ \footnotesize \color{green!80!blue!90!black}{Loans}}
-	\absnode{{2011-10-01}}{5.1}{\footnotesize \color{red}{Credit Cards}}
+	\absnode{{2011-05-01}}{5.1}{\footnotesize \color{red}{Credit Cards}}
 	\node[below, align=left, shift=({rel axis cs:0.26,1.16}), 
 	draw=black!30!white, fill=white, inner sep=3.6]
 		{\small \color{black!80!white}\textbf{Consumer Debt Trends}};
@@ -3840,7 +3840,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 	\stdline{violet}{date}{Less than 25}{data/scfwealthmedian.csv}
 	\input{text/scfwealthmedian_nodes.txt}
 	\stdnode{1.6cm}{4.15cm}{\footnotesize \color{blue!80!cyan!80!black}Top 10 percent}
-	\stdnode{3.9cm}{2.6cm}{\footnotesize \color{red!80!black}Percentiles \\ 
+	\stdnode{3.8cm}{2.6cm}{\footnotesize \color{red!80!black}Percentiles \\ 
 	\footnotesize \color{red!80!black}75--89.9}
 	\stdnode{4.2cm}{1.7cm}{\footnotesize \color{green!80!blue!85!black}50--74.9}
 	\stdnode{1.1cm}{0.8cm}{\footnotesize \color{red!20!orange!95!black}25--49.9}
@@ -5006,9 +5006,9 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 	\stdline{blue!70!black!60!white}{date}{Noncorporate Debt}{data/bus_bs_sh.csv}
 	\addplot[ultra thick, densely dashed, no markers, color=violet] 
 		table [x=date, y=Noncorporate Liabilities, col sep=comma] {data/bus_bs_sh.csv};
-	\absnode{{1991-06-01}}{103}{\color{red!60!orange} \textbf{Corporate} \\ 
+	\absnode{{1991-04-01}}{104}{\color{red!60!orange} \textbf{Corporate} \\ 
 		\color{red!60!orange} \textbf{Liabilities}}
-	\absnode{{2010-01-01}}{57.9}{\color{red} \textbf{Corporate} \\ \color{red} \textbf{Debt}}
+	\absnode{{2009-10-01}}{59}{\color{red} \textbf{Corporate} \\ \color{red} \textbf{Debt}}
 	\absnode{{1993-02-01}}{35}{\color{violet} \textbf{Noncorp.} \\
 		 \color{violet} \textbf{Liab.}}
 	\absnode{{2012-08-01}}{25}{\color{blue!70!black!60!white} \textbf{Noncorp.} 
@@ -5063,7 +5063,7 @@ The following table provides more details on the size of nonfinancial business l
 	\sbar{magenta!70!purple}{date}{Debt Securities}{data/busdebtgdp2.csv}
 	\absnode{{1992-07-01}}{43}{\color{white} \textbf{Corporate Debt Securities}}
 	\sbar{blue}{date}{Nonbank Loans}{data/busdebtgdp2.csv}	
-	\absnode{{1992-01-01}}{68}{\color{blue} \textbf{Nonbank Loans}}
+	\absnode{{1991-10-01}}{68}{\color{blue} \textbf{Nonbank Loans}}
 	\input{text/bus_liab_nodes.txt}
 	\end{axis}
 \end{tikzpicture}
@@ -6246,7 +6246,7 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 	\stdline{red!65!magenta}{date}{SS}{data/prog_exp.csv}
 	\node[align=left] at (rel axis cs:0.2, 0.79) {\color{red!65!magenta}\footnotesize {Social Security}};
 	\stdline{blue!85!cyan}{date}{Medicare}{data/prog_exp.csv}
-	\node[align=left] at (rel axis cs:0.74, 0.65) {\color{blue!85!cyan}\footnotesize {Medicare}};
+	\node[align=left] at (rel axis cs:0.73, 0.65) {\color{blue!85!cyan}\footnotesize {Medicare}};
 	\stdline{violet}{date}{Medicaid}{data/prog_exp.csv}
 	\node[align=left] at (rel axis cs:0.23, 0.26) {\color{violet}\footnotesize {Medicaid}};
 	\end{axis}
@@ -10277,7 +10277,7 @@ In the US, several stock market indices track the share price of a basket of com
 	\draw [black!28!white, dashed] (f1) -- (equities c2r4.south west);
 	\draw [black!28!white, dashed] (f2) -- (equities c2r4.north west);
 \end{tikzpicture}\\
-\footnotesize{Source: STOOQ} \hfill \tbllink{equity_indices.csv} 
+\footnotesize{Source: STOOQ; Latest: \input{text/equities_latest_date.txt}} \hfill \tbllink{equity_indices.csv} 
 \end{minipage}
 \newpage \index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq} \index{S\&P 500!sector performance}
 \vspace*{-11mm} \markright{\footnotesize \color{orange!80!yellow}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Financial Markets}
@@ -10733,7 +10733,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \vspace{7mm}
 
 \footnotesize{Latest data from model as of: {\input{text/frbcle_ry_date.txt}}}\\
-\footnotesize{Source: Federal Reserve, Federal Reserve of Bank of Cleveland} \hfill \tbllink{inf_exp_ch.csv}
+\footnotesize{Source: Federal Reserve, Federal Reserve Bank of Cleveland} \hfill \tbllink{inf_exp_ch.csv}
 \end{minipage}
 \newpage
 \vspace*{-10mm}
