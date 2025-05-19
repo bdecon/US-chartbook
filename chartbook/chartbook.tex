@@ -7777,7 +7777,7 @@ The \textbf{age 25 to 54 employment rate} is an important measure of labor marke
 \vspace*{-10mm}
 
 \begin{minipage}{0.76\textwidth} \index{employment!employment rate}
-\small Next we examine how employment rates vary across states. \input{text/state_emp.txt}
+\small Next, we examine how employment rates vary across states. \input{text/state_emp.txt}
 \end{minipage}
 \vspace{2mm}
 
@@ -10195,7 +10195,7 @@ One theory of what drives long-term trends, sometimes called the \textit{Kaldor-
 \small The US financial markets provide funding for borrowers' activities and offer potential income to lenders. The US equity and bond markets are the largest in the world, with daily trading volumes of several hundred billion dollars. This section discusses equity markets, interest rates and bond markets, and money and monetary policy. 
 \hypertarget{capeq}{\label{capeq}}
 \subsection*{Equity Markets}
-\index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq} \index{Russell 3000}
+\index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq}
 \small Equity markets, or \textbf{stock markets}, provide a method for businesses to raise capital by selling shares, which represent ownership claims on the business. Equity markets also provide a place for people to buy and sell existing shares. Investors purchase shares in hopes that the price will go up, allowing them to sell the shares at a higher price and receive capital gains, or to gain access to a stream of dividends, which are payments from businesses to shareholders. 
 
 In the US, several stock market indices track the share price of a basket of companies. These measures are weighted by the market capitalization of the companies in the basket, which is the share price multiplied by the number of shares. Market capitalization is the market value of a company. The following charts and tables capture the \textit{adjusted} close price, which is adjusted to include splits, dividends, and capital gains distributions.
@@ -10209,19 +10209,19 @@ In the US, several stock market indices track the share price of a basket of com
     	height=4.3cm, clip=false, xticklabels=\empty, xtick style={draw=none},
     	date coordinates in=x, axis line style={draw=none},
     	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
-	\nextgroupplot[\bbar{y}{0}, \empticks ytick={0, 1, 2, 3, 4, 5}, 
+	\nextgroupplot[\bbar{y}{0}, \empticks ytick={0, 2, 4, 6}, 
 		enlarge y limits={value=0.16,upper}, ymin=0, yticklabel style={text width=1.2em}, 
 		width=8.2cm, xmin={1989-01-01}]
 	\rbars
 	\coordinate (c1) at ({2017-12-31},2);
   	\coordinate (c2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (c1) rectangle (c2);
-	\thickline{green!80!blue!90!black}{date}{GSPC}{data/equity_indices.csv}
-	\input{text/GSPC_ch_node.txt}
-	\nextgroupplot[\empticks ytick={2, 3, 4, 5}, enlarge y limits={0.18}, width=5.8cm]
+	\thickline{green!80!blue!90!black}{date}{spx}{data/equity_indices.csv}
+	\input{text/spx_ch_node.txt}
+	\nextgroupplot[\empticks ytick={2, 3, 4, 5, 6}, enlarge y limits={0.18}, width=5.8cm]
 	\rbar
-	\thickline{black!30}{date}{GSPC_MA}{data/equity_indices_lt.csv}
-	\thinline{green!80!blue!90!black}{date}{GSPC_close}{data/equity_indices_lt.csv}
+	\thickline{black!30}{date}{spx_MA}{data/equity_indices_lt.csv}
+	\thinline{green!80!blue!90!black}{date}{spx}{data/equity_indices_lt.csv}
 	\absnodeml{{2021-01-01}}{3.35}{\scriptsize 
 		\color{black!60}One-year moving average}{1.3}
 	\nextgroupplot[\bbar{y}{0}, \empticks enlarge y limits={value=0.16,upper}, ymin=0, 
@@ -10230,13 +10230,13 @@ In the US, several stock market indices track the share price of a basket of com
 	\coordinate (d1) at ({2017-12-31},6);
   	\coordinate (d2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (d1) rectangle (d2);
-	\thickline{blue}{date}{IXIC}{data/equity_indices.csv}
-	\input{text/IXIC_ch_node.txt}
+	\thickline{blue}{date}{ndq}{data/equity_indices.csv}
+	\input{text/ndq_ch_node.txt}
 	\nextgroupplot[\empticks enlarge y limits={0.18}, yticklabel style={text width=1.0em},
 		 width=5.8cm]
 	\rbar
-	\thickline{black!30}{date}{IXIC_MA}{data/equity_indices_lt.csv}
-	\thinline{blue}{date}{IXIC_close}{data/equity_indices_lt.csv}
+	\thickline{black!30}{date}{ndq_MA}{data/equity_indices_lt.csv}
+	\thinline{blue}{date}{ndq}{data/equity_indices_lt.csv}
 	\nextgroupplot[\bbar{y}{0}, \empticks 
 		enlarge y limits={value=0.16,upper}, ymin=0, 
 		yticklabel style={text width=1.0em}, xmin={1989-01-01}, width=8.2cm]
@@ -10244,13 +10244,13 @@ In the US, several stock market indices track the share price of a basket of com
 	\coordinate (e1) at ({2017-12-31},18);
   	\coordinate (e2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (e1) rectangle (e2);
-	\thickline{red}{date}{DJI}{data/equity_indices.csv}
-	\input{text/DJI_ch_node.txt}
+	\thickline{red}{date}{dji}{data/equity_indices.csv}
+	\input{text/dji_ch_node.txt}
 	\nextgroupplot[\empticks enlarge y limits={0.18}, yticklabel style={text width=1.0em},
 		 width=5.8cm]
 	\rbar
-	\thickline{black!30}{date}{DJI_MA}{data/equity_indices_lt.csv}
-	\thinline{red}{date}{DJI_close}{data/equity_indices_lt.csv}
+	\thickline{black!30}{date}{dji_MA}{data/equity_indices_lt.csv}
+	\thinline{red}{date}{dji}{data/equity_indices_lt.csv}
 	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks xtick style={draw=black!20},
 		enlarge y limits={value=0.16,upper}, ymin=0, xmin={1989-01-01},
 		xticklabel style={yshift=2pt}, 
@@ -10259,14 +10259,14 @@ In the US, several stock market indices track the share price of a basket of com
 	\coordinate (f1) at ({2017-12-31},1);
   	\coordinate (f2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (f1) rectangle (f2);
-	\thickline{violet}{date}{RUT}{data/equity_indices.csv}
-	\input{text/RUT_ch_node.txt}
+	\thickline{violet}{date}{ndx}{data/equity_indices.csv}
+	\input{text/ndx_ch_node.txt}
 	\nextgroupplot[\ltdateaxisticks enlarge y limits={0.18}, xtick style={draw=black!20},
 		xticklabel style={yshift=2pt}, 
 		yticklabel style={text width=1.2em}, xticklabel={`\short{\year}}, width=5.8cm]
 	\rbar
-	\thickline{black!30}{date}{RUT_MA}{data/equity_indices_lt.csv}
-	\thinline{violet}{date}{RUT_close}{data/equity_indices_lt.csv}
+	\thickline{black!30}{date}{ndx_MA}{data/equity_indices_lt.csv}
+	\thinline{violet}{date}{ndx}{data/equity_indices_lt.csv}
 	\end{groupplot}
 	\draw [black!28!white, dashed] (c1) -- (equities c2r1.south west);
 	\draw [black!28!white, dashed] (c2) -- (equities c2r1.north west);
@@ -10277,9 +10277,9 @@ In the US, several stock market indices track the share price of a basket of com
 	\draw [black!28!white, dashed] (f1) -- (equities c2r4.south west);
 	\draw [black!28!white, dashed] (f2) -- (equities c2r4.north west);
 \end{tikzpicture}\\
-\footnotesize{Source: Yahoo! Finance} \hfill \tbllink{equity_indices.csv} 
+\footnotesize{Source: STOOQ} \hfill \tbllink{equity_indices.csv} 
 \end{minipage}
-\newpage \index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq} \index{Russell 3000} \index{S\&P 500!sector performance}
+\newpage \index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq} \index{S\&P 500!sector performance}
 \vspace*{-11mm} \markright{\footnotesize \color{orange!80!yellow}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Financial Markets}
 
 \begin{minipage}{0.76\textwidth}
@@ -10298,7 +10298,7 @@ In the US, several stock market indices track the share price of a basket of com
 }}
 		
 \vspace{-2mm}
-\footnotesize{Source: Yahoo! Finance}
+\footnotesize{Source: STOOQ}
 \vspace{-1mm}
 
 \subsubsection*{Sector Returns}
@@ -10321,7 +10321,7 @@ In the US, several stock market indices track the share price of a basket of com
   \end{tikzpicture}
   \vspace{-2mm}
   
-\footnotesize{Source: Yahoo! Finance} \hfill \tbllink{sp500_sector_raw.csv}
+\footnotesize{Source: STOOQ} \hfill \tbllink{sp500sectors_raw.csv}
 \end{minipage} \hspace{5mm}
 \begin{minipage}{0.41\textwidth}
 \small \input{text/sp500sector_ch.txt}
