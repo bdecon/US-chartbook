@@ -180,20 +180,20 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-05-31},
+		xmax={2025-07-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
 			{2002-01-01}, {2004-01-01}, {2006-01-01},
 			{2008-01-01}, {2010-01-01}, {2012-01-01}, {2014-01-01},
 		    {2016-01-01}, {2018-01-01}, {2020-01-01}, {2022-01-01}, 
-		    {2024-01-01}, {2026-01-01}},
+		    {2024-01-01}, {2026-01-01}, {2028-01-01}, {2030-01-01}},
 		minor xtick={{1989-01-01}, {1991-01-01}, {1993-01-01},
 			{1995-01-01}, {1997-01-01}, {1999-01-01}, 
 			{2001-01-01}, {2003-01-01}, {2005-01-01}, {2007-01-01},
 		    {2009-01-01}, {2011-01-01}, {2013-01-01}, {2015-01-01},
 		    {2017-01-01}, {2019-01-01}, {2021-01-01}, {2023-01-01}, 
-		    {2025-01-01}, {2027-01-01}},
+		    {2025-01-01}, {2027-01-01}, {2029-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		}
@@ -201,7 +201,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-05-31},
+		xmax={2025-07-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}, 
@@ -214,7 +214,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-05-31},
+		xmax={2025-07-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -227,7 +227,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2025-05-31}, 
+		xmin={2018-01-01}, xmax={2025-07-31}, 
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
 			{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
 		    {2026-01-01}},
@@ -239,7 +239,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-05-31}, max space between ticks=40,	    
+		xmax={2025-07-31}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01}, {2014-01-01}, {2015-01-01},
 		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
 		 {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
@@ -250,14 +250,14 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-05-31},
+		xmax={2025-07-31},
 		}
 
 	% Date (X) Axis Tick Marks, no tick marks, just formatting
 	\newcommand{\empticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xticklabels=\empty, xtick style={draw=none},
-		xmax={2025-05-31}, enlarge x limits={0.01},
+		xmax={2025-07-31}, enlarge x limits={0.01},
 		}
 		
 	% Settings for y label text in horizontal bar charts
@@ -1802,9 +1802,9 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}}
 \vspace{3.8cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-30, -20, -10, 0, 10, 20},
-		height=5.8cm, ymax=17.4, clip=false,
+		height=5.8cm, ymax=17.4, clip=false, width=13.0cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em}, 
 		legend cell align={left}, reverse legend,
 		legend style={legend columns=1, at={(0.36, 0.99)}}]
@@ -1832,9 +1832,9 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \footnotesize{\textit{net lending (+) or borrowing (-), NIPA basis, by sector, share of GDP, percent}}
 \vspace{2.6cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-5, 0, 5, 10, 15, 20},
-		height=4.6cm, ymax=18.6, clip=false, 
+		height=4.6cm, ymax=18.6, clip=false, width=13.0cm, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em}, 
 		legend cell align={left}, 
 		legend style={legend columns=1, at={(0.35, 0.99)}}]
@@ -1989,8 +1989,8 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
 		yticklabel style={text width=1.4em}, height=6.0cm, max space between ticks=20,
-		legend cell align=left, enlarge y limits=0.11,
-		xticklabel={`\short{\year}}, clip=false, 
+		legend cell align=left, enlarge y limits=0.11, 
+		xticklabel={`\short{\year}}, clip=false, width=13.0cm, 
 		legend style={at={(0.47, 0.89)}, legend columns=-1}]
 	\rbars
 	\sbar{yellow!70!orange!90!white}{date}{A008RY}{data/inv.csv}
@@ -2006,7 +2006,8 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
-		yticklabel style={text width=1.4em}, height=4.9cm, max space between ticks=20,
+		yticklabel style={text width=1.4em}, height=4.9cm, width=13.0cm, 
+		max space between ticks=20,
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
 	\sbar{red}{date}{A014RY}{data/inv.csv}
@@ -2059,10 +2060,10 @@ Each of these categories of investment is discussed further in the chartbook sec
 \footnotesize{\textit{share GDP, percent}}
 \vspace{2.2cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 2, 4, 6, 8, 10, 12}, 
 		reverse legend, ymin=0.2, ymax=9.8,
-		height=4.3cm, width=12.9cm, yticklabel style={text width=1.0em},
+		height=4.3cm, width=13.0cm, yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, legend cell align={left}, 
 		legend style={legend columns=1, at={(0.85, 1.21)}}]
 	\rbars
@@ -2108,22 +2109,22 @@ Each of these categories of investment is discussed further in the chartbook sec
 \normalsize \textbf{Population Estimates and Projections}\\
 \footnotesize{\textit{resident population, in millions of people}}\\
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks xmin=1990-01-01, xmax=2027-07-01,
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks xmin=1990-01-01, xmax=2030-07-01,
 		xticklabel={`\short{\year}}, clip=false, clip mode=individual,
 		height=6.1cm, width=12.8cm, yticklabel style={text width=1.6em}]
 	\rbars
 	\input{text/pop_est_projbar.txt}
 	\addplot[thick, mark=*, color=magenta!80!white] 
-		table [x=date, y=PROJ_POP, col sep=comma] {data/pop_est_proj.csv};	
+		table [x=date, y=PROJ_POP, col sep=comma] {data/pop_est_proj23.csv};	
 	\addplot[thick, mark=triangle, color=cyan!80!white] 
-		table [x=date, y=PROJ_POP, col sep=comma] {data/pop_u65_proj.csv};	
+		table [x=date, y=PROJ_POP, col sep=comma] {data/pop_u65_proj23.csv};	
 	\thickline{green!70!blue}{date}{TOT_POP}{data/pop_u65.csv}
 	\thickline{violet}{date}{TOT_POP}{data/pop_est.csv}
 	\absnode{{2010-01-01}}{266}{\small \color{green!70!blue}\textbf{Under Age 65}}
 	\absnode{{1993-01-01}}{282}{\small \color{violet}\textbf{Total}}
-	\absnode{{2024-12-01}}{{340}}{\footnotesize \color{magenta!80!white}\textbf{2017}\\ 
+	\absnode{{2026-12-01}}{{340}}{\footnotesize \color{magenta!80!white}\textbf{2023}\\ 
 		\small \color{magenta!80!white}\textbf{Proj.}}
-	\absnode{{2022-10-01}}{{275}}{\footnotesize \color{cyan!80!white}\textbf{2017}\\ 
+	\absnode{{2026-10-01}}{{290}}{\footnotesize \color{cyan!80!white}\textbf{2023}\\ 
 		\small \color{cyan!80!white}\textbf{Proj.}}
 	\end{axis}
 \end{tikzpicture}\\
@@ -2450,7 +2451,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \begin{minipage}{0.76\textwidth}
 \small \input{text/cps_educ2.txt}
 
-Increased household spending on education may be a response to a weak labor market and lack of worker bargaining power. Behind the increase in education is a large increase in student debt. The burden of this debt is severe for many, as the more-educated workforce is not necessarily receiving the historical wage premium from education. 
+Increased education may be connected to a changing labor market and lack of worker bargaining power. Behind the increase in education is a large increase in student debt. The burden of this debt is severe for many, as the more-educated workforce is not necessarily receiving the historical wage premium from education. 
 \vspace{2mm}
 
 \normalsize \textbf{Education Distribution}\\
@@ -2570,7 +2571,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \footnotesize{Source: Bureau of Economic Analysis}
 \end{minipage}
 \newpage
-\vspace*{-11mm}
+\vspace*{-12mm}
 
 \subsubsection*{Distribution by Income} 
 \begin{minipage}{0.76\textwidth} \index{income!household} \index{households!income}
@@ -2634,7 +2635,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
     	width=11.8cm, bar width=16pt, height=4.8cm, ymin=4.5, ymax=106,
     	enlarge x limits={abs=0.8cm}, enlarge y limits=0.02, 
     	symbolic x coords={Under 25, 25--34, 35--44, 45--54, 55--64, 65--74, 75+},
-      	tick label style={inner sep=0pt},
+      	tick label style={inner sep=0pt}, %xlabel={Age of Household Reference Person},
     	xtick=data, yticklabel style={text width=1.5em}, 
 		xticklabels from table={\ceage}{name}, 
 		xticklabel style={black!70, font=\small, 
@@ -2780,8 +2781,8 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \footnotesize{\textit{by percentile of income, thousands of US dollars}}\\
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[ymin=0, ymax=150, enlarge x limits={0.02},
-		width=12.4cm, height=5.8cm, ytick={0, 13.6, 50, 100, 150},
-		reverse legend, 
+		width=12.4cm, height=5.9cm, ytick={0, 13.6, 50, 100, 150},
+		reverse legend, xlabel={Percentile},
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		legend cell align={left}, yticklabel style={text width=1.7em}, 
 		legend style={legend columns=1, at={(0.25, 0.98)}}]
@@ -2820,7 +2821,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \begin{minipage}{0.76\textwidth} \index{income!personal}
 \vspace*{-0.5mm}
 
-\small Annual data on personal income \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-08.html}{describe} the number of people receiving various categories of income, and the average payment. As a result, it is possible to match changes in aggregate personal income from changes in payment amounts (see\cbox{blue!60!cyan}) and changes in how many people are receiving payments (see\cbox{green!90!blue}). 
+\small Annual data on personal income \href{https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-pinc/pinc-08.html}{describe} the number of people receiving various categories of income, and the average payment. As a result, it is possible to match changes in aggregate personal income with changes in payment amounts (see\cbox{blue!60!cyan}) and changes in how many people are receiving payments (see\cbox{green!90!blue}). 
 
 \input{text/pi_ch_ann.txt}
 \vspace{0.5mm}
@@ -3252,7 +3253,7 @@ To see this pattern, the following charts show the contribution to changes in re
 	\sbar{blue!92!violet}{date}{OTHER}{data/pcedecomp.csv}
 	\stdline{black}{date}{SPENDING}{data/pcedecomp.csv}
 	\legend{Income, Saving (-)*, Other Outlays (-)*, Spending};
-	\node[text width=9.4cm, anchor=west, fill=white] at 
+	\node[text width=9.0cm, anchor=west, fill=white] at 
 		({1989-01-01}, -16){*Saving and other outlays are negations, i.e. increased saving is a negative contribution to spending.};
 	\end{axis}
 \end{tikzpicture}
@@ -5992,14 +5993,14 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 
 \footnotesize{Source: Bureau of Economic Analysis} 
 \end{minipage} \hspace{5mm} \begin{minipage}{0.36\textwidth}
-\vspace{2.2cm}
+\vspace{2.4cm}
 
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=30, 
 		ymin=0.02, ymax=3.5,
 		clip=false, enlarge y limits={0.02}, 
 		xticklabel style={white, align=center}, 
-		height=3.6cm, width=6.6cm, xticklabel={`\short{\year}}]
+		height=3.8cm, width=6.6cm, xticklabel={`\short{\year}}]
 	\rbars
 	\stdline{blue!90!black}{date}{B245RC}{data/slg_gov_rec_type.csv}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.02}), 
@@ -6008,13 +6009,13 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 	\input{text/slg_B245RC_node.txt}
 	\end{axis}
 \end{tikzpicture}
-\vspace{2.0cm}
+\vspace{2.3cm}
 
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=30, 
 		ymin=0.02, ymax=3.5, clip=false, enlarge y limits={0.02}, 
 		xticklabel style={white, align=center}, 
-		height=3.6cm, width=6.6cm, xticklabel={`\short{\year}}]
+		height=3.9cm, width=6.6cm, xticklabel={`\short{\year}}]
 	\rbars
 	\stdline{blue!70!cyan}{date}{B248RC}{data/slg_gov_rec_type.csv}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.02}), 
@@ -6023,13 +6024,13 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 	\input{text/slg_B248RC_node.txt}
 	\end{axis}
 \end{tikzpicture}
-\vspace{2.2cm}
+\vspace{2.4cm}
 
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=30, 
 		ymin=0.02, ymax=3.5,
 		clip=false, enlarge y limits={0.02}, 
-		height=3.6cm, width=6.6cm, xticklabel={`\short{\year}}]
+		height=3.8cm, width=6.6cm, xticklabel={`\short{\year}}]
 	\rbars
 	\stdline{cyan!80!white}{date}{LA000355}{data/slg_gov_rec_type.csv}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.12}), 
@@ -8494,7 +8495,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \vspace{1mm}
 
 \normalsize \textbf{Unemployment by Reason}\\
-\footnotesize{\textit{share of labor force, percent, annual average \hspace{36mm} recent data}}
+\footnotesize{\textit{percent of labor force, annual average \hspace{45mm} recent data}}
 \vspace{3.6cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay] 
@@ -8504,7 +8505,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 		width=9.2cm, height=5.6cm, enlarge x limits=0.01, 
 		ymin=0.3, ymax=9.6, legend cell align={left}, xmin={1989-01-01}, xmax={2025-01-01},
 		xticklabel={\short{\year}}, clip=false, yticklabel style={text width=1.2em}, 
-		legend style={fill=white, legend columns=2, at={(0.56, 1.01)}}]
+		legend style={fill=none, legend columns=2, at={(1.13, 1.22)}}]
 	\rbars
 	\input{text/unemp_rsn_ltbar.txt}
 	\ctsbar{red!75!orange!70!white}{date}{Job Loser}{data/unemp_reason.csv}{5.2pt}
@@ -8559,7 +8560,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \newpage
 \subsubsection*{Duration of Unemployment}
 \begin{minipage}{0.76\textwidth} \index{unemployment!duration}
-\small US unemployment benefits are available for a relatively short duration, compared with other advanced countries. Therefore, the long-term unemployed risk running out of unemployment benefits, causing a sharp reduction in income. Additionally, long periods of unemployment can make re-entering the labor market more challenging. 
+\small US unemployment benefits are available for a relatively short duration, compared with other advanced countries. Therefore, the long-term unemployed risk running out of unemployment benefits, causing a sharp reduction in income. Additionally, long periods of unemployment can make re-entering the workforce more challenging. 
 
 \input{text/ltu.txt}
 \vspace{1mm}
@@ -8600,12 +8601,12 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 
 \normalsize \textbf{Duration of Unemployment}\\
 \footnotesize{\textit{in weeks}}
-\vspace{3.9cm}
+\vspace{3.5cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
-		enlarge y limits={0.1}, ymin=3.5, yticklabel style={text width=1.2em},
-		xticklabel={`\short{\year}}, height=6.0cm, width=12.4cm, clip=false]
+		enlarge y limits={0.06}, ymin=2.0, yticklabel style={text width=1.2em},
+		xticklabel={`\short{\year}}, height=5.6cm, width=12.4cm, clip=false]
 	\rbars
 	\stdline{blue!60!cyan}{date}{Mean}{data/unempdur.csv}
 	\stdline{green!75!blue}{date}{Median}{data/unempdur.csv}
@@ -9421,7 +9422,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
  \hypertarget{labw}{\label{labw}}
 \small Economists consider wages to be an important economic indicator. Wages are the majority of personal income and the main expense of businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
 
-The US measures wages in several ways. As two examples, average hourly earnings comes from the monthly establishment, and usual weekly earnings are derived from three combined months of household surveys. This subsection first provides an overview of wage measures and recent results, and then discusses individual measures. 
+The US measures wages in several ways. As two examples, average hourly earnings comes from the monthly establishment survey, and usual weekly earnings are derived from three combined months of household surveys. This subsection first provides an overview of wage measures and recent results, and then discusses individual measures. 
 \vspace{-2mm}
 
 \subsubsection*{Overview}
@@ -9718,7 +9719,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 	\rbars
 	\thickline{cyan!80!green!92!blue}{date}{Goods}{data/real_ahe.csv}
 	\stdline{blue!70!violet}{date}{Serv}{data/real_ahe.csv}
-	\absnode{{1992-06-01}}{30.3}{\color{cyan!80!green!92!blue} \textbf{Goods-}
+	\absnode{{1992-01-01}}{30.4}{\color{cyan!80!green!92!blue} \textbf{Goods-}
 		\\ \color{cyan!80!green!92!blue} \textbf{Producing}}
 	\absnode{{2010-01-01}}{27}{\color{blue!70!violet} Service- 
 		\\ \color{blue!70!violet} Providing}
@@ -10606,14 +10607,14 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \normalsize \textbf{Treasury Yield Curve}\\
 \footnotesize{\textit{constant maturity yield, percent, \textbf{\input{text/yc_date.txt}}}}\\
 \hspace*{-2mm} \begin{tikzpicture}[trim axis right]
-	\begin{axis}[height=6.2cm, width=7.9cm, xmajorgrids, ymin=0.7,
+	\begin{axis}[height=6.1cm, width=7.9cm, xmajorgrids, ymin=0.7,
 		axis line style={draw=none}, nodes near coords style={style={black!95, fill=white,
 		yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill, 
 		precision=2, assume math mode}, 
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		legend style={at={(0.84, 1.2)}, legend columns=2},
 		xtick=data, xticklabels={1M, 3M, 6M, 1Y, 2Y, 5Y, 10Y, 20Y, 30Y}, 
-		legend cell align={left}, clip=false,
+		legend cell align={left}, clip=false, xlabel={Maturity},
 		reverse legend, xticklabel style={black!90, font=\footnotesize}, 
 		enlarge y limits={0.18}, enlarge x limits={0.05}, \bbar{y}{0}]
 	\addplot[thick, mark=*, color=blue!60!black!30] 

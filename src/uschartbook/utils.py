@@ -471,19 +471,17 @@ def median_age(df, wgt='PWSSWGT', percentile=0.5):
 
     
 def cps_date():
-    '''Returns latest month of available data'''
+    '''Returns string listing the latest month of available CPS data'''
     cps_loc = '/home/brian/Documents/CPS/data/'
-    
     raw_files = [(file[0:3], [f'19{file[3:5]}' 
                               if int(file[3:5]) > 25 
                               else f'20{file[3:5]}'][0]) 
                  for file in os.listdir(cps_loc)
                  if file.endswith('pub.dat')]
-    
-    dates = (pd.to_datetime([f'{mm}, 1, {yy}' 
-                            for mm, yy in raw_files])
+    dates = (pd.to_datetime([f'{mm.capitalize()}, 1, {yy}' 
+                            for mm, yy in raw_files],
+                            format='%b, %d, %Y')
               .sort_values())
-    
     return dates[-1]
     
     
