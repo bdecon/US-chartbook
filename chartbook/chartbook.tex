@@ -2212,7 +2212,8 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 		xticklabel={`\short{\year}}, height=6cm, width=5.2cm, clip=false]
     \rbars 
 	\thickline{teal!68!green!95!black}{date}{Owner}{data/hhform_lvl.csv}
-	\absnode{{2010-01-01}}{74.5}{\footnotesize \color{teal!68!green!95!black}Owned}
+	\absnode{{2010-01-01}}{74.5}{\footnotesize \color{teal!68!green!95!black}Owner-\\
+	\footnotesize \color{teal!68!green!95!black}Occupied}
 	\thickline{cyan!45!white}{date}{Renter}{data/hhform_lvl.csv}
 	\absnode{{2010-01-01}}{52}{\footnotesize \color{cyan!65!white}Rented}
 	\thickline{orange!80!yellow}{date}{Vacant}{data/hhform_lvl.csv}
@@ -2223,7 +2224,8 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 		xticklabel={`\short{\year}}, height=6cm, width=7.8cm, clip=false]
 	\rbars
 	\stdline{teal!68!green!95!black}{date}{Owner}{data/hhform_idx.csv}
-	\absnode{{1993-09-01}}{1.65}{\footnotesize \color{teal!68!green!95!black}Owned}
+	\absnode{{1992-01-01}}{1.92}{\footnotesize \color{teal!68!green!95!black}Owner-\\
+	\footnotesize \color{teal!68!green!95!black}Occupied}
 	\stdline{cyan!45!white}{date}{Renter}{data/hhform_idx.csv}
 	\absnode{{1994-06-01}}{-1.25}{\footnotesize \color{cyan!65!white}Rented}
 	\stdline{orange!80!yellow}{date}{Vacant}{data/hhform_idx.csv}
@@ -2248,7 +2250,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-2, -1, 0, 1, 2, 3, 4},
 		xticklabel={`\short{\year}}, clip=false, height=5.8cm, width=13.0cm,
 		legend cell align=left, reverse legend, ymax=2.8,
-		legend style={at={(0.38, 0.99)}, legend columns=1}]
+		legend style={at={(0.365, 0.995)}, legend columns=1}]
 	\rbars
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
 		(axis cs:{2002-01-01},
@@ -2258,7 +2260,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 	\sbaral{cyan!45!white}{date}{Renter}{data/hhform.csv}
 	\sbaral{teal!68!green!95!black}{date}{Owner}{data/hhform.csv}
 	\stdline{black}{date}{pop}{data/hhform.csv}
-	\legend{Rented, Owned, Population Growth};
+	\legend{Rented, Owner-Occupied, Population Growth};
 	\end{axis}
 \end{tikzpicture}
 
@@ -4437,7 +4439,7 @@ While poverty is far more likely for some groups than others, government program
 
 \hspace*{-3mm} \begin{tikzpicture} \pgfplotstableread[col sep=comma]{data/poor.csv}\poor
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.6cm}{1.5ex}
-    	width=5.5cm, bar width=1.7ex, height=9.6cm, xmin=0,
+    	width=5.5cm, bar width=1.7ex, height=9.2cm, xmin=0,
     	enlarge y limits={abs=0.4cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\poor}{name}, nodes near coords, 
 		yticklabel style={font=\footnotesize},
@@ -4462,7 +4464,7 @@ While poverty is far more likely for some groups than others, government program
 
 \hspace*{-3mm} \begin{tikzpicture} 	\pgfplotstableread[col sep=comma]{data/poor2.csv}\pvrt
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.6cm}{1.5ex}
-    	width=5.5cm, bar width=1.7ex, height=9.6cm, xmin=0,
+    	width=5.5cm, bar width=1.7ex, height=9.2cm, xmin=0,
     	enlarge y limits={abs=0.4cm}, enlarge x limits=0.05, \bbar{x}{0},
 		yticklabels from table={\pvrt}{name}, nodes near coords, 
 		yticklabel style={font=\footnotesize},
@@ -8503,15 +8505,15 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=30pt}]
 	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
 		width=9.2cm, height=5.6cm, enlarge x limits=0.01, 
-		ymin=0.3, ymax=9.6, legend cell align={left}, xmin={1989-01-01}, xmax={2025-01-01},
+		ymin=0.3, ymax=9.6, legend cell align={left}, xmin={1989-01-01}, xmax={2026-01-01},
 		xticklabel={\short{\year}}, clip=false, yticklabel style={text width=1.2em}, 
 		legend style={fill=none, legend columns=2, at={(1.13, 1.22)}}]
 	\rbars
 	\input{text/unemp_rsn_ltbar.txt}
-	\ctsbar{red!75!orange!70!white}{date}{Job Loser}{data/unemp_reason.csv}{5.2pt}
-	\ctsbar{purple!80!red!85!black}{date}{New entrant}{data/unemp_reason.csv}{5.2pt}
-	\ctsbar{blue!70!teal!70!gray!62!white}{date}{Re-entrant}{data/unemp_reason.csv}{5.2pt}
-	\ctsbar{blue!72!black}{date}{Job Leaver}{data/unemp_reason.csv}{5.2pt}
+	\ctsbar{red!75!orange!70!white}{date}{Job Loser}{data/unemp_reason.csv}{5.1pt}
+	\ctsbar{purple!80!red!85!black}{date}{New entrant}{data/unemp_reason.csv}{5.1pt}
+	\ctsbar{blue!70!teal!70!gray!62!white}{date}{Re-entrant}{data/unemp_reason.csv}{5.1pt}
+	\ctsbar{blue!72!black}{date}{Job Leaver}{data/unemp_reason.csv}{5.1pt}
 	\legend{,Job Loser, New Entrant, Re-entrant, Job Leaver};
 	\nextgroupplot[\bbar{y}{0}, width=4.0cm, height=5.6cm, 
 		yticklabel style={text width=0.8em}, 
