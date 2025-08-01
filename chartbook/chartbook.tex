@@ -820,7 +820,7 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \footnotesize{\textit{per capita, thousands of \input{text/gdpva_ltdt.txt}dollars}}\\
 \noindent \hspace*{-1mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25, 30}, 
-		yticklabel style={text width=1.0em}, ymin=1.5, ymax=28.5, xmin={1998-01-01},
+		yticklabel style={text width=1.0em}, ymin=1.5, ymax=29, xmin={1998-01-01},
 		xticklabel={`\short{\year}}, clip=false, height=6.5cm, width=6.8cm]
 	\rebars
 	\stdnode{0.78cm}{1.3cm}{\footnotesize \color{orange!80!white}Government}
@@ -1646,15 +1646,15 @@ Since 1989, and in the long-run, in general, real GDP growth is explained by pop
 \begin{minipage}{0.47\textwidth}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 50, 100, 150, 200, 250, 300}, 
-		yticklabel style={text width=1.4em}, ymin=12, ymax=290, xmin={1989-08-01},
+		yticklabel style={text width=1.4em}, ymin=12, ymax=310, xmin={1989-08-01},
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=5.8cm]
 	\rbars
 	\thickline{blue!60!black}{date}{LA384104005.Q}{data/liabpc.csv}
-	\absnode{{2011-01-01}}{155}{\footnotesize \color{blue!60!black}Debt}
+	\absnode{{2011-01-01}}{165}{\footnotesize \color{blue!60!black}Debt}
 	\thickline{cyan!88!blue}{date}{FL384190005.Q}{data/liabpc.csv}
-	\absnode{{2009-01-01}}{280}{\footnotesize \color{cyan!88!blue}Total}
+	\absnode{{2009-01-01}}{290}{\footnotesize \color{cyan!88!blue}Total}
 	\thickline{red!90!magenta}{date}{FL264090005.Q}{data/liabpc.csv}
-	\absnode{{2011-12-01}}{78}{\footnotesize \color{red!90!magenta}Foreign}
+	\absnode{{2011-12-01}}{90}{\footnotesize \color{red!90!magenta}Foreign}
 	\input{text/liabpc_node.txt}
 	\end{axis}
 \end{tikzpicture}

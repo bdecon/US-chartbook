@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2026/dev/Arch Linux)  (format=lualatex 2025.5.13)  31 JUL 2025 11:32
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2026/dev/Arch Linux)  (format=lualatex 2025.5.13)  1 AUG 2025 14:20
  restricted system commands enabled.
 **chartbook.tex
 (./chartbook.tex
@@ -2194,15 +2194,17 @@ Package pgfplots info on input line 523: dateplot: setting 'date ZERO={2022-01-
 01}' for this axis.
 Package pgfplots info on input line 523: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- (./text/ahe_summary_nodes.txt)
+
+NOTE: coordinate (2025-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
+(./text/ahe_summary_nodes.txt)
 Package pgfplots info on input line 554: dateplot: setting 'date ZERO={2022-01-
 01}' for this axis.
 Package pgfplots info on input line 554: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 PGFPlots: reading {data/nfp_monthly.csv}
 PGFPlots: reading {data/nfp_monthly.csv}
-
-(./text/nfp_summary_node.txt)
+ (./text/nfp_summary_node.txt)
 Overfull \hbox (9.28273pt too wide) in paragraph at lines 485--561
 []$[]$  $[]$   $[]$ 
  []
@@ -8201,8 +8203,6 @@ NOTE: coordinate (2021-11-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 NOTE: coordinate (2021-12-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
-NOTE: coordinate (2025-04-01,) has been dropped because of a coordinate filter.
- (see also unbounded coords=jump). 
 NOTE: coordinate (2025-05-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 NOTE: coordinate (2025-06-01,) has been dropped because of a coordinate filter.
@@ -9247,11 +9247,6 @@ Underfull \hbox (badness 2057) in paragraph at lines 1--2
 []\TU/Lato(0)/m/n/9 Non-farm pay-rolls in-creased by
  []
 
-
-Underfull \hbox (badness 1448) in paragraph at lines 1--2
-\TU/Lato(0)/m/n/9 147,000 in June 2025, fol-low-
- []
-
 )
 Underfull \hbox (badness 1975) in paragraph at lines 5--7524
 \TU/Lato(0)/m/n/9 ploy-ment rate with pop-u-la-tion
@@ -9269,7 +9264,12 @@ Package pgfplots info on input line 7596: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
  (./text/jobs_nowage_ch.txt)
 
-[116] (./text/emp_ind.txt) (./data/nfp.tex)
+[116] (./text/emp_ind.txt) (./data/nfp.tex
+Overfull \hbox (1.70808pt too wide) in paragraph at lines 1--1
+ []
+ []
+
+)
 
 [117] (./text/epop_text2.txt)
 Package pgfplots info on input line 7664: dateplot: setting 'date ZERO={2025-08
@@ -10039,8 +10039,13 @@ PGFPlots: reading {data/sce_job_separation.csv}
 [138
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./text/hours_tot.txt) (./text/hours_lfs2.txt) (./text/hours_ces.txt)
-Underfull \hbox (badness 6608) in paragraph at lines 1--9221
-[]\TU/Lato(0)/m/n/9 In June 2025, pro-duc-tion and
+Underfull \hbox (badness 10000) in paragraph at lines 1--9221
+[]\TU/Lato(0)/m/n/9 In July 2025, pro-duc-tion and
+ []
+
+
+Underfull \hbox (badness 4765) in paragraph at lines 1--9221
+\TU/Lato(0)/m/n/9 av-er-age, in line with the 33.6
  []
 
 Package pgfplots info on input line 9229: dateplot: setting 'date ZERO={1989-12
@@ -10064,6 +10069,9 @@ Package pgfplots info on input line 9280: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 PGFPlots: reading {data/agg_hrs_q.csv}
 PGFPlots: reading {data/agg_hrs_m.csv}
+
+NOTE: coordinate (2025-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 PGFPlots: reading {data/agg_hrs_m.csv}
 
 Overfull \hbox (0.53342pt too wide) in paragraph at lines 9292--9292
@@ -10114,21 +10122,6 @@ NOTE: coordinate (1994-01-01,) has been dropped because of a coordinate filter.
 NOTE: coordinate (1994-02-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 (./text/mjh_node.txt) (./text/mjh.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 1--9385
-[]\TU/Lato(0)/m/n/9 In June 2025, a seasonally-
- []
-
-
-Underfull \hbox (badness 1776) in paragraph at lines 1--9385
-\TU/Lato(0)/m/n/9 Over the three months end-ing
- []
-
-
-Underfull \hbox (badness 2573) in paragraph at lines 1--9385
-\TU/Lato(0)/m/n/9 June 2025, an av-er-age of 5.4
- []
-
-
 
 [141] (./text/selfemp1.txt)
 Package pgfplots info on input line 9403: dateplot: setting 'date ZERO={2025-08
@@ -10991,14 +10984,16 @@ NOTE: coordinate (2025-05-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
 NOTE: coordinate (2025-06-01,) has been dropped because of a coordinate filter.
  (see also unbounded coords=jump). 
+NOTE: coordinate (2025-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
 (./text/selfemp_nodes.txt) (./text/selfemp2.txt
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 []\TU/Lato(0)/m/n/9 The \TU/Lato(0)/b/n/9 in-cor-po-rated self-
  []
 
 
-Underfull \hbox (badness 1137) in paragraph at lines 1--2
-\TU/Lato(0)/m/n/9 in June 2025, equiv-a-lent
+Underfull \hbox (badness 3058) in paragraph at lines 1--2
+\TU/Lato(0)/m/n/9 in July 2025, equiv-a-lent
  []
 
 
@@ -11317,8 +11312,11 @@ Package pgfplots info on input line 9793: dateplot: setting 'date ZERO={2022-01
 -01}' for this axis.
 Package pgfplots info on input line 9793: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
- (./text/ahe_mo_real_node.txt)
-(./text/ahe_comp.txt) (./text/ahe_bar_date.txt) (./text/ahe_ind_levels.txt
+
+NOTE: coordinate (2025-07-01,) has been dropped because of a coordinate filter.
+ (see also unbounded coords=jump). 
+(./text/ahe_mo_real_node.txt) (./text/ahe_comp.txt) (./text/ahe_bar_date.txt)
+(./text/ahe_ind_levels.txt
 Package pgfplots info on input line 9823: Using 'lua backend=false' for plot 0 
 (type 'pgfplothandlerxbar'): LUA does not support xtick=data (yet).
 Package pgfplots info on input line 4: Using 'lua backend=false' for plot 1 (ty
@@ -13414,16 +13412,16 @@ Package rerunfilecheck Info: File `chartbook.out' has not changed.
 ### bottom level
 
 Here is how much of LuaTeX's memory you used:
- 63607 strings out of 475506
- 932080,3417909 words of node,token memory allocated
+ 63603 strings out of 475506
+ 932060,3417909 words of node,token memory allocated
  1121 words of node memory still in use:
    6 hlist, 1 vlist, 2 rule, 1 local_par, 4 glue, 3 kern, 1 penalty, 3 glyph, 59
  attribute, 73 glue_spec, 59 attribute_list, 2 write, 49 pdf_action nodes
-   avail lists: 1:12,2:145048,3:143814,4:4388,5:1344,6:804,7:11499,8:116,9:6561,
-10:26,11:606
- 76179 multiletter control sequences out of 65536+600000
+   avail lists: 1:12,2:145048,3:143814,4:4388,5:1344,6:804,7:11515,8:116,9:6561,
+10:26,11:608
+ 76175 multiletter control sequences out of 65536+600000
  139 fonts using 34894055 bytes
- 112i,20n,121p,3152b,4075s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,20n,121p,3177b,4075s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf></usr/share/
 fonts/TTF/Lato-BoldItalic.ttf></usr/share/texmf-dist/fonts/opentype/public/fonta
 wesome5/FontAwesome5Free-Regular-400.otf></usr/share/texmf-dist/fonts/opentype/g
@@ -13436,7 +13434,7 @@ tf></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msam10.pfb>
-Output written on chartbook.pdf (182 pages, 3841911 bytes).
+Output written on chartbook.pdf (182 pages, 3842858 bytes).
 
 PDF statistics: 2366 PDF objects out of 2487 (max. 8388607)
  2105 compressed objects within 22 object streams
