@@ -498,11 +498,11 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 		minor xtick={{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01}},
 		xticklabel style={align=center}, minor tick length=7pt, 
 		xticklabels from table={\paepoprec}{label}, ]
-	\stdline{green!50!black}{date}{PA_EPOP_M}{\paepoprec}
+	\stdline{green!90!blue!60!black}{date}{PA_EPOP_M}{\paepoprec}
 	\thickline{blue!80!purple}{date}{PA_EPOP}{\paepoprec}
-	\stdline{yellow!40!orange}{date}{PA_EPOP_W}{\paepoprec}
+	\stdline{green!80!yellow!80!black}{date}{PA_EPOP_W}{\paepoprec}
 	\input{text/epop_summary_nodes.txt}
-	\stdline{cyan}{date}{PA_EPOP}{\paepoprec}
+	%\stdline{cyan}{date}{PA_EPOP}{\paepoprec}
 	\end{axis}
 \end{tikzpicture} 
 \end{minipage}\hspace{6mm} \begin{minipage}{0.315\textwidth}
@@ -553,7 +553,7 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 		yticklabel style={text width=2.2em}, 
 		axis line style={draw=none}]
 	\addplot[thick, draw opacity=0] table [x=date, y=FILL, col sep=comma]{data/nfp_monthly.csv};
-	\ctsbar{orange!92!red}{date}{NFP}{data/nfp_monthly.csv}{4pt}
+	\ctsbar{orange!92!yellow}{date}{NFP}{data/nfp_monthly.csv}{4pt}
 	\input{text/nfp_summary_node.txt}
 	\end{axis}
 \end{tikzpicture}
@@ -1305,7 +1305,7 @@ First, an overview of contributions to economic growth since 2019. This is follo
 	\node[below, align=left, shift=({rel axis cs:-0.64,1.08}), anchor=west, fill=white, 
 		draw=black!30!white, inner sep=3.0]
 		{\small \textbf{Contribution Since 1989 \& Latest}};
-	\node[below, align=left, shift=({rel axis cs:1.04,0.1}), anchor=east, fill=white, 
+	\node[below, align=left, shift=({rel axis cs:1.04,0.2}), anchor=east, fill=white, 
 		draw=black!30!white, inner sep=2.0]
 		{\small o \scriptsize \input{text/gdp_exp_chavg_dt.txt}\unskip};
     \end{axis}
@@ -1583,7 +1583,7 @@ Since 1989, and in the long-run, in general, real GDP growth is explained by pop
 \footnotesize{Source: Bureau of Economic Analysis and Author's Calculations \\ TTU is trade, transportation and utilities; FIRE+ includes the finance, insurance, real estate, and information industries. }
 \end{minipage}
 \newpage 
-\vspace{-4mm}
+\vspace*{-11mm}
 
 \noindent \normalsize \textbf{Real GDP Growth by State}\\
 \footnotesize{\textit{percentage point change in real GDP}}\\
@@ -1592,12 +1592,12 @@ Since 1989, and in the long-run, in general, real GDP growth is explained by pop
 \footnotesize{Source: Bureau of Economic Analysis}
 
 \begin{minipage}{0.76\textwidth} \index{gross domestic product!by state}
-\small Lastly, the Bureau of Economic Analysis also \href{https://www.bea.gov/data/gdp/gdp-state}{report} real GDP growth by state. \input{text/gdp_state.txt} 
+\small Finally, the Bureau of Economic Analysis also \href{https://www.bea.gov/data/gdp/gdp-state}{report} real GDP growth by state. \input{text/gdp_state.txt} 
 \end{minipage}
 \vspace{2mm}
 
 \normalsize \textbf{Real GDP Growth by State}\\
-\footnotesize{\textit{quarterly growth at seasonally adjusted annualized rate \hspace{18mm} total growth, as of \input{text/gdp_state_date.txt}}\\ 
+\footnotesize{\textit{quarterly growth at seasonally adjusted annualized rate \hspace{16mm} annual growth, as of \input{text/gdp_state_date.txt}}\\ 
 
 \vspace{-4.5mm}
 \hspace{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.0pt} \color{black!90}
