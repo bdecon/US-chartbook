@@ -212,6 +212,22 @@
 		}
 		
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
+	\newcommand{\ltxticks}{
+		date coordinates in=x, axis line style={draw=none},
+		xmax={2025-08-31},
+		max space between ticks=40,	    
+		xtick={{2021-07-01}, {2022-01-01}, {2022-07-01},
+		{2023-01-01}, {2023-07-01}, 
+		 {2024-01-01}, {2024-07-01}, 
+		 {2025-01-01}, {2025-07-01},{2026-01-01}},
+		minor xtick={{2021-10-01}, {2022-04-01}, {2022-10-01}, {2023-04-01}, 
+		{2023-10-01},{2024-04-01},{2024-10-01}, {2025-04-01},  {2025-10-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		}
+		
+		
+	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xmax={2025-08-31},
@@ -477,6 +493,7 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 	%\input{text/lprod_rec_bar_node.txt}
 	\ctsbar{cyan!70!white}{date}{LPROD_gr}{\lprodrec}{11pt}
 	\input{text/lprod_rec_node.txt}
+	\node[align=left] at (rel axis cs:0.95, 1.02) {\color{black!55!white}\footnotesize {\textit{Est.}}};
 	\end{axis}
 \end{tikzpicture}
 \end{minipage}
@@ -558,6 +575,37 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 	\end{axis}
 \end{tikzpicture}
 \end{minipage}
+	
+\vspace{12mm}
+\begin{minipage}{0.76\textwidth}
+\small Additionally, interest rates offer a high-frequency summary of expected inflation, output, and risk. Comparing the two-year treasury yield to the federal funds rate suggests interest rates will \input{text/ff_vs_twoyr_summary.txt}in the near term. 
+\end{minipage}
+\vspace{2mm}
+
+\normalsize \textbf{Short-Term Interest Rates} \ \hyperlink{intrts}{\faChartBar[regular]}\\
+\footnotesize{\textit{annual rate, percent}}\\
+\hspace*{-2mm} \begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \ltxticks, xmin=2021-07-01, 
+		fill between/on layer={main}, legend cell align={left},
+		max space between ticks=20, ymax=5, 
+		legend style={fill=white, legend columns=1, at={(0.75, 0.45)}},
+		xticklabel={ \pgfmathparse{int(mod(\month,7))} \let\r\pgfmathresult 
+    		\ifnum\r=0 {Jul} \else {Jan} \\ {\year} \fi}, clip=false, 
+    		height=5.6cm, width=12.8cm]	
+	\addplot[name path=F, ultra thin, no markers, color=green!70!blue!80!white] 
+		table [x=date, y=DFEDTARU, col sep=comma] {data/interest_rates_recent.csv};
+	\addplot[name path=G, ultra thin, no markers, color=green!70!blue!80!white] 
+		table [x=date, y=DFEDTARL, col sep=comma] {data/interest_rates_recent.csv};	
+	\addplot[style={pattern=crosshatch, pattern color=green!70!blue!80!white},
+		 draw=green!70!blue!80!white]
+		fill between[of=F and G];
+	\addplot[thick, no markers, color=blue!50!black] 
+		table [x=date, y=TwoYr, col sep=comma] {data/interest_rates_recent.csv};
+	\legend{,,Federal Funds Target, Two-Year Treasury Yield};
+	\node[below right, align=left] at (rel axis cs:0.35, 0.2) {\footnotesize {\input{text/ff_target_rate.txt}}};
+	\input{text/twoyr_summary_node.txt}
+	\end{axis}
+\end{tikzpicture}
 \newpage
 \section*{\hyperlink{toc}{\faList} \ {Contents}}
 \thispagestyle{sectpage}
@@ -781,7 +829,7 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 	\stdline{yellow!60!orange}{date}{W271RC}{data/gdi_pc_comp.csv}
 	\stdnode{1.3cm}{2.05cm}{\footnotesize \color{yellow!50!orange}Profit}
 	\stdline{teal!60!white}{date}{A262RC}{data/gdi_pc_comp.csv}
-	\stdnode{3.5cm}{0.34cm}{\footnotesize \color{violet}Indirect Taxes}
+	\stdnode{3.4cm}{0.34cm}{\footnotesize \color{violet}Indirect Taxes}
 	\stdline{violet}{date}{indirect}{data/gdi_pc_comp.csv}
 	\end{axis}
 \end{tikzpicture}\\
@@ -2525,9 +2573,9 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 		yticklabel style={text width=1.0em},
 		xticklabel={`\short{\year}}, clip=false, height=7.5cm, width=7.8cm]
 	\rbars
-	\absnode{{1991-12-01}}{50.2}{\footnotesize \color{blue!75!black}After-Tax \\ \color{blue!75!black} Income}
+	\absnode{{1991-12-01}}{50.7}{\footnotesize \color{blue!75!black}After-Tax \\ \color{blue!75!black} Income}
 	\stdline{blue!75!black}{date}{DPI}{data/inc_out_save.csv}
-	\absnode{{2011-01-01}}{44.8}{\footnotesize \color{orange} Consumer\\ \footnotesize \color{orange}Spending}
+	\absnode{{2011-01-01}}{45.4}{\footnotesize \color{orange} Consumer\\ \footnotesize \color{orange}Spending}
 	\stdline{orange}{date}{PCE}{data/inc_out_save.csv}
 	\absnode{{2012-10-01}}{14.5}{\footnotesize \color{green!80!blue} Personal \\ \footnotesize \color{green!80!blue}Saving}
 	\stdline{green!80!blue}{date}{PSAVE}{data/inc_out_save.csv}
@@ -2585,7 +2633,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 
 \begin{minipage}{0.69\textwidth}
 \normalsize \textbf{Household Income and Spending, by Income Percentile}\\
-\footnotesize{\textit{thousands of \input{text/ce_year.txt}\unskip \ dollars}}
+\footnotesize{\textit{average, thousands of \input{text/ce_year.txt}\unskip \ dollars}}
 \vspace{2.9cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
@@ -2628,7 +2676,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 
 \begin{minipage}{0.69\textwidth}
 \normalsize \textbf{Household Income and Spending, by Age of Reference Person}\\
-\footnotesize{\textit{thousands of \input{text/ce_year.txt}\unskip \ dollars}}
+\footnotesize{\textit{average, thousands of \input{text/ce_year.txt}\unskip \ dollars}}
 \vspace{3.1cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
@@ -3007,7 +3055,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 		yticklabel style={text width=1.0em}, enlarge y limits={value=0.12, upper}, ymin=0,
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.2cm]
 	\rbars
-	\absnode{2005-07-01}{9.4}{\footnotesize \color{green!60!blue}Housing and Utilities}
+	\absnode{2005-07-01}{9.5}{\footnotesize \color{green!60!blue}Housing and Utilities}
 	\stdline{green!60!blue}{date}{Housing}{data/pce_levels.csv}
 	\absnode{2009-10-01}{6.0}{\footnotesize \color{blue!80!black}Residential \\ \footnotesize \color{blue!80!black} Investment}
 	\stdline{blue!80!black}{date}{ResInv}{data/pce_levels.csv}
@@ -3040,9 +3088,9 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 	\rbars
 	\absnode{{2013-09-01}}{18.2}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
-	\absnode{{1996-05-01}}{26.8}{\footnotesize \color{blue!75!white}Services Excl. Shelter}
+	\absnode{{1996-05-01}}{26.9}{\footnotesize \color{blue!75!white}Services Excl. Shelter}
 	\stdline{blue!75!white}{date}{OTHSERV}{data/pce_levels.csv}
-	\absnode{{1992-06-01}}{15.4}{\footnotesize \color{green!85!blue}Shelter*}
+	\absnode{{1992-06-01}}{15.5}{\footnotesize \color{green!85!blue}Shelter*}
 	\stdline{green!85!blue}{date}{SHELTER}{data/pce_levels.csv}
 	\node[text width=6.4cm, anchor=west] at 
 		({1989-01-01}, 2){*includes residential fixed investment};
@@ -5536,9 +5584,9 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 	\thickline{green!80!olive}{date}{RealPC_ExAutoGas}{data/rs_sh.csv}
 	\stdline{blue!60!black}{date}{RealPC_Nonstore}{data/rs_sh.csv}
 	\input{text/rs_pc_nodes.txt}
-	\absnode{{1992-04-01}}{850}{\footnotesize \color{green!80!olive}\textbf{Ex. Auto}\\\footnotesize \color{green!80!olive}\textbf{\& Gas}}
-	\absnode{{2010-01-01}}{1990}{\footnotesize \color{violet!60!blue}\textbf{Total}}
-	\absnode{{2009-06-01}}{480}{\footnotesize \color{blue!60!black}\textbf{Nonstore}}
+	\absnode{{1992-04-01}}{855}{\footnotesize \color{green!80!olive}\textbf{Ex. Auto}\\\footnotesize \color{green!80!olive}\textbf{\& Gas}}
+	\absnode{{2010-01-01}}{2005}{\footnotesize \color{violet!60!blue}\textbf{Total}}
+	\absnode{{2009-05-01}}{490}{\footnotesize \color{blue!60!black}\textbf{Nonstore}}
 	\node[below right, align=left] at (rel axis cs:0.0, -0.1) {\scriptsize \color{black!70}*Adjusted by PCE price index};
 	\end{axis}
 \end{tikzpicture}
@@ -5673,7 +5721,7 @@ This chartbook section covers government contributions to current economic activ
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ymin=0.3, 
 		xticklabel={`\short{\year}}, clip=false, height=5.1cm, width=7.2cm]
 	\rebars
-	\absnode{{2002-01-01}}{3.88}{\footnotesize \color{blue!70!white}Federal}
+	\absnode{{2002-01-01}}{3.95}{\footnotesize \color{blue!70!white}Federal}
 	\stdline{blue!70!white}{date}{Federal}{data/gdpva_pc.csv}
 	\absnode{{2009-01-01}}{6.5}{\footnotesize \color{red}State \& Local}
 	\stdline{red}{date}{State and local}{data/gdpva_pc.csv}
@@ -5711,7 +5759,7 @@ Over the past thirty years, total spending on government social benefits has mos
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=7.2cm]
 	\rbars
-	\absnode{{2010-03-01}}{19}{\footnotesize \color{violet}Gov. Social \\ \footnotesize \color{violet}Benefits}
+	\absnode{{2010-01-01}}{19}{\footnotesize \color{violet}Gov. Social \\ \footnotesize \color{violet}Benefits}
 	\stdline{violet}{date}{Welfare}{data/govpi.csv}
 	\stdnode{1.2cm}{3.1cm}{\footnotesize \color{cyan!80!blue}Tax \& Social\\ \footnotesize \color{cyan!80!blue} Insurance\\ \footnotesize \color{cyan!80!blue} Contributions}
 	\stdline{cyan!80!blue}{date}{TaxSI}{data/govpi.csv}
@@ -5876,7 +5924,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 	\node[below, align=left, shift=({rel axis cs:0.13,0.93})]
 		{\footnotesize \color{cyan!65!white} \textbf{Total} \\ 
 		\footnotesize \color{cyan!65!white} \textbf{Receipts}};
-	\node[below, align=left, shift=({rel axis cs:0.265,0.43})]
+	\node[below, align=left, shift=({rel axis cs:0.25,0.43})]
 		{\footnotesize \color{blue!50!violet} Taxes \& Social \\ 
 		\footnotesize \color{blue!50!violet} Insurance \\ 
 		\footnotesize \color{blue!50!violet} Contributions};
@@ -5908,7 +5956,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 	\stdline{blue!60!white}{date}{W780RC}{data/fed_gov_rec_type.csv}
 	\stdline{purple!80!violet}{date}{B075RC}{data/fed_gov_rec_type.csv}
 	\stdline{black!30!white}{date}{Other}{data/fed_gov_rec_type.csv}
-	\node[below, align=left, shift=({rel axis cs:0.78,0.92})]
+	\node[below, align=left, shift=({rel axis cs:0.77,0.92})]
 		{\footnotesize \color{green!50!black} Personal \\ 
 		\footnotesize \color{green!50!black} Current \\ 
 		\footnotesize \color{green!50!black} Taxes \\ };
@@ -5948,7 +5996,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 	\stdline{blue!70!black}{date}{Individual Income Taxes}{data/tmb_rec.csv}
 	\stdline{blue!40!cyan}{date}{Other}{data/tmb_rec.csv}
 	\input{text/tmb_end_nodes.txt}
-	\absnode{{2020-08-01}}{3.02}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
+	\absnode{{2020-06-01}}{3.02}{\footnotesize \color{blue!70!black}Individual\\\color{blue!70!black}Income\\\color{blue!70!black}Taxes}
 	\absnode{{2016-06-01}}{2.2}{\footnotesize \color{blue!40!cyan} \ \ \ All \\ \footnotesize \color{blue!40!cyan}Other}
 	\end{axis}
 \end{tikzpicture}
@@ -5984,7 +6032,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 	\stdline{black!30!white}{date}{Other}{data/slg_gov_rec_type.csv}
 	\node[below, align=left, shift=({rel axis cs:0.23,0.95})]
 		{\footnotesize \color{blue!60!black} Tax Receipts};
-	\node[below, align=left, shift=({rel axis cs:0.72,0.45})]
+	\node[below, align=left, shift=({rel axis cs:0.71,0.45})]
 		{\footnotesize \color{orange!90!red} Federal \\ 
 		\footnotesize \color{orange!90!red} Transfers};
 	\node[below, align=left, shift=({rel axis cs:0.8,0.12})]
@@ -6349,7 +6397,7 @@ Assets other than public lands, liabilities, and net worth (public wealth), are 
 	\rbars
 	\absnode{{1991-06-01}}{-15}{\footnotesize \color{gray}Public \\ \footnotesize \color{gray}Wealth}
 	\thickline{gray}{date}{GGWealth}{data/gov_bs_summary.csv}
-	\absnode{{2009-10-01}}{162}{\footnotesize \color{orange}Liabilities}
+	\absnode{{2009-08-01}}{162}{\footnotesize \color{orange}Liabilities}
 	\thickline{orange}{date}{GGLiab}{data/gov_bs_summary.csv}
 	\thickline{blue!80!cyan!80!white}{date}{GGAssets}{data/gov_bs_summary.csv}
 	\absnode{{2010-01-01}}{98}{\footnotesize \color{blue!80!cyan!80!white} \ \ Assets \\
@@ -6383,9 +6431,9 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em}]
 	\rbars
 	\thickline{gray}{date}{Gov NW}{data/govshnw.csv}
-	\absnode{{2011-06-01}}{-1.5}{\footnotesize \color{gray}Government \\ \footnotesize \color{gray}Total}
+	\absnode{{2011-06-01}}{-1.4}{\footnotesize \color{gray}Government \\ \footnotesize \color{gray}Total}
 	\thickline{blue!80!black}{date}{FG NW}{data/govshnw.csv}
-	\absnode{{2012-01-01}}{-11.0}{\footnotesize \color{blue!80!black}Federal}
+	\absnode{{2012-01-01}}{-10.8}{\footnotesize \color{blue!80!black}Federal}
 	\thickline{purple}{date}{SLG NW}{data/govshnw.csv}
 	\absnode{{1990-01-01}}{6.8}{\footnotesize \color{purple}State \& Local}
 	\input{text/govnw_nodes.txt}
@@ -7035,7 +7083,7 @@ Trade data have large seasonal differences, and can swing from one month to the 
 	\recbars
 	\stdline{violet!90!blue}{date}{JRXWTFN_N.B}{data/fx_idx.csv}
 	\stdline{green!75!yellow!92!black}{date}{JRXWTFO_N.B}{data/fx_idx.csv}
-	\absnode{{2014-06-01}}{134}{\footnotesize \color{green!75!yellow!90!black}Emerging}
+	\absnode{{2014-01-01}}{134}{\footnotesize \color{green!75!yellow!90!black}Emerging}
 	\absnode{{2017-01-01}}{102}{\footnotesize \color{violet!90!blue}Advanced}
 	\input{text/twd_nodes.txt}
 \end{groupplot}
@@ -7534,9 +7582,9 @@ Among measures of overall economic activity, gross labor income has the added be
     \rbar
 	\ctsbar{blue!60!purple}{date}{ALL}{data/nfp.csv}{3.0pt}
 	\absnode{{2020-04-20}}{-15.5}{\scriptsize Apr `20\\ \scriptsize -20.5\\ \scriptsize million}
-	\absnode{{2019-02-15}}{-0.2}{\scriptsize Mar `20\\ \scriptsize -1.5\\ \scriptsize million}
+	\absnode{{2019-02-01}}{-0.2}{\scriptsize Mar `20\\ \scriptsize -1.5\\ \scriptsize million}
 	\absnode{{2020-06-15}}{5.2}{\scriptsize Jun `20\\ \scriptsize +4.5 million}
-	\absnode{{2019-05-15}}{5.3}{\scriptsize May `20\\ \scriptsize +2.6\\ \scriptsize million}
+	\absnode{{2019-04-15}}{4.9}{\scriptsize May `20\\ \scriptsize +2.6\\ \scriptsize million}
 	\input{text/nfp_lt_val.txt}
 	\end{axis}
 \end{tikzpicture}
@@ -8958,7 +9006,7 @@ Among newly-employed workers, some were considered unemployed the month prior, w
 	\stdline{blue}{date}{Age2554}{data/disflow.csv}
 	\thickline{violet}{date}{Age16plus}{data/disflow.csv}
 	\input{text/disflow_node.txt}
-	\node[right, align=right] at ({2012-01-01}, 9.2) 
+	\node[right, align=right] at ({2011-10-01}, 9.2) 
 		{\color{blue}\footnotesize {Age 25 to 54}};
 	\node[right, align=right] at ({2010-04-01}, 3.2) 
 		{\color{violet}\footnotesize {Age 16+}};
@@ -9653,7 +9701,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \vspace{4.3cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\dateaxisticks enlarge y limits={0.195}, ymax=1660,
+	\begin{axis}[\dateaxisticks enlarge y limits={0.195}, ymax=1680,
 		yticklabel style={text width=2.2em}, max space between ticks=20,
 		xticklabel={`\short{\year}}, clip=false, height=6.3cm, width=12.0cm]
 	\rbars
@@ -9721,7 +9769,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 	\rbars
 	\thickline{cyan!80!green!92!blue}{date}{Goods}{data/real_ahe.csv}
 	\stdline{blue!70!violet}{date}{Serv}{data/real_ahe.csv}
-	\absnode{{1992-01-01}}{30.4}{\color{cyan!80!green!92!blue} \textbf{Goods-}
+	\absnode{{1992-01-01}}{30.7}{\color{cyan!80!green!92!blue} \textbf{Goods-}
 		\\ \color{cyan!80!green!92!blue} \textbf{Producing}}
 	\absnode{{2010-01-01}}{27}{\color{blue!70!violet} Service- 
 		\\ \color{blue!70!violet} Providing}
@@ -10016,7 +10064,7 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 \footnotesize{\textit{share of individuals with one-year wage growth between -0.5 and 0.5 percent, three-month average}}\\
 \hspace*{-1mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=30,	 
-		yticklabel style={text width=1.0em}, enlarge y limits={0.1}, 
+		yticklabel style={text width=1.0em}, enlarge y limits={0.07}, 
 		xticklabel={`\short{\year}}, height=4.6cm, width=12.5cm, clip=false]
 	\rebars
 	\stdline{red}{date}{ZWC}{data/atl_wgt2.csv}
@@ -10093,14 +10141,14 @@ One theory of what drives long-term trends, sometimes called the \textit{Kaldor-
 
 \normalsize \textbf{Decomposition of Labor Productivity Growth}\\
 \footnotesize{\textit{contribution to labor productivity, percentage points}}
-\vspace{4.85cm}
+\vspace{5.35cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
-		yticklabel style={text width=1.0em}, enlarge y limits={0.24}, 
-		xticklabel={`\short{\year}}, clip=false, height=6.7cm, width=13.1cm,
+		yticklabel style={text width=1.0em}, enlarge y limits={0.08}, 
+		xticklabel={`\short{\year}}, clip=false, height=6.9cm, width=13.1cm,
 		legend cell align=left, transpose legend, enlarge x limits={0.02},
-		legend style={at={(0.59, 1.05)}, fill=white, legend columns=2}]
+		legend style={at={(0.585, 1.11)}, fill=white, legend columns=2}]
 	\rbars
 	\ctsbar{cyan!40!white}{date}{TFP}{data/tfp.csv}{8.0pt}
 	\ctsbar{blue!60!black}{date}{Lab}{data/tfp.csv}{8.0pt}
@@ -10352,8 +10400,8 @@ In the US, several stock market indices track the share price of a basket of com
 		enlarge y limits={0.1}, legend style={at={(0.98, 1.12)}, fill=white}]
 	\rbars
 	\thickline{blue}{date}{r10}{data/sp500rr.csv}
-	\thickline{green!80!blue}{date}{r20}{data/sp500rr.csv}
 	\thickline{orange}{date}{r15}{data/sp500rr.csv}
+	\thickline{green!80!blue}{date}{r20}{data/sp500rr.csv}
 	\input{text/sp500rr_nodes.txt}
 	\legend{10-Year, 15-Year, 20-Year};
 	\end{axis}
@@ -10476,6 +10524,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \footnotesize{Source: Chicago Board Options Exchange} \hfill \tbllink{vix.csv}
 \end{minipage}
 \newpage
+\hypertarget{intrts}{}
 \subsection*{Interest Rates}
 \begin{minipage}{0.76\textwidth} \index{interest rates!Fed funds rate} \index{Federal Reserve} \index{Taylor rule} \index{monetary policy}
 \hypertarget{capint}{\label{capint}}
@@ -10483,7 +10532,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 
 The FOMC cut \href{https://www.federalreserve.gov/releases/h15/}{interest rates} three times in 2019, for a total reduction of 75 basis points. Responding to the economic shock of the coronavirus, the FOMC cut rates twice in March 2020, by 150 basis points, bringing the lower bound of the federal funds rate range to zero. With at near zero, the Fed adopted several additional measures to increase liquidity in the global financial system.
 
-In March 2022, the FOMC raised the base interest rate by 25 basis points. In May 2022, the FOMC raised the base interest rate by another 25 basis points. In June, July, September and November 2022, the FOMC raised rates by 75 basis points, in each meeting, followed by a 50 basis point increase in December, and 25 basis point increases in February, March, May, and July 2023. \input{text/rates_ff.txt}
+In March 2022, the FOMC raised the base interest rate by 25 basis points, followed by another 25 basis points in May. In June, July, September and November 2022, the FOMC raised rates by 75 basis points, in each meeting, followed by a 50 basis point increase in December, and 25 basis point increases in February, March, May, and July 2023, bringing the upper limit of the rate to 5.5 percent. Rates were cut by 50 basis points in September 2024, and by 25 basis points in November and December. \input{text/rates_ff.txt}
 \vspace{2mm}
 
 \normalsize \textbf{Federal Funds Rate}\\
@@ -10493,7 +10542,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points. In May
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
 	ytick={-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10}, 
-		yticklabel style={text width=1.2em}, height=7.6cm, width=12.9cm, xmax=2029-01-02,
+		yticklabel style={text width=1.2em}, height=7.5cm, width=12.9cm, xmax=2029-01-02,
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
 	\input{text/ff_proj_bar.txt}
