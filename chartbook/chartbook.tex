@@ -591,7 +591,7 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 		legend style={fill=white, legend columns=1, at={(0.75, 0.45)}},
 		xticklabel={ \pgfmathparse{int(mod(\month,7))} \let\r\pgfmathresult 
     		\ifnum\r=0 {Jul} \else {Jan} \\ {\year} \fi}, clip=false, 
-    		height=5.6cm, width=12.8cm]	
+    		height=5.4cm, width=12.7cm]	
 	\addplot[name path=F, ultra thin, no markers, color=green!70!blue!80!white] 
 		table [x=date, y=DFEDTARU, col sep=comma] {data/interest_rates_recent.csv};
 	\addplot[name path=G, ultra thin, no markers, color=green!70!blue!80!white] 
@@ -2317,7 +2317,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \newpage
 \subsubsection*{Headship Rate}
 \begin{minipage}{0.76\textwidth} \index{demographics!headship rate}
-\small Individual decisions about starting a household or living with family are influenced by economic conditions. The ratio of households to people age 16 and older is referred to as the \href{https://www.federalreserve.gov/econres/notes/feds-notes/an-early-evaluation-of-the-effects-of-the-pandemic-on-living-arrangements-and-household-formation-20200807.htm}{aggregate headship} rate. 
+\small Individual decisions about starting a household or living with family are influenced by economic conditions. The ratio of households to people age 16 and older is referred to as the \href{https://www.federalreserve.gov/econres/notes/feds-notes/an-early-evaluation-of-the-effects-of-the-pandemic-on-living-arrangements-and-household-formation-20200807.htm}{aggregate headship} rate. The headship rate is higher when people are more likely to head their own household. 
 \end{minipage}
 
 \begin{minipage}{0.25\textwidth}
@@ -2326,12 +2326,12 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \begin{minipage}{0.47\textwidth}
 \normalsize \textbf{Aggregate Headship Rate}\\
 \footnotesize{\textit{people age 16 and older, percent, seasonally adjusted}}
-\vspace{1.9cm}
+\vspace{2.15cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\shdateaxisticks max space between ticks=50,
-		enlarge y limits={0.16}, yticklabel style={text width=1.0em},
-		xticklabel={`\short{\year}}, height=4.0cm, width=7.9cm, clip=false]
+	\begin{axis}[\shdateaxisticks ytick={49,50,51},
+		enlarge y limits={0.12}, yticklabel style={text width=1.0em},
+		xticklabel={`\short{\year}}, height=4.25cm, width=7.9cm, clip=false]
 	\rebars
 	\stdline{purple!70!violet}{date}{value}{data/headship.csv}
 	\input{text/headship_node.txt}
@@ -2340,9 +2340,53 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{headship.csv} 
 \end{minipage}
-\vspace{4cm}
+\vspace{6mm}
 
-\normalsize [Living with Family, forthcoming]
+\subsubsection*{Living with Family}
+\begin{minipage}{0.76\textwidth} %\index{demographics!living with family}
+\small Underneath changes in headship are changes in living arrangements, including in the rate at which adults live with family members who are not their spouses. Specifically, \textbf{living with family}, in this context, measures the share of people age 16 and older who are living with their parents, grandparents, kids, or other nonspouse relative.  
+
+Living with family became more common after the collapse of the housing bubble. An additional two percent of adults, or roughly 4.8 million people, live with family in 2010 compared to 2003. Rates of living with family spiked early in the COVID-19 pandemic, particularly for young adults.
+
+\input{text/lwf_recent.txt}
+\vspace{2mm}
+
+\normalsize \textbf{Living with Family}\\
+\footnotesize{\textit{share of age group population, percent, seasonally-adjusted, 3-month moving average}}
+\vspace{4.0cm}
+
+\hspace{2mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks 
+		clip=false, width=6.5cm, height=6.0cm, 
+		yticklabel style={text width=1.0em}, 
+		xticklabel={`\short{\year}}, enlarge y limits={0.08}, 
+        enlarge x limits={0.02}]
+	\rbars
+	\stdline{blue!60!black}{date}{Full}{data/lwf.csv}
+	\input{text/lwf_node.txt}
+	\node[right, align=left, shift=({rel axis cs:0.02,0.94}), 
+	draw=black!30!white, fill=white, inner sep=4.0]
+		{\small \color{black!80!white}\textbf{Age 16 and older}};
+	\end{axis}
+\end{tikzpicture}
+\hspace{6.1cm}
+\begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks 
+		clip=false, width=6.5cm, height=6.0cm, yticklabel style={text width=1.0em}, 
+        xticklabel={`\short{\year}}, enlarge y limits={0.08}, 
+        enlarge x limits={0.02}]
+	\rbars
+	\stdline{blue!60!black}{date}{Age1829}{data/lwf.csv}
+	\input{text/lwf_1829_node.txt}
+	\node[right, align=left, shift=({rel axis cs:0.02,0.94}), 
+	draw=black!30!white, fill=white, inner sep=4.0]
+		{\small \color{black!80!white}\textbf{Age 18 to 29}};
+	\end{axis}
+\end{tikzpicture}
+
+\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{lwf.csv}
+
+\end{minipage}
 \newpage
 \subsubsection*{Age}
 \begin{minipage}{0.76\textwidth} \index{demographics!age}
@@ -2683,7 +2727,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 	\pgfplotstableread[col sep=comma]{data/ce_age.csv}\ceage
   	\begin{axis}[ybar=16pt, \bbar{y}{0}, ytick={0, 20, 40, 60, 80, 100}, 
     	width=11.8cm, bar width=16pt, height=4.8cm, ymin=4.5, ymax=106,
-    	enlarge x limits={abs=0.8cm}, enlarge y limits=0.02, 
+    	enlarge x limits={abs=0.8cm}, enlarge y limits=0.025, 
     	symbolic x coords={Under 25, 25--34, 35--44, 45--54, 55--64, 65--74, 75+},
       	tick label style={inner sep=0pt}, %xlabel={Age of Household Reference Person},
     	xtick=data, yticklabel style={text width=1.5em}, 
@@ -2695,9 +2739,9 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 			precision=1, assume math mode}, legend cell align={left},
 		legend style={at={(0.94, 1.075)}, legend columns=1, 
 		fill=white, draw=none}]
-  	\addplot[ybar, bar shift=-8pt, fill=green!80!blue, draw=none, area legend] 
+  	\addplot[ybar, bar shift=-8pt, fill=green!75!blue!70!white, draw=none, area legend] 
   		table [y index=1] {\ceage};
-  	\addplot[ybar, bar shift=8pt, fill=blue!40!magenta, draw=none, area legend] 
+  	\addplot[ybar, bar shift=8pt, fill=blue!50!magenta!90!white, draw=none, area legend] 
   		table [y index=2] {\ceage};
   	\legend{Income, Spending};
   	\end{axis}
@@ -3855,7 +3899,7 @@ According to the US financial accounts, the combined household and nonprofit sec
 	\thickline{orange!60!yellow}{date}{Next9}{data/dfa_nw_sh.csv}
 	\absnode{{2009-05-01}}{5.5}{\footnotesize \color{blue!80!cyan} Bottom 50\%}
 	\absnode{{1993-08-01}}{25.2}{\footnotesize \color{red!60!orange} Top 1\%}
-	\absnode{{2012-01-01}}{42.6}{\footnotesize \color{orange!60!yellow} Next 9\%}
+	\absnode{{2012-01-01}}{42.8}{\footnotesize \color{orange!60!yellow} Next 9\%}
 	\absnode{{2014-10-01}}{27.8}{\footnotesize \color{cyan!80!white} Next 40\%}
 	\input{text/dfa_nw_sh_nodes.txt}
 	\end{axis}
@@ -4062,18 +4106,19 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \newpage
 \subsubsection*{Changes in Wealth}
 \begin{minipage}{0.76\textwidth} \index{wealth!household} \index{households!wealth}
-\small \textbf{Household wealth growth} is largely determined by capital gains (see\cbox{cyan!40!white}), but is also the result of new saving. The portion of aggregate household income that isn't consumed by the household sector becomes net investment in the economy and adds to household wealth. Since 1989, household net investment averages 10 percent of after-tax income.
+\small \textbf{Household wealth growth} is largely determined by capital gains (see\cbox{cyan!40!white}), but is also the result of new saving. The portion of aggregate household income that isn't consumed by the household sector becomes net investment in the economy and adds to household wealth. Since 1989, household net investment averages about eight percent of after-tax income.
 
 In the following chart, income invested at the historical-average rate (see\cbox{magenta!85!white}) is shown separately from investment that is above or below trend (see\cbox{violet}). The separation distinguishes changes in disposable personal income from changes in decisions about how to use that income. Separately, changes in data sources or from natural disasters are identified as other volume changes (see\cbox{cyan!70!blue}).
 \vspace{2mm}
 
 \normalsize{\textbf{Net Worth Growth}}\\
-\footnotesize{\textit{contribution to one-year percent change in net worth, nominal}}
-\vspace{4.8cm}
+\footnotesize{\textit{contribution to one-year percent change in net worth, nominal,}}\\
+\footnotesize{\textit{one-year moving average}}
+\vspace{4.9cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15, 20},
-		height=6.8cm, xticklabel={`\short{\year}}, legend cell align={left},
+		height=6.9cm, xticklabel={`\short{\year}}, legend cell align={left},
 		yticklabel style={text width=1.5em}, clip=false, ymax=18.1, reverse legend,
 		legend style={at={(0.52, 0.24)}, fill=white, legend columns=2}]
 	\rbars
@@ -5445,7 +5490,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \vspace{5.9cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \tydateaxisticks width=10.0cm, height=8.2cm,
+	\begin{axis}[\bbar{y}{0}, \tydateaxisticks width=12.0cm, height=8.2cm,
 		xticklabel={`\short{\year}}, clip=false, max space between ticks=30,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}, 
 		yticklabel style={text width=1.5em}, xmin={2011-01-01}]
@@ -6158,14 +6203,14 @@ Over the long-term, Office of Management and Budget (OMB) data \href{https://www
 \footnotesize{\textit{share of total, percent}}
 \vspace{1mm}
 
-\begin{minipage}{0.58\textwidth}
+\begin{minipage}{0.56\textwidth}
 \small {Since 1990, by Budget Enforcement Act Type}\\
 \vspace{5.0cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\shdateaxisticks, enlarge y limits=0.02, enlarge x limits={0.02}, 
 		yticklabel style={text width=1.5em}, ymin=0, ymax=100, xmin={1990-01-01}, 
-		xmax={2020-10-01}, clip=false,  ytick={0, 50, 100}, 
+		xmax={2024-10-01}, clip=false,  ytick={0, 50, 100}, 
 		width=7.4cm, height=7.2cm, xticklabel={\year}, ]
 	\rbars
 	\abar{green!80!blue!68!black}{date}{National Defense}{data/gov_exp_omb.csv}
@@ -6188,7 +6233,7 @@ Over the long-term, Office of Management and Budget (OMB) data \href{https://www
 \end{tikzpicture}
 
 \footnotesize{Source: Office of Management and Budget} \hfill \tbllink{gov_exp_omb.csv}
-\end{minipage} \hfill \begin{minipage}{0.335\textwidth}
+\end{minipage} \hfill \begin{minipage}{0.365\textwidth}
 \small {Recent Monthly, by Type*}\\
 \vspace{5.0cm}
 
@@ -6196,7 +6241,7 @@ Over the long-term, Office of Management and Budget (OMB) data \href{https://www
 	\begin{axis}[\ltdateaxisticks, enlarge y limits=0.02, enlarge x limits={0.01}, 
 		yticklabel style={text width=1.5em}, ymin=0, ymax=100, ytick=false,
   		ymajorticks=false, clip=false,
-		width=4.7cm, height=7.2cm, xticklabel={`\short{\year}}, ]
+		width=5.3cm, height=7.2cm, xticklabel={`\short{\year}}, ]
 	\rbar
 	\abar{green!80!blue!68!black}{date}{National Defense}{data/gov_exp_mts.csv}
 	\abar{violet!50!black}{date}{Health}{data/gov_exp_mts.csv}
@@ -6207,8 +6252,10 @@ Over the long-term, Office of Management and Budget (OMB) data \href{https://www
 	\abar{orange!80!yellow}{date}{Net Interest}{data/gov_exp_mts.csv}	
 	\absnode{{2017-01-01}}{{100.9}}{\footnotesize \color{white}\textbf{Interest}}
 	\absnode{{2017-01-01}}{{91}}{\footnotesize \color{black!90!white}\textbf{Other*}}
-	\absnode{{2017-01-01}}{{76}}{\footnotesize \color{white}\textbf{Income Security}}
-	\absnode{{2017-01-01}}{{58}}{\footnotesize \color{white}\textbf{Social Security}}
+	\absnode{{2017-01-01}}{{79.2}}{\footnotesize \color{white}\textbf{Income}} 
+	\absnode{{2017-01-01}}{{75.8}}{\footnotesize \color{white}\textbf{Security}}
+	\absnode{{2017-01-01}}{{60.2}}{\footnotesize \color{white}\textbf{Social}}
+	\absnode{{2017-01-01}}{{56.8}}{\footnotesize \color{white}\textbf{Security}}
 	\absnode{{2017-01-01}}{{40}}{\footnotesize \color{white}\textbf{Medicare}}
 	\absnode{{2017-01-01}}{{26}}{\footnotesize \color{white}\textbf{Health}}
 	\absnode{{2017-01-01}}{{11}}{\footnotesize \color{white}\textbf{National Defense}}
@@ -6297,7 +6344,7 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 	\stdline{red!65!magenta}{date}{SS}{data/prog_exp.csv}
 	\node[align=left] at (rel axis cs:0.2, 0.79) {\color{red!65!magenta}\footnotesize {Social Security}};
 	\stdline{blue!85!cyan}{date}{Medicare}{data/prog_exp.csv}
-	\node[align=left] at (rel axis cs:0.73, 0.65) {\color{blue!85!cyan}\footnotesize {Medicare}};
+	\node[align=left] at (rel axis cs:0.72, 0.65) {\color{blue!85!cyan}\footnotesize {Medicare}};
 	\stdline{violet}{date}{Medicaid}{data/prog_exp.csv}
 	\node[align=left] at (rel axis cs:0.23, 0.26) {\color{violet}\footnotesize {Medicaid}};
 	\end{axis}
@@ -8139,8 +8186,8 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \end{minipage}
 \begin{minipage}{0.17\textwidth} 
 \footnotesize \ 6 mo. ending:\\
-\small \cbox{orange!75!yellow} \input{text/cps_lfs_datesh.txt}\\
-\small \cbox{blue!40!magenta} \input{text/cps_lfs_dateshprepan.txt}
+\small \cbox{green!80!blue} \input{text/cps_lfs_datesh.txt}\\
+\small \cbox{cyan!90!black!30!white} \input{text/cps_lfs_dateshprepan.txt}
 \end{minipage}\hspace{1mm}
 \begin{minipage}{0.28\textwidth} 
 \normalsize \textbf{Share of Unemployed}\\
@@ -8159,9 +8206,9 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\ungrp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\ungrp};
   	\end{axis}
 \end{tikzpicture}
@@ -8175,9 +8222,9 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 		yticklabel style={font=\footnotesize}, clip=false, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\ungrpsh};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\ungrpsh};
   	\end{axis}
 \end{tikzpicture}
@@ -8203,9 +8250,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=5] {\unemptt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=6] {\unemptt};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8217,9 +8264,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\unemptt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\unemptt};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8231,9 +8278,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\unemptt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\unemptt};
   	\end{axis}
 \end{tikzpicture}
@@ -8251,9 +8298,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=5] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=6] {\unemp};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8265,9 +8312,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\unemp};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8279,9 +8326,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\unemp};
   	\end{axis}
 \end{tikzpicture}
@@ -8303,9 +8350,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=11] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=12] {\unemp};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8317,9 +8364,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=7] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=8] {\unemp};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8331,9 +8378,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=9] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=10] {\unemp};
   	\end{axis}
 \end{tikzpicture}
@@ -8351,9 +8398,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=17] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=18] {\unemp};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8365,9 +8412,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=13] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=14] {\unemp};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8379,9 +8426,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=15] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=16] {\unemp};
   	\end{axis}
 \end{tikzpicture}
@@ -8399,9 +8446,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=23] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=24] {\unemp};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8413,9 +8460,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=19] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=20] {\unemp};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8427,9 +8474,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=21] {\unemp};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=22] {\unemp};
   	\end{axis}
 \end{tikzpicture}
@@ -8447,9 +8494,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=5] {\unempt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=6] {\unempt};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8461,9 +8508,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\unempt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\unempt};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8475,9 +8522,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\unempt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\unempt};
   	\end{axis}
 \end{tikzpicture}
@@ -8495,9 +8542,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=11] {\unempt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=12] {\unempt};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8509,9 +8556,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=7] {\unempt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=8] {\unempt};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8523,9 +8570,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=blue!40!magenta, draw=none] 
+  	\addplot[fill=cyan!90!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=9] {\unempt};
-  	\addplot[fill=orange!75!yellow, draw=none] 
+  	\addplot[fill=green!80!blue, draw=none] 
   		table [y expr=-\coordindex, x index=10] {\unempt};
   	\end{axis}
 \end{tikzpicture}
@@ -9049,7 +9096,7 @@ Among newly-employed workers, some were considered unemployed the month prior, w
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{jolts.csv} 
 \vspace{3mm}
 
-\small The number of people who voluntarily separate from a job in a given month, divided by the total number employed, is the \textbf{quits rate}. The rate typically increases when workers are confident enough to leave one job for another one, and a high quits rate, particularly in low-paying industries, can be a sign of a tight labor market.
+\small The \textbf{quits rate} measures the share of workers who voluntarily separate from a job in a given month. The rate typically increases when workers are confident enough to leave one job for another one, and a high quits rate, particularly in low-paying industries, can be a sign of a tight labor market.
 \end{minipage}
 \vspace{1mm}
 
@@ -9470,7 +9517,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \subsection*{Wages}
 \begin{minipage}{0.76\textwidth} \index{wages} \index{wages!composition effect}
  \hypertarget{labw}{\label{labw}}
-\small Economists consider wages to be an important economic indicator. Wages are the majority of personal income and the main expense of businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
+\small Economists view wages as an important economic indicator. Wages are the majority of personal income and the main expense of businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
 
 The US measures wages in several ways. As two examples, average hourly earnings comes from the monthly establishment survey, and usual weekly earnings are derived from three combined months of household surveys. This subsection first provides an overview of wage measures and recent results, and then discusses individual measures. 
 \vspace{-2mm}
