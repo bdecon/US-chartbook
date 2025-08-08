@@ -1471,6 +1471,7 @@ First, an overview of contributions to economic growth since 2019. This is follo
     	nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, 
 		max space between ticks=20, enlarge x limits=0.06,
+		legend style={at={(0.3, 1.06)}},
 		enlarge y limits=0.16, height=6.9cm, width=6.85cm, clip=false, 
 		yticklabel style={text width=1.0em}, xtick=data, 
 		xticklabels from table={\datatable}{label}]
@@ -2349,7 +2350,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 Living with family became more common after the collapse of the housing bubble. An additional two percent of adults, or roughly 4.8 million people, live with family in 2010 compared to 2003. Rates of living with family spiked early in the COVID-19 pandemic, particularly for young adults.
 
 \input{text/lwf_recent.txt}
-\vspace{2mm}
+\vspace{1mm}
 
 \normalsize \textbf{Living with Family}\\
 \footnotesize{\textit{share of age group population, percent, seasonally-adjusted, 3-month moving average}}
@@ -2709,6 +2710,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \footnotesize{Income is after taxes; spending does not include spending on pensions} \\
 \footnotesize{Source: Census Consumer Expenditure Surveys} \hfill \tbllink{ce_inc.csv} \ 
 \end{minipage}
+\vspace{2mm}
 
 \subsubsection*{Distribution by Age} \index{income!by age} 
 \begin{minipage}{0.76\textwidth} 
@@ -2721,12 +2723,12 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \begin{minipage}{0.69\textwidth}
 \normalsize \textbf{Household Income and Spending, by Age of Reference Person}\\
 \footnotesize{\textit{average, thousands of \input{text/ce_year.txt}\unskip \ dollars}}
-\vspace{3.1cm}
+\vspace{3.05cm}
 
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\pgfplotstableread[col sep=comma]{data/ce_age.csv}\ceage
   	\begin{axis}[ybar=16pt, \bbar{y}{0}, ytick={0, 20, 40, 60, 80, 100}, 
-    	width=11.8cm, bar width=16pt, height=4.8cm, ymin=4.5, ymax=106,
+    	width=11.8cm, bar width=16pt, height=4.75cm, ymin=4.5, ymax=106,
     	enlarge x limits={abs=0.8cm}, enlarge y limits=0.025, 
     	symbolic x coords={Under 25, 25--34, 35--44, 45--54, 55--64, 65--74, 75+},
       	tick label style={inner sep=0pt}, %xlabel={Age of Household Reference Person},
@@ -2739,9 +2741,9 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 			precision=1, assume math mode}, legend cell align={left},
 		legend style={at={(0.94, 1.075)}, legend columns=1, 
 		fill=white, draw=none}]
-  	\addplot[ybar, bar shift=-8pt, fill=green!75!blue!70!white, draw=none, area legend] 
+  	\addplot[ybar, bar shift=-8pt, fill=green!85!blue!60!black, draw=none, area legend] 
   		table [y index=1] {\ceage};
-  	\addplot[ybar, bar shift=8pt, fill=blue!50!magenta!90!white, draw=none, area legend] 
+  	\addplot[ybar, bar shift=8pt, fill=green!90!blue!70!white, draw=none, area legend] 
   		table [y index=2] {\ceage};
   	\legend{Income, Spending};
   	\end{axis}
@@ -2759,7 +2761,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \index{income!personal}
 \vspace{-0.5mm}
 
-\small \textbf{Personal income}, or pre-tax income, can be \href{https://www.bea.gov/data/income-saving/personal-income}{grouped} into three major categories: labor income, capital income, and net government benefits. Labor income (see\cbox{green!55!blue!72!black}) encompasses wages and salaries and other job benefits, and is measured as compensation of employees in the national accounts. Capital income (see\cbox{yellow!85!orange!88!white}) sums proprietor, rental, dividend, and interest income. Net government social benefits (see\cbox{cyan!90!blue!90!white}) are measured as government social benefits less contributions to social insurance. 
+\small \textbf{Personal income}, the income US residents get before taxes, can be \href{https://www.bea.gov/data/income-saving/personal-income}{grouped} into three major categories: labor income, capital income, and net government benefits. Labor income (see\cbox{green!55!blue!72!black}) encompasses wages and salaries and other job benefits, and is measured as compensation of employees in the national accounts. Capital income (see\cbox{yellow!85!orange!88!white}) sums proprietor, rental, dividend, and interest income. Net government social benefits (see\cbox{cyan!90!blue!90!white}) are measured as government social benefits less contributions to social insurance. 
 \vspace{1mm}
 
 \normalsize \textbf{Personal Income}\\
@@ -2776,9 +2778,9 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 	\ctsbar{cyan!90!blue!90!white}{date}{TRANSFER}{data/pi_levels.csv}{0.8pt}
 	\node[right, align=left, shift=({rel axis cs:0.23,0.23})]
 		{\small \color{white} \textbf{Labor Income}};	
-	\node[right, align=left, shift=({rel axis cs:0.32,0.52})]
+	\node[right, align=left, shift=({rel axis cs:0.3,0.54})]
 		{\small Capital Income};	
-	\node[right, align=left, shift=({rel axis cs:0.11,0.66})]
+	\node[right, align=left, shift=({rel axis cs:0.1,0.67})]
 		{\small \color{cyan!90!blue!90!white} Net Government \\ \small \color{cyan!90!blue!90!white} Benefits};
 	\input{text/pi_level_nodes.txt}	
 	\end{axis}
@@ -3579,7 +3581,7 @@ According to the US financial accounts, the combined household and nonprofit sec
 \newpage
 \vspace*{-10mm}
 
-\begin{minipage}{0.76\textwidth} \index{debt!household} \index{households!debt}
+\begin{minipage}{0.76\textwidth} \index{debt!household} \index{households!debt} \index{consumer credit} \index{debt!consumer credit}
 \small \input{text/hhcdebt3.txt} 
 \vspace{1mm}
 
@@ -3652,11 +3654,11 @@ According to the US financial accounts, the combined household and nonprofit sec
 
 \normalsize \textbf{Consumer Credit}\\
 \footnotesize{\textit{share of disposable personal income, percent}}
-\vspace{3.3cm}
+\vspace{3.4cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20, 
-		enlarge y limits={0.12}, height=5.4cm, width=12.6cm, 
+		enlarge y limits={0.09}, height=5.6cm, width=12.6cm, 
 		yticklabel style={text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false]
 	\rbars
@@ -4221,97 +4223,111 @@ In the following chart, income invested at the historical-average rate (see\cbox
 \subsubsection*{Housing Construction} 
 \begin{minipage}{0.76\textwidth} \index{housing!building permits} \index{building permits}
 \small The Census Bureau \href{https://www.census.gov/construction/bps/}{tracks} the issuance of \textbf{new residential building permits}, which offer insight into planned residential construction. \input{text/permits.txt}
-\vspace{0.5mm}
 
-\normalsize{\textbf{Residential Construction Permits}}\\
-\footnotesize{\textit{building permits issued, seasonally-adjusted annual rate, in thousands}}
-\vspace{2.55cm}
+In addition to data on permits, the Census Bureau also report how many residential construction projects are started and completed. Not all permitted projects are built and completion can be affected by economic conditions. \input{text/completions.txt}
+
+The Census Bureau distinguish between single-family homes and multi-unit housing. \input{text/permits_single.txt} \input{text/permits_multi.txt}
+\vspace{1.5mm}
+
+\normalsize{\textbf{Residential Construction Permits and Completions}}\\
+\footnotesize{\textit{number of housing units permitted or completed, seasonally-adjusted annual rate, in thousands}}
+\vspace{3.2cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20, 
-		xticklabel={`\short{\year}}, clip=false, width=12.0cm, height=4.6cm,
-		yticklabel style={text width=2.2em}, enlarge y limits=0.14, ymin=260]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, 
+		xticklabel={`\short{\year}}, clip=false, width=5.95cm, height=5cm,
+		yticklabel style={text width=2.2em}, enlarge y limits=0, ymin=0, ymax=2900]
 	\rbars		
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits_total.csv}
 	\input{text/permits_node.txt}
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+		draw=black!30!white, inner sep=3.0]
+		{\small \textbf{Pemits, Total}};
 	\end{axis}
-\end{tikzpicture}
-
-\footnotesize{Source: Census Bureau} \hfill \tbllink{permits_total.csv}
-\vspace{2.5mm}
-
-\small In addition to data on permits, the Census Bureau also report how many residential construction projects are started and completed. Not all permitted projects are built and completion can be affected by economic conditions. \input{text/completions.txt}
-\vspace{0.5mm}
-
-\normalsize{\textbf{Residential Construction Completions}}\\
-\footnotesize{\textit{completed units, seasonally-adjusted annual rate, in thousands}}
-\vspace{2.55cm}
-
-\hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
-		xticklabel={`\short{\year}}, clip=false, enlarge y limits=0.14, ymin=260,
-		yticklabel style={text width=2.2em}, width=12.0cm, height=4.6cm]
+\end{tikzpicture} \hspace{6.05cm}
+\begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
+		xticklabel={`\short{\year}}, clip=false, enlarge y limits=0, ymin=0, ymax=2900,
+		yticklabel style={text width=2.2em}, width=5.95cm, height=5cm]
 	\rbars	
 	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_total.csv}	
 	\input{text/completions_node.txt}
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+		draw=black!30!white, inner sep=3.0]
+		{\small \textbf{Completions, Total}};
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Census Bureau} \hfill \tbllink{permits_total.csv}
-\vspace{2.5mm}
-
-\small \input{text/permits_single.txt}
-\vspace{0.5mm}
-
-\normalsize \textbf{Single-Family Units}\\
-\footnotesize{\textit{permits and completions, seasonally-adjusted annual rate, in thousands}}
-\vspace{2.5cm}
+\vspace{3.5cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks yticklabel style={text width=2.2em}, 
-		max space between ticks=20, ymin=250,
-		legend style={at={(0.43, 1.02)}, fill=white}, enlarge y limits=0.16,
-		xticklabel={`\short{\year}}, width=12.7cm, height=4.6cm]
-	\rbars
-	\stdline{blue!60!green}{date}{APERMITS}{data/permits_single.csv}
-	\thinline{blue!40!cyan!80!white}{date}{ACOMPLETIONS}{data/permits_single.csv}
-	\legend{Permits, Completions}
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, 
+		xticklabel={`\short{\year}}, clip=false, width=5.95cm, height=5cm,
+		yticklabel style={text width=2.2em}, enlarge y limits=0, ymin=0, ymax=2300]
+	\rbars		
+	\stdline{blue!70!green}{date}{APERMITS}{data/permits_single.csv}
+	\input{text/permits_single_node.txt}
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+		draw=black!30!white, inner sep=3.0]
+		{\small \textbf{Pemits, Single-Family Units}};
+	\end{axis}
+\end{tikzpicture} \hspace{6.05cm}
+\begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
+		xticklabel={`\short{\year}}, clip=false, enlarge y limits=0, ymin=0, ymax=2300,
+		yticklabel style={text width=2.2em}, width=5.95cm, height=5cm]
+	\rbars	
+	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_single.csv}	
+	\input{text/completions_single_node.txt}
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+		draw=black!30!white, inner sep=3.0]
+		{\small \textbf{Completions, Single-Family Units}};
 	\end{axis}
 \end{tikzpicture}
 
-\footnotesize{Source: Census Bureau} \hfill \tbllink{permits_single.csv}
+\vspace{3.5cm}
+
+\hspace{6mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, 
+		xticklabel={`\short{\year}}, clip=false, width=5.95cm, height=5cm,
+		yticklabel style={text width=2.2em}, enlarge y limits=0, ymin=0, ymax=1150]
+	\rbars		
+	\stdline{blue!70!green}{date}{APERMITS}{data/permits_multi.csv}
+	\input{text/permits_multi_node.txt}
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+		draw=black!30!white, inner sep=3.0]
+		{\small \textbf{Pemits, Multi-Family Units}};
+	\end{axis}
+\end{tikzpicture} \hspace{6.05cm}
+\begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
+		xticklabel={`\short{\year}}, clip=false, enlarge y limits=0, ymin=0, ymax=1150,
+		yticklabel style={text width=2.2em}, width=5.95cm, height=5cm]
+	\rbars	
+	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_multi.csv}	
+	\input{text/completions_multi_node.txt}
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+		draw=black!30!white, inner sep=3.0]
+		{\small \textbf{Completions, Multi-Family Units}};
+	\end{axis}
+\end{tikzpicture}
+\vspace{1mm}
+
+\footnotesize{Source: Census Bureau} \hfill \tbllink{permits_combined.csv}
 \end{minipage}
 \newpage
-\begin{minipage}{0.76\textwidth} \index{housing!building permits}
-\small \input{text/permits_multi.txt}
-\vspace{1mm}
+\vspace*{-10mm}
 
-\normalsize \textbf{Multi-Family Units}\\
-\footnotesize{\textit{permits and completions, in thousands, seasonally-adjusted annual rate}}
-\vspace{2.6cm}
-
-\hspace{4mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks 
-		yticklabel style={text width=1.5em}, legend style={at={(0.48, 1.0)}}, 
-		ymin=72, clip=false, enlarge y limits=0.11,
-		xticklabel={`\short{\year}}, height=4.6cm, width=12.8cm]
-	\rbars
-	\stdline{blue!70!green}{date}{APERMITS}{data/permits_multi.csv}
-	\thinline{blue!40!cyan}{date}{ACOMPLETIONS}{data/permits_multi.csv}
-	\legend{Permits, Completions}
-	\end{axis}
-\end{tikzpicture}
-
-\footnotesize{Source: Census Bureau} \hfill \tbllink{permits_multi.csv}
+\begin{minipage}{0.76\textwidth}
+\subsubsection*{New Residential Sales} \index{housing!new home sales} \index{new home sales}
 \vspace{2mm}
 
-\subsubsection*{New Residential Sales} \index{housing!new home sales} \index{new home sales}
 \small \input{text/nhs.txt}
-\vspace{1mm}
+\vspace{4mm}
 
 \normalsize{\textbf{New Home Sales}}\\
 \footnotesize{\textit{new single family homes sold, in thousands, seasonally adjusted annual rate}}
-\vspace{2.6cm}
+\vspace{2.85cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ymin=140,
@@ -4329,7 +4345,7 @@ In the following chart, income invested at the historical-average rate (see\cbox
 \small \input{text/nhs_rp.txt}
 \vspace{1mm}
 
-\normalsize{\textbf{New Home Sales Price}}\\
+\normalsize{\textbf{Real New Home Sales Price}}\\
 \footnotesize{\textit{real median sales price, in thousands of \input{text/nhs_p_dt.txt}dollars}}
 \vspace{2.7cm}
 
@@ -4344,15 +4360,13 @@ In the following chart, income invested at the historical-average rate (see\cbox
 \end{tikzpicture}
 
 \footnotesize{Source: Census Bureau, Bureau of Labor Statistics} \hfill \tbllink{nhs_rp.csv}
-\end{minipage}
-\newpage
-\vspace*{-8mm}
+\vspace{2mm}
 
-\begin{minipage}{0.76\textwidth} \index{housing!supply}
+\index{housing!supply}
 \small \input{text/nhs_s.txt}
 \vspace{0.5mm}
 
-\normalsize{\textbf{Months Supply}}\\
+\normalsize{\textbf{New Homes, Months of Supply}}\\
 \footnotesize{\textit{new single family homes for sale divided by monthly sales, in months}}\\
 \hspace*{-1mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks
@@ -4364,19 +4378,21 @@ In the following chart, income invested at the historical-average rate (see\cbox
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Census Bureau} \hfill \tbllink{nhs_s.csv}
-\vspace{2mm}
-
+\end{minipage}
+\newpage
+\vspace*{-10mm}
+\begin{minipage}{0.76\textwidth}
 \small \input{text/nha_payment.txt}
 \end{minipage}
-\vspace{-2mm}
+\vspace{-1mm}
 
-\begin{minipage}{0.46\textwidth} \index{housing!affordability}
+\begin{minipage}{0.45\textwidth} \index{housing!affordability}
 \normalsize{\textbf{New House Affordability}}\\
 \footnotesize{\textit{index, new house monthly principal and interest payment}}\\
 \footnotesize{\textit{relative to 1/3rd median usual full-time earnings,}}\\
 \hspace*{-1.5mm} \begin{tikzpicture}
 	\begin{axis}[\dbar{y}{100}, \shdateaxisticks
-		xticklabel={`\short{\year}}, clip=false, height=6.1cm, width=7.7cm, 
+		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=7.55cm, 
 		enlarge y limits={0.24}, 
 		yticklabel style={text width=1.5em}]
 	\rbars
@@ -4386,29 +4402,58 @@ In the following chart, income invested at the historical-average rate (see\cbox
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: Author's Calculations} \hfill \tbllink{nha.csv} \ 
-\end{minipage} \hspace{4.5mm}
-\begin{minipage}{0.26\textwidth}
+\end{minipage} \hspace{4.0mm}
+\begin{minipage}{0.275\textwidth}
 \small \input{text/nha2.txt} 
 \end{minipage}
-\vspace{2mm}
+\vspace{0.5mm}
 
 \begin{minipage}{0.76\textwidth}
 \normalsize \textbf{New House Affordability}\\
-\footnotesize{\textit{index components}\\
+\footnotesize{\textit{index components}
+\vspace*{-4.5mm}
+
 \hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.2pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.54}
 \begin{tabular}{p{37mm} R{11mm} R{12mm} R{12mm} R{12mm}
 		 		 R{12mm} R{12mm}}
 			 \input data/nha.tex \hline
 		\end{tabular}}}
-
-\vspace{-2mm}		
+\vspace*{-2.5mm}
+	
 \footnotesize{Source: Author's Calculations, Census Bureau, Freddie Mac, CPS} \hfill \tbllink{nha_ts.csv} \\
 \footnotesize{See also the more-comprehensive \href{https://www.atlantafed.org/center-for-housing-and-policy/data-and-tools/home-ownership-affordability-monitor}{Home Ownership Affordability Monitor} from the Federal Reserve Bank of Atlanta.}
+\vspace{2mm}
+
+\subsubsection*{Housing Prices} \index{housing!prices} \index{prices!housing} \index{housing!price to rent ratio}
+
+\small Housing prices are a particularly important topic in the US. To get a sense of recent trends, we can compare the results from different housing price indices. Measures include the Zillow Home Value Index (see {\color{violet}\textbf{---}}), Case-Shiller Home Price Index (see {\color{cyan}\textbf{---}}), and the Federal Housing Finance Authority House Price Index (see {\color{magenta}\textbf{- -}}).  
+\end{minipage}
+
+\begin{minipage}{0.285\textwidth}
+\small Despite differences in methods and data sources, the three measures return similar results. \input{text/housing_price_summary.txt}
+\end{minipage}\hspace{5.5mm}
+\begin{minipage}{0.435\textwidth}
+\normalsize \textbf{Housing Price Indices}\\
+\footnotesize{\textit{index, January 2022=100}}\\
+\hspace*{-1mm} \begin{tikzpicture}
+	\begin{axis}[\ltdateaxisticks ytick={70, 80, 90, 100, 110, 120}, 
+		xticklabel={`\short{\year}}, \bbar{y}{100},
+		yticklabel style={text width=1.3em}, height=5.6cm, 
+		width=7.9cm, clip=false, legend cell align={left},
+		legend style={fill=white, legend columns=1, at={(0.85, 0.4)}}]
+	\rbar
+	\stdline{violet}{date}{ZHVI}{data/housing_price_summary.csv}
+	\thinline{cyan}{date}{Case-Shiller}{data/housing_price_summary.csv}
+	\dashline{magenta}{date}{HPI}{data/housing_price_summary.csv}
+	\legend{Zillow, Case-Shiller, FHFA};
+	\end{axis}
+\end{tikzpicture}\\
+\footnotesize{Source: Zillow, S\&P CoreLogic, FHFA} \hfill \tbllink{housing_price_summary.csv} 
 \end{minipage}
 \newpage
-\subsubsection*{Housing Prices} \index{housing!prices} \index{prices!housing} \index{housing!price to rent ratio}
-\begin{minipage}{0.76\textwidth}
+\index{housing!prices} \index{prices!housing} \index{housing!price to rent ratio}
+\begin{minipage}{0.76\textwidth} 
 \small The Federal Housing Finance Agency (FHFA) \textbf{house price index} \href{https://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index-Datasets.aspx}{measures} changes in the price of the same home. The seasonally-adjusted index \input{text/fhfa.txt}
 
 \normalsize \textbf{House Price Index}\\
@@ -4431,7 +4476,7 @@ In the following chart, income invested at the historical-average rate (see\cbox
 \footnotesize{Source: Federal Housing Finance Agency} \hfill \tbllink{hpi.csv}
 \vspace{1mm}
 
-\normalsize{\textbf{House Price Growth}}\\
+\normalsize{\textbf{House Price Growth by Region}}\\
 \footnotesize{\textit{seasonally adjusted, one-year percent change}}\\
 \hspace*{-3mm} \noindent \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.6pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.45}
@@ -4443,6 +4488,8 @@ In the following chart, income invested at the historical-average rate (see\cbox
 \footnotesize{Source: Federal Housing Finance Agency} \hfill \tbllink{hpi.csv}
 \end{minipage}
 \vspace{3mm}
+
+\normalsize Housing Price to Rent Ratio
 
 \begin{minipage}{0.33\textwidth}
 \small The purchase price of housing should move with the rental price. When housing prices exceed the rental equivalent, it may suggest that housing is overvalued. 
@@ -8186,8 +8233,8 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 \end{minipage}
 \begin{minipage}{0.17\textwidth} 
 \footnotesize \ 6 mo. ending:\\
-\small \cbox{green!80!blue} \input{text/cps_lfs_datesh.txt}\\
-\small \cbox{cyan!90!black!30!white} \input{text/cps_lfs_dateshprepan.txt}
+\small \cbox{green!60!blue!90!black} \input{text/cps_lfs_datesh.txt}\\
+\small \cbox{cyan!75!black!30!white} \input{text/cps_lfs_dateshprepan.txt}
 \end{minipage}\hspace{1mm}
 \begin{minipage}{0.28\textwidth} 
 \normalsize \textbf{Share of Unemployed}\\
@@ -8206,9 +8253,9 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\ungrp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\ungrp};
   	\end{axis}
 \end{tikzpicture}
@@ -8222,9 +8269,9 @@ Employment rates vary dramatically by location. \input{text/acs_ftfy_text.txt}Th
 		yticklabel style={font=\footnotesize}, clip=false, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\ungrpsh};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\ungrpsh};
   	\end{axis}
 \end{tikzpicture}
@@ -8250,9 +8297,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=5] {\unemptt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=6] {\unemptt};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8264,9 +8311,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\unemptt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\unemptt};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8278,9 +8325,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\unemptt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\unemptt};
   	\end{axis}
 \end{tikzpicture}
@@ -8298,9 +8345,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=5] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=6] {\unemp};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8312,9 +8359,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\unemp};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8326,9 +8373,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\unemp};
   	\end{axis}
 \end{tikzpicture}
@@ -8350,9 +8397,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=11] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=12] {\unemp};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8364,9 +8411,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=7] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=8] {\unemp};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8378,9 +8425,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=9] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=10] {\unemp};
   	\end{axis}
 \end{tikzpicture}
@@ -8398,9 +8445,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=17] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=18] {\unemp};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8412,9 +8459,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=13] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=14] {\unemp};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8426,9 +8473,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=15] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=16] {\unemp};
   	\end{axis}
 \end{tikzpicture}
@@ -8446,9 +8493,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=23] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=24] {\unemp};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8460,9 +8507,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=19] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=20] {\unemp};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8474,9 +8521,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=21] {\unemp};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=22] {\unemp};
   	\end{axis}
 \end{tikzpicture}
@@ -8494,9 +8541,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=5] {\unempt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=6] {\unempt};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8508,9 +8555,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=1] {\unempt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=2] {\unempt};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8522,9 +8569,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=3] {\unempt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=4] {\unempt};
   	\end{axis}
 \end{tikzpicture}
@@ -8542,9 +8589,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=11] {\unempt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=12] {\unempt};
   	\end{axis}
 \end{tikzpicture} \hfill
@@ -8556,9 +8603,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=7] {\unempt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=8] {\unempt};
   	\end{axis}
 \end{tikzpicture}\hfill
@@ -8570,9 +8617,9 @@ Total \hspace{34mm} Men \hspace{32mm} Women\\
 		yticklabel style={font=\footnotesize}, nodes near coords, 
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}]
-  	\addplot[fill=cyan!90!black!30!white, draw=none] 
+  	\addplot[fill=cyan!75!black!30!white, draw=none] 
   		table [y expr=-\coordindex, x index=9] {\unempt};
-  	\addplot[fill=green!80!blue, draw=none] 
+  	\addplot[fill=green!60!blue!90!black, draw=none] 
   		table [y expr=-\coordindex, x index=10] {\unempt};
   	\end{axis}
 \end{tikzpicture}
@@ -8737,16 +8784,54 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \footnotesize{Source: Bureau of Labor Statistics; \ Full Table: \tbllink{msa_unemp_rate.csv} \\ \**Pct Ch is percent change in labor force from \input{text/unemp_map_date.txt}}
 \end{minipage}
 \newpage
+\vspace*{-11mm}
+
 \subsubsection*{Unemployment by State}
 \begin{minipage}{0.76\textwidth} \index{unemployment!by state}
 \small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{report} the \textbf{state unemployment rate}--unemployed people as a share of the state labor force--each month, around three weeks after reporting the national unemployment rate. \input{text/state_unemp.txt}
+\end{minipage}
 
 \normalsize \textbf{Unemployment Rate by State}\\
 \footnotesize{\textit{unemployed share of labor force, percent, not seasonally adjusted}}\\
 \vspace{-2mm}
 \hspace{-10mm} \input{data/unemp_map.pgf} \\
-\footnotesize{Source: Bureau of Labor Statistics} \hspace{72mm} \tbllink{state_unrate.csv}
+%\footnotesize{Source: Bureau of Labor Statistics} \hspace{72mm} \tbllink{state_unrate.csv}
+\vspace{-2.5mm}
+
+\begin{minipage}{0.76\textwidth}
+\normalsize \textbf{Unemployment Rate and One-Year Change}\\
+\footnotesize{\textit{age 16 and older unemployment rate, percent, not seasonally-adjusted, as of \input{text/laus_unemp_state_date.txt}}}\\
+\footnotesize{\textit{and one-year change, percentage points}}
 \end{minipage}
+\vspace*{-6.0mm}
+
+\begin{minipage}{0.275\textwidth}
+\footnotesize
+\hspace*{-3mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{1.8pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.5}
+		 \begin{tabular}{p{21mm} R{8mm} p{7.5mm}}
+			\input data/unemp_rate_state1.tex \hline
+		\end{tabular}}
+\end{minipage} \hspace{-3mm}
+\begin{minipage}{0.275\textwidth}
+\footnotesize
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{1.8pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.5}
+		 \begin{tabular}{p{20mm} R{8mm} p{7.5mm}}
+			\input data/unemp_rate_state2.tex \hline
+		\end{tabular}}
+\end{minipage} \hspace{-3mm}
+\begin{minipage}{0.29\textwidth}
+\footnotesize
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{1.8pt} \color{black!90}
+		{\renewcommand{\arraystretch}{1.5}
+		 \begin{tabular}{p{23.5mm} R{8mm} p{7.5mm}}
+			\input data/unemp_rate_state3.tex \hline
+		\end{tabular}}
+\end{minipage}
+\vspace*{-2mm}
+
+\footnotesize{Source: Bureau of Economic Analysis} \hspace{75mm} \tbllink{state_unrate.csv}
 \newpage
 \subsubsection*{Jobless Claims}
 \begin{minipage}{0.76\textwidth} \index{insured unemployed} \index{unemployment!jobless claims} \index{jobless claims}
@@ -9282,18 +9367,18 @@ The current population survey asks whether individuals have the same employer as
 \begin{minipage}{0.38\textwidth}
 \normalsize \textbf{Expected Separations}\\
 \footnotesize{\textit{mean probability of separation, percent}}
-\vspace{4.0cm}
+\vspace{4.1cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\ltdateaxisticks  \bbar{y}{0}, 
+	\begin{axis}[\dateaxisticks  \bbar{y}{0}, 
 		enlarge y limits={0.05}, clip=false, max space between ticks=20,	
 		yticklabel style={text width=1.0em}, ymin=1, ymax=25.5,
-		xticklabel={`\short{\year}}, height=6.1cm, width=6.7cm]
+		xticklabel={`\short{\year}}, height=6.2cm, width=6.7cm]
 	\rbar
 	\stdline{cyan}{date}{Losing}{data/sce_job_separation.csv}
 	\absnode{{2015-10-01}}{13}{\footnotesize \color{cyan}\textbf{Lose Job}}
 	\stdline{violet!50!blue}{date}{Leaving}{data/sce_job_separation.csv}
-	\absnode{{2013-06-01}}{25.6}{\footnotesize \color{violet!50!blue}\textbf{Voluntary}}
+	\absnode{{2013-06-01}}{25.7}{\footnotesize \color{violet!50!blue}\textbf{Voluntary}}
 	\input{text/sce_job_sep_nodes.txt}
 	\end{axis}
 \end{tikzpicture}
@@ -10300,7 +10385,7 @@ In the US, several stock market indices track the share price of a basket of com
 \vspace{1mm}
 
 \normalsize \textbf{Stock Market Indices}\\
-\footnotesize{\textit{adjusted close, index value, in thousands \hspace{29mm} 2018--onward, in detail}}\\
+\footnotesize{\textit{adjusted close, index value, in thousands \hspace{29mm} 2019--onward, in detail}}\\
 \hspace*{-3mm} \begin{tikzpicture}
 	\begin{groupplot}[group style={group name=equities, group size=2 by 4, 
     	x descriptions at=edge bottom, horizontal sep=26pt, vertical sep=7pt},
@@ -10311,27 +10396,28 @@ In the US, several stock market indices track the share price of a basket of com
 		enlarge y limits={value=0.16,upper}, ymin=0, yticklabel style={text width=1.2em}, 
 		width=8.2cm, xmin={1989-01-01}]
 	\rbars
-	\coordinate (c1) at ({2017-12-31},2);
+	\coordinate (c1) at ({2018-12-31},2);
   	\coordinate (c2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (c1) rectangle (c2);
 	\thickline{green!80!blue!90!black}{date}{spx}{data/equity_indices.csv}
 	\input{text/spx_ch_node.txt}
-	\nextgroupplot[\empticks ytick={2, 3, 4, 5, 6}, enlarge y limits={0.18}, width=5.8cm]
+	\nextgroupplot[\empticks ytick={2, 3, 4, 5, 6, 7}, 
+		enlarge y limits={0.1}, width=5.8cm]
 	\rbar
 	\thickline{black!30}{date}{spx_MA}{data/equity_indices_lt.csv}
 	\thinline{green!80!blue!90!black}{date}{spx}{data/equity_indices_lt.csv}
 	\absnodeml{{2021-01-01}}{3.35}{\scriptsize 
-		\color{black!60}One-year moving average}{1.3}
+		\color{black!60}One-year moving average}{1.9}
 	\nextgroupplot[\bbar{y}{0}, \empticks enlarge y limits={value=0.16,upper}, ymin=0, 
 		yticklabel style={text width=1.2em}, width=8.2cm, xmin={1989-01-01}]
 	\rbars
-	\coordinate (d1) at ({2017-12-31},6);
+	\coordinate (d1) at ({2018-12-31},6);
   	\coordinate (d2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (d1) rectangle (d2);
 	\thickline{blue}{date}{ndq}{data/equity_indices.csv}
 	\input{text/ndq_ch_node.txt}
-	\nextgroupplot[\empticks enlarge y limits={0.18}, yticklabel style={text width=1.0em},
-		 width=5.8cm]
+	\nextgroupplot[\empticks enlarge y limits={0.1}, 
+		yticklabel style={text width=1.0em}, width=5.8cm]
 	\rbar
 	\thickline{black!30}{date}{ndq_MA}{data/equity_indices_lt.csv}
 	\thinline{blue}{date}{ndq}{data/equity_indices_lt.csv}
@@ -10339,13 +10425,13 @@ In the US, several stock market indices track the share price of a basket of com
 		enlarge y limits={value=0.16,upper}, ymin=0, 
 		yticklabel style={text width=1.0em}, xmin={1989-01-01}, width=8.2cm]
 	\rbars
-	\coordinate (e1) at ({2017-12-31},18);
+	\coordinate (e1) at ({2018-12-31},18);
   	\coordinate (e2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (e1) rectangle (e2);
 	\thickline{red}{date}{dji}{data/equity_indices.csv}
 	\input{text/dji_ch_node.txt}
-	\nextgroupplot[\empticks enlarge y limits={0.18}, yticklabel style={text width=1.0em},
-		 width=5.8cm]
+	\nextgroupplot[\empticks enlarge y limits={0.1}, 
+		yticklabel style={text width=1.0em}, width=5.8cm]
 	\rbar
 	\thickline{black!30}{date}{dji_MA}{data/equity_indices_lt.csv}
 	\thinline{red}{date}{dji}{data/equity_indices_lt.csv}
@@ -10354,12 +10440,12 @@ In the US, several stock market indices track the share price of a basket of com
 		xticklabel style={yshift=2pt}, 
 		xticklabel={`\short{\year}}, width=8.2cm]
 	\rbars
-	\coordinate (f1) at ({2017-12-31},1);
+	\coordinate (f1) at ({2018-12-31},5);
   	\coordinate (f2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (f1) rectangle (f2);
 	\thickline{violet}{date}{ndx}{data/equity_indices.csv}
 	\input{text/ndx_ch_node.txt}
-	\nextgroupplot[\ltdateaxisticks enlarge y limits={0.18}, xtick style={draw=black!20},
+	\nextgroupplot[\ltdateaxisticks enlarge y limits={0.1}, xtick style={draw=black!20},
 		xticklabel style={yshift=2pt}, 
 		yticklabel style={text width=1.2em}, xticklabel={`\short{\year}}, width=5.8cm]
 	\rbar
@@ -11004,6 +11090,21 @@ A large increase in the amount of money held by individuals and institutions can
 \end{tikzpicture}
 
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{m2.csv}
+\vspace{4mm}
+
+\normalsize \textbf{Selected Money Stock Components}\\
+\footnotesize{\textit{share of GDP, percent, not seasonally adjusted}
+\vspace*{-3mm}
+
+\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+{\renewcommand{\arraystretch}{1.54}
+	\begin{tabular}{p{26mm} R{9mm} R{9mm} R{9mm} R{9mm} R{9mm} R{9mm} R{9mm} R{9mm}}
+		\input data/m2gdp.tex \hline
+	\end{tabular}
+}}
+\vspace*{-2.5mm}
+
+\footnotesize{Source: Federal Reserve} 
 \end{minipage}
 \newpage
 \subsubsection*{Fed Asset Purchases}
@@ -11066,10 +11167,10 @@ Inflation is typically calculated as the 12-month percent change in the price in
 \footnotesize{\textit{one-year growth, percent}}
 \vspace*{-4mm}
 
-\hspace*{-2mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.1pt} \color{black!90}
+\hspace*{-2.5mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{2.5pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.5}
-		\begin{tabular}{p{30mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} 
-		   R{9.2mm} R{8.5mm}}
+		\begin{tabular}{p{28.5mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm} R{7.6mm}	
+		   R{7.6mm} R{9.2mm} R{8.5mm}}
 			 \input data/prices_12m.tex \hline
 		\end{tabular}}\vspace{-1mm}
 		
@@ -11111,6 +11212,8 @@ Inflation is typically calculated as the 12-month percent change in the price in
 \newpage
 \markright{\footnotesize \color{purple!60!magenta}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Prices}
 \hypertarget{prin}{\label{prin}}
+\vspace*{-10mm}
+
 \subsection*{Consumer Price Index}
 \begin{minipage}{0.76\textwidth}
 \index{prices!consumer price index}
@@ -11125,7 +11228,7 @@ Inflation is typically calculated as the 12-month percent change in the price in
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.98, 1.14)}}, yticklabel style={text width=1.0em}, 
-		height=5.6cm, width=12.4cm, enlarge y limits={0.1}]
+		height=5.6cm, width=12.4cm, enlarge y limits={0.09}]
 	\rbars
 	\stdline{blue!60!cyan}{date}{ALL}{data/cpi.csv}
 	\stdline{gray}{date}{CORE}{data/cpi.csv}
@@ -11140,16 +11243,16 @@ Inflation is typically calculated as the 12-month percent change in the price in
 \small Recent changes in prices can be broad-based, that is derived from many prices changing at roughly the same rate, or narrow-based and driven by large changes in a subset of prices. Identifying each major spending category's \textbf{contribution to overall inflation} gives insight into whether inflation is broad-based and also into which groups of people face higher or lower rates of inflation.
 \end{minipage}
 
-\begin{minipage}{0.32\textwidth}
+\begin{minipage}{0.31\textwidth}
 \small \input{text/cpicomp.txt}
 \end{minipage} \hspace{6mm}
-\begin{minipage}{0.39\textwidth}
+\begin{minipage}{0.4\textwidth}
 \normalsize \textbf{Contribution of Major Categories}\\
 \footnotesize{\textit{contribution to one-year CPI inflation rate}}\\
 \footnotesize{\textit{percentage points, not seasonally adjusted}}\\
 \hspace*{-3mm} \begin{tikzpicture} 	\pgfplotstableread[col sep=comma]{data/cpi_comp.csv}\cpi
   	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.0cm}{1.5ex}
-    	width=5.6cm, bar width=2.0ex, height=9.7cm,
+    	width=5.8cm, bar width=2.0ex, height=9.6cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.16, \bbar{x}{0},
 		yticklabels from table={\cpi}{name}, nodes near coords, 
 		yticklabel style={font=\footnotesize, xshift=-2pt, style={black!90}},
@@ -11244,7 +11347,6 @@ One-year inflation rates for different categories of goods and services, includi
 \vspace{-2mm}		
 		
 \footnotesize{Source: Bureau of Labor Statistics; *not seasonally adjusted
-\newpage
 \hypertarget{prie}{\label{prie}}
 \vspace*{-9mm}
 
@@ -11263,14 +11365,14 @@ One-year inflation rates for different categories of goods and services, includi
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\ltdateaxisticks ytick={0, 1, 2, 3, 4, 5}, 
 		enlarge y limits={0.1}, ymin=0.28, ymax=4.6, \bbar{y}{0}, clip=false,
-		xticklabel={`\short{\year}}, height=6.5cm, width=6.9cm]
+		xticklabel={`\short{\year}}, height=6.5cm, width=6.95cm]
 	\rbar
 	\thinline{blue!70!black}{date}{T5YIE}{data/infbreak.csv}
 	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
 	\input{text/infumich_node.txt}
-	\absnode{{2017-05-01}}{1.55}{\footnotesize \color{blue!70!black}\textbf{Market}}
-	\absnode{{2017-10-01}}{3.05}{\footnotesize \color{violet!60!magenta}\textbf{Survey}}
+	\absnode{{2018-05-01}}{1.25}{\footnotesize \color{blue!70!black}\textbf{Market}}
+	\absnode{{2018-05-01}}{3.15}{\footnotesize \color{violet!60!magenta}\textbf{Survey}}
 	\end{axis}
 \end{tikzpicture}\\
 \footnotesize{Source: FRED, U. of Michigan} \hfill \tbllink{infbreak.csv} \ \ 
@@ -11318,12 +11420,13 @@ One-year inflation rates for different categories of goods and services, includi
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\ltdateaxisticks ytick={0, 1, 2, 3, 4}, 
 		enlarge y limits={0.1}, ymin=0.2, ymax=3.05, \bbar{y}{0}, clip=false,
-		xticklabel={\year}, height=4.6cm, width=8.6cm]
+		xticklabel={`\short{\year}}, height=4.6cm, width=8.6cm]
 		\rbar
 		\thinline{blue!70!black}{date}{5_year_breakeven}{data/infbreak_comb.csv}
-		\thinline{cyan}{date}{5_year_5_year_forward}{data/infbreak_comb.csv}
-		\absnode{{2017-05-01}}{1.5}{\footnotesize \color{blue!70!black}\textbf{Next 5 years}}
-		\absnode{{2017-09-01}}{2.85}{\footnotesize \color{cyan}\textbf{Following 5 years}}
+		\thinline{cyan!90!white}{date}{5_year_5_year_forward}{data/infbreak_comb.csv}
+		\absnode{{2018-05-01}}{1.5}{\footnotesize \color{blue!70!black}\textbf{Next} \\ 
+		 \footnotesize \color{blue!70!black}\textbf{5 years}}
+		\absnode{{2018-04-01}}{3.15}{\footnotesize \color{cyan!90!white}\textbf{Following} \\ \footnotesize \color{cyan!90!white}\textbf{5 years}}
 	\end{axis}
 \end{tikzpicture}
 
