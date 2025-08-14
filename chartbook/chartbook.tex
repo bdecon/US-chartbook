@@ -354,6 +354,7 @@
 	\pgfplotstableread[header=true, col sep=comma]{data/lprod_rec.csv}\lprodrec	
 	\pgfplotstableread[header=true, col sep=comma]{data/pa_epop_rec.csv}\paepoprec
 	\pgfplotstableread[header=true, col sep=comma]{data/ahe_monthly.csv}\ahemo	
+	\pgfplotstableread[header=true, col sep=comma]{data/spx_recent.csv}\sprec
 	
 	
 % % % % % % % %
@@ -691,7 +692,7 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 \end{description}
 \vspace{3mm}
 
-\tocentry{cap}{\cbox{orange!80!yellow} Capital Markets}
+\tocentry{cap}{\cbox{orange!80!yellow} Financial Markets}
 \begin{description}[labelindent=-2mm]
 \tocentsm{capeq}{Equity Markets}
 \tocentsm{capint}{Interest Rates}
@@ -10415,30 +10416,95 @@ One theory of what drives medium-term trends, called the \textit{Kaldor-Verdoorn
 \small Union membership rates vary substantially by industry. \input{text/union_ind.txt}
 \end{minipage}
 \newpage
-\vspace*{-10mm}
+\vspace*{-14mm}
 
 \hypertarget{cap}{\label{cap}}
 \section*{\bcbox{orange!80!yellow}Financial Markets}
-\vspace*{-3mm}
 
 \thispagestyle{sectpage}
 \begin{minipage}{0.76\textwidth}
-\vspace{-1mm}
-\small The US financial markets provide funding for borrowers' activities and offer potential income to lenders. The US equity and bond markets are the largest in the world, with daily trading volumes of several hundred billion dollars. This section discusses equity markets, interest rates and bond markets, and money and monetary policy. 
-\hypertarget{capeq}{\label{capeq}}
+\vspace{-1.5mm}
+\small The US financial markets provide funding for borrowers' activities and offer potential income to lenders. The US equity and bond markets are the largest in the world, with daily trading volumes of several hundred billion dollars. 
+
+The US financial markets also provide information that is helpful for macroeconomic analysis. This section discusses equity markets, interest rates and bond markets, and money and monetary policy. 
+\end{minipage}
+\vspace{0.5mm}
+\subsection*{High-Frequency Indicators}
+
+\begin{minipage}{0.76\textwidth}
+\small Relative to most economic indicators, financial markets provide a higher frequency of information. High-frequency indicators, summarized daily, can show developments before typical economic measures report the changes. 
+
+The next charts capture very recent developments using high-frequency indicators. The S\&P 500 stock market index open, close, daily high, and daily low are shown for the past three months. Also shown is the stock market volatility index (VIX), which will spike when people expect swings in stock prices. 
+
+Treasury yields are an important measure of expected future interest rates, which themselves capture important information, such as expected future inflation and growth. Each of these indicators is discussed in more depth later in this chartbook section. 
+\end{minipage}
+\vspace{1mm}
+
+%\normalsize \textbf{S\&P 500} \footnotesize
+\begin{tikzpicture}
+\hspace*{-2mm} \begin{groupplot}[group style={group size=1 by 3, 
+		vertical sep=4pt, xlabels at=edge bottom, xticklabels at=edge bottom},
+		xtick distance=10, xtick=data,
+    	xticklabels from table={\sprec}{label},
+		clip=false, xmax=64,
+		minor xtick={1, 11, 21, 31, 41, 51, 61},
+		xminorgrids, enlarge x limits={0.01}, 
+		yticklabel style={text width=1.6em},
+		xticklabel style={align=center, yshift=-2pt}, minor tick length=7pt, 
+		tick label style={inner sep=0pt}, xticklabel pos=lower,
+		axis line style={draw=none}]
+	\nextgroupplot[
+		height=6.0cm, width=12.4cm, 
+		enlarge y limits={0.04}]
+	\addplot[ybar stacked, bar width=2.8pt, opacity=0] 
+			table [x=idx, y=Low, col sep=comma]{data/spx_recent.csv};
+	\addplot[ybar stacked, bar width=2.8pt, draw=red!80!blue!80!white, fill opacity=0] 
+			table [x=idx, y=Height_Dec, col sep=comma]{data/spx_recent.csv};
+	\ctsbar{green!65!blue!90!black}{idx}{Height_Inc}{data/spx_recent.csv}{2.8pt}
+	\addplot[only marks, mark=-, draw=black, mark size=1.2pt] 
+		table [x=idxplus, y=Close, col sep=comma]{data/spx_recent.csv};
+	\addplot[only marks, mark=-, draw=black, mark size=1.2pt] 
+		table [x=idxminus, y=Open, col sep=comma]{data/spx_recent.csv};
+	\node[right, align=left] at (rel axis cs:-0.04, 1.02) {\normalsize \textbf{S\&P 500}  \ \footnotesize{\textit{index}} \ \ \hyperlink{capeq}{\normalsize \faChartBar[regular]}};
+	\input{text/sp500_hfi_node.txt}
+\nextgroupplot[
+		enlarge y limits={0.22},
+		height=4.4cm, width=12.4cm]
+	\stdline{violet!80!magenta}{idx}{CLOSE}{data/spx_recent.csv}
+	\input{text/vixlt_node.txt}
+	\node[right, align=left] at (rel axis cs:-0.04, 0.96) {\normalsize \textbf{VIX} \ \footnotesize{\textit{daily close}} \ \ \hyperlink{capvol}{\normalsize \faChartBar[regular]}};
+\nextgroupplot[
+		enlarge y limits={0.22}, legend style={at={(0.94, 1.02)}},
+		height=5.6cm, width=12.4cm]
+	\addplot[draw=blue!50!black, mark size=0.6pt, mark=o] 
+		table [x=idx, y=TenYr, col sep=comma]{data/spx_recent.csv};
+	\thickline{blue!50!cyan}{idx}{ThreeMo}{data/spx_recent.csv}
+	\addplot[opacity=0] 
+			table [x=idx, y=TYAVG, col sep=comma]{data/spx_recent.csv};
+	\node[right, align=left] at (rel axis cs:-0.04, 0.95) {\normalsize \textbf{Treasury Yields} \ \footnotesize{\textit{percent}} \ \ \hyperlink{captreas}{\normalsize \faChartBar[regular]}};
+	\input{text/treas_hfi_nodes.txt}
+	\legend{Ten-Year Bond,Three-Month Bill};
+	\end{groupplot}
+	\end{tikzpicture}
+\newpage
+\vspace*{-17mm}
+
+\hypertarget{capeq}{\label{capeq}}  \markright{\footnotesize \color{orange!80!yellow}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Financial Markets}
 \subsection*{Equity Markets}
 \index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq}
+
+\begin{minipage}{0.76\textwidth}
 \small Equity markets, or \textbf{stock markets}, provide a method for businesses to raise capital by selling shares, which represent ownership claims on the business. Equity markets also provide a place for people to buy and sell existing shares. Investors purchase shares in hopes that the price will go up, allowing them to sell the shares at a higher price and receive capital gains, or to gain access to a stream of dividends, which are payments from businesses to shareholders. 
 
-In the US, several stock market indices track the share price of a basket of companies. These measures are weighted by the market capitalization of the companies in the basket, which is the share price multiplied by the number of shares. Market capitalization is the market value of a company. The following charts and tables capture the \textit{adjusted} close price, which is adjusted to include splits, dividends, and capital gains distributions.
+In the US, several stock market indices track the share price of a basket of companies. These measures are weighted by the market capitalization of the companies in the basket, which is the market value of each company. The following charts and table are adjusted to include stock splits, dividends, and capital gains distributions.
 \vspace{1mm}
 
 \normalsize \textbf{Stock Market Indices}\\
 \footnotesize{\textit{adjusted close, index value, in thousands \hspace{29mm} 2019--onward, in detail}}\\
 \hspace*{-3mm} \begin{tikzpicture}
-	\begin{groupplot}[group style={group name=equities, group size=2 by 4, 
+	\begin{groupplot}[group style={group name=equities, group size=2 by 3, 
     	x descriptions at=edge bottom, horizontal sep=26pt, vertical sep=7pt},
-    	height=4.3cm, clip=false, xticklabels=\empty, xtick style={draw=none},
+    	height=4.0cm, clip=false, xticklabels=\empty, xtick style={draw=none},
     	date coordinates in=x, axis line style={draw=none},
     	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
 	\nextgroupplot[\bbar{y}{0}, \empticks ytick={0, 2, 4, 6}, 
@@ -10470,36 +10536,22 @@ In the US, several stock market indices track the share price of a basket of com
 	\rbar
 	\thickline{black!30}{date}{ndq_MA}{data/equity_indices_lt.csv}
 	\thinline{blue}{date}{ndq}{data/equity_indices_lt.csv}
-	\nextgroupplot[\bbar{y}{0}, \empticks 
-		enlarge y limits={value=0.16,upper}, ymin=0, 
-		yticklabel style={text width=1.0em}, xmin={1989-01-01}, width=8.2cm]
-	\rbars
-	\coordinate (e1) at ({2018-12-31},18);
-  	\coordinate (e2) at (rel axis cs:1,1);
-	\draw [black!25!white, dashed] (e1) rectangle (e2);
-	\thickline{red}{date}{dji}{data/equity_indices.csv}
-	\input{text/dji_ch_node.txt}
-	\nextgroupplot[\empticks enlarge y limits={0.1}, 
-		yticklabel style={text width=1.0em}, width=5.8cm]
-	\rbar
-	\thickline{black!30}{date}{dji_MA}{data/equity_indices_lt.csv}
-	\thinline{red}{date}{dji}{data/equity_indices_lt.csv}
 	\nextgroupplot[\bbar{y}{0}, \shdateaxisticks xtick style={draw=black!20},
 		enlarge y limits={value=0.16,upper}, ymin=0, xmin={1989-01-01},
 		xticklabel style={yshift=2pt}, 
 		xticklabel={`\short{\year}}, width=8.2cm]
 	\rbars
-	\coordinate (f1) at ({2018-12-31},5);
-  	\coordinate (f2) at (rel axis cs:1,1);
-	\draw [black!25!white, dashed] (f1) rectangle (f2);
-	\thickline{violet}{date}{ndx}{data/equity_indices.csv}
-	\input{text/ndx_ch_node.txt}
+	\coordinate (e1) at ({2018-12-31},5);
+  	\coordinate (e2) at (rel axis cs:1,1);
+	\draw [black!25!white, dashed] (e1) rectangle (e2);
+	\thickline{red}{date}{dji}{data/equity_indices.csv}
+	\input{text/dji_ch_node.txt}
 	\nextgroupplot[\ltdateaxisticks enlarge y limits={0.1}, xtick style={draw=black!20},
 		xticklabel style={yshift=2pt}, 
 		yticklabel style={text width=1.2em}, xticklabel={`\short{\year}}, width=5.8cm]
 	\rbar
-	\thickline{black!30}{date}{ndx_MA}{data/equity_indices_lt.csv}
-	\thinline{violet}{date}{ndx}{data/equity_indices_lt.csv}
+	\thickline{black!30}{date}{dji_MA}{data/equity_indices_lt.csv}
+	\thinline{red}{date}{dji}{data/equity_indices_lt.csv}
 	\end{groupplot}
 	\draw [black!28!white, dashed] (c1) -- (equities c2r1.south west);
 	\draw [black!28!white, dashed] (c2) -- (equities c2r1.north west);
@@ -10507,16 +10559,10 @@ In the US, several stock market indices track the share price of a basket of com
 	\draw [black!28!white, dashed] (d2) -- (equities c2r2.north west);
 	\draw [black!28!white, dashed] (e1) -- (equities c2r3.south west);
 	\draw [black!28!white, dashed] (e2) -- (equities c2r3.north west);
-	\draw [black!28!white, dashed] (f1) -- (equities c2r4.south west);
-	\draw [black!28!white, dashed] (f2) -- (equities c2r4.north west);
 \end{tikzpicture}\\
-\footnotesize{Source: STOOQ; Latest: \input{text/equities_latest_date.txt}} \hfill \tbllink{equity_indices.csv} 
-\end{minipage}
-\newpage \index{equity markets} \index{S\&P 500} \index{Dow Jones industrial average} \index{Nasdaq} \index{S\&P 500!sector performance}
-\vspace*{-11mm} \markright{\footnotesize \color{orange!80!yellow}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Financial Markets}
 
-\begin{minipage}{0.76\textwidth}
-\index{equity markets}
+\vspace*{-1mm}
+
 \small \input{text/equities_ch_summary.txt}
 
 \normalsize \textbf{Stock Market Indices}\\
@@ -10531,21 +10577,24 @@ In the US, several stock market indices track the share price of a basket of com
 }}
 		
 \vspace{-2mm}
-\footnotesize{Source: STOOQ}
-\vspace{-1mm}
+\footnotesize{Source: STOOQ} \hfill \tbllink{equity_indices.csv} 
+\end{minipage}
+\newpage \index{equity markets} \index{S\&P 500} \index{S\&P 500!sector performance}
+\vspace*{-12mm}
 
 \subsubsection*{Sector Returns}
+\begin{minipage}{0.76\textwidth}
 \small The S\&P 500 companies are broadly categorized into 11 industrial sectors, which are tracked independently. \input{text/sp500sector_comp.txt}
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.31\textwidth}
+\begin{minipage}{0.3\textwidth}
 \normalsize{\textbf{S\&P 500 Sector Returns}}\\
 \footnotesize{\textit{year to date, percent, as of \input{text/sp500sector_date.txt}}}
-\vspace{6.4cm}
+\vspace{5.9cm}
 
 \hspace*{-4mm}\begin{tikzpicture}[overlay]
-    \begin{axis}[\barplotnogrid axis y line=left, \bbar{x}{0}, width=6.8cm, height=8.4cm,
+    \begin{axis}[\barplotnogrid axis y line=left, \bbar{x}{0}, width=6.7cm, height=8.2cm,
     	clip=false, ytick={0,1,2,3,4,5,6,7,8,9,10,11}, yticklabels=\empty, 
         enlarge x limits={0.01}, enlarge y limits={abs=0.5}, 
         every axis plot/.append style={xbar, bar width=3.0ex, bar shift=0pt, fill}]
@@ -10556,14 +10605,15 @@ In the US, several stock market indices track the share price of a basket of com
   
 \footnotesize{Source: STOOQ} \hfill \tbllink{sp500sectors_raw.csv}
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.41\textwidth}
+\begin{minipage}{0.42\textwidth}
 \small \input{text/sp500sector_ch.txt}
 
 \input{text/sp500sector_ch2.txt}
 
 \input{text/sp500sector_ch3.txt}
 \end{minipage}
-\newpage
+\vspace{1mm}
+
 \subsubsection*{Real Return}
 \begin{minipage}{0.76\textwidth} \index{equity markets} \index{S\&P 500}
 \small Next, for the typical investor saving for retirement, long-term and inflation-adjusted returns are particularly important. Over the long-term, US equities markets have traditionally returned around seven percent per year, after adjusting for inflation. 
@@ -10581,8 +10631,8 @@ In the US, several stock market indices track the share price of a basket of com
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=12.8cm,
 		enlarge y limits={0.1}, legend style={at={(0.98, 1.12)}, fill=white}]
 	\rbars
-	\thickline{blue}{date}{r10}{data/sp500rr.csv}
-	\thickline{orange}{date}{r15}{data/sp500rr.csv}
+	\stdline{blue}{date}{r10}{data/sp500rr.csv}
+	\dashline{orange}{date}{r15}{data/sp500rr.csv}
 	\thickline{green!80!blue}{date}{r20}{data/sp500rr.csv}
 	\input{text/sp500rr_nodes.txt}
 	\legend{10-Year, 15-Year, 20-Year};
@@ -10590,9 +10640,12 @@ In the US, several stock market indices track the share price of a basket of com
 \end{tikzpicture}
 
 \footnotesize{Source: Shiller, Baker, Author's Calculations} \hfill \tbllink{sp500rr.csv}
-\vspace{1mm}
+\end{minipage}
+\newpage
+\vspace*{-12mm}
 
 \subsubsection*{Dividends}
+\begin{minipage}{0.76\textwidth} 
 \small One component of total returns is \textbf{dividend payments to shareholders}. The dividend payments per share over the previous four quarters divided by the share price is the dividend yield. The S\&P 500 dividend yield has averaged around two percent, over the past few decades.
 
 \input{text/sp500div.txt}
@@ -10600,11 +10653,11 @@ In the US, several stock market indices track the share price of a basket of com
 
 \normalsize \textbf{S\&P 500 Dividend Yield}\\
 \footnotesize{\textit{annual dividend per share divided by share price, percent}}
-\vspace{2.9cm}
+\vspace{2.7cm}
 
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks ymin=0.2,
-		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=12.8cm]
+		xticklabel={`\short{\year}}, clip=false, height=4.8cm, width=12.8cm]
 	\rbars
 	\thickline{green!80!black}{date}{DY}{data/sp500dy.csv}
 	\input{text/sp500dy_node.txt}
@@ -10613,7 +10666,8 @@ In the US, several stock market indices track the share price of a basket of com
 
 \footnotesize{Source: Shiller} \hfill \tbllink{sp500dy.csv}
 \end{minipage}
-\newpage
+\vspace{1mm}
+
 \subsubsection*{Corporate Equity Payout}
 \begin{minipage}{0.76\textwidth} \index{equity markets} \index{S\&P 500}
 \small As seen above, investors achieve returns through price appreciation and dividends. Corporations, likewise, can return money to shareholders with dividends, or by repurchasing shares of their own stock. These share buybacks increase the share price, allowing investors to sell their shares at the higher price. 
@@ -10626,8 +10680,8 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \normalsize \textbf{Corporate Equity Payout}\\
 \footnotesize{\textit{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}}\\
 \hspace*{-1mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, height=6.2cm, 
-		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.44, 0.97)}, fill=white},
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 5, 10}, height=5.6cm, 
+		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.44, 0.99)}, fill=white},
 		yticklabel style={text width=1.0em}]
 	\rbars
 	\sbar{blue!90!purple}{date}{Dividends}{data/eq_payout.csv}	
@@ -10687,6 +10741,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \small A second measure, Tobin's Q, is the ratio of market value to replacement value. A ratio below 100 means the market value is below the replacement value and stocks may be undervalued. A ratio above 100 means the market value is above the replacement cost and stocks may be overvalued. \input{text/tobinq.txt} 
 \vspace{3mm}
 
+\hypertarget{capvol}{\label{capvol}}
 \subsubsection*{Volatility} \index{equity markets!volatility} \index{VIX}
 \small The Chicago Board Options Exchange uses S\&P 500 options data to \href{http://www.cboe.com/vix}{identify} expectations of future volatility. \input{text/vixbasic.txt}
 \vspace{1mm}
@@ -10754,6 +10809,7 @@ In March 2022, the FOMC raised the base interest rate by 25 basis points, follow
 \subsubsection*{Treasuries}
 \begin{minipage}{0.76\textwidth}
 \index{interest rates!treasuries}
+\hypertarget{captreas}{\label{captreas}}
 \small United States Treasury securities, or \textbf{treasuries}, are the asset created by federal government borrowing. The treasuries market is traditionally considered both very low-risk and highly liquid. \input{text/treas_market.txt}
 
 \input{text/rates_basic.txt} 
