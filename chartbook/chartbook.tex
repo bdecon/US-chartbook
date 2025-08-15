@@ -872,11 +872,11 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 		yticklabel style={text width=1.0em}, ymin=1.5, ymax=29, xmin={1998-01-01},
 		xticklabel={`\short{\year}}, clip=false, height=6.5cm, width=6.8cm]
 	\rebars
-	\stdnode{0.78cm}{1.3cm}{\footnotesize \color{orange!80!white}Government}
+	\stdnode{0.82cm}{1.3cm}{\footnotesize \color{orange!80!white}Government}
 	\stdline{orange!80!white}{date}{Government}{data/gdpva_pc.csv}
-	\stdnode{0.94cm}{2.95cm}{\footnotesize \color{blue!90!white}Other Services}
+	\stdnode{1.4cm}{3.3cm}{\footnotesize \color{blue!90!white}Other\\ \footnotesize \color{blue!90!white}Services}
 	\stdline{blue!90!white}{date}{Oth_Serv}{data/gdpva_pc.csv}
-	\stdnode{1.62cm}{2.15cm}{\footnotesize \color{red!90!white}FIRE+}
+	\stdnode{1.5cm}{2.1cm}{\footnotesize \color{red!90!white}FIRE+}
 	\stdline{red!90!white}{date}{FIRE}{data/gdpva_pc.csv}
 	\stdnode{3.0cm}{4.55cm}{\footnotesize \color{purple!70!blue}Goods + TTU}
 	\stdline{purple!70!blue}{date}{GoodsTTU}{data/gdpva_pc.csv}
@@ -3159,7 +3159,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 \normalsize Consumer Spending and Residential Fixed Investment
 \vspace{-0.5mm}
 
-\small The previous two charts cover spending on goods, spending on services other than shelter, and spending on housing, utilities, and residential fixed investment. Investment is not typically grouped with spending, as investment is a form of saving. Spending reduces a household's cash balance, while investment exchanges cash for another asset. The two categories are grouped in the following charts to provide a more broad overview of what households are doing with their income. 
+\small The previous two charts cover spending on goods, spending on services other than shelter, and spending on housing, utilities, and residential fixed investment. Investment is not typically grouped with spending, as investment is a form of saving. Spending reduces a household's cash balance, while investment exchanges cash for another asset. The two categories are grouped in the following charts to provide a more broad overview of what households do with their income. 
 \end{minipage}
 \vspace{1mm}
 
@@ -3846,7 +3846,7 @@ According to the US financial accounts, the combined household and nonprofit sec
 
 \subsubsection*{Wealth}
 \begin{minipage}{0.76\textwidth} \index{wealth!household} \index{households!wealth} \index{racial wealth gap}
-\small At the household level, wealth is calculated as assets minus liabilities. \input{text/hh_avg_pc_wealth_summary1.txt}\input{text/hh_avg_pc_wealth_summary2.txt} 
+\small Household wealth is calculated as assets minus liabilities. \input{text/hh_avg_pc_wealth_summary1.txt}\input{text/hh_avg_pc_wealth_summary2.txt} 
 \vspace{1mm}
 
 \normalsize \textbf{Household Wealth / Net Worth Summary}\\
@@ -5688,7 +5688,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \begin{minipage}{0.76\textwidth} \index{businesses!retail sales} \index{retail sales}
 \small The Census Bureau \href{https://www.census.gov/retail/index.html}{report} the monthly sales of retail businesses, restaurants, and bars. These retail trade figures can be a useful economic indicator. Retail trade includes brick and mortar stores as well as e-commerce and other nonstore sales to the general public. 
 
-\input{text/rs_sh.txt} During the first two months of the US COVID-19 pandemic, retail sales were a smaller portion of overall economic activity, as many businesses were closed. Since the initial reopening, retail sales have comprised a larger share of economic activity, in part as other activities, like transportation, have recovered less. 
+\input{text/rs_sh.txt} During the first two months of the US COVID-19 pandemic, retail sales were a smaller portion of overall economic activity, as many businesses were closed. After the initial reopening, retail sales comprised a larger share of economic activity, in part as other activities, like transportation, recovered less. 
 
 Retail and food service sales, \textbf{adjusted for population growth and inflation}, provide additional context on economic developments. \input{text/rs_pc.txt}
 \vspace{0.5mm}
@@ -5704,11 +5704,11 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 	\rebars
 	\stdline{blue}{date}{GDP}{data/rs_sh.csv}
 	\stdline{cyan}{date}{CE}{data/rs_sh.csv}
-	\thinline{magenta!80!purple}{date}{DPI}{data/rs_sh.csv}
+	\thinline{green!60!black}{date}{DPI}{data/rs_sh.csv}
 	\input{text/rs_sh_nodes.txt}
-	\absnode{{1995-01-01}}{37}{\footnotesize \color{blue}\textbf{GDP}}
-	\absnode{{2012-01-01}}{38}{\footnotesize \color{magenta!80!purple}\textbf{DPI}}
-	\absnode{{2012-01-01}}{48.5}{\footnotesize \color{cyan}\textbf{PCE}}
+	\absnode{{1995-01-01}}{35.5}{\footnotesize \color{blue}\textbf{GDP}}
+	\absnode{{2012-07-01}}{38}{\footnotesize \color{green!60!black}\textbf{DPI}}
+	\absnode{{2012-01-01}}{47.5}{\footnotesize \color{cyan}\textbf{PCE}}
 	\end{axis}
 \end{tikzpicture} \hspace{6.5cm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ymin=160,
@@ -5717,12 +5717,12 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 		xticklabel={`\short{\year}}, height=5.1cm, width=5.7cm, clip=false]
 	\rebars
 	\stdline{violet!60!blue}{date}{RealPC_Tot}{data/rs_sh.csv}
-	\thickline{green!80!olive}{date}{RealPC_ExAutoGas}{data/rs_sh.csv}
+	\thickline{violet!50!white}{date}{RealPC_ExAutoGas}{data/rs_sh.csv}
 	\stdline{blue!60!black}{date}{RealPC_Nonstore}{data/rs_sh.csv}
 	\input{text/rs_pc_nodes.txt}
-	\absnode{{1992-04-01}}{855}{\footnotesize \color{green!80!olive}\textbf{Ex. Auto}\\\footnotesize \color{green!80!olive}\textbf{\& Gas}}
-	\absnode{{2010-01-01}}{2005}{\footnotesize \color{violet!60!blue}\textbf{Total}}
-	\absnode{{2009-05-01}}{490}{\footnotesize \color{blue!60!black}\textbf{Nonstore}}
+	\absnode{{1992-10-01}}{895}{\footnotesize \color{violet!50!white}\textbf{Ex. Auto}\\\footnotesize \color{violet!50!white}\textbf{\& Gas}}
+	\absnode{{2010-01-01}}{2035}{\footnotesize \color{violet!60!blue}\textbf{Total}}
+	\absnode{{2009-01-01}}{495}{\footnotesize \color{blue!60!black}\textbf{Nonstore}}
 	\node[below right, align=left] at (rel axis cs:0.0, -0.1) {\scriptsize \color{black!70}*Adjusted by PCE price index};
 	\end{axis}
 \end{tikzpicture}
@@ -9729,7 +9729,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \vspace*{-10mm} \index{usual weekly earnings} \index{wages} \index{median wage} \index{wages!usual weekly earnings} \index{wages!median} 
 
 \begin{minipage}{0.76\textwidth}
-\small The second wage growth summary table captures quarterly measures, such as the ECI discussed above, which is particularly high-quality. Lastly, unit labor costs measure the cost a business pays to produce one unit of output. 
+\small The second wage growth summary table captures quarterly measures, such as the ECI discussed above, which is particularly high quality. Lastly, unit labor costs measure the cost a business pays to produce one unit of output. 
 \vspace{0.5mm}
 
 \normalsize \textbf{Wage Growth Measures}\\
@@ -10432,11 +10432,11 @@ The US financial markets also provide information that is helpful for macroecono
 \subsection*{High-Frequency Indicators}
 
 \begin{minipage}{0.76\textwidth}
-\small Relative to most economic indicators, financial markets provide a higher frequency of information. High-frequency indicators, summarized daily, can show developments before typical economic measures report the changes. 
+\small Relative to most economic indicators, financial markets provide a higher frequency of information. \textbf{High-frequency indicators}, summarized daily, can show developments before typical economic measures report the changes. 
 
-The next charts capture very recent developments using high-frequency indicators. The S\&P 500 stock market index open, close, daily high, and daily low are shown for the past three months. Also shown is the stock market volatility index (VIX), which will spike when people expect swings in stock prices. 
+The next charts show the most-recent three months of developments. The top chart shows the S\&P 500 stock market index open, close, daily high, and daily low. The middle chart is the stock market volatility index (VIX), which will spike when people expect swings in stock prices. 
 
-Treasury yields are an important measure of expected future interest rates, which themselves capture important information, such as expected future inflation and growth. Each of these indicators is discussed in more depth later in this chartbook section. 
+Finally, treasury yields indicate expected future interest rates, which themselves capture expected future inflation and growth. Each of these indicators is discussed in more depth later in this chartbook section. 
 \end{minipage}
 \vspace{1mm}
 
@@ -10514,7 +10514,7 @@ In the US, several stock market indices track the share price of a basket of com
 	\coordinate (c1) at ({2018-12-31},2);
   	\coordinate (c2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (c1) rectangle (c2);
-	\thickline{green!80!blue!90!black}{date}{spx}{data/equity_indices.csv}
+	\stdline{green!80!blue!90!black}{date}{spx}{data/equity_indices.csv}
 	\input{text/spx_ch_node.txt}
 	\nextgroupplot[\empticks ytick={2, 3, 4, 5, 6, 7}, 
 		enlarge y limits={0.1}, width=5.8cm]
@@ -10529,7 +10529,7 @@ In the US, several stock market indices track the share price of a basket of com
 	\coordinate (d1) at ({2018-12-31},6);
   	\coordinate (d2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (d1) rectangle (d2);
-	\thickline{blue}{date}{ndq}{data/equity_indices.csv}
+	\stdline{blue}{date}{ndq}{data/equity_indices.csv}
 	\input{text/ndq_ch_node.txt}
 	\nextgroupplot[\empticks enlarge y limits={0.1}, 
 		yticklabel style={text width=1.0em}, width=5.8cm]
@@ -10541,10 +10541,10 @@ In the US, several stock market indices track the share price of a basket of com
 		xticklabel style={yshift=2pt}, 
 		xticklabel={`\short{\year}}, width=8.2cm]
 	\rbars
-	\coordinate (e1) at ({2018-12-31},5);
+	\coordinate (e1) at ({2018-12-31},18);
   	\coordinate (e2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (e1) rectangle (e2);
-	\thickline{red}{date}{dji}{data/equity_indices.csv}
+	\stdline{red}{date}{dji}{data/equity_indices.csv}
 	\input{text/dji_ch_node.txt}
 	\nextgroupplot[\ltdateaxisticks enlarge y limits={0.1}, xtick style={draw=black!20},
 		xticklabel style={yshift=2pt}, 
@@ -11044,10 +11044,10 @@ The yield curve is normally upward sloping as investors expect to be compensated
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20, 
 		xticklabel={\year}, height=5.8cm, width=12.4cm, clip=false]
 	\recbars
-	\thickline{green!80!blue}{date}{Ten-year}{data/real_rates.csv}
-	\thickline{violet!50!blue!60!white}{date}{Five-year}{data/real_rates.csv}
-	\absnode{{2009-10-01}}{2.2}{\small \color{green!80!blue}\textbf{Ten-year}}
-	\absnode{{2004-05-01}}{0.8}{\small \color{violet!50!blue!60!white}\textbf{Five-year}}
+	\thickline{green!80!blue!65!black}{date}{Ten-year}{data/real_rates.csv}
+	\stdline{violet!70!blue!45!white}{date}{Five-year}{data/real_rates.csv}
+	\absnode{{2009-10-01}}{2.2}{\small \color{green!80!blue!65!black}\textbf{Ten-year}}
+	\absnode{{2004-05-01}}{0.8}{\small \color{violet!70!blue!45!white}\textbf{Five-year}}
 	\input{text/real_yield_nodes.txt}
 	\end{axis}
 \end{tikzpicture}
@@ -11069,10 +11069,10 @@ The yield curve is normally upward sloping as investors expect to be compensated
 		enlarge y limits={0.08}, ymax=5.7,
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=12.6cm]
 	\rbars
-	\stdline{green!68!black}{date}{Real Rate 1-year}{data/real_rates2.csv}
-	\stdline{blue}{date}{Real Rate 10-year}{data/real_rates2.csv}
-	\absnode{{1995-01-01}}{5.0}{\small \color{blue}\textbf{Ten-year}}
-	\absnode{{2012-06-01}}{-2.5}{\small \color{green!68!black}\textbf{One-year}}
+	\stdline{cyan!80!white}{date}{Real Rate 1-year}{data/real_rates2.csv}
+	\stdline{blue!80!black}{date}{Real Rate 10-year}{data/real_rates2.csv}
+	\absnode{{1995-01-01}}{5.0}{\small \color{blue!80!black}\textbf{Ten-year}}
+	\absnode{{2012-06-01}}{-2.5}{\small \color{cyan!80!white}\textbf{One-year}}
 	\input{text/real_yield_nodes2.txt}
 	\end{axis}
 \end{tikzpicture}
