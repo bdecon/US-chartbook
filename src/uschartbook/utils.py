@@ -21,16 +21,19 @@ numbers2 = {0: 'no', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five',
 def to_date(ym):
     return pd.to_datetime(f'{ym[0]}-{ym[1]}-01')
 
-def bea_api_nipa(table_list, bea_key, freq='Q'):
+
+def bea_api_nipa(table_list, bea_key, freq='Q', underlying=False, start_year=1988):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(1988, 2026)))
+    years = ','.join(map(str, range(start_year, 2026)))
 
     api_results = []
+    
+    dataset = 'NIPA' if underlying == False else 'NIUnderlyingDetail'
 
     for table in table_list:
         url = f'https://apps.bea.gov/api/data/?&UserID={bea_key}'\
-              f'&method=GetData&datasetname=NIPA&TableName={table}'\
+              f'&method=GetData&datasetname={dataset}&TableName={table}'\
               f'&Frequency={freq}&Year={years}&ResultFormat=json'
               
         r = requests.get(url)
@@ -231,6 +234,13 @@ def m3rate(series):
     return ((((series.rolling(3).mean() / 
                series.rolling(3).mean().shift(3)) 
               ** 4) - 1) * 100).dropna(how='all')
+
+
+def m6rate(series):
+    '''Six-month / six-month growth rate'''
+    return ((((series.rolling(6).mean() / 
+               series.rolling(6).mean().shift(6)) 
+              ** 2) - 1) * 100).dropna(how='all')
               
                   
 def write_txt(filename, filetext):
@@ -238,6 +248,15 @@ def write_txt(filename, filetext):
     with open(filename, 'w') as text_file:
         text_file.write(filetext)
         
+
+def write_tbl(filename, df):
+    '''Creates latex table from pandas dataframe'''
+    (df.to_csv(filename, sep='&', lineterminator='\\\\ ', quotechar=' '))
+    with open(filename, 'rb') as f:
+        tbl = f.readline().replace(b'\\ ', b'\\ \\arrayrulecolor{black!60!white} \\hline ', 1)
+    with open(filename, 'wb') as f:
+        f.write(tbl)
+
       
 def dtxt(date):
 	'''
@@ -507,18 +526,25 @@ def fred_df3(series, start='1989'):
     return df.loc[start:]
     
 
-def c_line(color, see=True, paren=True):
+def c_line(color, see=True, paren=True, dashed=False, thick=False):
 	'''Return (see ---) for a given color'''
 	s = 'see ' if see == True else ''
 	p = ['(', ')'] if paren == True else ['', '']
 	cl = f'{p[0]}{s}{{\\color{{{color}}}\\textbf{{---}}}}{p[1]}'
+	if dashed == True:
+		cl = f'{p[0]}{s}{{\\colordashline{{{color}}}}}{p[1]}'
+	if thick == True:
+		cl = f'{p[0]}{s}{{\\scolorline{{{color}}}}}{p[1]}'
 	return cl
 	
 	
 def c_box(color, see=True):
-	'''Return (see []) for a given color'''
-	s = 'see' if see == True else '\\hspace{-1mm}'
-	return f'({s}\\cbox{{{color}}})'
+	'''Return text string to activate LaTeX (see []) for a given color'''
+	if see == False:
+	    cb = f'(\\hspace{{-1mm}}\\cbox{{{color}}}\\hspace{{-0.5mm}})'
+	else:
+	    cb = f'\\seebox{{{color}}}'
+	return cb
     
     
 def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
@@ -904,6 +930,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     abv = abs(value)
     val = f'{dol}{abv:,.{digits}f}'
     val2 = f'{dol}{value:,.{digits}f}'
+    indef = 'an' if ((val[0] == '8') | (val[0:3] in ['11.', '11,', '18.', '18,'])) else 'a'
     numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
                '4.0': 'four', '5.0': 'five', 
                '6.0': 'six', '7.0': 'seven', 
@@ -911,7 +938,9 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                '10.0': 'ten'}
     if (num_txt == True) & (val in numbers.keys()):
         val = numbers[val] 
-    indef = 'an' if ((val[0] == '8') | (val[0:3] in ['11.', '11,', '18.', '18,'])) else 'a'
+    if trail_zero == False:
+    	val = val.rstrip('0').rstrip('.')
+    	val2 = val2.rstrip('0').strip('.')
     neg = True if value < 0 else False
     insig = True if abv < threshold else False
     plural = 's' if ((abv > 1.045) & (style[-3:] != 'end')) else ''
@@ -1077,8 +1106,8 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     if obj == 'plural':
         text = (text.replace('was', 'were'))
         
-    if trail_zero == False:
-    	text = text.replace('.0 ', ' ')
+#    if trail_zero == False:
+#    	text = text.replace('.0 ', ' ')
     
     return(text)
     
