@@ -249,13 +249,14 @@ def write_txt(filename, filetext):
         text_file.write(filetext)
         
 
-def write_tbl(filename, df):
+def write_tbl(filename, df, header=True):
     '''Creates latex table from pandas dataframe'''
-    (df.to_csv(filename, sep='&', lineterminator='\\\\ ', quotechar=' '))
-    with open(filename, 'rb') as f:
-        tbl = f.readline().replace(b'\\ ', b'\\ \\arrayrulecolor{black!60!white} \\hline ', 1)
-    with open(filename, 'wb') as f:
-        f.write(tbl)
+    (df.to_csv(filename, sep='&', lineterminator='\\\\ ', quotechar=' ', header=header))
+    if header == True:
+    	with open(filename, 'rb') as f:
+        	tbl = f.readline().replace(b'\\ ', b'\\ \\arrayrulecolor{black!60!white} \\hline ', 1)
+    	with open(filename, 'wb') as f:
+        	f.write(tbl)
 
       
 def dtxt(date):
@@ -541,7 +542,7 @@ def c_line(color, see=True, paren=True, dashed=False, thick=False):
 def c_box(color, see=True):
 	'''Return text string to activate LaTeX (see []) for a given color'''
 	if see == False:
-	    cb = f'(\\hspace{{-1mm}}\\cbox{{{color}}}\\hspace{{-0.5mm}})'
+	    cb = f'(\\cbox{{{color}}})'
 	else:
 	    cb = f'\\seebox{{{color}}}'
 	return cb
