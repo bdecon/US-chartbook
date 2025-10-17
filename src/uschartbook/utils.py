@@ -966,10 +966,12 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                  'average': ' at an average rate of ',
                  'equivalent': ' by the equivalent of '}
         if style != 'increase_by':
-            atxtd[None] = ' '
+        	atxtd[None] = ' '
         if style in ['gain', 'return']:
         	atxtd['total'] = ' a total of '
         atxt = atxtd[adj]
+        if style == 'increase_by':
+        	atxt = atxt.replace(' at ', ' by ')
         stxt = 'increased' if neg == False else 'decreased'
         if style == 'gain':
         	stxt = 'gained' if neg == False else 'lost'
@@ -1093,6 +1095,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         text = (text.replace('added', 'gained')
         		    .replace('decreased', 'fell')
                     .replace('contributed', 'added')
+                    .replace('increased by', 'rose by')
                     .replace('increased', 'grew')
                     .replace('contribute ', 'add ')
                     .replace('subtract ', 'remove ')
