@@ -198,7 +198,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-10-31},
+		xmax={2025-12-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -256,7 +256,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-10-31},
+		xmax={2025-12-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}, 
@@ -269,7 +269,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltxticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-10-31},
+		xmax={2025-12-31},
 		max space between ticks=40,	    
 		xtick={{2021-07-01}, {2022-01-01}, {2022-07-01},
 		{2023-01-01}, {2023-07-01}, 
@@ -285,7 +285,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-10-31},
+		xmax={2025-12-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -298,7 +298,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2025-10-31}, 
+		xmin={2018-01-01}, xmax={2025-12-31}, 
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
 			{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
 		    {2026-01-01}},
@@ -310,7 +310,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-10-31}, max space between ticks=40,	    
+		xmax={2025-12-31}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01},
 		 {2014-01-01}, {2015-01-01},
 		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
@@ -322,20 +322,20 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-10-31},
+		xmax={2025-12-31},
 		}
 
 	% Date (X) Axis Tick Marks, no tick marks, just formatting
 	\newcommand{\empticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xticklabels=\empty, xtick style={draw=none},
-		xmax={2025-10-31}, enlarge x limits={0.01},
+		xmax={2025-12-31}, enlarge x limits={0.01},
 		}
 		
 	% Date (X) Axis Tick Marks, one tick per year, every year labeled
 	\newcommand{\projdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2028-10-31},
+		xmax={2028-12-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -4950,9 +4950,11 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \vspace{3.2cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, 
-		xticklabel={`\short{\year}}, clip=false, width=5.95cm, height=5cm,
-		yticklabel style={text width=2.2em}, enlarge y limits=0, ymin=0, ymax=2900]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
+		date coordinates in=x, axis line style={draw=none}, 
+		enlarge x limits={0.01}, xtick/.expanded={\afticks},
+		xticklabel={`\short{\year}}, clip=false, width=5.85cm, height=5cm,
+		yticklabel style={text width=2.2em, inner sep=0pt}, enlarge y limits=0, ymin=0, ymax=2900]
 	\rbars		
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits_totalq.csv}
 	\input{text/permits_node.txt}
@@ -4960,11 +4962,13 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		draw=black!30!white, inner sep=3.0]
 		{\small Pemits, Total};
 	\end{axis}
-\end{tikzpicture} \hspace{6.05cm}
+\end{tikzpicture} \hspace{6.0cm}
 \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
+		date coordinates in=x, axis line style={draw=none}, 
+		enlarge x limits={0.01}, xtick/.expanded={\afticks},
 		xticklabel={`\short{\year}}, clip=false, enlarge y limits=0, ymin=0, ymax=2900,
-		yticklabel style={text width=2.2em}, width=5.95cm, height=5cm]
+		yticklabel style={text width=2.2em, inner sep=0pt}, width=5.85cm, height=5cm]
 	\rbars	
 	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_totalq.csv}	
 	\input{text/completions_node.txt}
@@ -4977,9 +4981,11 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \vspace{3.5cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, 
-		xticklabel={`\short{\year}}, clip=false, width=5.95cm, height=5cm,
-		yticklabel style={text width=2.2em}, enlarge y limits=0, ymin=0, ymax=2300]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
+		date coordinates in=x, axis line style={draw=none}, 
+		enlarge x limits={0.01}, xtick/.expanded={\afticks},
+		xticklabel={`\short{\year}}, clip=false, width=5.85cm, height=5cm,
+		yticklabel style={text width=2.2em, inner sep=0pt}, enlarge y limits=0, ymin=0, ymax=2300]
 	\rbars		
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits_singleq.csv}
 	\input{text/permits_single_node.txt}
@@ -4987,11 +4993,13 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		draw=black!30!white, inner sep=3.0]
 		{\small Pemits, Single-Family Units};
 	\end{axis}
-\end{tikzpicture} \hspace{6.05cm}
+\end{tikzpicture} \hspace{6.0cm}
 \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
+		date coordinates in=x, axis line style={draw=none}, 
+		enlarge x limits={0.01}, xtick/.expanded={\afticks},
 		xticklabel={`\short{\year}}, clip=false, enlarge y limits=0, ymin=0, ymax=2300,
-		yticklabel style={text width=2.2em}, width=5.95cm, height=5cm]
+		yticklabel style={text width=2.2em, inner sep=0pt}, width=5.85cm, height=5cm]
 	\rbars	
 	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_singleq.csv}	
 	\input{text/completions_single_node.txt}
@@ -5004,9 +5012,11 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \vspace{3.5cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, 
-		xticklabel={`\short{\year}}, clip=false, width=5.95cm, height=5cm,
-		yticklabel style={text width=2.2em}, enlarge y limits=0, ymin=0, ymax=1150]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
+		date coordinates in=x, axis line style={draw=none}, 
+		enlarge x limits={0.01}, xtick/.expanded={\afticks},
+		xticklabel={`\short{\year}}, clip=false, width=5.85cm, height=5cm,
+		yticklabel style={text width=2.2em, inner sep=0pt}, enlarge y limits=0, ymin=0, ymax=1150]
 	\rbars		
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits_multiq.csv}
 	\input{text/permits_multi_node.txt}
@@ -5014,11 +5024,13 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		draw=black!30!white, inner sep=3.0]
 		{\small Pemits, Multi-Family Units};
 	\end{axis}
-\end{tikzpicture} \hspace{6.05cm}
+\end{tikzpicture} \hspace{6.0cm}
 \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20,
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
+		date coordinates in=x, axis line style={draw=none}, 
+		enlarge x limits={0.01}, xtick/.expanded={\afticks},
 		xticklabel={`\short{\year}}, clip=false, enlarge y limits=0, ymin=0, ymax=1150,
-		yticklabel style={text width=2.2em}, width=5.95cm, height=5cm]
+		yticklabel style={text width=2.2em, inner sep=0pt}, width=5.85cm, height=5cm]
 	\rbars	
 	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_multiq.csv}	
 	\input{text/completions_multi_node.txt}
@@ -6518,7 +6530,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \edef\custticks{{2002-01-01}, \afticks}
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, 
-		\shdateaxisticks ymin=0.024, enlarge x limits={0.03},
+		ymin=0.024, enlarge x limits={0.03},
 		width=6.75cm, height=6.4cm, clip=false, enlarge y limits={0.06},
 		ytick={0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2},reverse legend,
 		date coordinates in=x, axis line style={draw=none}, minor xtick/.expanded={\aticks}, 
@@ -6566,7 +6578,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{2002-01-01}, \afticks}
 \hspace*{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\shdateaxisticks width=7.0cm, height=5.55cm, clip=false, enlarge x limits=0.01,
+	\begin{axis}[width=7.0cm, height=5.55cm, clip=false, enlarge x limits=0.01,
 		enlarge y limits=0.2, date coordinates in=x, axis line style={draw=none}, 
 		minor xtick/.expanded={\aticks}, xtick/.expanded={\custticks}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=2.2em, inner sep=1.0pt}]
@@ -7433,7 +7445,7 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 \vspace{4.1cm}
 
 \hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks clip=false, 
+	\begin{axis}[\bbar{y}{0}, clip=false, 
 		enlarge x limits={0.01}, enlarge y limits={0.0},
 		ymin=0, ymax=30, max space between ticks=20,
 		date coordinates in=x, axis line style={draw=none}, 
@@ -8229,9 +8241,8 @@ Trade follows seasonal patterns and can swing from month to month for various re
 	\dashline{violet}{date}{Exports Mexico}{\tgoods}
 	\stdline{blue!90!purple}{date}{Balance Mexico}{\tgoods}  
 	\legend{Imports, Exports, Balance};
-    \nextgroupplot[title={Canada}, \bbar{y}{0}, \shdateaxisticks
-    	xticklabel={`\short{\year}},
-    	max space between ticks=20, enlarge y limits=0.075]
+    \nextgroupplot[title={Canada}, \bbar{y}{0}, date coordinates in=x, 
+    	xtick/.expanded={\afticks}, xticklabel={`\short{\year}}]
 	\rbars
 	\stdline{orange!80!yellow}{date}{Imports Canada}{\tgoods}
 	\dashline{violet}{date}{Exports Canada}{\tgoods}
@@ -8809,7 +8820,7 @@ People who are neither employed nor unemployed are \textit{outside of the labor 
 \pgfsetlayers{background layer,main,foreground layer}
 \hspace{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, height=4.5cm, width=12.8cm, ymax=9.8,
-		date coordinates in=x, axis line style={draw=none},  enlarge x limits={0.0},
+		date coordinates in=x, axis line style={draw=none},  enlarge x limits={0.01},
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		enlarge y limits={0.03}, xticklabel={`\short{\year}}, clip=false,  
 		yticklabel style={text width=1.4em, inner sep=1.0pt}, max space between ticks=20, 
@@ -9073,7 +9084,7 @@ Among measures of overall economic activity, gross labor income has the added be
 \footnotesize{Source: Bureau of Labor Statistics}
 \end{minipage}
 \newpage
-\vspace*{-11mm} \hypertarget{nfplt}{}
+\vspace*{-14mm} \hypertarget{nfplt}{}
 
 \subsubsection*{Payroll Employment}
 \begin{minipage}{0.76\textwidth} \index{employment!nonfarm payrolls} \index{payrolls}
@@ -11116,12 +11127,19 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \footnotesize{\textit{nominal one-year percent change}}
 \vspace{3.3cm}
 
+{\pgfdeclarelayer{background layer}
+\pgfdeclarelayer{foreground layer}
+\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\ltdateaxisticks  \bbar{y}{0}, 
-		enlarge y limits={0.1}, clip=false, max space between ticks=20,	
-		yticklabel style={text width=1.0em}, 
+	\begin{axis}[\bbar{y}{0}, ymin=0,
+		enlarge y limits={0.1, upper}, clip=false, max space between ticks=20,	
+		yticklabel style={text width=1.0em, inner sep=0pt}, 
+		date coordinates in=x, axis line style={draw=none}, 
+		enlarge x limits={0.01}, xtick/.expanded={\aticks}, 
 		xticklabel={`\short{\year}}, height=5.4cm, width=6.6cm]
-	\rbar
+	\begin{pgfonlayer}{background layer}
+		\rbar
+	\end{pgfonlayer}
 	\thickline{violet}{date}{WS}{data/eci_growth_recent.csv}
 	\node[below, align=center] at (axis cs:{2020-09-01}, 2.65) 
 		{\color{violet}\footnotesize {ECI}};
@@ -11137,7 +11155,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 		{\color{black!60!white}\scriptsize Composition \\ 
 		 \color{black!60!white}\scriptsize Effect };
 	\end{axis}
-\end{tikzpicture}
+\end{tikzpicture}}
 \vspace{1mm}
 
 \footnotesize{Source: BEA, BLS, Atlanta Fed} \hfill \tbllink{wages_yy_monthly.csv} \  \tbllink{wages_yy_quarterly.csv} 
@@ -12882,27 +12900,32 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \footnotesize{\textit{percentage points}}
 \vspace{2.7cm}
 
+{\pgfdeclarelayer{background layer}
+\pgfdeclarelayer{foreground layer}
+\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
     \begin{groupplot}[group style={group size=2 by 1, horizontal sep=44pt},
-    	ytick={-2, -1, 0, 1, 2, 3}, 
-    	ymin=-2.2, ymax=3.1, yticklabel style={text width=1.0em}, 
-     height=4.7cm, width=6.1cm, clip=false]
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks xticklabel={`\short{\year}}]
-    \rbar
+    	ytick={-2, -1, 0, 1, 2, 3}, enlarge y limits=0.1, axis line style={draw=none}, 
+    	ymin=-2.2, ymax=3.1, yticklabel style={text width=1.0em, inner sep=0pt}, 
+     	enlarge x limits={0.01}, height=4.7cm, width=6.1cm, clip=false,
+     	title style={at={(0.02,0.8)}, anchor=south west, 
+    	draw=black!30!white, fill=white, inner sep=3.2pt}]
+    \nextgroupplot[title={10-Year - 3-Month}, \bbar{y}{0}, date coordinates in=x, 
+		xtick/.expanded={\aticks}, xticklabel={`\short{\year}}]
+	\begin{pgfonlayer}{background layer}
+		\rbar
+	\end{pgfonlayer}
 	\stdline{blue!70!cyan!80!white}{date}{Ten-3M}{data/spread.csv}
-	\node[below, align=left, shift=({rel axis cs:0.3,1.01}), 
-	draw=black!30!white, fill=white, inner sep=2.5]
-		{\footnotesize \color{black!80!white}10-Year - 3-Month};
 	\input{text/spread_node.txt}
-    \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks xticklabel={`\short{\year}}]
-	\rbar
+    \nextgroupplot[title={10-Year - 2-Year}, \bbar{y}{0}, date coordinates in=x, 
+		xtick/.expanded={\aticks}, xticklabel={`\short{\year}}]
+	\begin{pgfonlayer}{background layer}
+		\rbar
+	\end{pgfonlayer}
 	\stdline{red!60!violet!90!white}{date}{Ten-2Y}{data/spread.csv}
-	\node[below, align=left, shift=({rel axis cs:0.28,1.01}), 
-	draw=black!30!white, fill=white, inner sep=2.5]
-		{\footnotesize \color{black!80!white}10-Year - 2-Year};
 	\input{text/spread_node2.txt}
 	\end{groupplot}
-	\end{tikzpicture}
+	\end{tikzpicture}}
 	
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{spread.csv} 
 \end{minipage}
@@ -13059,13 +13082,13 @@ The market-based approach has limitations, as the market for treasury inflation-
 \small The Treasury \href{https://home.treasury.gov/data/treasury-coupon-issues-and-corporate-bond-yield-curve/corporate-bond-yield-curve}{reports} yields of \textbf{corporate bonds} based on the market-weighted average of bonds rated AAA, AA, and A. \input{text/hqcb.txt}
 \vspace{0.5mm} 
 
-\normalsize \textbf{High Quality Corporate Bonds, 10-Year}\\
+\normalsize \textbf{High-Quality Corporate Bonds, 10-Year}\\
 \footnotesize{\textit{par yield, percent, and spread over 10-year treasury, percentage points, monthly averages}}\\
 \hspace*{-1mm} {\pgfdeclarelayer{background layer}
 \pgfdeclarelayer{foreground layer}\pgfsetlayers{background layer,main,foreground layer}\begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, ytick={0, 2, 4, 6, 8, 10}, 
 		yticklabel style={text width=1.0em, inner sep=0pt}, height=4.8cm, 
-		date coordinates in=x, axis line style={draw=none}, 
+		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, clip=false, ymin=0.5, width=12.4cm]
 	\begin{pgfonlayer}{background layer}
@@ -13186,14 +13209,21 @@ The market-based approach has limitations, as the market for treasury inflation-
 \footnotesize{\textit{index, 1989=1}}
 \vspace{2.0cm}
 
+{\pgfdeclarelayer{background layer}
+\pgfdeclarelayer{foreground layer}
+\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks  
-		yticklabel style={text width=1.2em}, 
-		xticklabel={`\short{\year}}, clip=false, width=6.2cm, height=4.0cm]
-	\rbars
+	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none}, 
+		enlarge y limits={0.06},
+		enlarge x limits={0.01}, xtick/.expanded={\afticks},
+		yticklabel style={text width=1.2em, inner sep=0pt}, 
+		xticklabel={`\short{\year}}, clip=false, width=6.1cm, height=4.0cm]
+	\begin{pgfonlayer}{background layer}
+		\rbars
+	\end{pgfonlayer}
 	\thickline{magenta}{date}{value}{data/m2gdp.csv}
 	\end{axis}
-\end{tikzpicture}
+\end{tikzpicture}}
 
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{m2gdp.csv}
 \end{minipage}
@@ -13218,7 +13248,7 @@ A large increase in the amount of money held by individuals and institutions can
 		yticklabel style={inner sep=0pt}, 
 		max space between ticks=18, enlarge y limits={0.12}, 
 		yticklabel style={text width=1.0em}, ymax=22.2,
-		xticklabel={`\short{\year}}, clip=false, width=12.5cm, height=5.0cm]
+		xticklabel={`\short{\year}}, clip=false, width=12.4cm, height=5.0cm]
 	\begin{pgfonlayer}{background layer}
 		\rbars
 	\end{pgfonlayer}
@@ -13240,7 +13270,7 @@ A large increase in the amount of money held by individuals and institutions can
 	\arrayrulecolor{gray}\cmidrule(lr){6-9}\addlinespace[-0.9mm]
 		\input data/m2gdp.tex \arrayrulecolor{black!60}\hline
 	\end{tabular}
-}\vspace*{-2.5mm}
+}\vspace*{-2.0mm}
 
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{m2_gdp_components.csv}
 \end{minipage}
