@@ -249,9 +249,13 @@ def write_txt(filename, filetext):
         text_file.write(filetext)
         
 
-def write_tbl(filename, df, header=True):
+def write_tbl(filename, df, header=True, index=True):
     '''Creates latex table from pandas dataframe'''
-    (df.to_csv(filename, sep='&', lineterminator='\\\\ ', quotechar=' ', header=header))
+    (df.to_csv(filename, sep='&', lineterminator='\\n', quotechar=' ', header=header, index=index))
+    with open(filename, 'rb') as f:
+        tbl = f.readline().replace(b'\\n', b'\\\\')
+    with open(filename, 'wb') as f:
+        f.write(tbl)
     if header == True:
     	with open(filename, 'rb') as f:
         	tbl = f.readline().replace(b'\\ ', b'\\ \\arrayrulecolor{black!60!white} \\hline ', 1)
@@ -454,7 +458,10 @@ def bls_api(series, date_range, bls_key):
                     (f"{r['year']}Q{r['period'][-1]}"
                      if r['period'][0] == 'Q'
                      else f"{r['periodName']} {r['year']}"))
-                df.at[date, col] = float(r['value'])
+                v = r['value']
+                if v == '-':
+                    v = -99
+                df.at[date, col] = float(v)
     df = df.sort_index()
     # Output results
     print('Post Request Status: {}'.format(p['status']))
@@ -889,7 +896,7 @@ def clean_fed_data(url, dtype='main'):
     date_column = raw_data.loc[5:, 'Series Description']
     date_index = pd.to_datetime(date_column).rename('Date')
     columns = raw_data.iloc[4, 1:].values
-    clean_data = raw_data.iloc[5:, 1:].replace('ND', np.NaN).astype('float')
+    clean_data = raw_data.iloc[5:, 1:].replace('ND', np.nan).astype('float')
     clean_data.index = date_index
     clean_data.columns = columns
     

@@ -2,7 +2,7 @@
 %
 %	U.S. Chartbook
 %	Brian W. Dew (brianwdew@gmail.com)
-%	Updated: November 5, 2023
+%	Updated: January 16, 2026
 %	GitHub repo contains to do list (issues)
 %   https://github.com/bdecon/US-chartbook
 %
@@ -28,6 +28,7 @@
 	\usepackage{titlesec}
 	\usepackage{fancyhdr}
 	\usepackage{enumitem}
+	\usepackage{multicol}
 	\usepackage[colorlinks, linkcolor=blue!75!gray, filecolor=blue!75!gray, 
 		citecolor=blue!75!gray, urlcolor=blue!75!gray, linktoc=all, 
 		pdfencoding=auto]{hyperref}
@@ -198,7 +199,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-12-31},
+		xmax={2026-01-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -256,7 +257,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-12-31},
+		xmax={2026-01-31},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}, 
@@ -269,7 +270,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltxticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-12-31},
+		xmax={2026-01-31},
 		max space between ticks=40,	    
 		xtick={{2021-07-01}, {2022-01-01}, {2022-07-01},
 		{2023-01-01}, {2023-07-01}, 
@@ -285,7 +286,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-12-31},
+		xmax={2026-01-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -298,7 +299,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2025-12-31}, 
+		xmin={2018-01-01}, xmax={2026-01-31}, 
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
 			{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
 		    {2026-01-01}},
@@ -310,7 +311,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-12-31}, max space between ticks=40,	    
+		xmax={2026-01-31}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01},
 		 {2014-01-01}, {2015-01-01},
 		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
@@ -322,20 +323,20 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2025-12-31},
+		xmax={2026-01-31},
 		}
 
 	% Date (X) Axis Tick Marks, no tick marks, just formatting
 	\newcommand{\empticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xticklabels=\empty, xtick style={draw=none},
-		xmax={2025-12-31}, enlarge x limits={0.01},
+		xmax={2026-01-31}, enlarge x limits={0.01},
 		}
 		
 	% Date (X) Axis Tick Marks, one tick per year, every year labeled
 	\newcommand{\projdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2028-12-31},
+		xmax={2029-01-31},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -448,7 +449,7 @@
 		\textcolor{green!70!blue}{\rule[-1pt]{9pt}{32pt}} \color{darkgray} US Chartbook}
 \vspace*{-16mm}
 
-\hspace{12mm} \footnotesize v0.1.5; Last updated: \today 
+\hspace{12mm} \footnotesize v0.1.6; Last updated: \today 
 
 \vspace{6mm}
 
@@ -495,7 +496,7 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 \subsection*{Key Economic Indicators}
 
 \begin{minipage}{0.76\textwidth}
-\small The following six charts summarize recent economic developments. Each topic: output, prices, productivity, employment, wage growth, and job growth, is covered in more depth in the chartbook. Click the chart icon \normalsize {\color{blue}\faChartBar[regular]} \small to go to the relevant chartbook section.
+\small The following six charts summarize recent economic developments. Each topic—output, prices, productivity, employment, wage growth, and job growth—is covered in more depth in the chartbook. Click the chart icon \normalsize {\color{blue}\faChartBar[regular]} \small to go to the relevant chartbook section.
 \end{minipage}
 \vspace{1mm}
 
@@ -793,6 +794,8 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 \end{description}
 \vspace{3mm}
 
+\tocentry{glossary}{Glossary}
+
 \tocentry{references}{References}
 
 \tocentry{index}{Index}
@@ -1084,7 +1087,7 @@ Trends in the length of the \textbf{average workweek} (see {\color{blue}\textbf{
 \index{productivity} \index{gross domestic product!household inputs to production}
 \small After estimating household inputs to production as the total hours worked, we can calculate the \textbf{productivity of labor}. The productivity of labor is the relationship between household inputs to production (labor, or hours of work) and economic output (GDP). Specifically, labor productivity is calculated as real GDP divided by hours of work. 
 
-An increase in labor productivity means more output is produced per hour of work. As such, labor productivity is major determinant of income levels and quality of life. Labor productivity is discussed in more depth in the labor markets section, but this subsection provides an estimate that is useful for examining the connection between GDP and labor.
+An increase in labor productivity means more output is produced per hour of work. As such, labor productivity is a major determinant of income levels and quality of life. Labor productivity is discussed in more depth in the labor markets section, but this subsection provides an estimate that is useful for examining the connection between GDP and labor.
 
 Dividing GDP by the previously calculated total hours worked yields an estimate for labor productivity (see {\color{cyan!60!white}\textbf{---}}) for the entire economy that is reasonably methodologically consistent with the official estimate of nonfarm business labor productivity (see {\color{violet}\textbf{---}}). Nonfarm businesses are about three-quarters of the economy and exclude general government, non-profits, and household services. 
 \end{minipage}
@@ -1179,7 +1182,7 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 	\absnode{{2001-12-01}}{30}{\scriptsize \color{black!60} Early `00s\\ 
 		\scriptsize \color{black!60}  recession}
 	\absnode{{2009-07-01}}{30}{\scriptsize \color{black!60} Great\\ \scriptsize 
-		\color{black!60}  recession}
+		\color{black!60}  Recession}
 	\node[below left, align=right] at (axis cs: {2020-01-01},30) 
 		{\scriptsize \color{black!60} COVID-19\\ \scriptsize \color{black!60}  recession};
 	\end{axis}
@@ -1264,7 +1267,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 
 \index{Sahm rule} \normalsize Sahm Rule
 
-\small The most-reliable indication that the US has entered a recession \seebox{black!30} was identified by \href{https://sites.google.com/site/claudiasahm/}{Claudia Sahm}, and is called the \textbf{Sahm rule}. The Sahm rule indicates the start of a recession (see \begin{tikzpicture} \node[line width=0.3mm, diamond, draw=red, scale=0.4, aspect=0.8] (d) at (0,0) {}; \end{tikzpicture}) when the three-month moving average unemployment rate rises by half a percentage point or more above its low during the previous twelve months (see {\color{blue!60!black}\textbf{---}}). In effect, the Sahm rule identifies increases in unemployment that are significant enough to cause or indicate a recession.  
+\small The most-reliable indication that the US has entered a recession \seebox{black!30} was identified by \href{https://sites.google.com/site/claudiasahm/}{Claudia Sahm}, and is called the \textbf{Sahm Rule}. The Sahm Rule indicates the start of a recession (see \begin{tikzpicture} \node[line width=0.3mm, diamond, draw=red, scale=0.4, aspect=0.8] (d) at (0,0) {}; \end{tikzpicture}) when the three-month moving average unemployment rate rises by half a percentage point or more above its low during the previous twelve months (see {\color{blue!60!black}\textbf{---}}). In effect, the Sahm rule identifies increases in unemployment that are significant enough to cause or indicate a recession.  
 \vspace{1mm}
 
 \normalsize \textbf{The Sahm Rule}\\
@@ -1291,7 +1294,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 	\absnode{{2001-12-01}}{5.8}{\scriptsize \color{black!60} Early `00s\\ 
 		\scriptsize \color{black!60}  recession}
 	\absnode{{2009-07-01}}{5.8}{\scriptsize \color{black!60} Great\\ 
-		\scriptsize \color{black!60}  recession}
+		\scriptsize \color{black!60}  Recession}
 	\node[below left, align=right] at (axis cs: {2020-01-01},5.8) {
 		\scriptsize \color{black!60} COVID-19\\ 
 		\scriptsize \color{black!60}  recession};
@@ -1520,7 +1523,7 @@ First, an overview of contributions to economic growth since 2019. This is follo
 \input{text/gdi_ltyr_comp.txt}
 \vspace{1mm}
 
-\normalsize \textbf{Real GDI Growth by Expenditure Type}\\
+\normalsize \textbf{Real GDI Growth by Income Type}\\
 \footnotesize{\textit{percentage point contribution to real GDI growth}}
 \vspace{4.2cm}
 
@@ -2352,7 +2355,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \normalsize Investment Contribution to Growth
 \vspace{-1mm}
 
-\small As gross investment usually represents a fifth of GDP or more, investment tends to also represent a sizable \textbf{contribution to GDP growth}. During periods of particularly strong investment, the category explains nearly half of overall economic growth. \input{text/inv_contrib_text.txt}
+\small As gross investment usually represents a fifth of GDP or more, investment tends to also represent a sizable \textbf{contribution to GDP growth}. During periods of particularly strong investment, the category explains almost half of overall economic growth. \input{text/inv_contrib_text.txt}
 
 \vspace{1mm} 
 
@@ -2452,7 +2455,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 \vspace{1.5mm}
 
 \normalsize \textbf{Net Fixed Investment by Sector or Type}\\
-\footnotesize{\textit{share GDP, percent}}
+\footnotesize{\textit{share of GDP, percent}}
 \vspace{2.8cm}
 
 {\pgfdeclarelayer{background layer}
@@ -2778,7 +2781,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \begin{minipage}{0.76\textwidth} %\index{demographics!living with family}
 \small Underneath changes in headship are changes in living arrangements, including in the rate at which adults live with family members who are not their spouses. Specifically, \textbf{living with family}, in this context, measures the share of people age 16 and older who are living with their parents, grandparents, kids, or other nonspouse relative.  
 
-Living with family became more common after the collapse of the housing bubble. An additional two percent of adults, or roughly 4.8 million people, live with family in 2010 compared to 2003. Rates of living with family spiked early in the COVID-19 pandemic, particularly for young adults.
+Living with family became more common after the collapse of the housing bubble. An additional two percent of adults, or roughly 4.8 million people, lived with family in 2010 compared to 2003. Rates of living with family spiked early in the COVID-19 pandemic, particularly for young adults.
 
 \input{text/lwf_recent.txt}
 \vspace{1mm}
@@ -2980,7 +2983,7 @@ Living with family became more common after the collapse of the housing bubble. 
 \begin{minipage}{0.76\textwidth}
 \small \input{text/cps_educ2.txt}
 
-Increased education may be connected to a changing labor market and lack of worker bargaining power. Behind the increase in education is a large increase in student debt. The burden of this debt is severe for many, as the more-educated workforce is not necessarily receiving the historical wage premium from education. 
+Increased education may be connected to a changing labor market and lack of worker bargaining power. Behind the increase in education is a large increase in student debt. The burden of this debt is severe for many, as the more educated workforce is not necessarily receiving the historical wage premium from education. 
 \vspace{2mm}
 
 \normalsize \textbf{Education Distribution}\\
@@ -3073,7 +3076,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inc_out_save.csv}
 \end{minipage} \hspace{5mm}
 \begin{minipage}{0.43\textwidth}
-\normalsize \textbf{Median (Middle Quintile Average)}\\
+\normalsize \textbf{Median (Middle Fifth Average)}\\
 \footnotesize{\textit{per householder, thousands of \input{text/pi_date.txt}\unskip \ US dollars}}
 \vspace{5.5cm}
 
@@ -3120,7 +3123,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 
 \subsubsection*{Distribution by Income} 
 \begin{minipage}{0.76\textwidth} \index{income!household} \index{households!income}
-\small Income varies massively by household. While some spending is non-discretionary, spending increases with income. The bottom 40 percent of households, by total money income, have expenses exceeding after-tax income. This includes retirees who are dissaving and low-income families taking on debt to cover expenses. Meanwhile, the top ten percent of households save nearly half of their income.
+\small Income varies massively by household. While some spending is non-discretionary, spending increases with income. The bottom 40 percent of households, by total money income, have expenses exceeding after-tax income. This includes retirees who are dissaving and low-income families taking on debt to cover expenses. Meanwhile, the top ten percent of households save almost half of their income.
 
 \input{text/ce_inc_pct.txt}
 \end{minipage}
@@ -3961,7 +3964,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \newpage
 \subsubsection*{Personal Saving}
 \begin{minipage}{0.76\textwidth} \index{saving!household} \index{households!saving}
-\small The after-tax income that people do not spend is \href{https://www.bea.gov/index.php/help/glossary/personal-saving}{considered} \textbf{personal saving}, from an economic accounting perspective. Peoples' savings are invested through the financial system and become the current fixed investment or consumption activities of other groups in the economy. Savers generally receive a return from this investment.
+\small The after-tax income that people do not spend is \href{https://www.bea.gov/index.php/help/glossary/personal-saving}{considered} \textbf{personal saving}, from an economic accounting perspective. People's savings are invested through the financial system and become the current fixed investment or consumption activities of other groups in the economy. Savers generally receive a return from this investment.
 
 \input{text/psavert.txt}
 \vspace{1mm}
@@ -4700,7 +4703,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \footnotesize{Source: Federal Reserve, Survey of Consumer Finances}
 \vspace{1.5mm}
 
-\small White families have substantially more financial assets, including stocks, and are much more likely to receive inheritance and in vivo transfers. Income for black families is also substantially lower--about half of white family income. Persistent structural inequalities are seen in income data, but are also evident from measures of wealth and assets.
+\small White families have substantially more financial assets, including stocks, and are much more likely to receive inheritance and lifetime gifts. Income for black families is also substantially lower--about half of white family income. Persistent structural inequalities are seen in income data, but are also evident from measures of wealth and assets.
 \vspace{0.5mm}
 
 \normalsize \textbf{Measures of Wealth and Income by Race or Ethnicity}\\
@@ -4960,7 +4963,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 	\input{text/permits_node.txt}
 	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
 		draw=black!30!white, inner sep=3.0]
-		{\small Pemits, Total};
+		{\small Permits, Total};
 	\end{axis}
 \end{tikzpicture} \hspace{6.0cm}
 \begin{tikzpicture}[overlay]
@@ -4991,7 +4994,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 	\input{text/permits_single_node.txt}
 	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
 		draw=black!30!white, inner sep=3.0]
-		{\small Pemits, Single-Family Units};
+		{\small Permits, Single-Family Units};
 	\end{axis}
 \end{tikzpicture} \hspace{6.0cm}
 \begin{tikzpicture}[overlay]
@@ -5022,7 +5025,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 	\input{text/permits_multi_node.txt}
 	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
 		draw=black!30!white, inner sep=3.0]
-		{\small Pemits, Multi-Family Units};
+		{\small Permits, Multi-Family Units};
 	\end{axis}
 \end{tikzpicture} \hspace{6.0cm}
 \begin{tikzpicture}[overlay]
@@ -5277,7 +5280,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 
 \small The purchase price of housing should move with the rental price. When housing prices exceed the rental equivalent, it suggests that housing is overvalued. 
 
-During the housing bubble that caused the great recession, housing prices reached more than 40 percent above the rental equivalent. \input{text/hp_rent.txt}
+During the housing bubble that caused the Great Recession, housing prices reached more than 40 percent above the rental equivalent. \input{text/hp_rent.txt}
 \end{minipage}\hspace{5mm}
 \begin{minipage}{0.37\textwidth}
 \normalsize \textbf{Housing Price to Rent Ratio}\\
@@ -5425,7 +5428,7 @@ While poverty is far more likely for some groups than others, government program
 \normalsize Poverty by Age
 \vspace{-0.5mm}
 
-\small The share of a group whose combined labor, capital, and welfare income is below the poverty line is the poverty rate for the group. In \input{text/poverty_ltyear.txt}\unskip, students, caregivers, and the disabled had the highest poverty rates. The poverty rate is low for the fully-employed. 
+\small The poverty rate for a group is the share of that group whose combined labor, capital, and welfare income falls below the poverty line. In \input{text/poverty_ltyear.txt}\unskip, students, caregivers, and the disabled had the highest poverty rates. The poverty rate is low for the fully-employed. 
 
 By age, market income (see \tikz \draw [fill=cyan!50!white, draw=darkgray] (0cm,-0.08cm) rectangle (0.2cm,0.12cm);) leaves older people particularly vulnerable to poverty, as they are not as likely to have labor income or to live with those who do. After government social benefits (see \tikz \draw [fill=gray, draw=black] (0cm,-0.08cm) rectangle (0.2cm,0.12cm);), the elderly have lower rates of poverty than other age groups. Young people and those just below social security and medicare age (late 50s and early 60s) remain particularly vulnerable to poverty, relative to other ages.
 \vspace{2mm}
@@ -5595,7 +5598,7 @@ Net investment is important for many reasons. In the short run, the production a
 \small Note that gross investment includes fixed investment and inventory investment, or the \href{https://www.bea.gov/help/glossary/change-private-inventories-cipi}{change in private inventories}. Changes to private inventories capture the difference between sales and production. Reduced production of new inventory explains much of the overall reduction in gross investment during the COVID-19 pandemic. 
 \end{minipage}
 \newpage
-\vspace*{-10mm}
+\vspace*{-12mm}
 
 \markright{\footnotesize \color{blue!90!white}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Businesses} 
 \begin{minipage}{0.295\textwidth}
@@ -5833,11 +5836,11 @@ When examining trends in the ratio, note that business sales include services, w
 
 \small Next, we look at the \textbf{balance sheets} of US private businesses. The Financial Accounts \href{https://www.federalreserve.gov/releases/z1/}{report} assets, liabilities, and net worth for corporate and noncorporate businesses, each of which is discussed in this subsection. 
 
-The following charts cover nonfinancial businesses and show the ratio of balance sheet components to sector production, measured as the gross value added by the sector. The gross value added is essentially the GDP of the sector. \input{text/bus_bs_gva.txt}
+The following charts cover nonfinancial businesses and show the ratio of balance sheet components to sector output, measured as the gross value added by the sector. The gross value added is essentially the GDP of the sector. \input{text/bus_bs_gva.txt}
 \vspace{0.5mm}
 
 \normalsize \textbf{Nonfinancial Business Balance Sheets}\\
-\footnotesize{\textit{share of sector gross value added, percent}}
+\footnotesize{\textit{share of sector output, percent}}
 \vspace{-1.5mm}
 
 {\pgfdeclarelayer{background layer}
@@ -5911,7 +5914,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \footnotesize{Source: Federal Reserve} \hfill \tbllink{bus_bs_sh.csv}
 \vspace{2.5mm}
 
-\small Analysis of private business balance sheets can help researchers understand risks in the sector. A high ratio of debt to assets, for example, can suggest businesses are over-leveraged. The following chart shows the \textbf{ratio of debt to assets} for nonfinancial businesses, separated by corporate and noncorporate businesses. 
+\small Analysis of private business balance sheets can help researchers understand risks in the sector. A high ratio of debt to assets, for example, can suggest businesses have borrowed too much. The following chart shows the \textbf{ratio of debt to assets} for nonfinancial businesses, separated by corporate and noncorporate businesses. 
 \end{minipage}
 \vspace{0.5mm}
 
@@ -6725,7 +6728,7 @@ Finally, some categories are more affected by changes in relative prices. Sales 
 \hypertarget{gov}{\label{gov}} \hypertarget{govce}{\label{govce}}
 \section*{\bcbox{green!80!blue}Government} \index{government!overview}
 \begin{minipage}{0.76\textwidth}
-\small Public institutions are collectively referred to as the \textit{public-sector} or the \textit{government}. In the United States, the government operates many critical pieces of the economy and has the authority to spend, tax, and create money, as well as to regulate economic and financial activity. The government also enforces and determines the ownership of property. These activities are all extremely important to production and distribution in the economy.
+\small Public institutions are collectively referred to as the \textit{public sector} or the \textit{government}. In the United States, the government operates many critical pieces of the economy and has the authority to spend, tax, and create money, as well as to regulate economic and financial activity. The government also enforces and determines the ownership of property. These activities are all extremely important to production and distribution in the economy.
 
 This chartbook section covers government contributions to current economic activity, receipts and expenditures, assets and liabilities, and government jobs.
 \end{minipage}
@@ -7734,7 +7737,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 \vspace{3mm}
 
 \subsubsection*{Interest Expense}
-\small The ratio of public debt to GDP increased during the COVID-19 response, while the typical interest income from holding public debt initially fell because of lower interest rates. Treasuries and other government debt securities provide a safe asset for the balance sheets domestic households and businesses, and for foreign investors. The Federal Reserve also initially absorbed some of the newly issued treasuries. More recently, the Federal Reserve has raised interest rates and reduced the size of its balance sheet, which has increased interest income in the economy. 
+\small The ratio of public debt to GDP increased during the COVID-19 response, while the typical interest income from holding public debt initially fell because of lower interest rates. Treasuries and other government debt securities provide a safe asset for the balance sheets of domestic households and businesses, and for foreign investors. The Federal Reserve also initially absorbed some of the newly issued treasuries. More recently, the Federal Reserve has raised interest rates and reduced the size of its balance sheet, which has increased interest income in the economy. 
 \end{minipage}
 \vspace{1mm}
 
@@ -7883,11 +7886,11 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 \section*{\bcbox{violet}External Sector}
 \thispagestyle{sectpage}
 \begin{minipage}{0.76\textwidth}
-\small Transactions between US residents and the rest of the world are recorded in two main categories: the current account, which tracks nonfinancial transactions with economic value, and the financial account, which records financial transactions like lending and borrowing. This section delves into both accounts, with a focus on the balance of payments, the difference between payments from residents and payments to residents. The section also covers international trade and discusses trends in exchanges rates.
+\small Transactions between US residents and the rest of the world are recorded in two main categories: the current account, which tracks trade, income, and transfers, and the financial account, which records lending, borrowing, and investment. This section covers both accounts, with a focus on the balance of payments, the difference between payments from residents and payments to residents. The section also covers international trade and discusses trends in exchange rates.
 
 \hypertarget{exbop}{\label{exbop}}
 \subsection*{Balance of Payments} \index{balance of payments} \index{current account balance}
-\small The \textbf{\href{https://www.bea.gov/help/glossary/balance-current-account-national-income-and-product-accounts}{current account balance}} reflects international transactions for goods and services, transfers such as remittances, and ownership income from foreign assets. It comprises current receipts--payments to US residents primarily for exports of goods and returns on foreign assets--and current payments--payments from US residents to the rest of the world for imports, returns on foreign investment in the US, and transfers such as remittances. 
+\small The \textbf{\href{https://www.bea.gov/help/glossary/balance-current-account-national-income-and-product-accounts}{current account balance}} reflects international trade in goods and services, net income from foreign investments, and net transfers such as remittances. It comprises current receipts--payments to US residents primarily for exports of goods and returns on foreign assets--and current payments--payments from US residents to the rest of the world for imports, returns on foreign investment in the US, and transfers such as remittances. 
 
 This balance is further broken down into four components: the trade balance for goods \seebox{blue!50!teal!60!cyan!25!white}, the trade balance for services \seebox{blue!50!teal!75!cyan!80!white}, the primary income balance (covering wages and asset income, see \cbox{gray!72!black}), and the secondary income balance (including remittances and taxes, see \cbox{green!78!blue!88!black}).  
 
@@ -7943,7 +7946,7 @@ This balance is further broken down into four components: the trade balance for 
 \footnotesize{Source: Bureau of Economic Analysis}
 \vspace{4mm}
 
-\small The financial account measures transactions between the US and the rest of the world that result in changes in the ownership of assets. The \textbf{financial account balance} captures the difference between capital inflows and capital outflows, and offsets the current account balance. Each quarter, the US acquires foreign goods and services, and the rest of the world acquires US assets, on a net basis. 
+\small The financial account tracks cross-border changes in asset ownership. The \textbf{financial account balance} captures the difference between capital inflows and capital outflows, and offsets the current account balance. Each quarter, on balance, the US acquires foreign goods and services, and the rest of the world acquires US assets. 
 
 \input{text/fabz1.txt} 
 \vspace{1mm}
@@ -8134,9 +8137,9 @@ This balance is further broken down into four components: the trade balance for 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{exim.csv}}
 \end{minipage}
 \newpage
-\subsubsection*{Import Penetration} 
-\begin{minipage}{0.76\textwidth} \index{trade!import penetration} \index{trade!imports}
-\small Goods can be produced domestically, imported, or some combination of the two. The import share of the total US demand for goods, measured as US produced goods and imported goods less exported goods, is also referred to as \textbf{import penetration}. This measure has risen considerably over the past thirty years. The majority of the long-term increase involves consumer goods, while the decrease after 2011 comes primarily from petroleum and related products. 
+\subsubsection*{Import Share} 
+\begin{minipage}{0.76\textwidth} \index{trade!import share} \index{trade!imports}
+\small Goods can be produced domestically, imported, or some combination of the two. The import share of the total US demand for goods is measured as imports divided by US produced goods and imported goods less exported goods. This measure has risen considerably over the past thirty years, as imports have replaced domestic manufacturing. The majority of the long-term increase involves consumer goods, while the decrease after 2011 comes primarily from petroleum and related products. 
 
 \input{text/goodsimpsh.txt} 
 
@@ -8517,7 +8520,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \vspace*{-8mm}
 
 \begin{minipage}{0.76\textwidth} \index{exchange rates} \index{foreign exchange} \index{US dollar}
-\small Shifts in relative consumer prices between the US and trading partners complicate analysis of exchange rates. For example, the US dollar-Japanese yen exchange rate is relatively stable from 2000 to 2020, but Japan has less inflation in consumer prices over the period. At the end of the period, 100 yen buys more consumer goods in Japan than one dollar will buy in the US. 
+\small Shifts in relative consumer prices between the US and trading partners complicate analysis of exchange rates. For example, the US dollar-Japanese yen exchange rate was relatively stable from 2000 to 2020, but Japan had less inflation in consumer prices over the period. At the end of the period, 100 yen bought more consumer goods in Japan than one dollar would buy in the US. 
 
 \textbf{Real effective exchange rates} incorporate the inflation rate in the US and in trading partners, and are again weighted by the amount of trade with each partner. The real effective exchange rate captures the basket of goods that can be purchased by a unit of currency, as opposed to capturing the basket of other currencies that can be purchased. 
 \end{minipage}
@@ -8841,7 +8844,7 @@ People who are neither employed nor unemployed are \textit{outside of the labor 
 \footnotesize{Source: BLS, BEA, Author's Calculations} \hfill \tbllink{gli.csv}
 \vspace{2mm}
 
-\small Historically, the US economy can sustain gross labor income of at least five percent. For example, assuming a stable labor share of income, this could be inflation of two percent and real output growth of three percent. Gross labor income growth of under five percent may indicate weak aggregate demand. 
+\small Historically, the US economy can sustain gross labor income of at least five percent. For example, assuming a stable labor share of income, this could be inflation of two percent and real output growth of three percent. Gross labor income growth of under five percent may reduce overall spending in the economy. 
 
 Among measures of overall economic activity, gross labor income has the added benefit that it can be calculated using multiple independent data sources. The measure can be calculated from timely measures such as nonfarm payrolls and average earnings, from compensation of employees data from BEA, or from more-comprehensive measures that reduce effects of composition, such as the employment cost index combined with the prime-age employment rate. 
 
@@ -8888,7 +8891,7 @@ Among measures of overall economic activity, gross labor income has the added be
 
 \subsubsection*{Labor Share of Income}
 \begin{minipage}{0.76\textwidth} \index{labor share of income} \index{compensation of employees} \index{income!labor share}
-\small The \textbf{labor share} measures the portion of available income that is paid to workers. Labor income is measured in the national accounts as employee compensation, and net income is measured as employee compensation plus the net operating surplus. Net income, or income after depreciation, is used instead of gross income because depreciation expenses are not available to labor or capital. 
+\small The \textbf{labor share} measures the portion of available income that is paid to workers. Labor income is measured in the national accounts as employee compensation, and net income is measured as employee compensation plus business profits. Net income, or income after depreciation, is used instead of gross income because depreciation expenses are not available to labor or capital. 
 \end{minipage}
 \vspace{-1mm}
 
@@ -9254,7 +9257,7 @@ Among measures of overall economic activity, gross labor income has the added be
 \subsubsection*{Employment Rates} 
 \begin{minipage}{0.76\textwidth} \index{employment!employment rate}
 \vspace{-0.5mm}
-\small The \textbf{employment rate}, or the employment-population ratio, is the share of a group that is employed. Employment rates can provide useful insight into macroeconomic conditions. A high employment rate means available labor are being utilized in the productive process. All else equal, higher employment results in both increased supply, as the result of more labor being used for production, and increased demand, as the result of higher levels of income.
+\small The \textbf{employment rate} is the share of a group that is employed. Employment rates can provide useful insight into macroeconomic conditions. A high employment rate means available labor is being utilized in the productive process. All else equal, higher employment results in both increased supply, as the result of more labor being used for production, and increased demand, as the result of higher levels of income.
 
 Economists are interested in both the overall employment rate and in the employment rates for individual groups of people. The overall employment rate provides insight into the overall utilization of labor of a society and is affected by demographic and macroeconomic factors. Employment rates for individual groups can tell us about macroeconomic conditions and even tell us about differences in local economic conditions. 
 
@@ -9452,7 +9455,7 @@ The \textbf{age 25 to 54 employment rate} is an important measure of labor marke
 
 \begin{minipage}{0.76\textwidth}
 
-\footnotesize{Source: Bureau of Economic Analysis}
+\footnotesize{Source: Bureau of Labor Statistics}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{employment!employment rate} \index{employment!by state}
@@ -9585,7 +9588,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 \input{text/dis_rate_cps.txt} 
 \end{minipage}
 \newpage
-\vspace*{-13mm}
+\vspace*{-15mm}
 
 \subsection*{Unemployment}
 \begin{minipage}{0.76\textwidth} 
@@ -9677,7 +9680,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 	{\renewcommand{\arraystretch}{1.52} \hspace*{-1mm}
 	\hspace*{0.5mm} \begin{tabular}{p{35mm} R{7mm} R{7mm} R{7mm} R{7mm}
 		   R{7mm} R{7mm} R{8mm} R{11mm}}
-		   &&&&&&& \multicolumn{2}{l}{ \ \footnotesize{\textit{great recession}}} \\
+		   &&&&&&& \multicolumn{2}{l}{ \ \footnotesize{\textit{Great Recession}}} \\
 		   \addlinespace[-1.2mm]\arrayrulecolor{gray}\cmidrule(lr){8-9}
 		  \addlinespace[-1mm]
 			 \input data/unemp1.tex \arrayrulecolor{black!60}\hline
@@ -9685,414 +9688,6 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 \vspace{-2mm}
 
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{unemp.csv}
-\end{minipage}
-\newpage
-\begin{minipage}{0.76\textwidth} \index{unemployment!unemployment rate} \index{unemployment!by race/ethnicity}
-\small Current Population Survey microdata are used to calculate unemployment by race and ethnicity over the latest six months, on average, and for the same six months before the COVID-19 pandemic. The groups used to produce these estimates separate those with a non-Hispanic ethnicity by race: white alone, black alone, Asian or Hawaiian/Pacific Islander alone, Native American/American Indian or Alaskan Native alone, or more than one race, from those with a Hispanic ethnicity and any race.  
-\end{minipage}
-\vspace{1.5mm}
-
-\begin{minipage}{0.28\textwidth} 
-\normalsize \textbf{Unemployment Rate}\\
-\footnotesize{\textit{unemployed share of labor force}}\\
-\footnotesize{\textit{age 18 to 64}}\\
-\footnotesize{\textit{not seasonally adjusted}}
-\end{minipage}
-\begin{minipage}{0.17\textwidth} 
-\footnotesize \ 6 mo. ending:\\
-\small \cbox{green!60!blue!90!black} \input{text/cps_lfs_datesh.txt}\\
-\small \cbox{cyan!75!black!30!white} \input{text/cps_lfs_dateshprepan.txt}
-\end{minipage}\hspace{1mm}
-\begin{minipage}{0.28\textwidth} 
-\normalsize \textbf{Share of Unemployed}\\
-\footnotesize{\textit{group share of unemployed}}\\
-\footnotesize{\textit{age 18 to 64}}\\
-\footnotesize{\textit{not seasonally adjusted}}
-\end{minipage}
-\vspace{-1.5mm}
-
-\begin{minipage}{0.37\textwidth} 
-\hspace*{-3mm} \begin{tikzpicture} 	\pgfplotstableread[col sep=comma]{data/unemp_grp.csv}\ungrp
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.1cm}{1.5ex}
-    	width=4.3cm, bar width=2.4ex, height=6.9cm,
-    	enlarge y limits={abs=0.42cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\ungrp}{name}, xmin=0.2, 
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=2] {\ungrp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=1] {\ungrp};
-  	\end{axis}
-\end{tikzpicture}
-\end{minipage} \hspace{2mm}
-\begin{minipage}{0.37\textwidth} 
-\begin{tikzpicture} \pgfplotstableread[col sep=comma]{data/unemp_grpsh.csv}\ungrpsh
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{2.1cm}{1.5ex}
-    	width=4.3cm, bar width=2.4ex, height=6.9cm,
-    	enlarge y limits={abs=0.42cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\ungrpsh}{name}, xmin=0.2, 
-		yticklabel style={font=\footnotesize}, clip=false, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=2] {\ungrpsh};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=1] {\ungrpsh};
-  	\end{axis}
-\end{tikzpicture}
-\end{minipage}
-\vspace{-1.5mm}
-
-\begin{minipage}{0.76\textwidth} 
-\footnotesize{Source: Author's calculations from CPS} \hfill \tbllink{unempgroups3.csv} \ \tbllink{unempgroups.csv} \ \tbllink{unempgroups2.csv}
-\vspace{3mm}
-
-\normalsize \textbf{Unemployment Rate}
-\vspace{0.5mm}
-
-\centerline{\small Total, any race or ethnicity}
-\vspace{-2mm}
-
-Total \hspace{34mm} Men \hspace{32mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemptt}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=5] {\unemptt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=6] {\unemptt};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemptt}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=1] {\unemptt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=2] {\unemptt};
-  	\end{axis}
-\end{tikzpicture}\hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemptt}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=3] {\unemptt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=4] {\unemptt};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{3mm}
-
-\centerline{\small White, non-Hispanic, alone}
-\vspace{-2mm}
-
-Total \hspace{34mm} Men \hspace{32mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=5] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=6] {\unemp};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=1] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=2] {\unemp};
-  	\end{axis}
-\end{tikzpicture}\hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=3] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=4] {\unemp};
-  	\end{axis}
-\end{tikzpicture}
-\end{minipage}
-\newpage
-\begin{minipage}{0.76\textwidth} \index{unemployment!by race/ethnicity} \index{unemployment!unemployment rate}
-\normalsize \textbf{Unemployment Rate, Continued}
-\vspace{1mm}
-
-\centerline{\small Black, non-Hispanic, alone}
-\vspace{-2mm}
-
-Total \hspace{34mm} Men \hspace{32mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=11] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=12] {\unemp};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=7] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=8] {\unemp};
-  	\end{axis}
-\end{tikzpicture}\hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=9] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=10] {\unemp};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{3mm}
-
-\centerline{\small Hispanic, any race}
-\vspace{-2mm}
-
-Total \hspace{34mm} Men \hspace{32mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=17] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=18] {\unemp};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=13] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=14] {\unemp};
-  	\end{axis}
-\end{tikzpicture}\hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=15] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=16] {\unemp};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{3mm}
-
-\centerline{\small Asian or Hawaiian/Pacific Islander, non-Hispanic, alone}
-\vspace{-2mm}
-
-Total \hspace{34mm} Men \hspace{32mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=23] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=24] {\unemp};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=19] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=20] {\unemp};
-  	\end{axis}
-\end{tikzpicture}\hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=5.6cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=21] {\unemp};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=22] {\unemp};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{3mm}
-
-\centerline{\small Native American/American Indian or Alaskan Native, non-Hispanic, alone}
-\vspace{-2mm}
-
-Total \hspace{34mm} Men \hspace{32mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=2.7cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=5] {\unempt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=6] {\unempt};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=2.7cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=1] {\unempt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=2] {\unempt};
-  	\end{axis}
-\end{tikzpicture}\hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=2.7cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unemp}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=3] {\unempt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=4] {\unempt};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{3mm}
-
-\centerline{\small More than one race, non-Hispanic}
-\vspace{-2mm}
-
-Total \hspace{34mm} Men \hspace{32mm} Women\\
-\hspace*{-4mm} \begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=2.7cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=11] {\unempt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=12] {\unempt};
-  	\end{axis}
-\end{tikzpicture} \hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=2.7cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=7] {\unempt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=8] {\unempt};
-  	\end{axis}
-\end{tikzpicture}\hfill
-\begin{tikzpicture}
-  	\begin{axis}[\barplotnogrid axis y line=left, \barylab{1.0cm}{1.5ex}
-    	width=4.0cm, bar width=1.2ex, height=2.7cm,
-    	enlarge y limits={abs=0.3cm}, enlarge x limits=0.03, \bbar{x}{0},
-		yticklabels from table={\unempt}{name}, xmin=0.1, xmax=19,
-		yticklabel style={font=\footnotesize}, nodes near coords, 
-		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
-			precision=1, assume math mode}]
-  	\addplot[fill=cyan!75!black!30!white, draw=none] 
-  		table [y expr=-\coordindex, x index=9] {\unempt};
-  	\addplot[fill=green!60!blue!90!black, draw=none] 
-  		table [y expr=-\coordindex, x index=10] {\unempt};
-  	\end{axis}
-\end{tikzpicture}
-\vspace{-1mm}
-
-\footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{unemp_grp.csv}
 \end{minipage}
 \newpage
 \subsubsection*{Reasons for Unemployment}
@@ -10325,7 +9920,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \end{minipage}
 \vspace*{-2mm}
 
-\footnotesize{Source: Bureau of Economic Analysis} \hspace{75mm} \tbllink{state_unrate.csv}
+\footnotesize{Source: Bureau of Labor Statistics} \hspace{75mm} \tbllink{state_unrate.csv}
 \newpage
 \subsubsection*{Jobless Claims}
 \begin{minipage}{0.76\textwidth} \index{insured unemployed} \index{unemployment!jobless claims} \index{jobless claims}
@@ -10547,7 +10142,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \vspace{5mm}
 
 \begin{minipage}{0.76\textwidth}
-\small While the recession of 2001 appears mild by expenditure measures, it initiated a major decrease in labor force participation. The economy was losing jobs at an alarming rate long after the 2001 recession had officially ended, though labor market weakness was \href{https://www.aeaweb.org/articles?id=10.1257/jep.30.2.179}{partially masked} by a major housing bubble. Seven years after the recession of 2001, the housing bubble collapsed, causing the great recession and pushing many more people out of the labor force.
+\small While the recession of 2001 appears mild by expenditure measures, it initiated a major decrease in labor force participation. The economy was losing jobs at an alarming rate long after the 2001 recession had officially ended, though labor market weakness was \href{https://www.aeaweb.org/articles?id=10.1257/jep.30.2.179}{partially masked} by a major housing bubble. Seven years after the recession of 2001, the housing bubble collapsed, causing the Great Recession and pushing many more people out of the labor force.
 \end{minipage}
 \vspace{1mm}
 
@@ -10861,7 +10456,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \vspace*{-11mm}
 
 \begin{minipage}{0.76\textwidth} \index{labor force flows}
-\small The great recession worsened job-finding prospects for people without jobs. As an example, the flow into employment for those out of the labor force due to a disability or illness slowed considerably. These prospects took over a decade to recover. 
+\small The Great Recession worsened job-finding prospects for people without jobs. As an example, the flow into employment for those out of the labor force due to a disability or illness slowed considerably. These prospects took over a decade to recover. 
 \end{minipage}
 \vspace{0.5mm}
 
@@ -10934,7 +10529,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \footnotesize{Source: Author's Calculations from CPS} \hfill \tbllink{jobswitch.csv} 
 \end{minipage}\hspace{5mm}
 \begin{minipage}{0.325\textwidth}
-\small The CPS asks whether workers have the same employer as the previous month. The rate at which people \textbf{change employers} fell below two percent after the great recession, from an average of around three percent during the late 1990s. 
+\small The CPS asks whether workers have the same employer as the previous month. The rate at which people \textbf{change employers} fell below two percent after the Great Recession, from an average of around three percent during the late 1990s. 
 
 \input{text/jobswitch.txt} 
 \end{minipage}
@@ -11115,7 +10710,7 @@ The US measures wages in several ways. As two examples, average hourly earnings 
 
 \small The various US wage measures each have advantages; average hourly earnings from the payroll survey are timely and cover detailed industry groups, while median earnings from the household survey are unaffected by outliers and cover demographic groups. 
 
-Likewise, wage measures come with caveats. For example, both average and median wages are \href{https://www.dallasfed.org/research/economics/2022/0215}{subject to} \textit{composition effects} during and after a recession. Low-wage workers are more likely to lose a job during a recession, and therefore move out of (and later into) the sample of a wage survey. This drives up the central tendency of wages during a recession and drives down the central tendency after a recession. 
+Likewise, wage measures come with caveats. For example, both average and median wages are \href{https://www.dallasfed.org/research/economics/2022/0215}{subject to} \textit{composition effects} during and after a recession. Low-wage workers are more likely to lose a job during a recession, and therefore move out of (and later into) the sample of a wage survey. This drives up the average and median wage during a recession and drives down the average and median wage after a recession. 
 \end{minipage}
 
 \begin{minipage}{0.385\textwidth}
@@ -11308,7 +10903,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \footnotesize{Source: Bureau of Labor Statistics, Author's Calculations} \hfill \tbllink{uwe_bls_gr.csv} \ \ \tbllink{uwe_cps.csv}
 \vspace{2mm}
 
-\small The following tables present the BLS published estimates for usual weekly earnings of full-time wage and salary earnings. The first table presents the earnings in levels, and the second table shows the one-year percent change.
+\small The following tables present the BLS published estimates for usual weekly earnings of full-time wage and salary earners. The first table presents the earnings in levels, and the second table shows the one-year percent change.
 \vspace{2mm}
 
 \normalsize \textbf{Usual Weekly Earnings}\\
@@ -11909,7 +11504,7 @@ The next charts show four measures of average hours worked. Two measures, Curren
 
 First, the Bureau of Labor Statistics (BLS) \href{https://www.bls.gov/lpc/}{publish} a quarterly index of aggregate hours worked in nonfarm businesses (see \scolorline{green!80!blue}). The official productivity figures in the Productivity and Costs (LPC) report use this measure, \input{text/agg_hrs_lpc.txt}  
 
-Next, The establishment survey (CES) can be used to calculate aggregate hours worked as average hours worked multiplied by the total number of workers. Aggregate hours for private production and non-supervisory workers calculated using this method \input{text/agg_hrs_ces.txt} (see \color{blue!65!black}\textbf{---}\normalcolor). 
+Next, the establishment survey (CES) can be used to calculate aggregate hours worked as average hours worked multiplied by the total number of workers. Aggregate hours for private production and non-supervisory workers calculated using this method \input{text/agg_hrs_ces.txt} (see \color{blue!65!black}\textbf{---}\normalcolor). 
 \end{minipage}
 
 \begin{minipage}{0.44\textwidth}
@@ -11950,7 +11545,7 @@ Next, The establishment survey (CES) can be used to calculate aggregate hours wo
 \end{minipage}\hspace{5mm} \begin{minipage}{0.28\textwidth}
 \small Third, the Current Population Survey (CPS) can be used to estimate hours of all workers, which \input{text/agg_hrs_cps.txt} (see \colordashline{violet!60!magenta}). 
 
-Trends emerge when comparing between the aggregate hours measures. Production and non-supervisory workers have most overall growth. In contrast, public sector hours have not kept up since the great recession, driving a wedge between hours for all workers and hours for private workers. This trend continued after the COVID-19 recession. 
+Trends emerge when comparing between the aggregate hours measures. Production and non-supervisory workers have the most growth. In contrast, public sector hours have not kept up since the Great Recession, driving a wedge between hours for all workers and hours for private workers. This trend continued after the COVID-19 recession. 
 \end{minipage}
 \vspace{2mm}
 
@@ -12206,7 +11801,7 @@ The US financial markets also provide information that is helpful for macroecono
 \begin{minipage}{0.76\textwidth}
 \small Relative to most economic indicators, financial markets provide a higher frequency of information. \textbf{High-frequency indicators}, summarized daily, can show developments before typical economic measures report the changes. 
 
-The next charts show the most-recent three months of developments. The top chart shows the S\&P 500 stock market index open, close, daily high, and daily low. The middle chart is the stock market volatility index (VIX), which will spike when people expect swings in stock prices. 
+The next charts show the most recent three months of developments. The top chart shows the S\&P 500 stock market index open, close, daily high, and daily low. The middle chart is the stock market volatility index (VIX), which will spike when people expect swings in stock prices. 
 
 Finally, treasury yields indicate expected future interest rates, which themselves capture expected future inflation and growth. Each of these indicators is discussed in more depth later in this chartbook section. 
 \end{minipage}
@@ -12606,7 +12201,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \subsection*{Interest Rates}
 \begin{minipage}{0.76\textwidth} \index{interest rates!Fed funds rate} \index{Federal Reserve} \index{monetary policy} \index{mortgage rate} \index{interest rates!treasuries}
 \hypertarget{capint}{\label{capint}}
-\small Interest rates influence the cost of borrowing money and economic activity broadly, and have an important role in economic policy. Spending and investing activities are affected in part by changes in interest rates, which affect borrowing costs and investment returns. Changes in interest rates also result in changes in asset prices and exchanges rates, which in turn influence demand. 
+\small Interest rates influence the cost of borrowing money and economic activity broadly, and have an important role in economic policy. Spending and investing activities are affected in part by changes in interest rates, which affect borrowing costs and investment returns. Changes in interest rates also result in changes in asset prices and exchange rates, which in turn influence demand. 
 
 Because of the effect interest rates have on demand, monetary policy in the US uses interest rates to influence economic conditions. \textbf{The Federal Reserve sets a base interest rate which affects other interest rates}. Interest rates tend to move together alongside the interest rate policy of the Federal Reserve, though the spread between different types of interest rates is also important. The following chart compares recent interest rates for selected assets and markets. 
 \end{minipage}
@@ -12615,7 +12210,7 @@ Because of the effect interest rates have on demand, monetary policy in the US u
 \begin{minipage}{0.265\textwidth}
 \small \input{text/int_infl_ff.txt}Short-term treasury yields track this rate closely. Corporate bonds pay a risk premium over comparable treasuries. 
 
-Banks pay lower rates on deposits and charge higher rates for loans. The gap between the two is the net interest margin. Expected future changes in inflation also affect the premium or discount for longer-term borrowing. 
+Banks pay lower rates on deposits and charge higher rates for loans. The gap between the two is the bank profit margin on lending. Expected future changes in inflation also affect the premium or discount for longer-term borrowing. 
 \end{minipage}\hspace{5mm}
 \begin{minipage}{0.455\textwidth}
 \normalsize \textbf{Selected Interest Rates, \input{text/int_infl_chart_date.txt}}\\
@@ -12738,7 +12333,7 @@ One formulation of the Taylor rule is shown below (see {\color{cyan!80!white}\te
 	\stdline{blue!60!black}{date}{Fed Funds}{data/ffrate.csv}
 	\addplot[only marks, mark=square*, mark options={fill=purple, 
 		draw=white, scale=1.2}] 
-		table [x=date, y=VALUE, col sep=comma] {data/sep.csv};
+		table [x=date, y=FEDTARMD, col sep=comma] {data/sep.csv};
 	\input{text/rates_ff_proj_node.txt}
 	\input{text/rates_ff_proj_date.txt}
 	\absnode{{1992-01-01}}{9.1}{\scriptsize \color{blue!60!black}Effective\\
@@ -12880,7 +12475,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \footnotesize{Source: Federal Reserve} 
 \end{minipage} \hspace{4mm}
 \begin{minipage}{0.3\textwidth}
-\small The yield curve can also become \textit{inverted} when yields on shorter-term debt are higher than yields on longer-term debt. An inverted yield curve can signal worsening economic conditions. For example, short term rates may exceed longer-term rates if the Federal Reserve is expected to lower interest rates in the future, or if inflation is expected to fall due to weakened economic conditions. 
+\small The yield curve can also become \textit{inverted} when yields on shorter-term debt are higher than yields on longer-term debt. An inverted yield curve can signal worsening economic conditions. For example, short-term rates may exceed longer-term rates if the Federal Reserve is expected to lower interest rates in the future, or if inflation is expected to fall due to weakened economic conditions. 
 
 \input{text/yc_inversion.txt}
 \end{minipage}
@@ -12935,7 +12530,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 
 \begin{minipage}{0.76\textwidth} 
 \index{interest rates!real} \index{interest rates!decomposition}
-\small Changes in nominal treasury yields can be \textbf{decomposed into changes in expected inflation and changes in real yields}. Changes in real yields reflect changes in expected path of the federal funds rate and the economic outlook. Federal Reserve Bank of Cleveland models \href{https://www.clevelandfed.org/en/our-research/indicators-and-data/inflation-expectations.aspx}{identify} inflation expectations across the term structure, which can be used to identify changes in real yields. 
+\small Changes in nominal treasury yields can be \textbf{decomposed into changes in expected inflation and changes in real yields}. Changes in real yields reflect changes in the expected path of the federal funds rate and the economic outlook. Federal Reserve Bank of Cleveland models \href{https://www.clevelandfed.org/en/our-research/indicators-and-data/inflation-expectations.aspx}{identify} inflation expectations across the term structure, which can be used to identify changes in real yields. 
 
 \input{text/real_yield_model_ch.txt}
 \vspace{0.5mm}
@@ -13041,7 +12636,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \begin{minipage}{0.76\textwidth}
 \small Next, two techniques are used to identify real yields for longer-term treasury bonds. \input{text/real_rates_basic.txt} 
 
-The market-based approach has limitations, as the market for treasury inflation-indexed securities is relatively small and can be influenced by monetary policy. The Cleveland Fed model estimates real yields across the term structure, using a model based on treasury yields, inflation, and financial-market- and survey-based information.
+The market-based approach has limitations, as the market for inflation-protected Treasury bonds is relatively small and can be influenced by monetary policy. The Cleveland Fed model estimates real yields across the term structure, using a model based on treasury yields, inflation, and financial-market- and survey-based information.
 
 \input{text/real_yield_model.txt}
 \vspace{1mm}
@@ -13132,7 +12727,7 @@ The market-based approach has limitations, as the market for treasury inflation-
 	\end{axis}
 \end{tikzpicture}}
 
-\footnotesize{Source: Ice Data Indices, FRED} \hfill \tbllink{highyield.csv}
+\footnotesize{Source: ICE Data Indices, FRED} \hfill \tbllink{highyield.csv}
 \end{minipage}
 \vspace{0.5mm}
 
@@ -13361,8 +12956,7 @@ Inflation is typically calculated as the one-year percent change in a price inde
 \footnotesize{Source: BLS, BEA, Federal Reserve Bank of Dallas}
 \vspace{2.0mm}
 
-\small Economists argue that some inflation is ideal. Inflation creates incentives to spend and invest, which sustain economic growth. Too much inflation, however, acts as a drag on the economy and creates hardship for people. The Federal Reserve 
-\textbf{two percent inflation target} balances stable prices with economic growth. 
+\small Economists argue that some inflation is ideal. Inflation creates incentives to spend and invest, which sustain economic growth. Too much inflation, however, acts as a drag on the economy and creates hardship for people. The Federal Reserve's \textbf{two percent inflation target} balances stable prices with economic growth. 
 
 The next charts show inflation relative to the two percent target, using the Consumer Price Index (CPI) and Personal Consumption Expenditure (PCE) price index. 
 \vspace{0.5mm}
@@ -13405,12 +12999,14 @@ The next charts show inflation relative to the two percent target, using the Con
 \footnotesize{Core PCE excludes the more-volatile food and energy categories} 
 \end{minipage}
 \newpage
+\markright{\footnotesize \color{purple!60!magenta}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Prices}
+\hypertarget{prin}{\label{prin}}
 \vspace*{-12mm}
 
 \index{prices!consumer price index} \index{prices!PCE price index}
 \subsection*{Monthly Inflation Rate}
 \begin{minipage}{0.76\textwidth} 
-\small The one-year inflation rate is smoothed, relative to the one-month rate, by combining a full year of price changes. As such, most of the information contained in the one-year rate is known in advance. The \textbf{one-month rate} is useful for examining near-term trends, for example by eliminating the base effects from changes in prices a year ago. 
+\small The one-year inflation rate is smoothed, relative to the one-month rate, by combining a full year of price changes. As such, most of the information contained in the one-year rate is known in advance. The \textbf{one-month rate} is useful for examining near-term trends, for example by eliminating distortion from unusual prices the year prior. 
 
 \input{text/cpi_monthly.txt}The Cleveland Fed \href{https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting}{nowcasts} current inflation by combining recent inflation data with current oil and gasoline prices. \input{text/cpinow.txt}
 \vspace{0.5mm} \hypertarget{cpimm}{}
@@ -13520,8 +13116,6 @@ The next charts show inflation relative to the two percent target, using the Con
 \small A basic estimate for the next one-year inflation print combines the nowcast with the last 11 months. The above charts separate the latest 12 months of published data between two dashed lines. This 12-month group combines to create the widely-used one-year inflation rate. Each month, one new bar is added to the group and one bar is dropped. One-year inflation is determined by whether the new bar is larger than the dropped bar.  
 \end{minipage}
 \newpage
-\markright{\footnotesize \color{purple!60!magenta}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ Prices}
-\hypertarget{prin}{\label{prin}}
 \vspace*{-11mm}
 
 \subsection*{Consumer Price Index}
@@ -13625,7 +13219,7 @@ Core inflation can be broken down into core goods, core services other than shel
 \vspace{2mm}
 
 \subsubsection*{Relative Prices}
-\small Some prices increase faster or slower than others. Additionally, the basket of goods used to calculate the CPI is based on average spending patterns across individuals. At a given point, individuals may dedicate a large share of spending to a certain categories or have no expenses at all in a category. For example, day care costs are paid generally only for a few years of a child's life and only some households contain day-care-age children. But within those households, day care is a large share of overall spending. 
+\small Some prices increase faster or slower than others. Additionally, the basket of goods used to calculate the CPI is based on average spending patterns across individuals. At a given point, individuals may dedicate a large share of spending to certain categories or have no expenses at all in a category. For example, day care costs are paid generally only for a few years of a child's life and only some households contain day-care-age children. But within those households, day care is a large share of overall spending. 
 
 One-year inflation rates for different categories of goods and services, including some smaller categories, are captured in the following section and table. The table also shows cumulative price changes since February 2020, the last month of data before the COVID-19 pandemic shutdown in the US. Additionally, the weight that a category has in the overall index---the category's share of the basket of goods and services used to calculate the CPI---is included as the last column in the table. This weight comes from each category's share of overall consumer spending during the most recent reference period, and is updated by changes in prices since the reference period. 
 \end{minipage}
@@ -13826,7 +13420,7 @@ One-year inflation rates for different categories of goods and services, includi
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{pce_pi.csv}
 \vspace{5mm}
 
-\small The Federal Reserve Bank of Dallas \href{https://www.dallasfed.org/research/pce}{publishes} a variation of the PCE price index called the trimmed-mean index. The most-volatile categories in the current month's index are removed, or \textit{trimmed}, to smooth the data. As a result, the most extreme categories, which vary from month-to-month, do not affect inflation rates calculated using the trimmed-mean index. 
+\small The Federal Reserve Bank of Dallas \href{https://www.dallasfed.org/research/pce}{publishes} a variation of the PCE price index called the trimmed-mean index. The most volatile categories in the current month's index are removed, or \textit{trimmed}, to smooth the data. As a result, the most extreme categories, which vary from month-to-month, do not affect inflation rates calculated using the trimmed-mean index. 
 
 \input{text/pce_tm_basic.txt}
 \vspace{1mm}
@@ -13978,7 +13572,7 @@ Note that the all commodities index includes goods at various stages of producti
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{ppi.csv}
 \vspace{2mm}
 
-\small The one-month change in produce prices highlights recent trends. \input{text/ppi_monthly.txt}
+\small The one-month change in producer prices highlights recent trends. \input{text/ppi_monthly.txt}
 \vspace{0.5mm}
 
 \normalsize \textbf{PPI One-Month Growth}\\
@@ -14070,7 +13664,7 @@ Two important commodities for the construction and manufacturing industries are 
 \vspace{1mm}
 
 \normalsize \textbf{Steel \hspace{5.5cm} Lumber}\\
-\footnotesize{\textit{cold-rolled steel sheet and trim, index 1989=1 \hspace{9mm} lumber and wood products, index, 1989=1}}
+\footnotesize{\textit{cold-rolled steel sheet and strip, index 1989=1 \hspace{9mm} lumber and wood products, index, 1989=1}}
 \vspace{3.8cm}
 
 {\pgfdeclarelayer{background layer}
@@ -14207,6 +13801,10 @@ Two important commodities for the construction and manufacturing industries are 
 
 Additionally, the chartbook benefits immensely from other researchers who have shared their work in the public domain or provided me with guidance, including: Dean Baker, Matt Bruenig, Eileen Appelbaum, John Schmitt, Mark Weisbrot, Ben Zipperer, Alberto Rodelgo, Yevgeniya Korniyenko, Magali Pinat, Robert Blecker, Teasri Thiruvadanthai, Rainer K\"ohler, Gersenda Varisco, Venkat Josyula, Tom Augspurger, Claudia Sahm, Mike Sieferling, Andrew Paciorek, David Dorn, Skanda Amarnath, Josh Bivens, Ernie Tedeschi, Brad Setser, Joseph Politano, Arin Dube, Valerie Wilson, Mike Konczal, J.W. Mason, and Vikas Sharma.
 \end{minipage}
+\newpage
+\markright{\seriffont Glossary}
+\hypertarget{glossary}{\label{glossary}}
+\input{glossary.tex}
 \newpage
 \thispagestyle{sectpage}
 \hypertarget{references}{\label{references}}

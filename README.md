@@ -8,7 +8,7 @@
 
 Brian Dew, @bd_econ
 
-May 17, 2025
+January 16, 2026
 
 
 ----
@@ -19,7 +19,7 @@ The US chartbook is a set of notes describing social and economic developments i
 
 Importantly, the chartbook is open source, so people are welcome to use it for their own projects or suggest edits. If you find an error, and I'm sure there are many, please let me know by e-mail or by creating an issue on GitHub. 
 
-The chartbook is currently in release verson, 0.1.5. I hope other people find it useful. 
+The chartbook is currently in release verson, 0.1.6. I hope other people find it useful. 
 
 ## To Do
 
