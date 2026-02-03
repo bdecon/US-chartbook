@@ -199,7 +199,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-01-31},
+		xmax={2026-02-28},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -257,7 +257,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-01-31},
+		xmax={2026-02-28},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}, 
@@ -270,7 +270,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltxticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-01-31},
+		xmax={2026-02-28},
 		max space between ticks=40,	    
 		xtick={{2021-07-01}, {2022-01-01}, {2022-07-01},
 		{2023-01-01}, {2023-07-01}, 
@@ -286,7 +286,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-01-31},
+		xmax={2026-02-28},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -299,7 +299,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\lfdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2026-01-31}, 
+		xmin={2018-01-01}, xmax={2026-02-28}, 
 		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
 			{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
 		    {2026-01-01}},
@@ -311,7 +311,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\tydateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-01-31}, max space between ticks=40,	    
+		xmax={2026-02-28}, max space between ticks=40,	    
 		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01},
 		 {2014-01-01}, {2015-01-01},
 		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
@@ -323,20 +323,20 @@
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-01-31},
+		xmax={2026-02-28},
 		}
 
 	% Date (X) Axis Tick Marks, no tick marks, just formatting
 	\newcommand{\empticks}{
 		date coordinates in=x, axis line style={draw=none},
 		xticklabels=\empty, xtick style={draw=none},
-		xmax={2026-01-31}, enlarge x limits={0.01},
+		xmax={2026-02-28}, enlarge x limits={0.01},
 		}
 		
 	% Date (X) Axis Tick Marks, one tick per year, every year labeled
 	\newcommand{\projdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2029-01-31},
+		xmax={2029-02-28},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -2893,7 +2893,7 @@ Living with family became more common after the collapse of the housing bubble. 
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{demographics!age}
-\small Mapping American Community Survey data to commuter zones gives insight on the \textbf{age composition of local areas}. \input{text/acs_u18.txt} 
+\small Mapping American Community Survey data to commuter zones (labor market areas that may cross county or state lines) gives insight on the \textbf{age composition of local areas}. \input{text/acs_u18.txt} 
 
 \input{text/acs_o64.txt}
 \vspace{1mm}
@@ -9077,7 +9077,7 @@ Among measures of overall economic activity, gross labor income has the added be
 
 \hspace*{-1.5mm} \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.4pt} \color{black!90}
 		{\renewcommand{\arraystretch}{1.62}
-		 \begin{tabular}{p{33.5mm} R{9mm} R{9mm} R{11mm} R{9mm} R{9mm} R{9mm} R{9mm}}
+		 \begin{tabular}{p{34mm} R{9mm} R{9mm} R{11mm} R{9mm} R{9mm} R{9mm} R{9mm}}
 		 \arrayrulecolor{gray}\cmidrule(r){2-3}\cmidrule(lr){4-8}
 		  \addlinespace[-1mm]
 		\input data/emp_overview.tex \arrayrulecolor{black!60}\hline
@@ -9111,7 +9111,7 @@ Among measures of overall economic activity, gross labor income has the added be
     	title style={at={(-0.08,0.92)}, anchor=south west,
     	draw=black!30!white, fill=white, inner sep=3.2pt}, xmax=36]
 	\nextgroupplot[title={Total}, width=7.5cm, height=3.5cm, %ybar=0.45mm,   
-		yticklabel style={text width=1.7em}, clip=false,
+		yticklabel style={text width=1.8em}, clip=false,
 		xtick={\empty}, axis line style={draw=none},
 		max space between ticks=40,	    \bbar{y}{0}, 
 		enlarge y limits={0.05}, enlarge x limits={0.01}]
@@ -9120,7 +9120,7 @@ Among measures of overall economic activity, gross labor income has the added be
 	\addplot[ybar stacked, bar shift=0.78mm, bar width=4.3pt, draw opacity=0, 
 		fill=blue!60!purple] table [x=index, y=Total, col sep=comma]{\nfpr};
 	\nextgroupplot[title={Private}, width=7.5cm, height=3.5cm, %ybar=0.4mm,
-		yticklabel style={text width=1.7em}, clip=false,
+		yticklabel style={text width=1.8em}, clip=false,
 		xtick={\empty}, axis line style={draw=none},
 		max space between ticks=40, legend style={fill=white, at={(0.98, 1.21)},
 			/tikz/every even column/.append style={column sep=0.16cm},
@@ -9134,7 +9134,7 @@ Among measures of overall economic activity, gross labor income has the added be
 		fill=blue!80!black] table [x=index, y=Goods, col sep=comma]{\nfpr};
 	\legend{,Services, Goods};
 	\nextgroupplot[title={Government}, width=7.5cm, height=3.5cm, %ybar=0.45mm,
-		yticklabel style={text width=1.7em}, clip=false,
+		yticklabel style={text width=1.8em}, clip=false,
 		xtick=data, axis line style={draw=none},
 		max space between ticks=40,	\bbar{y}{0}, 
 		xticklabels from table={\nfpr}{Date},
@@ -12921,7 +12921,7 @@ A large increase in the amount of money held by individuals and institutions can
 \footnotesize{Source: Federal Reserve}
 \end{minipage}
 \newpage 
-\vspace*{-13mm}
+\vspace*{-12mm}
 
 \hypertarget{pr}{\label{pr}} \thispagestyle{sectpage} \index{prices!consumer price index} \index{prices!PCE price index}
 \section*{\bcbox{purple!60!magenta}Prices}
@@ -12954,7 +12954,7 @@ Inflation is typically calculated as the one-year percent change in a price inde
 	\end{tabular}}\vspace{-1.5mm}
 		
 \footnotesize{Source: BLS, BEA, Federal Reserve Bank of Dallas}
-\vspace{2.0mm}
+\vspace{1.5mm}
 
 \small Economists argue that some inflation is ideal. Inflation creates incentives to spend and invest, which sustain economic growth. Too much inflation, however, acts as a drag on the economy and creates hardship for people. The Federal Reserve's \textbf{two percent inflation target} balances stable prices with economic growth. 
 
@@ -13267,7 +13267,7 @@ One-year inflation rates for different categories of goods and services, includi
 \footnotesize{Source: Bureau of Labor Statistics; *not seasonally adjusted}
 \newpage
 \hypertarget{prie}{\label{prie}}
-\vspace*{-13mm}
+\vspace*{-14mm}
 
 \subsection*{Inflation Expectations}
 \begin{minipage}{0.76\textwidth}
@@ -13381,6 +13381,8 @@ One-year inflation rates for different categories of goods and services, includi
 \input{text/inf_exp_mkts_55.txt}
 \end{minipage}
 \newpage
+
+\vspace*{-12mm}
 \subsection*{PCE Price Index}
 \hypertarget{prpce}{\label{prpce}}
 \begin{minipage}{0.76\textwidth}
@@ -13782,7 +13784,7 @@ Two important commodities for the construction and manufacturing industries are 
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		yticklabel style={inner sep=0pt}, 
-		xticklabel={`\short{\year}}, ymin=150, ymax=3800, width=11.7cm, height=4.4cm]
+		xticklabel={`\short{\year}}, ymin=150, ymax=4800, width=11.7cm, height=4.4cm]
 	\begin{pgfonlayer}{background layer}
 		\rbars
 	\end{pgfonlayer}

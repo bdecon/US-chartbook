@@ -8,6 +8,8 @@ import re
 from datetime import datetime
 import sqlite3
 
+from uschartbook.config import db_path, cps_dir
+
 qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 
 numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
@@ -22,36 +24,78 @@ def to_date(ym):
     return pd.to_datetime(f'{ym[0]}-{ym[1]}-01')
 
 
+def _optimize_bea_data(results):
+    '''Remove constant fields from BEA data records to reduce storage size.
+
+    Fields that have the same value across all records are moved to a
+    'Constants' dict, and removed from individual records.
+    '''
+    if 'Data' not in results or len(results['Data']) == 0:
+        return results
+
+    records = results['Data']
+    first_record = records[0]
+
+    # Find fields that are constant across all records
+    constant_fields = {}
+    for key in first_record.keys():
+        values = set(r.get(key) for r in records)
+        if len(values) == 1:
+            constant_fields[key] = first_record[key]
+
+    # Only optimize if we found constant fields
+    if not constant_fields:
+        return results
+
+    # Remove constant fields from each record
+    slim_records = [
+        {k: v for k, v in r.items() if k not in constant_fields}
+        for r in records
+    ]
+
+    # Build optimized results structure
+    optimized = {k: v for k, v in results.items() if k != 'Data'}
+    optimized['Constants'] = constant_fields
+    optimized['Data'] = slim_records
+
+    return optimized
+
+
 def bea_api_nipa(table_list, bea_key, freq='Q', underlying=False, start_year=1988):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(start_year, 2026)))
+    years = ','.join(map(str, range(start_year, datetime.now().year + 1)))
 
     api_results = []
-    
+
     dataset = 'NIPA' if underlying == False else 'NIUnderlyingDetail'
 
     for table in table_list:
         url = f'https://apps.bea.gov/api/data/?&UserID={bea_key}'\
               f'&method=GetData&datasetname={dataset}&TableName={table}'\
               f'&Frequency={freq}&Year={years}&ResultFormat=json'
-              
+
         r = requests.get(url)
 
-        name, date = (r.json()['BEAAPI']['Results']['Notes'][0]['NoteText']
+        response_data = r.json()
+        name, date = (response_data['BEAAPI']['Results']['Notes'][0]['NoteText']
                        .split(' - LastRevised: '))
 
         date = datetime.strptime(date, '%B %d, %Y').strftime('%Y-%m-%d')
 
-        api_results.append((table, name, r.text, date))
+        # Store only Results, not Request (which contains API key)
+        # Optimize by removing constant fields from records
+        optimized_results = _optimize_bea_data(response_data['BEAAPI']['Results'])
+        clean_data = {'BEAAPI': {'Results': optimized_results}}
+        api_results.append((table, name, json.dumps(clean_data, separators=(',', ':')), date))
 
     return api_results
-    
+
 
 def bea_api_gdpstate(bea_key):
     ''' Return tables in table list for years in range'''
 
-    years = ','.join(map(str, range(2008, 2026)))
+    years = ','.join(map(str, range(2008, datetime.now().year + 1)))
 
     api_results = []
 
@@ -62,22 +106,27 @@ def bea_api_gdpstate(bea_key):
           f'&Year={years}&ResultFormat=json'
 
     r = requests.get(url)
-    
+    response_data = r.json()
+
     name = 'GDP by State'
-    
-    date = (r.json()['BEAAPI']['Results']['Notes'][0]['NoteText']
+
+    date = (response_data['BEAAPI']['Results']['Notes'][0]['NoteText']
              .split('-')[0].split(': ')[1])  ## Check for '--' instead of '-'
 
     date = datetime.strptime(date, '%B %d, %Y').strftime('%Y-%m-%d')
 
-    api_results.append((table, name, r.text, date))
+    # Store only Results, not Request (which contains API key)
+    # Optimize by removing constant fields from records
+    optimized_results = _optimize_bea_data(response_data['BEAAPI']['Results'])
+    clean_data = {'BEAAPI': {'Results': optimized_results}}
+    api_results.append((table, name, json.dumps(clean_data, separators=(',', ':')), date))
 
     return api_results
 
-    
+
 def bea_api_ita(ind_list, bea_key):
     ''' Return tables in table list for years in range'''
-    years = ','.join(map(str, range(1988, 2026)))
+    years = ','.join(map(str, range(1988, datetime.now().year + 1)))
 
     api_results = []
 
@@ -87,15 +136,20 @@ def bea_api_ita(ind_list, bea_key):
               f'&Frequency=QSA&Year={years}&ResultFormat=json'
 
         r = requests.get(url)
+        response_data = r.json()
 
-        api_results.append((ind, r.text))
+        # Store only Results, not Request (which contains API key)
+        # Optimize by removing constant fields from records
+        optimized_results = _optimize_bea_data(response_data['BEAAPI']['Results'])
+        clean_data = {'BEAAPI': {'Results': optimized_results}}
+        api_results.append((ind, json.dumps(clean_data, separators=(',', ':'))))
 
     return api_results
-    
-    
+
+
 def bea_to_db(api_results):
 	'''Connect to SQL database and add API results'''
-	conn = sqlite3.connect('../data/chartbook.db')
+	conn = sqlite3.connect(db_path)
 
 	c = conn.cursor()
 
@@ -111,14 +165,23 @@ def bea_to_db(api_results):
 def retrieve_table(table_id):
     '''Returns table from local database'''
     table_id = (table_id, table_id)
-    conn = sqlite3.connect('../data/chartbook.db')
+    conn = sqlite3.connect(db_path)
     c = conn.cursor()
-    c.execute('''SELECT data FROM bea_nipa_raw WHERE id=? AND 
+    c.execute('''SELECT data FROM bea_nipa_raw WHERE id=? AND
                  date=(SELECT MAX(date) FROM bea_nipa_raw
                  WHERE id=?)''', table_id)
-    data = json.loads(c.fetchone()[0])['BEAAPI']['Results']
+    results = json.loads(c.fetchone()[0])['BEAAPI']['Results']
     conn.close()
-    return data
+
+    # Reconstruct full records if data was stored with Constants optimization
+    if 'Constants' in results and 'Data' in results:
+        constants = results['Constants']
+        for record in results['Data']:
+            record.update(constants)
+        # Remove Constants from results since records are now complete
+        del results['Constants']
+
+    return results
     
     
 def nipa_df(nipa_table, series_list):
@@ -499,10 +562,14 @@ def median_age(df, wgt='PWSSWGT', percentile=0.5):
     
 def cps_date():
     '''Returns string listing the latest month of available CPS data'''
-    cps_loc = '/home/brian/Documents/CPS/data/'
-    raw_files = [(file[0:3], [f'19{file[3:5]}' 
-                              if int(file[3:5]) > 25 
-                              else f'20{file[3:5]}'][0]) 
+    # cps_dir points to cleaned data; raw pub.dat files are in parent directory
+    if cps_dir and cps_dir.exists():
+        cps_loc = cps_dir.parent
+    else:
+        cps_loc = '/home/brian/Documents/CPS/data/'
+    raw_files = [(file[0:3], [f'19{file[3:5]}'
+                              if int(file[3:5]) > 25
+                              else f'20{file[3:5]}'][0])
                  for file in os.listdir(cps_loc)
                  if file.endswith('pub.dat')]
     dates = (pd.to_datetime([f'{mm.capitalize()}, 1, {yy}' 
@@ -684,10 +751,10 @@ def node_adj(df):
             print('Three conflicting nodes')
             t2 = r.diff()[r.diff() < (u)]
             if len(t2) == 2:
-                g1 = (((u) - t2[0]) / u) * 0.35
+                g1 = (((u) - t2.iloc[0]) / u) * 0.35
                 i = r.index[r.index.get_loc(t2.index[0]) - 1]
                 d[i] = - (g1)
-                g2 = (((u) - t2[1]) / u) * 0.35
+                g2 = (((u) - t2.iloc[1]) / u) * 0.35
                 d[t2.index[-1]] = (g2)
             if len(t2) == 1:
                 g = ((u - t2.iloc[0]) / u) * 0.35
