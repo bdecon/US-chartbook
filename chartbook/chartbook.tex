@@ -7,402 +7,8 @@
 %   https://github.com/bdecon/US-chartbook
 %
 % % % % % % % % % % % % % %
-\PassOptionsToPackage{table}{xcolor}
-\documentclass{report}
+\input{preamble}
 
-%
-% % % % % % Packages % % % % % % % % % 
-%
-	
-	\usepackage[letterpaper, margin=1.18in]{geometry}
-	\usepackage{microtype}
-	\usepackage[default]{lato}
-	\usepackage{pgfplots, pgfplotstable}
-	\usepackage{booktabs}
-	\usepackage[eulergreek]{sansmath}
-	\usepackage{amssymb}
-	\usepackage{xcolor}
-	\usepackage{array}
-	\usepackage{fontawesome5}
-	\usepackage{imakeidx}
-	\usepackage{titlesec}
-	\usepackage{fancyhdr}
-	\usepackage{enumitem}
-	\usepackage{multicol}
-	\usepackage[colorlinks, linkcolor=blue!75!gray, filecolor=blue!75!gray, 
-		citecolor=blue!75!gray, urlcolor=blue!75!gray, linktoc=all, 
-		pdfencoding=auto]{hyperref}
-	\usetikzlibrary{pgfplots.dateplot, pgfplots.fillbetween, patterns,
-	                pgfplots.groupplots, shapes.geometric}
-
-%
-% % % % % Document Settings % % % % % % % 
-%
-
-	% Paragraph spacing
-	\usepackage{parskip}
-	\setlength\parindent{0pt}
-	\setlength{\parskip}{8pt}
-	\makeatletter
-		\newcommand{\@minipagerestore}{\setlength{\parskip}{8pt}}
-	\makeatother
-	
-	% Section and Subsection Headings
-	\titleformat{\section}
-  		{\color{darkgray} \LARGE \seriffont \bfseries}
-  		{\thesection}{1em}{}
-	\titleformat{\subsection}
-  		{\color{black!70} \seriffont \bfseries \large}
-  		{\thesection}{1em}{}
-	\titleformat{\subsubsection}
-  		{\color{black!70} \seriffont \bfseries \normalsize}
-  		{\thesection}{1em}{}		
-
-  	% References remove numbering
-	\makeatletter
-		\renewcommand\@biblabel[1]{}
-	\makeatother
-%
-% % % % % Graph Settings % % % % % % % 
-%
-	% Custom page style for section pages
-	\fancypagestyle{sectpage}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}
-		\fancyhead[R]{\textcolor{blue!70}{\rule[-0.5pt]{4pt}{6pt}} \hspace{-1.5mm}
-		\textcolor{green!70!blue}{\rule[-0.5pt]{4pt}{9pt}} \color{black!90} 
-			\seriffont US Chartbook}
-		\lfoot{\footnotesize Updated: \today}
-		\rfoot{\hyperlink{toc}{\faList}}
-		\cfoot{\thepage}}
-		
-	% Header and footer
-	
-	\pagestyle{fancy}
-	\fancyhf{}
-	\renewcommand{\headrulewidth}{0pt}
-	\fancyhead[R]{\rightmark}
-	\rfoot{\hyperlink{toc}{\faList}}
-	\cfoot{\thepage}	
-	
-	% Index
-	\indexsetup{level=\section*,noclearpage}
-	\makeindex
-	
-	% Color squares and lines (Legend entries in text)
-	\newcommand{\cbox}[2][none]{%
-  		\tikz\draw[fill=#2,draw=#1] (0,0) rectangle (1.2ex,1.2ex);}
-	\newcommand{\seebox}[2][none]{(see\nolinebreak~\cbox[#1]{#2}\hspace{0.2mm}\nolinebreak)}
-	\newcommand{\bcbox}[1]{
-		\begin{tikzpicture}[overlay]\draw [#1, line width=9]
-			(-0.25,0.22) -- (-3.0,0.22);  
-		\end{tikzpicture}}
-	\newcommand{\colorline}[3][]{%
-  		\tikz{\draw[#2, line width=1.8, #1] (0,0.2) -- +(0.6,0)
-    		node[right, black!80]{#3};}}
-	\newcommand{\colordashline}[1]{
-		\hspace{-1mm}\begin{tikzpicture} \draw [densely dashed, #1, 
-			line width=1.8]
-			(0,0.2) -- +(0.33,0) node[right, black!80] {}; 
-		\end{tikzpicture}\hspace{-2.5mm}}
-	\newcommand{\scolorline}[1]{
-		\hspace{-1mm}\begin{tikzpicture} \draw [#1, 
-			line width=1.5](0,0.2) -- +(0.3,0) 
-			node[right, black!80] {}; 
-		\end{tikzpicture}\hspace{-2mm}}
-	\newcommand{\colordotline}[1]{
-		\hspace{-1.2mm}\begin{tikzpicture} \draw [densely dotted, #1, 
-			line width=1.8]
-			(0,0.2) -- +(0.28,0) node[right, black!80] {}; 
-		\end{tikzpicture}\hspace{-2.5mm}}
-	\newcommand{\tcolorline}[1]{
-		\hspace{-1mm}\begin{tikzpicture} \draw [#1, 
-			line width=2.0](0,0.2) -- +(0.2,0) 
-			node[right, black!80] {}; 
-		\end{tikzpicture}\hspace{-2mm}}
-		
-	% Up and down arrows
-	\newcommand{\upar}{\color{green!80!black}  \raisebox{1pt}{\blacktriangle} \normalcolor}
-	\newcommand{\dnar}{\color{red}  \raisebox{1pt}{\blacktriangledown} \normalcolor}
-			
-	% Table link
-	\newcommand{\tbllink}[1]{\href{https://raw.githubusercontent.com/bdecon/US-chartbook/master/chartbook/data/#1}{\faTable}}
-	
-	% Table of Contents entry
-	\newcommand{\tocentry}[2]{\item \seriffont {#2}
-		 \  \  \  \  \  \footnotesize \hyperlink{#1}{\textit{\pageref*{#1}}} \normalsize}
-	\newcommand{\tocentsm}[2]{\item \small {#2}
-		 \  \  \  \  \  \footnotesize \hyperlink{#1}{\textit{\pageref*{#1}}} \normalsize}
-	
-	% Last two digits of year
-	\makeatletter
-	\newcommand*\short[1]{\expandafter\@gobbletwo\number\numexpr#1\relax}
-	\makeatother	
-	
-	% Column width and alignment
-	\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}	
-	\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-	
-	% Style for date plots
-	\pgfplotsset{compat=newest, 
-		scaled y ticks=false,
-		axis line style={black!20}, 
-		xtick style={black!20}, ytick style={draw=none},
-		every tick label/.style={black!50, font=\scriptsize,
-			/pgf/number format/assume math mode=true},
-		width=12.8cm, height=4.8cm, 
-		xticklabel style={align=left}, 
-		yticklabel style={text width=0.9em, align=right},       
-		axis x line*=bottom, x axis line style={black!50},
-	    axis y line=left, y axis line style={opacity=0},
-	    ymajorgrids, grid style={very thin, black!10},	        
-	    every node near coord/.style={/pgf/number format/fixed,
-	    	font=\scriptsize, style={black!70}},
-	    legend style={legend columns=-1, draw=none, fill=none,
-	    	/tikz/every even column/.append style={column sep=0.3cm}}}
-	    	
-	
-	% stacked diverging bar
-	\newcommand{\sbar}[4]{
-		\addplot[ybar stacked, bar width=2.25pt, draw opacity=0, fill=#1] 
-			table [x=#2, y=#3, col sep=comma]{#4};}
-
-	% stacked diverging bar area legend
-	\newcommand{\sbaral}[4]{
-		\addplot[ybar stacked, bar width=2.25pt, draw opacity=0, fill=#1, area legend] 
-			table [x=#2, y=#3, col sep=comma]{#4};}
-			
-	% thin stacked diverging bar
-	%\newcommand{\tsbar}[4]{
-	%	\addplot[ybar stacked, bar width=2.1pt, draw opacity=0, fill=#1] 
-	%		table [x=#2, y=#3, col sep=comma]{#4};}
-			
-	% custom width stacked diverging bar
-	\newcommand{\ctsbar}[5]{
-		\addplot[ybar stacked, bar width=#5, draw opacity=0, fill=#1] 
-			table [x=#2, y=#3, col sep=comma]{#4};}
-			
-	% area plot segment
-	\newcommand{\abar}[4]{
-		\addplot[stack plots=y, draw=none, fill=#1, legend image code/.code={
-    \draw [#1] (0cm,-0.08cm) rectangle (0.2cm,0.12cm); }] 
-			table [x=#2, y=#3, col sep=comma]{#4}\closedcycle;}
-					
-	% text node
-	\newcommand{\stdnode}[3]{\node[below, align=left, shift=({#1,#2})]{#3};}	
-	
-	% text node located by data	 
-	\newcommand{\absnode}[3]{\node[below right, align=left] at (axis cs: #1,#2) {#3};}   
-	
-	% multiline text node located by data	 
-	%\newcommand{\absnodeml}[4]{\node[below right, align=left, text width=#4cm] 
-	%	at (axis cs: #1,#2) {#3};}       
-		        
-	% Chart title and subtitle
-	\newcommand{\charttitle}[2]{\normalsize \textbf{#1}\\
-	\footnotesize{\textit{#2}}}
-
-	% Chart source attribution with optional data table link
-	\newcommand{\chartsource}[2]{%
-		\footnotesize{Source: #1}%
-		\if\relax\detokenize{#2}\relax\else{ \hfill \tbllink{#2}}\fi}
-
-	% Standard data table (alternating row colors, input from file)
-	\newcommand{\cbtable}[4]{%
-		\rowcolors{1}{}{black!5} \setlength{\tabcolsep}{#1} \color{black!90}
-		{\renewcommand{\arraystretch}{#2}
-		 \begin{tabular}{#3}
-			\input #4 \arrayrulecolor{black!60}\hline
-		 \end{tabular}}}
-
-	% Centralized end-date for chart x-axes (update once when data refreshes)
-	\newcommand{\xmaxdate}{2026-02-28}
-	\newcommand{\xmaxproj}{2029-02-28}
-
-	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
-	\newcommand{\dateaxisticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xmax={\xmaxdate},
-		max space between ticks=40,	    
-		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
-			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
-			{2002-01-01}, {2004-01-01}, {2006-01-01},
-			{2008-01-01}, {2010-01-01}, {2012-01-01}, {2014-01-01},
-		    {2016-01-01}, {2018-01-01}, {2020-01-01}, {2022-01-01}, 
-		    {2024-01-01}, {2026-01-01}, {2028-01-01}, {2030-01-01}},
-		minor xtick={{1989-01-01}, {1991-01-01}, {1993-01-01},
-			{1995-01-01}, {1997-01-01}, {1999-01-01}, 
-			{2001-01-01}, {2003-01-01}, {2005-01-01}, {2007-01-01},
-		    {2009-01-01}, {2011-01-01}, {2013-01-01}, {2015-01-01},
-		    {2017-01-01}, {2019-01-01}, {2021-01-01}, {2023-01-01}, 
-		    {2025-01-01}, {2027-01-01}, {2029-01-01}},
-		enlarge y limits={0.06}, enlarge x limits={0.01},
-		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		}
-
-	% Handle Dates for x axis ticks
-	\def\aoticks{{1989-01-01}, {1991-01-01}, {1993-01-01}, {1995-01-01}, {1997-01-01}, 
-				 {1999-01-01}, {2001-01-01}, {2003-01-01}, {2005-01-01}, {2007-01-01}, 
-				 {2009-01-01}, {2011-01-01}, {2013-01-01}, {2015-01-01}, {2017-01-01}, 
-				 {2019-01-01}, {2021-01-01}, {2023-01-01}, {2025-01-01}, {2027-01-01}, 
-				 {2029-01-01}, {2031-01-01}}	
-				 
-	\def\aeticks{{1988-01-01}, {1990-01-01}, {1992-01-01}, {1994-01-01}, {1996-01-01}, 
-				 {1998-01-01}, {2000-01-01}, {2002-01-01}, {2004-01-01}, {2006-01-01}, 
-				 {2008-01-01}, {2010-01-01}, {2012-01-01}, {2014-01-01}, {2016-01-01}, 
-				 {2018-01-01}, {2020-01-01}, {2022-01-01}, {2024-01-01}, {2026-01-01}, 
-				 {2028-01-01}, {2030-01-01}, {2032-01-01}}  		
-		
-	\def\aticks{{1988-01-01}, {1989-01-01}, {1990-01-01}, {1991-01-01}, {1992-01-01}, 
-				{1993-01-01}, {1994-01-01}, {1995-01-01}, {1996-01-01}, {1997-01-01}, 
-				{1998-01-01}, {1999-01-01}, {2000-01-01}, {2001-01-01}, {2002-01-01}, 
-				{2003-01-01}, {2004-01-01}, {2005-01-01}, {2006-01-01}, {2007-01-01}, 
-				{2008-01-01}, {2009-01-01}, {2010-01-01}, {2011-01-01}, {2012-01-01}, 
-				{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, {2017-01-01}, 
-				{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, {2022-01-01}, 
-				{2023-01-01}, {2024-01-01}, {2025-01-01}, {2026-01-01}, {2027-01-01}, 
-				{2028-01-01}, {2029-01-01}, {2030-01-01}, {2031-01-01}, {2032-01-01}} 
-				
-	\def\afticks{{1990-01-01}, {1995-01-01}, {2000-01-01}, {2005-01-01}, {2010-01-01}, 
-				 {2015-01-01},  {2020-01-01}, {2025-01-01}, {2030-01-01}} 
-				 
-	\def\anfticks{{1988-01-01}, {1989-01-01}, {1991-01-01}, {1992-01-01}, 
-				  {1993-01-01}, {1994-01-01}, {1996-01-01}, {1997-01-01}, 
-				  {1998-01-01}, {1999-01-01}, {2001-01-01}, {2002-01-01}, 
-				  {2003-01-01}, {2004-01-01}, {2006-01-01}, {2007-01-01}, 
-				  {2008-01-01}, {2009-01-01}, {2011-01-01}, {2012-01-01}, 
-				  {2013-01-01}, {2014-01-01}, {2016-01-01}, {2017-01-01}, 
-				  {2018-01-01}, {2019-01-01}, {2021-01-01}, {2022-01-01}, 
-				  {2023-01-01}, {2024-01-01}, {2026-01-01}, {2027-01-01}, 
-				  {2028-01-01}, {2029-01-01}, {2031-01-01}, {2032-01-01}} 
-				  
-				  		
-	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
-	\newcommand{\shdateaxisticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xmax={\xmaxdate},
-		max space between ticks=40,	    
-		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
-			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}, 
-		    {2025-01-01}},
-		minor xtick={},
-		enlarge y limits={0.06}, enlarge x limits={0.01},
-		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		}
-		
-	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
-	\newcommand{\ltdateaxisticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xmax={\xmaxdate},
-		max space between ticks=40,	    
-		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
-			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
-			{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
-		    {2026-01-01}},
-		enlarge y limits={0.06}, enlarge x limits={0.01},
-		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		}
-		
-	% Date (X) Axis Tick Marks, very short term monthly ticks
-	\newcommand{\shticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xmax={\xmaxdate},
-		}
-
-	% Settings for y label text in horizontal bar charts
-	\newcommand{\barylab}[2]{yticklabel style={text width=#1, align=right, 
-		style={black!70}, text height=#2},}
-	
-	% Solid bars at significant  x or y values
-	\newcommand{\bbar}[2]{extra #1 ticks = {{#2}}, extra #1 tick labels = ,
-		extra #1 tick style = {grid=major, grid style={thick, black!25}},}
-		
-	% Dashed line at significant  x or y values
-	\newcommand{\dbar}[2]{extra #1 ticks = {{#2}}, extra #1 tick labels = ,
-		extra #1 tick style = {grid=major, grid style={dashed, thick, black!50}},}
-		
-	% Standard line
-	\newcommand{\stdline}[4]{\addplot[very thick, no markers, color=#1] 
-		table [x=#2, y=#3, col sep=comma] {#4};	}
-		
-	% Thin line
-	\newcommand{\thinline}[4]{\addplot[no markers, color=#1] 
-		table [x=#2, y=#3, col sep=comma] {#4};	}
-		
-	% Dashed line
-	\newcommand{\dashline}[4]{\addplot[very thick, densely dashed, 
-		no markers, color=#1] 
-		table [x=#2, y=#3, col sep=comma] {#4};	}
-		
-	% Dotted line
-	\newcommand{\dotline}[4]{\addplot[ultra thick, densely dotted, 
-		no markers, color=#1] 
-		table [x=#2, y=#3, col sep=comma] {#4};	}
-		
-	% Thicker line
-	\newcommand{\thickline}[4]{\addplot[ultra thick, no markers, color=#1] 
-		table [x=#2, y=#3, col sep=comma] {#4};	}
-		
-	% Even Thicker line
-	\newcommand{\vthickline}[4]{\addplot[line width=2.5pt, no markers, color=#1] 
-		table [x=#2, y=#3, col sep=comma] {#4};	}
-		
-	% Style for bar plots legend symbol		
-	\pgfplotsset{/pgfplots/area legend/.style={/pgfplots/legend image code/.code={
-		\fill[##1] (0cm, -0.1cm) rectangle (0.6cm, 0.1cm);}},}		
-		
-	% Additional bar plot settings
-	\newcommand{\barplotnogrid}{xbar=0pt, axis line style={draw=none},
-	    yticklabel style={align=left, anchor=east},
-      		xmajorticks=false, ymajorgrids=false,   
-	    ytick=data, tickwidth=0pt, area legend, reverse legend,
-	    nodes near coords align={horizontal},}  
-		
-	% Recession bars		
-	\newcommand{\rbars}{
-		\fill[color=black!10] (axis cs:{1990-07-01},\pgfkeysvalueof{/pgfplots/ymin})
-			rectangle (axis cs:{1991-03-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin})
-			rectangle (axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin})
-			rectangle (axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin})
-			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
-			
-	\newcommand{\rebars}{
-		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin}) 
-			rectangle (axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2001-03-01},\pgfkeysvalueof{/pgfplots/ymin}) 
-			rectangle (axis cs:{2001-11-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) 
-			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
-			
-	\newcommand{\recbars}{
-		\fill[color=black!10] (axis cs:{2007-12-01},\pgfkeysvalueof{/pgfplots/ymin})
-			rectangle (axis cs:{2009-07-01}, \pgfkeysvalueof{/pgfplots/ymax});
-		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) 
-			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
-			
-	\newcommand{\rbar}{
-		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin}) 
-			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
-	
-	\newfontfamily\seriffont{RobotoSlab}	
-	
-	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups.csv}\unemp
-	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups2.csv}\unempt
-	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups3.csv}\unemptt
-	\pgfplotstableread[header=true, col sep=comma]{data/cpi_monthly.csv}\cpimo
-	\pgfplotstableread[header=true, col sep=comma]{data/gdp_rec2.csv}\gdprecs
-	\pgfplotstableread[header=true, col sep=comma]{data/lprod_rec.csv}\lprodrec	
-	\pgfplotstableread[header=true, col sep=comma]{data/pa_epop_rec.csv}\paepoprec
-	\pgfplotstableread[header=true, col sep=comma]{data/ahe_monthly.csv}\ahemo	
-	\pgfplotstableread[header=true, col sep=comma]{data/spx_recent.csv}\sprec
-	
-	
-% % % % % % % %
-%
-%  Begin Document
-%
-% % % % % % % %		
 \begin{document}
 
 \chapter*{
@@ -1055,9 +661,7 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \charttitle{Labor Productivity}{Real GDP per hour of work, index, 2000=100}
 \vspace{5.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{100}, 
 		ytick={60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160}, 
@@ -1271,9 +875,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \charttitle{Nominal GDP Growth}{quarterly growth at seasonally adjusted annualized rate}
 \vspace{3.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, height=5.1cm, ymax=30, ymin=-30,
@@ -1565,9 +1167,7 @@ The subsection begins with an overview of contributions to growth since 2019, th
 \charttitle{Real GDP Growth by Industry Group}{percentage point contribution to GDP growth}
 \vspace{3.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},
 		height=5.0cm,  yticklabel style={text width=1.0em, inner sep=1.0pt}, 
@@ -1590,9 +1190,7 @@ The subsection begins with an overview of contributions to growth since 2019, th
 \vspace{4.8cm}
 
 \begin{minipage}{0.445\textwidth}
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\pgfplotstableread[col sep=comma]{data/gdpva_lt.csv}\gdpvalt
 	\begin{axis}[\bbar{y}{0}, height=6.0cm, width=7.5cm, 
@@ -1900,9 +1498,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 \charttitle{Selected Components of US Wealth}{share of GDP, percent}
 \vspace{3.05cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=6, ymax=480,
 		height=5.05cm, width=12.1cm, max space between ticks=20, 
@@ -1938,9 +1534,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 \charttitle{Liabilities}{share of GDP, percent \hspace{35mm} per capita, thousands of \input{text/liab_date.txt}US dollars}
 \vspace{5.65cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=50pt},
 		axis line style={draw=none}, enlarge x limits={0.01}, clip=false, 
@@ -2004,9 +1598,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 \end{minipage} \footnotesize
 \vspace{4.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=50pt},
 		ytick={0, 25, 50, 75, 100, 125, 150}, enlarge y limits=0.0, enlarge x limits=0.01,
@@ -2079,9 +1671,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 \charttitle{Real Debt Growth}{contribution to one-year percent change in debt, adjusted by PCE price deflator}
 \vspace{4.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		ymax=9.5, height=6.5cm, width=12.9cm, enlarge y limits={0.12}, 
@@ -2128,9 +1718,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \charttitle{Sectoral Financial Balance}{net lending (+) or borrowing (-), NIPA basis, by sector, as share of GDP}
 \vspace{3.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={-30, -20, -10, 0, 10, 20},
 		height=5.8cm, ymax=17.4, clip=false, width=12.9cm, enlarge y limits={0.06},
@@ -2164,9 +1752,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \charttitle{Domestic Private Sector Financial Balance}{net lending (+) or borrowing (-), NIPA basis, by sector, share of GDP, percent}
 \vspace{2.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={-5, 0, 5, 10, 15, 20},
 		height=4.6cm, ymax=18.6, clip=false, width=12.9cm, enlarge y limits={0.06},
@@ -2202,9 +1788,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \charttitle{Gross Domestic Fixed Investment}{share of GDP, percent}
 \vspace{2.85cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, height=4.9cm, width=12.4cm,
@@ -2242,9 +1826,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \charttitle{Construction Spending}{share of GDP, percent}
 \vspace{4.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{2.0mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
 		enlarge y limits={0.08}, ymin=0.35,
@@ -2287,9 +1869,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \charttitle{Domestic Investment Contribution to Growth}{percentage point contribution to real GDP growth}
 \vspace{-5.5mm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{-3mm} \begin{tikzpicture}
 	\begin{groupplot}[group style={group size=1 by 2, vertical sep=18pt},
 		yticklabel style={text width=1.4em, inner sep=1.0pt}, 
@@ -2349,9 +1929,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 \charttitle{Net Fixed Investment}{share of GDP, percent}
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20, ymin=0.4,
 		yticklabel style={inner sep=1.0pt},
@@ -2380,9 +1958,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 \charttitle{Net Fixed Investment by Sector or Type}{share of GDP, percent}
 \vspace{2.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
 		reverse legend, ymin=0.2, ymax=10.0, enlarge y limits={0.06},
@@ -2437,9 +2013,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 \charttitle{Population Estimates and Projections}{resident population, in millions of people}
 \vspace{3.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
@@ -2498,7 +2072,6 @@ Each of these categories of investment is discussed further, in the chartbook se
 \small \input{text/pop_comp.txt}
 \vspace{0.5mm}
 
-
 \charttitle{Components of Population Growth}{in millions of people}
 \end{minipage}
 \vspace*{-4mm}
@@ -2529,9 +2102,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 	\end{axis}
 \end{tikzpicture} \end{minipage} \hspace{3mm}
 \begin{minipage}{0.365\textwidth}
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
@@ -2574,9 +2145,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \footnotesize{\textit{millions of units \hspace{3.2cm} change since 1989, units per capita, percentage points}}
 \vspace*{3.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
     \begin{groupplot}[group style={group size=2 by 1, horizontal sep=40pt,}]
     \nextgroupplot[\bbar{y}{0}, 
@@ -2626,9 +2195,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \charttitle{Contributions to Household Formation}{one-year moving average of annual growth rates, percent}
 \vspace{3.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge y limits=0.06,
 		date coordinates in=x, axis line style={draw=none}, max space between ticks=20,
@@ -2670,9 +2237,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \charttitle{Aggregate Headship Rate}{people age 16 and older, percent, seasonally adjusted}
 \vspace{2.15cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{1996-01-01}, \afticks}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[ytick={49,50,51},
@@ -2705,9 +2270,7 @@ Living with family became more common after the collapse of the housing bubble. 
 \charttitle{Living with Family}{share of age group population, percent, seasonally adjusted, 3-month moving average}
 \vspace{4.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=38pt},
 		clip=false, width=6.3cm, height=6.0cm, axis line style={draw=none}, 
@@ -2959,9 +2522,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \charttitle{Average Income, Spending, and Saving}{per capita, thousands of \input{text/pi_date.txt}\unskip \ US dollars}
 \vspace{5.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		ytick={0, 10, 20, 30, 40, 50, 60, 70, 80}, 
@@ -2988,9 +2549,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \charttitle{Median (Middle Fifth Average)}{per householder, thousands of \input{text/pi_date.txt}\unskip \ US dollars}
 \vspace{5.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 10, 20, 30, 40, 50, 60, 70, 80}, 
 		ymin=0, ymax=76,
@@ -3352,9 +2911,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \charttitle{Real Household Income}{thousands of \input{text/rmhi_ltdt.txt}US dollars}
 \vspace{6.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 	ytick={0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260}, 
@@ -3400,9 +2957,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \charttitle{Real Median Household Income}{thousands of \input{text/rmhi_ltdt.txt}US dollars}
 \vspace{4.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 20, 40, 60, 80, 100, 120}, 
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, ymin=0,
@@ -3475,9 +3030,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 \charttitle{Expenditures, by Type}{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}
 \vspace{3.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, 
@@ -3506,9 +3059,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 \charttitle{Shelter Costs}{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}
 \vspace{3.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, 
@@ -3544,9 +3095,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 \charttitle{Expenditures, by Type}{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}
 \vspace{4.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, max space between ticks=20,
@@ -3597,9 +3146,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 \charttitle{Consumer Spending and Residential Investment}{percentage point contribution to real GDP growth, one-year moving average}
 \vspace{4.25cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0},
@@ -3656,9 +3203,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 \charttitle{Consumer Spending Growth}{contributions to annual growth, percent}
 \vspace{3.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none},
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
@@ -3772,9 +3317,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Contributions to Consumer Spending Growth}{percentage point contribution to real per capita PCE growth, one-year moving average}
 \vspace{5.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		date coordinates in=x, axis line style={draw=none}, max space between ticks=20,
@@ -3843,9 +3386,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Personal Saving Rate}{saving as a share of after-tax income, percent}
 \vspace{3.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge y limits={0.0},
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
@@ -3872,9 +3413,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Saving Rate by Income Quintile}{income quintile average saving, as share of \\ US median personal income, percent}
 \vspace{5.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 		enlarge y limits={0.04}, ymin=-70,
@@ -3919,9 +3458,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Consumer Sentiment}{index, 1966=100}
 \vspace{3.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, enlarge y limits=0.32,
@@ -3945,9 +3482,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Consumer Sentiment Index Components}{index, 1966=100}
 \vspace{3.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
     \begin{groupplot}[group style={group size=1 by 2, 
     	x descriptions at=edge bottom, vertical sep=6pt}, xmin={1989-01-01}, 
@@ -4005,9 +3540,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Household \& Nonprofit Balance Sheets}{share of disposable personal income, percent}
 \vspace{4.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{5.0mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=25, enlarge y limits={0.06},
 		yticklabel style={text width=1.9em, inner sep=1.0pt}, ymin=-195, ymax=820,
@@ -4076,9 +3609,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Household and Nonprofit Debt by Type}{share of disposable personal income, percent}
 \vspace{3.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  max space between ticks=30, enlarge y limits={0.06},
 		ymin=0, yticklabel style={text width=1.5em, inner sep=1.0pt}, width=7.7cm,
@@ -4119,9 +3650,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Household Debt}{share of disposable personal income, percent}
 \vspace{-0.8mm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{-0.5mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, 
 		clip=false, width=6.8cm, height=5.35cm, 
@@ -4205,9 +3734,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Consumer Credit}{share of disposable personal income, percent}
 \vspace{3.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
 		enlarge y limits={0.08}, height=5.5cm, width=12.4cm, 
@@ -4336,9 +3863,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \vspace*{-2mm}
 
 \begin{minipage}{0.33\textwidth}
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{-1.5mm} \begin{tikzpicture}
 \begin{axis}[clip=false,
     \bbar{y}{0}, ymin=0, width=5.2cm, height=5.3cm, bar width=22pt,
@@ -4396,9 +3921,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Household Wealth and Income Growth}{one-year percent change, adjusted by PCE price deflator}
 \vspace{4.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, height=6.2cm, 
 		ymax=18.2, max space between ticks=30, width=12.8cm,
@@ -4429,9 +3952,7 @@ To see this pattern, the following charts show the contribution to changes in re
 \charttitle{Share of US Wealth}{share of total net worth, by percentile, percent}
 \vspace{5.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false, 
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, 
@@ -4471,9 +3992,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \footnotesize{\textit{thousands of \input{text/scf_year.txt}\unskip \ US dollars}}
 \vspace{4.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 		ymin=0, enlarge y limits={0.04, upper}, 
@@ -4668,9 +4187,7 @@ In the following chart, income invested at the historical-average rate \seebox{m
 \footnotesize{\textit{one-year moving average}}
 \vspace{4.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={-15, -10, -5, 0, 5, 10, 15, 20},
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
@@ -4705,9 +4222,7 @@ In the following chart, income invested at the historical-average rate \seebox{m
 \charttitle{Homeownership Rate}{share of households occupied by owners, percent}
 \vspace{6.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[max space between ticks=30,
 		yticklabel style={text width=1.0em, inner sep=1.0pt},
@@ -4763,9 +4278,7 @@ In the following chart, income invested at the historical-average rate \seebox{m
 \charttitle{Owners' Equity Share of Real Estate}{owners' equity as percent of real estate}
 \vspace{2.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[max space between ticks=20, 
 		date coordinates in=x, axis line style={draw=none}, 
@@ -4907,9 +4420,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \footnotesize{\textit{new single family homes sold, in thousands, seasonally adjusted annual rate}}
 \vspace{2.85cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{6mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=140,
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
@@ -4935,9 +4446,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \footnotesize{\textit{real median sales price, in thousands of \input{text/nhs_p_dt.txt}dollars}}
 \vspace{2.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge y limits=0.22, ymax=470,
 		max space between ticks=20, yticklabel style={text width=1.6em, inner sep=1.0pt}, 
@@ -4959,9 +4468,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \small \input{text/nhs_s.txt}
 \vspace{0.5mm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \normalsize{\textbf{New Homes, Months of Supply}}\\
 \footnotesize{\textit{new single family homes for sale divided by monthly sales, in months}}\\
 \hspace*{-1mm} \begin{tikzpicture}
@@ -4993,9 +4500,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \footnotesize{\textit{relative to 1/3rd median usual full-time earnings}}
 \vspace{3.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\dbar{y}{100}, 
 		date coordinates in=x, axis line style={draw=none}, 
@@ -5043,9 +4548,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \charttitle{Housing Price Indices}{index, January 2022=100}
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[ytick={70, 80, 90, 100, 110, 120}, 
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
@@ -5074,9 +4577,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \charttitle{House Price Index}{seasonally adjusted, one-year change and three-month change, percent}
 \vspace{2.85cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=15,
 		yticklabel style={text width=1.5em, inner sep=0pt}, clip=false, ymax=18.4,
@@ -5204,7 +4705,6 @@ The more comprehensive Supplemental Poverty Measure (SPM) is based on food, shel
 \small While some fully employed people are in poverty, \textbf{the vast majority of poor people are either children, elderly, disabled, caregivers, or students}. Groups that are work-limited in some way cannot rely on labor markets and must rely on others and government programs to avoid poverty. \input{text/poverty_groups.txt} 
 
 While poverty is far more likely for some groups than others, government programs also reduce market poverty for some groups more than others. These trends are summarized in the following charts, which show the breakdown of poverty by group (left) and the poverty rates for each group (right). 
-
 
 \vspace{1.5mm}
 
@@ -5334,9 +4834,7 @@ By age, market income (see \tikz \draw [fill=cyan!50!white, draw=darkgray] (0cm,
 \charttitle{Poverty Rate}{in poverty, share of population, percent}
 \vspace{4.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3.0mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 		ytick={0, 5, 10, 15, 20}, 
@@ -5401,9 +4899,7 @@ Net investment is important for many reasons. In the short run, the production a
 \charttitle{Investment and Depreciation}{share of GDP, percent}
 \vspace{6.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  max space between ticks=20,
 		height=8.5cm, width=6.6cm, clip=false,
@@ -5433,7 +4929,6 @@ Net investment is important for many reasons. In the short run, the production a
 \small \input{text/businv_levels.txt}
 \end{minipage}
 
-
 \begin{minipage}{0.76\textwidth} \index{businesses!inventories} \index{businesses!investment} \index{inventories}
 \small Note that gross investment includes fixed investment and inventory investment, or the \href{https://www.bea.gov/help/glossary/change-private-inventories-cipi}{change in private inventories}. Changes to private inventories capture the difference between sales and production. Reduced production of new inventory explains much of the overall reduction in gross investment during the COVID-19 pandemic. 
 \end{minipage}
@@ -5448,9 +4943,7 @@ Net investment is important for many reasons. In the short run, the production a
 \charttitle{Gross Fixed Investment by Type}{share of GDP, percent}
 \vspace{2.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 	    enlarge y limits={0}, 	date coordinates in=x, axis line style={draw=none}, 
@@ -5486,9 +4979,7 @@ Net investment is important for many reasons. In the short run, the production a
 \charttitle{Business Gross Fixed Investment}{contribution to real GDP growth, percentage points, annualized}
 \vspace{3.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.2em, inner sep=1.0pt},
@@ -5535,9 +5026,7 @@ Net investment is important for many reasons. In the short run, the production a
 \charttitle{New Orders for Core Capital Goods}{nondefense capital goods ex-aircraft, share of GDP}
 \vspace{3.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{1992-01-01}, \afticks}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, width=7.0cm, height=5.8cm, clip=false, 
@@ -5571,9 +5060,7 @@ When examining trends in the ratio, note that business sales include services, w
 \charttitle{Inventories to Sales Ratio}{ratio, total business sector}
 \vspace{4.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[max space between ticks=30, \bbar{y}{1}, 
 		yticklabel style={text width=1.2em, inner sep=1.0pt}, ymax=1.6, ymin=1.065,
@@ -5607,9 +5094,7 @@ When examining trends in the ratio, note that business sales include services, w
 \charttitle{Destination of Corporate Profits}{share of net national income}
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=-1, ymax=18.2, enlarge y limits=0,
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, width=12.5cm,
@@ -5638,9 +5123,7 @@ When examining trends in the ratio, note that business sales include services, w
 \charttitle{Sources of Corporate Saving}{contribution to corporate saving, as share of gross national income}
 \vspace{5.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge y limits={0.06},
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, height=7.9cm, width=12.8cm,
@@ -5675,9 +5158,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \charttitle{Nonfinancial Business Balance Sheets}{share of sector output, percent}
 \vspace{-1.5mm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \begin{tikzpicture}
 \begin{groupplot}[group style={group size=2 by 2, horizontal sep=46pt, vertical sep=20pt},
 	max space between ticks=20, yticklabel style={text width=1.5em, inner sep=1.0pt},
@@ -5754,9 +5235,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \charttitle{Nonfinancial Business Debt-to-Asset Ratio}{ratio of debt to assets, percent}
 \vspace{2.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3.5mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[max space between ticks=30,
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.08},
@@ -5790,9 +5269,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 \charttitle{Nonfinancial Business Liabilities}{share of GDP, percent}
 \vspace{5.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{5mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.08},
@@ -5852,9 +5329,7 @@ The following table provides more details on the size of nonfinancial business l
 \charttitle{Nonfinancial Business Debt}{by type, share of GDP, percent}
 \vspace{3.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=1, ymax=76, max space between ticks=30,
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, height=5.6cm, width=12.3cm,
@@ -5885,9 +5360,7 @@ The following table provides more details on the size of nonfinancial business l
 \charttitle{Financial Sector Debt}{by type, share of GDP, percent}
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30, ymin=2, 
 		yticklabel style={text width=1.6em, inner sep=0pt}, height=5.6cm, width=12.3cm, 
@@ -5919,9 +5392,7 @@ The following table provides more details on the size of nonfinancial business l
 \charttitle{Business Assets}{by nonfinancial business type and asset type, share of GDP, percent}
 \vspace{3.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		ymin=-20, ymax=340, enlarge y limits={0.0},
@@ -5970,9 +5441,7 @@ The following table provides more details on the size of nonfinancial business l
 \charttitle{Industrial Production}{index, 2012=100}
 \vspace{4.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{5mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{100}, enlarge y limits={0.19}, 
 		yticklabel style={text width=1.6em, inner sep=1.0pt}, 
@@ -6021,9 +5490,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \charttitle{Contributions to Industrial Production Growth}{percentage point contribution to one-year growth, quarterly average}
 \vspace{3.25cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false, height=4.7cm, 
 		reverse legend, max space between ticks=20,ymin=-15, ymax=10, 
@@ -6051,9 +5518,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \end{tikzpicture}}
 \vspace{3.55cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=-15, ymax=10, max space between ticks=20,
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.0},
@@ -6171,9 +5636,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \charttitle{Capacity Utilization}{industrial production as a share of total capacity, percent, seasonally adjusted}
 \vspace{3.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 		yticklabel style={text width=1.2em, inner sep=1.0pt}, max space between ticks=30, 
@@ -6211,9 +5674,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \charttitle{Crude Oil Production}{millions of barrels per day}
 \vspace{3.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge x limits=0.015,
 		max space between ticks=20, enlarge y limits=0.04, ymin=0,
@@ -6266,9 +5727,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \charttitle{Electricity Generation, Relative Measures}{cumulative percent change since 2011}
 \vspace{3.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, width=7.0cm, height=6.0cm,
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.1},
@@ -6310,9 +5769,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \charttitle{Electricity Generation by Source}{trillion kilowatt hours, 12-month moving sum}
 \vspace*{-3.5mm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{2002-01-01}, \afticks}
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, ymin=0.53, enlarge x limits={0.03}, 
@@ -6342,7 +5799,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		\color{blue!55!black} Other};
 	%\legend{Coal, Natural Gas, Nuclear, Renewables, Petroleum \& Oth.};
 	\end{axis}
-\end{tikzpicture}} \hspace{3.0mm} 
+\end{tikzpicture}} \hspace{3.0mm}
 {\pgfdeclarelayer{background layer}
 \pgfdeclarelayer{foreground layer}
 \pgfsetlayers{background layer,main,foreground layer}
@@ -6391,9 +5848,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \charttitle{Electricity Retail Sales by Sector}{billion kilowatt hours, 12-month moving sum}
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{2002-01-01}, \afticks}
 \hspace*{6mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[width=7.0cm, height=5.55cm, clip=false, enlarge x limits=0.01,
@@ -6434,8 +5889,7 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 \charttitle{Retail and Food Services Sales}{share of aggregate measure, percent \hspace{19mm} monthly per capita, \input{text/rs_dt.txt}\unskip \ dollars*}
 \vspace{3.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer} \pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		date coordinates in=x, axis line style={draw=none}, 
@@ -6486,9 +5940,7 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 \charttitle{Retail and Food Services Sales Growth}{one-year growth, percent, 3-month moving average}
 \vspace{3.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  max space between ticks=20, 
 		enlarge y limits={0.14}, date coordinates in=x, axis line style={draw=none}, 
@@ -6615,9 +6067,7 @@ This chartbook section covers government contributions to current economic activ
 \charttitle{Government Production}{per capita, thousands of \input{text/gdpva_ltdt.txt}dollars}
 \vspace{3.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0, ymax=8, yticklabel style={inner sep=0pt},
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.0},
@@ -6654,9 +6104,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 \charttitle{Personal Income and Outlays}{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}
 \vspace{4.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0, 
 		yticklabel style={text width=1.0em, inner sep=1.0pt},
@@ -6698,9 +6146,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 \charttitle{Consumption and Investment}{share of GDP, percent}
 \vspace{4.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0, 
 		yticklabel style={text width=1.0em, inner sep=1.0pt},
@@ -6736,9 +6182,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 \charttitle{Government Consumption and Investment}{percentage point contribution to real GDP growth, one-year moving average}
 \vspace{4.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{4mm} \begin{tikzpicture} [overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
 		date coordinates in=x, axis line style={draw=none},
@@ -6786,9 +6230,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 \charttitle{Government Receipts and Expenditures}{current account, share of GDP, percent}
 \vspace{6.15cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=30pt},
 		ymin=0, ymax=44, date coordinates in=x, axis line style={draw=none}, 
@@ -6848,9 +6290,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \charttitle{Government Current Receipts}{consolidated government, share of GDP, percent}
 \vspace{2.95cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		clip=false, enlarge y limits={0.16}, yticklabel style={text width=1.3em, inner sep=1.0pt}, 
@@ -6887,9 +6327,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \charttitle{Federal Gov. Current Tax Receipts}{share of GDP, percent}
 \vspace{6.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		clip=false, yticklabel style={text width=1.3em, inner sep=1.0pt}, 
@@ -6933,9 +6371,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \charttitle{Federal Government Receipts}{trillions of USD, one-year moving sum}
 \vspace{3.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		enlarge y limits={0.28}, max space between ticks=25,
@@ -6973,9 +6409,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \charttitle{State \& Local Government Receipts}{share of GDP, percent}
 \vspace{6.95cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30, 
 		ymin=0.0, ymax=10,
@@ -7004,9 +6438,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \end{minipage} \hspace{5mm} \begin{minipage}{0.36\textwidth}
 \vspace{2.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30, 
 		ymin=0.0, ymax=3.5, yticklabel style={text width=1.0em, inner sep=1.0pt},
@@ -7027,9 +6459,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \end{tikzpicture}}
 \vspace{2.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30, 
 		ymin=0.0, ymax=3.5, clip=false, enlarge y limits={0.0}, 
@@ -7049,9 +6479,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \end{tikzpicture}}
 \vspace{2.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30, 
 		ymin=0.0, ymax=3.5, yticklabel style={text width=1.0em, inner sep=1.0pt},
@@ -7084,9 +6512,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \charttitle{Government Current Expenditures}{percent of GDP}
 \vspace{4.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30, enlarge y limits={0.06},
 		enlarge x limits={0.01}, ymin=1, ymax=47.5, 
@@ -7360,9 +6786,7 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 \charttitle{Government Employment}{government jobs per 100 people}
 \vspace{6.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false, 
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, 
@@ -7424,9 +6848,7 @@ Assets other than public lands, liabilities, and net worth (public wealth), are 
 \footnotesize{\textit{share of GDP, percent}}
 \vspace{4.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, width=6.1cm, 
 		max space between ticks=20,	height=6.4cm, clip=false, ymax=160,
@@ -7464,9 +6886,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 \charttitle{Government Share of US Wealth}{government share of US net worth, percent}
 \vspace{2.95cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, width=7.75cm, 
 		max space between ticks=20,	height=5.0cm, clip=false, 
@@ -7501,9 +6921,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 \charttitle{Federal Debt by Holder}{share of GDP, percent}
 \vspace{3.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 25, 50, 75, 100, 125},
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
@@ -7537,9 +6955,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 \charttitle{Federal Interest Outlays}{share of GDP, percent}
 \vspace{3.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 1, 2, 3}, clip=false, ymin=0,
 		enlarge y limits={0.16, upper}, yticklabel style={text width=1.0em, inner sep=1.0pt},
@@ -7572,9 +6988,7 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 \charttitle{Federal Government Debt Dynamics}{contribution to change in debt to GDP ratio, percentage points}
 \vspace{6.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 		yticklabel style={text width=1.4em, inner sep=1.0pt}, ymax=18.2,
@@ -7612,9 +7026,7 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 \charttitle{Government Assets}{does not include land, percent of GDP}
 \vspace{3.85cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 25, 50, 75, 100 ,125}, width=12.2cm,
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
@@ -7648,9 +7060,7 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 \charttitle{Government Net Investment}{government investment less depreciation, share of GDP}
 \vspace{3.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
 		height=5.1cm, width=7.6cm, ymin=0.08, clip=false,
@@ -7691,9 +7101,7 @@ This balance is further broken down into four components: the trade balance for 
 \charttitle{Current Account Balance}{balance on individual current account component, as percent of GDP}
 \vspace{5.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,	 
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, ymax=3.15, ymin=-7.6,
@@ -7740,9 +7148,7 @@ This balance is further broken down into four components: the trade balance for 
 \input{text/fabz1.txt} 
 \vspace{1mm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \charttitle{Financial Account Balance}{percent of GDP, one-year moving average}
 \vspace{3.85cm}
 
@@ -7783,9 +7189,7 @@ This balance is further broken down into four components: the trade balance for 
 \footnotesize{\textit{billions of US dollars, seasonally adjusted}}
 \vspace{8.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge y limits={0.025}, 
 		clip=false, max space between ticks=30,
@@ -7839,9 +7243,7 @@ This balance is further broken down into four components: the trade balance for 
 \normalsize \textbf{Imports and Exports, Nonpetroleum}\\
 \footnotesize{\textit{includes goods and services, but excludes petroleum products, share of GDP}}\vspace{3.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge y limits={0.0}, ymin=0, ymax=16,
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
@@ -7874,9 +7276,7 @@ This balance is further broken down into four components: the trade balance for 
 \charttitle{International Trade}{percentage point contribution to real GDP growth}
 \vspace{5.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,	 
 		yticklabel style={text width=1.0em, inner sep=0pt}, width=13.1cm,
@@ -8060,9 +7460,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \charttitle{Trade Balance on Goods by Partner}{share of GDP, percent, 12-month moving sum}
 \vspace{3.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay] 
 	\pgfplotstableread[header=true, col sep=comma]{data/trade_bal_partner.csv}\tbal
 	\begin{axis}[\bbar{y}{0}, yticklabel style={text width=1.6em, inner sep=1.0pt}, 
@@ -8178,9 +7576,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \footnotesize{\textit{purchases by foreigners minus sales by foreigners}}\\\footnotesize{\textit{trailing 12-month sum, billions of \input{text/tic_date.txt}US dollars}}
 \vspace{3.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{7mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,	
 		date coordinates in=x, axis line style={draw=none},  enlarge y limits={0.06},
@@ -8215,9 +7611,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \charttitle{Selected Exchange Rates}{units of foreign currency required to purchase one US dollar}
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{1}, max space between ticks=20,
 		yticklabel style={text width=1.2em}, enlarge y limits=0.1,
@@ -8251,9 +7645,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \footnotesize{\textit{index, January 2006=100}}
 \vspace{2.55cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{2006-01-01}, \afticks}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 \begin{groupplot}[group style={group size=1 by 2, 
@@ -8309,9 +7701,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \footnotesize{\textit{index, January 2020=100}}
 \vspace{2.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 \begin{axis}[\bbar{y}{100},  
 		date coordinates in=x, axis line style={draw=none}, 
@@ -8375,9 +7765,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \charttitle{Labor Force Status of Population}{millions of people, not seasonally adjusted}
 \vspace{5.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		height=7.1cm, ymin=-20, width=6.5cm, ymax=390,
@@ -8413,9 +7801,7 @@ People who are neither employed nor unemployed are \textit{outside of the labor 
 \charttitle{Labor Force Status Changes}{percentage point contribution to one-year growth of age 15+ population}
 \vspace{5.55cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		date coordinates in=x, axis line style={draw=none},  enlarge y limits={0.0},
@@ -8591,9 +7977,7 @@ People who are neither employed nor unemployed are \textit{outside of the labor 
 \charttitle{Gross Labor Income Growth}{percentage point contribution, one-year moving average}
 \vspace{2.45cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, height=4.5cm, width=12.8cm, ymax=9.8,
 		date coordinates in=x, axis line style={draw=none},  enlarge x limits={0.01},
@@ -8629,9 +8013,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 \charttitle{Gross Labor Income Growth}{one-year growth, percent}
 \vspace{4.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 		yticklabel style={text width=1em, inner sep=1.0pt}, max space between ticks=30,
@@ -8671,9 +8053,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 \charttitle{Labor Share of Net Income}{percent, one-year moving average}
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[max space between ticks=25, 
 		enlarge y limits={0.14}, yticklabel style={text width=1.3em, inner sep=1.0pt},
@@ -8711,9 +8091,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 \normalsize \textbf{Productivity-Pay Gap}\footnotesize
 \vspace{4.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=20mm}]
 	\nextgroupplot[\bbar{y}{100}, max space between ticks=20,
@@ -8777,9 +8155,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 \charttitle{Employment Level}{millions, not seasonally adjusted}
 \vspace{4.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge y limits={0.08, upper}, 
 		yticklabel style={text width=1.6em, inner sep=1.0pt}, width=6.9cm, height=6.6cm,
@@ -9032,9 +8408,7 @@ Economists are interested in both the overall employment rate and in the employm
 \charttitle{Employment Rate, Age 16 and Older}{employed share of age 16 and older population, percent, seasonally adjusted}
 \vspace{2.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[ytick={50, 55, 60, 65, 70}, 
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, 
@@ -9061,9 +8435,7 @@ The \textbf{age 25 to 54 employment rate} is an important measure of labor marke
 \charttitle{Employment Rate, Age 25 to 54}{employed share of age 25 to 54 population, percent, seasonally adjusted}
 \vspace{2.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[ytick={70, 75, 80}, 
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, 
@@ -9351,9 +8723,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 \charttitle{Unemployment Measures}{percent of labor force, seasonally adjusted}
 \vspace{2.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, 
@@ -9392,9 +8762,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 \charttitle{Unemployment Rate}{unemployed share of labor force, percent, seasonally adjusted}
 \vspace{3.15cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
 		enlarge y limits={0.1}, 		
@@ -9526,9 +8894,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \charttitle{Long-Term Unemployed}{share of labor force, percent}
 \vspace{3.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.0mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1,
 		horizontal sep=40pt}, max space between ticks=20, axis line style={draw=none},
@@ -9563,9 +8929,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \charttitle{Duration of Unemployment}{in weeks}
 \vspace{3.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\pgfplotstableread[col sep=comma]{data/unempdur.csv}\undur
 	\begin{axis}[\bbar{y}{0},
@@ -9780,9 +9144,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \footnotesize{\textit{percent, seasonally adjusted}}
 \vspace*{5.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3.5mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, max space between ticks=40,
@@ -9872,9 +9234,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \footnotesize{\textit{percentage points, 12-month moving average}}
 \vspace{6.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{2001-01-01}, \afticks}
 \hspace{2.0mm} \begin{tikzpicture}[overlay]
 	\pgfplotstableread[col sep=comma]{data/nilf.csv}\nilfc
@@ -9918,9 +9278,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \charttitle{Reason for Labor Force Non-Participation, by Age}{share of age group population, percent, 12-month moving average}
 \vspace{6.35cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=44pt}, 
 		clip=false, width=6.2cm, height=7.8cm, 
@@ -10019,9 +9377,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \charttitle{Job Turnover}{job openings, hires, quits, and layoffs per month, in millions}
 \vspace{4.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		yticklabel style={text width=1.2em, inner sep=1.0pt}, 
@@ -10054,9 +9410,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \charttitle{Job Openings Per Unemployed Person}{job openings divided by total unemployment}
 \vspace{2.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 0.5, 1.0, 1.5, 2.0}, 
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, 
@@ -10087,9 +9441,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \charttitle{Quits Rate}{voluntary separations as share of workforce}
 \vspace{3.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{2001-01-01}, \afticks}
 \hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 2, 4, 6}, clip=false,
@@ -10133,9 +9485,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \footnotesize{\textit{share of newly employed, percent}}
 \vspace{2.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		date coordinates in=x, axis line style={draw=none}, 
@@ -10172,9 +9522,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \charttitle{Flow, Disability to Work}{one-year moving average, percent}
 \vspace{2.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false, ymin=0, ymax=11.5,
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, max space between ticks=20,
@@ -10211,9 +9559,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \footnotesize{\textit{share of workforce, percent, seasonally adjusted}}
 \vspace{2.55cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},
 		enlarge y limits={0.0}, ymin=0, ymax=4, clip=false, 
@@ -10252,9 +9598,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \charttitle{Expected Separations}{mean probability of separation, percent}
 \vspace{3.35cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		enlarge y limits={0.05}, clip=false, max space between ticks=20,	
@@ -10293,9 +9637,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \charttitle{Part Time, by Reason}{percent of labor force}
 \vspace{4.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		enlarge y limits={0.06}, ymin=0.7, yticklabel style={text width=1.3em, inner sep=1.0pt},
@@ -10332,9 +9674,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \charttitle{Multiple Jobholders}{percent of workers, 3-month moving average}
 \vspace{2.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[clip=false, enlarge y limits={0.3}, 
 		date coordinates in=x, axis line style={draw=none}, 
@@ -10368,9 +9708,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 \charttitle{Self-Employed}{percent of labor force}
 \vspace{3.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false, max space between ticks=20,
 		enlarge y limits={0}, ymin=0, ymax=10, yticklabel style={text width=1.0em, inner sep=1.0pt},
@@ -10421,9 +9759,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \charttitle{Wage Growth Measures}{nominal one-year percent change}
 \vspace{3.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0,
 		enlarge y limits={0.1, upper}, clip=false, max space between ticks=20,	
@@ -10505,9 +9841,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \charttitle{Median Usual Weekly Earnings}{one-year growth, percent, full-time, wage and salary earners, age 16+}
 \vspace{3.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
@@ -10571,9 +9905,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \charttitle{First Decile Usual Weekly Earnings}{one-year nominal growth, percent, full-time, wage and salary earners, age 16+}
 \vspace{2.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={-5, 0, 5, 10, 15}, 
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
@@ -10630,9 +9962,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \footnotesize{\textit{\input{text/rw_cpsdate.txt}dollars, adjusted using regional CPI-U, quarterly average}}
 \vspace{4.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{6mm} \begin{tikzpicture}[overlay]
 	\pgfplotstableread[col sep=comma]{data/educ_wageq.csv}\educwage
 	\begin{axis}[enlarge y limits={0.2}, ymax=1720,
@@ -10669,9 +9999,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \charttitle{Gender Wage Gap}{women's median wage as a share of men's}
 \vspace{3.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{100}, 
 		date coordinates in=x, axis line style={draw=none}, 
@@ -10704,9 +10032,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \footnotesize{\textit{private production and non-supervisory workers}}
 \vspace{3.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[max space between ticks=30,
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, 
@@ -10747,9 +10073,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 \charttitle{Average Hourly Earnings Growth}{private production and non-supervisory workers, one-year growth, percent}
 \vspace{3.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  max space between ticks=15,
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
@@ -10880,9 +10204,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 \footnotesize{\textit{nominal one-year growth, percent}}
 \vspace{2.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{2001-01-01}, \afticks}
 \hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
@@ -10958,9 +10280,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 \charttitle{Employment Cost Index}{nominal wages and salaries, all civilian workers, one-year growth, percent}
 \vspace{2.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, yticklabel style={inner sep=0pt}, 
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
@@ -10996,9 +10316,7 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 \charttitle{Wage Growth Tracker, Median}{median one-year wage growth, percent, three-month moving average}
 \vspace{3.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=42pt},
 		max space between ticks=20, enlarge x limits={0.01}, 
@@ -11051,9 +10369,7 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 \charttitle{Zero Wage Change}{share of individuals with one-year wage growth between -0.5 and 0.5 percent, three-month average}
 \vspace{2.55cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30,	 
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, enlarge y limits={0.16}, 
@@ -11090,9 +10406,7 @@ The next charts show four measures of average hours worked. Two measures, Curren
 \charttitle{Hours Worked Measures and Trend}{average hours worked per week}
 \vspace{3.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[ 
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, 
@@ -11181,9 +10495,7 @@ Next, the establishment survey (CES) can be used to calculate aggregate hours wo
 \charttitle{Aggregate Hours Worked}{indexes, 2010=100}
 \vspace{4.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{100},  
 		yticklabel style={text width=1.4em, inner sep=1.0pt}, 
@@ -11225,9 +10537,7 @@ Trends emerge when comparing between the aggregate hours measures. Production an
 \charttitle{Aggregate Hours Worked Growth}{nonfarm businesses, annual growth, percent}
 \vspace{3.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.0mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		xmin={1988-07-01},legend style={align=left, at={(0.88, 1.175)}, 
@@ -11272,9 +10582,7 @@ Trends emerge when comparing between the aggregate hours measures. Production an
 \charttitle{Labor Productivity Growth}{annual rate, percent}
 \vspace{2.15cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false, max space between ticks=15, 
 		date coordinates in=x, axis line style={draw=none}, 
@@ -11301,9 +10609,7 @@ Trends emerge when comparing between the aggregate hours measures. Production an
 \charttitle{Labor Productivity Growth}{nonfarm businesses, quarterly growth at annual rate, percent}
 \vspace{3.45cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymax=13.9,
 		max space between ticks=20,	width=12.9cm, enlarge y limits={0.12}, 
@@ -11339,9 +10645,7 @@ One theory of what drives medium-term trends, called the \textit{Kaldor-Verdoorn
 \charttitle{Decomposition of Labor Productivity Growth}{contribution to labor productivity, percentage points}
 \vspace{5.35cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, enlarge y limits={0.08},
@@ -11378,9 +10682,7 @@ One theory of what drives medium-term trends, called the \textit{Kaldor-Verdoorn
 \charttitle{Union Membership and Coverage}{union or employee association share of jobs, percent, one-year moving average}
 \vspace{2.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 5, 10, 15, 20}, ymin=1,
 		height=4.6cm, width=12.6cm, enlarge y limits={0.09},
@@ -11536,9 +10838,7 @@ In the US, several stock market indices track the share price of a basket of com
 \charttitle{Stock Market Indices}{adjusted close, index value, in thousands \hspace{29mm} 2019--onward, in detail}
 \vspace*{-2mm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{-2mm} \begin{tikzpicture}
 	\begin{groupplot}[group style={group name=equities, group size=2 by 3, 
     	x descriptions at=edge bottom, horizontal sep=26pt, vertical sep=7pt},
@@ -11678,9 +10978,7 @@ In the US, several stock market indices track the share price of a basket of com
 \charttitle{S\&P 500 Real Return}{trailing period annualized real return}
 \vspace{3.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		yticklabel style={text width=1.2em, inner sep=1.0pt}, 
@@ -11714,9 +11012,7 @@ In the US, several stock market indices track the share price of a basket of com
 \charttitle{S\&P 500 Dividend Yield}{annual dividend per share divided by share price, percent}
 \vspace{2.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0,
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06, upper},
@@ -11747,9 +11043,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \charttitle{Corporate Equity Payout}{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 5, 10}, height=5.6cm, 
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.08},
@@ -11782,9 +11076,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \charttitle{Price to Earnings Ratio}{ratio of market value to trailing 10-year returns}
 \vspace{2.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0, enlarge y limits={0.1, upper},
 		date coordinates in=x, axis line style={draw=none}, max space between ticks=20,
@@ -11805,9 +11097,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \charttitle{Tobin's Q}{ratio of market value to replacement cost}
 \vspace{2.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0, enlarge y limits={0.1, upper},
 		date coordinates in=x, axis line style={draw=none}, max space between ticks=20,
@@ -11937,9 +11227,7 @@ Banks pay lower rates on deposits and charge higher rates for loans. The gap bet
 \charttitle{Fed Funds Rate, Unemployment, and Inflation}{annual rate, percent}
 \vspace{2.92cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false, yticklabel style={inner sep=0pt},
 		date coordinates in=x, axis line style={draw=none}, 
@@ -11974,9 +11262,7 @@ One formulation of the Taylor rule is shown below (see {\color{cyan!80!white}\te
 \charttitle{Federal Funds Rate}{percent, annual rate}
 \vspace{2.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, yticklabel style={inner sep=0pt},
 		date coordinates in=x, axis line style={draw=none}, 
@@ -12030,9 +11316,7 @@ One formulation of the Taylor rule is shown below (see {\color{cyan!80!white}\te
 \charttitle{Treasury Constant Maturity Yields}{percent, annual rate}
 \vspace{2.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.0mm} \begin{tikzpicture}[overlay]
 	\pgfplotstableread[col sep=comma]{data/treas_recent_mon.csv}\treasmon
 	\begin{axis}[name=plot1, \bbar{y}{0}, 
@@ -12152,9 +11436,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \charttitle{Treasury Yield Spreads}{percentage points}
 \vspace{2.7cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
     \begin{groupplot}[group style={group size=2 by 1, horizontal sep=44pt},
     	ytick={-2, -1, 0, 1, 2, 3}, enlarge y limits=0.1, axis line style={draw=none}, 
@@ -12263,9 +11545,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \charttitle{Real Fed Funds Rate}{annual rate, percent}
 \vspace{4.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},
 		date coordinates in=x, axis line style={draw=none},
@@ -12308,9 +11588,7 @@ The market-based approach has limitations, as the market for inflation-protected
 \charttitle{Real Ten-Year Treasury Yields}{annual inflation-expectation-adjusted rate, percent}
 \vspace{3.75cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		enlarge y limits={0.05}, legend style={at={(1.0, 1.17)}}, 
@@ -12368,9 +11646,7 @@ The market-based approach has limitations, as the market for inflation-protected
 \charttitle{ICE BofA High Yield Index Effective Yield}{percent}
 \vspace{2.55cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{1997-01-01}, \afticks}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 5, 10, 15, 20, 25},
@@ -12403,9 +11679,7 @@ The market-based approach has limitations, as the market for inflation-protected
 \charttitle{Mortgage Rate and Spread}{average for 30-year fixed rate mortgages, percent}
 \vspace{3.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
 		height=5.2cm, width=8.2cm, max space between ticks=50, ymin=0, ymax=11.0,
@@ -12463,9 +11737,7 @@ The market-based approach has limitations, as the market for inflation-protected
 \charttitle{M2 to GDP Ratio}{index, 1989=1}
 \vspace{2.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none}, 
 		enlarge y limits={0.06},
@@ -12491,9 +11763,7 @@ A large increase in money holdings relative to economic activity can reflect a h
 \charttitle{M2 Money Stock Growth}{not seasonally adjusted, one-year percent change}
 \vspace{3.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
@@ -12780,9 +12050,7 @@ The next charts show inflation relative to the two percent target, using the Con
 \charttitle{Consumer Price Index}{one-year growth, percent, not seasonally adjusted}\\
 \vspace{3.25cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, date coordinates in=x, axis line style={draw=none}, 
 		max space between ticks=20,
@@ -12969,9 +12237,7 @@ One-year inflation rates for different categories of goods and services, includi
 \charttitle{Survey of Expected Inflation}{annual rate, percent}\\
 \vspace{3.5cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={0, 1, 2, 3, 4, 5, 6}, 
 		date coordinates in=x, axis line style={draw=none}, 
@@ -12997,9 +12263,7 @@ One-year inflation rates for different categories of goods and services, includi
 \charttitle{Market Expected Inflation}{annual rate, percent}
 \vspace{2.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[ytick={0, 1, 2, 3, 4}, 
 		ymin=0, ymax=4, \bbar{y}{0}, clip=false, 
@@ -13041,9 +12305,7 @@ One-year inflation rates for different categories of goods and services, includi
 \charttitle{Personal Consumption Expenditure Price Index}{one-year growth, percent}
 \vspace{4.4cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 	date coordinates in=x, axis line style={draw=none}, 
@@ -13075,9 +12337,7 @@ One-year inflation rates for different categories of goods and services, includi
 \charttitle{Personal Consumption Expenditure Price Index, Trimmed Mean}{highest and lowest categories excluded, one-year growth, percent}
 \vspace{3.1cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{1.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20, enlarge y limits={0}, 
 		date coordinates in=x, axis line style={draw=none}, 
@@ -13106,9 +12366,7 @@ One-year inflation rates for different categories of goods and services, includi
 \charttitle{Core PCE Components Relative to Fed Target}{percentage points above or below contribution consistent with two percent target}
 \vspace{3.0cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, height=5.0cm, width=13.0cm, ymax=2.8,
 		date coordinates in=x, axis line style={draw=none},
@@ -13187,9 +12445,7 @@ Note that the all commodities index includes goods at various stages of producti
 \charttitle{Producer Price Index}{one-year growth, percent, not seasonally adjusted}
 \vspace{2.9cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false,
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, enlarge y limits={0.12}, 
@@ -13272,9 +12528,7 @@ Note that the all commodities index includes goods at various stages of producti
 \charttitle{Import/Export Price Index}{one-year growth, percent}\\
 \vspace{3.2cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, yticklabel style={text width=1.5em, inner sep=1.0pt},
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits=0.06,
@@ -13307,9 +12561,7 @@ Two important commodities for the construction and manufacturing industries are 
 \charttitle{Steel \hspace{5.5cm} Lumber}{cold-rolled steel sheet and strip, index 1989=1 \hspace{9mm} lumber and wood products, index, 1989=1}
 \vspace{3.8cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace*{1.5mm} \begin{tikzpicture}[overlay] 
 	\begin{groupplot}[max space between ticks=20, ytick={1,2,3,4,5,6},
 		enlarge y limits={0.01}, ymin=0.65, ymax=6.4, axis line style={draw=none}, 
@@ -13346,9 +12598,7 @@ Two important commodities for the construction and manufacturing industries are 
 \charttitle{Oil Price}{USD per barrel, west Texas intermediate crude}
 \vspace{2.6cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{4mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=16, enlarge y limits={0.06},
 		yticklabel style={text width=1.5em}, width=12.6cm, height=4.65cm,
@@ -13380,9 +12630,7 @@ Two important commodities for the construction and manufacturing industries are 
 \charttitle{Gasoline Price}{dollars per gallon, all grades}
 \vspace{2.25cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge y limits={0.05}, 
 		max space between ticks=16,	width=12.2cm, height=4.25cm, ymin=0.2, ymax=4.8,
@@ -13410,9 +12658,7 @@ Two important commodities for the construction and manufacturing industries are 
 \charttitle{Gold Price}{USD, monthly average and latest value}
 \vspace{2.3cm}
 
-{\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}
+{\pgfsetlayers{background layer,main,foreground layer}
 \hspace{6.5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		clip=false, yticklabel style={text width=2.4em}, enlarge y limits={0.06},
