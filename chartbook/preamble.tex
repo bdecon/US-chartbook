@@ -152,6 +152,8 @@
 	    legend style={legend columns=-1, draw=none, fill=none,
 	    	/tikz/every even column/.append style={column sep=0.3cm}}}
 
+	\pgfplotsset{shortyear/.style={xticklabel={`\short{\year}}}}
+	\pgfplotsset{dateaxis/.style={date coordinates in=x, axis line style={draw=none}}}
 
 	% stacked diverging bar
 	\newcommand{\sbar}[4]{
