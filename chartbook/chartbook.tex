@@ -670,9 +670,7 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=7.1cm, width=6.8cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{violet}{date}{LPROD_BLS_idx}{data/gdpjobslvl.csv}
 	\absnode{{2009-07-01}}{161}{\color{violet}Nonfarm\\ 
 		\color{violet}Businesses\\\color{violet}(BLS)}
@@ -883,9 +881,7 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, enlarge y limits={0.0}, 
 		legend style={at={(0.29, 0.97)}, fill=white}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{red!80!white}{date}{A191RL}{data/ngdp_gr.csv}
 	\sbar{blue!70!black}{date}{PR}{data/ngdp_gr.csv}
 	\legend{Real GDP, Prices};
@@ -1176,9 +1172,7 @@ The subsection begins with an overview of contributions to growth since 2019, th
 		enlarge x limits={0.02}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, legend cell align=left,
 		legend style={at={(0.96, 1.25)}, legend columns=2}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{orange!80!white}{date}{Government}{data/gdpva_ind_ann.csv}{7pt}
 	\ctsbar{blue!90!white}{date}{Oth_Serv}{data/gdpva_ind_ann.csv}{7pt}
 	\ctsbar{red!90!white}{date}{FIRE}{data/gdpva_ind_ann.csv}{7pt}
@@ -1506,9 +1500,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		enlarge y limits={0.05}, yticklabel style={text width=1.45em, inner sep=1.0pt},
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{lightgray!60!white}{date}{Other}{data/wealthgdp.csv}
 	\absnode{{1991-01-01}}{110}{Other (Net)}
 	\sbar{blue!30!green!85!gray}{date}{Real Estate}{data/wealthgdp.csv}
@@ -1543,9 +1535,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 		date coordinates in=x, enlarge y limits={0.0},
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		ymin=0, ymax=400, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!60!black}{date}{LA384104005.Q}{data/liabsh.csv}
 	\absnode{{2011-01-01}}{245}{\color{blue!60!black}Debt}
 	\thickline{cyan!88!blue}{date}{FL384190005.Q}{data/liabsh.csv}
@@ -1557,9 +1547,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 		enlarge y limits={value=0.06, upper}, ymin=0, 
 		date coordinates in=x, xtick/.expanded={\afticks}, 
 		minor xtick/.expanded={\anfticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!60!black}{date}{LA384104005.Q}{data/liabpc.csv}
 	\absnode{{2011-01-01}}{170}{\color{blue!60!black}Debt}
 	\thickline{cyan!88!blue}{date}{FL384190005.Q}{data/liabpc.csv}
@@ -1607,9 +1595,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!70!white}{date}{FL314190005.Q}{data/liabsh.csv}
 	\absnode{{2011-01-01}}{119}{\color{blue}Federal\\ 
 	\color{blue}Gov.}
@@ -1626,9 +1612,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!70!white}{date}{LA314104005.Q}{data/liabsh.csv}
 	\absnode{{2013-12-01}}{130}{\color{blue}Federal\\ 
 	\color{blue}Gov.}
@@ -1680,9 +1664,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.0em, inner sep=1.0pt},
 		clip=false, legend cell align={left}, reverse legend,
 		legend style={legend columns=-1, at={(0.98, 1.17)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{blue!70!white}{date}{FL314104005.Q}{data/liabgr.csv}
 	\sbar{cyan!60!white}{date}{FL214104005.Q}{data/liabgr.csv}
 	\sbar{orange!90!red}{date}{FL154104005.Q}{data/liabgr.csv}
@@ -1727,9 +1709,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em, inner sep=1.0pt}, 
 		legend cell align={left}, reverse legend,
 		legend style={legend columns=1, at={(0.36, 0.99)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{yellow!70!orange}{date}{GOV}{data/sectbal.csv}
 	\sbar{green!70!black}{date}{PRIV}{data/sectbal.csv}
 	\sbar{blue!90!black}{date}{ROW}{data/sectbal.csv}
@@ -1761,9 +1741,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em, inner sep=1.0pt}, 
 		legend cell align={left}, 
 		legend style={legend columns=1, at={(0.34, 0.99)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{purple!50!red}{date}{W995RC}{data/sectbal2.csv}
 	\sbar{orange!90!yellow}{date}{W996RC}{data/sectbal2.csv}
 	\legend{ \ Private Businesses, \ Households};
@@ -1796,9 +1774,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{violet!60!black}{date}{GovGross}{data/grossinv_sh.csv}
 	\sbar{blue!60!white}{date}{PrGrossFixedRes}{data/grossinv_sh.csv}
 	\sbar{yellow!70!orange!90!white}{date}{PrGrossFixedNR}{data/grossinv_sh.csv}
@@ -1834,9 +1810,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, height=6.6cm, width=7.55cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\recbars
-	\end{pgfonlayer}
+	\bglayer{\recbars}
 	\stdline{violet!60!black}{date}{Pub}{data/construction_spending_sh.csv}
 	\stdline{blue!60!white}{date}{PrRes}{data/construction_spending_sh.csv}
 	\stdline{yellow!60!orange}{date}{PrNR}{data/construction_spending_sh.csv}
@@ -1881,9 +1855,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, 
 		legend style={at={(0.99, 1.11)}, legend columns=-1}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{yellow!70!orange!90!white}{date}{A008RY}{data/inv.csv}
 	\sbar{blue!60!white}{date}{A011RY}{data/inv.csv}
 	\sbar{violet!60!black}{date}{Gov}{data/inv.csv}
@@ -1895,9 +1867,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 		date coordinates in=x, 
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{red}{date}{A014RY}{data/inv.csv}
 	\node[below, align=left, shift=({rel axis cs:0.21,1.0}), fill=white, 
 		draw=black!30!white, inner sep=3.0]
@@ -1936,9 +1906,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=6.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\absnode{{2009-06-01}}{6.95}{\color{purple}Net Fixed\\
 		\color{purple}Investment}
 	\stdline{purple}{date}{TOT}{data/z1_nfi.csv}
@@ -1967,9 +1935,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},   
 		xticklabel={`\short{\year}}, clip=false, legend cell align={left}, 
 		legend style={legend columns=1, at={(0.85, 1.22)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{violet!85!black}{date}{GOV}{data/z1_nfi.csv}
 	\sbar{magenta!90!white}{date}{BUS}{data/z1_nfi.csv}
 	\sbar{cyan!38!white}{date}{HH}{data/z1_nfi.csv}
@@ -2022,9 +1988,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 		height=5.6cm, width=12.5cm, yticklabel style={text width=1.9em},
 		enlarge y limits={0.0}, ymin=200, ymax=350
 		]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\input{text/pop_est_projbar.txt}
 	\addplot[thick, mark=*, color=magenta!80!white] 
 		table [x=date, y=PROJ_POP, col sep=comma] {data/pop_est_proj23.csv};	
@@ -2109,9 +2073,7 @@ Each of these categories of investment is discussed further, in the chartbook se
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},  
 		xticklabel={`\short{\year}}, clip=false, clip mode=individual, ymin=-0.015,
 		height=5.3cm, width=6.9cm, yticklabel style={text width=1.0em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\addplot[stack plots=y, area style, draw=none, 
 		style={pattern=crosshatch, pattern color=cyan!80!blue!50!white}] 
 			table [x=date, y=NATURALINC, col sep=comma]{data/popcomp.csv}\closedcycle;
@@ -2153,9 +2115,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, 
 		xticklabel={`\short{\year}}, height=6cm, width=5.15cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{teal!68!green!95!black}{date}{Owner}{data/hhform_lvl.csv}
 	\absnode{{2010-01-01}}{74.5}{\color{teal!68!green!95!black}Owner-\\
 		\color{teal!68!green!95!black}Occupied}
@@ -2170,9 +2130,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=6cm, width=7.5cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{teal!68!green!95!black}{date}{Owner}{data/hhform_idx.csv}
 	\absnode{{1992-01-01}}{1.94}{\color{teal!68!green!95!black}Owner-\\
 		\color{teal!68!green!95!black}Occupied}
@@ -2204,9 +2162,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 		xticklabel={`\short{\year}}, clip=false, height=5.8cm, width=12.9cm,
 		legend cell align=left, reverse legend, ymax=2.8, 
 		legend style={at={(0.34, 0.995)}, legend columns=1}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\draw [dashed] (axis cs:{2002-01-01},\pgfkeysvalueof{/pgfplots/ymin}) -- 
 		(axis cs:{2002-01-01},
 		\pgfkeysvalueof{/pgfplots/ymax});
@@ -2246,9 +2202,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 		enlarge x limits={0.01}, minor xtick/.expanded={\aticks}, 
 		xtick/.expanded={\custticks}, 
 		xticklabel={`\short{\year}}, height=4.25cm, width=7.6cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{purple!70!violet}{date}{value}{data/headship.csv}
 	\input{text/headship_node.txt}
 	\end{axis}
@@ -2277,18 +2231,14 @@ Living with family became more common after the collapse of the housing bubble. 
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, 
         enlarge y limits={0.08}, enlarge x limits={0.02}]
 	\nextgroupplot[date coordinates in=x, xtick/.expanded={\afticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!60!black}{date}{Full}{data/lwf.csv}
 	\input{text/lwf_node.txt}
 	\node[right, align=left, shift=({rel axis cs:0.02,0.94}), 
 	draw=black!30!white, fill=white, inner sep=3.0]
 		{\small \color{black!80!white}Age 16 and older};
 	\nextgroupplot[date coordinates in=x, xtick/.expanded={\afticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!60!black}{date}{Age1829}{data/lwf.csv}
 	\input{text/lwf_1829_node.txt}
 	\node[right, align=left, shift=({rel axis cs:0.02,0.94}), 
@@ -2531,9 +2481,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		yticklabel style={text width=1.3em, inner sep=1.0pt},
 		xticklabel={`\short{\year}}, clip=false, height=7.5cm, width=7.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\absnode{{1991-12-01}}{50.9}{\color{blue!75!black}After-Tax \\ \color{blue!75!black} Income}
 	\stdline{blue!75!black}{date}{DPI}{data/inc_out_save.csv}
 	\absnode{{2011-01-01}}{45.4}{\color{orange} Consumer\\ \color{orange}Spending}
@@ -2557,9 +2505,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=7.5cm, width=7.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\absnode{{2009-10-01}}{35}{\color{blue!50!cyan}After-Tax\\ \color{blue!50!cyan}Income}
 	\thickline{blue!50!cyan}{date}{INCAFTTX_4}{data/medincexp.csv}
 	\absnode{{2012-01-01}}{19.25}{\color{red!50!orange}Consumer \\ \color{red!50!orange}Spending}
@@ -2920,9 +2866,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, width=6.35cm, height=8.1cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{violet}{date}{Median_LT}{data/real_hh_inc.csv}
 	\stdline{violet}{date}{Median_PR}{data/real_hh_inc.csv}
 	\stdline{violet}{date}{Median_PR2}{data/real_hh_inc.csv}
@@ -2965,9 +2909,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, width=6.4cm, height=6.75cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!75!white}{date}{Black_LT}{data/real_med_hh_inc.csv}
 	\stdline{blue!75!white}{date}{Black_PR}{data/real_med_hh_inc.csv}
 	\stdline{blue!75!white}{date}{Black_PR2}{data/real_med_hh_inc.csv}
@@ -3038,9 +2980,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdnode{4.1cm}{1.65cm}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
 	\stdnode{1.0cm}{2.8cm}{\footnotesize \color{orange}Services}
@@ -3067,9 +3007,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, width=7.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\absnode{1991-07-01}{11.7}{\footnotesize \color{green!60!blue}Housing \& \\
 	\footnotesize \color{green!60!blue} Utilities}
 	\stdline{green!60!blue}{date}{Housing}{data/pce_levels.csv}
@@ -3103,9 +3041,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=6.8cm, width=7.2cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\absnode{{2013-06-01}}{18.3}{\footnotesize \color{red}Goods}
 	\stdline{red}{date}{Goods}{data/pce_levels.csv}
 	\absnode{{1996-05-01}}{26.9}{\footnotesize \color{blue!75!white}Services Excl. 
@@ -3155,9 +3091,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 		legend cell align=left, ymin=-6, ymax=10, max space between ticks=20,
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, 
 		legend style={at={(0.46, 0.99)}, legend columns=1}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{red}{date}{DGDSRY}{data/pce_ma.csv}
 	\sbar{blue!75!white}{date}{OTHSERV}{data/pce_ma.csv}
 	\sbar{green!85!blue}{date}{SHELTER}{data/pce_ma.csv}
@@ -3215,9 +3149,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 		clip=false, height=5.3cm, width=12.8cm, reverse legend,
 		legend style={at={(0.72, 1.01)}, legend columns=-1}, 
 		legend cell align={left}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{cyan!80!white}{date}{POP_CONTR}{data/npcedecomp.csv}{7.0pt}
 	\ctsbar{orange!90!yellow!70!white}{date}{INFL_CONTR}{data/npcedecomp.csv}{7.0pt}
 	\ctsbar{blue!80!green!70!white}{date}{REALPC}{data/npcedecomp.csv}{7.0pt}
@@ -3325,9 +3257,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		xticklabel={`\short{\year}}, clip=false, height=7.2cm, width=12.9cm, 
 		yticklabel style={text width=1.4em, inner sep=1.0pt}, ymax=19, enlarge y limits={0.03},
 		legend style={at={(0.72, 0.98)}, fill=white}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{cyan!28!white}{date}{INCOME}{data/pcedecomp.csv}
 	\sbar{green!72!blue!90!white}{date}{SAVING}{data/pcedecomp.csv}
 	\sbar{blue!92!violet}{date}{OTHER}{data/pcedecomp.csv}
@@ -3393,9 +3323,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		yticklabel style={text width=1.2em, inner sep=1.0pt}, ymin=0, ymax=30,
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, height=5.4cm, width=12.6cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{red}{date}{A072RC}{data/psavert.csv}
 	\input{text/psavert_node.txt}
 	\end{axis}
@@ -3422,9 +3350,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		max space between ticks=20, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em, inner sep=1.0pt}, 
 		height=7.6cm, width=7.2cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!80!cyan!80!black}{date}{DI_SAVE_RT_6}{data/save_dist.csv}
 	\stdline{red!80!black}{date}{DI_SAVE_RT_5}{data/save_dist.csv}
 	\stdline{green!80!blue!85!black}{date}{DI_SAVE_RT_4}{data/save_dist.csv}
@@ -3465,9 +3391,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, clip=false, height=5.4cm, width=12.35cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{violet!60!blue}{date}{ICS_ALL}{data/umichsoc.csv}
 	\input{text/soc_node.txt}
 	\end{axis}
@@ -3491,9 +3415,7 @@ To see this pattern, the following charts show the contribution to changes in re
     \nextgroupplot[\bbar{y}{0}, date coordinates in=x, axis line style={draw=black},
     	xticklabels=\empty, xtick style={draw=none}, max space between ticks=20, 
 		tick label style={inner sep=0pt}, enlarge y limits={0.4}]
-		\begin{pgfonlayer}{background layer}
-			\rbars
-		\end{pgfonlayer}
+		\bglayer{\rbars}
 		\stdline{blue!50!cyan}{date}{ICC}{data/umichsoc_ice.csv}
 		\input{text/icc_node.txt}
 		\node[below, align=left, shift=({rel axis cs:0.15,1.02}), 
@@ -3503,9 +3425,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		date coordinates in=x, axis line style={draw=none}, 
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		enlarge y limits={0.4}, xticklabel={`\short{\year}}, max space between ticks=20]
-        \begin{pgfonlayer}{background layer}
-			\rbars
-		\end{pgfonlayer}
+        \bglayer{\rbars}
 		\stdline{green!60!black}{date}{ICE}{data/umichsoc_ice.csv}
 		\input{text/ice_node.txt}
 		\node[below, align=left, shift=({rel axis cs:0.16,1.0}), 
@@ -3547,9 +3467,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		enlarge x limits=0.02, date coordinates in=x, axis line style={draw=none}, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=6.2cm, width=7.8cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\abar{white!0}{date}{Liab2}{data/hh_bs_overview.csv}
 	\addplot[stack plots=y, draw=gray, fill=cyan!30!white] table [
 		x=date, y=Liabilities, col sep=comma]{data/hh_bs_overview.csv}\closedcycle;
@@ -3616,9 +3534,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		enlarge x limits=0.02, date coordinates in=x, axis line style={draw=none}, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\addplot[stack plots=y, draw=gray, fill=cyan!20!white] table [
 		x=date, y=Mortgages, col sep=comma]{data/hhdebt.csv}\closedcycle;
 	%\abar{cyan!22!white}{date}{Mortgages}{data/hhdebt.csv}	
@@ -3660,9 +3576,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		xticklabel={`\short{\year}}, 
         ymin=0, ymax=10, 
         yticklabel style={text width=1.0em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{blue!70!black}{date}{Auto Loan}{data/hhcdebt.csv}
 	\stdline{cyan!80!teal}{date}{Student Loan}{data/hhcdebt.csv}
 	\stdline{orange!80!yellow}{date}{Credit Card}{data/hhcdebt.csv}
@@ -3742,9 +3656,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		date coordinates in=x, axis line style={draw=none},
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{green!80!blue}{date}{Consumer Credit}{data/hhcdebt.csv}
 	\stdline{blue!50!black}{date}{value}{data/cc_dpi_monthly.csv}
 	\input{text/cc_dpi_monthly_node.txt}
@@ -3871,9 +3783,7 @@ To see this pattern, the following charts show the contribution to changes in re
 	date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.22, upper},
 	enlarge x limits={0.01}, xtick/.expanded={\afticks}, %minor xtick/.expanded={\anfticks}, 
     xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{green!60!black}{date}{Net Worth}{data/hh_avg_pc_wealth.csv}
 	\input{text/hh_avg_pc_wealth_node.txt}
     \node[below, align=center, shift=({rel axis cs:0.4,1.07}), 
@@ -3930,9 +3840,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em, inner sep=1.0pt},
 		clip=false, legend style={at={(0.91, 1.21)}, legend columns=1}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbaral{cyan!40!white}{date}{NW}{data/rdpi_nw.csv}
 	\stdline{blue!50!violet}{date}{DPI}{data/rdpi_nw.csv}
 	\legend{ \ Net Worth, \ After-Tax Income};
@@ -3960,9 +3868,7 @@ To see this pattern, the following charts show the contribution to changes in re
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		xticklabel={`\short{\year}}, 
 		enlarge y limits={0.08}, height=7.5cm, width=7.1cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{red!60!orange}{date}{Top1}{data/dfa_nw_sh.csv}
 	\thickline{blue!80!cyan}{date}{Bottom50}{data/dfa_nw_sh.csv}
 	\thickline{cyan!80!white}{date}{Next40}{data/dfa_nw_sh.csv}
@@ -4000,9 +3906,7 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em, inner sep=1.0pt}, 
 		height=7.0cm, width=6.5cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!80!cyan!80!black}{date}{90-100}{data/scfwealthmedian.csv}
 	\stdline{red!80!black}{date}{75-89.9}{data/scfwealthmedian.csv}
 	\stdline{green!80!blue!85!black}{date}{50-74.9}{data/scfwealthmedian.csv}
@@ -4195,9 +4099,7 @@ In the following chart, income invested at the historical-average rate \seebox{m
 		height=6.9cm, xticklabel={`\short{\year}}, legend cell align={left},
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, clip=false, ymax=18.1, reverse legend,
 		legend style={at={(0.48, 0.24)}, fill=white, legend columns=2}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{violet}{date}{INV}{data/nw_gr.csv}
 	\sbar{magenta!85!white}{date}{INC}{data/nw_gr.csv}
 	\sbar{cyan!70!blue}{date}{OVC}{data/nw_gr.csv}		
@@ -4229,9 +4131,7 @@ In the following chart, income invested at the historical-average rate \seebox{m
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=8.1cm, width=6.6cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{violet!60!magenta}{date}{VALUE}{data/homeown.csv}
 	\stdline{blue!80!cyan!80!black}{date}{White}{data/homeown2.csv}
 	\stdline{black!35}{date}{Other}{data/homeown2.csv}
@@ -4286,9 +4186,7 @@ In the following chart, income invested at the historical-average rate \seebox{m
 		xticklabel={`\short{\year}}, 
 		yticklabel style={text width=1.0em, inner sep=0pt}, height=5.0cm, width=7.5cm, clip=false,
 		xmin={1989-10-01}, enlarge y limits=0.3]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!80!violet}{date}{HOEREPHRE}{data/homeeq.csv}
 	\input{text/homeeq_node.txt}
 	\end{axis}
@@ -4428,9 +4326,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}, clip=false, height=4.6cm, width=12.1cm, 
 		yticklabel style={text width=2.1em}, enlarge y limits=0.12,]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{green!80!blue}{date}{VALUE}{data/nhs.csv}	
 	\input{text/nhs_node.txt}
 	\end{axis}
@@ -4453,9 +4349,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, height=4.8cm, width=11.8cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{violet}{date}{MEDIAN}{data/nhs_rpq.csv}	
 	\input{text/nhs_rp_node.txt}
 	\end{axis}
@@ -4478,9 +4372,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}, clip=false, height=4.4cm, width=12.4cm, ymin=0.6,
 		yticklabel style={text width=1.0em}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{red!90!black}{date}{VALUE}{data/nhs_s_q.csv}	
 	\input{text/nhs_s_node.txt}
 	\end{axis}
@@ -4508,9 +4400,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=7.55cm, 
 		enlarge y limits={0.27}, 
 		yticklabel style={text width=1.5em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!80!black}{date}{VALUE}{data/nhaq.csv}	
 	\absnode{{1991-02-01}}{116}{Affordability\\ \ \ Threshold}
 	\input{text/nha_node.txt}
@@ -4557,9 +4447,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, height=5.6cm, 
 		width=7.9cm, clip=false, legend cell align={left},
 		legend style={fill=white, legend columns=1, at={(0.85, 0.4)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{violet}{date}{ZHVI}{data/housing_price_summary.csv}
 	\stdline{cyan}{date}{Case-Shiller}{data/housing_price_summary.csv}
 	\dashline{magenta}{date}{HPI}{data/housing_price_summary.csv}
@@ -4585,9 +4473,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, height=4.8cm, width=12.3cm, 
 		legend style={at={(0.74, 1.04)}, fill=white, inner sep=1.0pt}, reverse legend]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\dashline{blue!60!black}{date}{USA3M}{data/hpi.csv}
 	\stdline{violet!80!magenta}{date}{USA}{data/hpi.csv}
 	\input{text/hpi_nodes.txt}
@@ -4640,9 +4526,7 @@ During the housing bubble that caused the Great Recession, housing prices reache
 		xticklabel={`\short{\year}}, \bbar{y}{1},
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, height=4.8cm, 
 		width=6.75cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{red}{date}{VALUE}{data/hpi_rent_ratio.csv}
 	\draw [gray] (axis cs:{{2006-01-01}, 1.4}) -- (axis cs:{{2000-01-01}, 1.38}) 
 		node [left, align=right, black!75] 
@@ -4843,9 +4727,7 @@ By age, market income (see \tikz \draw [fill=cyan!50!white, draw=darkgray] (0cm,
 		xticklabel={`\short{\year}}, clip=false, ymin=0.1, ymax=19.9, 
 		enlarge y limits={0.01}, 
 		height=6.2cm, width=6.7cm,  yticklabel style={text width=1.0em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\vthickline{green!50!teal!80!white}{date}{OPM_LT}{data/poverty_opm_line.csv}
 	\vthickline{green!50!teal!80!white}{date}{OPM_PR}{data/poverty_opm_line.csv}
 	\vthickline{green!50!teal!80!white}{date}{OPM_PR2}{data/poverty_opm_line.csv}
@@ -4907,9 +4789,7 @@ Net investment is important for many reasons. In the short run, the production a
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.0},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{cyan!80!white}{date}{A008RC}{data/businv_main.csv}
 	\stdline{blue!60!violet}{date}{W987RC}{data/businv_main.csv}
 	\stdline{magenta}{date}{W276RC}{data/businv_main.csv}
@@ -4951,9 +4831,7 @@ Net investment is important for many reasons. In the short run, the production a
 		xticklabel={`\short{\year}}, clip=false, ymin=0, ymax=8, 
 		yticklabel style={inner sep=0pt},
 		clip=false, xticklabel={`\short{\year}}, height=4.7cm, width=7.4cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{yellow!50!orange}{date}{B009RC}{data/businvsh.csv}
 	\stdline{cyan!60!white}{date}{Y033RC}{data/businvsh.csv}
 	\stdline{violet}{date}{Y001RC}{data/businvsh.csv}
@@ -4987,9 +4865,7 @@ Net investment is important for many reasons. In the short run, the production a
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=12.9cm,
 		legend style={at={(0.72, 1.01)}, fill=white, inner sep=0.1}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{yellow!50!orange}{date}{A009RY}{data/businv.csv}
 	\sbar{cyan!60!white}{date}{Y033RY}{data/businv.csv}
 	\sbar{violet}{date}{Y001RY}{data/businv.csv}
@@ -5035,9 +4911,7 @@ Net investment is important for many reasons. In the short run, the production a
 		enlarge x limits={0.01}, minor xtick/.expanded={\aticks}, 
 		xtick/.expanded={\custticks},
 		xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\thickline{purple!50!violet}{date}{value}{data/dgno.csv}
 	\input{text/dgno_node.txt}
 	\end{axis}
@@ -5068,9 +4942,7 @@ When examining trends in the ratio, note that business sales include services, w
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, width=7.2cm, enlarge y limits={0.13},
 		height=6.2cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{blue!40!cyan!80!white}{date}{Nominal}{data/isratio_qtr.csv}
 	\thickline{blue!60!green}{date}{Real}{data/isratio_qtr.csv}
 	%\legend{Nominal, Real}
@@ -5101,9 +4973,7 @@ When examining trends in the ratio, note that business sales include services, w
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		height=5.6cm, xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{blue!70!purple}{date}{B056RC}{data/cprof.csv}{2.25pt} 
 	\absnode{{1990-01-01}}{3}{\color{white} Net Dividends}
 	\ctsbar{cyan!50!white}{date}{A127RC}{data/cprof.csv}{2.25pt} 
@@ -5130,9 +5000,7 @@ When examining trends in the ratio, note that business sales include services, w
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, legend style={at={(0.82, 0.99)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{gray!30!white}{date}{Gov Saving}{data/cprof2.csv}
 	\sbar{magenta!90!violet!80!white}{date}{ROW Saving}{data/cprof2.csv}
 	\sbar{violet!70!gray}{date}{Investment}{data/cprof2.csv}
@@ -5167,9 +5035,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, enlarge y limits=0.24, ymin=54]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{cyan}{date}{Noncorporate Liabilities}{data/bus_bs_gva_sh.csv}
 	\stdline{blue!80!black}{date}{Corporate Liabilities}{data/bus_bs_gva_sh.csv}
 	\absnode{{2009-06-01}}{275}{\color{cyan} Noncorp.}
@@ -5181,9 +5047,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, enlarge y limits=0.14, ymin=24]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{magenta}{date}{Noncorporate Debt}{data/bus_bs_gva_sh.csv}
 	\stdline{violet}{date}{Corporate Debt}{data/bus_bs_gva_sh.csv}
 	\absnode{{2009-06-01}}{190}{\color{magenta} Noncorp.}
@@ -5195,9 +5059,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, enlarge y limits=0.24, ymin=128]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{lime!50!green!80!black}{date}{Noncorporate Assets}{data/bus_bs_gva_sh.csv}
 	\stdline{green!50!black}{date}{Corporate Assets}{data/bus_bs_gva_sh.csv}
 	\absnode{{1991-06-01}}{625}{\color{lime!50!green!80!black} Noncorp.}
@@ -5209,9 +5071,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, enlarge y limits=0.14, ymin=46]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{orange}{date}{Noncorporate Net Worth}{data/bus_bs_gva_sh.csv}
 	\stdline{red}{date}{Corporate Net Worth}{data/bus_bs_gva_sh.csv}
 	\absnode{{2009-06-01}}{382}{\color{orange} Noncorp.}
@@ -5242,9 +5102,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 	yticklabel style={text width=1.0em, inner sep=0pt}, xticklabel={`\short{\year}}, 
 	clip=false, height=4.6cm, width=7.3cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{orange!65!yellow}{date}{Corporate}{data/bus_bs_da.csv}
 	\thickline{blue!70!black!75!white}{date}{Noncorporate}{data/bus_bs_da.csv}
 	\absnode{{2011-01-01}}{34.5}{\color{blue!70!black!75!white} Noncorporate}
@@ -5276,9 +5134,7 @@ The following charts cover nonfinancial businesses and show the ratio of balance
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, xticklabel={`\short{\year}}, 
 		clip=false, height=7.8cm, width=6.9cm, ymin=6, ymax=114]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{red}{date}{Corporate Debt}{data/bus_bs_sh.csv}
 	\addplot[ultra thick, densely dashed, no markers, color=red!60!orange] 
 		table [x=date, y=Corporate Liabilities, col sep=comma] {data/bus_bs_sh.csv};
@@ -5336,9 +5192,7 @@ The following table provides more details on the size of nonfinancial business l
  		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{violet!80!white}{date}{Bank Loans and Mortgages}{data/busdebtgdp2.csv}	
 	\absnode{{1990-01-01}}{17}{\color{white} Mortgages and Bank Loans}
 	\sbar{cyan!30!white}{date}{Debt Securities}{data/busdebtgdp2.csv}
@@ -5367,9 +5221,7 @@ The following table provides more details on the size of nonfinancial business l
  		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{orange!70!yellow}{date}{Financial Loans}{data/busdebtgdp2.csv}	
 	\sbar{black!15!white}{date}{Agency MBS}{data/busdebtgdp2.csv}
 	\absnode{{2001-07-01}}{54}{Agency- and\\ GSE-backed\\ Securities}
@@ -5400,9 +5252,7 @@ The following table provides more details on the size of nonfinancial business l
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{orange!50!red!45!white}{date}{LM112010005}{data/bus_asset_sh.csv}{2.2pt}
 	\absnode{{1990-01-01}}{47}{Noncorporate Nonfinancial}
 	\ctsbar{orange!55!red}{date}{FL114090005}{data/bus_asset_sh.csv}{2.2pt}
@@ -5449,9 +5299,7 @@ The following table provides more details on the size of nonfinancial business l
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 	yticklabel style={text width=1.5em}, xticklabel={`\short{\year}}, 
 	clip=false, height=6.1cm, width=6.65cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!70!black}{date}{Total index}{data/indproq.csv}
 	\input{text/indpro_summary_annotations.txt}
 \end{axis}
@@ -5498,9 +5346,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		yticklabel style={text width=1.6em, inner sep=1.0pt}, legend cell align={left},
 		xticklabel={`\short{\year}}, legend style={legend columns=1, at={(0.49, 0.57)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\node[right] at (axis description cs: 0.91,1.21) 
 		{\scriptsize \color{black!50} \textit{see below}};
 	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.1) 
@@ -5526,9 +5372,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		xticklabel={`\short{\year}}, clip=false, height=4.7cm, reverse legend,
 		yticklabel style={text width=1.6em, inner sep=1.0pt}, legend cell align={left}, 
 		legend style={legend columns=1, at={(0.44, 0.56)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.1) 
 		{\small Industry Group};
 	\coordinate (c1) at (rel axis cs:0.93,0);
@@ -5644,9 +5488,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		width=12.4cm, height=5.8cm, clip=false, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!80!black}{date}{Total index}{data/tcuq.csv}
 	\stdline{blue!40!cyan!80!white}{date}{Manufacturing}{data/tcuq.csv}
 	\absnode{{2011-01-01}}{73}{\color{blue!40!cyan}Manufacturing}
@@ -5683,9 +5525,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		width=12.6cm, height=5.35cm, xticklabel={`\short{\year}}, clip=false,
 		legend style={at={(0.84, 1.22)}, legend columns=2, inner sep=1.0}, 
 		legend cell align={left}, yticklabel style={text width=1.3em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\addplot[stack plots=y, draw=teal!90!green!60!black, fill=teal!90!green, 
 		legend image code/.code={\draw (0cm,-0.08cm) rectangle (0.2cm,0.12cm); }] 
 		table [x=date, y=ND_NM_CO, col sep=comma]{data/oil_prodq.csv}\closedcycle;
@@ -5734,9 +5574,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, max space between ticks=30, 
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, xmin={2011-01-01}]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\thickline{red}{date}{elec}{data/elec.csv}
 	\thickline{orange}{date}{elecpop}{data/elec.csv}
 	\thickline{cyan}{date}{elecgdp}{data/elec.csv}
@@ -5778,9 +5616,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		date coordinates in=x, axis line style={draw=none}, minor xtick/.expanded={\aticks}, 
 		xtick/.expanded={\custticks}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.0em, inner sep=0pt}]
-	\begin{pgfonlayer}{background layer}
-		\recbars
-	\end{pgfonlayer}
+	\bglayer{\recbars}
 	\abar{gray!70!black}{date}{Coal}{data/elec_prod.csv}
 	\node[below right, align=left, shift=({axis cs:{2006-01-01},1.2})]
 		{\color{white} Coal};
@@ -5815,9 +5651,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		legend cell align={left}, legend style={legend columns=3, 
 			at={(1, 1.19)},
 			/tikz/every even column/.append style={column sep=0.15cm}}]
-	\begin{pgfonlayer}{background layer}
-		\recbars
-	\end{pgfonlayer}
+	\bglayer{\recbars}
 	\abar{cyan}{date}{Hydroelectric}{data/elec_prod.csv}
 	\abar{brown!90!black}{date}{Biomass}{data/elec_prod.csv}
 	\abar{orange}{date}{Geothermal}{data/elec_prod.csv}
@@ -5855,9 +5689,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 		enlarge y limits=0.2, date coordinates in=x, axis line style={draw=none}, 
 		minor xtick/.expanded={\aticks}, xtick/.expanded={\custticks}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=2.2em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\recbars
-	\end{pgfonlayer}
+	\bglayer{\recbars}
 	\thickline{green!90!black}{date}{Residential}{data/elec_sales.csv}
 	\thickline{blue!80!cyan}{date}{Commercial}{data/elec_sales.csv}
 	\thickline{black!35!white}{date}{Industrial}{data/elec_sales.csv}
@@ -5896,9 +5728,7 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},  
 		enlarge y limits={0.12}, yticklabel style={text width=1.3em, inner sep=1.0pt}, 
 		xticklabel={`\short{\year}}, height=5.3cm, width=6.1cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\thickline{blue}{date}{GDP}{data/rs_shq.csv}
 	\thickline{cyan}{date}{CE}{data/rs_shq.csv}
 	\stdline{green!60!black}{date}{DPI}{data/rs_shq.csv}
@@ -5915,9 +5745,7 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 		enlarge y limits={0.1, upper}, yticklabel style={text width=2.2em, inner sep=1.0pt}, 
 		max space between ticks=20,	 
 		xticklabel={`\short{\year}}, height=5.3cm, width=5.5cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{violet!60!blue}{date}{RealPC_Tot}{data/rs_shq.csv}
 	\thickline{violet!50!white}{date}{RealPC_ExAutoGas}{data/rs_shq.csv}
 	\stdline{blue!60!black}{date}{RealPC_Nonstore}{data/rs_shq.csv}
@@ -5948,9 +5776,7 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 		yticklabel style={inner sep=0pt},
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em}, ymax=27,
 		width=12.5cm, height=6.0cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\thickline{green!65!black!60!white}{date}{44X72}{data/marts.csv}
 	\stdline{blue!55!black}{date}{454}{data/marts.csv}
 	\input{text/rs_nodes.txt}
@@ -6073,9 +5899,7 @@ This chartbook section covers government contributions to current economic activ
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.0},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm, width=7.1cm]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\absnode{{2002-01-01}}{4.2}{\color{blue!70!white}Federal}
 	\stdline{blue!70!white}{date}{Federal}{data/gdpva_pc.csv}
 	\absnode{{2010-01-01}}{6.7}{\color{red}State \& Local}
@@ -6111,9 +5935,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06, upper},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},  
 		xticklabel={`\short{\year}}, clip=false, height=6.5cm, width=7.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\absnode{{2010-04-01}}{19.2}{\color{violet}Gov. Social \\ 
 		\color{violet}Benefits}
 	\stdline{violet}{date}{Welfare}{data/govpi.csv}
@@ -6153,9 +5975,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06, upper},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},  
 		xticklabel={`\short{\year}}, clip=false, height=6.8cm, width=7.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\absnode{{1991-01-01}}{2.3}{\color{green!85!black}Federal\\ 
 		 \color{green!85!black} Non-Defense}
 	\stdline{green!85!black}{date}{A825RC}{data/govci.csv}
@@ -6190,9 +6010,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 		xticklabel={`\short{\year}}, clip=false, height=6.4cm, width=12.7cm,
 		yticklabel style={text width=1.6em, inner sep=1.0pt}, enlarge y limits={0.16}, 
 		legend style={at={(0.75, 1.01)}, fill=white, inner sep=2.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{blue!60!black}{date}{A824RY}{data/gov.csv}
 	\sbar{green!85!black}{date}{A825RY}{data/gov.csv}
 	\sbar{purple!70!magenta}{date}{A829RY}{data/gov.csv}
@@ -6240,9 +6058,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 		yticklabel style={text width=1.0em, inner sep=1.0pt}]
 	\nextgroupplot[\bbar{y}{0}, xticklabel={`\short{\year}}, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!70!cyan}{date}{W005RC}{data/fedgdp.csv}
 	\stdline{violet!90!black}{date}{W013RC}{data/fedgdp.csv}
 	\node[right, align=left, shift=({rel axis cs:0.02,0.94}), 
@@ -6251,9 +6067,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 	\nextgroupplot[\bbar{y}{0}, xticklabel={`\short{\year}}, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		legend style={at={(0.98, 1.11)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!70!cyan}{date}{W023RC}{data/slggdp.csv}
 	\stdline{violet!90!black}{date}{W024RC}{data/slggdp.csv}
 	\node[right, align=left, shift=({rel axis cs:0.02,0.94}), 
@@ -6297,9 +6111,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 		date coordinates in=x, axis line style={draw=none},
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		height=5.0cm, width=12.5cm, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{cyan!65!white}{date}{W021RC}{data/gov_rec_overview.csv}
 	\stdline{blue!50!violet}{date}{TAXSI}{data/gov_rec_overview.csv}
 	\node[below, align=left, shift=({rel axis cs:0.13,0.93})]
@@ -6334,9 +6146,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.08, upper}, ymin=0,
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		height=9.0cm, width=6.7cm, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{green!50!black}{date}{A074RC}{data/fed_gov_rec_type.csv}
 	\stdline{blue!60!white}{date}{W780RC}{data/fed_gov_rec_type.csv}
 	\stdline{purple!80!violet}{date}{B075RC}{data/fed_gov_rec_type.csv}
@@ -6379,9 +6189,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 		date coordinates in=x, axis line style={draw=none},
 		enlarge x limits={0.01}, xtick/.expanded={\aticks},
 		clip=false, xticklabel={`\short{\year}}, height=5.3cm, width=7.4cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\stdline{blue!70!black}{date}{Individual Income Taxes}{data/tmb_rec.csv}
 	\stdline{blue!40!cyan}{date}{Other}{data/tmb_rec.csv}
 	\input{text/tmb_end_nodes.txt}
@@ -6417,9 +6225,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		height=9.0cm, width=6.4cm, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!60!black}{date}{W070RC}{data/slg_gov_rec_type.csv}
 	\stdline{orange!90!red}{date}{B089RC}{data/slg_gov_rec_type.csv}
 	\stdline{black!30!white}{date}{Other}{data/slg_gov_rec_type.csv}
@@ -6447,9 +6253,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		height=3.8cm, width=6.5cm, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!90!black}{date}{B245RC}{data/slg_gov_rec_type.csv}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.02}), 
 	draw=black!30!white, fill=white, inner sep=3.0]
@@ -6467,9 +6271,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		height=3.9cm, width=6.5cm, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!70!cyan}{date}{B248RC}{data/slg_gov_rec_type.csv}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.02}), 
 	draw=black!30!white, fill=white, inner sep=3.0]
@@ -6487,9 +6289,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		height=3.8cm, width=6.5cm, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{cyan!80!white}{date}{LA000355}{data/slg_gov_rec_type.csv}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.12}), 
 	draw=black!30!white, fill=white, inner sep=3.0]
@@ -6520,9 +6320,7 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, clip=false, height=6.0cm, width=12.6cm,
 		yticklabel style={text width=1.3em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{blue!65!gray!90!white}{date}{Federal}{data/gov_exp_overview.csv}{2.3pt}
 	\ctsbar{cyan!40!white}{date}{SLG Grants}{data/gov_exp_overview.csv}{2.3pt}
 	\ctsbar{red!20!purple!70!white}{date}{SLG}{data/gov_exp_overview.csv}{2.3pt}
@@ -6793,9 +6591,7 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.0}, ymin=0, ymax=8,
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		xticklabel={`\short{\year}}, height=8.8cm, width=6.1cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!50!cyan}{date}{govjobs}{data/govjobs.csv}
 	\stdline{green!80!blue}{date}{fedjobs}{data/govjobs.csv}
 	\stdline{orange}{date}{stjobs}{data/govjobs.csv}
@@ -6855,9 +6651,7 @@ Assets other than public lands, liabilities, and net worth (public wealth), are 
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.08},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.6em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\absnode{{1991-06-01}}{-15}{\color{gray}Public \\ \color{gray}Wealth}
 	\thickline{gray}{date}{GGWealth}{data/gov_bs_summary.csv}
 	\absnode{{2009-08-01}}{162}{\color{orange}Liabilities}
@@ -6893,9 +6687,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.08},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.4em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{gray}{date}{Gov NW}{data/govshnw.csv}
 	\absnode{{2011-12-01}}{-1.3}{\color{gray}Government \\ \color{gray}Total}
 	\thickline{blue!80!black}{date}{FG NW}{data/govshnw.csv}
@@ -6929,9 +6721,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 		xticklabel={`\short{\year}}, clip=false, ymin=-2, ymax=119, height=5.0cm,
 		legend cell align={left}, yticklabel style={text width=1.5em, inner sep=1.0pt},
 		legend style={legend columns=2, at={(0.83, 1.28)}, fill=white}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{orange!70!white}{date}{FDHBFIN}{data/pubdebt.csv}
 	\sbar{green!60!black}{date}{PD}{data/pubdebt.csv}
 	\sbar{cyan!50!white}{date}{IG}{data/pubdebt.csv}
@@ -6962,9 +6752,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=5.4cm, width=6.4cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{magenta}{date}{Tot}{data/fedintexp.csv}
 	\input{text/fedintexp_node.txt}
 	\end{axis}
@@ -6997,9 +6785,7 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 		xticklabel={`\short{\year}}, clip=false, height=8.0cm, width=12.9cm,
 		legend cell align=left, transpose legend, max space between ticks=20, xshift=2.0pt,
 		legend style={at={(0.66, 0.995)}, inner sep=1.0pt, fill=white, legend columns=2}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{blue!90!cyan!82!white}{date}{e_p}{data/debt_dynamics.csv}{8.0pt}
 	\ctsbar{violet!85!black}{date}{e_gdp}{data/debt_dynamics.csv}{8.0pt}
 	\ctsbar{green!80!yellow!88!black}{date}{e_r}{data/debt_dynamics.csv}{8.0pt}
@@ -7034,9 +6820,7 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 		xticklabel={`\short{\year}}, clip=false, ymin=4, ymax=119, height=5.9cm,
 		legend cell align={left}, yticklabel style={text width=1.6em, inner sep=1.0pt}, 
 		legend style={legend columns=2, at={(0.96, 1.19)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{cyan!36!white}{date}{SLG NFA}{data/govassets.csv}
 	\sbar{blue!75!cyan}{date}{SLG FA}{data/govassets.csv}
 	\sbar{violet!60!white}{date}{FG NFA}{data/govassets.csv}
@@ -7067,9 +6851,7 @@ Federal debt is often divided by GDP as a way to capture the ability to repay th
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},  
 		xticklabel={`\short{\year}}, yticklabel style={text width=1.5em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{red}{date}{Value}{data/govnetinv.csv}
 	\input{text/govnetinv_node.txt}
 	\end{axis}
@@ -7110,9 +6892,7 @@ This balance is further broken down into four components: the trade balance for 
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.72, 1.11)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{blue!50!teal!60!cyan!25!white}{date}{GOODS}{data/cab.csv}{2.2pt}
 	\ctsbar{blue!50!teal!75!cyan!80!white}{date}{SERVICES}{data/cab.csv}{2.2pt}
 	\ctsbar{gray!72!black}{date}{INCOME}{data/cab.csv}{2.2pt}
@@ -7159,9 +6939,7 @@ This balance is further broken down into four components: the trade balance for 
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm,
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, enlarge y limits={0.05}, 
 		legend style={at={(0.85, 1.11)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{blue!60!cyan!90!black}{date}{Assets}{data/fabz1.csv}
 	\sbar{red}{date}{Liab}{data/fabz1.csv}
 	\sbar{violet!90!black}{date}{Equity}{data/fabz1.csv}
@@ -7197,9 +6975,7 @@ This balance is further broken down into four components: the trade balance for 
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aticks}, 
 		xticklabel={`\short{\year}}, height=11.0cm, width=6.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\stdline{green!80!blue}{date}{EXP}{data/tradelt.csv}
 	\stdline{blue!80!violet}{date}{IMP}{data/tradelt.csv}
 	\stdline{red}{date}{BAL}{data/tradelt.csv}
@@ -7251,9 +7027,7 @@ This balance is further broken down into four components: the trade balance for 
 		xticklabel={`\short{\year}}, clip=false, height=5.8cm, width=12.7cm, 
 		max space between ticks=20,
 		yticklabel style={text width=1.0em, inner sep=0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{green!60!teal!80!black}{date}{EX}{data/eximgdp.csv}
 	\thickline{blue!90!cyan}{date}{IM}{data/eximgdp.csv}
 	\absnode{{1995-01-01}}{13.4}{\color{blue!90!cyan}Imports}
@@ -7285,9 +7059,7 @@ This balance is further broken down into four components: the trade balance for 
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},  
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={legend columns=2, at={(0.49, 0.98)}, fill=white}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{green!70!white}{date}{A253RY}{data/nx.csv}
 	\sbar{green!50!black}{date}{A646RY}{data/nx.csv}
 	\sbar{cyan!70!white}{date}{A255RY}{data/nx.csv}
@@ -7468,9 +7240,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		max space between ticks=20, xticklabel={`\short{\year}}, 
 		clip=false, height=5.4cm, width=7.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\addplot[ultra thick, no markers, color=green!90!blue] 
 		table [x=date, y=Canada] {\tbal};	
 	\addplot[ultra thick, densely dashed, no markers, color=violet] 
@@ -7586,9 +7356,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 		yticklabel style={text width=2.6em, inner sep=1.0pt},
 		legend cell align={left}, reverse legend, width=12.6cm, height=5.8cm,
 		legend style={legend columns=1, at={(0.31, 0.99)}, fill=white}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{black!25!white}{date}{Treasury_Bonds}{data/tic_bondq.csv}
 	\sbar{orange!30!yellow!90!white}{date}{Agency_Bonds}{data/tic_bondq.csv}
 	\sbar{blue!70!white}{date}{Corporate_Bonds}{data/tic_bondq.csv}
@@ -7619,9 +7387,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.6cm, width=12.2cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!90!cyan}{date}{RXI_N.B.UK}{data/fx1.csv}
 	\stdline{green!80!blue}{date}{RXI_N.B.CA}{data/fx1.csv}
 	\stdline{red}{date}{RXI_N.B.JA}{data/fx1.csv}
@@ -7655,9 +7421,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 	\nextgroupplot[\bbar{y}{100}, 
 		date coordinates in=x,  ytick={90, 100, 110, 120, 130}, 
 		xticklabels=\empty, xtick style={draw=none}]
-	\begin{pgfonlayer}{background layer}
-		\recbars
-	\end{pgfonlayer}
+	\bglayer{\recbars}
 	\stdline{blue!70!black}{date}{JRXWTFB_N.B}{data/fx_idx.csv}
 	\absnode{{2016-06-01}}{108}{\footnotesize \color{blue!70!black}Broad}
 	\input{text/twd_node.txt}
@@ -7665,9 +7429,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 		date coordinates in=x, 
 		minor xtick/.expanded={\aticks}, xtick/.expanded={\custticks}, 
 		xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\recbars
-	\end{pgfonlayer}
+	\bglayer{\recbars}
 	\stdline{violet!90!blue}{date}{JRXWTFN_N.B}{data/fx_idx.csv}
 	\stdline{green!75!yellow!92!black}{date}{JRXWTFO_N.B}{data/fx_idx.csv}
 	\absnode{{2014-01-01}}{134}{\color{green!75!yellow!90!black}Emerging}
@@ -7711,9 +7473,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 		ymax=108,
 		xticklabel={`\short{\year}}, width=7.5cm, height=4.4cm,
 		clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{red}{date}{RBUSBIS}{data/reer.csv}
 	\input{text/reer_node.txt}
 \end{axis}
@@ -7775,9 +7535,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 		clip=false, xticklabel={`\short{\year}}, 
 		yticklabel style={text width=1.5em, inner sep=1.0pt}, legend cell align={left},
 		legend style={fill=white, legend columns=2, at={(0.95, 1.08)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs.csv}{0.35pt}
 	\ctsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs.csv}{0.35pt}
 	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs.csv}{0.35pt}
@@ -7811,9 +7569,7 @@ People who are neither employed nor unemployed are \textit{outside of the labor 
 		ymin=-8, ymax=6,
 		legend cell align={left}, yticklabel style={text width=1.3em, inner sep=1.0pt},
 		legend style={legend columns=1, at={(0.29, 0.96)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{green!50!teal!85!blue}{date}{Employed}{data/cps_lfs2.csv}{2.35pt}
 	\ctsbar{lime!80!yellow!90!white}{date}{Unemployed}{data/cps_lfs2.csv}{2.35pt}
 	\ctsbar{blue!80!cyan}{date}{NILF}{data/cps_lfs2.csv}{2.35pt}
@@ -7985,9 +7741,7 @@ People who are neither employed nor unemployed are \textit{outside of the labor 
 		enlarge y limits={0.03}, xticklabel={`\short{\year}}, clip=false,  
 		yticklabel style={text width=1.4em, inner sep=1.0pt}, max space between ticks=20, 
 		legend style={at={(0.97, 1.29)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{cyan!20!white}{date}{wage}{data/gli.csv}
 	\sbar{teal!60!blue!48!white}{date}{work}{data/gli.csv}
 	\input{text/gli_hbar2.txt}
@@ -8022,9 +7776,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 		enlarge x limits={0.01}, enlarge y limits=0.06,
 		xtick/.expanded={\aticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=6.6cm, width=8.5cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\input{text/gli_hbar.txt}
 	\stdline{blue!55!purple!50!white}{date}{NFP}{data/gli_nfp.csv}
 	\stdline{orange!80!yellow}{date}{BEA}{data/gli_coe.csv}
@@ -8060,9 +7812,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=5.5cm, width=6.2cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!50!cyan}{date}{Share}{data/laborshare.csv}
 	\thickline{green!60!blue}{date}{Corp_Share}{data/laborshare.csv}
 	\input{text/laborshare_node.txt}
@@ -8100,9 +7850,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=6.2cm, width=7.7cm, clip=false]
-		\begin{pgfonlayer}{background layer}
-			\rbars
-		\end{pgfonlayer}
+		\bglayer{\rbars}
 		\thickline{cyan!90!white}{date}{Productivity}{data/payprod.csv}
 		\stdline{blue!80!black}{date}{Average}{data/payprod.csv}
 		\absnode{{2009-10-01}}{161}{\color{cyan!90!white}Net Labor \\
@@ -8162,9 +7910,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, ymin=0, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{green!50!teal!85!blue}{date}{EMP}{data/emp_ts.csv}
 	\absnode{{1990-12-01}}{150}{\color{green!50!teal!85!blue}Employed}
 	\stdline{blue!70!white}{date}{NFP}{data/emp_ts.csv}
@@ -8416,9 +8162,7 @@ Economists are interested in both the overall employment rate and in the employm
 		date coordinates in=x, axis line style={draw=none},  enlarge x limits={0.01},
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{green!60!black}{date}{EPOP}{data/epop.csv}
 	\input{text/epop_node2.txt}
 	\end{axis}
@@ -8443,9 +8187,7 @@ The \textbf{age 25 to 54 employment rate} is an important measure of labor marke
 		date coordinates in=x, axis line style={draw=none},  enlarge x limits={0.01},
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!90!cyan}{date}{PA_EPOP}{data/epop.csv}
 	\input{text/epop_node.txt}
 	\end{axis}
@@ -8732,9 +8474,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, 
 		minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=4.85cm, width=8.4cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\dashline{blue!80!black}{date}{U6}{data/unemp2.csv}
 	\thickline{violet!70!magenta}{date}{Total}{data/unemp2.csv}
 	\node[right, align=center] at ({1988-06-01}, 15.3) 
@@ -8771,9 +8511,7 @@ Beginning in June 2008, the Current Population Survey (CPS) asks respondents age
 		yticklabel style={inner sep=0pt, text width=1.0em}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.2cm, ymin=1.4, ymax=16.5,
 		legend style={fill=white, at={(0.5, 1.01)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{green!50!teal!60!black}{date}{Black}{data/unemp.csv}
 	\stdline{cyan!60!white}{date}{Hispanic}{data/unemp.csv}
 	\stdline{blue!80!black}{date}{White}{data/unemp.csv}
@@ -8905,16 +8643,12 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 		height=5.2cm, width=6.3cm, clip=false]
 	\nextgroupplot[title={27+ Weeks}, \bbar{y}{0}, date coordinates in=x, 
     	xtick/.expanded={\afticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue}{date}{LT}{data/ltu.csv}
 	\input{text/ltu_node.txt}
 	\nextgroupplot[title={15+ Weeks}, \bbar{y}{0}, date coordinates in=x, 
     	xtick/.expanded={\afticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{violet!90!black}{date}{MT}{data/ltu.csv}
 	\input{text/ltu_node2.txt}
 	\end{groupplot}
@@ -8939,9 +8673,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!60!cyan}{date}{Mean}{\undur}
 	\stdline{green!75!blue}{date}{Median}{\undur}
 	\absnode{{2015-04-01}}{16}{\color{green!75!blue}Median}
@@ -9152,9 +8884,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{green!80!blue!60!black}{date}{TotLFPR}{data/lfprq.csv}
 	\dashline{green!60!lime!80!black}{date}{ADJWGT_Total}{data/lfpr_adjq.csv}
 	\thickline{red!80!black}{date}{WomenLFPR}{data/lfprq.csv}
@@ -9243,9 +8973,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		enlarge x limits={0.01}, minor xtick/.expanded={\aticks}, 
 		xtick/.expanded={\custticks}, yticklabel style={inner sep=0pt},
 		xticklabel={`\short{\year}}, clip=false, enlarge y limits={0.065}]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\dashline{violet!70!purple}{date}{Demographics}{\nilfc}
 	\thickline{blue!80!white}{date}{Discouraged}{\nilfc}
 	\thickline{green!80!blue!90!black}{date}{Disabled/Ill}{\nilfc}
@@ -9289,9 +9017,7 @@ The next chart shows labor force participation rates overall and for men and wom
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, xticklabel={`\short{\year}}, 
 		legend columns=-1, legend cell align={left}, legend style={at={(1.78, 1.1)}}]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\thickline{orange!90!yellow}{date}{Total_19-21}{data/young_school.csv}
 	\stdline{blue!50!cyan}{date}{School_19-21}{data/young_school.csv}
 	\stdline{violet!85!black}{date}{Other_19-21}{data/young_school.csv}
@@ -9302,9 +9028,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		{\small \color{black!80!white}Age 19 to 21};
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\thickline{orange!90!yellow}{date}{Total_22-24}{data/young_school.csv}
 	\stdline{blue!50!cyan}{date}{School_22-24}{data/young_school.csv}
 	\stdline{violet!85!black}{date}{Other_22-24}{data/young_school.csv}
@@ -9385,9 +9109,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		date coordinates in=x, axis line style={draw=none}, max space between ticks=20,
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, height=6.0cm, width=12.5cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{orange!75!yellow}{date}{Layoffs}{data/jolts.csv}
 	\stdline{cyan}{date}{Hires}{data/jolts.csv}
 	\stdline{green!65!black}{date}{Quits}{data/jolts.csv}
@@ -9418,9 +9140,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		enlarge x limits={0.01}, minor xtick/.expanded={\aoticks}, xtick/.expanded={\aeticks},
 		ymin=0.0, ymax=2,
 		xticklabel={`\short{\year}}, height=4.4cm, width=12.4cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\thickline{violet!50!blue}{date}{unjo}{data/unjo.csv}
 	\input{text/unjo_hbar.txt}
 	\input{text/unjo_node.txt}
@@ -9449,9 +9169,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06, upper},
 		enlarge x limits={0.01}, minor xtick/.expanded={\aticks}, xtick/.expanded={\custticks},
 		xticklabel={`\short{\year}}, ymin=0, height=5.3cm, width=6.9cm]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
 	\absnode{{2009-11-01}}{6.2}{\footnotesize \color{red!50!purple}Accommodations\\
 	\footnotesize \color{red!50!purple}\& Food Services}
@@ -9494,9 +9212,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		clip=false, height=4.7cm, width=6.6cm, enlarge y limits=0.26, 
 		legend columns=1, legend cell align={left}, reverse legend,
 		legend style={at={(0.25, 1.0)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{green!60!teal!80!black}{date}{total}{data/lf_flow_q.csv}
 	\input{text/lf_flow_node.txt}
 	\end{axis}
@@ -9530,9 +9246,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		enlarge x limits={0.01}, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=4.8cm, width=6.7cm]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{blue}{date}{Age2554}{data/disflow.csv}
 	\thickline{violet}{date}{Age16plus}{data/disflow.csv}
 	\input{text/disflow_node.txt}
@@ -9568,9 +9282,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=4.55cm, width=7.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\thickline{blue!80!black}{date}{JSRate}{data/jobswitchq.csv}
 	\input{text/jobswitch_node.txt}
 	\end{axis}
@@ -9606,9 +9318,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aticks},  
 		xticklabel={`\short{\year}}, height=5.4cm, width=6.1cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\absnode{{2022-01-01}}{10.4}{\footnotesize \color{cyan}\textbf{Lose Job}}
 	\thickline{violet!50!blue}{date}{Leaving}{data/sce_job_separation.csv}
 	\absnode{{2021-10-01}}{23.7}{\footnotesize \color{violet!50!blue}\textbf{Voluntary}}
@@ -9644,9 +9354,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=6.2cm, width=7.15cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{red}{date}{PTECON}{data/parttimeq.csv}
 	\stdline{orange!80!yellow}{date}{PTNONECON}{data/parttimeq.csv}
 	\absnode{{1994-12-01}}{12.5}{\color{orange}Non-Economic \\ 
@@ -9681,9 +9389,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 		yticklabel style={text width=1.3em, inner sep=1.0pt},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=4.8cm, width=7.1cm]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{blue!50!violet!80!black}{date}{MJH}{data/mjhq.csv}
 	\input{text/mjh_node.txt}
 	\end{axis}
@@ -9715,9 +9421,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, height=5.6cm, width=7.7cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{purple}{date}{uninc}{data/selfempq.csv}
 	\thickline{green!80!black}{date}{inc}{data/selfempq.csv}
 	\dashline{green!80!black}{date}{INC}{data/selfempq.csv}
@@ -9767,9 +9471,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aticks}, 
 		xticklabel={`\short{\year}}, height=5.4cm, width=6.6cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\thickline{violet}{date}{WS}{data/eci_growth_recent.csv}
 	\node[below, align=center] at (axis cs:{2020-09-01}, 2.65) 
 		{\color{violet}\footnotesize {ECI}};
@@ -9851,9 +9553,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 		xticklabel={`\short{\year}}, ymax=11.0, clip=false, width=12.8cm, height=5.6cm, 
 		legend style={at={(0.51, 0.99)}, legend columns=1}, reverse legend,
 		legend cell align={left}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{violet!80!blue}{date}{p50_3M_gr}{data/uwe_cps.csv}
 	\thickline{cyan!60!white}{date}{p50uwe}{data/uwe_bls_gr.csv}
     \legend{CPS (3-month moving average), BLS (quarterly)};	
@@ -9917,9 +9617,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 		legend style={at={(0.72, 1.01)}, legend columns=-1}, 
 		yticklabel style={text width=1.0em},
 		legend cell align={left}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{lime!65!green!90!black}{date}{p10_3M_gr}{data/uwe_cps.csv}
 	\thickline{blue!65!black}{date}{p10uwe}{data/uwe_bls_gr.csv}
     \legend{CPS (3-month moving average), BLS (quarterly)}	
@@ -9970,9 +9668,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 		date coordinates in=x, axis line style={draw=none},
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=6.4cm, width=11.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!90!cyan}{date}{LTHS/HS}{\educwage}
 	\thickline{green!80!blue}{date}{COLL/ADV}{\educwage}
 	\thickline{cyan}{date}{SC}{\educwage}
@@ -10006,9 +9702,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},  
 		enlarge y limits={0.0}, xticklabel={`\short{\year}}, ymin=60, ymax=100, 
 		clip=false, width=7.7cm, height=5.8cm, yticklabel style={text width=1.5em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{red}{date}{GWG}{data/gwg.csv}
 	\input{text/gwg_node.txt}
 	\absnode{{1991-01-01}}{100}{\footnotesize \color{gray} \textit{Pay equality}}
@@ -10040,9 +9734,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, width=7.5cm, enlarge y limits=0.08,
 		height=5.2cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{cyan!80!green!92!blue}{date}{Goods}{data/real_aheq.csv}
 	\stdline{blue!70!violet}{date}{Serv}{data/real_aheq.csv}
 	\absnode{{1992-01-01}}{30.9}{\color{cyan!80!green!92!blue} Goods-
@@ -10081,9 +9773,7 @@ Not only is the long-term increase in median wages low, but some of the increase
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}, clip=false, enlarge y limits={0.05}, 
 		height=5.4cm, width=12.6cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{violet!80!blue}{date}{PNS}{data/ahe.csv}
 	\stdline{green!80!blue}{date}{PNS_Real}{data/ahe.csv}
 	\absnode{{1996-01-01}}{5.8}{\color{violet!80!blue} Nominal}
@@ -10213,9 +9903,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 		enlarge x limits={0.01}, minor xtick/.expanded={\aticks}, 
 		xtick/.expanded={\custticks}, 
 		xticklabel={`\short{\year}}, width=6.8cm, height=4.7cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{cyan!90!blue}{date}{Be}{data/eci.csv}
 	\stdline{green!75!blue!60!black}{date}{WS}{data/eci.csv}
 	\input{text/eci_nodes.txt}
@@ -10287,9 +9975,7 @@ Benefits include health insurance, retirement, vacation, sick leave, and transpo
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},   
 		max space between ticks=18, xticklabel={`\short{\year}}, 
 		clip=false, height=4.3cm, width=12.7cm, enlarge y limits=0.08, ymin=0.35]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\addplot[ultra thick, no markers, color=blue!80!purple!80!white] 
 		table [x=date, y=IndexWS_ALL_NSA, col sep=comma] {data/eci_yy.csv};	
 	\addplot[ultra thick, densely dashed, no markers, color=purple] 
@@ -10327,9 +10013,7 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, extra x ticks={{1997-01-01}}, 
 		minor xtick/.expanded={\anfticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{purple!80!magenta!80!white}{date}{Overall_Real}{data/atl_wgtq.csv}
 	\stdline{blue!65!violet}{date}{Overall}{data/atl_wgtq.csv}
 	\input{text/wgt_h_node.txt}
@@ -10341,9 +10025,7 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 		xtick/.expanded={\afticks}, legend style={at={(0.64, 1.29)}, legend columns=1, 
 		legend cell align=left}, reverse legend, extra x ticks={{1997-01-01}}, 
 		minor xtick/.expanded={\anfticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{purple!80!magenta!80!white}{date}{Hourly_Real}{data/atl_wgtq.csv}
 	\stdline{blue!65!violet}{date}{Hourly}{data/atl_wgtq.csv}
 	\input{text/wgt_w_node.txt}
@@ -10376,9 +10058,7 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, height=4.6cm, width=12.45cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{red}{date}{ZWC}{data/atl_wgt2.csv}
 	\input{text/zwc_node.txt}
 	\end{axis}
@@ -10415,9 +10095,7 @@ The next charts show four measures of average hours worked. Two measures, Curren
 		enlarge x limits={0.01}, 
 		xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		xticklabel={`\short{\year}}, height=5.5cm, width=7.4cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!70!black}{date}{TOTLFS}{data/hours_qtr.csv}
 	\addplot[ultra thick, no markers, densely dotted, color=violet] 
 		table [x=date, y=AAH_trend, col sep=comma] {data/gdpjobslvl_mo.csv};
@@ -10506,9 +10184,7 @@ Next, the establishment survey (CES) can be used to calculate aggregate hours wo
 		clip=false, height=6.55cm, width=7.9cm, enlarge y limits=0.09, 
 		reverse legend, legend cell align={left}, 
 		legend style={at={(0.88, 1.0)}, legend columns=1}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\addplot[line width=2.7pt, no markers, color=green!80!blue] 
 		table [x=date, y=LPC, col sep=comma] {data/agg_hrs_q.csv};	
 	\addplot[ultra thick, densely dashed, no markers, color=violet!60!magenta] 
@@ -10547,9 +10223,7 @@ Trends emerge when comparing between the aggregate hours measures. Production an
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, width=12.95cm, height=5.2cm,
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\addplot[ybar stacked, bar width=7.0pt, draw opacity=0, bar shift=3.5pt,
 		fill=cyan!70!blue!80!black, legend image code/.code={
         		\draw (0cm,-0.08cm) rectangle (0.2cm,0.12cm); }] 
@@ -10589,9 +10263,7 @@ Trends emerge when comparing between the aggregate hours measures. Production an
 		yticklabel style={text width=1.0em, inner sep=1.0pt},
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		enlarge y limits={0.2}, xticklabel={`\short{\year}}, height=4.2cm, width=7.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{blue!80!black}{date}{ST}{data/prod_st_lt.csv}{1.0pt}
 	\thickline{orange!80!yellow}{date}{LT}{data/prod_st_lt.csv}
 	\absnode{{2011-01-01}}{4.1}{\footnotesize \color{orange!80!yellow}20-Year}
@@ -10618,9 +10290,7 @@ Trends emerge when comparing between the aggregate hours measures. Production an
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, 
 		clip=false, height=5.5cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{teal}{date}{value}{data/lprod.csv}
 	\end{axis}
 \end{tikzpicture}}
@@ -10654,9 +10324,7 @@ One theory of what drives medium-term trends, called the \textit{Kaldor-Verdoorn
 		xticklabel={`\short{\year}}, clip=false, height=6.9cm, width=13.1cm,
 		legend cell align=left, transpose legend, enlarge x limits={0.02},
 		legend style={at={(0.585, 1.11)}, fill=white, legend columns=2}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{cyan!40!white}{date}{TFP}{data/tfp.csv}{8.0pt}
 	\ctsbar{blue!60!black}{date}{Lab}{data/tfp.csv}{8.0pt}
 	\ctsbar{violet!60!white}{date}{Cap}{data/tfp.csv}{8.0pt}
@@ -10690,9 +10358,7 @@ One theory of what drives medium-term trends, called the \textit{Kaldor-Verdoorn
 		date coordinates in=x, axis line style={draw=none},
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\ctsbar{violet}{date}{Membership}{data/union.csv}{0.8pt}
 	\node[text width=3.0cm, anchor=west] at 
 		({1995-01-01}, 7){\color{white}Union/Employee \\ Association Members};
@@ -10850,9 +10516,7 @@ In the US, several stock market indices track the share price of a basket of com
 		ytick={0, 2, 4, 6},
 		enlarge y limits={value=0.16,upper}, ymin=0, yticklabel style={text width=1.2em}, 
 		width=8.0cm, xmin={1989-01-01}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\coordinate (c1) at ({2018-12-31},2);
   	\coordinate (c2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (c1) rectangle (c2);
@@ -10860,18 +10524,14 @@ In the US, several stock market indices track the share price of a basket of com
 	\input{text/spx_ch_node.txt}
 	\nextgroupplot[ytick={2, 3, 4, 5, 6, 7}, 
 		enlarge y limits={0.1}, width=5.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\thickline{black!30}{date}{spx_MA}{data/equity_indices_lt.csv}
 	\stdline{green!80!blue!90!black}{date}{spx}{data/equity_indices_lt.csv}
 	\absnode{{2021-01-01}}{3.35}{\scriptsize 
 		\color{black!60}One-year moving average}
 	\nextgroupplot[\bbar{y}{0}, enlarge y limits={value=0.16,upper}, ymin=0, 
 		yticklabel style={text width=1.2em}, width=8.0cm, xmin={1989-01-01}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\coordinate (d1) at ({2018-12-31},6);
   	\coordinate (d2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (d1) rectangle (d2);
@@ -10879,18 +10539,14 @@ In the US, several stock market indices track the share price of a basket of com
 	\input{text/ndq_ch_node.txt}
 	\nextgroupplot[enlarge y limits={0.1}, 
 		yticklabel style={text width=1.0em}, width=5.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\thickline{black!30}{date}{ndq_MA}{data/equity_indices_lt.csv}
 	\stdline{blue!60!cyan}{date}{ndq}{data/equity_indices_lt.csv}
 	\nextgroupplot[\bbar{y}{0}, xtick style={draw=black!20},
 		enlarge y limits={value=0.16,upper}, ymin=0, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks},
 		xticklabel={`\short{\year}}, width=8.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\coordinate (e1) at ({2018-12-31},18);
   	\coordinate (e2) at (rel axis cs:1,1);
 	\draw [black!25!white, dashed] (e1) rectangle (e2);
@@ -10899,9 +10555,7 @@ In the US, several stock market indices track the share price of a basket of com
 	\nextgroupplot[enlarge y limits={0.1}, xtick style={draw=black!20},
 		enlarge x limits={0.01}, xtick/.expanded={\aticks},
 		yticklabel style={text width=1.2em}, xticklabel={`\short{\year}}, width=5.8cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\thickline{black!30}{date}{dji_MA}{data/equity_indices_lt.csv}
 	\stdline{red!60!purple}{date}{dji}{data/equity_indices_lt.csv}
 	\end{groupplot}
@@ -10986,9 +10640,7 @@ In the US, several stock market indices track the share price of a basket of com
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, clip=false, height=5.5cm, width=12.4cm,
 		enlarge y limits={0.1}, legend style={at={(0.98, 1.12)}, fill=white}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue}{date}{r10}{data/sp500rr.csv}
 	\dashline{orange}{date}{r15}{data/sp500rr.csv}
 	\thickline{green!80!blue}{date}{r20}{data/sp500rr.csv}
@@ -11019,9 +10671,7 @@ In the US, several stock market indices track the share price of a basket of com
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=4.8cm, width=12.6cm,
 		yticklabel style={text width=1.0em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{green!80!black}{date}{DY}{data/sp500dy.csv}
 	\input{text/sp500dy_node.txt}
 	\end{axis}
@@ -11051,9 +10701,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 		xticklabel={`\short{\year}}, clip=false, width=12.8cm,
 		legend style={at={(0.44, 0.98)}, fill=white},
 		yticklabel style={text width=1.0em, inner sep=1.0pt}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{blue!90!purple}{date}{Dividends}{data/eq_payout.csv}	
 	\sbar{violet!55!white}{date}{Buybacks}{data/eq_payout.csv}	
 	\legend{Net Dividends, Net Issuance};
@@ -11084,9 +10732,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 		xticklabel={`\short{\year}}, clip=false, 
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, 
 		height=5.0cm, width=6.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!80!cyan}{date}{TR CAPE}{data/catrpe.csv}
 	\input{text/cape_node.txt}
 	\end{axis}
@@ -11105,9 +10751,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 		xticklabel={`\short{\year}}, clip=false, 
 		yticklabel style={text width=1.7em, inner sep=1.0pt}, 
 		height=5.0cm, width=5.9cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{green!70!black}{date}{value}{data/tobinq.csv}
 	\input{text/tobinq_node.txt}
 	\end{axis}
@@ -11137,9 +10781,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 		xticklabel={`\short{\year}}, clip=false, ymin=0,
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, width=12.1cm,
 		height=4.6cm, enlarge y limits={0.08, upper}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{violet}{date}{CLOSE}{data/vix.csv}
 	\input{text/vix_node.txt}
 	\end{axis}
@@ -11235,9 +10877,7 @@ Banks pay lower rates on deposits and charge higher rates for loans. The gap bet
 		legend style={at={(0.76, 1.01)}, fill=white, inner sep=1.0pt}, reverse legend,
 		enlarge y limits={0.07}, ytick={0,2,5,10},
 		xticklabel={`\short{\year}}, height=5.0cm, width=12.5cm]	
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{orange!80!yellow!90!white}{date}{UNRATE}{data/int_infl_recent.csv}
 	\dashline{gray!50!black}{date}{CPI}{data/int_infl_recent.csv}
 	\thickline{blue!80!violet!72!black}{date}{EFFR}{data/int_infl_recent.csv}
@@ -11271,9 +10911,7 @@ One formulation of the Taylor rule is shown below (see {\color{cyan!80!white}\te
 		yticklabel style={text width=1.2em}, height=4.9cm, 
 		width=13.0cm, xmax={2029-01-02},
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\input{text/ff_proj_bar.txt}
 	\thickline{cyan!80!white}{date}{Value}{data/taylor2.csv}
 	\stdline{blue!60!black}{date}{Fed Funds}{data/ffrate.csv}
@@ -11325,9 +10963,7 @@ One formulation of the Taylor rule is shown below (see {\color{cyan!80!white}\te
 		ytick={0, 2, 4, 6, 8, 10}, ymin=-0.6, ymax=9.4, enlarge x limits={0}, 
 		yticklabel style={text width=1.4em, inner sep=0pt}, enlarge y limits={0.01},
 		xticklabel={`\short{\year}}, clip=false, width=9.5cm, height=4.4cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\input{text/treas_inset_box.txt} 
 	\thickline{violet!75!black}{date}{Ten-year}{data/rates.csv}
 	\stdline{gray}{date}{Two-year}{data/rates.csv}
@@ -11446,16 +11082,12 @@ The yield curve is normally upward sloping as investors expect to be compensated
     	draw=black!30!white, fill=white, inner sep=3.2pt}]
     \nextgroupplot[title={10-Year - 3-Month}, \bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\aticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\stdline{blue!70!cyan!80!white}{date}{Ten-3M}{data/spread.csv}
 	\input{text/spread_node.txt}
     \nextgroupplot[title={10-Year - 2-Year}, \bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\aticks}, xticklabel={`\short{\year}}]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\stdline{red!60!violet!90!white}{date}{Ten-2Y}{data/spread.csv}
 	\input{text/spread_node2.txt}
 	\end{groupplot}
@@ -11559,9 +11191,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 		max space between ticks=20,
 		clip=false, yticklabel style={text width=1.3em}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, width=7.7cm, height=6.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\thickline{blue!70!white}{date}{Real}{data/ff_real.csv}
 	\addplot[ultra thick, densely dashed, no markers, color=black!90!white] 
 		table [x=date, y=Real_proj, col sep=comma] {data/ff_real.csv};
@@ -11595,9 +11225,7 @@ The market-based approach has limitations, as the market for inflation-protected
 		date coordinates in=x, axis line style={draw=none}, yticklabel style={inner sep=0pt},
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, height=5.8cm, width=13.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{cyan!68!white}{date}{Model10}{data/real_rates3.csv}
 	\addplot[very thick, densely dotted, no markers, color=violet!55!black] 
 		table [x=date, y=TIPS10, col sep=comma] {data/real_rates3.csv};
@@ -11626,9 +11254,7 @@ The market-based approach has limitations, as the market for inflation-protected
 		date coordinates in=x, axis line style={draw=none}, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks},
 		xticklabel={`\short{\year}}, clip=false, ymin=0.5, width=12.4cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{violet!80!black}{date}{HQMCB10YRP}{data/hqcb.csv}
 	\dashline{teal}{date}{Spread}{data/hqcb.csv}
 	\input{text/hqcb_nodes.txt}
@@ -11656,9 +11282,7 @@ The market-based approach has limitations, as the market for inflation-protected
 		enlarge x limits={0.01}, minor xtick/.expanded={\aticks}, 
 		xtick/.expanded={\custticks}, 
 		xticklabel={`\short{\year}}, ymin=0, ymax=23, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{red!50!purple}{date}{BAMLH0A0HYM2EY}{data/highyield.csv}
 	\input{text/highyield_node.txt}
 	\end{axis}
@@ -11687,9 +11311,7 @@ The market-based approach has limitations, as the market for inflation-protected
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, minor xtick/.expanded={\anfticks}, 
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{blue!60!black}{date}{FRM}{data/mortgage_qtr.csv}
 	\stdline{blue!60!cyan}{date}{Spread}{data/mortgage_qtr.csv}
 	\absnode{{1991-03-01}}{4.9}{\color{blue!60!cyan} Mortgage-\\\color{blue!60!cyan} 10-Year Treasury\\\color{blue!60!cyan} Spread}
@@ -11744,9 +11366,7 @@ The market-based approach has limitations, as the market for inflation-protected
 		enlarge x limits={0.01}, xtick/.expanded={\afticks},
 		yticklabel style={text width=1.2em, inner sep=0pt}, 
 		xticklabel={`\short{\year}}, clip=false, width=6.1cm, height=4.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{magenta}{date}{value}{data/m2gdp.csv}
 	\end{axis}
 \end{tikzpicture}}
@@ -11772,9 +11392,7 @@ A large increase in money holdings relative to economic activity can reflect a h
 		max space between ticks=18, enlarge y limits={0.12}, 
 		yticklabel style={text width=1.0em}, ymax=22.2,
 		xticklabel={`\short{\year}}, clip=false, width=12.4cm, height=5.0cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{green!80!blue}{date}{value}{data/m2.csv}
 	\input{text/m2_node.txt}
 	\end{axis}
@@ -11818,9 +11436,7 @@ A large increase in money holdings relative to economic activity can reflect a h
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}, height=6.5cm, width=7.8cm, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\recbars
-	\end{pgfonlayer}
+	\bglayer{\recbars}
 	\thickline{blue!80!black}{date}{RESPPMA_N.WW}{data/fed_assets_m.csv}
 	\end{axis}
 \end{tikzpicture}}\\
@@ -12058,9 +11674,7 @@ The next charts show inflation relative to the two percent target, using the Con
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.98, 1.14)}}, yticklabel style={text width=1.2em, inner sep=1.0pt}, 
 		height=5.6cm, width=12.4cm, enlarge y limits={0.09}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!60!cyan}{date}{ALL}{data/cpi.csv}
 	\stdline{gray}{date}{CORE}{data/cpi.csv}
 	\input{text/cpi_node.txt}
@@ -12208,9 +11822,7 @@ One-year inflation rates for different categories of goods and services, includi
 		enlarge x limits={0.01}, xtick/.expanded={\aticks}, 
 		enlarge y limits={0.1}, ymin=0.33, ymax=4.0, \bbar{y}{0}, clip=false,
 		xticklabel={`\short{\year}}, height=6.0cm, width=6.2cm]
-	\begin{pgfonlayer}{background layer}
-		\rbar
-	\end{pgfonlayer}
+	\bglayer{\rbar}
 	\stdline{blue!70!black}{date}{T5YIE}{data/infbreak.csv}
 	\thickline{violet!60!magenta}{date}{PX5_MD}{data/infumich.csv}
 	\input{text/infbreak_node.txt}
@@ -12246,9 +11858,7 @@ One-year inflation rates for different categories of goods and services, includi
 		xticklabel={`\short{\year}}, clip=false, 
 		legend style={at={(0.96, 1.16)}}, ymin=0.3, ymax=5.7,
 		yticklabel style={text width=1.0em, inner sep=1.0pt}, width=12.95cm, height=5.9cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{violet!60!magenta}{date}{PX5_MD}{data/infumichlt.csv}
 	\dashline{black!88!white}{date}{PX_MD}{data/infumichlt.csv}
 	\legend{Next 5 years, Next year};
@@ -12271,9 +11881,7 @@ One-year inflation rates for different categories of goods and services, includi
 		date coordinates in=x, axis line style={draw=none}, 
 		enlarge x limits={0.01}, enlarge y limits={0}, xtick/.expanded={\aticks}, 
 		xticklabel={`\short{\year}}, height=4.9cm, width=8.3cm]
-		\begin{pgfonlayer}{background layer}
-			\rbar
-		\end{pgfonlayer}
+		\bglayer{\rbar}
 		\stdline{blue!60!black}{date}{5_year_breakeven}{data/infbreak_comb.csv}
 		\thickline{cyan!80!white}{date}{5_year_5_year_forward}{data/infbreak_comb.csv}
 		\absnode{{2018-05-01}}{1.6}{\color{blue!60!black}Next \\ 
@@ -12314,9 +11922,7 @@ One-year inflation rates for different categories of goods and services, includi
 		xticklabel={`\short{\year}}, clip=false, 
 		enlarge y limits={0.09}, width=12.7cm, height=6.4cm,
 		legend style={at={(0.98, 1.11)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\input{text/pcepi_hbar.txt}
 	\absnode{{1988-06-01}}{2}{\scriptsize \color{black!80}Fed Target}
 	\thickline{blue!70!black}{date}{CORE}{data/pce_pi.csv}
@@ -12345,9 +11951,7 @@ One-year inflation rates for different categories of goods and services, includi
 		yticklabel style={inner sep=0pt},
 		xticklabel={`\short{\year}}, clip=false, ymin=0, ymax=5, width=12.7cm,
 		height=5.1cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{violet!60!magenta}{date}{12-month}{data/pce_tm12.csv}
 	\input{text/pce_tm_node.txt}
 	\end{axis}
@@ -12374,9 +11978,7 @@ One-year inflation rates for different categories of goods and services, includi
 		enlarge y limits={0.06}, xticklabel={`\short{\year}}, clip=false, reverse legend,
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, max space between ticks=20, 
 		legend style={at={(0.66, 0.98)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\sbar{teal!50!blue!75!white}{date}{CoreServ}{data/pce_decomp_target.csv}
 	\sbar{orange!80!yellow}{date}{DHSGRG}{data/pce_decomp_target.csv}	
 	\sbar{green!40!olive!60!white}{date}{IA000062}{data/pce_decomp_target.csv}
@@ -12453,9 +12055,7 @@ Note that the all commodities index includes goods at various stages of producti
 		max space between ticks=20,
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, height=5.0cm, width=12.6cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{green!80!blue}{date}{PPIACO}{data/ppi.csv}
 	\stdline{violet}{date}{PPIFD}{data/ppi.csv}
 	\node [pin] at ({2015-12-01},-0.5) {};
@@ -12535,9 +12135,7 @@ Note that the all commodities index includes goods at various stages of producti
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		xticklabel={`\short{\year}}, clip=false, max space between ticks=20,
 		legend style={at={(0.98, 1.14)}}, height=5.6cm, width=12.6cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\thickline{cyan!58!white}{date}{Imports}{data/mxpi.csv}
 	\stdline{blue!90!black}{date}{Exports}{data/mxpi.csv}
 	\input{text/mxpi_nodes.txt}
@@ -12569,15 +12167,11 @@ Two important commodities for the construction and manufacturing industries are 
 		height=5.9cm, width=6.75cm, clip=false, group style={group size=2 by 1, horizontal sep=34pt}]
 	\nextgroupplot[date coordinates in=x, xtick/.expanded={\afticks}, 
 		minor xtick/.expanded={\anfticks}, xticklabel={`\short{\year}}, \bbar{y}{1}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{blue!50!gray}{date}{Steel}{data/ppi_commodities.csv}
 	\nextgroupplot[date coordinates in=x, xtick/.expanded={\afticks}, 
 		minor xtick/.expanded={\anfticks}, xticklabel={`\short{\year}}, \bbar{y}{1}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{green!60!yellow!90!black}{date}{Lumber}{data/ppi_commodities.csv}
 	\end{groupplot}
 \end{tikzpicture}}
@@ -12607,9 +12201,7 @@ Two important commodities for the construction and manufacturing industries are 
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}, ymin=7, clip=false,
 		legend style={at={(1.02, 1.18)}}]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{red!80!purple!65!white}{date}{VALUE}{data/wti.csv}
 	\addplot[ultra thick, densely dashed, no markers, color=black!90!white] 
 		table [x=Month, y=Forecast, col sep=comma] {data/wti_proj.csv};
@@ -12638,9 +12230,7 @@ Two important commodities for the construction and manufacturing industries are 
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}, clip=false]
-	\begin{pgfonlayer}{background layer}
-		\rebars
-	\end{pgfonlayer}
+	\bglayer{\rebars}
 	\stdline{blue!80!white}{date}{Value}{data/gas_pricem.csv}
 	\input{text/gas_price_node.txt}
 	\end{axis}
@@ -12666,9 +12256,7 @@ Two important commodities for the construction and manufacturing industries are 
 		xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		yticklabel style={inner sep=0pt}, 
 		xticklabel={`\short{\year}}, ymin=150, ymax=4800, width=11.7cm, height=4.4cm]
-	\begin{pgfonlayer}{background layer}
-		\rbars
-	\end{pgfonlayer}
+	\bglayer{\rbars}
 	\stdline{orange!50!yellow}{date}{AM}{data/gold.csv}
 	\input{text/gold_node.txt}
 	\end{axis}

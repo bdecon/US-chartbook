@@ -378,6 +378,8 @@
 		\fill[color=black!10] (axis cs:{2020-02-01},\pgfkeysvalueof{/pgfplots/ymin})
 			rectangle (axis cs:{2020-05-01}, \pgfkeysvalueof{/pgfplots/ymax});}
 
+	\newcommand{\bglayer}[1]{\begin{pgfonlayer}{background layer}#1\end{pgfonlayer}}
+
 	\newfontfamily\seriffont{RobotoSlab}
 
 	\pgfplotstableread[header=true, col sep=comma]{data/unempgroups.csv}\unemp
