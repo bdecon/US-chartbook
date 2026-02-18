@@ -324,6 +324,12 @@ def write_tbl(filename, df, header=True, index=True):
         	tbl = f.readline().replace(b'\\ ', b'\\ \\arrayrulecolor{black!60!white} \\hline ', 1)
     	with open(filename, 'wb') as f:
         	f.write(tbl)
+    # Strip negative zeros (e.g. -0.00 -> 0.00)
+    with open(filename, 'rb') as f:
+        tbl = f.read()
+    tbl = re.sub(rb'-0(\.0+)', rb'0\1', tbl)
+    with open(filename, 'wb') as f:
+        f.write(tbl)
 
       
 def dtxt(date):
@@ -353,51 +359,6 @@ def dtxt(date):
 	     'datetime2': date.strftime('%Y-%m-%d').replace('-08-', '-8-').replace('-09-', '-9-')}	
 	return d
 	
-
-def cont_subt(value, style='main', digits=2):
-    '''
-    Return text for value
-    
-    -------
-    
-    Styles:
-    
-    main: "contributed x.xx percentage points to"
-    
-    of: "contribution of x.xx percentage points"
-    
-    end: "contributed x.xx percentage points"
-    
-    '''
-    text = 'ERROR'
-    if abs(value) > 1:
-    	abs_val = '{0:.{1}f} percentage points'.format(abs(value), digits)
-    else:
-    	abs_val = '{0:.{1}f} percentage point'.format(abs(value), digits)
-    if value >= 0.01:
-        if style == 'main':
-            text = f'contributed {abs_val} to'
-        elif style == 'of':
-            text = f'contribution of {abs_val}'
-        elif style == 'end':
-            text = f'contributed {abs_val}'
-    elif value <= -0.01:
-        if style == 'main':
-            text = f'subtracted {abs_val} from'
-        elif style == 'of':    
-            text = f'subtraction of {abs_val}'
-        elif style == 'end':
-            text = f'subtracted {abs_val}'
-    else:
-        if style == 'main':
-            text = 'did not contribute to'
-        elif style == 'of':
-            text = 'no contribition to'
-        elif style == 'end':
-            text = 'did not contribute'
-    print('cont_subt will be removed from a future version')
-    return text 
-
 
 def series_info(s):
     '''Return info about a pandas series'''
@@ -471,12 +432,6 @@ def series_info(s):
     d['change_year_ago'] = d['val_latest'] - d['val_year_ago']
     
     return d
-
-
-def three_year_growth(data, series):
-    '''Annualized growth rate over past three years'''
-    print('three_year_growth() to be removed in future version')
-    return ((data[series].pct_change(36).iloc[-1] + 1)**(1/3)-1) * 100
 
 
 def bls_api(series, date_range, bls_key):
@@ -568,7 +523,7 @@ def cps_date():
     else:
         cps_loc = '/home/brian/Documents/CPS/data/'
     raw_files = [(file[0:3], [f'19{file[3:5]}'
-                              if int(file[3:5]) > 25
+                              if int(file[3:5]) > 68
                               else f'20{file[3:5]}'][0])
                  for file in os.listdir(cps_loc)
                  if file.endswith('pub.dat')]
@@ -579,22 +534,6 @@ def cps_date():
     return dates[-1]
     
     
-def fred_df(series, start='1989'):
-    url = f'http://research.stlouisfed.org/fred2/series/{series}/downloaddata/{series}.csv'
-
-    df = pd.read_csv(url, index_col='DATE', parse_dates=True, na_values=['.'])
-
-    return df.loc[start:]    
-    
-    
-def fred_df2(series, start='1989'):
-	url = f'https://fred.stlouisfed.org/data/{series}'
-	df = pd.read_html(url, parse_dates=True)[1].set_index('DATE')['VALUE']
-	df.index = pd.to_datetime(df.index)
-	
-	return df.loc[start:]
-	
-	
 def fred_df3(series, start='1989'):
     url = (f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}')
     df = pd.read_csv(url, index_col='observation_date', parse_dates=True)[series]
@@ -789,31 +728,10 @@ def node_adj(df):
         return d
 
 
-def val_inc_pp(val, threshold=0.1):
-    if threshold >= 0.1:
-        format_string = '.1f'
-    else:
-        format_string = '.2f'
-    if abs(val) > 1.05:
-        pp = 'percentage points'
-    else:
-        pp =  'percentage point'
-    if val >= threshold:
-        txt = f'increased by a total of {val:{format_string}} {pp}'
-    elif val <= -threshold:
-        txt = f'decreased by a total of {abs(val):{format_string}} {pp}'
-    else:
-        txt = 'was virtually unchanged'
-    
-    print('val_inc_pp will be removed from a future version')    
-    return txt
-    
-    
-def cps_12mo(cps_dir, cps_dt, cols):
+def cps_nmo(cps_dir, cps_dt, cols, months=1):
     '''
-    Return 12 months of bd_CPS variables cols ending cps_dt
+    Return N months of bd_CPS variables cols ending cps_dt
     '''
-
     if 'MONTH' not in cols:
         cols = cols + ['MONTH']
     if 'YEAR' not in cols:
@@ -821,109 +739,23 @@ def cps_12mo(cps_dir, cps_dt, cols):
 
     cps_year = cps_dt.year
     cps_month = cps_dt.month
-    if cps_month != 12:
-        cps_year1 = cps_year - 1
-        cps_year2 = cps_year
-        df = pd.concat([pd.read_feather(cps_dir / f'cps{yr}.ft', columns=cols)
-              .query('MONTH > @cps_month') for yr in [cps_year1, cps_year2]])
-    else:
-        df = pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
-        
-    return df
-    
+    start_month = (cps_dt - pd.DateOffset(months=months - 1)).month
 
-def cps_3mo(cps_dir, cps_dt, cols):
-    '''
-    Return 3 months of bd_CPS variables cols ending cps_dt
-    '''
-
-    if 'MONTH' not in cols:
-        cols = cols + ['MONTH']
-    if 'YEAR' not in cols:
-        cols = cols + ['YEAR']
-
-    cps_year = cps_dt.year
-    cps_month = cps_dt.month
-    cps_month3 = (cps_dt - pd.DateOffset(months=2)).month
-    if cps_month < 3:
-        cps_year1 = cps_year - 1
-        cps_year2 = cps_year
-        df = (pd.concat([pd.read_feather(cps_dir / f'cps{cps_year1}.ft',
-        	 columns=cols).query('MONTH >= @cps_month3'),
-             pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
-               .query('MONTH <= @cps_month')]))
+    if cps_month < months:
+        # Window crosses year boundary
+        df = pd.concat([
+            pd.read_feather(cps_dir / f'cps{cps_year - 1}.ft', columns=cols)
+                .query('MONTH >= @start_month'),
+            pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
+                .query('MONTH <= @cps_month')
+        ])
     else:
         df = (pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
-              .query('MONTH >= @cps_month3 and MONTH <= @cps_month'))
-        
-    return df
-    
+              .query('MONTH >= @start_month and MONTH <= @cps_month'))
 
-def cps_6mo(cps_dir, cps_dt, cols):
-    '''
-    Return 6 months of bd_CPS variables cols ending cps_dt
-    '''
-
-    if 'MONTH' not in cols:
-        cols = cols + ['MONTH']
-    if 'YEAR' not in cols:
-        cols = cols + ['YEAR']
-
-    cps_year = cps_dt.year
-    cps_month = cps_dt.month
-    cps_month6 = (cps_dt - pd.DateOffset(months=5)).month
-    if cps_month < 6:
-        cps_year1 = cps_year - 1
-        cps_year2 = cps_year
-        df = (pd.concat([pd.read_feather(cps_dir / f'cps{cps_year1}.ft',
-        	 columns=cols).query('MONTH >= @cps_month6'),
-        	 pd.read_feather(cps_dir / f'cps{cps_year2}.ft', columns=cols)
-        	 .query('MONTH <= @cps_month')]))
-    else:
-        df = (pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
-              .query('MONTH >= @cps_month6 and MONTH <= @cps_month'))
-        
-    return df
-    
-
-def cps_1mo(cps_dir, cps_dt, cols):
-    '''
-    Return 1 month of bd_CPS variables cols ending cps_dt
-    '''
-
-    if 'MONTH' not in cols:
-        cols = cols + ['MONTH']
-    if 'YEAR' not in cols:
-        cols = cols + ['YEAR']
-
-    cps_year = cps_dt.year
-    cps_month = cps_dt.month
-    df = (pd.read_feather(cps_dir / f'cps{cps_year}.ft', columns=cols)
-                .query('MONTH == @cps_month'))
-        
     return df
     
     
-def inc_dec_percent(n, how='main', annualized=False):
-    '''Return short text based on value of n'''
-    atxt1 = 'by'
-    atxt2 = ''
-    if annualized == True:
-    	atxt1 = 'at an annual rate of'
-    	atxt2 = ' (annualized)'
-    if how not in ['of', 'main']:
-    	print('Options: "of" or "main", annualized: False by default')
-    elif how == 'main':
-    	return (f'increased {atxt1} {abs(n):.1f} percent' if n >= 0.1 
-        	else f'decreased {atxt1} {abs(n):.1f} percent' 
-        	if n <= -0.1 else 'was virtually unchanged')
-    elif how == 'of':
-    	return (f'an increase of {abs(n):.1f} percent{atxt2}' if n >= 0.1 
-        	else f'a decrease of {abs(n):.1f} percent{atxt2}' 
-        	if n <= -0.1 else 'virtually no change')
-    print('inc_dec_percent will be removed from a future version')
-        
-        
 def compare_text(latest, previous, cutoffs, plain=False):
     '''
     Simple text based on difference between two numbers.
@@ -961,7 +793,13 @@ def clean_fed_data(url, dtype='main'):
              for i, v in raw_data.iloc[4, 1:].items()}
 
     date_column = raw_data.loc[5:, 'Series Description']
-    date_index = pd.to_datetime(date_column).rename('Date')
+    sample = str(date_column.iloc[0]).strip()
+    if 'Q' in sample:                        # quarterly: '2024Q3'
+        date_index = pd.PeriodIndex(date_column, freq='Q').to_timestamp()
+    else:
+        fmt = {4: '%Y', 7: '%Y-%m', 10: '%Y-%m-%d'}[len(sample)]
+        date_index = pd.to_datetime(date_column, format=fmt)
+    date_index = date_index.rename('Date')
     columns = raw_data.iloc[4, 1:].values
     clean_data = raw_data.iloc[5:, 1:].replace('ND', np.nan).astype('float')
     clean_data.index = date_index
