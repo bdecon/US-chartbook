@@ -534,6 +534,34 @@ def cps_date():
     return dates[-1]
     
     
+def fred_df2(series, start='1989'):
+	url = f'https://fred.stlouisfed.org/data/{series}.txt'
+	html = requests.get(url).text
+
+	# Parse the visible table rows (first 1000)
+	df = pd.read_html(io.StringIO(html), parse_dates=True, na_values=['.'])[1].set_index('DATE')['VALUE'].rename(series)
+	df.index = pd.to_datetime(df.index)
+
+	# Parse extra rows hidden in <div id="extra-rows"> as #date|value
+	extra_match = re.search(r'<div id="extra-rows"[^>]*>(.*?)</div>', html, re.DOTALL)
+	if extra_match:
+		rows = extra_match.group(1).strip().split('#')
+		extra = {}
+		for row in rows:
+			row = row.strip()
+			if '|' in row:
+				date, value = row.split('|', 1)
+				try:
+					extra[pd.to_datetime(date)] = float(value)
+				except ValueError:
+					continue
+		if extra:
+			extra_s = pd.Series(extra, name=series)
+			df = pd.concat([df, extra_s]).sort_index()
+
+	return df.loc[start:]
+    
+    
 def fred_df3(series, start='1989'):
     url = (f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}')
     df = pd.read_csv(url, index_col='observation_date', parse_dates=True)[series]

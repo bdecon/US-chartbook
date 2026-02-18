@@ -196,10 +196,14 @@
 	%\newcommand{\absnodeml}[4]{\node[below right, align=left, text width=#4cm] 
 	%	at (axis cs: #1,#2) {#3};}       
 		        
+	% Centralized end-date for chart x-axes (update once when data refreshes)
+	\newcommand{\xmaxdate}{2026-02-28}
+	\newcommand{\xmaxproj}{2029-02-28}
+
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\dateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-02-28},
+		xmax={\xmaxdate},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1992-01-01}, {1994-01-01}, 
 			{1996-01-01}, {1998-01-01}, {2000-01-01}, 
@@ -257,7 +261,7 @@
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\shdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-02-28},
+		xmax={\xmaxdate},
 		max space between ticks=40,	    
 		xtick={{1990-01-01}, {1995-01-01}, {2000-01-01}, 
 			{2005-01-01}, {2010-01-01}, {2015-01-01}, {2020-01-01}, 
@@ -268,25 +272,9 @@
 		}
 		
 	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
-	\newcommand{\ltxticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-02-28},
-		max space between ticks=40,	    
-		xtick={{2021-07-01}, {2022-01-01}, {2022-07-01},
-		{2023-01-01}, {2023-07-01}, 
-		 {2024-01-01}, {2024-07-01}, 
-		 {2025-01-01}, {2025-07-01},{2026-01-01}},
-		minor xtick={{2021-10-01}, {2022-04-01}, {2022-10-01}, {2023-04-01}, 
-		{2023-10-01},{2024-04-01},{2024-10-01}, {2025-04-01},  {2025-10-01}},
-		enlarge y limits={0.06}, enlarge x limits={0.01},
-		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		}
-		
-		
-	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
 	\newcommand{\ltdateaxisticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-02-28},
+		xmax={\xmaxdate},
 		max space between ticks=40,	    
 		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
 			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
@@ -294,58 +282,14 @@
 		    {2026-01-01}},
 		enlarge y limits={0.06}, enlarge x limits={0.01},
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		}
-		
-	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
-	\newcommand{\lfdateaxisticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xmin={2018-01-01}, xmax={2026-02-28}, 
-		xtick={{2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01}, 
-			{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
-		    {2026-01-01}},
-		enlarge y limits={value=0.12, upper}, enlarge x limits={0.02}, ymin=0,
-		yticklabel style={text width=1.0em},
-		height=3.8cm, width=6.4cm,
-		}
-		
-	% Date (X) Axis Tick Marks, one tick per year, every even year labeled
-	\newcommand{\tydateaxisticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-02-28}, max space between ticks=40,	    
-		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01},
-		 {2014-01-01}, {2015-01-01},
-		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, 
-		 {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
-		    {2026-01-01}},
-		enlarge y limits={0.06}, enlarge x limits={0.01},
 		}
 		
 	% Date (X) Axis Tick Marks, very short term monthly ticks
 	\newcommand{\shticks}{
 		date coordinates in=x, axis line style={draw=none},
-		xmax={2026-02-28},
+		xmax={\xmaxdate},
 		}
 
-	% Date (X) Axis Tick Marks, no tick marks, just formatting
-	\newcommand{\empticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xticklabels=\empty, xtick style={draw=none},
-		xmax={2026-02-28}, enlarge x limits={0.01},
-		}
-		
-	% Date (X) Axis Tick Marks, one tick per year, every year labeled
-	\newcommand{\projdateaxisticks}{
-		date coordinates in=x, axis line style={draw=none},
-		xmax={2029-02-28},
-		max space between ticks=40,	    
-		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01}, 
-			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
-			{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
-		    {2026-01-01}, {2027-01-01}, {2028-01-01}, {2029-01-01}},
-		enlarge y limits={0.06}, enlarge x limits={0.01},
-		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		}
-		
 	% Settings for y label text in horizontal bar charts
 	\newcommand{\barylab}[2]{yticklabel style={text width=#1, align=right, 
 		style={black!70}, text height=#2},}
@@ -668,9 +612,20 @@ Ultimately, the chartbook aims to be useful for macroeconomic analysis, to inspi
 \vspace*{-4mm}
 
 \hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \ltxticks, xmin=2021-07-01, 
+	\begin{axis}[\bbar{y}{0},
+		date coordinates in=x, axis line style={draw=none},
+		xmax={\xmaxdate},
+		xtick={{2021-07-01}, {2022-01-01}, {2022-07-01},
+		{2023-01-01}, {2023-07-01},
+		 {2024-01-01}, {2024-07-01},
+		 {2025-01-01}, {2025-07-01},{2026-01-01}},
+		minor xtick={{2021-10-01}, {2022-04-01}, {2022-10-01}, {2023-04-01},
+		{2023-10-01},{2024-04-01},{2024-10-01}, {2025-04-01},  {2025-10-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		xmin=2021-07-01,
 		fill between/on layer={main}, legend cell align={left},
-		max space between ticks=20, ymax=5, 
+		max space between ticks=20, ymax=5,
 		legend style={fill=white, legend columns=1, at={(0.75, 0.45)}},
 		xticklabel={ \pgfmathparse{int(mod(\month,7))} \let\r\pgfmathresult 
     		\ifnum\r=0 {Jul} \else {Jan} \\ {\year} \fi}, clip=false, 
@@ -1265,9 +1220,9 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \footnotesize{*Percentage point change from average unemployment rate during three years prior to recession to peak unemployment rate. **Months from recession start until unemployment rate returns to pre-recession three-year average.}
 \vspace{5mm}
 
-\index{Sahm rule} \normalsize Sahm Rule
+\index{Sahm Rule} \normalsize Sahm Rule
 
-\small The most-reliable indication that the US has entered a recession \seebox{black!30} was identified by \href{https://sites.google.com/site/claudiasahm/}{Claudia Sahm}, and is called the \textbf{Sahm Rule}. The Sahm Rule indicates the start of a recession (see \begin{tikzpicture} \node[line width=0.3mm, diamond, draw=red, scale=0.4, aspect=0.8] (d) at (0,0) {}; \end{tikzpicture}) when the three-month moving average unemployment rate rises by half a percentage point or more above its low during the previous twelve months (see {\color{blue!60!black}\textbf{---}}). In effect, the Sahm rule identifies increases in unemployment that are significant enough to cause or indicate a recession.  
+\small The most reliable indication that the US has entered a recession \seebox{black!30} was identified by \href{https://sites.google.com/site/claudiasahm/}{Claudia Sahm}, and is called the \textbf{Sahm Rule}. The Sahm Rule indicates the start of a recession (see \begin{tikzpicture} \node[line width=0.3mm, diamond, draw=red, scale=0.4, aspect=0.8] (d) at (0,0) {}; \end{tikzpicture}) when the three-month moving average unemployment rate rises by half a percentage point or more above its low during the previous twelve months (see {\color{blue!60!black}\textbf{---}}). In effect, the Sahm Rule identifies increases in unemployment that are significant enough to cause or indicate a recession.  
 \vspace{1mm}
 
 \normalsize \textbf{The Sahm Rule}\\
@@ -1354,9 +1309,9 @@ The Federal Reserve Bank of Atlanta uses available economic indicators to \textb
 \vspace{-0.5mm}
 
 \begin{minipage}{0.76\textwidth} 
-\small This subsection examines how different activities contribute to economic growth. The percent change in real GDP is decomposed, using the categories from previous subsections, to show each category's importance to the overall increase or decrease. 
+\small This subsection decomposes real GDP growth into the categories from previous subsections, showing how much each contributes to the overall increase or decrease.
 
-First, an overview of contributions to economic growth since 2019. This is followed by an examination of longer-term trends and recent developments for each approach to calculating overall economic activity. Subsequent sections of the chartbook dig deeper into the contributions from subcategories, such as consumer spending on goods. 
+The subsection begins with an overview of contributions to growth since 2019, then examines longer-term trends and recent developments for each approach to calculating economic activity. Subsequent sections of the chartbook dig deeper into the contributions from subcategories, such as consumer spending on goods. 
 \end{minipage}
 \vspace{0.5mm}
 
@@ -1836,7 +1791,7 @@ Since 1989, and in the long run, in general, real GDP growth is explained by pop
 \begin{minipage}{0.76\textwidth} \index{financial accounts} \index{flow of funds}
 \vspace*{-1.5mm}
 
-\small While the previous section looks at economic activity during a period of time, we now turn to \textbf{financial accounts}, which keep stock of what exists at a point in time. Additionally, this section looks at the structure of ownership in the economy and also covers the lending and borrowing between sectors of the economy. 
+\small While the previous section looks at economic activity during a period of time, we now turn to \textbf{financial accounts}, which keep stock of what exists at a point in time. It also covers the structure of ownership across sectors and the lending and borrowing between them. 
 \end{minipage}
 \vspace*{-1.5mm}
 
@@ -2405,7 +2360,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{inv.csv} 
 \vspace{1.5mm}
 
-\small Gross domestic investment includes fixed investment, discussed above, and also the \textbf{change in private inventories}. Inventories are goods that were produced but not sold. While periods with low inventories balance out periods of overstock in the long-term, changes in private inventories can swing GDP growth in a given quarter. 
+\small Gross domestic investment includes fixed investment, discussed above, and also the \textbf{change in private inventories}. Inventories are goods that were produced but not sold. Inventory swings tend to balance out over the long term, but in any given quarter they can meaningfully affect GDP growth. 
 
 \input{text/cipi_contrib_text.txt} 
 
@@ -2648,7 +2603,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 \newpage
 \subsubsection*{Household Formation}
 \begin{minipage}{0.76\textwidth} \index{households!household formation} \index{housing!homeownership} \index{housing!vacancies} \index{demographics!household formation}
-\small Households are measured as \textbf{occupied housing units}, whether occupied by the owner or rented. \input{text/hhform_lvl.txt}Since 1989, the US has experienced the boom and bust of a major housing bubble. By 2016, the end result of the bubble bursting was a shortage of housing, as housing units per capita fell from 1995 to 2016. 
+\small Households are measured as \textbf{occupied housing units}, whether occupied by the owner or rented. \input{text/hhform_lvl.txt}Since 1989, the US has experienced the boom and bust of a major housing bubble. By 2016, housing units per capita had fallen back to 1995 levels, leaving the US with a housing shortage. 
 \vspace{1mm}
  
 \normalsize \textbf{Housing by Type}\\
@@ -2779,7 +2734,7 @@ Lastly, an important related concept, \textbf{households}, are \href{https://www
 
 \subsubsection*{Living with Family}
 \begin{minipage}{0.76\textwidth} %\index{demographics!living with family}
-\small Underneath changes in headship are changes in living arrangements, including in the rate at which adults live with family members who are not their spouses. Specifically, \textbf{living with family}, in this context, measures the share of people age 16 and older who are living with their parents, grandparents, kids, or other nonspouse relative.  
+\small Changes in the headship rate partly reflect shifts in living arrangements, including the rate at which adults live with family members other than their spouses. Specifically, \textbf{living with family}, in this context, measures the share of people age 16 and older who are living with their parents, grandparents, kids, or other nonspouse relative.  
 
 Living with family became more common after the collapse of the housing bubble. An additional two percent of adults, or roughly 4.8 million people, lived with family in 2010 compared to 2003. Rates of living with family spiked early in the COVID-19 pandemic, particularly for young adults.
 
@@ -2983,7 +2938,7 @@ Living with family became more common after the collapse of the housing bubble. 
 \begin{minipage}{0.76\textwidth}
 \small \input{text/cps_educ2.txt}
 
-Increased education may be connected to a changing labor market and lack of worker bargaining power. Behind the increase in education is a large increase in student debt. The burden of this debt is severe for many, as the more educated workforce is not necessarily receiving the historical wage premium from education. 
+The rise in educational attainment may reflect a changing labor market and weakened worker bargaining power. It has also been accompanied by a large increase in student debt, and the burden is significant: a more educated workforce does not necessarily earn the wage premium that education historically provided. 
 \vspace{2mm}
 
 \normalsize \textbf{Education Distribution}\\
@@ -3169,7 +3124,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 
 \subsubsection*{Distribution by Age} \index{income!by age} 
 \begin{minipage}{0.76\textwidth} 
-\small Income and spending vary by age and tend to peak between ages 45 and 54. Saving, the difference between income and spending, also varies by age and generally peaks during ages 45 to 54. In 2019, the oldest and youngest age groups in the data had income near or below their expenses, resulting in low or negative saving rates. In contrast, during the pandemic in 2020, income was above average and spending was below average, and saving rates were positive and far above average.
+\small Income, spending, and saving all vary by age, tending to peak between ages 45 and 54. In 2019, the oldest and youngest age groups in the data had income near or below their expenses, resulting in low or negative saving rates. In contrast, during the pandemic in 2020, income was above average and spending was below average, and saving rates were positive and far above average.
 
 \input{text/ce_age.txt}
 \end{minipage}
@@ -3652,7 +3607,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 \begin{minipage}{0.76\textwidth} \index{spending!household} \index{households!spending} \index{consumer spending!and residential fixed investment} \index{consumer spending}
 \normalsize Consumer Spending and Residential Fixed Investment
 
-\small The previous two charts cover spending on goods, spending on services other than shelter, and spending on housing, utilities, and residential fixed investment. Investment is not typically grouped with spending, as investment is a form of saving. Spending reduces a household's cash balance, while investment exchanges cash for another asset. The two categories are grouped in the following charts to provide a more broad overview of what households do with their income. 
+\small The previous two charts cover spending on goods, spending on services other than shelter, and spending on housing, utilities, and residential fixed investment. Investment is not typically grouped with spending, as investment is a form of saving. Spending reduces a household's cash balance, while investment exchanges cash for another asset. The two categories are grouped in the following charts to provide a broader overview of what households do with their income. 
 \end{minipage}
 \vspace{1mm}
 
@@ -3850,7 +3805,7 @@ Consumer spending is comprised of two broad expenditure types: goods and service
 \vspace{2.5mm}
 
 \begin{minipage}{0.76\textwidth}
-\small Real per capita consumer spending is the core of consumer spending. Recent growth rates can be an important economic indicator, and are presented below, as both 12-month growth (12M) and the last three months growth from the prior three (3M/3M). 
+\small Real per capita consumer spending growth is a key economic indicator, and is presented below as both 12-month growth (12M) and the last three months growth from the prior three (3M/3M). 
 \end{minipage}
 \vspace{1mm}
 
@@ -4446,11 +4401,11 @@ To see this pattern, the following charts show the contribution to changes in re
 \footnotesize{Source: Federal Reserve, Bureau of Economic Analysis} \hfill \tbllink{hhasset_table.csv}
 \vspace{7mm}
 
-\subsubsection*{Return on Assets}
-\small Asset prices rising faster than income can be viewed as a decrease in the expected rate of return on total household assets. This can be measured by disposable income as a share of household assets. \input{text/dpishta.txt} 
+\subsubsection*{Income-to-Wealth Ratio}
+\small The ratio of disposable income to household assets measures how household income compares to the value of household wealth. A falling ratio indicates that asset values are growing faster than income. \input{text/dpishta.txt} 
 \vspace{2mm}
 
-\normalsize \textbf{Return on Household Assets}\\
+\normalsize \textbf{Income-to-Wealth Ratio}\\
 \footnotesize{\textit{disposable personal income as share of household and nonprofit total assets, percent}}
 \vspace{3.3cm}
 
@@ -4898,7 +4853,7 @@ In the following chart, income invested at the historical-average rate \seebox{m
 \vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
-\small Use caution when interpreting homeownership data during the COVID-19 pandemic. These data count heads of households; during the pandemic, some renters, such as college students, moved in with their family, losing their status as a head of household. Renters who move in with family are no longer counted by the measure, causing the homeownership rate to spike. 
+\small Use caution when interpreting homeownership data during the COVID-19 pandemic. The measure counts heads of households; when some renters (such as college students) moved in with family during the pandemic, they lost their status as heads of household, causing the homeownership rate to spike. 
 \vspace{3.5mm}
 
 \normalsize Homeowners' Equity
@@ -5836,7 +5791,7 @@ When examining trends in the ratio, note that business sales include services, w
 
 \small Next, we look at the \textbf{balance sheets} of US private businesses. The Financial Accounts \href{https://www.federalreserve.gov/releases/z1/}{report} assets, liabilities, and net worth for corporate and noncorporate businesses, each of which is discussed in this subsection. 
 
-The following charts cover nonfinancial businesses and show the ratio of balance sheet components to sector output, measured as the gross value added by the sector. The gross value added is essentially the GDP of the sector. \input{text/bus_bs_gva.txt}
+The following charts cover nonfinancial businesses and show the ratio of balance sheet components to sector output, measured as the sector's gross value added--essentially its GDP. \input{text/bus_bs_gva.txt}
 \vspace{0.5mm}
 
 \normalsize \textbf{Nonfinancial Business Balance Sheets}\\
@@ -6014,7 +5969,7 @@ The following table provides more details on the size of nonfinancial business l
 \newpage
 \subsubsection*{Business Debt}
 \begin{minipage}{0.76\textwidth} \index{debt!business} \index{businesses!debt}
-\small Depending on market conditions, businesses may want to expand output without committing or redirecting existing resources. In this case, businesses finance expansion by borrowing or issuing debt securities, such as corporate bonds. The ratio of business debt to output measures the extent of business leverage. 
+\small Businesses often finance expansion by borrowing or issuing debt securities, such as corporate bonds, rather than redirecting existing resources. The ratio of business debt to output measures the extent of this leverage. 
 
 \input{text/busdebtgdp.txt} 
 \vspace{1mm}
@@ -6738,7 +6693,7 @@ This chartbook section covers government contributions to current economic activ
 \begin{minipage}{0.76\textwidth}
 \vspace{-1mm}
 
-\small There are multiple ways to interpret the government contribution to \textit{current} economic activity. Methods include: 1) government receipts and expenditures; 2) government production minus intermediate inputs used in production (value added); 3) government income payments to people less taxes and social insurance contributions; or 4) the sum of government consumption and investment. 
+\small There are multiple ways to measure the government's contribution to \textit{current} economic activity: 1) government receipts and expenditures; 2) production minus intermediate inputs (value added); 3) income payments to people, net of taxes and social insurance contributions; or 4) the sum of government consumption and investment. 
 \end{minipage}
 
 \begin{minipage}{0.35\textwidth}
@@ -6831,7 +6786,7 @@ This chartbook section covers government contributions to current economic activ
 
 \small The government pays people in two ways: wages and salaries for government workers and transfer payments, also referred to as government social benefits or welfare.
 
-Over the past thirty years, total spending on government social benefits has mostly kept pace with consumer spending, while tax collection lagged behind income growth. Increased social benefits payments on a per capita basis reflect expanded access to health insurance, as well as a larger share of the population receiving social security benefits. During the COVID-19 pandemic, the federal government expanded social benefits, reducing poverty rates to all-time lows in 2021. 
+Over the past thirty years, government social benefit spending has mostly kept pace with consumer spending, while tax collection lagged behind income growth. Increased social benefits payments on a per capita basis reflect expanded access to health insurance, as well as a larger share of the population receiving social security benefits. During the COVID-19 pandemic, the federal government expanded social benefits, reducing poverty rates to all-time lows in 2021. 
 \end{minipage}
 \vspace{1mm}
 
@@ -6965,7 +6920,7 @@ Over the past thirty years, total spending on government social benefits has mos
 \hypertarget{govre}{\label{govre}}
 \subsection*{Government Receipts and Expenditures} 
 \begin{minipage}{0.76\textwidth} \index{spending!government} \index{income!government} \index{government!outlays} \index{government!receipts}
-\small Government current expenditures include consumption, current transfers, such as government social benefits to persons, interest payments, and subsidies. Government spending provides services and income to people. Government current receipts come primarily from taxes. When government expenditures exceed receipts, it is referred to as a \textit{government deficit}, and corresponds to a private sector surplus. A large government deficit, relative to GDP, increases current household income and corporate profits.
+\small Government current expenditures include consumption, current transfers, such as government social benefits to persons, interest payments, and subsidies. Government spending provides services and income to people. Government current receipts come primarily from taxes. When government expenditures exceed receipts, the gap is called a \textit{government deficit}, and corresponds to a private sector surplus. A large government deficit, relative to GDP, increases current household income and corporate profits.
 
 \input{text/fedgdp.txt} 
 
@@ -7330,9 +7285,9 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \normalsize Composition of Federal Government Spending
 \vspace{-1mm}
 
-\small Over the long-term, there have been important shifts in the \textbf{composition of federal spending}. The ways federal spending varies from these long-term trends, in the short-term, are also important. 
+\small Over the long term, there have been important shifts in the \textbf{composition of federal spending}. Short-term departures from these long-term trends are also important.
 
-Over the long-term, Office of Management and Budget (OMB) data \href{https://www.whitehouse.gov/omb/historical-tables/}{show} \input{text/gov_exp_comp1.txt}
+Over the long term, Office of Management and Budget (OMB) data \href{https://www.whitehouse.gov/omb/historical-tables/}{show} \input{text/gov_exp_comp1.txt}
 \vspace{1mm}
 
 \normalsize \textbf{Composition of Federal Government Outlays}\\
@@ -7618,7 +7573,7 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 \begin{minipage}{0.76\textwidth}
  \index{balance sheet!government} \index{wealth!public} \index{government!balance sheet}
 
-\small The scope of the public sector and how the government funds and organizes itself are reflected in \textbf{government balance sheets}. This subsection describes selected components of government balance sheets, at the federal level, and for combined state and local governments. First, the combined balance sheet of federal, state, and local governments is summarized. Next, public wealth is discussed, followed by liabilities, interest expense, and debt sustainability. The subsection also covers assets and net investment. 
+\small Government balance sheets reflect the scope of the public sector and how the government funds and organizes itself. This subsection first summarizes the combined balance sheet of federal, state, and local governments, then examines public wealth, liabilities, interest expense, debt sustainability, assets, and net investment. 
 
 Assets other than public lands, liabilities, and net worth (public wealth), are the main components of government balance sheets, and are summarized below for the combined federal, state, and local governments. Since 1989, government assets have remained stable as a share of GDP, while liabilities have increased, driving down public wealth. 
 \end{minipage}
@@ -7928,7 +7883,7 @@ This balance is further broken down into four components: the trade balance for 
 \footnotesize{Source: Bureau of Economic Analysis} \hfill \tbllink{cab.csv}
 \vspace{1mm}
 
-\small US current payments exceed current receipts and the US runs a persistent current account deficit. Economic theory suggests that capital flows towards countries with lower labor costs and less capital per worker, as they have higher marginal productivity from additional capital. However, in the case of the US, the opposite is happening. Capital is flowing from less-developed countries with lower wages into the US, largely to finance additional US consumer spending on imported goods. 
+\small US current payments exceed current receipts and the US runs a persistent current account deficit. Economic theory suggests that capital flows towards countries with lower labor costs and less capital per worker, as those countries have higher marginal productivity from additional capital. However, in the case of the US, the opposite is happening. Capital is flowing from less-developed countries with lower wages into the US, largely to finance additional US consumer spending on imported goods. 
 \end{minipage}
 \newpage
 \markright{\footnotesize \color{violet}{\rule[0.5pt]{6.5pt}{6.5pt}} \color{black!90} \normalsize  \seriffont \ External Sector}
@@ -8269,7 +8224,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \footnotesize{Source: Census Bureau} \hfill \tbllink{trade_partner_goods.csv}
 \vspace{2mm}
 
-\small The trade balance, exports minus imports, has particular economic significance, and the breakdown by trading partner is no less interesting. \input{text/trade_parter_bal1.txt}
+\small The trade balance, exports minus imports, has particular economic significance. \input{text/trade_parter_bal1.txt}
 \end{minipage}
 \vspace{1mm}
 
@@ -8389,7 +8344,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \begin{minipage}{0.76\textwidth}
 \index{capital flows}
 \vspace{-0.5mm}
-\small The \href{https://home.treasury.gov/data/treasury-international-capital-tic-system}{purchases and sales} of US bonds by the rest of the world give insight into overall \textbf{capital flows} and appetite for different types of debt. During the 2000s, other countries were accumulating US corporate and government bonds, as the US was borrowing from the rest of the world and running a very wide trade deficit. In 2020, the rest of the world was a net purchaser of US government agency bonds but a net seller of treasuries. 
+\small The net \href{https://home.treasury.gov/data/treasury-international-capital-tic-system}{purchases and sales} of US bonds by the rest of the world give insight into overall \textbf{capital flows} and appetite for different types of debt. During the 2000s, other countries were accumulating US corporate and government bonds, as the US was borrowing from the rest of the world and running a very wide trade deficit. 
 
 \input{text/tic.txt}
 \vspace{1mm}
@@ -8584,7 +8539,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \section*{\bcbox{cyan}Labor Markets}
 \thispagestyle{sectpage}
 \begin{minipage}{0.32\textwidth} \index{employment!overview} \index{labor force participation}
-\small Labor is the primary source of income for US households and essential to the production of goods and services. The labor household members provide to others outside of the household or to other households is considered \textit{employment}. \input{text/cps_lfs0.txt}
+\small Labor is the primary source of income for US households and essential to the production of goods and services. When household members provide labor to others outside the household, this is considered \textit{employment}. \input{text/cps_lfs0.txt}
 
 \input{text/cps_lfs.txt} Note that these values are not seasonally adjusted and include children, while BLS published values refer to those 16 or older.
 \end{minipage} \hspace{5mm}
@@ -8846,7 +8801,7 @@ People who are neither employed nor unemployed are \textit{outside of the labor 
 
 \small Historically, the US economy can sustain gross labor income of at least five percent. For example, assuming a stable labor share of income, this could be inflation of two percent and real output growth of three percent. Gross labor income growth of under five percent may reduce overall spending in the economy. 
 
-Among measures of overall economic activity, gross labor income has the added benefit that it can be calculated using multiple independent data sources. The measure can be calculated from timely measures such as nonfarm payrolls and average earnings, from compensation of employees data from BEA, or from more-comprehensive measures that reduce effects of composition, such as the employment cost index combined with the prime-age employment rate. 
+Gross labor income has the added benefit that it can be calculated using multiple independent data sources: timely measures such as nonfarm payrolls and average earnings, compensation of employees from BEA, or more comprehensive measures that reduce composition effects, such as the employment cost index combined with the prime-age employment rate. 
 
 \input{text/gli_nfp.txt}
 \end{minipage}
@@ -8934,7 +8889,7 @@ Among measures of overall economic activity, gross labor income has the added be
 \subsubsection*{Productivity-Pay Gap} 
 \begin{minipage}{0.76\textwidth}
 \index{productivity-pay gap}
-\small When analyzing the fall in labor share of income, it is useful to consider the \textbf{gap between labor productivity and pay}. Behind long-term output growth is productivity growth and population growth. \input{text/payprod.txt}
+\small When analyzing the fall in labor share of income, it is useful to consider the \textbf{gap between labor productivity and pay}. Long-term output growth is driven by productivity growth and population growth. \input{text/payprod.txt}
 \vspace{0.5mm}
 
 \normalsize \textbf{Productivity-Pay Gap}\footnotesize
@@ -8984,7 +8939,7 @@ Among measures of overall economic activity, gross labor income has the added be
 \footnotesize{Data notes: Net labor productivity is real net domestic product divided by total hours worked from the CPS. Average wages and salaries is from the ECI, and covers all civilian workers. Median usual weekly earnings from the CPS cover full-time civilian wage and salary workers. Average wages are deflated using the PCE price index and median wages are deflated with the CPI.}
 \vspace{1mm}
 
-\small More-complete \href{https://www.epi.org/productivity-pay-gap/}{analysis} finds that the productivity-pay gap emerged around 1979; between World War II and 1979, employee compensation kept pace with productivity growth. Researchers argue that the post-1979 gap is tied to policies that weaken unions and reduce bargaining power for the typical worker. 
+\small More complete \href{https://www.epi.org/productivity-pay-gap/}{analysis} finds that the productivity-pay gap emerged around 1979; between World War II and 1979, employee compensation kept pace with productivity growth. Researchers argue that the post-1979 gap is tied to policies that weaken unions and reduce bargaining power for the typical worker. 
 \end{minipage}
 \newpage
 \vspace*{-12mm}
@@ -9289,7 +9244,7 @@ Economists are interested in both the overall employment rate and in the employm
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{epop.csv}
 \vspace{3mm} \index{employment!prime-age}
 
-\small As discussed in the household section, population aging reduces the US employment rate. To examine macroeconomic conditions separate from demographic developments, BLS reports the employment rate for a narrower age group, specifically, those age 25 to 54. This group has the highest employment rate and is sometimes referred to as the ``prime'' age for employment. 
+\small As discussed in the household section, population aging reduces the US employment rate. To examine macroeconomic conditions separate from demographic developments, BLS \href{https://data.bls.gov/timeseries/LNS12300000}{reports} the employment rate for a narrower age group, specifically, those age 25 to 54. This group has the highest employment rate and is sometimes referred to as the ``prime'' age for employment. 
 
 The \textbf{age 25 to 54 employment rate} is an important measure of labor market utilization. In a tight labor market, the age group is employed at a very high rate. \input{text/epop_text.txt} 
 \vspace{1mm}
@@ -9854,7 +9809,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \begin{minipage}{0.76\textwidth} \index{unemployment!by metro area}
 \vspace{-1mm}
 
-\small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{produce} local area estimates of unemployment, including the \textbf{unemployment rate for metro areas}. The following map shows changes since 2019 in metro area unemployment rates. An increase in the unemployment rate is shown by a blue circle and a decrease is shown by a light green circle; circle size is the magnitude of the change. 
+\small The Bureau of Labor Statistics \href{https://www.bls.gov/lau/}{produces} local area estimates of unemployment, including the \textbf{unemployment rate for metro areas}. The following map shows changes since 2019 in metro area unemployment rates. An increase in the unemployment rate is shown by a blue circle and a decrease is shown by a light green circle; circle size is the magnitude of the change. 
 
 \input{text/msa_unemp_ch_n.txt}
 \end{minipage}
@@ -9956,7 +9911,7 @@ Initial claims for unemployment insurance are a leading indicator of labor marke
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
-\small The Labor Department additionally report continued claims for UI, also referred to as insured unemployment. Insured unemployment is the number of people receiving UI benefits during a given week. 
+\small The Labor Department additionally reports continued claims for UI, also referred to as insured unemployment. Insured unemployment is the number of people receiving UI benefits during a given week. 
 \end{minipage}
 
 \begin{minipage}{0.41\textwidth}
@@ -10260,7 +10215,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \subsection*{Labor Force Flows}
 \hypertarget{labf}{\label{labf}}
 \begin{minipage}{0.76\textwidth}  \index{labor force participation!nonparticipants} \index{labor force flows} \index{employment!separations} \index{employment!hires}
-\small Previous subsections cover labor force status, looking at the labor market activities of the population. This subsection looks at the movement of people between different labor market activities, referred to as \textbf{labor force flows}. The subsection discusses job openings and hires, separations, including layoffs and quits, and job switching.  
+\small This subsection covers \textbf{labor force flows}--the movement of people between jobs and in and out of employment. Topics include job openings, hires, separations (including layoffs and quits), and job switching.  
 \end{minipage}
 \vspace{1mm}
 
@@ -10714,7 +10669,7 @@ Likewise, wage measures come with caveats. For example, both average and median 
 \end{minipage}
 
 \begin{minipage}{0.385\textwidth}
-\small Illustrating the composition effect, several measures show nominal one-year wage growth of three to four percent during 2018 and 2019. During the COVID-19 recession in 2020, average hourly earnings (AHE) growth (see \color{magenta}{---}\color{black}) jumps to eight percent, while wage growth is stable when tracked (WGT) at the level of individuals (see \color{blue}\textbf{- -}\color{black}), or calculated from the industry- and occupation-adjusted employment cost index (ECI, see \color{violet}\textbf{---}\color{black}).
+\small Illustrating the composition effect, several measures show nominal one-year wage growth of three to four percent during 2018 and 2019. During the COVID-19 recession in 2020, average hourly earnings (AHE) growth (see \color{magenta}{---}\color{black}) jumped to eight percent, while wage growth was stable when tracked (WGT) at the level of individuals (see \color{blue}\textbf{- -}\color{black}), or calculated from the industry- and occupation-adjusted employment cost index (ECI, see \color{violet}\textbf{---}\color{black}).
 
 In the latest data, \input{text/wage_rec_summary.txt}
 \end{minipage} \hspace{4mm} \begin{minipage}{0.335\textwidth}
@@ -10937,7 +10892,7 @@ In the latest data, \input{text/wage_rec_summary.txt}
 \normalsize{Wages and Education}
 \vspace*{-1mm}
 
-\small The US has increasingly invested in education, boosting productivity and earnings. This subsection discusses the relationship between \textbf{wages and education}, over the long-term and in recent data. 
+\small The US has increasingly invested in education, boosting productivity and earnings. This subsection discusses the relationship between \textbf{wages and education}, over the long term and in recent data. 
 
 \input{text/educ_wage1.txt}\input{text/lprod_rw_educ.txt}
 
@@ -11370,7 +11325,7 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 \normalsize Zero Wage Change
 \vspace*{-0.5mm}
 
-\small By observing the same person's wage at two points in time, one year apart, we see how many people do not receive a wage increase. The Atlanta Fed measures this as the share of individuals who have one-year hourly wage growth of between -0.5 and 0.5 percent. The Atlanta Fed approach is replicated using CPS data, and smoothed with a three-month moving average. 
+\small By observing the same person's wage at two points in time, one year apart, we see how many people do not receive a wage increase. The Atlanta Fed measures zero wage change as the share of individuals who have one-year hourly wage growth of between -0.5 and 0.5 percent. The Atlanta Fed approach is replicated using CPS data, and smoothed with a three-month moving average. 
 
 \input{text/atl_zwc.txt}
 \vspace{1mm}
@@ -11656,7 +11611,7 @@ Trends emerge when comparing between the aggregate hours measures. Production an
 \footnotesize{Source: Bureau of Labor Statistics} \hfill \tbllink{lprod.csv}
 \vspace{1mm}
 
-\small In the short-term, productivity growth is affected by changes in the composition of the workforce, and by volatility in both the number of hours worked and in production. In the longer-term, the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, affects productivity growth. Such investment allows more goods and services to be produced by the same hours of work. Yet efforts to stimulate business investment directly through reducing corporate income taxes do not seem to have worked. 
+\small In the short term, productivity growth is affected by changes in the composition of the workforce, and by volatility in both the number of hours worked and in production. In the longer term, the level of business net investment in equipment and other capital goods, particularly relative to the size of the workforce, affects productivity growth. Such investment allows more goods and services to be produced by the same hours of work. Yet efforts to stimulate business investment directly through reducing corporate income taxes do not seem to have worked. 
 
 One theory of what drives medium-term trends, called the \textit{Kaldor-Verdoorn Law}, states that demand, and the capacity to meet that demand, determine productivity growth. An economy facing real resource constraints, where demand for goods and services exceeds the capacity to provide these services, is more likely to find ways to produce goods and services more efficiently. As one example, businesses invest more in labor-saving technologies when faced with a tight labor market. 
 \end{minipage}
@@ -11803,7 +11758,7 @@ The US financial markets also provide information that is helpful for macroecono
 
 The next charts show the most recent three months of developments. The top chart shows the S\&P 500 stock market index open, close, daily high, and daily low. The middle chart is the stock market volatility index (VIX), which will spike when people expect swings in stock prices. 
 
-Finally, treasury yields indicate expected future interest rates, which themselves capture expected future inflation and growth. Each of these indicators is discussed in more depth later in this chartbook section. 
+Finally, treasury yields indicate expected future interest rates, which in turn reflect expected future inflation and growth. Each of these indicators is discussed in more depth later in this chartbook section. 
 \end{minipage}
 \vspace{0.5mm}
 
@@ -11878,7 +11833,9 @@ In the US, several stock market indices track the share price of a basket of com
     	height=4.0cm, clip=false, xticklabels=\empty, xtick style={draw=none},
     	date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01},
     	xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt}]
-	\nextgroupplot[\bbar{y}{0}, \empticks ytick={0, 2, 4, 6}, 
+	\nextgroupplot[\bbar{y}{0},
+		xmax={\xmaxdate},
+		ytick={0, 2, 4, 6},
 		enlarge y limits={value=0.16,upper}, ymin=0, yticklabel style={text width=1.2em}, 
 		width=8.0cm, xmin={1989-01-01}]
 	\begin{pgfonlayer}{background layer}
@@ -12001,7 +11958,7 @@ In the US, several stock market indices track the share price of a basket of com
 
 \subsubsection*{Real Return}
 \begin{minipage}{0.76\textwidth} \index{equity markets} \index{S\&P 500}
-\small Next, for the typical investor saving for retirement, long-term and inflation-adjusted returns are particularly important. Over the long-term, US equities markets have traditionally returned around seven percent per year, after adjusting for inflation. 
+\small Next, for the typical investor saving for retirement, long-term and inflation-adjusted returns are particularly important. Over the long term, US equities markets have traditionally returned around seven percent per year, after adjusting for inflation. 
 
 \input{text/sp500rr.txt}  
 \vspace{2mm}
@@ -12072,7 +12029,7 @@ In the US, several stock market indices track the share price of a basket of com
 \begin{minipage}{0.76\textwidth} \index{equity markets} \index{S\&P 500}
 \small As seen above, investors achieve returns through price appreciation and dividends. Corporations, likewise, can return money to shareholders with dividends, or by repurchasing shares of their own stock. These share buybacks increase the share price, allowing investors to sell their shares at the higher price. 
 
-Investors like that share buybacks allow flexibility on the timing of tax payments. Dividends generate tax liabilities when the dividend is issued; share buybacks generate tax liabilities when the shares are sold. Additionally, corporations may prefer share buybacks over higher dividends because cutting dividends in the future would be viewed negatively. 
+Investors favor share buybacks in part because dividends generate tax liabilities when issued, while buybacks defer taxes until shares are sold. Corporations may also prefer buybacks because cutting dividends in the future would be viewed negatively. 
 
 The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track} the \textbf{total payout from corporate equities}, which includes dividends and share buybacks. \input{text/eq_payout.txt}
 \vspace{1mm}
@@ -12164,7 +12121,7 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \vspace{2mm}
 
 \begin{minipage}{0.76\textwidth}
-\small A second measure, Tobin's Q, is the ratio of market value to replacement value. A ratio below 100 means the market value is below the replacement value and stocks may be undervalued. A ratio above 100 means the market value is above the replacement cost and stocks may be overvalued. \input{text/tobinq.txt} 
+\small A second measure, Tobin's Q, is the ratio of market value to replacement cost. A ratio below 100 suggests stocks may be undervalued; a ratio above 100 suggests they may be overvalued. \input{text/tobinq.txt} 
 \vspace{3mm}
 
 \hypertarget{capvol}{\label{capvol}}
@@ -12201,9 +12158,9 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \subsection*{Interest Rates}
 \begin{minipage}{0.76\textwidth} \index{interest rates!Fed funds rate} \index{Federal Reserve} \index{monetary policy} \index{mortgage rate} \index{interest rates!treasuries}
 \hypertarget{capint}{\label{capint}}
-\small Interest rates influence the cost of borrowing money and economic activity broadly, and have an important role in economic policy. Spending and investing activities are affected in part by changes in interest rates, which affect borrowing costs and investment returns. Changes in interest rates also result in changes in asset prices and exchange rates, which in turn influence demand. 
+\small Interest rates influence the cost of borrowing and economic activity broadly, playing an important role in economic policy. Changes in rates affect borrowing costs, investment returns, asset prices, and exchange rates, all of which influence spending and demand.
 
-Because of the effect interest rates have on demand, monetary policy in the US uses interest rates to influence economic conditions. \textbf{The Federal Reserve sets a base interest rate which affects other interest rates}. Interest rates tend to move together alongside the interest rate policy of the Federal Reserve, though the spread between different types of interest rates is also important. The following chart compares recent interest rates for selected assets and markets. 
+Because of this broad influence, the Federal Reserve uses interest rates to manage economic conditions. \textbf{The Federal Reserve sets a base rate which affects rates throughout the economy}. Rates tend to move together in response to Federal Reserve policy, though the spread between different types is also important. The following chart compares recent rates for selected assets and markets. 
 \end{minipage}
 \vspace{1.5mm}
 
@@ -12256,7 +12213,7 @@ Banks pay lower rates on deposits and charge higher rates for loans. The gap bet
 \end{tikzpicture}
 \vspace{-6mm}
 
-\footnotesize{Source: Treasury, FDIC, Freddie Mac \\ More-recent market data, from \input{text/int_infl_chart_rec_date.txt}\unskip, are available for some series (see o).} 
+\footnotesize{Source: Treasury, FDIC, Freddie Mac \\ More recent market data, from \input{text/int_infl_chart_rec_date.txt}\unskip, are available for some series (see o).} 
 \end{minipage}
 \vspace{0.5mm}
 
@@ -12323,7 +12280,7 @@ One formulation of the Taylor rule is shown below (see {\color{cyan!80!white}\te
 		enlarge x limits={0.01}, xtick/.expanded={\aeticks}, minor xtick/.expanded={\aoticks}, 
 		ytick={-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10}, 
 		yticklabel style={text width=1.2em}, height=4.9cm, 
-		width=13.0cm, xmax=2029-01-02,
+		width=13.0cm, xmax={2029-01-02},
 		xticklabel={`\short{\year}}, clip=false]
 	\begin{pgfonlayer}{background layer}
 		\rbars
@@ -12441,7 +12398,7 @@ One formulation of the Taylor rule is shown below (see {\color{cyan!80!white}\te
 \normalsize Yield Curve
 \vspace*{-1mm}
 
-\small The yield curve plots the interest rates of US Treasury bills and bonds from shortest to longest duration. It summarizes the term structure of interest rates---how much it costs to borrow for different periods of time---and is considered an indicator of how markets view short-term economic conditions relative to longer-term conditions. 
+\small The \textbf{yield curve} plots the \href{https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yield}{interest rates} of US Treasury bills and bonds from shortest to longest duration. It summarizes the term structure of interest rates---how much it costs to borrow for different periods of time---and is considered an indicator of how markets view short-term economic conditions relative to longer-term conditions. 
 
 The yield curve is normally upward sloping as investors expect to be compensated for lending for a longer period of time. The shape of the yield curve changes over time and is affected by several factors, including the term premium, Federal Reserve policy, and expectations about future inflation. The curve can become steeper, for example, if interest rates or inflation is expected to be higher in the future. 
 \end{minipage}
@@ -12612,8 +12569,17 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \pgfdeclarelayer{foreground layer}
 \pgfsetlayers{background layer,main,foreground layer}
 \hspace{2mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \projdateaxisticks max space between ticks=20,
-		clip=false, yticklabel style={text width=1.3em}, enlarge y limits={0.1}, 
+	\begin{axis}[\bbar{y}{0},
+		date coordinates in=x, axis line style={draw=none},
+		xmax={\xmaxproj}, max space between ticks=40,
+		xtick={{2013-01-01}, {2014-01-01}, {2015-01-01}, {2016-01-01},
+			{2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01}, {2021-01-01},
+			{2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
+		    {2026-01-01}, {2027-01-01}, {2028-01-01}, {2029-01-01}},
+		enlarge x limits={0.01},
+		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
+		max space between ticks=20,
+		clip=false, yticklabel style={text width=1.3em}, enlarge y limits={0.1},
 		xticklabel={`\short{\year}}, width=7.7cm, height=6.0cm]
 	\begin{pgfonlayer}{background layer}
 		\rbar
@@ -12634,7 +12600,7 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \vspace{1mm}
 
 \begin{minipage}{0.76\textwidth}
-\small Next, two techniques are used to identify real yields for longer-term treasury bonds. \input{text/real_rates_basic.txt} 
+\small Next, two techniques identify real yields for longer-term treasury bonds. \input{text/real_rates_basic.txt} 
 
 The market-based approach has limitations, as the market for inflation-protected Treasury bonds is relatively small and can be influenced by monetary policy. The Cleveland Fed model estimates real yields across the term structure, using a model based on treasury yields, inflation, and financial-market- and survey-based information.
 
@@ -12824,7 +12790,7 @@ The market-based approach has limitations, as the market for inflation-protected
 \end{minipage}
 \vspace{1mm}
 
-A large increase in the amount of money held by individuals and institutions can be the result of a higher rate of saving, a larger government sector financial deficit, an increase in the money supply, a change in preferences for liquidity, or something else.
+A large increase in money holdings relative to economic activity can reflect a higher rate of saving, a larger government deficit, Federal Reserve asset purchases, or a shift in preferences toward liquid assets.
 
 \input{text/m2chg.txt}
 \vspace{1mm}
@@ -12928,7 +12894,7 @@ A large increase in the amount of money held by individuals and institutions can
 \begin{minipage}{0.76\textwidth} 
 \vspace*{-2mm}
 
-\small The price of goods and services determines what can be purchased by a given income, affecting quality of life and the distribution of resources. Researchers are interested in overall purchasing power, as well as the price of individual goods and services.
+\small The price of goods and services determines what a given income can buy, affecting quality of life and the distribution of resources. Researchers are interested in overall purchasing power, as well as the price of individual goods and services.
 \end{minipage}
 
 \subsection*{Overview and Target}
@@ -13200,8 +13166,17 @@ Core inflation can be broken down into core goods, core services other than shel
 \vspace{4.5cm}
 
 \hspace{2mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \tydateaxisticks ytick={-4, -2, 0, 2, 4, 6, 8}, 
-		height=6.5cm, width=13.0cm, ymax=7.5, enlarge x limits={0.01}, 
+	\begin{axis}[\bbar{y}{0},
+		date coordinates in=x, axis line style={draw=none},
+		xmax={\xmaxdate}, max space between ticks=40,
+		xtick={{2011-01-01}, {2012-01-01}, {2013-01-01},
+		 {2014-01-01}, {2015-01-01},
+		 {2016-01-01}, {2017-01-01}, {2018-01-01}, {2019-01-01}, {2020-01-01},
+		 {2021-01-01}, {2022-01-01}, {2023-01-01}, {2024-01-01}, {2025-01-01},
+		    {2026-01-01}},
+		enlarge y limits={0.06}, enlarge x limits={0.01},
+		ytick={-4, -2, 0, 2, 4, 6, 8},
+		height=6.5cm, width=13.0cm, ymax=7.5,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		yticklabel style={text width=1.0em}, clip=false,
         xticklabel={`\short{\year}}, legend cell align={left},
@@ -13490,9 +13465,9 @@ One-year inflation rates for different categories of goods and services, includi
 
 \subsubsection*{Destination of Inflation} \index{inflation destination} \index{corporate profits}
 \begin{minipage}{0.76\textwidth}
-\small Inflation creates winners and losers and affects the distribution of resources in society. Detailed accounting in the corporate sector sheds light on the destination of recent inflation, relative to the past. The next chart compares the destination of inflation during 1989--2019 (see \tikz \draw [fill=gray!40!white, draw=gray] (0cm,-0.08cm) rectangle (0.2cm,0.12cm); \hspace{-0.5mm}) and from 2020 onward (see \tikz \draw [fill=violet!90!blue!70!white] (0cm,-0.08cm) rectangle (0.2cm,0.12cm); \hspace{-0.5mm}).  
+\small Inflation redistributes resources, creating winners and losers. Corporate accounting data reveals where recent price increases have gone compared with the past. The next chart compares the destination of inflation during 1989--2019 (see \tikz \draw [fill=gray!40!white, draw=gray] (0cm,-0.08cm) rectangle (0.2cm,0.12cm); \hspace{-0.5mm}) and from 2020 onward (see \tikz \draw [fill=violet!90!blue!70!white] (0cm,-0.08cm) rectangle (0.2cm,0.12cm); \hspace{-0.5mm}).  
 
-When corporations increase prices on goods and services, the increased revenue can end up as higher wages, go towards non-labor inputs such as materials, equipment, and energy costs, or become higher corporate profits. In the past, economists associated inflation with higher unit labor costs, as workers were more likely to have contractual cost of living adjustments through unions. 
+When corporations raise prices, the added revenue flows to one of three places: higher wages, non-labor input costs (materials, equipment, energy), or corporate profits. In the past, economists associated inflation with higher unit labor costs, as workers were more likely to have contractual cost of living adjustments through unions. 
 \end{minipage}
 \vspace{1mm}
 
