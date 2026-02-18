@@ -306,6 +306,30 @@ def m6rate(series):
               ** 2) - 1) * 100).dropna(how='all')
               
                   
+def csv_round(df):
+    """Round each numeric column to its natural precision.
+
+    Detects the minimum decimal places needed per column to preserve
+    all values, stripping only IEEE 754 representation noise.
+    Caps at 4 decimal places.
+    """
+    precision = {}
+    for col in df.select_dtypes(include=[np.number]).columns:
+        vals = df[col].dropna()
+        vals = vals[vals != 0]
+        if len(vals) == 0:
+            precision[col] = 0
+            continue
+        for n in range(0, 5):
+            rel_err = ((vals.round(n) - vals) / vals.abs().clip(lower=1e-15)).abs()
+            if rel_err.max() < 1e-6:
+                precision[col] = n
+                break
+        else:
+            precision[col] = 4
+    return df.round(precision)
+
+
 def write_txt(filename, filetext):
     ''' Write label to txt file '''
     with open(filename, 'w') as text_file:
