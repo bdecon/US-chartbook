@@ -732,9 +732,35 @@ def node_adj(df):
     r = df.iloc[-1].sort_values()
     u = (df.max().max() - df.min().min()) / 16
     if len(df.columns) >= 4:
-        if len(r.diff(3)[r.diff(3) < (u*3)]) > 0:
-            print('Too many nodes conflicting, '+
-                  'no results returned')
+        if (r.diff().dropna() < u).any():
+            # General spread for 4+ series with overlapping labels
+            vals = r.values.copy().astype(float)
+            names = list(r.index)
+            orig = vals.copy()
+
+            # Identify clusters of close values
+            clusters = []
+            cluster_start = 0
+            for i in range(1, len(vals)):
+                if orig[i] - orig[i-1] >= u:
+                    clusters.append(list(range(cluster_start, i)))
+                    cluster_start = i
+            clusters.append(list(range(cluster_start, len(vals))))
+
+            # Spread each cluster evenly around its original midpoint
+            for cluster in clusters:
+                if len(cluster) <= 1:
+                    continue
+                mid = (orig[cluster[0]] + orig[cluster[-1]]) / 2
+                span = (len(cluster) - 1) * u
+                for j, idx in enumerate(cluster):
+                    vals[idx] = mid - span / 2 + j * u
+
+            # Convert displacements to cm offsets
+            scale = 0.35 / u
+            for i, name in enumerate(names):
+                offset = (vals[i] - orig[i]) * scale
+                d[name] = max(-0.5, min(0.5, offset))
             return d
     if len(df.columns) >= 3:
         t3 = r.diff(2)[r.diff(2) < (u*2)]
