@@ -2,7 +2,7 @@
 %
 %	U.S. Chartbook
 %	Brian W. Dew (brianwdew@gmail.com)
-%	Updated: January 16, 2026
+%	Updated: February 18, 2026
 %	GitHub repo contains to do list (issues)
 %   https://github.com/bdecon/US-chartbook
 %
@@ -16,7 +16,7 @@
 		\textcolor{green!70!blue}{\rule[-1pt]{9pt}{32pt}} \color{darkgray} US Chartbook}
 \vspace*{-16mm}
 
-\hspace{12mm} \footnotesize v0.1.6; Last updated: \today 
+\hspace{12mm} \footnotesize v0.1.7; Last updated: \today
 
 \vspace{6mm}
 
@@ -4211,94 +4211,79 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \vspace{3.2cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
-		dateaxis, 
-		enlarge x limits={0.01}, xtick/.expanded={\afticks},
+	\begin{groupplot}[
+		group style={group size=2 by 1, horizontal sep=18mm},
+		max space between ticks=20,
+		dateaxis, enlarge x limits={0.01}, xtick/.expanded={\afticks},
 		shortyear, clip=false, width=5.85cm, height=5cm,
 		yticklabel style={text width=2.2em, inner sep=0pt}, enlarge y limits=0, ymin=0, ymax=2900]
-	\rbars		
+	\nextgroupplot[\bbar{y}{0}]
+	\rbars
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits_totalq.csv}
 	\input{text/permits_node.txt}
-	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white,
 		draw=black!30!white, inner sep=3.0]
 		{\small Permits, Total};
-	\end{axis}
-\end{tikzpicture} \hspace{6.0cm}
-\begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
-		dateaxis, 
-		enlarge x limits={0.01}, xtick/.expanded={\afticks},
-		shortyear, clip=false, enlarge y limits=0, ymin=0, ymax=2900,
-		yticklabel style={text width=2.2em, inner sep=0pt}, width=5.85cm, height=5cm]
-	\rbars	
-	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_totalq.csv}	
+	\nextgroupplot[\bbar{y}{0}]
+	\rbars
+	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_totalq.csv}
 	\input{text/completions_node.txt}
-	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white,
 		draw=black!30!white, inner sep=3.0]
 		{\small Completions, Total};
-	\end{axis}
+	\end{groupplot}
 \end{tikzpicture}
 
 \vspace{3.5cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
-		dateaxis, 
-		enlarge x limits={0.01}, xtick/.expanded={\afticks},
+	\begin{groupplot}[
+		group style={group size=2 by 1, horizontal sep=18mm},
+		max space between ticks=20,
+		dateaxis, enlarge x limits={0.01}, xtick/.expanded={\afticks},
 		shortyear, clip=false, width=5.85cm, height=5cm,
 		yticklabel style={text width=2.2em, inner sep=0pt}, enlarge y limits=0, ymin=0, ymax=2300]
-	\rbars		
+	\nextgroupplot[\bbar{y}{0}]
+	\rbars
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits_singleq.csv}
 	\input{text/permits_single_node.txt}
-	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white,
 		draw=black!30!white, inner sep=3.0]
 		{\small Permits, Single-Family Units};
-	\end{axis}
-\end{tikzpicture} \hspace{6.0cm}
-\begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
-		dateaxis, 
-		enlarge x limits={0.01}, xtick/.expanded={\afticks},
-		shortyear, clip=false, enlarge y limits=0, ymin=0, ymax=2300,
-		yticklabel style={text width=2.2em, inner sep=0pt}, width=5.85cm, height=5cm]
-	\rbars	
-	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_singleq.csv}	
+	\nextgroupplot[\bbar{y}{0}]
+	\rbars
+	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_singleq.csv}
 	\input{text/completions_single_node.txt}
-	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white,
 		draw=black!30!white, inner sep=3.0]
 		{\small Completions, Single-Family Units};
-	\end{axis}
+	\end{groupplot}
 \end{tikzpicture}
 
 \vspace{3.5cm}
 
 \hspace{6mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=20, 
-		dateaxis, 
-		enlarge x limits={0.01}, xtick/.expanded={\afticks},
+	\begin{groupplot}[
+		group style={group size=2 by 1, horizontal sep=18mm},
+		max space between ticks=20,
+		dateaxis, enlarge x limits={0.01}, xtick/.expanded={\afticks},
 		shortyear, clip=false, width=5.85cm, height=5cm,
 		yticklabel style={text width=2.2em, inner sep=0pt}, enlarge y limits=0, ymin=0, ymax=1150]
-	\rbars		
+	\nextgroupplot[\bbar{y}{0}]
+	\rbars
 	\stdline{blue!70!green}{date}{APERMITS}{data/permits_multiq.csv}
 	\input{text/permits_multi_node.txt}
-	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white,
 		draw=black!30!white, inner sep=3.0]
 		{\small Permits, Multi-Family Units};
-	\end{axis}
-\end{tikzpicture} \hspace{6.0cm}
-\begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
-		dateaxis, 
-		enlarge x limits={0.01}, xtick/.expanded={\afticks},
-		shortyear, clip=false, enlarge y limits=0, ymin=0, ymax=1150,
-		yticklabel style={text width=2.2em, inner sep=0pt}, width=5.85cm, height=5cm]
-	\rbars	
-	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_multiq.csv}	
+	\nextgroupplot[\bbar{y}{0}]
+	\rbars
+	\stdline{blue!30!cyan}{date}{ACOMPLETIONS}{data/permits_multiq.csv}
 	\input{text/completions_multi_node.txt}
-	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white, 
+	\node[below, align=left, shift=({rel axis cs:0.0,0.98}), anchor=west, fill=white,
 		draw=black!30!white, inner sep=3.0]
 		{\small Completions, Multi-Family Units};
-	\end{axis}
+	\end{groupplot}
 \end{tikzpicture}
 \vspace{1mm}
 
@@ -5388,40 +5373,32 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \normalsize \textbf{Recent Data in Detail}
 \vspace*{-1mm} 
 
-\hspace*{-4mm} \begin{tikzpicture} 
-	\pgfplotstableread[col sep=comma]{data/indprogr_rec.csv}\ipmo
-	\begin{axis}[\bbar{y}{0}, 
+\pgfplotstableread[col sep=comma]{data/indprogr_rec.csv}\ipmo
+\hspace*{-4mm} \begin{tikzpicture}
+	\begin{groupplot}[
+		group style={group size=2 by 1, horizontal sep=10mm},
 		dateaxis,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		clip=false, width=6.7cm, height=5.2cm, 
-		yticklabel style={text width=1.5em}, xtick=data, 
-		xticklabels from table={\ipmo}{label}, 
-		minor xtick/.expanded={\aticks}, minor tick length=7pt, 
-		enlarge y limits=0.14, enlarge x limits=0.03] 
-	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.03) 
+		clip=false, width=6.7cm, height=5.2cm,
+		yticklabel style={text width=1.5em}, xtick=data,
+		xticklabels from table={\ipmo}{label},
+		minor xtick/.expanded={\aticks}, minor tick length=7pt,
+		enlarge y limits=0.14, enlarge x limits=0.03]
+	\nextgroupplot[\bbar{y}{0}]
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.03)
 		{\small Market Group};
-	\ctsbar{violet!70!purple!90!black}{date}{Consumer goods}{\ipmo}{4.8pt} 
-	\ctsbar{magenta}{date}{ENS}{\ipmo}{4.8pt} 
-	\ctsbar{orange!75!yellow}{date}{Non-energy materials}{\ipmo}{4.8pt} 
-	\ctsbar{blue!70!violet}{date}{Energy materials}{\ipmo}{4.8pt} 
-	\end{axis}
-\end{tikzpicture} \hspace{2mm}
-\begin{tikzpicture} 
-	\pgfplotstableread[col sep=comma]{data/indprogr_rec.csv}\ipmo
-	\begin{axis}[\bbar{y}{0}, 
-		dateaxis,
-		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		clip=false, width=6.7cm,  
-		height=5.2cm, xtick=data, xticklabels from table={\ipmo}{label},
-		minor xtick/.expanded={\aticks}, minor tick length=7pt, 
-		yticklabel style={text width=1.5em}, enlarge y limits=0.14, enlarge x limits=0.03] 
-	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.03) 
+	\ctsbar{violet!70!purple!90!black}{date}{Consumer goods}{\ipmo}{4.8pt}
+	\ctsbar{magenta}{date}{ENS}{\ipmo}{4.8pt}
+	\ctsbar{orange!75!yellow}{date}{Non-energy materials}{\ipmo}{4.8pt}
+	\ctsbar{blue!70!violet}{date}{Energy materials}{\ipmo}{4.8pt}
+	\nextgroupplot[\bbar{y}{0}]
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.03)
 		{\small Industry Group};
-	\ctsbar{blue!62!black}{date}{Durable manufacturing}{\ipmo}{4.8pt} 
-	\ctsbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{\ipmo}{4.8pt} 
-	\ctsbar{orange!30!yellow}{date}{Mining}{\ipmo}{4.8pt} 
+	\ctsbar{blue!62!black}{date}{Durable manufacturing}{\ipmo}{4.8pt}
+	\ctsbar{blue!20!cyan!80!white}{date}{Nondurable manufacturing}{\ipmo}{4.8pt}
+	\ctsbar{orange!30!yellow}{date}{Mining}{\ipmo}{4.8pt}
 	\ctsbar{green!70!blue}{date}{Electric and gas utilities}{\ipmo}{4.8pt}
-	\end{axis} 
+	\end{groupplot}
 \end{tikzpicture}\\
 \chartsource{Federal Reserve}{indprogr_rec.csv}
 \end{minipage}
@@ -5718,10 +5695,9 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 \hspace{3mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[
 		group style={group size=2 by 1, horizontal sep=12mm},
-		\bbar{y}{0}, dateaxis,
-		enlarge x limits={0.01}, ticks5yr,
+		dateaxis, enlarge x limits={0.01}, ticks5yr,
 		shortyear, height=5.3cm, clip=false]
-	\nextgroupplot[enlarge y limits={0.12},
+	\nextgroupplot[\bbar{y}{0}, enlarge y limits={0.12},
 		yticklabel style={text width=1.3em, inner sep=1.0pt}, width=6.1cm]
 	\bglayer{\rebars}
 	\thickline{blue}{date}{GDP}{data/rs_shq.csv}
@@ -5731,7 +5707,7 @@ Retail and food service sales, \textbf{adjusted for population growth and inflat
 	\absnode{{1995-01-01}}{35.0}{\footnotesize \color{blue}GDP}
 	\absnode{{2012-07-01}}{38}{\footnotesize \color{green!60!black}DPI}
 	\absnode{{2012-01-01}}{46.5}{\footnotesize \color{cyan}PCE}
-	\nextgroupplot[ymin=0, enlarge y limits={0.1, upper},
+	\nextgroupplot[\bbar{y}{0}, ymin=0, enlarge y limits={0.1, upper},
 		yticklabel style={text width=2.2em, inner sep=1.0pt},
 		max space between ticks=20, width=5.5cm]
 	\bglayer{\rebars}
