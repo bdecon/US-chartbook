@@ -70,6 +70,7 @@
 	% Header and footer
 
 	\pagestyle{fancy}
+	\setlength{\headheight}{12.10004pt}
 	\fancyhf{}
 	\renewcommand{\headrulewidth}{0pt}
 	\fancyhead[R]{\rightmark}
@@ -121,9 +122,9 @@
 
 	% Table of Contents entry
 	\newcommand{\tocentry}[2]{\item \seriffont {#2}
-		 \  \  \  \  \  \footnotesize \hyperlink{#1}{\textit{\pageref*{#1}}} \normalsize}
+		 \  \  \  \  \  \footnotesize \hyperlink{#1}{\pageref*{#1}} \normalsize}
 	\newcommand{\tocentsm}[2]{\item \small {#2}
-		 \  \  \  \  \  \footnotesize \hyperlink{#1}{\textit{\pageref*{#1}}} \normalsize}
+		 \  \  \  \  \  \footnotesize \hyperlink{#1}{\pageref*{#1}} \normalsize}
 
 	% Last two digits of year
 	\makeatletter
@@ -160,6 +161,11 @@
 		\addplot[ybar stacked, bar width=2.25pt, draw opacity=0, fill=#1]
 			table [x=#2, y=#3, col sep=comma]{#4};}
 
+	% stacked diverging bar (preloaded table)
+	\newcommand{\sbarT}[4]{
+		\addplot[ybar stacked, bar width=2.25pt, draw opacity=0, fill=#1]
+			table [x=#2, y=#3]{#4};}
+
 	% stacked diverging bar area legend
 	\newcommand{\sbaral}[4]{
 		\addplot[ybar stacked, bar width=2.25pt, draw opacity=0, fill=#1, area legend]
@@ -175,11 +181,22 @@
 		\addplot[ybar stacked, bar width=#5, draw opacity=0, fill=#1]
 			table [x=#2, y=#3, col sep=comma]{#4};}
 
+	% custom width stacked diverging bar (preloaded table)
+	\newcommand{\ctsbarT}[5]{
+		\addplot[ybar stacked, bar width=#5, draw opacity=0, fill=#1]
+			table [x=#2, y=#3]{#4};}
+
 	% area plot segment
 	\newcommand{\abar}[4]{
 		\addplot[stack plots=y, draw=none, fill=#1, legend image code/.code={
     \draw [#1] (0cm,-0.08cm) rectangle (0.2cm,0.12cm); }]
 			table [x=#2, y=#3, col sep=comma]{#4}\closedcycle;}
+
+	% area plot segment (preloaded table)
+	\newcommand{\abarT}[4]{
+		\addplot[stack plots=y, draw=none, fill=#1, legend image code/.code={
+    \draw [#1] (0cm,-0.08cm) rectangle (0.2cm,0.12cm); }]
+			table [x=#2, y=#3]{#4}\closedcycle;}
 
 	% text node
 	\newcommand{\stdnode}[3]{\node[below, align=left, shift=({#1,#2})]{#3};}
@@ -301,6 +318,10 @@
 	\newcommand{\stdline}[4]{\addplot[very thick, no markers, color=#1]
 		table [x=#2, y=#3, col sep=comma] {#4};	}
 
+	% Standard line (preloaded table)
+	\newcommand{\stdlineT}[4]{\addplot[very thick, no markers, color=#1]
+		table [x=#2, y=#3] {#4};	}
+
 	% Thin line
 	\newcommand{\thinline}[4]{\addplot[no markers, color=#1]
 		table [x=#2, y=#3, col sep=comma] {#4};	}
@@ -318,6 +339,10 @@
 	% Thicker line
 	\newcommand{\thickline}[4]{\addplot[ultra thick, no markers, color=#1]
 		table [x=#2, y=#3, col sep=comma] {#4};	}
+
+	% Thicker line (preloaded table)
+	\newcommand{\thicklineT}[4]{\addplot[ultra thick, no markers, color=#1]
+		table [x=#2, y=#3] {#4};	}
 
 	% Even Thicker line
 	\newcommand{\vthickline}[4]{\addplot[line width=2.5pt, no markers, color=#1]
