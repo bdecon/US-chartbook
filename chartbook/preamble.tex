@@ -5,7 +5,7 @@
 % % % % % % Packages % % % % % % % % %
 %
 
-	\usepackage[letterpaper, margin=1.18in]{geometry}
+	\usepackage[letterpaper, margin=1.1in]{geometry}
 	\usepackage{microtype}
 	\usepackage[default]{lato}
 	\usepackage{pgfplots, pgfplotstable}
@@ -13,6 +13,20 @@
 	\usepackage[eulergreek]{sansmath}
 	\usepackage{amssymb}
 	\usepackage{xcolor}
+
+	% Named chart colors
+	\colorlet{amber}{orange!80!yellow}
+	\colorlet{darkblue}{blue!80!black}
+	\colorlet{navyblue}{blue!70!black}
+	\colorlet{steelblue}{blue!60!black}
+	\colorlet{tealgreen}{green!80!blue}
+	\colorlet{forestgreen}{green!60!black}
+	\colorlet{skyblue}{blue!50!cyan}
+	\colorlet{lightcyan}{cyan!80!white}
+	\colorlet{darkgray}{black!80!white}
+	\colorlet{midgray}{black!40!white}
+	\colorlet{paleblue}{cyan!60!white}
+
 	\usepackage{array}
 	\usepackage{fontawesome5}
 	\usepackage{imakeidx}
@@ -226,8 +240,8 @@
 		 \end{tabular}}}
 
 	% Centralized end-date for chart x-axes (update once when data refreshes)
-	\newcommand{\xmaxdate}{2026-02-28}
-	\newcommand{\xmaxproj}{2029-02-28}
+	\newcommand{\xmaxdate}{2026-03-31}
+	\newcommand{\xmaxproj}{2029-03-31}
 
 	% Date (X) Axis Tick Marks, every even year labeled, odd years minor
 	\newcommand{\dateaxisticks}{

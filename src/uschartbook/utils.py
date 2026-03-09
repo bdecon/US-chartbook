@@ -351,7 +351,7 @@ def write_tbl(filename, df, header=True, index=True):
     # Strip negative zeros (e.g. -0.00 -> 0.00)
     with open(filename, 'rb') as f:
         tbl = f.read()
-    tbl = re.sub(rb'-0(\.0+)', rb'0\1', tbl)
+    tbl = re.sub(rb'-0(\.0+)(?![0-9])', rb'0\1', tbl)
     with open(filename, 'wb') as f:
         f.write(tbl)
 
@@ -944,13 +944,13 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     		   else 'nearly ' if casual == False else 'almost ')
     
     if style in ['increase', 'increase_by', 'gain', 'return']:
-        atxtd = {None: ' by ', 'sa': ' at a seasonally-adjusted rate of ', 
+        atxtd = {None: ' by ', 'sa': ' at a seasonally adjusted rate of ', 
                  'annual': ' at an annual rate of ', 
                  'annualized': ' at an annualized rate of ', 
                  'average_annualized': ' at an average annualized rate of ',
                  'avg_ann': ' at an average annualized rate of ',
-                 'saa': ' at a seasonally-adjusted and annualized rate of ', 
-                 'saar': ' at a seasonally-adjusted annualized rate of ', 
+                 'saa': ' at a seasonally adjusted and annualized rate of ', 
+                 'saar': ' at a seasonally adjusted annualized rate of ', 
                  'total': ' by a total of ', 
                  'inflation': ' the inflation rate by ',
                  'average': ' at an average rate of ',
@@ -977,13 +977,13 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                 text = 'were unchanged'
             
     if style in ['contribution', 'contribution_to']:
-        atxtd = {None: '', 'sa': ' on a seasonally-adjusted basis', 
+        atxtd = {None: '', 'sa': ' on a seasonally adjusted basis', 
                  'annual': ' on an annual basis', 
                  'annualized': ' on an annualized-basis', 
                  'average_annualized': ' on an average annualized basis ',
                  'avg_ann': ' on an average and annualized rate basis ',
-                 'saa': ' on a seasonally-adjusted and annualized basis', 
-                 'saar': ' on a seasonally-adjusted annualized basis', 
+                 'saa': ' on a seasonally adjusted and annualized basis', 
+                 'saar': ' on a seasonally adjusted annualized basis', 
                  'total': ' in total',
                  'average': ' on an average basis'}
         atxt = atxtd[adj]
@@ -1012,13 +1012,13 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             stxt2 = 'a gain' if neg == False else 'a loss'             
         if time_str != '':
             stxt2 = f'a {time_str}{stxt1}'
-        atxtd = {None: f'{stxt2} of', 'sa': f'a seasonally-adjusted {time_str}{stxt1} of', 
+        atxtd = {None: f'{stxt2} of', 'sa': f'a seasonally adjusted {time_str}{stxt1} of', 
                  'annual': f'an annual {time_str}{stxt1} of', 
                  'annualized': f'an annualized {time_str}{stxt1} of', 
                  'average_annualized': f' an average annualized {time_str}{stxt1} of',
                  'avg_ann': f' an average annualized {time_str}{stxt1} of',
-                 'saa': f'a seasonally-adjusted and annualized {time_str}{stxt1} of', 
-                 'saar': f'a seasonally-adjusted annualized {time_str}{stxt1} of', 
+                 'saa': f'a seasonally adjusted and annualized {time_str}{stxt1} of', 
+                 'saar': f'a seasonally adjusted annualized {time_str}{stxt1} of', 
                  'total': f'a total {time_str}{stxt1} of',
                  'average': f'an average {time_str}{stxt1} of'}
         atxt = atxtd[adj]
@@ -1033,13 +1033,13 @@ def value_text(value, style='increase', ptype='percent', adj=None,
         stxt = 'increase' if neg == False else 'decrease'
         if style == 'contribution_end':
             stxt = 'contribution' if neg == False else 'subtraction'
-        atxtd = {None: f'{indef} ', 'sa': 'a seasonally-adjusted ', 
+        atxtd = {None: f'{indef} ', 'sa': 'a seasonally adjusted ', 
                  'annual': 'an annual ', 
                  'annualized': 'an annualized ', 
                  'average_annualized': ' an average annualized ',
                  'avg_ann': ' an average and annualized ',
-                 'saa': 'a seasonally-adjusted and annualized ', 
-                 'saar': 'a seasonally-adjusted annualized ', 
+                 'saa': 'a seasonally adjusted and annualized ', 
+                 'saar': 'a seasonally adjusted annualized ', 
                  'total': 'a total ',
                  'average': 'an average '}
         atxt = atxtd[adj]
