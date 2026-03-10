@@ -228,10 +228,15 @@
 	\newcommand{\charttitle}[2]{\normalsize \textbf{#1}\\
 	\footnotesize{\textit{#2}}}
 
+	% Reserve vertical space for an overlay chart, given its pgfplots height
+	\newcommand{\chartvspace}[1]{\vspace{\dimexpr #1 - 2.0cm\relax}}
+
 	% Chart source attribution with optional data table link
 	\newcommand{\chartsource}[2]{%
-		\footnotesize{Source: #1}%
-		\if\relax\detokenize{#2}\relax\else{ \hfill \tbllink{#2}}\fi}
+		\footnotesize{Source: #1}#2}
+
+	% Table source attribution with standardized gap
+	\newcommand{\tablesource}[2]{\vspace{-1.5mm}\footnotesize{Source: #1}#2}
 
 	% Standard data table (alternating row colors, input from file)
 	\newcommand{\cbtable}[4]{%
