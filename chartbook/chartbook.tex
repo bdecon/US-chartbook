@@ -653,22 +653,22 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.34\textwidth}
+\begin{minipage}{0.32\textwidth}
 \small \input{text/gdpjobs_lprod.txt}
 \end{minipage}\hspace{5mm}
-\begin{minipage}{0.39\textwidth}
+\begin{minipage}{0.40\textwidth}
 \charttitle{Labor Productivity}{Real GDP per hour of work, index, 2000=100}
-\chartvspace{7.1cm}
+\chartvspace{7.2cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace*{4.5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{100}, 
-		ytick={60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160}, 
-		yticklabel style={text width=1.6em}, 
-		enlarge y limits={0.03}, 
-		dateaxis, 
-		enlarge x limits={0.01}, ticks5yr, 
-		shortyear, height=7.1cm, width=6.8cm, clip=false]
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{100},
+		ytick={60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160},
+		yticklabel style={text width=1.6em},
+		enlarge y limits={0.03},
+		dateaxis,
+		enlarge x limits={0.01}, ticks5yr,
+		shortyear, height=7.2cm, width=7.0cm, clip=false]
 	\bglayer{\rbars}
 	\stdline{violet}{date}{LPROD_BLS_idx}{data/gdpjobslvl.csv}
 	\absnode{{2009-07-01}}{161}{\color{violet}Nonfarm\\ 
@@ -691,7 +691,7 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \charttitle{Household Inputs to Production}{index, January 2000=100, or as noted}
 \vspace{-5mm}
 
-\hspace*{-2mm} \cbtable{2.5pt}{1.65}{p{43.5mm} R{9.5mm} R{9.5mm} R{9.5mm} R{9.5mm} R{9.5mm} R{9.5mm} R{9.5mm}}{data/gdpjobs.tex}
+\cbtable{2.5pt}{1.65}{p{43.5mm} R{9.0mm} R{9.0mm} R{9.0mm} R{9.0mm} R{9.0mm} R{9.0mm} R{9.0mm}}{data/gdpjobs.tex}
 	\end{minipage}
 	\vspace{-2mm}
 		
@@ -714,14 +714,14 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \small \input{text/gdp_gr.txt} 
 \end{minipage}
 
-\begin{minipage}{0.77\textwidth}
+\begin{minipage}{0.76\textwidth}
 \charttitle{Real Gross Domestic Product Growth}{quarterly growth at seasonally adjusted annual rate, percent}
 \vspace{-5mm}
 
-\hspace*{-2mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20, 
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
 		yticklabel style={text width=1.6em}, ymax=27,
-		shortyear, clip=false, height=6.6cm, width=13.4cm]
+		shortyear, clip=false, height=6.6cm, width=13.0cm]
 	\rbars
 	\ctsbar{red!95!black}{date}{A191RL}{data/gdp.csv}{2.1pt}
 	\input{text/gdpnow_node2.txt}
@@ -737,27 +737,27 @@ Dividing GDP by the previously calculated total hours worked yields an estimate 
 \end{tikzpicture}
 \vspace*{-1mm}
 
-\footnotesize{\textit{annual growth, percent \hspace{53mm} recent quarterly \hspace{9mm} \input{text/nowcast_text.txt}}}\\
-\hspace*{-2.0mm} \begin{tikzpicture} 	
+\footnotesize{\textit{annual growth, percent \hspace{58mm} recent quarterly \hspace{6mm} \input{text/nowcast_text.txt}}}\\
+\begin{tikzpicture}
 	\pgfplotstableread[col sep=comma]{data/gdp_rec.csv}\gdprec
-    \begin{groupplot}[group style={group size=2 by 1, 
+    \begin{groupplot}[group style={group size=2 by 1,
     y descriptions at=edge left, horizontal sep=12pt,},]
     \nextgroupplot[\bbar{y}{0}, dateaxis,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		max space between ticks=15, enlarge x limits=0.02,
-		yticklabel style={text width=1.0em}, 
-		clip=false, enlarge y limits=0.06, xtick=data, 
-		xticklabel={ \pgfmathparse{int(mod(\year,5))} 
+		yticklabel style={text width=1.6em},
+		clip=false, enlarge y limits=0.06, xtick=data,
+		xticklabel={ \pgfmathparse{int(mod(\year,5))}
     		\ifnum\pgfmathresult=0 `\short{\year}  \fi},
-		ymin=-3.8, ymax=7.4, height=4.6cm, width=9.5cm]
+		ymin=-3.8, ymax=7.4, height=4.6cm, width=9.6cm]
 	\rbars
 	\ctsbar{red!95!black}{date}{A191RL}{data/gdp_a.csv}{5.5pt}
-    \nextgroupplot[ybar=24pt, \bbar{y}{0}, date coordinates in=x, 
+    \nextgroupplot[ybar=24pt, \bbar{y}{0}, date coordinates in=x,
     	xtick=data,	xticklabels from table={\gdprec}{Quarter},
-		clip=false, height=4.6cm, width=6.0cm, xtick style={draw=none},
+		clip=false, height=4.6cm, width=4.6cm, xtick style={draw=none},
 		xticklabel style={black!75, yshift=10pt},
 		enlarge y limits={0.06}, enlarge x limits={0.12},
-		yticklabel style={text width=1.3em}, ymin=-3.8, ymax=7.5,
+		yticklabel style={text width=0em}, ymin=-3.8, ymax=7.5,
 		max space between ticks=15, xticklabel style={align=center, yshift=-2pt}, 
 		visualization depends on=abs(\thisrow{A191RL})/\thisrow{A191RL}*4 \as \myshift,
     	every node near coord/.append style = {yshift={\myshift}},
@@ -2709,55 +2709,62 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \vspace{1mm}
 
 \charttitle{Real Personal Income Growth}{inflation-adjusted per capita growth, percent}
-\vspace{3.9cm}
+\vspace{-1mm}
+\end{minipage}
 
-\hspace{1mm} \begin{tikzpicture}[overlay]
+\begin{minipage}{0.34\textwidth}
+\begin{tikzpicture}
 	\pgfplotstableread[col sep=comma]{data/rdpi_hist.csv}\rdpihist
   	\begin{axis}[ybar=13pt, \bbar{y}{0}, xtick style={draw=none},
-    	width=7.2cm, bar width=13pt, height=4.4cm, 
-    	enlarge x limits={abs=0.7cm}, enlarge y limits=0, ytick={\empty},
-		xtick=data, xticklabels from table={\rdpihist}{label}, 
-		xticklabel style={black!70, font=\footnotesize, text width=1.2cm, 
-			align=center, yshift=2pt}, clip=false, nodes near coords,  
+    	width=6.0cm, bar width=13pt, height=4.4cm,
+    	enlarge x limits={abs=0.2cm}, enlarge y limits=0, ytick={\empty},
+		xtick=data, xticklabels from table={\rdpihist}{label},
+		xticklabel style={black!70, font=\footnotesize, text width=1.2cm,
+			align=center, yshift=2pt}, clip=false, nodes near coords,
 		nodes near coords style={/pgf/number format/.cd, fixed zerofill,
 			precision=1, assume math mode}, legend cell align={left},
-		legend style={at={(0.65, 1.33)}, legend columns=2, 
+		legend style={at={(0.85, 1.35)}, legend columns=2,
 		fill=none, draw=none}, legend image code/.code={
     	\draw [draw opacity=0, fill=#1] (0.36cm,-0.08cm) rectangle (0.56cm,0.12cm);}]
-  	\addplot[ybar, bar shift=-6.5pt, fill=blue!50!cyan, draw=none] 
+  	\addplot[ybar, bar shift=-6.5pt, fill=blue!50!cyan, draw=none]
   		table [x expr=\coordindex, y=RPIe] {\rdpihist};
-  	\addplot[ybar, bar shift=6.5pt, fill=blue!60!black, draw=none] 
+  	\addplot[ybar, bar shift=6.5pt, fill=blue!60!black, draw=none]
   		table [x expr=\coordindex, y=DPIpc] {\rdpihist};
   	\addplot[opacity=0] coordinates {(1, 0)};
   	\legend{Market, After-Tax};
-  	\node[right, align=left, shift=({rel axis cs:0.0,1.45}), 
+  	\node[right, align=left, shift=({rel axis cs:-0.1,1.45}),
 	draw=black!30!white, fill=white, inner sep=3.0]
 		{\small \color{darkgray}Compound Annual Growth Rate};
   	\end{axis}
-\end{tikzpicture} 
-\hspace{6.1cm} \begin{tikzpicture}[overlay]\pgfplotstableread[col sep=comma]{data/rdpigrowth_recent.csv}\rdpirec
+\end{tikzpicture}
+\end{minipage} \hspace{5mm}
+\begin{minipage}{0.38\textwidth}
+\begin{tikzpicture}
+\pgfplotstableread[col sep=comma]{data/rdpigrowth_recent.csv}\rdpirec
 	\begin{axis}[\bbar{y}{0}, \ltdateaxisticks max space between ticks=20,
 		yticklabel style={text width=1.6em}, enlarge y limits={0.03}, xtick=data,
 		minor xtick={{2024-01-01}, {2025-01-01}, {2026-01-01}},
 		xticklabel style={align=center}, tick label style={inner sep=0pt},
-		clip=false, minor tick length=7pt, legend cell align={left}, 
+		clip=false, minor tick length=7pt, legend cell align={left},
 		xticklabels from table={\rdpirec}{label}, clip=false,
-		height=5.4cm, width=7.2cm,
+		height=5.4cm, width=7.0cm,
 		legend style={legend columns=2, at={(0.84, 1.14)}}]
 	\addplot[thick, draw opacity=0] table [x=date, y=fillval, col sep=comma]{\rdpirec};
 	\dashline{skyblue}{date}{RPIe}{\rdpirec}
 	\stdline{steelblue}{date}{DPIpc}{\rdpirec}
 	\input{text/rdpigrowth_recent_nodes.txt}
 	\legend{,Market, After-Tax};
-	\node[right, align=left, shift=({rel axis cs:0.02,1.22}), 
+	\node[right, align=left, shift=({rel axis cs:0.02,1.22}),
 	draw=black!30!white, fill=white, inner sep=3.0]
 		{\small \color{darkgray}One-Year Growth Rate};
 	\end{axis}
 \end{tikzpicture}
-\vspace{7mm}
+\end{minipage}
+\vspace{-1mm}
 
+\begin{minipage}{0.76\textwidth}
 \chartsource{Bureau of Economic Analysis}{\hfill \tbllink{rdpigrowth_recent.csv}}
-\vspace{3mm}
+\vspace{1mm}
 
 \subsubsection*{Distribution of Personal Income}
 \vspace*{-0.5mm}
@@ -3995,43 +4002,43 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \end{minipage}
 \vspace{-0.5mm}
 
-\begin{minipage}{0.28\textwidth}
-\hspace*{-2mm} \begin{tikzpicture}
+\begin{minipage}{0.3\textwidth}
+\begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, ymin=0,
 		yticklabel style={text width=2.0em}, enlarge y limits={value=0.12,upper},
-		shortyear, height=4.6cm, width=6.0cm, clip=false]
+		shortyear, height=4.6cm, width=5.4cm, clip=false]
 	\rbars
 	\stdline{red!80!white}{date}{White}{data/scfracemean.csv}
 	\stdline{midgray}{date}{Other}{data/scfracemean.csv}
 	\thickline{magenta!60!violet}{date}{Hispanic}{data/scfracemean.csv}
 	\stdline{darkblue}{date}{Black}{data/scfracemean.csv}
-	\node[below, align=center, shift=({rel axis cs:0.27,1.0}), 
+	\node[below, align=center, shift=({rel axis cs:0.27,1.0}),
 	draw=black!30!white, fill=white, inner sep=3.0]
 		{\small \color{darkgray}Net Worth};
 	\end{axis}
 \end{tikzpicture}
 \end{minipage}\hspace{3mm}
-\begin{minipage}{0.28\textwidth}
+\begin{minipage}{0.29\textwidth}
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, ymin=0,
 		yticklabel style={text width=1.6em}, enlarge y limits={value=0.12,upper},
-		shortyear, height=4.6cm, width=6.0cm, clip=false]
+		shortyear, height=4.6cm, width=5.4cm, clip=false]
 	\rbars
 	\stdline{red!80!white}{date}{White}{data/scfracemean0.csv}
 	\stdline{midgray}{date}{Other}{data/scfracemean0.csv}
 	\thickline{magenta!60!violet}{date}{Hispanic}{data/scfracemean0.csv}
 	\stdline{darkblue}{date}{Black}{data/scfracemean0.csv}
-	\node[below, align=center, shift=({rel axis cs:0.37,1.0}), 
+	\node[below, align=center, shift=({rel axis cs:0.37,1.0}),
 	draw=black!30!white, fill=white, inner sep=3.0]
 		{\small \color{darkgray}Financial Assets};
 	\end{axis}
 \end{tikzpicture}
 \end{minipage}\hspace{3mm}
-\begin{minipage}{0.28\textwidth}
-\hspace*{-2mm} \begin{tikzpicture}
+\begin{minipage}{0.29\textwidth}
+\begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, ymin=0,
 		yticklabel style={text width=1.6em}, enlarge y limits={value=0.14,upper},
-		shortyear, height=4.6cm, width=6.0cm, clip=false]
+		shortyear, height=4.6cm, width=5.4cm, clip=false]
 	\rbars
 	\stdline{red!80!white}{date}{White}{data/scfracemean1.csv}
 	\stdline{midgray}{date}{Other}{data/scfracemean1.csv}
@@ -4057,10 +4064,10 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 
 \begin{minipage}{0.36\textwidth}
 \charttitle{Stock Holdings}{mean value, thousands of \input{text/scf_year.txt}\unskip \ USD}\\
-\hspace*{-1mm} \begin{tikzpicture}
+\begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, ymin=20,
-		yticklabel style={text width=1.6em}, 
-		shortyear, height=4.4cm, width=7.2cm, clip=false]
+		yticklabel style={text width=1.6em},
+		shortyear, height=4.4cm, width=6.8cm, clip=false]
 	\rbars
 	\stdline{red!80!white}{date}{White}{data/scfracemean2.csv}
 	\stdline{midgray}{date}{Other}{data/scfracemean2.csv}
@@ -4072,10 +4079,10 @@ Additionally, the before-tax income of the wealthiest ten percent of families (s
 \end{minipage}\hspace{5mm}
 \begin{minipage}{0.36\textwidth}
 \charttitle{Stock Holdings}{share of families with holdings, percent}\\
-\hspace*{-1mm} \begin{tikzpicture}
+\begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \shdateaxisticks max space between ticks=20, ymin=4,
 		yticklabel style={text width=1.0em}, enlarge y limits=0.08,
-		shortyear, height=4.4cm, width=7.2cm, clip=false]
+		shortyear, height=4.4cm, width=6.8cm, clip=false]
 	\rbars
 	\stdline{red!80!white}{date}{White}{data/scfracehave.csv}
 	\stdline{midgray}{date}{Other}{data/scfracehave.csv}
@@ -4380,19 +4387,19 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \end{minipage}
 \vspace{-1mm}
 
-\begin{minipage}{0.45\textwidth} \index{housing!affordability}
+\begin{minipage}{0.44\textwidth} \index{housing!affordability}
 \normalsize{\textbf{New House Affordability}}\\
 \footnotesize{\textit{index, new house monthly principal and interest payment}}\\
 \footnotesize{\textit{relative to 1/3rd median usual full-time earnings}}
 \chartvspace{6.0cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace*{4mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\dbar{y}{100}, 
-		dateaxis, 
-		enlarge x limits={0.01}, ticks5yr, 
-		shortyear, clip=false, height=6.0cm, width=7.6cm, 
-		enlarge y limits={0.27}, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\dbar{y}{100},
+		dateaxis,
+		enlarge x limits={0.01}, ticks5yr,
+		shortyear, clip=false, height=6.0cm, width=7.4cm,
+		enlarge y limits={0.27},
 		yticklabel style={text width=1.6em}]
 	\bglayer{\rbars}
 	\stdline{darkblue}{date}{VALUE}{data/nhaq.csv}	
@@ -4403,8 +4410,8 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 
 \chartsource{Author's Calculations}{\hfill \tbllink{nha.csv}} \
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.275\textwidth}
-\small \input{text/nha2.txt} 
+\begin{minipage}{0.28\textwidth}
+\small \input{text/nha2.txt}
 \end{minipage}
 \vspace{0.5mm}
 
@@ -4413,7 +4420,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \footnotesize{\textit{index components}
 \vspace*{-4.5mm}
 
-\hspace*{-2mm} \cbtable{2.5pt}{1.55}{p{37mm} R{11mm} R{12mm} R{12mm} R{12mm} R{12mm} R{12mm}}{data/nha.tex}}
+\cbtable{2.5pt}{1.55}{p{38mm} R{11mm} R{12mm} R{12mm} R{12mm} R{12mm} R{12mm}}{data/nha.tex}}
 \vspace*{-2.5mm}
 	
 \chartsource{Author's Calculations, Census Bureau, Freddie Mac, CPS}{\hfill \tbllink{nha_ts.csv}} \\
@@ -4433,13 +4440,13 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \chartvspace{5.6cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace*{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[ytick={70, 80, 90, 100, 110, 120}, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[ytick={70, 80, 90, 100, 110, 120},
 		dateaxis, enlarge y limits={0.06},
-		enlarge x limits={0.01}, xtick/.expanded={\aticks}, 
+		enlarge x limits={0.01}, xtick/.expanded={\aticks},
 		shortyear, \bbar{y}{100},
-		yticklabel style={text width=1.3em}, height=5.6cm, 
-		width=8.0cm, clip=false, legend cell align={left},
+		yticklabel style={text width=1.6em}, height=5.6cm,
+		width=7.8cm, clip=false, legend cell align={left},
 		legend style={fill=white, legend columns=1, at={(0.85, 0.4)}}]
 	\bglayer{\rbars}
 	\thickline{violet}{date}{ZHVI}{data/housing_price_summary.csv}
@@ -5235,10 +5242,10 @@ The following table provides more details on the size of nonfinancial business l
 \pgfplotstableread[col sep=comma]{data/bus_asset_sh.csv}\busassetsh
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{4.5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0},
 		ymin=-20, ymax=340, enlarge y limits={0.0},
-		yticklabel style={text width=1.6em}, height=5.3cm, width=12.2cm,
+		yticklabel style={text width=1.6em}, height=5.3cm, width=12.4cm,
 	dateaxis, 
 	enlarge x limits={0.01}, ticks2yr, 
 	shortyear, clip=false]
@@ -5259,7 +5266,7 @@ The following table provides more details on the size of nonfinancial business l
 \footnotesize{\textit{share of GDP, percent}
 \vspace*{-4mm}
 
-\cbtable{7.0pt}{1.65}{p{34.0mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm}}{data/bus_asset.tex}}
+\cbtable{4.5pt}{1.65}{p{38.0mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm} R{8.2mm}}{data/bus_asset.tex}}
 \vspace{-2mm}
 
 \chartsource{Federal Reserve, Bureau of Economic Analysis}{\hfill \tbllink{bus_asset_sh.csv}}\\
@@ -5331,17 +5338,17 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \pgfplotstableread[col sep=comma]{data/indprogr.csv}\indprogr
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{4mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, clip=false, height=4.7cm, 
-		reverse legend, max space between ticks=20,ymin=-15, ymax=10, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, clip=false, height=4.7cm, width=13.0cm,
+		reverse legend, max space between ticks=20,ymin=-15, ymax=10,
 		dateaxis, enlarge y limits={0.0},
-		enlarge x limits={0.01}, ticks2yr, 
+		enlarge x limits={0.01}, ticks2yr,
 		yticklabel style={text width=1.6em}, legend cell align={left},
 		shortyear, legend style={legend columns=1, at={(0.49, 0.57)}}]
 	\bglayer{\rbars}
-	\node[right] at (axis description cs: 0.91,1.21) 
+	\node[right] at (axis description cs: 0.91,1.21)
 		{\scriptsize \color{black!50} \textit{see below}};
-	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.1) 
+	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.1)
 		{\small Market Group};
 	\coordinate (c1) at (rel axis cs:0.93,0);
   	\coordinate (c2) at (rel axis cs:1,1.16);
@@ -5357,12 +5364,12 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \vspace{3.55cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=-15, ymax=10, max space between ticks=20,
 		dateaxis, enlarge y limits={0.0},
-		enlarge x limits={0.01}, ticks2yr, 
-		shortyear, clip=false, height=4.7cm, reverse legend,
-		yticklabel style={text width=1.6em}, legend cell align={left}, 
+		enlarge x limits={0.01}, ticks2yr,
+		shortyear, clip=false, height=4.7cm, width=13.0cm, reverse legend,
+		yticklabel style={text width=1.6em}, legend cell align={left},
 		legend style={legend columns=1, at={(0.44, 0.56)}}]
 	\bglayer{\rbars}
 	\node[right, draw=black!30, fill=white] at (axis description cs: 0.0,1.1) 
@@ -5388,12 +5395,12 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \vspace*{-1mm} 
 
 \pgfplotstableread[col sep=comma]{data/indprogr_rec.csv}\ipmo
-\hspace*{-4mm} \begin{tikzpicture}
+\begin{tikzpicture}
 	\begin{groupplot}[
-		group style={group size=2 by 1, horizontal sep=10mm},
+		group style={group size=2 by 1, horizontal sep=12mm},
 		dateaxis,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		clip=false, width=7.2cm, height=5.2cm,
+		clip=false, width=6.6cm, height=5.2cm,
 		yticklabel style={text width=1.6em}, xtick=data,
 		xticklabels from table={\ipmo}{label},
 		minor xtick/.expanded={\aticks}, minor tick length=7pt,
@@ -5498,17 +5505,17 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \vspace{0.5mm}
 
 \charttitle{Crude Oil Production}{millions of barrels per day}
-\chartvspace{5.4cm}
+\chartvspace{5.6cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, enlarge x limits=0.015,
 		max space between ticks=20, enlarge y limits=0.04, ymin=0,
 		dateaxis,
-		ticks2yr, 
-		width=13.0cm, height=5.4cm, shortyear, clip=false,
-		legend style={at={(0.84, 1.22)}, legend columns=2, inner sep=1.0}, 
-		legend cell align={left}, yticklabel style={text width=1.3em}]
+		ticks2yr,
+		width=12.6cm, height=5.6cm, shortyear, clip=false,
+		legend style={at={(0.84, 1.22)}, legend columns=2, inner sep=1.0},
+		legend cell align={left}, yticklabel style={text width=1.6em}]
 	\bglayer{\rbars}
 	\addplot[stack plots=y, draw=teal!90!green!60!black, fill=teal!90!green, 
 		legend image code/.code={\draw (0cm,-0.08cm) rectangle (0.2cm,0.12cm); }] 
@@ -5549,14 +5556,14 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 
 \begin{minipage}{0.42\textwidth} \index{electricity generation}
 \charttitle{Electricity Generation, Relative Measures}{cumulative percent change since 2011}
-\chartvspace{6.0cm}
+\chartvspace{5.8cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{4mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, width=7.2cm, height=6.0cm,
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, width=7.0cm, height=5.8cm,
 		dateaxis, enlarge y limits={0.1},
-		enlarge x limits={0.01}, ticks2yr, 
-		shortyear, clip=false, max space between ticks=30, 
+		enlarge x limits={0.01}, ticks2yr,
+		shortyear, clip=false, max space between ticks=30,
 		yticklabel style={text width=1.6em}, xmin={2011-01-01}]
 	\bglayer{\rbar}
 	\thickline{red}{date}{elec}{data/elec.csv}
@@ -6559,7 +6566,7 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 \end{minipage}
 \newpage
 \hypertarget{govjo}{\label{govjo}}
-
+\vspace*{-16mm}
 
 \subsection*{Government Jobs}
 \begin{minipage}{0.76\textwidth}
@@ -6568,17 +6575,17 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.34\textwidth}
+\begin{minipage}{0.38\textwidth}
 \charttitle{Government Employment}{government jobs per 100 people}
-\chartvspace{8.8cm}
+\chartvspace{9.6cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{1.5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, clip=false, 
-		yticklabel style={text width=1.3em}, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, clip=false,
+		yticklabel style={text width=1.6em},
 		dateaxis, enlarge y limits={0.0}, ymin=0, ymax=8,
 		enlarge x limits={0.01}, ticks5yr,
-		shortyear, height=8.8cm, width=6.6cm]
+		shortyear, height=9.6cm, width=6.6cm]
 	\bglayer{\rbars}
 	\stdline{skyblue}{date}{govjobs}{data/govjobs.csv}
 	\stdline{tealgreen}{date}{fedjobs}{data/govjobs.csv}
@@ -6596,8 +6603,8 @@ As discussed in the household section, \input{text/ss_pov_sentence.txt} \input{t
 \end{tikzpicture}}
 
 \chartsource{Bureau of Labor Statistics}{\hfill \tbllink{govjobs.csv}}
-\end{minipage}\hspace{5mm}
-\begin{minipage}{0.38\textwidth}
+\end{minipage}\hspace{6mm}
+\begin{minipage}{0.34\textwidth}
 \small \input{text/govjobs.txt}
 \end{minipage}
 \vspace{3mm}
@@ -6872,13 +6879,13 @@ This balance is further broken down into four components: the trade balance for 
 \vspace{5.2cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=20,	 
-		yticklabel style={text width=1.3em}, ymax=3.15, ymin=-7.6,
-		height=6.6cm, width=13.0cm, enlarge y limits={0.08}, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
+		yticklabel style={text width=1.6em}, ymax=3.15, ymin=-7.6,
+		height=6.6cm, width=12.6cm, enlarge y limits={0.08},
 		dateaxis,
-		enlarge x limits={0.01}, ticks2yr, 
-		shortyear, clip=false, 
+		enlarge x limits={0.01}, ticks2yr,
+		shortyear, clip=false,
 		legend style={at={(0.72, 1.11)}}]
 	\bglayer{\rbars}
 	\ctsbar{blue!50!teal!60!cyan!25!white}{date}{GOODS}{data/cab.csv}{2.2pt}
@@ -7368,13 +7375,12 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \chartvspace{5.6cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3.5mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{1}, max space between ticks=20,
-		yticklabel style={text width=1.3em}, enlarge y limits=0.1,
+		yticklabel style={text width=1.6em}, enlarge y limits=0.1,
 		dateaxis, enlarge x limits={0.01},
-		ticks2yr, 
-		yticklabel style={inner sep=0pt}, 
-		shortyear, clip=false, height=5.6cm, width=12.2cm]
+		ticks2yr,
+		shortyear, clip=false, height=5.6cm, width=12.6cm]
 	\bglayer{\rbars}
 	\stdline{blue!90!cyan}{date}{RXI_N.B.UK}{data/fx1.csv}
 	\stdline{tealgreen}{date}{RXI_N.B.CA}{data/fx1.csv}
@@ -7394,17 +7400,17 @@ Trade follows seasonal patterns and can swing from month to month for various re
 \small The Federal Reserve \textbf{trade-weighted dollar} indices \href{https://www.federalreserve.gov/releases/h10/summary/default.htm}{track} weighted-average foreign exchange rates based on 26 currencies that are important to US trade. The \href{https://www.federalreserve.gov/releases/h10/weights/default.htm}{weight} of each currency in the index is based on the bilateral trade share of total trade in goods and services. These US dollar indices can simplify analysis of the overall role of foreign exchange rates on US trade. 
 \end{minipage}
 
-\begin{minipage}{0.36\textwidth}
+\begin{minipage}{0.38\textwidth}
 \charttitle{Dollar Indices}{trade-weighted foreign exchange rate,}\\
 \footnotesize{\textit{index, January 2006=100}}
 \chartvspace{4.6cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
 \edef\custticks{{2006-01-01}, \afticks}
-\hspace{4mm} \begin{tikzpicture}[overlay]
-\begin{groupplot}[group style={group size=1 by 2, 
-    x descriptions at=edge bottom, vertical sep=8pt}, 
-    axis line style={draw=none}, enlarge x limits={0.01}, clip=false, width=6.0cm, height=4.6cm,
+\hspace{5mm} \begin{tikzpicture}[overlay]
+\begin{groupplot}[group style={group size=1 by 2,
+    x descriptions at=edge bottom, vertical sep=8pt},
+    axis line style={draw=none}, enlarge x limits={0.01}, clip=false, width=6.2cm, height=4.6cm,
     yticklabel style={text width=1.6em}, enlarge y limits={0.1}]
 	\nextgroupplot[\bbar{y}{100}, 
 		date coordinates in=x,  ytick={90, 100, 110, 120, 130}, 
@@ -7429,7 +7435,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 
 \chartsource{Federal Reserve}{\hfill \tbllink{fx_idx.csv}}
 \end{minipage}\hspace{5mm}
-\begin{minipage}{0.36\textwidth}
+\begin{minipage}{0.34\textwidth}
 \small The \textbf{broad dollar index} (see {\color{steelblue}\textbf{---}}) summarizes foreign exchange rates between the US and trading partners by weighting foreign currencies in the index by the total amount of goods and services trade with the relevant countries.
 
 \input{text/twdbasic.txt}

@@ -5,10 +5,12 @@ import json
 import io
 import os
 import re
+import time
 from datetime import datetime
 import sqlite3
 
-from uschartbook.config import db_path, cps_dir
+from uschartbook.config import db_path, cps_dir, REQUEST_HEADERS
+from uschartbook.api_key import fred_key
 
 qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 
@@ -590,7 +592,102 @@ def fred_df3(series, start='1989'):
     url = (f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}')
     df = pd.read_csv(url, index_col='observation_date', parse_dates=True)[series]
     return df.loc[start:]
-    
+
+
+def fred(series, start='1989', retries=2):
+    """Retrieve a FRED series, trying CSV, HTML, then API with retries.
+
+    Returns a pandas Series with DatetimeIndex and the series ID as name.
+    Missing values ('.') are returned as NaN.
+    """
+    errors = []
+
+    # Method 1: CSV download (fredgraph.csv) — full history, simple format
+    for attempt in range(retries):
+        try:
+            r = requests.get(
+                f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}',
+                headers=REQUEST_HEADERS, timeout=10)
+            r.raise_for_status()
+            df = pd.read_csv(
+                io.StringIO(r.text),
+                index_col='DATE', parse_dates=True, na_values=['.'])
+            s = df.iloc[:, 0].rename(series)
+            s.index.name = 'observation_date'
+            return s.loc[start:]
+        except Exception as e:
+            errors.append(f'CSV attempt {attempt + 1}: {e}')
+            time.sleep(1)
+
+    # Method 2: HTML page (/data/SERIES.txt) — table + hidden extra rows
+    for attempt in range(retries):
+        try:
+            r = requests.get(
+                f'https://fred.stlouisfed.org/data/{series}.txt',
+                headers=REQUEST_HEADERS, timeout=10)
+            r.raise_for_status()
+            html = r.text
+
+            tables = pd.read_html(
+                io.StringIO(html), parse_dates=True, na_values=['.'])
+            df = tables[1].set_index('DATE')['VALUE'].rename(series)
+            df.index = pd.to_datetime(df.index)
+
+            # Parse extra rows hidden in <div id="extra-rows">
+            extra_match = re.search(
+                r'<div id="extra-rows"[^>]*>(.*?)</div>', html, re.DOTALL)
+            if extra_match:
+                rows = extra_match.group(1).strip().split('#')
+                extra = {}
+                for row in rows:
+                    row = row.strip()
+                    if '|' in row:
+                        date, value = row.split('|', 1)
+                        try:
+                            extra[pd.to_datetime(date)] = float(value)
+                        except ValueError:
+                            continue
+                if extra:
+                    extra_s = pd.Series(extra, name=series)
+                    df = pd.concat([df, extra_s]).sort_index()
+                    df = df[~df.index.duplicated(keep='last')]
+
+            df.index.name = 'observation_date'
+            return df.loc[start:]
+        except Exception as e:
+            errors.append(f'HTML attempt {attempt + 1}: {e}')
+            time.sleep(1)
+
+    # Method 3: FRED API — requires API key
+    if fred_key:
+        for attempt in range(retries):
+            try:
+                r = requests.get(
+                    'https://api.stlouisfed.org/fred/series/observations',
+                    params={
+                        'series_id': series,
+                        'observation_start': f'{start}-01-01',
+                        'api_key': fred_key,
+                        'file_type': 'json',
+                    },
+                    headers=REQUEST_HEADERS, timeout=10)
+                r.raise_for_status()
+                obs = r.json()['observations']
+                data = {pd.to_datetime(o['date']): o['value'] for o in obs}
+                s = pd.Series(data, name=series)
+                s = pd.to_numeric(s, errors='coerce')
+                s.index.name = 'observation_date'
+                return s.loc[start:]
+            except Exception as e:
+                errors.append(f'API attempt {attempt + 1}: {e}')
+                time.sleep(1)
+    else:
+        errors.append('API: no FRED_API_KEY set')
+
+    raise RuntimeError(
+        f'All methods failed for FRED series {series}:\n' +
+        '\n'.join(errors))
+
 
 def c_line(color, see=True, paren=True, dashed=False, thick=False):
 	'''Return (see ---) for a given color'''
