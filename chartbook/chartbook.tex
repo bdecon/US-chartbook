@@ -1364,7 +1364,7 @@ Since 1989, and in the long run, in general, real GDP growth is explained by pop
 \begin{minipage}{0.76\textwidth} \index{financial accounts} \index{flow of funds}
 \vspace*{-1.5mm}
 
-\small While the previous section looks at economic activity during a period of time, we now turn to \textbf{financial accounts}, which keep stock of what exists at a point in time. They also cover the structure of ownership across sectors and the lending and borrowing between them. 
+\small While the previous section looks at economic activity during a period of time, we now turn to \textbf{financial accounts}, which take stock of what exists at a point in time. They also cover the structure of ownership across sectors and the lending and borrowing between them. 
 \end{minipage}
 \vspace*{-1.5mm}
 
@@ -3266,13 +3266,13 @@ To see this pattern, the following charts show the contribution to changes in re
 \chartvspace{7.2cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3.5mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, 
 		dateaxis, max space between ticks=20,
 		enlarge x limits={0.01}, ticks2yr, 
-		shortyear, clip=false, height=7.2cm, width=13.4cm, 
+		shortyear, clip=false, height=7.2cm, width=13.0cm,
 		yticklabel style={text width=1.6em}, ymax=19, enlarge y limits={0.03},
-		legend style={at={(0.72, 0.98)}, fill=white}]
+		legend style={at={(0.72, 0.98)}}]
 	\bglayer{\rbars}
 	\sbar{cyan!28!white}{date}{INCOME}{data/pcedecomp.csv}
 	\sbar{green!72!blue!90!white}{date}{SAVING}{data/pcedecomp.csv}
@@ -3294,14 +3294,14 @@ To see this pattern, the following charts show the contribution to changes in re
 \small \input{text/exp_inc_save_mon.txt}
 \end{minipage} \hspace{5mm} \begin{minipage}{0.42\textwidth}
 \charttitle{Recent Contributions}{last 3 months growth from prev. 3 months, annualized}
-\vspace{4.15cm}
+\vspace{4.35cm}
 
 \begin{tikzpicture}[overlay]
 	\pgfplotstableread[col sep=comma]{data/exp_inc_save_mon.csv}\datatable
-\hspace{3mm} \begin{axis}[\bbar{y}{0}, max space between ticks=20,
+\hspace{6mm} \begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		dateaxis,
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
-		clip=false, width=7.6cm, height=5.8cm,
+		clip=false, width=7.2cm, height=6.0cm,
 		yticklabel style={text width=1.6em}, xtick=data, 
 		xticklabels from table={\datatable}{label}, 
 		enlarge y limits=0.18, enlarge x limits=0.03,
@@ -3317,7 +3317,7 @@ To see this pattern, the following charts show the contribution to changes in re
 	\legend{Income, Saving (-), Other Outlays (-)}
 	\end{axis}
 \end{tikzpicture}
-\vspace{3mm}
+\vspace{2mm}
 
 \chartsource{Bureau of Economic Analysis}{\hfill \tbllink{exp_inc_save_mon.csv}}
 \end{minipage}
@@ -3539,16 +3539,16 @@ To see this pattern, the following charts show the contribution to changes in re
 \end{minipage}
 \vspace{0.5mm}
 
-\begin{minipage}{0.455\textwidth}
+\begin{minipage}{0.46\textwidth}
 \charttitle{Household and Nonprofit Debt by Type}{share of disposable personal income, percent}
-\chartvspace{5.8cm}
+\chartvspace{5.7cm}
 
 \pgfplotstableread[col sep=comma]{data/hhdebt.csv}\hhdebt
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  max space between ticks=30, enlarge y limits={0.06},
-		ymin=0, yticklabel style={text width=1.6em}, width=8.0cm,
+		ymin=0, yticklabel style={text width=1.6em}, width=7.8cm,
 		enlarge x limits=0.02, dateaxis, 
 		ticks5yr, 
 		shortyear, clip=false, height=5.8cm]
@@ -3570,7 +3570,7 @@ To see this pattern, the following charts show the contribution to changes in re
 
 \chartsource{Federal Reserve}{\hfill \tbllink{hhdebt.csv}}
 \end{minipage}\hspace{5mm}
-\begin{minipage}{0.265\textwidth}
+\begin{minipage}{0.26\textwidth}
 \small \input{text/hhdebt2.txt}
 \end{minipage}
 \vspace{2.8mm}
@@ -3582,18 +3582,18 @@ To see this pattern, the following charts show the contribution to changes in re
 \vspace{0.5mm}
 
 \charttitle{Household Debt}{share of disposable personal income, percent}
-\vspace{-0.8mm}
+\vspace{-1.8mm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace*{-0.5mm} \begin{tikzpicture}
+\begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, 
-		clip=false, width=7.2cm, height=5.4cm, 
+		clip=false, width=6.8cm, height=5.6cm,
 		dateaxis, 
 		enlarge x limits={0.01}, xtick/.expanded={\afticks}, 
 		minor xtick/.expanded={\anfticks}, 
 		shortyear, 
         ymin=0, ymax=10, 
-        yticklabel style={text width=1.0em}]
+        yticklabel style={text width=1.6em}]
 	\bglayer{\rebars}
 	\stdline{navyblue}{date}{Auto Loan}{data/hhcdebt.csv}
 	\stdline{cyan!80!teal}{date}{Student Loan}{data/hhcdebt.csv}
@@ -3611,10 +3611,10 @@ To see this pattern, the following charts show the contribution to changes in re
 \end{tikzpicture}} \hfill
 \begin{tikzpicture}
 	\begin{axis}[\barplotnogrid 
-		width=6.6cm, height=4.9cm, bar width=3.0ex, y=4.6ex, 
+		width=6.2cm, height=5.4cm, bar width=3.0ex, y=5.0ex,
 		enlarge y limits={abs=0.35cm}, 
 		enlarge x limits=0.01, \bbar{x}{0},
-		ytick={0,1,2,3,4,5}, yticklabels=\empty, clip=false,
+		ytick={0,1,2,3,4,5}, yticklabels=\empty, yticklabel style={text width=0em}, clip=false,
 		every axis plot/.append style={bar shift=0pt, fill}]
 \input{text/frbny_ccp_bars.txt}
 	\node[below, align=left, shift=({rel axis cs:0.46,1.16}), 
@@ -4109,11 +4109,11 @@ In the following chart, income invested at the historical-average rate \seebox{m
 \chartvspace{6.8cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ytick={-15, -10, -5, 0, 5, 10, 15, 20},
 		dateaxis, enlarge y limits={0.06},
 		enlarge x limits={0.01}, ticks2yr, 	
-		height=6.8cm, shortyear, legend cell align={left},
+		width=13.2cm, height=6.8cm, shortyear, legend cell align={left},
 		yticklabel style={text width=1.6em}, clip=false, ymax=18.1, reverse legend,
 		legend style={at={(0.48, 0.24)}, fill=white, legend columns=2}]
 	\bglayer{\rbars}
@@ -5435,7 +5435,7 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \hspace{2.9cm} \begin{tikzpicture}[overlay] 
 	\pgfplotstableread[col sep=semicolon]{data/ip_comp.csv}\ip
   	\begin{axis}[\barplotnogrid axis y line=left, \bbar{x}{0}, \barylab{3.0cm}{1.6ex}
-    	width=4.6cm, bar width=1.8ex, height=10.5cm,
+    	width=5.0cm, bar width=1.8ex, height=10.5cm,
     	enlarge y limits={abs=0.35cm}, enlarge x limits=0.02, 
 		yticklabels from table={\ip}{name}, legend image code/.code={
     	\draw [draw opacity=0, fill=#1] (0.35cm,-0.08cm) rectangle (0.57cm,0.12cm);},
@@ -5470,16 +5470,16 @@ While the manufacturing industry dominated industrial growth in the 1990s, minin
 \vspace{1mm}
 
 \charttitle{Capacity Utilization}{industrial production as a share of total capacity, percent, seasonally adjusted}
-\chartvspace{5.8cm}
+\chartvspace{5.7cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},  
-		yticklabel style={text width=1.3em}, max space between ticks=30, 
+		yticklabel style={text width=1.6em}, max space between ticks=30,
 		enlarge y limits=0.1, 
 		dateaxis, 
 		enlarge x limits={0.01}, ticks2yr, 
-		width=12.8cm, height=5.8cm, clip=false, shortyear]
+		width=12.6cm, height=5.8cm, clip=false, shortyear]
 	\bglayer{\rbars}
 	\thickline{darkblue}{date}{Total index}{data/tcuq.csv}
 	\stdline{blue!40!cyan!80!white}{date}{Manufacturing}{data/tcuq.csv}
@@ -5915,12 +5915,12 @@ Over the past thirty years, government social benefit spending has mostly kept p
 
 \begin{minipage}{0.44\textwidth}
 \charttitle{Personal Income and Outlays}{per capita, thousands of \input{text/gdp_ltdt.txt}dollars}
-\chartvspace{6.5cm}
+\chartvspace{6.4cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0, 
-		yticklabel style={text width=1.0em},
+		yticklabel style={text width=1.6em},
 		dateaxis, enlarge y limits={0.06, upper},
 		enlarge x limits={0.01}, ticks5yr,  
 		shortyear, clip=false, height=6.5cm, width=8.0cm]
@@ -5955,12 +5955,12 @@ Over the past thirty years, government social benefit spending has mostly kept p
 
 \begin{minipage}{0.44\textwidth}
 \charttitle{Consumption and Investment}{share of GDP, percent}
-\chartvspace{6.8cm}
+\chartvspace{6.7cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0, 
-		yticklabel style={text width=1.0em},
+		yticklabel style={text width=1.6em},
 		dateaxis, enlarge y limits={0.06, upper},
 		enlarge x limits={0.01}, ticks5yr,  
 		shortyear, clip=false, height=6.8cm, width=8.0cm]
@@ -5992,7 +5992,7 @@ Over the past thirty years, government social benefit spending has mostly kept p
 \chartvspace{6.5cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace*{4mm} \begin{tikzpicture} [overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
 		dateaxis,
 		enlarge x limits={0.01}, ticks2yr,
@@ -6010,13 +6010,13 @@ Over the past thirty years, government social benefit spending has mostly kept p
 \chartsource{Bureau of Economic Analysis}{\hfill \tbllink{gov.csv}}
 \vspace{2mm}
 
-\charttitle{Government Consumption and Investment}{percentage point contribution to real GDP growth \hspace{32mm} annual contribution}
+\charttitle{Government Consumption and Investment}{percentage point contribution to real GDP growth \hspace{34mm} annual contribution}
 \vspace*{-3.0mm}
 
 \rowcolors{3}{}{black!5} \setlength{\tabcolsep}{3.5pt} \color{black!90}
 	{\renewcommand{\arraystretch}{1.65}
-		\begin{tabular}{p{42mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} R{6.7mm} 
-		   R{7.2mm} R{6.7mm} R{6.7mm} }
+		\begin{tabular}{p{44mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm} R{6.8mm}
+		   R{7.2mm} R{6.8mm} R{6.8mm} }
 		   \arrayrulecolor{gray}\cmidrule(lr){7-9}\addlinespace[-0.8mm]
 			 \input data/gov.tex \arrayrulecolor{black!60}\hline
 		\end{tabular}}\vspace{-1.5mm}
@@ -6173,13 +6173,13 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \chartvspace{5.3cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0},
 		enlarge y limits={0.28}, max space between ticks=30,
-		yticklabel style={text width=1.6em}, 
+		yticklabel style={text width=1.6em},
 		dateaxis,
 		enlarge x limits={0.01}, xtick/.expanded={\aticks},
-		clip=false, shortyear, height=5.3cm, width=7.6cm]
+		clip=false, shortyear, height=5.3cm, width=7.4cm]
 	\bglayer{\rbar}
 	\stdline{navyblue}{date}{Individual Income Taxes}{data/tmb_rec.csv}
 	\stdline{blue!40!cyan}{date}{Other}{data/tmb_rec.csv}
@@ -6211,13 +6211,13 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \chartvspace{9.0cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=30, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
 		ymin=0.0, ymax=10,
-		clip=false, enlarge y limits={0.0}, yticklabel style={text width=1.3em}, 
-		dateaxis, 
+		clip=false, enlarge y limits={0.0}, yticklabel style={text width=1.6em},
+		dateaxis,
 		enlarge x limits={0.01}, ticks5yr,
-		height=9.0cm, width=6.6cm, shortyear]
+		height=9.0cm, width=6.2cm, shortyear]
 	\bglayer{\rbars}
 	\stdlineT{steelblue}{date}{W070RC}{\slggovrectypetab}
 	\stdlineT{orange!90!red}{date}{B089RC}{\slggovrectypetab}
@@ -6238,14 +6238,14 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \vspace{2.4cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{1mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=30, 
-		ymin=0.0, ymax=3.5, yticklabel style={text width=1.0em},
-		clip=false, enlarge y limits={0.0}, 
-		xticklabel style={white, align=center}, 
-		dateaxis, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
+		ymin=0.0, ymax=3.5, yticklabel style={text width=1.6em},
+		clip=false, enlarge y limits={0.0},
+		xticklabel style={white, align=center},
+		dateaxis,
 		enlarge x limits={0.01}, ticks5yr,
-		height=3.8cm, width=6.6cm, shortyear]
+		height=3.8cm, width=6.2cm, shortyear]
 	\bglayer{\rbars}
 	\stdlineT{blue!90!black}{date}{B245RC}{\slggovrectypetab}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.02}), 
@@ -6257,13 +6257,13 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \vspace{2.3cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{1mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=30, 
-		ymin=0.0, ymax=3.5, clip=false, enlarge y limits={0.0}, 
-		xticklabel style={white, align=center}, yticklabel style={text width=1.0em},
-		dateaxis, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
+		ymin=0.0, ymax=3.5, clip=false, enlarge y limits={0.0},
+		xticklabel style={white, align=center}, yticklabel style={text width=1.6em},
+		dateaxis,
 		enlarge x limits={0.01}, ticks5yr,
-		height=4.0cm, width=6.6cm, shortyear]
+		height=4.0cm, width=6.2cm, shortyear]
 	\bglayer{\rbars}
 	\stdlineT{blue!70!cyan}{date}{B248RC}{\slggovrectypetab}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.02}), 
@@ -6275,13 +6275,13 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \vspace{2.4cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{1mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=30, 
-		ymin=0.0, ymax=3.5, yticklabel style={text width=1.0em},
-		clip=false, enlarge y limits={0.0}, 
-		dateaxis, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=30,
+		ymin=0.0, ymax=3.5, yticklabel style={text width=1.6em},
+		clip=false, enlarge y limits={0.0},
+		dateaxis,
 		enlarge x limits={0.01}, ticks5yr,
-		height=3.8cm, width=6.6cm, shortyear]
+		height=3.8cm, width=6.2cm, shortyear]
 	\bglayer{\rbars}
 	\stdlineT{lightcyan}{date}{LA000355}{\slggovrectypetab}
 	\node[right, align=left, shift=({rel axis cs:0.03,1.12}), 
@@ -6306,13 +6306,13 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \chartvspace{6.0cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30, enlarge y limits={0.06},
 		enlarge x limits={0.01}, ymin=1, ymax=47.5, 
 		dateaxis,
 		enlarge x limits={0.01}, ticks2yr,
-		shortyear, clip=false, height=6.0cm, width=13.0cm,
-		yticklabel style={text width=1.3em}]
+		shortyear, clip=false, height=6.0cm, width=12.6cm,
+		yticklabel style={text width=1.6em}]
 	\bglayer{\rbars}
 	\ctsbar{blue!65!gray!90!white}{date}{Federal}{data/gov_exp_overview.csv}{2.3pt}
 	\ctsbar{cyan!40!white}{date}{SLG Grants}{data/gov_exp_overview.csv}{2.3pt}
@@ -6334,10 +6334,10 @@ At an aggregate level, the vast majority of government receipts are tax receipts
 \small \input{text/gov_exp_overview2.txt}  
 \vspace{1mm}
 
-\charttitle{Government Current Expenditures}{share of GDP, percent \hspace{63mm} moving averages}\\
+\charttitle{Government Current Expenditures}{share of GDP, percent \hspace{65mm} moving averages}\\
 \rowcolors{3}{}{black!5} \setlength{\tabcolsep}{4.5pt}\color{black!90}
 	{\renewcommand{\arraystretch}{1.55}
-\hspace{-1mm} \begin{tabular}{p{36mm} R{7mm} R{7mm} R{7mm} R{7mm} R{7mm}
+\begin{tabular}{p{36mm} R{7mm} R{7mm} R{7mm} R{7mm} R{7mm}
 		   R{7mm} R{7mm} R{7mm} }
 		   	\arrayrulecolor{gray}\cmidrule(lr){7-9}\addlinespace[-1.0mm]
 			 \input data/gov_exp.tex \arrayrulecolor{black!60}\hline
@@ -7805,9 +7805,9 @@ Gross labor income has the added benefit that it can be calculated using multipl
 \chartvspace{5.4cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[max space between ticks=30, 
-		enlarge y limits={0.14}, yticklabel style={text width=1.3em},
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[max space between ticks=30,
+		enlarge y limits={0.14}, yticklabel style={text width=1.6em},
 		dateaxis, 
 		enlarge x limits={0.01}, ticks5yr, 
 		shortyear, height=5.4cm, width=6.0cm, clip=false]
@@ -7841,7 +7841,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 \chartvspace{6.2cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=20mm}]
 	\nextgroupplot[\bbar{y}{100}, max space between ticks=20,
 		enlarge y limits={0.06}, 
@@ -8548,17 +8548,17 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \charttitle{Unemployment by Reason}{percent of labor force, annual average \hspace{45mm} recent data}
 \chartvspace{5.6cm}
 
-\hspace{2.5mm} \begin{tikzpicture}[overlay] 
+\hspace{5mm} \begin{tikzpicture}[overlay] 
 	\pgfplotstableread[col sep=comma]{data/unemp_reason_mon.csv}\unrsn
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=28pt}]
 	\nextgroupplot[\bbar{y}{0}, ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
-		width=9.5cm, height=5.6cm, enlarge x limits=0.025, 
+		width=9.3cm, height=5.6cm, enlarge x limits=0.025,
 		ymin=0.1, ymax=9.6, legend cell align={left}, 
 		dateaxis, enlarge y limits={0.06},
 		ticks5yr, 
 		xticklabel={\short{\year}}, clip=false, 
-		yticklabel style={text width=1.3em}, 
-		legend style={fill=none, legend columns=2, at={(1.12, 1.22)}}]
+		yticklabel style={text width=1.6em},
+		legend style={fill=none, legend columns=2, at={(1.06, 1.22)}}]
 	\rbars
 	%%\input{text/unemp_rsn_ltbar.txt}
 	\ctsbar{red!75!orange!70!white}{date}{Job Loser}{data/unemp_reason.csv}{5.0pt}
@@ -8566,7 +8566,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 	\ctsbar{blue!70!teal!70!gray!62!white}{date}{Re-entrant}{data/unemp_reason.csv}{5.0pt}
 	\ctsbar{navyblue}{date}{Job Leaver}{data/unemp_reason.csv}{5.0pt}
 	\legend{Job Loser, New Entrant, Re-entrant, Job Leaver};
-	\nextgroupplot[\bbar{y}{0}, width=4.0cm, height=5.6cm, 
+	\nextgroupplot[\bbar{y}{0}, width=4.0cm, height=5.0cm,
 		yticklabel style={text width=0.8em}, 
 		axis line style={draw=none}, xtick=data, clip=false,
 			xticklabel style={black!80, text width=2.0em, align=center}, 
@@ -8823,9 +8823,10 @@ Initial claims for unemployment insurance are a leading indicator of labor marke
 \charttitle{Labor Force Participation Overview}{share of age 16 and older population, percent, seasonally adjusted}
 \vspace*{-1mm}
 
-\hspace*{-5mm} \begin{tikzpicture}
-	\begin{axis}[ytick={0,1}, xtick={\empty}, axis line style={draw=none}, 
+\begin{tikzpicture}
+	\begin{axis}[ytick={0,1}, xtick={\empty}, axis line style={draw=none},
 		ytick style={draw=none}, ymajorgrids=false, yticklabels={\empty},
+		yticklabel style={text width=0em},
 		width=13.4cm, height=4.4cm, bar width=4.8mm, xmin=0, enlarge x limits=0.01,
 		enlarge y limits=0.3, clip=false]
 		\addplot[xbar stacked, draw=none, fill=green!60!blue] 
@@ -8864,16 +8865,16 @@ The next chart shows labor force participation rates overall and for men and wom
 \end{minipage}
 \vspace{1mm}
 
-\begin{minipage}{0.44\textwidth}
+\begin{minipage}{0.46\textwidth}
 \charttitle{Labor Force Participation Rates}{labor force as share of age 16 and older population,}\\
 \footnotesize{\textit{percent, seasonally adjusted}}
-\vspace*{5.5cm}
+\vspace*{6.0cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace*{3mm}\begin{tikzpicture}[overlay]
+\hspace{6mm}\begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},
-		yticklabel style={text width=1.3em}, max space between ticks=40,
-		width=7.6cm, height=7.5cm, enlarge y limits=0.05, xmin={1990-01-01},
+		yticklabel style={text width=1.6em}, max space between ticks=40,
+		width=7.6cm, height=8.1cm, enlarge y limits=0.05, xmin={1990-01-01},
 		dateaxis, 
 		enlarge x limits={0.01}, ticks5yr, 
 		shortyear, clip=false]
@@ -8900,7 +8901,7 @@ The next chart shows labor force participation rates overall and for men and wom
 \footnotesize{Source: BLS (\input{text/lfpr_blsdate.txt}\unskip); CPS (\input{text/lfpr_cpsdate.txt}\unskip)} \hfill \tbllink{lfpr.csv}\\
 \footnotesize{Adjusted: Weighted to January 2000 demographics}
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.28\textwidth}
+\begin{minipage}{0.26\textwidth}
 \small \input{text/lfpr_text.txt}
 \end{minipage}
 \newpage
@@ -9003,8 +9004,8 @@ The next chart shows labor force participation rates overall and for men and wom
 
 {\pgfsetlayers{background layer,main,foreground layer}
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=50pt},
-		clip=false, width=6.2cm, height=7.8cm,
+	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=55pt},
+		clip=false, width=6.0cm, height=7.8cm,
 		yticklabel style={text width=1.6em},
 		enlarge y limits={0.05}, enlarge y limits={0.05}, 
         enlarge x limits={0.01}, ymax=44, ymin=2, 
@@ -9039,7 +9040,7 @@ The next chart shows labor force participation rates overall and for men and wom
 
 \normalsize{\textbf{Non-Participation Due to School}}\\
 \footnotesize{\textit{share of age group population, percent, 12-month moving average}}\\
-\hspace*{-2mm} \noindent \cbtable{2.5pt}{1.65}{p{26mm} R{10mm} R{10mm} R{10mm} R{10mm} R{10mm} R{10mm} R{10mm} R{10mm}}{data/young_nilf.tex}
+\noindent \cbtable{2.5pt}{1.65}{p{24mm} R{10mm} R{10mm} R{10mm} R{10mm} R{10mm} R{10mm} R{10mm} R{10mm}}{data/young_nilf.tex}
 		
 	\vspace{-1mm}
 \chartsource{Author's Calculations from CPS}{}
@@ -9439,7 +9440,7 @@ Voluntary part-time workers, or those \textbf{part-time for non-economic reasons
  \hypertarget{labw}{\label{labw}}
 \small Economists view wages as an important economic indicator. Wages are the majority of personal income and the main expense of businesses. Wage growth is particularly closely monitored as it affects quality of life and can affect inflation rates. 
 
-The US measures wages in several ways. As two examples, average hourly earnings comes from the monthly establishment survey, and usual weekly earnings are derived from three combined months of household surveys. This subsection first provides an overview of wage measures and recent results, and then discusses individual measures. 
+The US measures wages in several ways. As two examples, average hourly earnings come from the monthly establishment survey, and usual weekly earnings are derived from three combined months of household surveys. This subsection first provides an overview of wage measures and recent results, and then discusses individual measures. 
 \vspace{-2mm}
 
 \subsubsection*{Overview}
@@ -9996,16 +9997,16 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 \vspace{1mm}
 
 \charttitle{Wage Growth Tracker, Median}{median one-year wage growth, percent, three-month moving average}
-\chartvspace{5.0cm}
+\chartvspace{4.9cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{3mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=42pt},
 		max space between ticks=20, enlarge x limits={0.01}, 
 		axis line style={draw=none}, 
 		enlarge y limits={0.01}, ymin=-3.0, ymax=8.6, 
-		yticklabel style={text width=1.0em}, 
-		height=5.0cm, width=7.2cm, clip=false]
+		yticklabel style={text width=1.6em},
+		height=5.0cm, width=7.0cm, clip=false]
 	\nextgroupplot[\bbar{y}{0}, date coordinates in=x, 
 		xtick/.expanded={\afticks}, extra x ticks={{1997-01-01}}, 
 		minor xtick/.expanded={\anfticks}, shortyear]
@@ -10045,15 +10046,15 @@ The inflation-adjusted one-year median wage growth (see {\color{purple!80!magent
 \vspace{1mm}
 
 \charttitle{Zero Wage Change}{share of individuals with one-year wage growth between -0.5 and 0.5 percent, three-month average}
-\chartvspace{4.6cm}
+\chartvspace{4.5cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace*{3mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=30,	 
-		yticklabel style={text width=1.3em}, enlarge y limits={0.16}, 
+		yticklabel style={text width=1.6em}, enlarge y limits={0.16},
 		dateaxis, 
 		enlarge x limits={0.01}, ticks2yr,
-		shortyear, height=4.6cm, width=12.8cm, clip=false]
+		shortyear, height=4.6cm, width=12.6cm, clip=false]
 	\bglayer{\rebars}
 	\stdline{red}{date}{ZWC}{data/atl_wgt2.csv}
 	\input{text/zwc_node.txt}
@@ -10080,17 +10081,17 @@ The next charts show four measures of average hours worked. Two measures, Curren
 \input{text/hours_ces.txt} 
 \end{minipage}\hspace{5mm} \begin{minipage}{0.4\textwidth}
 \charttitle{Hours Worked Measures and Trend}{average hours worked per week}
-\chartvspace{5.4cm}
+\chartvspace{5.3cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace*{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[ 
-		yticklabel style={text width=1.3em}, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[
+		yticklabel style={text width=1.6em},
 		enlarge y limits={0.11}, max space between ticks=20,
 		dateaxis,  
 		enlarge x limits={0.01}, 
 		ticks5yr,
-		shortyear, height=5.4cm, width=7.6cm, clip=false]
+		shortyear, height=5.4cm, width=7.4cm, clip=false]
 	\bglayer{\rbars}
 	\stdline{navyblue}{date}{TOTLFS}{data/hours_qtr.csv}
 	\addplot[ultra thick, no markers, densely dotted, color=violet] 
@@ -10109,17 +10110,17 @@ The next charts show four measures of average hours worked. Two measures, Curren
 \footnotesize{\textit{index, 2017 to 2019 average=100}}
 \vspace{3.35cm}
 
-\hspace*{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{100},  
-		yticklabel style={text width=2.0em}, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{100},
+		yticklabel style={text width=1.6em},
 		enlarge y limits={0.22}, max space between ticks=40,
 		xtick=data,
 		dateaxis,  
 		enlarge x limits={0.01}, 
 		extra x ticks/.expanded={\aticks}, extra x tick style={tickwidth=2.5mm}, 
 		xticklabel={\pgfmathparse{int(\month)} \let\r\pgfmathresult 
-    		\ifnum\r=1 {\year} \else {} \fi}, height=5.3cm, width=7.6cm, clip=false,
-    	legend style={at={(0.98, 1.05)}, legend columns=2}, 
+    		\ifnum\r=1 {\year} \else {} \fi}, height=5.3cm, width=7.2cm, clip=false,
+    	legend style={at={(0.98, 1.05)}, legend columns=2},
 		legend cell align={left}]
 	\addplot[ultra thick, no markers, color=orange] 
 		table [x=date, y=TOTCES, col sep=comma] {data/hours_recent_idx.csv};
@@ -10309,17 +10310,17 @@ One theory of what drives medium-term trends, called the \textit{Kaldor-Verdoorn
 \vspace{2mm}
 
 \charttitle{Decomposition of Labor Productivity Growth}{contribution to labor productivity, percentage points}
-\vspace{5.35cm}
+\vspace{5.2cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
-		yticklabel style={text width=1.0em}, enlarge y limits={0.08},
+		yticklabel style={text width=1.6em}, enlarge y limits={0.08},
 		dateaxis,
 		enlarge x limits={0.01}, ticks2yr, 
-		shortyear, clip=false, height=6.8cm, width=13.4cm,
+		shortyear, clip=false, height=7.0cm, width=13.2cm,
 		legend cell align=left, transpose legend, enlarge x limits={0.02},
-		legend style={at={(0.585, 1.11)}, fill=white, legend columns=2}]
+		legend style={at={(0.58, 1.04)}, fill=white, legend columns=2}]
 	\bglayer{\rbars}
 	\ctsbar{cyan!40!white}{date}{TFP}{data/tfp.csv}{8.0pt}
 	\ctsbar{steelblue}{date}{Lab}{data/tfp.csv}{8.0pt}
@@ -10800,7 +10801,7 @@ Because of this broad influence, the Federal Reserve uses interest rates to mana
 \end{minipage}
 \vspace{1.5mm}
 
-\begin{minipage}{0.265\textwidth}
+\begin{minipage}{0.26\textwidth}
 \small \input{text/int_infl_ff.txt}Short-term treasury yields track this rate closely. Corporate bonds pay a risk premium over comparable treasuries. 
 
 Banks pay lower rates on deposits and charge higher rates for loans. The gap between the two is the bank profit margin on lending. Expected future changes in inflation also affect the premium or discount for longer-term borrowing. 
@@ -10809,10 +10810,10 @@ Banks pay lower rates on deposits and charge higher rates for loans. The gap bet
 \charttitle{Selected Interest Rates, \input{text/int_infl_chart_date.txt}}{annual rate, percent}
 \vspace{-1.5mm}
 
-\hspace{-2.0mm} \begin{tikzpicture} 
+\begin{tikzpicture}
 	\pgfplotstableread[col sep=comma]{data/int_summary.csv}\isum
   	\begin{axis}[ybar=20pt, \bbar{y}{0}, 
-    	width=8.5cm, bar width=20pt, height=4.7cm, ytick=false,
+    	width=8.2cm, bar width=20pt, height=5.3cm, ytick=false,
   		ymajorticks=false, axis line style={draw=none}, x tick style={color=white},
     	enlarge x limits={abs=0.5cm}, enlarge y limits={0.16, upper},
 		xtick=data, xticklabels from table={\isum}{Text}, 
@@ -10846,7 +10847,7 @@ Banks pay lower rates on deposits and charge higher rates for loans. The gap bet
 		{\small Long-term};
  	\end{axis}
 \end{tikzpicture}
-\vspace{-6mm}
+\vspace{-4mm}
 
 \footnotesize{Source: Treasury, FDIC, Freddie Mac \\ More recent market data, from \input{text/int_infl_chart_rec_date.txt}\unskip, are available for some series (see o).} 
 \end{minipage}
@@ -10865,16 +10866,16 @@ Banks pay lower rates on deposits and charge higher rates for loans. The gap bet
 \vspace{0.5mm}
 
 \charttitle{Fed Funds Rate, Unemployment, and Inflation}{annual rate, percent}
-\chartvspace{5.0cm}
+\chartvspace{5.6cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{2.5mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, clip=false, yticklabel style={inner sep=0pt},
-		dateaxis, yticklabel style={text width=1.3em}, 
+		dateaxis, yticklabel style={text width=1.6em},
 		enlarge x limits={0.01}, ticks2yr, 
 		legend style={at={(0.76, 1.01)}, fill=white}, reverse legend,
 		enlarge y limits={0.07}, ytick={0,2,5,10},
-		shortyear, height=5.0cm, width=13.0cm]	
+		shortyear, height=5.6cm, width=12.6cm]
 	\bglayer{\rbars}
 	\stdline{orange!80!yellow!90!white}{date}{UNRATE}{data/int_infl_recent.csv}
 	\dashline{gray!50!black}{date}{CPI}{data/int_infl_recent.csv}
@@ -10888,7 +10889,7 @@ Banks pay lower rates on deposits and charge higher rates for loans. The gap bet
 \chartsource{Federal Reserve, Bureau of Labor Statistics}{\hfill \tbllink{int_infl_recent.csv}}
 \end{minipage}
 \newpage
-\vspace*{-12mm} 
+\vspace*{-10mm}
 
 \begin{minipage}{0.76\textwidth}\index{interest rates!Fed funds rate} \index{Federal Reserve} \index{Taylor rule} \index{monetary policy}
 \small The FOMC has raised and lowered interest rates several times since 1989. Typically, rates are higher when inflation is above the two percent target, and rates are cut during economic recessions, to stimulate demand and boost employment. 
@@ -10898,16 +10899,16 @@ Rules can be useful for interest rate policy. For example, former Fed Chairs Ber
 One formulation of the Taylor rule is shown below (see {\color{lightcyan}\textbf{---}}), alongside the fed funds rate (see {\color{steelblue}\textbf{---}}). This version uses the core PCE inflation rate and puts more weight on the goal of maximum employment. During the pandemic, rules were less useful, as public health concerns took priority. 
 
 \charttitle{Federal Funds Rate}{percent, annual rate}
-\chartvspace{4.9cm}
+\chartvspace{4.8cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{2.5mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, yticklabel style={inner sep=0pt},
-		dateaxis, 
-		enlarge x limits={0.01}, ticks2yr, 
-		ytick={-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10}, 
-		yticklabel style={text width=1.3em}, height=4.9cm, 
-		width=13.4cm, xmax={2029-01-02},
+		dateaxis,
+		enlarge x limits={0.01}, ticks2yr,
+		ytick={-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10},
+		yticklabel style={text width=1.6em}, height=4.9cm,
+		width=12.8cm, xmax={2029-01-02},
 		shortyear, clip=false]
 	\bglayer{\rbars}
 	\input{text/ff_proj_bar.txt}
@@ -10950,17 +10951,17 @@ One formulation of the Taylor rule is shown below (see {\color{lightcyan}\textbf
 
 \begin{minipage}{0.76\textwidth} 
 \charttitle{Treasury Constant Maturity Yields}{percent, annual rate}
-\chartvspace{4.4cm}
+\chartvspace{4.3cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\pgfplotstableread[col sep=comma]{data/treas_recent_mon.csv}\treasmon
 	\begin{axis}[name=plot1, \bbar{y}{0}, 
 		dateaxis, 
 		enlarge x limits={0.01}, ticks5yr,  
 		ytick={0, 2, 4, 6, 8, 10}, ymin=-0.6, ymax=9.4, enlarge x limits={0}, 
 		yticklabel style={text width=1.6em, inner sep=0pt}, enlarge y limits={0.01},
-		shortyear, clip=false, width=9.5cm, height=4.4cm]
+		shortyear, clip=false, width=9.2cm, height=4.4cm]
 	\bglayer{\rbars}
 	\input{text/treas_inset_box.txt} 
 	\thickline{violet!75!black}{date}{Ten-year}{data/rates.csv}
@@ -10973,7 +10974,7 @@ One formulation of the Taylor rule is shown below (see {\color{lightcyan}\textbf
 	\begin{axis}[name=plot2, at={($(plot1.south east)+(0.6cm,0.2cm)$)}, anchor=south west, 
 		\bbar{y}{0}, \shticks xtick=data, clip=false, 
 		enlarge x limits={0}, enlarge y limits={0.37},
-		height=4.6cm, width=3.8cm, yticklabel style={text width=1.0em}, 
+		height=4.6cm, width=4.0cm, yticklabel style={text width=1.0em},
 		minor xtick={{2024-01-01}, {2025-01-01}, {2026-01-01}},
 		xticklabel style={align=center}, minor tick length=7pt, 
 		xticklabels from table={\treasmon}{label}, ]
@@ -11001,18 +11002,19 @@ One formulation of the Taylor rule is shown below (see {\color{lightcyan}\textbf
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{interest rates!treasuries}
-\normalsize \textbf{Selected US Treasury Rates}\\
-\footnotesize{\textit{constant maturity yield, percent \hspace{19mm}period averages}\\
-\hspace*{-2mm} \rowcolors{3}{}{black!5} \setlength{\tabcolsep}{3.5pt} \color{black!90}
-		{\renewcommand{\arraystretch}{1.65}
-\begin{tabular}{p{16.4mm} R{10.0mm} R{10.0mm} R{10.0mm} R{9.0mm}
-		 		 R{9.0mm} R{8.6mm} R{8.6mm} R{8.6mm} R{8.6mm}}
-		 	\arrayrulecolor{gray}\cmidrule(lr){5-10} \addlinespace[-0.6mm]
-			 \input data/treasury_rates.tex \arrayrulecolor{black!60}\hline
-		\end{tabular}}}
-\vspace{-1.5mm}		
+\charttitle{Selected US Treasury Rates}{constant maturity yield, percent \hspace{19mm}period averages}
+\vspace{-3mm}
+
+\rowcolors{3}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
+{\renewcommand{\arraystretch}{1.65}
+\begin{tabular}{p{18.0mm} R{10.0mm} R{10.0mm} R{10.0mm} R{9.0mm}
+		 R{9.0mm} R{8.6mm} R{8.6mm} R{8.6mm} R{8.6mm}}
+	\arrayrulecolor{gray}\cmidrule(lr){5-10} \addlinespace[-0.6mm]
+	\input data/treasury_rates.tex \arrayrulecolor{black!60}\hline
+\end{tabular}}\vspace{-1.5mm}
+
 \chartsource{Federal Reserve}{}
-\vspace{3mm}
+\vspace{4mm}
 
 \normalsize Yield Curve
 \vspace*{-1mm}
@@ -11023,10 +11025,10 @@ The yield curve is normally upward sloping as investors expect to be compensated
 \end{minipage}
 \vspace{0.5mm}
 
-\begin{minipage}{0.42\textwidth} \index{yield curve} \index{interest rates!treasuries}
+\begin{minipage}{0.44\textwidth} \index{yield curve} \index{interest rates!treasuries}
 \charttitle{Treasury Yield Curve}{constant maturity yield, percent, \textbf{\input{text/yc_date.txt}}}\\
-\hspace*{-1.5mm} \begin{tikzpicture}[trim axis right]
-	\begin{axis}[height=6.0cm, width=8.0cm, xmajorgrids, ymin=0.7,
+\begin{tikzpicture}[trim axis right]
+	\begin{axis}[height=6.6cm, width=8.0cm, xmajorgrids, ymin=0.7,
 		axis line style={draw=none}, nodes near coords style={style={black!95, fill=white,
 		yshift=1.5mm, inner sep=0.5}, /pgf/number format/.cd, fixed zerofill, 
 		precision=2, assume math mode}, 
@@ -11035,7 +11037,8 @@ The yield curve is normally upward sloping as investors expect to be compensated
 		xtick=data, xticklabels={1M, 3M, 6M, 1Y, 2Y, 5Y, 10Y, 20Y, 30Y}, 
 		legend cell align={left}, clip=false, xlabel={Maturity},
 		reverse legend, xticklabel style={black!90, font=\footnotesize}, 
-		enlarge y limits={0.18}, enlarge x limits={0.05}, \bbar{y}{0}]
+		enlarge y limits={0.18}, enlarge x limits={0.05}, \bbar{y}{0},
+		yticklabel style={text width=1.6em}]
 	\addplot[thick, mark=*, color=blue!60!black!30] 
 		table [x=number, y=sixyear, col sep=comma] {data/yc.csv};
 	\addplot[thick, mark=*, color=blue!60!black!60] 
@@ -11045,11 +11048,9 @@ The yield curve is normally upward sloping as investors expect to be compensated
     \legend{Six Years Ago, One Year Ago, Most Recent}	
 	\end{axis}
 \end{tikzpicture}
-\vspace*{-4mm}
-
 \chartsource{Federal Reserve}{}
 \end{minipage} \hspace{5mm}
-\begin{minipage}{0.3\textwidth}
+\begin{minipage}{0.28\textwidth}
 \small The yield curve can also become \textit{inverted} when yields on shorter-term debt are higher than yields on longer-term debt. An inverted yield curve can signal worsening economic conditions. For example, short-term rates may exceed longer-term rates if the Federal Reserve is expected to lower interest rates in the future, or if inflation is expected to fall due to weakened economic conditions. 
 
 \input{text/yc_inversion.txt}
@@ -11172,10 +11173,10 @@ The yield curve is normally upward sloping as investors expect to be compensated
 
 \begin{minipage}{0.42\textwidth}
 \charttitle{Real Fed Funds Rate}{annual rate, percent}
-\vspace{4.0cm}
+\vspace{4.1cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},
 		dateaxis,
 		xmax={\xmaxproj}, max space between ticks=40,
@@ -11186,8 +11187,8 @@ The yield curve is normally upward sloping as investors expect to be compensated
 		enlarge x limits={0.01},
 		xticklabel style={align=center, yshift=-2pt}, tick label style={inner sep=0pt},
 		max space between ticks=20,
-		clip=false, yticklabel style={text width=1.3em}, enlarge y limits={0.1},
-		shortyear, width=8.0cm, height=6.0cm]
+		clip=false, yticklabel style={text width=1.6em}, enlarge y limits={0.1},
+		shortyear, width=7.6cm, height=6.2cm]
 	\bglayer{\rbar}
 	\thickline{blue!70!white}{date}{Real}{data/ff_real.csv}
 	\addplot[ultra thick, densely dashed, no markers, color=black!90!white] 
@@ -11213,15 +11214,16 @@ The market-based approach has limitations, as the market for inflation-protected
 \vspace{1mm}
 
 \charttitle{Real Ten-Year Treasury Yields}{annual inflation-expectation-adjusted rate, percent}
-\chartvspace{5.8cm}
+\chartvspace{5.9cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		enlarge y limits={0.05}, legend style={at={(1.0, 1.17)}}, 
 		dateaxis, yticklabel style={inner sep=0pt},
 		enlarge x limits={0.01}, ticks2yr, 
-		shortyear, clip=false, height=5.8cm, width=13.4cm]
+		yticklabel style={text width=1.6em},
+		shortyear, clip=false, height=6.0cm, width=13.0cm]
 	\bglayer{\rbars}
 	\thickline{cyan!68!white}{date}{Model10}{data/real_rates3.csv}
 	\addplot[very thick, densely dotted, no markers, color=violet!55!black] 
@@ -11422,35 +11424,32 @@ The market-based approach has limitations, as the market for inflation-protected
 \input{text/fed_assets2.txt}
 \end{minipage}
 
-\begin{minipage}{0.42\textwidth} \index{balance sheet!Federal Reserve}
+\begin{minipage}{0.44\textwidth} \index{balance sheet!Federal Reserve}
 \charttitle{Federal Reserve Balance Sheet}{total assets, trillions of US dollars}\\
-\hspace*{-2mm} {\pgfdeclarelayer{background layer}
-\pgfdeclarelayer{foreground layer}
-\pgfsetlayers{background layer,main,foreground layer}\begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, ytick={0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 
+{\pgfsetlayers{background layer,main,foreground layer}
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, ytick={0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
 		enlarge y limits={0.1}, ymin=0.7, ymax=8.4,
 		dateaxis, enlarge x limits={0.01},
-		ticks2yr, 
-		yticklabel style={inner sep=0pt}, 
-		shortyear, height=6.5cm, width=8.0cm, clip=false]
+		ticks2yr,
+		yticklabel style={text width=1.6em},
+		shortyear, height=6.8cm, width=7.8cm, clip=false]
 	\bglayer{\recbars}
 	\thickline{darkblue}{date}{RESPPMA_N.WW}{data/fed_assets_m.csv}
 	\end{axis}
 \end{tikzpicture}}\\
 \chartsource{Federal Reserve}{\hfill \tbllink{fed_assets.csv}}
 \end{minipage}\hspace{5mm}
-\begin{minipage}{0.3\textwidth}
+\begin{minipage}{0.28\textwidth}
 \small \input{text/fed_assets3.txt}\input{text/fed_assets4.txt}
 \end{minipage}
 \vspace{7mm}
 
 \begin{minipage}{0.76\textwidth}
-\normalsize \textbf{Federal Reserve Assets}\\
-\footnotesize{\textit{billions of US dollars}
-\vspace*{-6mm}
+\charttitle{Federal Reserve Assets}{billions of US dollars}
+\vspace{-4mm}
 
-\cbtable{3.5pt}{1.55}{p{40mm} R{13.0mm} R{13.0mm} R{13.0mm} R{13.0mm} R{13.0mm}}{data/fed_bal_sheet.tex}
-}
+\cbtable{3.5pt}{1.55}{p{42mm} R{13.0mm} R{13.0mm} R{13.0mm} R{13.0mm} R{13.0mm}}{data/fed_bal_sheet.tex}
 
 \tablesource{Federal Reserve}{}
 \end{minipage}
@@ -11892,7 +11891,6 @@ One-year inflation rates for different categories of goods and services, includi
 \end{minipage}
 \newpage
 
-\vspace*{-12mm}
 \subsection*{PCE Price Index}
 \hypertarget{prpce}{\label{prpce}}
 \begin{minipage}{0.76\textwidth}
@@ -11906,13 +11904,13 @@ One-year inflation rates for different categories of goods and services, includi
 \chartvspace{6.5cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{2.5mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
-	dateaxis, 
-		enlarge x limits={0.01}, ticks2yr, 
-		yticklabel style={inner sep=0pt},
-		shortyear, clip=false, 
-		enlarge y limits={0.09}, width=13.0cm, height=6.5cm,
+	dateaxis,
+		enlarge x limits={0.01}, ticks2yr,
+		yticklabel style={text width=1.6em, inner sep=0pt},
+		shortyear, clip=false,
+		enlarge y limits={0.09}, width=12.6cm, height=6.5cm,
 		legend style={at={(0.98, 1.11)}}]
 	\bglayer{\rbars}
 	\input{text/pcepi_hbar.txt}
@@ -11936,12 +11934,12 @@ One-year inflation rates for different categories of goods and services, includi
 \chartvspace{5.0cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{1.5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, max space between ticks=20, enlarge y limits={0}, 
-		dateaxis, 
-		enlarge x limits={0.01}, ticks2yr, 
-		yticklabel style={inner sep=0pt},
-		shortyear, clip=false, ymin=0, ymax=5, width=13.0cm,
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20, enlarge y limits={0},
+		dateaxis,
+		enlarge x limits={0.01}, ticks2yr,
+		yticklabel style={text width=1.6em, inner sep=0pt},
+		shortyear, clip=false, ymin=0, ymax=5, width=12.6cm,
 		height=5.0cm]
 	\bglayer{\rbars}
 	\thickline{violet!60!magenta}{date}{12-month}{data/pce_tm12.csv}
@@ -12186,12 +12184,11 @@ Two important commodities for the construction and manufacturing industries are 
 \chartvspace{4.6cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{4mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=15, enlarge y limits={0.06},
-		yticklabel style={text width=1.6em}, width=13.0cm, height=4.6cm,
+		yticklabel style={text width=1.6em, inner sep=0pt}, width=13.0cm, height=4.6cm,
 		dateaxis, enlarge x limits={0.01},
-		ticks2yr, 
-		yticklabel style={inner sep=0pt}, 
+		ticks2yr,
 		shortyear, ymin=7, clip=false,
 		legend style={at={(1.02, 1.18)}}]
 	\bglayer{\rbars}
@@ -12216,12 +12213,12 @@ Two important commodities for the construction and manufacturing industries are 
 \chartvspace{4.2cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{2mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, enlarge y limits={0.05}, 
-		max space between ticks=15,	width=12.6cm, height=4.2cm, ymin=0.2, ymax=4.8,
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, enlarge y limits={0.05},
+		max space between ticks=15, width=12.4cm, height=4.2cm, ymin=0.2, ymax=4.8,
 		dateaxis, enlarge x limits={0.01},
-		ticks2yr, 
-		yticklabel style={inner sep=0pt}, 
+		ticks2yr,
+		yticklabel style={text width=1.6em, inner sep=0pt},
 		shortyear, clip=false]
 	\bglayer{\rebars}
 	\stdline{blue!80!white}{date}{Value}{data/gas_pricem.csv}
@@ -12242,13 +12239,12 @@ Two important commodities for the construction and manufacturing industries are 
 \chartvspace{4.4cm}
 
 {\pgfsetlayers{background layer,main,foreground layer}
-\hspace{6mm} \begin{tikzpicture}[overlay]
+\hspace{7mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
-		clip=false, yticklabel style={text width=2.5em}, enlarge y limits={0.06},
+		clip=false, yticklabel style={text width=2.5em, inner sep=0pt}, enlarge y limits={0.06},
 		dateaxis, enlarge x limits={0.01},
-		ticks2yr, 
-		yticklabel style={inner sep=0pt}, 
-		shortyear, ymin=150, ymax=4800, width=12.2cm, height=4.4cm]
+		ticks2yr,
+		shortyear, ymin=150, ymax=4800, width=12.0cm, height=4.4cm]
 	\bglayer{\rbars}
 	\stdline{orange!50!yellow}{date}{AM}{data/gold.csv}
 	\input{text/gold_node.txt}
