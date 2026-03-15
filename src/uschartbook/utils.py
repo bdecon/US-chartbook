@@ -547,7 +547,7 @@ def cps_date():
     if cps_dir and cps_dir.exists():
         cps_loc = cps_dir.parent
     else:
-        cps_loc = '/home/brian/Documents/CPS/data/'
+        cps_loc = Path.home() / 'Documents' / 'CPS' / 'data'
     raw_files = [(file[0:3], [f'19{file[3:5]}'
                               if int(file[3:5]) > 68
                               else f'20{file[3:5]}'][0])

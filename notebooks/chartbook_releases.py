@@ -48,7 +48,7 @@ RELEASES = [
 
     # === Quarterly ===
     {"name": "GDP", "csv": "gdp_rec2.csv", "freq": "quarterly",
-     "estimate_log": "../data/gdp_estimate_log.csv"},
+     "estimate_log": "../gdp_estimate_log.csv"},
     {"name": "GDP by Industry", "csv": "gdpva_pc.csv", "freq": "quarterly"},
     {"name": "GDP by State", "csv": "gdpva_pc.csv", "freq": "quarterly"},
     {"name": "Corporate Profits", "csv": "cprof.csv", "freq": "quarterly"},

@@ -16,8 +16,10 @@ from pathlib import Path
 from chartbook_releases import RELEASES, ST_SERIES
 
 DATA_DIR = Path('../chartbook/data')
-OUTPUT = Path('/home/brian/Documents/bdecon.github.io/files/chartbook_sources.json')
-SNAPSHOT = Path('../data/sources_snapshot.json')
+import os as _os
+_web = _os.getenv('WEBSITE_DIR')
+OUTPUT = Path(_web) / 'chartbook_sources.json' if _web else None
+SNAPSHOT = Path('../sources_snapshot.json')
 
 MONTH_NAMES = [
     '', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -209,9 +211,10 @@ def main():
     }
 
     # Write JSON to website
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT, 'w') as f:
-        json.dump(output, f, indent=2)
+    if OUTPUT:
+        OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+        with open(OUTPUT, 'w') as f:
+            json.dump(output, f, indent=2)
 
     # Save snapshot for next comparison
     snapshot = {
@@ -222,7 +225,10 @@ def main():
     with open(SNAPSHOT, 'w') as f:
         json.dump(snapshot, f, indent=2)
 
-    print(f'Wrote {len(results)} releases to {OUTPUT}')
+    if OUTPUT:
+        print(f'Wrote {len(results)} releases to {OUTPUT}')
+    else:
+        print(f'Processed {len(results)} releases (WEBSITE_DIR not set, skipped website export)')
     print(f'Recent: {", ".join(r["name"] for r in recent)}')
 
 

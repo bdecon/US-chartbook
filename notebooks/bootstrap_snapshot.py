@@ -18,9 +18,9 @@ from build_sources_json import (
     format_period, get_gdp_period, QUARTER_MAP, MONTH_NAMES,
 )
 
-REPO = Path('/home/brian/Documents/uschartbook')
+REPO = Path(__file__).resolve().parent.parent
 DATA_REL = 'chartbook/data'
-SNAPSHOT = Path('../data/sources_snapshot.json')
+SNAPSHOT = Path('../sources_snapshot.json')
 
 
 def git_log_dates(n=50):
