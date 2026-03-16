@@ -517,9 +517,9 @@ The Bureau of Economic Analysis \href{https://www.bea.gov/data/gdp/gross-domesti
 \noindent \normalsize \textbf{Production, by Type}\\
 \footnotesize{\textit{per capita, thousands of \input{text/gdpva_ltdt.txt}dollars}}\\
 \noindent \hspace*{-1mm} \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \shdateaxisticks ytick={0, 5, 10, 15, 20, 25, 30},
+	\begin{axis}[\bbar{y}{0}, \shdateaxisticks
 		yticklabel style={text width=1.6em}, ymin=1.5, ymax=29, xmin={1998-01-01},
-		shortyear, clip=false, height=6.5cm, width=6.8cm]
+		shortyear, clip=false, height=6.5cm, width=6.6cm]
 	\rebars
 	\stdnode{0.82cm}{1.3cm}{\footnotesize \color{orange!80!white}Government}
 	\stdline{orange!80!white}{date}{Government}{data/gdpva_pc.csv}
@@ -566,7 +566,7 @@ Trends in the \textbf{average workweek} (see {\color{blue}\textbf{---}}) are mor
 \begin{minipage}{0.36\textwidth}
 \charttitle{Population}{millions of people}\\
 \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={200, 220, 240, 260, 280, 300, 320, 340, 360},
+	\begin{axis}[\shdateaxisticks
 		yticklabel style={text width=1.6em}, enlarge y limits={0.22},
 		shortyear, height=5.4cm, width=5.8cm, clip=false]
 	\rbars
@@ -579,7 +579,7 @@ Trends in the \textbf{average workweek} (see {\color{blue}\textbf{---}}) are mor
 \begin{minipage}{0.36\textwidth}
 \charttitle{Employment Rate}{percent of population, seasonally adjusted}\\
 \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={40, 42, 44, 46, 48, 50, 52},
+	\begin{axis}[\shdateaxisticks
 		yticklabel style={text width=1.6em}, enlarge y limits={0.22},
 		shortyear, height=5.4cm, width=5.8cm, clip=false]
 	\rbars
@@ -594,7 +594,7 @@ Trends in the \textbf{average workweek} (see {\color{blue}\textbf{---}}) are mor
 \begin{minipage}{0.36\textwidth}
 \charttitle{Average Workweek}{average hours per worker per week, trend}\\
 \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={36, 37, 38},
+	\begin{axis}[\shdateaxisticks
 		yticklabel style={text width=1.6em}, enlarge y limits={0.22},
 		shortyear, height=5.4cm, width=5.8cm, clip=false]
 	\rbars
@@ -607,7 +607,7 @@ Trends in the \textbf{average workweek} (see {\color{blue}\textbf{---}}) are mor
 \begin{minipage}{0.36\textwidth}
 \charttitle{Total Hours Worked}{annualized hours, in billions}\\
 \begin{tikzpicture}
-	\begin{axis}[\shdateaxisticks ytick={220, 240, 260, 280, 300, 320, 340},
+	\begin{axis}[\shdateaxisticks
 		yticklabel style={text width=1.6em}, enlarge y limits={0.22},
 		shortyear, height=5.4cm, width=5.8cm, clip=false]
 	\rbars
@@ -642,7 +642,6 @@ Dividing GDP by total hours worked yields a labor productivity estimate (see {\c
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{100},
-		ytick={60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160},
 		yticklabel style={text width=1.6em},
 		enlarge y limits={0.03},
 		dateaxis,
@@ -1498,7 +1497,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=60pt},
 		axis line style={draw=none}, enlarge x limits={0.01}, clip=false,
 		yticklabel style={text width=1.6em}, height=7.5cm, width=5.8cm]
-	\nextgroupplot[\bbar{y}{0}, ytick={0, 100, 200, 300, 400},
+	\nextgroupplot[\bbar{y}{0},
 		date coordinates in=x, enlarge y limits={0.0},
 		ticks5yr,
 		ymin=0, ymax=400, shortyear]
@@ -1510,7 +1509,7 @@ As discussed above, financial claims between domestic sectors cancel out when me
 	\thicklineT{red!90!magenta}{date}{FL264090005.Q}{\liabsh}
 	\absnode{{2011-12-01}}{126}{\color{red!90!magenta}Foreign}
 	\input{text/liabsh_node1.txt}
-	\nextgroupplot[\bbar{y}{0}, ytick={0, 50, 100, 150, 200, 250, 300}, 
+	\nextgroupplot[\bbar{y}{0},
 		enlarge y limits={value=0.06, upper}, ymin=0, 
 		date coordinates in=x, xtick/.expanded={\afticks}, 
 		minor xtick/.expanded={\anfticks}, shortyear]
@@ -1668,7 +1667,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \chartvspace{5.8cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={-30, -20, -10, 0, 10, 20},
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		height=5.8cm, ymax=17.4, clip=false, width=13.2cm, enlarge y limits={0.06},
 		dateaxis, enlarge x limits={0.01},
 		ticks2yr,
@@ -1699,7 +1698,7 @@ A sector runs a surplus for a given accounting period when its income exceeds it
 \chartvspace{4.6cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={-5, 0, 5, 10, 15, 20},
+	\begin{axis}[\bbar{y}{0},
 		height=4.6cm, ymax=18.6, clip=false, width=13.2cm, enlarge y limits={0.06},
 		dateaxis, enlarge x limits={0.01},
 		ticks2yr,
@@ -2427,7 +2426,6 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 
 \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0},
-		ytick={0, 10, 20, 30, 40, 50, 60, 70, 80},
 		ymin=0, ymax=76,
 		dateaxis, enlarge y limits={0.04},
 		enlarge x limits={0.01}, ticks5yr,
@@ -2451,7 +2449,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \vspace{-2mm}
 
 \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, ytick={0, 10, 20, 30, 40, 50, 60, 70, 80},
+	\begin{axis}[\bbar{y}{0},
 		ymin=0, ymax=76,
 		yticklabel style={text width=1.6em},
 		dateaxis, enlarge y limits={0.04},
@@ -2818,8 +2816,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \chartvspace{8.0cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0},
-	ytick={0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260},
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.6em}, ymin=0,
 		enlarge y limits={0.06, upper},
 		dateaxis,
@@ -2861,7 +2858,7 @@ The Consumer Expenditure Surveys \href{https://www.bls.gov/cex/tables.htm}{repor
 \chartvspace{6.7cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={0, 20, 40, 60, 80, 100, 120},
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.6em}, ymin=0,
 		enlarge y limits={0.06, upper},
 		dateaxis,
@@ -3615,11 +3612,11 @@ To see this pattern, the following charts show the contribution to changes in re
 \vspace{1mm}
 
 \charttitle{Selected Household and Nonprofit Assets}{share of GDP, percent}
-\chartvspace{5.8cm}
+\chartvspace{5.7cm}
 
-\hspace{4mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={0, 100, 200, 300, 400, 500},
-		 ymin=16, ymax=475, height=5.8cm, width=12.8cm, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks
+		 ymin=16, ymax=475, height=5.8cm, width=12.6cm,
 		 yticklabel style={text width=1.6em}, 
 		 shortyear, clip=false]
 	\rbars
@@ -3646,14 +3643,14 @@ To see this pattern, the following charts show the contribution to changes in re
 \vspace{1mm}
 
 \charttitle{Contributions to Real Growth in Household and Nonprofit Assets}{contribution to one-year percent change in assets, adjusted by PCE price deflator}
-\chartvspace{6.8cm}
+\chartvspace{6.7cm}
 
-\hspace{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks ytick={-15, -10, -5, 0, 5, 10, 15, 20, 25}, 
-		height=6.8cm, width=13.4cm, enlarge y limits={0.02}, ymax=14.5,
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
+		height=6.8cm, width=13.2cm, enlarge y limits={0.02}, ymax=14.5,
 		shortyear, yticklabel style={text width=1.6em},
 			clip=false, legend cell align={left}, reverse legend,
-		legend style={legend columns=-1, at={(0.88, 0.995)}}]
+		legend style={legend columns=-1, at={(0.82, 0.995)}}]
 	\rbars
 	\sbar{cyan!32!white}{date}{DEP}{data/hh_asset_growth.csv}	
 	\sbar{blue!58!cyan}{date}{DSL}{data/hh_asset_growth.csv}
@@ -4025,7 +4022,7 @@ In the following chart, income invested at the historical-average rate \seebox{m
 \chartvspace{6.8cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={-15, -10, -5, 0, 5, 10, 15, 20},
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		dateaxis, enlarge y limits={0.06},
 		enlarge x limits={0.01}, ticks2yr, 	
 		width=13.2cm, height=6.8cm, shortyear, legend cell align={left},
@@ -4351,7 +4348,7 @@ The Census Bureau distinguishes between single-family homes and multi-unit housi
 \chartvspace{5.6cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[ytick={70, 80, 90, 100, 110, 120},
+	\begin{axis}[max space between ticks=20,
 		dateaxis, enlarge y limits={0.06},
 		enlarge x limits={0.01}, xtick/.expanded={\aticks},
 		shortyear, \bbar{y}{100},
@@ -4620,7 +4617,6 @@ By age, market income (see \tikz \draw [fill=cyan!50!white, draw=darkgray] (0cm,
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0},
-		ytick={0, 5, 10, 15, 20},
 		dateaxis,
 		enlarge x limits={0.01}, ticks5yr,
 		shortyear, clip=false, ymin=0.1, ymax=19.9,
@@ -6571,7 +6567,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 \chartvspace{6.1cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={0, 25, 50, 75, 100, 125},
+	\begin{axis}[\bbar{y}{0},
 		dateaxis, enlarge y limits={0.06},
 		enlarge x limits={0.01}, ticks2yr,
 		shortyear, clip=false, ymin=-2, ymax=119, height=6.2cm,
@@ -6602,7 +6598,7 @@ Excluding public land, the federal government's sizable debt exceeds the market 
 \chartvspace{6.1cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={0, 1, 2, 3}, clip=false, ymin=0,
+	\begin{axis}[\bbar{y}{0}, clip=false, ymin=0,
 		enlarge y limits={0.16, upper}, yticklabel style={text width=1.6em},
 		dateaxis,
 		enlarge x limits={0.01}, ticks5yr,
@@ -7226,7 +7222,7 @@ Trade follows seasonal patterns and can swing from month to month for various re
 		yticklabel style={text width=1.6em}, enlarge y limits=0.1,
 		dateaxis, enlarge x limits={0.01},
 		ticks2yr,
-		shortyear, clip=false, height=5.6cm, width=12.6cm]
+		shortyear, clip=false, height=5.6cm, width=12.4cm]
 	\rbars
 	\stdline{blue!90!cyan}{date}{RXI_N.B.UK}{data/fx1.csv}
 	\stdline{tealgreen}{date}{RXI_N.B.CA}{data/fx1.csv}
@@ -7258,13 +7254,13 @@ Trade follows seasonal patterns and can swing from month to month for various re
     axis line style={draw=none}, enlarge x limits={0.01}, clip=false, width=6.2cm, height=4.6cm,
     yticklabel style={text width=1.6em}, enlarge y limits={0.1}]
 	\nextgroupplot[\bbar{y}{100}, 
-		date coordinates in=x,  ytick={90, 100, 110, 120, 130}, 
+		date coordinates in=x,
 		xticklabels=\empty, xtick style={draw=none}]
 	\recbars
 	\stdline{navyblue}{date}{JRXWTFB_N.B}{data/fx_idx.csv}
 	\absnode{{2016-06-01}}{108}{\footnotesize \color{navyblue}Broad}
 	\input{text/twd_node.txt}
-\nextgroupplot[\bbar{y}{100}, ytick={80, 100, 120, 140}, 
+\nextgroupplot[\bbar{y}{100},
 		date coordinates in=x, 
 		minor xtick/.expanded={\aticks}, xtick/.expanded={\custticks}, 
 		shortyear]
@@ -8382,7 +8378,7 @@ Other reasons for unemployment claim a larger share of the total during a boom. 
 \hspace{5mm} \begin{tikzpicture}[overlay] 
 	\pgfplotstableread[col sep=comma]{data/unemp_reason_mon.csv}\unrsn
 	\begin{groupplot}[group style={group size=2 by 1, horizontal sep=28pt}]
-	\nextgroupplot[\bbar{y}{0}, ytick={0, 2, 4, 6, 8, 10, 12, 14, 16}, 
+	\nextgroupplot[\bbar{y}{0}, max space between ticks=20,
 		width=9.3cm, height=5.6cm, enlarge x limits=0.025,
 		ymin=0.1, ymax=9.6, legend cell align={left}, 
 		dateaxis, enlarge y limits={0.06},
@@ -8954,12 +8950,12 @@ The next chart shows labor force participation rates overall and for men and wom
 \chartvspace{4.6cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={0, 0.5, 1.0, 1.5, 2.0},
+	\begin{axis}[\bbar{y}{0},
 		yticklabel style={text width=1.6em},
 		dateaxis, enlarge y limits={0.0},
 		enlarge x limits={0.01}, minor xtick/.expanded={\aoticks}, xtick/.expanded={\aeticks},
 		ymin=0.0, ymax=2,
-		shortyear, height=4.6cm, width=12.4cm, clip=false]
+		shortyear, height=4.7cm, width=12.4cm, clip=false]
 	\rebars
 	\thickline{violet!50!blue}{date}{unjo}{data/unjo.csv}
 	\input{text/unjo_hbar.txt}
@@ -8983,11 +8979,11 @@ The next chart shows labor force participation rates overall and for men and wom
 
 \edef\custticks{{2001-01-01}, \afticks}
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={0, 2, 4, 6}, clip=false,
+	\begin{axis}[\bbar{y}{0}, clip=false,
 		yticklabel style={text width=1.6em},
 		dateaxis, enlarge y limits={0.06, upper},
 		enlarge x limits={0.01}, minor xtick/.expanded={\aticks}, xtick/.expanded={\custticks},
-		shortyear, ymin=0, height=5.3cm, width=6.8cm]
+		shortyear, ymin=0, height=5.4cm, width=6.8cm]
 	\rebars
 	\stdline{red!50!purple}{date}{AFS_QU}{data/quits.csv}
 	\absnode{{2009-11-01}}{6.2}{\footnotesize \color{red!50!purple}Accommodations\\
@@ -9027,7 +9023,7 @@ The next chart shows labor force participation rates overall and for men and wom
 		dateaxis,
 		enlarge x limits={0.01}, ticks5yr,
 		yticklabel style={text width=1.6em}, shortyear,
-		clip=false, height=5.0cm, width=6.8cm, enlarge y limits=0.26, 
+		clip=false, height=5.0cm, width=6.7cm, enlarge y limits=0.26,
 		legend columns=1, legend cell align={left}, reverse legend,
 		legend style={at={(0.25, 1.0)}}]
 	\rbars
@@ -9038,7 +9034,7 @@ The next chart shows labor force participation rates overall and for men and wom
 
 \chartsource{Bureau of Labor Statistics}{\hfill \tbllink{lf_flow.csv}}
 
-\end{minipage}\hspace{5mm}
+\end{minipage}\hspace{6mm}
 \begin{minipage}{0.32\textwidth}
 \small \input{text/lf_flow.txt} 
 \end{minipage}
@@ -10440,8 +10436,6 @@ In the US, several stock market indices track the share price of a basket of com
 \chartsource{Shiller, Baker, Author's Calculations}{\hfill \tbllink{sp500rr.csv}}
 \end{minipage}
 \newpage
-\vspace*{-12mm}
-
 \subsubsection*{Dividends}
 \begin{minipage}{0.76\textwidth} 
 \small One component of total returns is \textbf{dividend payments to shareholders}. The dividend payments per share over the previous four quarters divided by the share price is the dividend yield. The S\&P 500 dividend yield has averaged around two percent, over the past few decades.
@@ -10450,14 +10444,14 @@ In the US, several stock market indices track the share price of a basket of com
 \vspace{1mm}
 
 \charttitle{S\&P 500 Dividend Yield}{annual dividend per share divided by share price, percent}
-\chartvspace{4.8cm}
+\chartvspace{4.7cm}
 
-\hspace{2mm} \begin{tikzpicture}[overlay]
+\hspace{5mm} \begin{tikzpicture}[overlay]
 	\begin{axis}[\bbar{y}{0}, ymin=0,
 		dateaxis, enlarge y limits={0.06, upper},
-		enlarge x limits={0.01}, ticks2yr, 
-		shortyear, clip=false, height=4.8cm, width=13.0cm,
-		yticklabel style={text width=1.0em}]
+		enlarge x limits={0.01}, ticks2yr,
+		shortyear, clip=false, height=4.8cm, width=12.6cm,
+		yticklabel style={text width=1.6em}]
 	\rbars
 	\thickline{deepgreen}{date}{DY}{data/sp500dy.csv}
 	\input{text/sp500dy_node.txt}
@@ -10478,15 +10472,15 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \vspace{1mm}
 
 \charttitle{Corporate Equity Payout}{nonfinancial corporation net dividends paid and net issuance of equities, percent of GDP}
-\chartvspace{5.6cm}
+\chartvspace{5.5cm}
 
-\hspace*{3mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={0, 5, 10}, height=5.6cm, 
+\hspace{5mm} \begin{tikzpicture}[overlay]
+	\begin{axis}[\bbar{y}{0}, height=5.6cm,
 		dateaxis, enlarge y limits={0.08},
-		enlarge x limits={0.01}, ticks2yr, 
-		shortyear, clip=false, width=13.4cm,
+		enlarge x limits={0.01}, ticks2yr,
+		shortyear, clip=false, width=13.2cm,
 		legend style={at={(0.44, 0.98)}, fill=white},
-		yticklabel style={text width=1.0em}]
+		yticklabel style={text width=1.6em}]
 	\rbars
 	\sbar{blue!90!purple}{date}{Dividends}{data/eq_payout.csv}	
 	\sbar{violet!55!white}{date}{Buybacks}{data/eq_payout.csv}	
@@ -10688,7 +10682,7 @@ One formulation of the Taylor rule is shown below (see {\color{lightcyan}\textbf
 	\begin{axis}[\bbar{y}{0}, yticklabel style={text width=1.6em, inner sep=0pt},
 		dateaxis,
 		enlarge x limits={0.01}, ticks2yr,
-		ytick={-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10},
+		max space between ticks=20,
 		height=4.9cm,
 		width=12.8cm, xmax={2029-01-02},
 		shortyear, clip=false]
@@ -10740,7 +10734,7 @@ One formulation of the Taylor rule is shown below (see {\color{lightcyan}\textbf
 	\begin{axis}[name=plot1, \bbar{y}{0}, 
 		dateaxis, 
 		enlarge x limits={0.01}, ticks5yr,  
-		ytick={0, 2, 4, 6, 8, 10}, ymin=-0.6, ymax=9.4, enlarge x limits={0}, 
+		max space between ticks=20, ymin=-0.6, ymax=9.4, enlarge x limits={0},
 		yticklabel style={text width=1.6em, inner sep=0pt}, enlarge y limits={0.01},
 		shortyear, clip=false, width=9.2cm, height=4.4cm]
 	\rbars
@@ -11024,7 +11018,7 @@ The market-based approach has limitations, as the market for inflation-protected
 
 \charttitle{High-Quality Corporate Bonds, 10-Year}{par yield, percent, and spread over 10-year treasury, percentage points, monthly averages}\\
 \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, ytick={0, 2, 4, 6, 8, 10},
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		yticklabel style={text width=1.6em}, height=4.8cm,
 		dateaxis, enlarge y limits={0.06},
 		enlarge x limits={0.01}, ticks2yr,
@@ -11049,7 +11043,7 @@ The market-based approach has limitations, as the market for inflation-protected
 
 \edef\custticks{{1997-01-01}, \afticks}
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={0, 5, 10, 15, 20, 25},
+	\begin{axis}[\bbar{y}{0}, max space between ticks=20,
 		enlarge y limits={0.0},
 		yticklabel style={text width=1.6em}, width=6.8cm, height=5.0cm,
 		dateaxis, 
@@ -11077,7 +11071,7 @@ The market-based approach has limitations, as the market for inflation-protected
 \charttitle{Mortgage Rate and Spread}{average for 30-year fixed rate mortgages, percent}
 \hspace{5mm} \begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0},
-		height=5.2cm, width=7.2cm, max space between ticks=40, ymin=0, ymax=11.0,
+		height=5.2cm, width=7.2cm, max space between ticks=20, ymin=0, ymax=11.0,
 		enlarge y limits={0.0}, yticklabel style={text width=1.6em},
 		dateaxis, 
 		enlarge x limits={0.01}, ticks5yr, 
@@ -11275,7 +11269,7 @@ The next charts show inflation relative to the two percent target, using the Con
 \hspace{5mm} \begin{tikzpicture}[overlay]
     \begin{groupplot}[group style={group size=3 by 1, horizontal sep=30pt},
      enlarge y limits = {0.0},
-     yticklabel style={text width=1.0em}, ytick={-4, -2, 0, 2, 4, 6, 8, 10, 12},
+     yticklabel style={text width=1.0em}, max space between ticks=20,
      height=5.2cm, width=4.65cm, clip=false]
     \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks shortyear]
 	\thickline{blue!60!cyan}{date}{CPI}{data/infl_target_summary.csv}
@@ -11574,7 +11568,7 @@ One-year inflation rates for different categories of goods and services, includi
 \chartvspace{6.0cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[ytick={0, 1, 2, 3, 4, 5},
+	\begin{axis}[
 	dateaxis,
 	yticklabel style={text width=1.6em},
 		enlarge x limits={0.01}, xtick/.expanded={\aticks},
@@ -11608,7 +11602,7 @@ One-year inflation rates for different categories of goods and services, includi
 \vspace{3.5cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, ytick={0, 1, 2, 3, 4, 5, 6},
+	\begin{axis}[\bbar{y}{0},
 		dateaxis,
 		enlarge x limits={0.01}, enlarge y limits={0.06},
 		ticks2yr,
@@ -11631,7 +11625,7 @@ One-year inflation rates for different categories of goods and services, includi
 \chartvspace{4.9cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[ytick={0, 1, 2, 3, 4},
+	\begin{axis}[
 		ymin=0, ymax=4, \bbar{y}{0}, clip=false,
 		yticklabel style={text width=1.6em},
 		dateaxis,
