@@ -158,7 +158,8 @@
 			/pgf/number format/assume math mode=true},
 		width=12.8cm, height=4.8cm,
 		xticklabel style={align=left},
-		yticklabel style={text width=0.9em, align=right, inner sep=1.0pt},
+		yticklabel style={text width=1.6em, align=right, inner sep=1.0pt},
+		clip=false,
 		axis x line*=bottom, x axis line style={black!50},
 	    axis y line=left, y axis line style={opacity=0},
 	    ymajorgrids, grid style={very thin, black!10},
@@ -168,7 +169,7 @@
 	    	/tikz/every even column/.append style={column sep=0.3cm}}}
 
 	\pgfplotsset{shortyear/.style={xticklabel={`\short{\year}}}}
-	\pgfplotsset{dateaxis/.style={date coordinates in=x, axis line style={draw=none}}}
+	\pgfplotsset{dateaxis/.style={date coordinates in=x, axis line style={draw=none}, enlarge x limits={0.01}}}
 
 	% stacked diverging bar
 	\newcommand{\sbar}[4]{
@@ -225,9 +226,6 @@
 	% Chart title and subtitle
 	\newcommand{\charttitle}[2]{\normalsize \textbf{#1}\\
 	\footnotesize{\textit{#2}}}
-
-	% Reserve vertical space for an overlay chart, given its pgfplots height
-	\newcommand{\chartvspace}[1]{\vspace{\dimexpr #1 - 2.0cm\relax}}
 
 	% Chart source attribution with optional data table link
 	\newcommand{\chartsource}[2]{%
