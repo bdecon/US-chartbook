@@ -31,7 +31,7 @@ def get_headers(referrer=None):
     """Return headers dict, optionally with a Referrer field."""
     headers = REQUEST_HEADERS.copy()
     if referrer:
-        headers['Referrer'] = referrer
+        headers['Referer'] = referrer
     return headers
 
 import matplotlib.pyplot as plt
