@@ -1,1 +1,4 @@
-\node[label={[align=left]90:{\scriptsize \textit{0.2}}}, circle, draw=black, fill=navyblue, inner sep=1.6pt] at (axis cs:2026-02-01 00:00:00, 0.2) {};
+\addplot[only marks, forget plot, mark=*, mark size=2.4pt,
+    mark options={fill=navyblue, draw=black}]
+    coordinates {(2026-02-01 00:00:00, 0.2)}
+    node[above, inner sep=2pt] {\scriptsize \textit{0.2}};

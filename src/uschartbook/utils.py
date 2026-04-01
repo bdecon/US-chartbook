@@ -514,7 +514,7 @@ def bls_api(series, date_range, bls_key):
     
 
 def binned_wage(df, wage_var='WKEARN', percentile=0.1, wgt_var='PWORWGT',
-                bins=np.arange(-25, 3000, 50)):
+                bins=np.arange(-25, 4000, 50)):
     '''
     Returns wage estimate based on linear interpolation through 
     the bin containing the wage.
@@ -809,6 +809,14 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
 
     return text
     
+
+def nowcast_node(date, value, color):
+    '''Return addplot for nowcast marker that participates in axis limits'''
+    return (f'\\addplot[only marks, forget plot, mark=*, mark size=2.4pt,\n'
+            f'    mark options={{fill={color}, draw=black}}]\n'
+            f'    coordinates {{({date}, {value})}}\n'
+            f'    node[above, inner sep=2pt] {{\\scriptsize \\textit{{{value}}}}};')
+
 
 def node_adjust(df, color_dict):
     '''Return offsets for node text'''
