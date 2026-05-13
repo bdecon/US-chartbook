@@ -689,13 +689,15 @@ def fred(series, start='1989', retries=2):
         '\n'.join(errors))
 
 
-def c_line(color, see=True, paren=True, dashed=False, thick=False):
+def c_line(color, see=True, paren=True, dashed=False, thick=False, dotted=False):
 	'''Return (see ---) for a given color'''
 	s = 'see ' if see == True else ''
 	p = ['(', ')'] if paren == True else ['', '']
 	cl = f'{p[0]}{s}{{\\color{{{color}}}\\textbf{{---}}}}{p[1]}'
 	if dashed == True:
 		cl = f'{p[0]}{s}{{\\colordashline{{{color}}}}}{p[1]}'
+	if dotted == True:
+		cl = f'{p[0]}{s}{{\\colordotline{{{color}}}}}{p[1]}'
 	if thick == True:
 		cl = f'{p[0]}{s}{{\\scolorline{{{color}}}}}{p[1]}'
 	return cl
@@ -1037,8 +1039,10 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     if trail_zero == False:
     	val = val.rstrip('0').rstrip('.')
     	val2 = val2.rstrip('0').strip('.')
-    neg = True if value < 0 else False
-    insig = True if abv < threshold else False
+    # Strip negative sign when value rounds to zero at given precision
+    rounds_to_zero = round(abv, digits) == 0
+    neg = True if (value < 0 and not rounds_to_zero) else False
+    insig = True if (abv < threshold or rounds_to_zero) else False
     plural = 's' if ((abv > 1.045) & (style[-3:] != 'end')) else ''
     ptxtd = {None: '', 'none': '', 'None': '', '': '', 'percent': ' percent', 
              'pp': f' percentage point{plural}', 'point': f' point{plural}',
@@ -1192,7 +1196,7 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                     .replace('contributed', 'added')
                     .replace('increased by', 'rose by')
                     .replace('increased', 'grew')
-                    .replace('contribute ', 'add ')
+                    .replace('contribute', 'add')
                     .replace('subtract ', 'remove ')
                     .replace('a contribution', 'an addition')
                     .replace('contribution', 'addition')
@@ -1209,8 +1213,51 @@ def value_text(value, style='increase', ptype='percent', adj=None,
 #    	text = text.replace('.0 ', ' ')
     
     return(text)
-    
-    
+
+
+def retense(text, tense='present', plural=False):
+    '''Convert value_text output to a different tense.
+
+    tense: 'present' (adds/add, grows/grow, falls/fall)
+           'participle' (added, grown, fallen — for "has grown")
+           'gerund' (adding, growing, falling — for "with prices falling")
+    plural: if True, use plural present forms (add, grow, fall)
+    '''
+    mappings = {
+        'present': {
+            'grew': 'grows', 'fell': 'falls', 'rose': 'rises',
+            'added': 'adds', 'subtracted': 'subtracts', 'gained': 'gains',
+            'increased': 'increases', 'decreased': 'decreases',
+            'contributed': 'contributes',
+            'did not': 'does not', 'were': 'are', 'was': 'is',
+        },
+        'present_plural': {
+            'grew': 'grow', 'fell': 'fall', 'rose': 'rise',
+            'added': 'add', 'subtracted': 'subtract', 'gained': 'gain',
+            'increased': 'increase', 'decreased': 'decrease',
+            'contributed': 'contribute',
+            'did not': 'do not', 'were': 'are', 'was': 'is',
+        },
+        'participle': {
+            'grew': 'grown', 'fell': 'fallen', 'rose': 'risen',
+            'did not add': 'not added',
+            'did not contribute': 'not contributed',
+            'were unchanged': 'unchanged',
+            'was virtually unchanged': 'virtually unchanged',
+        },
+        'gerund': {
+            'grew': 'growing', 'fell': 'falling', 'rose': 'rising',
+            'increased': 'increasing', 'decreased': 'decreasing',
+            'added': 'adding', 'subtracted': 'subtracting',
+            'gained': 'gaining',
+        },
+    }
+    key = 'present_plural' if (tense == 'present' and plural) else tense
+    for old, new in mappings[key].items():
+        text = text.replace(old, new)
+    return text
+
+
 def gc_desc(lt, mu, sigma, also=False):
     '''Describe contribution to growth of 3-5 categories'''
     m, tot, sh = lt.mean(), lt.sum(), (lt / lt.sum()).sort_values()
@@ -1370,23 +1417,36 @@ def date_list(s):
         return dts
     
 
-def prval_comp(s, digits=1):
+def prval_comp(s, digits=1, style='noun', threshold=0.1):
     '''
-    Provides some text describing the previous two values
+    Provides some text describing the previous two values.
+
+    style: 'noun' returns "an increase of X" phrasing
+           'verb' returns "increased X percent" phrasing (from value_text)
     '''
     d1, d2 = date_list(s)[1:]
     v1, v2 = s.iloc[-2], s.iloc[-3]
-    vt1, vt2 = value_text(abs(v1), 'plain', digits=digits), value_text(abs(v2), 'plain', digits=digits)
+    vt1 = value_text(abs(v1), 'plain', digits=digits)
+    vt2 = value_text(abs(v2), 'plain', digits=digits)
+
+    if style == 'verb':
+        vb1 = value_text(v1, threshold=threshold, digits=digits)
+        vb2 = value_text(v2, threshold=threshold, digits=digits)
+        if v1 == v2:
+            return f'{vb1} in both {d1} and {d2}'
+        else:
+            return f'{vb1} in {d1}, and {vb2} in {d2}'
+
     def desc_val(value, is_combined=False):
         vt = value_text(abs(value), 'plain', digits=digits)
-        if value > 0.1:
+        if value > threshold:
             return ("increases" if is_combined else "an increase") + f" of {vt}"
-        elif value < -0.1:
+        elif value < -threshold:
             return ("decreases" if is_combined else "a decrease") + f" of {vt}"
         else:
             return "virtually no change"
 
-    if (v1 * v2 > 0) & (abs(v1) > 0.1) & (abs(v2) > 0.1):  # Both values same sign
+    if (v1 * v2 > 0) & (abs(v1) > threshold) & (abs(v2) > threshold):  # Both values same sign
         if vt1 == vt2:
             return f"{desc_val(v1, is_combined=True)} in both {d1} and {d2}"
         else:
