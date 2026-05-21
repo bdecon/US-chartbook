@@ -1350,17 +1350,17 @@ def gc_desc(lt, mu, sigma, also=False):
             bbdb_t = 'relatively broad-based'
         elif (tsh > 0.75) & (t2sh < tsh + 0.5):
             bbdb = 'db1'
-            incdec_t = xlincdec if sxl == 1 else incdec
+            incdec_t = xlincdec if len(sxl) == 1 else incdec
             bbdb_t = f'driven {su_adj}by {incdec_t}{sh.index[-1]}'
             if (t2sh > tsh + 0.3):
                 su_t = f', and supported by {incdec}{sh.index[-2]}'
         elif (t2sh > 0.75):
             bbdb = 'db2'
-            incdec_t = xlincdec if sxl == 2 else incdec
+            incdec_t = xlincdec if len(sxl) == 2 else incdec
             bbdb_t = f'driven by {incdec_t}{sh.index[-1]} and {sh.index[-2]}'
         elif (t3sh > 0.66):
             bbdb = 'db3'
-            incdec_t = xlincdec if sxl == 3 else incdec
+            incdec_t = xlincdec if len(sxl) == 3 else incdec
             bbdb_t = f'driven by {incdec_t}{sh.index[-1]}, {sh.index[-2]}, and {sh.index[-3]}'
     elif overall == 'low/none':
         if len(sg) == 0: # All low-growth
