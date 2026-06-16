@@ -14,15 +14,17 @@ from uschartbook.api_key import fred_key
 
 qtrs = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth'}
 
-numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
-           '4.0': 'four', '5.0': 'five', 
-           '6.0': 'six', '7.0': 'seven', 
-           '8.0': 'eight', '9.0': 'nine'}
+numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three',
+           '4.0': 'four', '5.0': 'five',
+           '6.0': 'six', '7.0': 'seven',
+           '8.0': 'eight', '9.0': 'nine',
+           '10.0': 'ten'}
 
-numbers2 = {0: 'no', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 
+numbers2 = {0: 'no', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five',
            6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten'}
-           
+
 def to_date(ym):
+    '''Return the first-of-month Timestamp for a (year, month) pair.'''
     return pd.to_datetime(f'{ym[0]}-{ym[1]}-01')
 
 
@@ -126,43 +128,20 @@ def bea_api_gdpstate(bea_key):
     return api_results
 
 
-def bea_api_ita(ind_list, bea_key):
-    ''' Return tables in table list for years in range'''
-    years = ','.join(map(str, range(1988, datetime.now().year + 1)))
-
-    api_results = []
-
-    for ind in ind_list:
-        url = f'https://apps.bea.gov/api/data/?&UserID={bea_key}'\
-              f'&method=GetData&datasetname=ITA&Indicator={ind}'\
-              f'&Frequency=QSA&Year={years}&ResultFormat=json'
-
-        r = requests.get(url)
-        response_data = r.json()
-
-        # Store only Results, not Request (which contains API key)
-        # Optimize by removing constant fields from records
-        optimized_results = _optimize_bea_data(response_data['BEAAPI']['Results'])
-        clean_data = {'BEAAPI': {'Results': optimized_results}}
-        api_results.append((ind, json.dumps(clean_data, separators=(',', ':'))))
-
-    return api_results
-
-
 def bea_to_db(api_results):
-	'''Connect to SQL database and add API results'''
-	conn = sqlite3.connect(db_path)
+    '''Connect to SQL database and add API results'''
+    conn = sqlite3.connect(db_path)
 
-	c = conn.cursor()
+    c = conn.cursor()
 
-	c.execute('''CREATE TABLE IF NOT EXISTS bea_nipa_raw(id, name, data, date,
+    c.execute('''CREATE TABLE IF NOT EXISTS bea_nipa_raw(id, name, data, date,
 	             UNIQUE(id, date))''')
 
-	c.executemany('INSERT OR IGNORE INTO bea_nipa_raw VALUES (?,?,?,?)', api_results)
+    c.executemany('INSERT OR IGNORE INTO bea_nipa_raw VALUES (?,?,?,?)', api_results)
 
-	conn.commit()
-	conn.close()
-	
+    conn.commit()
+    conn.close()
+
 
 def retrieve_table(table_id):
     '''Returns table from local database'''
@@ -184,35 +163,35 @@ def retrieve_table(table_id):
         del results['Constants']
 
     return results
-    
-    
+
+
 def nipa_df(nipa_table, series_list):
     '''Returns dataframe from table and series list'''
     data = {}
     for code in series_list:
-    	lineno = [i['LineNumber'] for i in nipa_table if (i['SeriesCode'] == code) & (i['TimePeriod'] in ['2016Q4', '2016', '1998Q4'])]
-    	obs = [i['DataValue'] for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
-    	index = [pd.to_datetime(i['TimePeriod']) for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
-    	data[code] = (pd.Series(data=obs, index=index).sort_index().str.replace(',', '').astype(float))
-        
+        lineno = [i['LineNumber'] for i in nipa_table if (i['SeriesCode'] == code) & (i['TimePeriod'] in ['2016Q4', '2016', '1998Q4'])]
+        obs = [i['DataValue'] for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
+        index = [pd.to_datetime(i['TimePeriod']) for i in nipa_table if (i['SeriesCode'] == code) & (i['LineNumber'] == lineno[0])]
+        data[code] = (pd.Series(data=obs, index=index).sort_index().str.replace(',', '').astype(float))
+
     return pd.DataFrame(data)
-    
+
 def gdpstate_df(table):
     '''Returns dataframe from table and series list'''
     data = {}
-    
-    series_list = list(set([i['GeoName'] 
+
+    series_list = list(set([i['GeoName']
                             for i in retrieve_table('SQGDP9')['Data']]))
     for code in series_list:
         obs = [i['DataValue'] for i in table
                if i['GeoName'] == code]
-        index = [pd.to_datetime(i['TimePeriod']) for i in table 
+        index = [pd.to_datetime(i['TimePeriod']) for i in table
                  if i['GeoName'] == code]
         data[code] = (pd.Series(data=obs, index=index)
                         .str.replace(',', '').astype(float))
-        
+
     return pd.DataFrame(data)
-        
+
 
 def bea_retrieve_annual(table_name, bea_key):
     '''
@@ -225,25 +204,25 @@ def bea_retrieve_annual(table_name, bea_key):
     api_result = [tuple(res)]
     bea_to_db(api_result)
 
-    
+
 def nipa_series_codes(nipa_table):
     '''Return series codes and names from table code, e.g. T20100'''
     r = nipa_table['Data']
 
     series_dict = {item['SeriesCode']: item['LineDescription'] for item in r}
-    
+
     return series_dict
-    
-    
+
+
 def growth_rate(series):
-	''' Return the annualized quarterly growth rate in percent'''
-	return ((((series.pct_change() + 1) ** 4) - 1) * 100)
+    ''' Return the annualized quarterly growth rate in percent'''
+    return ((((series.pct_change() + 1) ** 4) - 1) * 100)
 
 
 def growth_rate_monthly(series):
-	''' Return the annualized growth rate in percent for a monthly series'''
-	return ((((series.pct_change() + 1) ** 12) - 1) * 100)
-	
+    ''' Return the annualized growth rate in percent for a monthly series'''
+    return ((((series.pct_change() + 1) ** 12) - 1) * 100)
+
 
 def cagr(s, freq='Q'):
     '''
@@ -258,8 +237,8 @@ def cagr(s, freq='Q'):
     n = len(s) - 1
     r = ((s.iloc[-1] / s.iloc[0])**(p/n) - 1) * 100
     return r
-		
-    
+
+
 def growth_contrib(df, srs, freq='Q'):
     '''Calculate df column contribution to srs growth'''
     freq_d = {'Q': 4, 'M': 12, 'A': 1}
@@ -268,8 +247,8 @@ def growth_contrib(df, srs, freq='Q'):
     dft = dft.div(dft[srs], axis=0)
     c = dft.multiply((((df[srs].pct_change() + 1) ** freq_n) - 1) * 100, axis=0)
     return c.round(2)
-    
-    
+
+
 def growth_contrib_ann(df, srs, freq='Q'):
     '''Calculate df column contribution to srs growth'''
     freq_d = {'Q': 4, 'M': 12, 'A': 1}
@@ -290,24 +269,13 @@ def growth_contrib_3m3m(df, total_column):
     return (((gr + 1) ** 4) - 1) * 100 # Annualized growth rate
 
 
-def weighted_average(df, variable):
-    return np.average(df[variable], weights=df['BASICWGT'])
-
-
 def m3rate(series):
     '''Three-month / three-month growth rate'''
-    return ((((series.rolling(3).mean() / 
-               series.rolling(3).mean().shift(3)) 
+    return ((((series.rolling(3).mean() /
+               series.rolling(3).mean().shift(3))
               ** 4) - 1) * 100).dropna(how='all')
 
 
-def m6rate(series):
-    '''Six-month / six-month growth rate'''
-    return ((((series.rolling(6).mean() / 
-               series.rolling(6).mean().shift(6)) 
-              ** 2) - 1) * 100).dropna(how='all')
-              
-                  
 def csv_round(df):
     """Round each numeric column to its natural precision.
 
@@ -336,7 +304,7 @@ def write_txt(filename, filetext):
     ''' Write label to txt file '''
     with open(filename, 'w') as text_file:
         text_file.write(filetext)
-        
+
 
 def write_tbl(filename, df, header=True, index=True):
     '''Creates latex table from pandas dataframe'''
@@ -346,10 +314,10 @@ def write_tbl(filename, df, header=True, index=True):
     with open(filename, 'wb') as f:
         f.write(tbl)
     if header == True:
-    	with open(filename, 'rb') as f:
-        	tbl = f.readline().replace(b'\\ ', b'\\ \\arrayrulecolor{black!60!white} \\hline ', 1)
-    	with open(filename, 'wb') as f:
-        	f.write(tbl)
+        with open(filename, 'rb') as f:
+                tbl = f.readline().replace(b'\\ ', b'\\ \\arrayrulecolor{black!60!white} \\hline ', 1)
+        with open(filename, 'wb') as f:
+                f.write(tbl)
     # Strip negative zeros (e.g. -0.00 -> 0.00)
     with open(filename, 'rb') as f:
         tbl = f.read()
@@ -357,38 +325,38 @@ def write_tbl(filename, df, header=True, index=True):
     with open(filename, 'wb') as f:
         f.write(tbl)
 
-      
+
 def dtxt(date):
-	'''
+    '''
 	Return strings for given datetime date
 	'''
-	date = pd.to_datetime(date)
-	d = {'qtr1': f'{date.year} Q{date.quarter}', 
-	     'qtr2': f'the {qtrs[date.quarter]} quarter of {date.year}',
-	     'qtr3': f'Q{date.quarter}',
-	     'qtr4': f'`{date.strftime("%y")} Q{date.quarter}',
-	     'qtr5': f'the {qtrs[date.quarter]} quarter',
-	     'year': f'{date.year}',
-	     'mon1': date.strftime('%B %Y'),
-	     'mon2': date.strftime('%b %Y'),
-	     'mon3': date.strftime('%B'),
-	     'mon4': date.strftime(f'`{date.strftime("%y")} {date.strftime("%b")}'),
-	     'mon5': date.strftime('%Y-%m'),
-	     'mon6': f'{date.strftime("%b")} `{date.strftime("%y")}',
-	     'mon7': f'{date.strftime("%b")} {date.strftime("%y")}',
-	     'mon8': f'{date.strftime("%b")} \n {date.strftime("%Y")}',
-	     'day1': date.strftime('%B %-d, %Y'),
-	     'day2': date.strftime('%b %-d, %Y'),
-	     'day3': date.strftime('%d'),
-	     'day4': date.strftime('%B %-d'),
-	     'datetime': date.strftime('%Y-%m-%d'),	
-	     'datetime2': date.strftime('%Y-%m-%d').replace('-08-', '-8-').replace('-09-', '-9-')}	
-	return d
-	
+    date = pd.to_datetime(date)
+    d = {'qtr1': f'{date.year} Q{date.quarter}',
+             'qtr2': f'the {qtrs[date.quarter]} quarter of {date.year}',
+             'qtr3': f'Q{date.quarter}',
+             'qtr4': f'`{date.strftime("%y")} Q{date.quarter}',
+             'qtr5': f'the {qtrs[date.quarter]} quarter',
+             'year': f'{date.year}',
+             'mon1': date.strftime('%B %Y'),
+             'mon2': date.strftime('%b %Y'),
+             'mon3': date.strftime('%B'),
+             'mon4': date.strftime(f'`{date.strftime("%y")} {date.strftime("%b")}'),
+             'mon5': date.strftime('%Y-%m'),
+             'mon6': f'{date.strftime("%b")} `{date.strftime("%y")}',
+             'mon7': f'{date.strftime("%b")} {date.strftime("%y")}',
+             'mon8': f'{date.strftime("%b")} \n {date.strftime("%Y")}',
+             'day1': date.strftime('%B %-d, %Y'),
+             'day2': date.strftime('%b %-d, %Y'),
+             'day3': date.strftime('%d'),
+             'day4': date.strftime('%B %-d'),
+             'datetime': date.strftime('%Y-%m-%d'),
+             'datetime2': date.strftime('%Y-%m-%d').replace('-08-', '-8-').replace('-09-', '-9-')}
+    return d
+
 
 def series_info(s):
     '''Return info about a pandas series'''
-    
+
     obs_per_year = len(s.loc['2017'])
     d = {}
     d['obs'] = len(s)
@@ -410,19 +378,19 @@ def series_info(s):
     if d['val_latest'] > d['val_prev']:
         dlm = s[s >= d['val_latest']].sort_index()
         if len(dlm) > 1:
-        	dlm = dlm.index[-2]
-        	dl_txt = 'the highest level since'
+                dlm = dlm.index[-2]
+                dl_txt = 'the highest level since'
         elif len(dlm) == 1:
-        	dlm = dlm.index[-1]
-        	dl_txt = 'the highest level in the data'
+                dlm = dlm.index[-1]
+                dl_txt = 'the highest level in the data'
     elif d['val_latest'] < d['val_prev']:
         dlm = s[s <= d['val_latest']].sort_index()
         if len(dlm) > 1:
-        	dlm = dlm.index[-2]
-        	dl_txt = 'the lowest level since'
+                dlm = dlm.index[-2]
+                dl_txt = 'the lowest level since'
         elif len(dlm) == 1:
-        	dlm = dlm.index[-1]
-        	dl_txt = 'the lowest level in the data'
+                dlm = dlm.index[-1]
+                dl_txt = 'the lowest level in the data'
     else:
         dlm = d['date_prev']
         dl_txt = 'the same level as'
@@ -442,11 +410,11 @@ def series_info(s):
     elif obs_per_year == 1:
         dlm_txt = dlm.strftime("%Y")
     elif obs_per_year > 100:
-    	dlm_txt = ''
-    	print("Observations per year error")
+        dlm_txt = ''
+        print("Observations per year error")
     else:
         print("Observations per year error")
-        
+
     d['last_matched'] = f'{dl_txt} {dlm_txt}'
     d['days_since_match'] = (d['date_latest'] - dlm).days
     d['late90s'] = s.loc['1998': '1999'].mean()
@@ -456,13 +424,13 @@ def series_info(s):
     d['prev_year_mean'] = s.iloc[-obs_per_year*2:-obs_per_year].mean()
     d['change_prev'] = d['val_latest'] - d['val_prev']
     d['change_year_ago'] = d['val_latest'] - d['val_year_ago']
-    
+
     return d
 
 
 def bls_api(series, date_range, bls_key):
     """Collect list of series from BLS API for given dates"""
-    
+
     # The url for BLS API v2
     url = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 
@@ -511,7 +479,7 @@ def bls_api(series, date_range, bls_key):
     print('Post Request Status: {}'.format(p['status']))
 
     return df
-    
+
 
 def binned_wage(df, wage_var='WKEARN', percentile=0.1, wgt_var='PWORWGT',
                 bins=np.arange(-25, 4000, 50)):
@@ -524,9 +492,9 @@ def binned_wage(df, wage_var='WKEARN', percentile=0.1, wgt_var='PWORWGT',
     '''
     cdf = (df.groupby(pd.cut(df[wage_var], bins), observed=False)
              [wgt_var].sum().cumsum() / df[wgt_var].sum())
-    
+
     return np.interp(percentile, cdf, bins[1:])
-        
+
 
 def median_age(df, wgt='PWSSWGT', percentile=0.5):
     '''
@@ -537,10 +505,10 @@ def median_age(df, wgt='PWSSWGT', percentile=0.5):
     bins=np.arange(-1, 86, 1)
     cdf = (df.groupby(pd.cut(df.AGE, bins), observed=False)
              [wgt].sum().cumsum() / df[wgt].sum())
-    
+
     return np.interp(percentile, cdf, bins[1:])
 
-    
+
 def cps_date():
     '''Returns string listing the latest month of available CPS data'''
     # cps_dir points to cleaned data; raw pub.dat files are in parent directory
@@ -553,56 +521,16 @@ def cps_date():
                               else f'20{file[3:5]}'][0])
                  for file in os.listdir(cps_loc)
                  if file.endswith('pub.dat')]
-    dates = (pd.to_datetime([f'{mm.capitalize()}, 1, {yy}' 
+    dates = (pd.to_datetime([f'{mm.capitalize()}, 1, {yy}'
                             for mm, yy in raw_files],
                             format='%b, %d, %Y')
               .sort_values())
     return dates[-1]
-    
-    
-def fred_df2(series, start='1989'):
-	url = f'https://fred.stlouisfed.org/data/{series}.txt'
-	html = requests.get(url).text
-
-	# Parse the visible table rows (first 1000)
-	df = pd.read_html(io.StringIO(html), parse_dates=True, na_values=['.'])[1].set_index('DATE')['VALUE'].rename(series)
-	df.index = pd.to_datetime(df.index)
-
-	# Parse extra rows hidden in <div id="extra-rows"> as #date|value
-	extra_match = re.search(r'<div id="extra-rows"[^>]*>(.*?)</div>', html, re.DOTALL)
-	if extra_match:
-		rows = extra_match.group(1).strip().split('#')
-		extra = {}
-		for row in rows:
-			row = row.strip()
-			if '|' in row:
-				date, value = row.split('|', 1)
-				try:
-					extra[pd.to_datetime(date)] = float(value)
-				except ValueError:
-					continue
-		if extra:
-			extra_s = pd.Series(extra, name=series)
-			df = pd.concat([df, extra_s]).sort_index()
-
-	return df.loc[start:]
-    
-    
-def fred_df3(series, start='1989'):
-    url = (f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}')
-    df = pd.read_csv(url, index_col='observation_date', parse_dates=True)[series]
-    return df.loc[start:]
 
 
-def fred(series, start='1989', retries=2):
-    """Retrieve a FRED series, trying CSV, HTML, then API with retries.
-
-    Returns a pandas Series with DatetimeIndex and the series ID as name.
-    Missing values ('.') are returned as NaN.
-    """
+def _fred_csv(series, retries):
+    '''Engine: fredgraph.csv download (full history, simple format).'''
     errors = []
-
-    # Method 1: CSV download (fredgraph.csv) — full history, simple format
     for attempt in range(retries):
         try:
             r = requests.get(
@@ -611,15 +539,19 @@ def fred(series, start='1989', retries=2):
             r.raise_for_status()
             df = pd.read_csv(
                 io.StringIO(r.text),
-                index_col='DATE', parse_dates=True, na_values=['.'])
+                index_col=0, parse_dates=True, na_values=['.'])
             s = df.iloc[:, 0].rename(series)
             s.index.name = 'observation_date'
-            return s.loc[start:]
+            return s
         except Exception as e:
             errors.append(f'CSV attempt {attempt + 1}: {e}')
             time.sleep(1)
+    raise RuntimeError('; '.join(errors))
 
-    # Method 2: HTML page (/data/SERIES.txt) — table + hidden extra rows
+
+def _fred_html(series, retries):
+    '''Engine: /data/SERIES.txt page (visible table + hidden extra rows).'''
+    errors = []
     for attempt in range(retries):
         try:
             r = requests.get(
@@ -628,12 +560,12 @@ def fred(series, start='1989', retries=2):
             r.raise_for_status()
             html = r.text
 
-            tables = pd.read_html(
-                io.StringIO(html), parse_dates=True, na_values=['.'])
-            df = tables[1].set_index('DATE')['VALUE'].rename(series)
+            df = pd.read_html(
+                io.StringIO(html), parse_dates=True,
+                na_values=['.'])[1].set_index('DATE')['VALUE'].rename(series)
             df.index = pd.to_datetime(df.index)
 
-            # Parse extra rows hidden in <div id="extra-rows">
+            # Parse extra rows hidden in <div id="extra-rows"> as #date|value
             extra_match = re.search(
                 r'<div id="extra-rows"[^>]*>(.*?)</div>', html, re.DOTALL)
             if extra_match:
@@ -653,65 +585,114 @@ def fred(series, start='1989', retries=2):
                     df = df[~df.index.duplicated(keep='last')]
 
             df.index.name = 'observation_date'
-            return df.loc[start:]
+            return df
         except Exception as e:
             errors.append(f'HTML attempt {attempt + 1}: {e}')
             time.sleep(1)
+    raise RuntimeError('; '.join(errors))
 
-    # Method 3: FRED API — requires API key
-    if fred_key:
-        for attempt in range(retries):
-            try:
-                r = requests.get(
-                    'https://api.stlouisfed.org/fred/series/observations',
-                    params={
-                        'series_id': series,
-                        'observation_start': f'{start}-01-01',
-                        'api_key': fred_key,
-                        'file_type': 'json',
-                    },
-                    headers=REQUEST_HEADERS, timeout=10)
-                r.raise_for_status()
-                obs = r.json()['observations']
-                data = {pd.to_datetime(o['date']): o['value'] for o in obs}
-                s = pd.Series(data, name=series)
-                s = pd.to_numeric(s, errors='coerce')
-                s.index.name = 'observation_date'
-                return s.loc[start:]
-            except Exception as e:
-                errors.append(f'API attempt {attempt + 1}: {e}')
-                time.sleep(1)
+
+def _fred_api(series, start, retries):
+    '''Engine: FRED REST API (requires fred_key).'''
+    if not fred_key:
+        raise RuntimeError('API: no FRED_API_KEY set')
+    errors = []
+    for attempt in range(retries):
+        try:
+            r = requests.get(
+                'https://api.stlouisfed.org/fred/series/observations',
+                params={
+                    'series_id': series,
+                    'observation_start': f'{start}-01-01',
+                    'api_key': fred_key,
+                    'file_type': 'json',
+                },
+                headers=REQUEST_HEADERS, timeout=10)
+            r.raise_for_status()
+            obs = r.json()['observations']
+            data = {pd.to_datetime(o['date']): o['value'] for o in obs}
+            s = pd.to_numeric(pd.Series(data, name=series), errors='coerce')
+            s.index.name = 'observation_date'
+            return s
+        except Exception as e:
+            errors.append(f'API attempt {attempt + 1}: {e}')
+            time.sleep(1)
+    raise RuntimeError('; '.join(errors))
+
+
+def fred(series, start='1989', engine='auto', index_name='observation_date',
+         retries=2):
+    '''Retrieve a FRED series as a pandas Series (DatetimeIndex, named `series`).
+
+    Missing values ('.') are returned as NaN.
+
+    engine:
+        'auto' (default) — try CSV, then HTML, then API; raise if all fail.
+        'csv' / 'html' / 'api' — force a single technique and raise on failure.
+        Use a forced engine to pin the one that is currently up when FRED's
+        endpoints flap (sometimes one works and another does not).
+    index_name:
+        Name applied to the returned index (default 'observation_date').
+    '''
+    engines = {'csv': lambda: _fred_csv(series, retries),
+               'html': lambda: _fred_html(series, retries),
+               'api': lambda: _fred_api(series, start, retries)}
+
+    if engine == 'auto':
+        order = ['csv', 'html', 'api']
+    elif engine in engines:
+        order = [engine]
     else:
-        errors.append('API: no FRED_API_KEY set')
+        raise ValueError(
+            f"engine must be 'auto', 'csv', 'html', or 'api'; got {engine!r}")
+
+    errors = []
+    for name in order:
+        try:
+            s = engines[name]()
+            s.index.name = index_name
+            return s.loc[start:]
+        except Exception as e:
+            errors.append(f'[{name}] {e}')
 
     raise RuntimeError(
-        f'All methods failed for FRED series {series}:\n' +
+        f'All engines failed for FRED series {series}:\n' +
         '\n'.join(errors))
 
 
+def fred_df2(series, start='1989'):
+    '''Backward-compatible shim: 'DATE' index name, auto engine fallback.'''
+    return fred(series, start=start, engine='auto', index_name='DATE')
+
+
+def fred_df3(series, start='1989'):
+    '''Backward-compatible shim: 'observation_date' index name, auto fallback.'''
+    return fred(series, start=start, engine='auto')
+
+
 def c_line(color, see=True, paren=True, dashed=False, thick=False, dotted=False):
-	'''Return (see ---) for a given color'''
-	s = 'see ' if see == True else ''
-	p = ['(', ')'] if paren == True else ['', '']
-	cl = f'{p[0]}{s}{{\\color{{{color}}}\\textbf{{---}}}}{p[1]}'
-	if dashed == True:
-		cl = f'{p[0]}{s}{{\\colordashline{{{color}}}}}{p[1]}'
-	if dotted == True:
-		cl = f'{p[0]}{s}{{\\colordotline{{{color}}}}}{p[1]}'
-	if thick == True:
-		cl = f'{p[0]}{s}{{\\scolorline{{{color}}}}}{p[1]}'
-	return cl
-	
-	
+    '''Return (see ---) for a given color'''
+    s = 'see ' if see == True else ''
+    p = ['(', ')'] if paren == True else ['', '']
+    cl = f'{p[0]}{s}{{\\color{{{color}}}\\textbf{{---}}}}{p[1]}'
+    if dashed == True:
+        cl = f'{p[0]}{s}{{\\colordashline{{{color}}}}}{p[1]}'
+    if dotted == True:
+        cl = f'{p[0]}{s}{{\\colordotline{{{color}}}}}{p[1]}'
+    if thick == True:
+        cl = f'{p[0]}{s}{{\\scolorline{{{color}}}}}{p[1]}'
+    return cl
+
+
 def c_box(color, see=True):
-	'''Return text string to activate LaTeX (see []) for a given color'''
-	if see == False:
-	    cb = f'(\\cbox{{{color}}})'
-	else:
-	    cb = f'\\seebox{{{color}}}'
-	return cb
-    
-    
+    '''Return text string to activate LaTeX (see []) for a given color'''
+    if see == False:
+            cb = f'(\\cbox{{{color}}})'
+    else:
+            cb = f'\\seebox{{{color}}}'
+    return cb
+
+
 def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
              anchor=None, digits=1, full_year=False, dollar=False,
              colon=True, align='left', loc='end', size=1.0, italic=False):
@@ -723,30 +704,30 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
     '''  
     anchor_opt = ''
     if loc == 'end':
-    	i = -1
+        i = -1
     elif loc == 'start':
-    	i = 0
-    	align='right'
-    	anchor_opt = 'anchor=east, '
+        i = 0
+        align='right'
+        anchor_opt = 'anchor=east, '
     if anchor != None:
         if anchor.lower() not in ['south', 'north']:
             print('Anchor should be south or north')
         else:
             anchor_opt = f'anchor={anchor.lower()}, '
-        
+
     col = ':' if colon == True else ''
-    
+
     pct = '' if percent == False else '\\%'
-        
-    dt = ''    
+
+    dt = ''
     if date != None:
-        if date.lower() not in ['month', 'mon', 'm', 'year', 'yr', 'y', 
-        						'fy', 'day', 'd', 'ds', 'dayshort', 'short', 's',
+        if date.lower() not in ['month', 'mon', 'm', 'year', 'yr', 'y',
+                                                        'fy', 'day', 'd', 'ds', 'dayshort', 'short', 's',
                                 'quarter', 'qtr', 'q', 'qtrshort', 'qshort', 'qs']:
             print('Date should be month or quarter or year or short')
         yr = series.index[i].strftime('`%y')
         if full_year == True:
-        	yr = series.index[i].strftime('%Y')
+                yr = series.index[i].strftime('%Y')
         if date.lower() in ['qtrshort', 'qshort', 'qs']:
             yr = series.index[i].strftime('%y')
         qtr = series.index[i].to_period('Q').strftime('Q%q')
@@ -764,40 +745,40 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
         elif date.lower() == 'fy':
             dt = f'\\scriptsize FY{yr} \\\\ '.replace('`', '')
         elif date.lower() in ['d', 'day']:
-        	dt = f'\\scriptsize {mo} {day}\\\\ \\scriptsize {yr}{col} \\\\ '
+                dt = f'\\scriptsize {mo} {day}\\\\ \\scriptsize {yr}{col} \\\\ '
         elif date.lower() in ['ds', 'dayshort', 'short', 's']:  # Day short format
-        	dt = f'\\scriptsize {mo} {daysh}{col}\\\\'
-        
+                dt = f'\\scriptsize {mo} {daysh}{col}\\\\'
+
     lt = series.iloc[i]
     vtxt = f'{lt:.1f}'
     if digits == 2:
-    	vtxt = f'{lt:.2f}'
+        vtxt = f'{lt:.2f}'
     elif digits == 3:
-    	vtxt = f'{lt:.3f}'
+        vtxt = f'{lt:.3f}'
     elif digits == 0:
-    	vtxt = f'{lt:.0f}'
+        vtxt = f'{lt:.0f}'
     elif digits == 'comma':
-    	vtxt = f'{lt:,.0f}'
+        vtxt = f'{lt:,.0f}'
     elif loc == 'start':
-    	vtxt = f'{vtxt} '
-    	
+        vtxt = f'{vtxt} '
+
     dol = ''
     if dollar == True:
-    	dol = '\\$'
+        dol = '\\$'
     elif dollar == 'thousands':
-    	dol = '\\$'
-    	vtxt = f'{lt * 1000:,.0f}'
-    	
+        dol = '\\$'
+        vtxt = f'{lt * 1000:,.0f}'
+
     it = ''
     if italic == True:
-    	it = '\\textit'
-    
+        it = '\\textit'
+
     if (offset == True) and (date != None):
         vmax = series.max()
         vmin = series.min()
         vrng = vmax - vmin
-        offset = (-0.35 if lt > vmax - (vrng*0.1) 
-                  else 0.35 if lt < vmin + (vrng*0.1) 
+        offset = (-0.35 if lt > vmax - (vrng*0.1)
+                  else 0.35 if lt < vmin + (vrng*0.1)
                   else 0)
     elif (offset == True) and (date == None):
         offset = 0
@@ -810,7 +791,7 @@ def end_node(series, color, percent=False, date=None, offset=0, xoffset=0,
             f'(axis cs:{datetime}, {lt}) {{}};')
 
     return text
-    
+
 
 def nowcast_node(date, value, color):
     '''Return addplot for nowcast marker that participates in axis limits'''
@@ -818,16 +799,6 @@ def nowcast_node(date, value, color):
             f'    mark options={{fill={color}, draw=black}}]\n'
             f'    coordinates {{({date}, {value})}}\n'
             f'    node[above, inner sep=2pt] {{\\scriptsize \\textit{{{value}}}}};')
-
-
-def node_adjust(df, color_dict):
-    '''Return offsets for node text'''
-    df = df[color_dict.keys()]
-    std = df.std().max()
-    lt = df.iloc[-1]
-    adj_list = lt[lt.sort_values().diff() < std]
-    d = {name: abs(std/2) for name in adj_list.index}
-    return d
 
 
 def node_adj(df):
@@ -898,7 +869,7 @@ def node_adj(df):
         if len(t2) == 2:
             g1 = ((u - t2[0]) / u) * 0.35
             d[t2.index[0]] = (g1/2)
-            d[r.index[r.index.get_loc(t2.index[0]) - 1]] = - (g1/2) 
+            d[r.index[r.index.get_loc(t2.index[0]) - 1]] = - (g1/2)
             g2 = ((u - t2[1]) / u) * 0.35
             d[t2.index[1]] = (g2/2)
             d[r.index[r.index.get_loc(t2.index[1]) - 1]] = - (g2/2)
@@ -939,8 +910,8 @@ def cps_nmo(cps_dir, cps_dt, cols, months=1):
               .query('MONTH >= @start_month and MONTH <= @cps_month'))
 
     return df
-    
-    
+
+
 def compare_text(latest, previous, cutoffs, plain=False):
     '''
     Simple text based on difference between two numbers.
@@ -951,7 +922,7 @@ def compare_text(latest, previous, cutoffs, plain=False):
     size = abs(latest - previous)
     if type(cutoffs) not in [list, tuple] or len(cutoffs) != 3:
         print('Cutoffs should be list of three numeric values')
-        
+
     if size <= cutoffs[0]:
         text = 'in line with'
     elif size <= cutoffs[1]:
@@ -960,21 +931,29 @@ def compare_text(latest, previous, cutoffs, plain=False):
         text = f'substantially {direction}'
     else:
         text = f'far {direction}'
-    
+
     if plain == True:
         text = direction
-        
+
     return text
-    
-    
+
+
 def clean_fed_data(url, dtype='main'):
+    '''Download a Federal Reserve CSV (DDP format) and return (labels, data).
+
+    Row 4 of the file holds series descriptions and rows 5+ hold observations
+    keyed by date in the 'Series Description' column. Returns a tuple: a dict
+    mapping series code -> cleaned label (parenthetical notes stripped; pass
+    dtype='full' to keep the full description), and a DataFrame of float values
+    indexed by date ('ND' -> NaN).
+    '''
     s = requests.get(url).content
     raw_data = pd.read_csv(io.StringIO(s.decode('utf-8')))
 
-    d = {v: re.sub("\\s+[\\(\\[].*?[\\)\\]]", "", i.split(';')[0]) 
+    d = {v: re.sub("\\s+[\\(\\[].*?[\\)\\]]", "", i.split(';')[0])
          for i, v in raw_data.iloc[4, 1:].items()}
     if dtype == 'full':
-        d = {v: re.sub("\\s+[\\(\\[].*?[\\)\\]]", "", ''.join(i.split(';')[0:])) 
+        d = {v: re.sub("\\s+[\\(\\[].*?[\\)\\]]", "", ''.join(i.split(';')[0:]))
              for i, v in raw_data.iloc[4, 1:].items()}
 
     date_column = raw_data.loc[5:, 'Series Description']
@@ -989,10 +968,10 @@ def clean_fed_data(url, dtype='main'):
     clean_data = raw_data.iloc[5:, 1:].replace('ND', np.nan).astype('float')
     clean_data.index = date_index
     clean_data.columns = columns
-    
+
     return (d, clean_data)
-    
-    
+
+
 def jolts_codes(d, code_text, ind, value='i'):
     '''Input dictionary, code_text (for example JOR) and industry dict'''
     for code, name in ind.items():
@@ -1002,10 +981,10 @@ def jolts_codes(d, code_text, ind, value='i'):
             d[i] = name
     return d
 
-    
-def value_text(value, style='increase', ptype='percent', adj=None, 
+
+def value_text(value, style='increase', ptype='percent', adj=None,
                time_str='', digits=1, threshold=0, num_txt=True,
-               casual=False, obj='singular', dollar=False, 
+               casual=False, obj='singular', dollar=False,
                round_adj=False, trail_zero=True):
     '''
     RETURN TEXT STRING FOR SPECIFIED FLOAT VALUE
@@ -1029,70 +1008,66 @@ def value_text(value, style='increase', ptype='percent', adj=None,
     val = f'{dol}{abv:,.{digits}f}'
     val2 = f'{dol}{value:,.{digits}f}'
     indef = 'an' if ((val[0] == '8') | (val[0:3] in ['11.', '11,', '18.', '18,'])) else 'a'
-    numbers = {'1.0': 'one', '2.0': 'two', '3.0': 'three', 
-               '4.0': 'four', '5.0': 'five', 
-               '6.0': 'six', '7.0': 'seven', 
-               '8.0': 'eight', '9.0': 'nine',
-               '10.0': 'ten'}
+    # uses the module-level `numbers` dict (single source of truth)
     if (num_txt == True) & (val in numbers.keys()):
-        val = numbers[val] 
+        val = numbers[val]
     if trail_zero == False:
-    	val = val.rstrip('0').rstrip('.')
-    	val2 = val2.rstrip('0').strip('.')
+        val = val.rstrip('0').rstrip('.')
+        val2 = val2.rstrip('0').strip('.')
     # Strip negative sign when value rounds to zero at given precision
     rounds_to_zero = round(abv, digits) == 0
     neg = True if (value < 0 and not rounds_to_zero) else False
     insig = True if (abv < threshold or rounds_to_zero) else False
     plural = 's' if ((abv > 1.045) & (style[-3:] != 'end')) else ''
-    ptxtd = {None: '', 'none': '', 'None': '', '': '', 'percent': ' percent', 
+    ptxtd = {None: '', 'none': '', 'None': '', '': '', 'percent': ' percent',
              'pp': f' percentage point{plural}', 'point': f' point{plural}',
-             'trillion': ' trillion', 'billion': ' billion', 'million': ' million', 
+             'trillion': ' trillion', 'billion': ' billion', 'million': ' million',
              'thousand': ' thousand', 'units': ' units'}
     ptxt = ptxtd[ptype]
-    rnd_adj = ('' if ((round_adj == False) | (abv >= round(abv, digits))) 
-    		   else 'nearly ' if casual == False else 'almost ')
-    
+    rnd_adj = ('' if ((round_adj == False) | (abv >= round(abv, digits)))
+                   else 'nearly ' if casual == False else 'almost ')
+
     if style in ['increase', 'increase_by', 'gain', 'return']:
-        atxtd = {None: ' by ', 'sa': ' at a seasonally adjusted rate of ', 
-                 'annual': ' at an annual rate of ', 
-                 'annualized': ' at an annualized rate of ', 
+        atxtd = {None: ' by ', 'sa': ' at a seasonally adjusted rate of ',
+                 'annual': ' at an annual rate of ',
+                 'annualized': ' at an annualized rate of ',
                  'average_annualized': ' at an average annualized rate of ',
                  'avg_ann': ' at an average annualized rate of ',
-                 'saa': ' at a seasonally adjusted and annualized rate of ', 
-                 'saar': ' at a seasonally adjusted annualized rate of ', 
-                 'total': ' by a total of ', 
+                 'saa': ' at a seasonally adjusted and annualized rate of ',
+                 'saar': ' at a seasonally adjusted annualized rate of ',
+                 'total': ' by a total of ',
                  'inflation': ' the inflation rate by ',
                  'average': ' at an average rate of ',
                  'equivalent': ' by the equivalent of '}
         if style != 'increase_by':
-        	atxtd[None] = ' '
+                atxtd[None] = ' '
         if style in ['gain', 'return']:
-        	atxtd['total'] = ' a total of '
+                atxtd['total'] = ' a total of '
         atxt = atxtd[adj]
         if style == 'increase_by':
-        	atxt = atxt.replace(' at ', ' by ')
+                atxt = atxt.replace(' at ', ' by ')
         stxt = 'increased' if neg == False else 'decreased'
         if style == 'gain':
-        	stxt = 'gained' if neg == False else 'lost'
+                stxt = 'gained' if neg == False else 'lost'
         if style == 'return':
-        	stxt = 'returned' if neg == False else 'lost'
+                stxt = 'returned' if neg == False else 'lost'
         if adj == 'inflation':
-        	stxt = 'increased' if neg == False else 'reduced'
+                stxt = 'increased' if neg == False else 'reduced'
         ttxt = f' over the {time_str} period' if time_str != '' else ''
         text = f'{stxt}{atxt}{val}{ptxt}{ttxt}'
         if insig == True:
             text = 'was virtually unchanged'
             if obj == 'plural':
                 text = 'were unchanged'
-            
+
     if style in ['contribution', 'contribution_to']:
-        atxtd = {None: '', 'sa': ' on a seasonally adjusted basis', 
-                 'annual': ' on an annual basis', 
-                 'annualized': ' on an annualized-basis', 
+        atxtd = {None: '', 'sa': ' on a seasonally adjusted basis',
+                 'annual': ' on an annual basis',
+                 'annualized': ' on an annualized-basis',
                  'average_annualized': ' on an average annualized basis ',
                  'avg_ann': ' on an average and annualized rate basis ',
-                 'saa': ' on a seasonally adjusted and annualized basis', 
-                 'saar': ' on a seasonally adjusted annualized basis', 
+                 'saa': ' on a seasonally adjusted and annualized basis',
+                 'saar': ' on a seasonally adjusted annualized basis',
                  'total': ' in total',
                  'average': ' on an average basis'}
         atxt = atxtd[adj]
@@ -1106,28 +1081,28 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             text = 'did not contribute'
             if style == 'contribution_to':
                 text = 'did not contribute to'
-            
+
     elif style in ['increase_of', 'contribution_of', 'return_of']:
         stxt1 = 'increase' if neg == False else 'decrease'
         stxt2 = 'an increase' if neg == False else 'a decrease'
         if style == 'contribution_of':
             stxt1 = 'contribution' if neg == False else 'subtraction'
-            stxt2 = 'a contribution' if neg == False else 'a subtraction'    
+            stxt2 = 'a contribution' if neg == False else 'a subtraction'
         if style == 'return_of':
             stxt1 = 'return' if neg == False else 'loss'
-            stxt2 = 'a return' if neg == False else 'a loss'   
+            stxt2 = 'a return' if neg == False else 'a loss'
         if style == 'gain_of':
             stxt1 = 'gain' if neg == False else 'loss'
-            stxt2 = 'a gain' if neg == False else 'a loss'             
+            stxt2 = 'a gain' if neg == False else 'a loss'
         if time_str != '':
             stxt2 = f'a {time_str}{stxt1}'
-        atxtd = {None: f'{stxt2} of', 'sa': f'a seasonally adjusted {time_str}{stxt1} of', 
-                 'annual': f'an annual {time_str}{stxt1} of', 
-                 'annualized': f'an annualized {time_str}{stxt1} of', 
+        atxtd = {None: f'{stxt2} of', 'sa': f'a seasonally adjusted {time_str}{stxt1} of',
+                 'annual': f'an annual {time_str}{stxt1} of',
+                 'annualized': f'an annualized {time_str}{stxt1} of',
                  'average_annualized': f' an average annualized {time_str}{stxt1} of',
                  'avg_ann': f' an average annualized {time_str}{stxt1} of',
-                 'saa': f'a seasonally adjusted and annualized {time_str}{stxt1} of', 
-                 'saar': f'a seasonally adjusted annualized {time_str}{stxt1} of', 
+                 'saa': f'a seasonally adjusted and annualized {time_str}{stxt1} of',
+                 'saar': f'a seasonally adjusted annualized {time_str}{stxt1} of',
                  'total': f'a total {time_str}{stxt1} of',
                  'average': f'an average {time_str}{stxt1} of'}
         atxt = atxtd[adj]
@@ -1137,18 +1112,18 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             text = 'virtually no change'
             if style[:3] == 'con':
                 text = 'virtually no contribution'
-            
+
     elif style in ['increase_end', 'contribution_end']:
         stxt = 'increase' if neg == False else 'decrease'
         if style == 'contribution_end':
             stxt = 'contribution' if neg == False else 'subtraction'
-        atxtd = {None: f'{indef} ', 'sa': 'a seasonally adjusted ', 
-                 'annual': 'an annual ', 
-                 'annualized': 'an annualized ', 
+        atxtd = {None: f'{indef} ', 'sa': 'a seasonally adjusted ',
+                 'annual': 'an annual ',
+                 'annualized': 'an annualized ',
                  'average_annualized': ' an average annualized ',
                  'avg_ann': ' an average and annualized ',
-                 'saa': 'a seasonally adjusted and annualized ', 
-                 'saar': 'a seasonally adjusted annualized ', 
+                 'saa': 'a seasonally adjusted and annualized ',
+                 'saar': 'a seasonally adjusted annualized ',
                  'total': 'a total ',
                  'average': 'an average '}
         atxt = atxtd[adj]
@@ -1158,41 +1133,41 @@ def value_text(value, style='increase', ptype='percent', adj=None,
             text = 'virtually no change'
             if style[:3] == 'con':
                 text = 'virtually no contribution'
-                
+
     elif style == 'above_below':
         stxt = 'above' if neg == False else 'below'
         text = f'{val}{ptxt} {stxt}'
         if insig == True:
             text = 'in line with'
-            
+
     elif style == 'plain':
-    	val3 = val
-    	pn = '' if neg == False else 'negative '
-    	# Handle rounded values
-    	num_abv = {k[0]: v for k, v in numbers.items()}
-    	if (num_txt == True) & (val in num_abv.keys()):
-        	val3 = num_abv[val] 
-        	if float(val) > value:
-        		rnd_adj = 'nearly ' if casual == False else 'almost '
-    	text = f'{rnd_adj}{pn}{val3}{ptxt}'
-    
+        val3 = val
+        pn = '' if neg == False else 'negative '
+        # Handle rounded values
+        num_abv = {k[0]: v for k, v in numbers.items()}
+        if (num_txt == True) & (val in num_abv.keys()):
+                val3 = num_abv[val]
+                if float(val) > value:
+                        rnd_adj = 'nearly ' if casual == False else 'almost '
+        text = f'{rnd_adj}{pn}{val3}{ptxt}'
+
     elif style in ['equivalent', 'eq']:
-    	atxt = ' of GDP' if adj in ['gdp', 'GDP'] else ''
-    	text = f'equivalent to {val}{ptxt}{atxt}'
-    	
+        atxt = ' of GDP' if adj in ['gdp', 'GDP'] else ''
+        text = f'equivalent to {val}{ptxt}{atxt}'
+
     elif style == 'added_lost':
-    	stxt = 'added' if neg == False else 'lost'
-    	atxtd = {None: '', 'average': 'an average of '}
-    	atxt = atxtd[adj]
-    	text = f'{stxt} {atxt}{val}{ptxt}'
-    	
+        stxt = 'added' if neg == False else 'lost'
+        atxtd = {None: '', 'average': 'an average of '}
+        atxt = atxtd[adj]
+        text = f'{stxt} {atxt}{val}{ptxt}'
+
     elif style == 'added_lost_rev':
-    	stxt = 'added' if neg == False else 'lost'
-    	text = f'{val}{ptxt} {stxt}'
-    
+        stxt = 'added' if neg == False else 'lost'
+        text = f'{val}{ptxt} {stxt}'
+
     if casual == True:
         text = (text.replace('added', 'gained')
-        		    .replace('decreased', 'fell')
+                            .replace('decreased', 'fell')
                     .replace('contributed', 'added')
                     .replace('increased by', 'rose by')
                     .replace('increased', 'grew')
@@ -1205,13 +1180,13 @@ def value_text(value, style='increase', ptype='percent', adj=None,
                     .replace('an increase of', 'growth of')
                     .replace('increase of', 'growth of')
                     .replace('decrease of', 'fall of'))
-                    
+
     if obj == 'plural':
         text = (text.replace('was', 'were'))
-        
+
 #    if trail_zero == False:
 #    	text = text.replace('.0 ', ' ')
-    
+
     return(text)
 
 
@@ -1261,21 +1236,21 @@ def retense(text, tense='present', plural=False):
 def gc_desc(lt, mu, sigma, also=False):
     '''Describe contribution to growth of 3-5 categories'''
     m, tot, sh = lt.mean(), lt.sum(), (lt / lt.sum()).sort_values()
-    
+
     # Special case for offset adjective
     co_sh2 = abs(lt.loc[sh.index[0]]) / abs(lt.loc[lt.index != sh.index[0]].sum())
-    
+
     # Add word also to reduce repetitiveness
     also_t = '' if also == False else 'also '
-    
+
     # Describe overall growth (sum of contributions)
     desc = 'growth' if tot > 0 else 'decrease'
-    adj = ('low ' if ((abs(tot) < (sigma / 2)) & (tot > 0)) 
-           else 'small ' if ((abs(tot) < abs(mu)) & (tot < 0)) 
+    adj = ('low ' if ((abs(tot) < (sigma / 2)) & (tot > 0))
+           else 'small ' if ((abs(tot) < abs(mu)) & (tot < 0))
            else 'strong ' if (abs(tot) > (sigma*3)) else '')
     overall = 'low/none' if ((adj == 'low ') | (adj == 'small ')) else 'not low'
     desc = f'{adj}{desc}'
-    
+
     # Identify supporting and conflicting categories and sort by size
     conf = lt[lt < 0].index.to_list() if tot >= 0 else lt[lt > 0].index.to_list()
     supp = lt[~lt.index.isin(conf)].index.to_list()
@@ -1299,25 +1274,25 @@ def gc_desc(lt, mu, sigma, also=False):
     elif (len(ssg) > 0) & (len(csg) == 0):
         sct = 'su'
     else:
-    	sct = 'su'
+        sct = 'su'
 
     # Adjective for top category (conflicting and supporting)
     sha_co = abs(sh.sort_values()).iloc[0]
     sha_co2 = abs(sh.sort_values()).iloc[1]
     sha_su = abs(sh.sort_values()).iloc[-1]
     sha_su2 = abs(sh.sort_values()).iloc[-2]
-    co_adj = ('' if sha_co > 1.5 else 'largely ' if (sha_co >= 1) & (co_sh2 > 0.85) else 'partially ' 
+    co_adj = ('' if sha_co > 1.5 else 'largely ' if (sha_co >= 1) & (co_sh2 > 0.85) else 'partially '
               if sha_co > 0.1 else 'slightly ')
-    su_adj = 'largely ' if (sha_su > 0.75) & (sha_su2 < 0.5) else ''    
-    co_l = (f'{decinc}{sh.index[0]}' if (co_adj == 'largely ' ) | 
+    su_adj = 'largely ' if (sha_su > 0.75) & (sha_su2 < 0.5) else ''
+    co_l = (f'{decinc}{sh.index[0]}' if (co_adj == 'largely ' ) |
             (len(conf) == 1) | (len(csg) == 1)
-            else f'{decinc}{sh.index[0]} and {sh.index[1]}' 
+            else f'{decinc}{sh.index[0]} and {sh.index[1]}'
             if (len(conf) > 1) & (len(csg) > 1) else
-            f'{decinc}{sh.index[0]}, {sh.index[1]}, and {sh.index[2]}' 
+            f'{decinc}{sh.index[0]}, {sh.index[1]}, and {sh.index[2]}'
             if (len(conf) > 2) & (len(csg) > 2) else '')
     su_l = (f'{incdec}{sh.index[-1]}' if (su_adj == 'largely ') | (len(lg) == 1)
             else f'{incdec}{sh.index[-1]} and {sh.index[-2]}')
-    # Broad-based, category-driven, or conflicting 
+    # Broad-based, category-driven, or conflicting
     ssr = (((lt - m)**2).sum() / m**2)
     tsh = sh.iloc[-1]
     t2sh = sh.iloc[-2:].sum()
@@ -1325,7 +1300,7 @@ def gc_desc(lt, mu, sigma, also=False):
     o = sh.index[-1] if (tsh > 0.66) else False
     same_sign = not min(lt) < 0 < max(lt)
     bbdb, bbdb_t, su_t, co_t = '', '', '', ''
-    
+
     # By growth type, determine broad-based, driven-by, or conflicting
     if overall == 'not low':
         if (len(conf) == 0) & (ssr < (sigma*2)) & (t2sh < 0.8) & (tsh < 0.55):
@@ -1344,8 +1319,8 @@ def gc_desc(lt, mu, sigma, also=False):
         elif (ssr < sigma * 2) & (t2sh < 0.95) & (tsh < 0.75):
             bbdb = 'bb2'
             bbdb_t = 'relatively broad-based'
-        elif (((ssr < sigma * 10) & (t2sh < 1.1) & (tsh < 0.8)) | 
-              ((same_sign == True) & (t2sh < 0.95))): 
+        elif (((ssr < sigma * 10) & (t2sh < 1.1) & (tsh < 0.8)) |
+              ((same_sign == True) & (t2sh < 0.95))):
             bbdb = 'bb3'
             bbdb_t = 'relatively broad-based'
         elif (tsh > 0.75) & (t2sh < tsh + 0.5):
@@ -1378,8 +1353,8 @@ def gc_desc(lt, mu, sigma, also=False):
                           f'by {decinc}other categories.')
             elif (len(ssg) == 0) & (len(csg) > 0):
                 bbdb_t = (f'the result of {incdec}several categories that is partially offset '+
-                          f'by {co_l}.') 
-    
+                          f'by {co_l}.')
+
     if bbdb in ['bb2', 'bb3']:
         if sct == 'sc':
             su_t = f'. The main contribution, {su_l}, '
@@ -1387,15 +1362,15 @@ def gc_desc(lt, mu, sigma, also=False):
         elif sct == 'su':
             su_t = f'. The main contribution is {su_l}.'
             co_t = ''
-    
+
     if bbdb in ['db1', 'db2', 'db3']:
         co_t = '.'
         if sct == 'sc':
             co_t = f', and {co_adj}offset by {co_l}.'
     text = f'{desc} is {also_t}{bbdb_t}{su_t}{co_t}'
     return(text, bbdb)
-    
-    
+
+
 def date_list(s):
     '''
     Returns less-repetitive dates for the last three 
@@ -1406,7 +1381,7 @@ def date_list(s):
     dates = s.index[-3:].to_list()
     dates.reverse()
     years = [dt.year for dt in dates]
-    fmt = ('qtr1' if (dates[0] - dates[1]) > pd.Timedelta(days=32) 
+    fmt = ('qtr1' if (dates[0] - dates[1]) > pd.Timedelta(days=32)
            else 'mon1')
     dts = [dtxt(dt)[fmt] for dt in dates]
     if years[0] == years[1] and years[1] == years[2]:
@@ -1415,7 +1390,7 @@ def date_list(s):
         return [dts[0], rem_yr(dts[1]), dts[2]]
     else:
         return dts
-    
+
 
 def prval_comp(s, digits=1, style='noun', threshold=0.1):
     '''
@@ -1453,9 +1428,9 @@ def prval_comp(s, digits=1, style='noun', threshold=0.1):
             return f"{desc_val(v1, is_combined=True)} in {d1} and {vt2} in {d2}"
     else:
         return f"{desc_val(v1)} in {d1}, and {desc_val(v2)} in {d2}"
-        
-        
-def selected_nodes(df, threshold=0.2, node_settings='right, align=left', 
+
+
+def selected_nodes(df, threshold=0.2, node_settings='right, align=left',
                    nowrow=False):
     '''
     Return latex nodes for stacked bar charts
@@ -1465,9 +1440,9 @@ def selected_nodes(df, threshold=0.2, node_settings='right, align=left',
     zero = pd.Series({date: 0 for date, v in df.iterrows()})
     zero.name = 'ZERO'
     df = pd.concat([zero, df], axis=1)
-    pos = (df[df >= 0].cumsum(axis=1).shift(1, axis=1).ffill(axis=1) + 
+    pos = (df[df >= 0].cumsum(axis=1).shift(1, axis=1).ffill(axis=1) +
            df[df >= 0].divide(2) - text_height).drop('ZERO', axis=1)
-    neg = (df[df <= 0].cumsum(axis=1).shift(1, axis=1).ffill(axis=1) + 
+    neg = (df[df <= 0].cumsum(axis=1).shift(1, axis=1).ffill(axis=1) +
            df[df <= 0].divide(2) - text_height).drop('ZERO', axis=1)
     y_locs = (pos).combine_first(neg)
     df = df.drop('ZERO', axis=1)

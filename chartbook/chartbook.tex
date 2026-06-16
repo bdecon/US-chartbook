@@ -3436,93 +3436,118 @@ To see this pattern, the following charts show the contribution to changes in re
 \end{minipage}
 \newpage
 
+\subsubsection*{Consumer Credit Delinquency}
+\begin{minipage}{0.76\textwidth}
+\small The New York Fed's \href{https://www.newyorkfed.org/microeconomics/hhdc}{Consumer Credit Panel} reports the share of loan balances that are seriously delinquent, at least 90 days past due, by type of debt. Unlike an aggregate debt-to-income ratio, delinquency measures repayment stress directly, among the borrowers who actually carry the debt.
+\end{minipage}
+\vspace{1mm}
+
+\begin{minipage}{0.36\textwidth}
+\small \input{text/ccp_delinquency.txt}
+\end{minipage}\hspace{5mm}
+\begin{minipage}{0.36\textwidth}
+\charttitle{Serious Delinquency by Loan Type}{percent of balance 90+ days past due}\\
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, dateaxis, ticks5yr,
+		shortyear, ymin=0, ymax=15, height=5.0cm, width=6.6cm, enlarge y limits={0}]
+	\recbars
+	\stdline{amber}{date}{Credit Card}{data/ccp_delinquency.csv}
+	\stdline{cyan!80!teal}{date}{Student Loan}{data/ccp_delinquency.csv}
+	\stdline{navyblue}{date}{Auto Loan}{data/ccp_delinquency.csv}
+	\absnode{{2003-10-01}}{13.0}{\footnotesize \color{amber}Credit\\ \color{amber}Card}
+	\absnode{{2014-01-01}}{13.1}{\footnotesize \color{cyan!80!teal}Student Loan}
+	\absnode{{2009-07-01}}{3.7}{\footnotesize \color{navyblue}Auto\\ \color{navyblue}Loan}
+	\end{axis}
+\end{tikzpicture}
+\chartsource{FRBNY Consumer Credit Panel}{\hfill \tbllink{ccp_delinquency.csv}}
+\end{minipage}
+\vspace{3mm}
+
 \subsubsection*{Assets}
 \begin{minipage}{0.76\textwidth} \index{assets!household} \index{households!assets}
 \vspace{-1mm}
 
-\small \input{text/hhasset.txt} 
+\small \input{text/hhasset.txt}
 \vspace{1mm}
 
-\charttitle{Selected Household and Nonprofit Assets}{share of GDP, percent}
-\vspace{3.7cm}
-
-\hspace{5mm} \begin{tikzpicture}[overlay]
+\charttitle{Selected Household and Nonprofit Assets}{share of GDP, percent}\\
+\begin{tikzpicture}
 	\begin{axis}[\bbar{y}{0}, \dateaxisticks
-		 ymin=16, ymax=475, height=5.8cm, width=12.6cm, 
+		 ymin=0, ymax=560, height=6.8cm, width=12.4cm,
 		 shortyear]
 	\rbars
-	\ctsbar{tealgreen}{date}{HRE}{data/hhassetsgdp.csv}{2.3pt}
-	\node[text width=2.2cm, anchor=west, align=center] at 
-		({2002-01-01}, 80){\color{white}Owner-Occupied Real Estate};
+	\ctsbar{tealgreen!80!black}{date}{HRE}{data/hhassetsgdp.csv}{2.3pt}
+	\node[text width=2.2cm, anchor=west, align=center] at
+		({2002-01-01}, 80){\footnotesize \color{white}Owner-Occupied Real Estate};
 	\ctsbar{cyan!32!white}{date}{DEP}{data/hhassetsgdp.csv}{2.3pt}
-	\node[text width=2.2cm, anchor=west] at 
-		({2010-01-01}, 140){\color{black!80}Deposits};
+	\node[text width=2.2cm, anchor=west] at
+		({2010-01-01}, 140){\footnotesize \color{black!80}Deposits};
 	\ctsbar{blue!58!cyan}{date}{DSL}{data/hhassetsgdp.csv}{2.3pt}
-	\ctsbar{steelblue}{date}{TEQ}{data/hhassetsgdp.csv}{2.3pt}
-	\node[text width=4.2cm, anchor=west] at 
-		({2008-01-01}, 226){\color{blue!15!cyan!90!white}Debt Securities \& Loans};
-	\node[text width=3.0cm, anchor=west] at 
-		({2015-01-01}, 350){\color{white}Business Equity};
+	\ctsbar{steelblue!90!black}{date}{TEQ}{data/hhassetsgdp.csv}{2.3pt}
+	\node[text width=4.2cm, anchor=west] at
+		({2008-01-01}, 226){\footnotesize \color{blue!15!cyan!90!white}Debt Securities \& Loans};
+	\node[text width=3.0cm, anchor=west] at
+		({2015-01-01}, 350){\footnotesize \color{white}Business Equity};
 	\input{text/hhasset_nodes.txt}
 	\end{axis}
 \end{tikzpicture}
-
 \chartsource{Federal Reserve, Bureau of Economic Analysis}{\hfill \tbllink{hhassetsgdp.csv}}
-\vspace{3mm}
-
-\small \input{text/hhasset2.txt} 
-\vspace{1mm}
-
-\charttitle{Contributions to Real Growth in Household and Nonprofit Assets}{contribution to one-year percent change in assets, adjusted by PCE price deflator}
-\vspace{4.7cm}
-
-\hspace{5mm} \begin{tikzpicture}[overlay]
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
-		height=6.8cm, width=13.2cm, enlarge y limits={0.02}, ymax=14.5,
-		shortyear,
-			legend cell align={left}, reverse legend,
-		legend style={legend columns=-1, at={(0.82, 0.995)}}]
-	\rbars
-	\sbar{cyan!32!white}{date}{DEP}{data/hh_asset_growth.csv}	
-	\sbar{blue!58!cyan}{date}{DSL}{data/hh_asset_growth.csv}
-	\sbar{tealgreen}{date}{HRE}{data/hh_asset_growth.csv}
-	\sbar{steelblue}{date}{TEQ}{data/hh_asset_growth.csv}
-	\legend{Deposits, Debt Securities \& Loans, Real Estate, Business Equity};
-	\end{axis}
-\end{tikzpicture}
-
-\chartsource{Federal Reserve, Bureau of Economic Analysis}{\hfill \tbllink{hh_asset_growth.csv}}
 \end{minipage}
 \newpage
 \begin{minipage}{0.76\textwidth} \index{assets!household} \index{households!assets}
+\small \input{text/hhasset2.txt}
+\vspace{1mm}
+
+\charttitle{Contributions to Real Growth in Household and Nonprofit Assets}{contribution to one-year percent change in assets, adjusted by PCE price deflator}\\
+\begin{tikzpicture}
+	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
+		height=5.8cm, width=13.0cm, enlarge y limits={0.04},
+		shortyear,
+			legend cell align={left}, reverse legend,
+		legend style={legend columns=-1, at={(0.05, 0.995)}, anchor=north west}]
+	\rbars
+	\addplot[ybar stacked, bar width=2.25pt, draw opacity=0, fill=black!22!white]
+		table [x=date, y expr=\thisrow{DEP}+\thisrow{DSL}+\thisrow{OTH}, col sep=comma]{data/hh_asset_growth.csv};
+	\sbar{tealgreen!80!black}{date}{HRE}{data/hh_asset_growth.csv}
+	\sbar{steelblue!90!black}{date}{TEQ}{data/hh_asset_growth.csv}
+	\legend{Other, Real Estate, Business Equity};
+	\end{axis}
+\end{tikzpicture}
+\chartsource{Federal Reserve, Bureau of Economic Analysis}{\hfill \tbllink{hh_asset_growth.csv}}
+\vspace{2mm}
+
 \charttitle{Household and Nonprofit Assets}{various measures: \hspace{22mm} trillions of USD \hspace{5mm} share of GDP \hspace{5mm} real annual growth rate}
 \vspace*{-3.5mm}
 
 \rowcolors{1}{}{black!5} \setlength{\tabcolsep}{3.0pt} \color{black!90}
-	{\renewcommand{\arraystretch}{1.65}
+	{\renewcommand{\arraystretch}{1.52}
 		 \begin{tabular}{p{2mm} p{46mm} R{9.6mm} R{10.6mm} R{8.7mm}
 		  R{9.6mm} R{8.6mm} R{8.6mm} }
 			 \input data/hhasset.tex \arrayrulecolor{black!60}\hline
 	\end{tabular}}\vspace{-1.5mm}
 
 \chartsource{Federal Reserve, Bureau of Economic Analysis}{\hfill \tbllink{hhasset_table.csv}}
-\vspace{7mm}
-
-\subsubsection*{Income-to-Wealth Ratio}
-\small The ratio of disposable income to household assets measures how household income compares to the value of household wealth. A falling ratio indicates that asset values are growing faster than income. \input{text/dpishta.txt} 
+\end{minipage}
 \vspace{2mm}
 
-\charttitle{Income-to-Wealth Ratio}{disposable personal income as share of household and nonprofit total assets, percent}\\
+\subsubsection*{Income-to-Assets Ratio}
+\begin{minipage}{0.28\textwidth}
+\small The ratio of disposable income to household assets measures how household income compares to the value of household assets. A falling ratio indicates that asset values are growing faster than income.
+
+\input{text/dpishta.txt}
+\end{minipage}\hspace{5mm}
+\begin{minipage}{0.44\textwidth}
+\charttitle{Income-to-Assets Ratio}{after-tax income share of household assets, percent}\\
 \begin{tikzpicture}
-	\begin{axis}[\bbar{y}{0}, \dateaxisticks max space between ticks=20,
-		enlarge y limits={0.2}, height=5.4cm, width=12.6cm,
+	\begin{axis}[\bbar{y}{0}, dateaxis, ticks5yr,
+		enlarge y limits={0.12}, height=5.2cm, width=7.2cm,
 		shortyear]
 	\rbars
 	\stdline{red}{date}{DPIsh}{data/dpish.csv}
 	\input{text/dpish_node.txt}
 	\end{axis}
 \end{tikzpicture}
-\chartsource{Federal Reserve, Bureau of Economic Analysis}{\hfill \tbllink{dpish.csv}}
+\chartsource{Federal Reserve, BEA}{\hfill \tbllink{dpish.csv}}
 \end{minipage}
 \newpage
 
@@ -7438,7 +7463,7 @@ Gross labor income has the added benefit that it can be calculated using multipl
 \input{text/nfp_wg.txt}
 \vspace{1mm}
 
-\charttitle{Six-Year Change in Payrolls (\input{text/emp_3_dates.txt}\unskip)}{not seasonally adjusted, thousands of jobs}
+\charttitle{Seven-Year Change in Payrolls (\input{text/emp_3_dates.txt}\unskip)}{not seasonally adjusted, thousands of jobs}
 \vspace{-2mm}
 
 \begin{minipage}{0.44\textwidth}
@@ -9915,14 +9940,14 @@ The financial accounts \href{https://www.federalreserve.gov/releases/z1/}{track}
 \subsubsection*{Valuation}
 \begin{minipage}{0.76\textwidth}
 \index{equity markets!valuation} \index{S\&P 500}
-\small The \href{http://www.econ.yale.edu/~shiller/data.htm}{cyclically adjusted price to earnings} (CAPE) ratio compares the current price of the S\&P 500 to the previous ten years of total S\&P 500 returns, including dividends and buybacks (treated as dividends). Valuations often use recent or forecasted earnings. Robert Shiller's CAPE ratio covers ten years (a normal business cycle) so that valuations are less affected by the idiosyncrasies of current economic conditions. 
+\small The \href{http://www.econ.yale.edu/~shiller/data.htm}{cyclically adjusted price to earnings} (CAPE) ratio compares the current price of the S\&P 500 to the average of the previous ten years of S\&P 500 earnings, measured on a total-return basis so that dividends and buybacks (treated as dividends) are reinvested. Valuations often use recent or forecasted earnings. Robert Shiller's CAPE ratio covers ten years (a normal business cycle) so that valuations are less affected by the idiosyncrasies of current economic conditions. 
 
 \input{text/cape.txt}
 \end{minipage}
 \vspace{1mm}
 
 \begin{minipage}{0.36\textwidth}
-\charttitle{Price to Earnings Ratio}{ratio of market value to trailing 10-year returns}
+\charttitle{Price to Earnings Ratio}{ratio of market value to trailing 10-year average earnings}
 \vspace{3.1cm}
 
 \hspace{5mm} \begin{tikzpicture}[overlay]
@@ -10593,10 +10618,10 @@ The next charts show inflation relative to the two percent target, using the Con
 
 \charttitle{Inflation Rates and Target}{one-year change, percent}\\
 \begin{tikzpicture}
-    \begin{groupplot}[group style={group size=3 by 1, horizontal sep=30pt},
+    \begin{groupplot}[group style={group size=3 by 1, horizontal sep=36pt},
      enlarge y limits = {0.0},
-     max space between ticks=20,
-     height=5.2cm, width=4.6cm]
+     ymin=0, ymax=5.5, ytick={0,1,2,3,4,5},
+     height=5.2cm, width=4.4cm]
     \nextgroupplot[\bbar{y}{0}, \ltdateaxisticks shortyear]
 	\thickline{blue!60!cyan}{date}{CPI}{data/infl_target_summary.csv}
 	\input{text/infl_summary_hbar.txt}
